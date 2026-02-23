@@ -177,6 +177,171 @@ Note: the pickle file may have extension `.pkl.txt` depending on how it was expo
 | Pharmaceutical | Pharmaceutical/recipe pages |
 | Stars | Star-labelled pages |
 
+
+## Methodological Details
+
+This section addresses three questions a skeptical reader would ask first.
+
+---
+
+### What "empty core" means
+
+A token's core slot is **empty** when, after the prefix, gallows, and suffix have been assigned by the P70 rules, the remaining character sequence has length zero. There is no sentinel value or placeholder — the core is literally the empty string.
+
+**Example parses:**
+
+| Token | Prefix | Gallows | Core | Suffix | Core empty? |
+|-------|--------|---------|------|--------|-------------|
+| `daiin` | `d` | — | — | `aiin` | **Yes** |
+| `chedy` | `ch` | — | — | `edy` | **Yes** |
+| `qokeedy` | `qo` | `k` | `e` | `edy` | No |
+| `otchedy` | `o` | `t` | `ch` | `edy` | No |
+| `dain` | `d` | — | — | `ain` | **Yes** |
+
+Corpus-wide, 52.7% of the 37,465 tokens have empty cores. These are purely combinatorial — a prefix (or prefix + gallows) followed directly by a suffix, with no content-bearing middle.
+
+**Stability across sections:**
+
+The empty-core rate is not an artefact of one section. It varies systematically but is substantial everywhere:
+
+| Section | Tokens | Empty core % | Interpretation |
+|---------|--------|-------------|----------------|
+| Balneological | ~3,000 | 63.5% | Most formulaic |
+| Herbal-A | ~11,100 | 56.9% | Descriptive prose |
+| **Whole corpus** | **37,465** | **52.7%** | — |
+| Pharmaceutical | ~1,500 | 44.4% | Mixed |
+| Cosmological | ~1,800 | 37.7% | Richer vocabulary |
+| Zodiac | ~2,700 | 36.7% | Most diverse |
+
+The pattern is coherent: sections with denser, more specialised content (Zodiac, Cosmological) use more core-bearing tokens; sections dominated by formulaic sequences (Balneological) use fewer. This is exactly what a notation system with pluggable domain vocabularies would produce.
+
+---
+
+### How the entropy budget is computed
+
+The chain-rule entropy decomposition uses the **chain rule of probability** applied to empirical frequency distributions at the token level:
+
+```
+H(word) = H(prefix)
+         + H(gallows | prefix)
+         + H(core | prefix, gallows)
+         + H(suffix | prefix, gallows, core)
+```
+
+Each term is a standard Shannon entropy computed over the observed frequency table for that slot, conditioned on the preceding slots.
+
+**Computation method:**
+
+1. Every token is decomposed into its four slots using the P70 rules.
+2. For each conditioning context (e.g., each observed (prefix, gallows) pair), we compute the conditional distribution of the next slot and its entropy.
+3. The weighted average (by context frequency) gives the conditional entropy term.
+4. All four terms sum to the total.
+
+**Result:**
+
+| Slot | H (bits) | % of total |
+|------|----------|------------|
+| H(prefix) | 2.788 | 27.0% |
+| H(gallows \| prefix) | 1.374 | 13.3% |
+| H(core \| prefix, gallows) | 3.622 | 35.1% |
+| H(suffix \| prefix, gallows, core) | 2.527 | 24.5% |
+| **Chain sum** | **10.311** | **100.0%** |
+| Actual H(token) | 10.311 | — |
+| **Residual** | **0.000** | — |
+
+**Why the residual is exactly zero:** The chain rule of entropy is a mathematical identity. For *any* lossless decomposition that can reconstruct the original token, the chain-rule sum equals H(token) exactly. This is not an empirical finding — it is guaranteed by information theory.
+
+**What IS the empirical claim:** The claim is not that the residual is zero (any lossless parse achieves that), but that P70's *distribution across slots* is meaningfully different from alternatives. Specifically:
+
+- The four slots carry **roughly balanced** information loads (27%, 13%, 35%, 25%) rather than concentrating entropy in one slot.
+- The suffix retains **1.3 bits of independent information** even after conditioning on all preceding slots — more independence than any alternative decomposition achieves.
+- The core slot carries the plurality of section-discriminating information (Cramér's V = 0.348 for core vs. section), while prefix and suffix carry structural/grammatical information that is stable across sections.
+
+These distributional properties are what distinguish P70 from alternatives, not the zero residual.
+
+---
+
+### What the alternative decompositions are
+
+We tested **24 alternative decompositions** across five categories. All metrics are computed from the same 37,465 tokens using identical code.
+
+**Category 1: Conventional parses (the main rival)**
+
+| Alternative | Description | Distance from P70 |
+|------------|-------------|-------------------|
+| Crude (ch/sh as gallows) | Stolfi's crust-mantle-core grammar with ch/sh classified as gallows | 1.755 bits |
+| No ch/sh prefix | Like Crude but also drops q-prefix | 1.781 bits |
+
+These represent the standard Voynich linguistics position. The ch/sh reclassification is the single largest structural decision; it affects 24.4% of tokens directly and changes the parse of 66.6% of the corpus through cascading suffix boundary shifts.
+
+**How the cascade works — worked example:**
+
+Take the common token `chedy` (appears 342 times):
+
+```
+Conventional parse (ch = gallows):
+  prefix: —    gallows: ch    core: ed    suffix: y
+  → core "ed" is a rare, low-frequency item
+
+P70 parse (ch = prefix):
+  prefix: ch   gallows: —     core: —     suffix: edy
+  → empty core; "edy" joins the Y-family suffix paradigm
+```
+
+The reclassification of `ch` from gallows to prefix vacates the gallows slot, which absorbs the first characters of what was the core, which shortens the core to nothing, which extends the suffix leftward. One boundary change at the front of the word propagates through every subsequent slot.
+
+This cascade is not limited to `ch`-initial words. Because the suffix inventory is defined relative to whatever remains after prefix + gallows + core assignment, *any* change to the prefix boundary shifts what counts as a valid suffix for every token sharing that prefix. With `ch` and `sh` together covering 24.4% of tokens, and the suffix reassignment propagating to tokens that share suffix paradigm membership, the net effect reaches 66.6% of the corpus.
+
+The information-theoretic consequence: the conventional parse forces `ed` into the core inventory (inflating core entropy) while losing `edy` from the suffix inventory (deflating suffix entropy). This is why the conventional parse sits 1.755 bits away from P70's entropy profile — the information is redistributed across slots, not lost, but redistributed in a way that increases suffix-core mutual information (MI = 1.860 vs P70's 0.976), meaning the slots are less independent.
+
+**Category 2: Systematic boundary perturbations**
+
+| Alternative | Description | Distance from P70 |
+|------------|-------------|-------------------|
+| Shift(−1) | Move all prefix boundaries 1 character left | Degenerate (86% empty prefix) |
+| Shift(+1) | Move all prefix boundaries 1 character right | 1.074 bits |
+| Shift(+2) | Move all prefix boundaries 2 characters right | Degenerate (72% empty suffix) |
+| Shift(−2) | Move all suffix boundaries 2 characters left | Degenerate |
+| Reversed | Swap prefix and suffix inventories | 0.000 (trivially equivalent) |
+
+These test whether P70's boundaries are in the right place. The ±1 shift variants are informative: they produce valid decompositions but with worse slot independence.
+
+**Category 3: Structural variants**
+
+| Alternative | Description | Key difference |
+|------------|-------------|----------------|
+| Flat (no gallows) | Merge prefix + gallows into single slot | 32 "prefixes", no gallows distinction |
+| No suffixes | Absorb all suffix material into core | Core inventory explodes to 3,802 types |
+| ch→c+h split | Treat 'c' as prefix, 'h' as gallows | Boundary shifted by 1 character within ch |
+
+**Category 4: Fixed-position splits**
+
+| Alternative | Description | Key difference |
+|------------|-------------|----------------|
+| Fixed(1,2) | First 1 char = prefix, last 2 = suffix | No linguistic basis |
+| Fixed(2,2) | First 2 chars = prefix, last 2 = suffix | Crude positional heuristic |
+| Fixed(1,3) | First 1 char = prefix, last 3 = suffix | — |
+
+These are deliberately "dumb" baselines that segment by character position only.
+
+**Category 5: Randomised baselines**
+
+| Alternative | Description | Key difference |
+|------------|-------------|----------------|
+| Random × 5 | Random character boundaries for each token | Null model |
+| Random frequency-matched affixes × 5 | Random affix lists matched to P70's frequency profile | Controls for inventory size |
+| Grammar P/G + random suffix × 5 | Keep P70's prefixes and gallows, randomise suffixes | Tests suffix inventory specifically |
+
+**Summary of results:**
+
+- P70 achieves the **highest discriminative efficiency** among all non-degenerate decompositions (discriminative efficiency = Cramér's V / log₂(inventory size), measuring section discrimination per bit of affix complexity).
+- P70 has the **lowest mutual information between suffix and core** (MI = 0.976 bits). All conventional alternatives show MI > 1.8. This means P70's slots are more independent — less information leakage between them.
+- The margin over the next-best non-degenerate alternative is ~25%. The structure is robust but not hypersensitive to exact boundary placement.
+- **Independent validation:** Unsupervised boundary discovery from character-level entropy statistics converges on P70 boundaries 95.2% of the time (within ±1 character), confirming the boundaries reflect genuine statistical structure rather than imposed assumptions.
+
+**Reproducibility:** All 24 alternatives can be regenerated by running `p70_grammar_validation.py`. The script takes under 60 seconds and requires only NumPy and SciPy.
+
+
 ## Citation
 
 If you use this decomposition in your own work, please reference this repository and the formal grammar specification.
