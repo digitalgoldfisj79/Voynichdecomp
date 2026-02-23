@@ -22,7 +22,7 @@ The chain-rule entropy budget sums exactly:
 | H(suffix \| prefix, gallows, core) | 2.527 | 24.5% |
 | **Total** | **10.311** | **100.0%** |
 
-Residual: 0.000 bits. No information is lost or unaccounted for.
+Residual: 0.000 bits. This is a mathematical identity (chain rule of entropy), not an empirical finding — any lossless decomposition achieves it. The empirical claim is that P70's *distribution across slots* is uniquely balanced compared to alternatives: see [Why the residual is exactly zero](#why-the-residual-is-exactly-zero).
 
 ## Verify it yourself
 
@@ -33,7 +33,7 @@ python p70_grammar_validation.py
 
 This takes under 60 seconds and reproduces every number above from the data files. No API keys, no external dependencies beyond NumPy/SciPy.
 
-The validation script also runs 19 alternative decompositions (random splits, fixed-position cuts, shifted boundaries, ablated slot inventories) and shows that none comes within 1 bit of the grammar's entropy budget. The nearest alternative is 1,074× further from the target.
+The validation script also runs 24 alternative decompositions (conventional parses, boundary shifts, random splits, fixed-position cuts, ablated inventories) and shows that none comes within 1 bit of the grammar's entropy profile. The nearest non-degenerate alternative is 1,074× further from the target.
 
 ## What's in this repo
 
@@ -44,7 +44,7 @@ The validation script also runs 19 alternative decompositions (random splits, fi
 | `p70_rules_canonical.json` | 210 segmentation rules (109 boundary-active, 101 coverage) with section-conditioned weights |
 | `voynich_section_map.json` | Page-to-section mapping for all 9 canonical sections |
 | `VMS_formal_grammar.pdf` | 2-page formal specification of the complete grammar |
-| `p70_grammar_validation.py` | Validation script: reproduces all metrics and tests 19 alternatives |
+| `p70_grammar_validation.py` | Validation script: reproduces all metrics and tests 24 alternatives |
 
 The transcription source is the ZLZI (Zandbergen-Landini) transliteration from the [voynich.science](https://github.com/OrcusLabs/voynich.science) corpus in EVA (Extended Voynich Alphabet).
 
@@ -98,91 +98,11 @@ It does not decipher the manuscript. The core slot contains 2,001 opaque types c
 
 The grammar characterises the manuscript as a **structured notation system** — not a natural language (rigid 4-slot structure, mid-word entropy peak, Bernoulli empty-core/full-core alternation), not a simple cipher (section-specific vocabulary, folio coherence, label uniqueness), and not meaningless (genuine information discontinuity at word boundaries, page-specific content).
 
-## Methodology
-
-The segmentation rules were derived computationally from character-level statistics using iterative boundary detection and validated against entropy-based unsupervised segmentation (93% agreement within ±1 character). The rules were refined across 70+ iterations (designated p1–p70) with systematic falsification of alternatives at each stage.
-
-Computational analysis was assisted by Claude (Anthropic). All results are deterministically reproducible from the published data and code.
-
-## Data format
-
-The dataset is available in two formats:
-
-- `enriched_records.json` (12.5 MB) — self-documenting, includes metadata header with field descriptions and slot inventories
-- `enriched_records.pkl` — Python pickle, smaller and faster to load
-
-Both contain the same 37,465 records. Each record is a dictionary:
-
-```python
-{
-    'token': 'chedy',        # Original EVA token
-    'prefix': 'ch',          # ∅ if empty
-    'gallows': '∅',          # ∅ if empty
-    'core': '∅',             # ∅ if empty
-    'suffix': 'edy',         # ∅ if empty
-    'sfx_fam': 'Y',          # Suffix family
-    'm_core': '∅',           # Modified core (internal)
-    'empty_core': True,      # Boolean
-    'section': 'Herbal-A',   # One of 9 canonical sections
-    'folio': 'f2r',          # Folio identifier
-    'line_no': 3,            # Line number within folio
-    'pos': 2,                # Word position within line
-    'line_len': 8,           # Total words in line
-    'rel_pos': 0.286,        # Normalised position (0–1)
-    'rel_line': 0.143,       # Normalised line position
-    'is_first_word': False,
-    'is_last_word': False,
-    'is_first_line': False,
-    'is_last_line': False
-}
-```
-
-Load with:
-
-```python
-# JSON (any language)
-import json
-with open('enriched_records.json') as f:
-    data = json.load(f)
-records = data['records']          # 37,465 token decompositions
-print(data['statistics'])          # corpus summary
-print(data['slot_inventories'])    # prefix/gallows/suffix lists
-
-# Pickle (Python only, faster)
-import pickle
-with open('enriched_records.pkl', 'rb') as f:
-    records = pickle.load(f)
-```
-
-```javascript
-// JavaScript / Node.js
-const data = JSON.parse(require('fs').readFileSync('enriched_records.json'));
-console.log(data.statistics);      // corpus summary
-console.log(data.records[0]);      // first token
-```
-
-Note: the pickle file may have extension `.pkl.txt` depending on how it was exported. Both work with `pickle.load()`.
-
-## The 9 canonical sections
-
-| Section | Description |
-|---------|-------------|
-| Herbal-A | Herbal illustrations, Currier language A (Quires 1–8) |
-| Herbal-B | Herbal illustrations, Currier language B (Quires 15, 17) |
-| Astronomical | Astronomical diagrams |
-| Cosmological | Cosmological diagrams |
-| Zodiac | Zodiac pages |
-| Rosettes | Rosettes foldout |
-| Balneological | Bathing/biological figures |
-| Pharmaceutical | Pharmaceutical/recipe pages |
-| Stars | Star-labelled pages |
-
-
-## Methodological Details
-
-This section addresses three questions a skeptical reader would ask first.
-
 ---
+
+## Methodological details
+
+This section addresses questions a skeptical reviewer would ask first.
 
 ### What "empty core" means
 
@@ -217,7 +137,39 @@ The pattern is coherent: sections with denser, more specialised content (Zodiac,
 
 ---
 
-### How the entropy budget is computed
+### What "gallows" means: a functional slot, not a glyph category
+
+The gallows inventory is:
+
+```
+Single-glyph (EVA):   k  t  p  f
+Bench-gallows (EVA):  ckh  cth  cph  cfh
+Empty:                ∅
+```
+
+A reviewer will immediately ask: is this a morphological, graphemic, or positional category? The answer is **functional** — and the distinction matters.
+
+**The EVA-vs-glyph problem:** EVA (the Extended Voynich Alphabet) is a *character-level* transcription system, not a glyph-level one. In the manuscript itself, `ckh` is almost certainly a single pen stroke — a "bench" element (`c`) attached to a gallows glyph (`k`) with a plume (`h`). EVA renders this as three characters because it decomposes visual forms into atomic strokes. Similarly, `k` alone is one glyph written as one character. The apparent mixing of 1-character and 3-character strings in the same slot is an artefact of EVA's encoding, not a structural inconsistency.
+
+**What defines the gallows slot:**
+
+The slot is defined by three functional properties, not by character count or visual form:
+
+1. **Closed inventory.** Exactly 9 members (including ∅). This contrasts with the core slot (~2,000 members, open) and the suffix slot (33 members, semi-open). A closed inventory of this size behaves like a grammatical class marker, not a content-bearing element.
+
+2. **Fixed position.** Always slot 2 of 4, between prefix and core. No gallows character ever appears in slot 1 or slot 4. This positional rigidity is what the P70 rules formalise, and it is independently recoverable from character-level entropy statistics (see unsupervised boundary discovery, 95.2% convergence).
+
+3. **Statistical behaviour.** The gallows slot carries 1.374 bits (13.3% of total token entropy) and has the lowest section discrimination of any slot (Cramér's V = 0.087 for gallows vs. section). This means gallows selection is almost entirely independent of manuscript section — it is structural/grammatical, not content-bearing. By contrast, the core slot has V = 0.348 (strongly section-dependent).
+
+**What the slot is NOT claiming:**
+
+- It is not a claim about phonology (we do not know what sound, if any, gallows represent).
+- It is not a claim about morpheme boundaries (we cannot verify morphological structure without a decipherment).
+- It is a claim that the transcription system has a 4-way factorisation into statistically distinguishable functional roles, one of which is a small closed class occupying a fixed position. Whether that closed class represents consonantal radicals, determinative signs, tonal markers, or something else entirely is an open question that the decomposition does not attempt to answer.
+
+---
+
+### Why the residual is exactly zero
 
 The chain-rule entropy decomposition uses the **chain rule of probability** applied to empirical frequency distributions at the token level:
 
@@ -236,18 +188,6 @@ Each term is a standard Shannon entropy computed over the observed frequency tab
 2. For each conditioning context (e.g., each observed (prefix, gallows) pair), we compute the conditional distribution of the next slot and its entropy.
 3. The weighted average (by context frequency) gives the conditional entropy term.
 4. All four terms sum to the total.
-
-**Result:**
-
-| Slot | H (bits) | % of total |
-|------|----------|------------|
-| H(prefix) | 2.788 | 27.0% |
-| H(gallows \| prefix) | 1.374 | 13.3% |
-| H(core \| prefix, gallows) | 3.622 | 35.1% |
-| H(suffix \| prefix, gallows, core) | 2.527 | 24.5% |
-| **Chain sum** | **10.311** | **100.0%** |
-| Actual H(token) | 10.311 | — |
-| **Residual** | **0.000** | — |
 
 **Why the residual is exactly zero:** The chain rule of entropy is a mathematical identity. For *any* lossless decomposition that can reconstruct the original token, the chain-rule sum equals H(token) exactly. This is not an empirical finding — it is guaranteed by information theory.
 
@@ -341,6 +281,88 @@ These are deliberately "dumb" baselines that segment by character position only.
 
 **Reproducibility:** All 24 alternatives can be regenerated by running `p70_grammar_validation.py`. The script takes under 60 seconds and requires only NumPy and SciPy.
 
+---
+
+## The 9 canonical sections
+
+| Section | Description |
+|---------|-------------|
+| Herbal-A | Herbal illustrations, Currier language A (Quires 1–8) |
+| Herbal-B | Herbal illustrations, Currier language B (Quires 15, 17) |
+| Astronomical | Astronomical diagrams |
+| Cosmological | Cosmological diagrams |
+| Zodiac | Zodiac pages |
+| Rosettes | Rosettes foldout |
+| Balneological | Bathing/biological figures |
+| Pharmaceutical | Pharmaceutical/recipe pages |
+| Stars | Star-labelled pages |
+
+## Methodology
+
+The segmentation rules were derived computationally from character-level statistics using iterative boundary detection and validated against entropy-based unsupervised segmentation (95.2% agreement within ±1 character). The rules were refined across 70+ iterations (designated p1–p70) with systematic falsification of alternatives at each stage.
+
+Cross-transcription stability was tested against 6 independent transcription systems (Currier, Frogguy, Glen Claston, Takahashi, VMS Database, and Zandbergen-Landini). The core-is-max property (core slot carries the most entropy) holds in all 6. Train/test split validation (80/20) confirms the same positional gradients and transition grammar in held-out data.
+
+Computational analysis was assisted by Claude (Anthropic). All results are deterministically reproducible from the published data and code.
+
+## Data format
+
+The dataset is available in two formats:
+
+- `enriched_records.json` (12.5 MB) — self-documenting, includes metadata header with field descriptions and slot inventories
+- `enriched_records.pkl` — Python pickle, smaller and faster to load
+
+Both contain the same 37,465 records. Each record is a dictionary:
+
+```python
+{
+    'token': 'chedy',        # Original EVA token
+    'prefix': 'ch',          # ∅ if empty
+    'gallows': '∅',          # ∅ if empty
+    'core': '∅',             # ∅ if empty
+    'suffix': 'edy',         # ∅ if empty
+    'sfx_fam': 'Y',          # Suffix family
+    'm_core': '∅',           # Modified core (internal)
+    'empty_core': True,      # Boolean
+    'section': 'Herbal-A',   # One of 9 canonical sections
+    'folio': 'f2r',          # Folio identifier
+    'line_no': 3,            # Line number within folio
+    'pos': 2,                # Word position within line
+    'line_len': 8,           # Total words in line
+    'rel_pos': 0.286,        # Normalised position (0–1)
+    'rel_line': 0.143,       # Normalised line position
+    'is_first_word': False,
+    'is_last_word': False,
+    'is_first_line': False,
+    'is_last_line': False
+}
+```
+
+Load with:
+
+```python
+# JSON (any language)
+import json
+with open('enriched_records.json') as f:
+    data = json.load(f)
+records = data['records']          # 37,465 token decompositions
+print(data['statistics'])          # corpus summary
+print(data['slot_inventories'])    # prefix/gallows/suffix lists
+
+# Pickle (Python only, faster)
+import pickle
+with open('enriched_records.pkl', 'rb') as f:
+    records = pickle.load(f)
+```
+
+```javascript
+// JavaScript / Node.js
+const data = JSON.parse(require('fs').readFileSync('enriched_records.json'));
+console.log(data.statistics);      // corpus summary
+console.log(data.records[0]);      // first token
+```
+
+Note: the pickle file may have extension `.pkl.txt` depending on how it was exported. Both work with `pickle.load()`.
 
 ## Citation
 
