@@ -8,7 +8,7 @@
 
 The stochastic generator implements the PGCS grammar as a card-based production system with five components:
 
-1. **Orthographic grammar**: P70 bigram legality constraints (210 rules)
+1. **Orthographic grammar**: Character-level bigram legality constraints (210 rules)
 2. **Stratified lexicon**: Corpus-derived token frequency distribution with Zipfian structure
 3. **Positional templates**: Line-position-specific sampling pools (FIRST/MID/LAST)
 4. **Length coupling**: 30% probability of selecting a word within ±1 character of the previous word's length (disabled at line boundaries)

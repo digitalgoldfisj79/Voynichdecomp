@@ -27,7 +27,7 @@ T1+T2 generalise perfectly. T4 novel rates match the mathematical prediction fro
 
 | Attack | Target | Verdict | Severity |
 |--------|--------|---------|----------|
-| 1. Circularity | p70-c generalisation | ✓ PASS | None (Zipf's law) |
+| 1. Circularity | Quad generalisation | ✓ PASS | None (Zipf's law) |
 | 2. m_core granularity | Core representation | ✓ PASS | Low (acknowledged) |
 | 3. Line-length confound | Positional effects | ✓ PASS | None |
 | 4. Transcription dependence | All findings | ⚠ CAVEAT | Medium (inherent) |

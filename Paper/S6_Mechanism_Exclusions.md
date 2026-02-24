@@ -63,7 +63,7 @@ Simulation with 10,000 replications confirms: no replication exceeds |AC| = 0.02
 | Rugg grille (optimised) | 6.7% | 0.0% |
 | VMS self-consistency | 0.0% | 0.0% |
 
-The VMS is more morphologically constrained than grille systems can achieve without explicit morphological knowledge. Grille generation produces 6.7–8.4% finite-state violations against the P70 grammar, while the VMS produces zero.
+The VMS is more morphologically constrained than grille systems can achieve without explicit morphological knowledge. Grille generation produces 6.7–8.4% finite-state violations against the character grammar, while the VMS produces zero.
 
 **Additional failures**:
 - Grille generators produce flat position-frequency gradients (PFG ≈ −2 vs VMS −41.2)

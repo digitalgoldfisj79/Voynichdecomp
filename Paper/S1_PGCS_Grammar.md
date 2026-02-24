@@ -3,6 +3,16 @@
 > **Source code:** `src/p70c_full.py` (P70C_Full class, builder)  
 > **Data:** `data/p70_rules_canonical.json` (210 rules), `data/p70c_full_spec_v1.json` (6,750 quints)
 
+**Terminology note.** The implementation uses internal names that appear in source code headers throughout these supplements. Their correspondence to the main paper's terminology:
+
+| Internal name | Main paper term | Description |
+|---------------|----------------|-------------|
+| P70 | Character grammar (210 rules) | Character-level bigram legality constraints validating PGCS slot boundaries |
+| P70-C / PGCS-C | Constrained quad inventory (5,172 quads) | Attested slot-filling combinations with frequency and tier metadata |
+| `enriched_records.pkl` | Enriched corpus (37,465 tokens) | Full P70-C parse applied to every token, with section, folio, and position metadata |
+| Quad | Quad | Four-slot combination: (prefix, gallows, core-class, suffix-family) |
+| Quint | Quint | Quad plus line position (FIRST/MID/LAST) |
+
 
 ## S1.1 Slot Inventories
 
@@ -61,9 +71,9 @@ Core length distribution:
 
 The suffix-family abstraction reduces 33 full suffixes to 7 families. The vowel-prefix component of each suffix carries 45% of full suffix entropy and 85% of section-specific information, while the terminal carries structural information. The family level captures grammar; the discarded variation is content.
 
-## S1.2 P70 Character Grammar
+## S1.2 Character Grammar (210 Rules)
 
-The P70 merged grammar comprises 210 rules in four categories:
+The character grammar (P70) comprises 210 rules in four categories:
 
 | Category | Rules | Coverage |
 |----------|-------|----------|
@@ -80,9 +90,9 @@ The P70 merged grammar comprises 210 rules in four categories:
 - Held-out generalisation: 0/3,930 novel types produce violations
 - Decomposition error: 0.001 bits (vs 1.074 bits for next-best alternative; ~1,000× improvement)
 
-## S1.3 PGCS-C Constraint Layer
+## S1.3 Constrained Quad Inventory
 
-The PGCS-C (Constrained) layer records the 5,172 observed quads with frequency and tier metadata.
+The constrained quad inventory (PGCS-C) records the 5,172 observed quads with frequency and tier metadata.
 
 From a theoretical space of 656,208 possible combinations (8 prefixes × 9 gallows × 2,001 cores × 7 suffix families), only 5,172 (0.79%) are observed — a 127× compression.
 
