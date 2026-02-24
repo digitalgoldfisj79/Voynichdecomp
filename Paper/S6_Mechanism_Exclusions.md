@@ -6,7 +6,7 @@
 
 ## S6.1 Overview
 
-Section 4.4 of the main paper excludes four classes of production mechanism. This supplement provides the formal arguments and supporting data for each exclusion.
+Section 4.4 of the main paper excludes five classes of production mechanism. This supplement provides the formal arguments and supporting data for each exclusion.
 
 ## S6.2 Monoalphabetic Substitution
 
@@ -70,8 +70,42 @@ The VMS is more morphologically constrained than grille systems can achieve with
 - Grille generators lack suffix-to-prefix transitions (MI ≈ 0 vs VMS 0.757 bits)
 - Grille generators cannot produce the autocorrelation signal (AC ≈ 0 vs VMS +0.138)
 
-## S6.6 Summary: The Constraint Space
+## S6.6 Pure Self-Citation (Timm 2025)
 
-Any admissible production mechanism must simultaneously satisfy all constraints listed in Table 2 of the main paper. No tested single mechanism satisfies more than 67% of character-level and word-level constraints jointly. The PGCS stochastic generator, explicitly designed to satisfy all structural constraints without semantic content, achieves 83.7% of BG benchmarks — approaching the 86% self-consistency ceiling but failing on the position-frequency gradient.
+**Claim**: Iterative self-citation — copying and modifying previously written words — is excluded as a complete production mechanism.
+
+**Background**: Timm (2025) argues that VMS text is meaningless pseudo-text generated through a dynamic self-citation process in which each new word is produced by copying and modifying a nearby word. Gaskell and Bowern (2022) experimentally confirmed that humans naturally adopt this strategy when asked to produce meaningless text at scale: beyond approximately 100 words, subjects defaulted to copying and modifying existing text. Timm identifies several VMS properties consistent with this mechanism: the connected word network (84.67% of types within a single edit-distance-1 component), asymmetric vocabulary accumulation between Currier A and B, and smooth cosine similarity gradients across the manuscript.
+
+**Test**: We implemented a pure self-citation generator using the 100 most frequent VMS words as seeds, a recency-weighted copy buffer (size 40), a modification rate of 40% (single-character edit), and Schwerdtfeger-style bigram harmony rules as the only structural constraint. No PGCS slot architecture, no transition tables, no position conditioning. We swept six parameter configurations and selected the best performer.
+
+**Results**: The best self-citation generator passes 5 of 15 statistical metrics (33%), compared with 11/15 (73%) for the PGCS generator:
+
+| Metric | VMS | Self-Citation | Error % | PGCS | Error % |
+|--------|-----|---------------|---------|------|---------|
+| H₁ conditional entropy | 2.342 | 3.093 | 32.1% | 2.531 | 8.1% |
+| Mean word length | 4.984 | 3.966 | 20.4% | 5.170 | 3.7% |
+| Edit-distance network degree | 5.393 | 10.093 | 87.1% | 4.973 | 7.8% |
+| Freq-connectivity correlation | 0.616 | 0.463 | — | 0.624 | — |
+| Suffix-bearing tokens | 93.5% | 59.9% | 35.9% | 93.5% | 0.0% |
+| Adjacent repetition rate | 0.83% | 5.5% | 569% | 1.3% | 58% |
+
+**Structural failures**: The self-citation generator produces tokens in which the suffix is identifiable only 59.9% of the time, compared with 93.5% in the VMS. Single-character edits operating without slot awareness disrupt the boundary between core and suffix, progressively destroying the four-slot architecture that the VMS maintains across 37,465 tokens. Positional constraints also degrade: *q* appears in word-initial position 89.8% of the time (VMS: 99.4%), *m* in word-final position 86.1% (VMS: 95.5%).
+
+**Network topology**: Pure self-citation produces nearly double the edit-distance-1 network density of the VMS (mean degree 10.1 vs 5.4). Unconstrained character-level edits generate more near-neighbours than slot-constrained edits. The PGCS architecture limits which modifications are valid, producing the VMS's characteristic moderate connectivity.
+
+**Timm's signature metric**: The frequency-connectivity correlation — Timm's strongest claimed evidence for self-citation — is better reproduced by the slot-constrained generator (r = 0.624) than by pure self-citation (r = 0.463). The constraint architecture, not the copying process, produces the correct network topology.
+
+**Within-suffix coupling**: The VP↔Terminal NMI under pure self-citation is 0.473, compared with 0.644 in the VMS and 0.615 in the PGCS generator. Self-citation produces some coupling through inheritance (copied words retain their VP-terminal pairing), but edits degrade it faster than the VMS tolerates.
+
+**Scope**: Self-citation is not excluded as a *component* of the production mechanism. It is excluded as a *sufficient* explanation. The evidence is consistent with self-citation operating within a structural framework equivalent to the PGCS slot architecture, whether that framework was consciously designed or crystallised from scribal training.
+
+**Scribal calibration**: A historically grounded scribal model — implementing calligraphic ductus constraints (character categories grouped by pen-stroke type, producing a four-slot structure analogous to PGCS) and experimentally validated self-citation rates, with no VMS-derived parameters — passes 7/15 metrics. This model matches structural properties (mean word length 4.999 vs 4.984; network degree 5.31 vs 5.39; frequency-connectivity correlation 0.608 vs 0.616) but fails on lexical diversity (hapax 29.3% vs 68.3%) and within-suffix coupling (NMI 0.403 vs 0.644). The structural layer of VMS text is consistent with 15th-century scribal practice; the combinatorial layer requires additional constraints. The distinction between designed notation and deeply habituated scribal practice is not resolvable from the text alone (§5.1 of main paper).
+
+
+## S6.7 Summary: The Constraint Space
+
+Any admissible production mechanism must simultaneously satisfy all constraints listed in Table 2 of the main paper. No tested single mechanism satisfies more than 67% of character-level and word-level constraints jointly. Pure self-citation (Timm 2025) satisfies 33% of a 15-metric benchmark; a historically grounded scribal model satisfies 47%; only the PGCS stochastic generator, explicitly designed to satisfy all structural constraints without semantic content, achieves 83.7% of BG benchmarks — approaching the 86% self-consistency ceiling but failing on the position-frequency gradient.
+
+The within-suffix coupling (NMI(VP; terminal) = 0.644) provides an additional discriminating constraint. This combinatorial structure is reproduced by the PGCS generator (0.615) but not by scribal training alone (0.403) or pure self-citation (0.473), establishing that the production mechanism must enforce within-suffix co-occurrence constraints beyond what calligraphic habit alone produces.
 
 The narrow gap between structural ceiling (83.7%) and self-consistency ceiling (86%) defines the available space for genuine content encoding. The information budget's 71.1% unexplained entropy is the upper bound on content; the 2.3% gap between ceilings is the lower bound on structure-independent variation.
