@@ -12,7 +12,7 @@ The information budget decomposes word-selection entropy H(quad) into a grammati
 
     H(quad) = 9.124 bits
 
-This is lower than the sum of marginal slot entropies (13.171 bits) by 2.860 bits (21.7% redundancy), confirming that PGCS slots are approximately 78% independent.
+This is lower than the sum of marginal quad-slot entropies (10.306 bits, see table below) by 1.182 bits (11.5% redundancy), confirming that PGCS quad-level slots are approximately 89% independent. (At full character-level resolution, the paper §3.1 reports a higher redundancy of 21.7% because full cores and full suffixes carry more mutual information than the classified abstractions used here.)
 
 ## S2.2 Slot-Level Decomposition
 
@@ -84,14 +84,14 @@ This is the single largest marginal increment. Key transitions:
 | LINE_START | → y | 13.4% | 2.1× |
 | LINE_START | → d | 14.3% | 1.2× |
 
-The transition grammar also explains the length autocorrelation (AC = +0.138): suffix-family constrains following prefix, and prefix constrains word length, propagating the coupling through PGCS slots. The effect resets at line boundaries (within-line AC = 0.151; cross-line AC = 0.062).
+The transition grammar also explains the length autocorrelation (AC = +0.160): suffix-family constrains following prefix, and prefix constrains word length, propagating the coupling through PGCS slots. The effect resets at line boundaries (within-line AC = 0.151; cross-line AC = 0.062).
 
 ### Axis 4: Paragraph Flag (binary)
 
     MI(quad; section, position, prev_sfx, para_flag) = 2.116 bits (23.19%)
     Δ para_flag = 0.030 bits (0.33%)
 
-Negligible marginal contribution despite a striking distributional signature: 79.5% of paragraph-initial tokens carry ∅-prefix and 88.2% bear gallows. The low MI reflects the small sample (226 tokens, 0.6% of corpus).
+Negligible marginal contribution despite a striking distributional signature: 71.7% of paragraph-initial tokens carry ∅-prefix and 84.5% bear gallows (rising to 79.6% and 88.7% in the five main text sections). The low MI reflects the small sample (226 tokens, 0.6% of corpus).
 
 ### Axis 5: Quire / Production Unit (16 categories)
 
@@ -112,5 +112,5 @@ The information budget is stable under:
 
 - **Core coarsening:** 2-character cores preserve 80% of the MI pattern
 - **Suffix abstraction level:** Full suffixes add 1.096 bits (12.0%) but at the cost of 1,794 additional entries and worse generalisation
-- **Cross-transcription:** Prior work (Bozzard 2026a) showed identical architectural ratios across EVA-Boz, Standard EVA, and v101 notation systems
+- **Transcription sensitivity:** Sensitivity analysis under 5% character corruption (Supplement S4) confirms structural findings are robust, though all analyses are conditioned on a single transcription system (ZLZI)
 - **Bootstrap:** 95% CIs for cumulative MI are within ±0.05 bits at each axis
