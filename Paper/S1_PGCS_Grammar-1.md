@@ -62,7 +62,7 @@ The iteration history is recorded in the `created_from` header of `p70_rules_can
 | y | 1,127 | 3.0% | Line-initial marker |
 | s | 911 | 2.4% | Line-initial marker |
 
-The reclassification of *ch* and *sh* from gallows to prefix status is the most consequential boundary decision in the PGCS model, affecting 11,329 tokens (30.2%). These characters behave distributionally as prefixes: they appear at word-initial position, combine freely with following gallows characters, and account for 66.6% of all tokens containing them (24,964 tokens).
+The reclassification of *ch* and *sh* from gallows to prefix status is the most consequential boundary decision in the PGCS model, affecting 11,329 tokens (30.2%). These characters behave distributionally as prefixes: they appear at word-initial position, combine freely with following gallows characters, and affect 9,134 tokens directly (24.4%); the cascading effect on suffix boundaries means that 24,964 tokens (66.6%) parse differently under PGCS than under any three-slot alternative.
 
 ### Gallows Slot (9 types + ∅)
 
@@ -149,7 +149,7 @@ This is placement precision (constraining where tokens appear), not vocabulary p
 
 ## S1.6 Ledger Compactness
 
-The PGCS grammar can be expressed as a compact reference table — a "ledger" — small enough to fit on a single manuscript page. This section derives the component count cited in §4.3 of the main paper.
+The PGCS grammar can be expressed as a compact reference table — a "ledger" — small enough to fit on a single manuscript page. This section derives the component count cited in §4.4 of the main paper.
 
 ### Component Inventory
 
@@ -174,7 +174,7 @@ The 231 core bigrams represent all attested two-character sequences within the c
 | Ledger as % of median page | ~90% |
 | Ledger as % of mean page | ~54% |
 
-A single densely-written page can accommodate the full grammar specification. The "approximately 500 glyph-cells" figure cited in the main paper rounds up from 443 to account for frequency weights and formatting overhead that a practical reference table would require.
+A single densely-written page can accommodate the full grammar specification. The "approximately 450 table entries" figure cited in the main paper rounds up from 443 to account for formatting overhead that a practical reference table would require.
 
 ### What the Ledger Does Not Contain
 

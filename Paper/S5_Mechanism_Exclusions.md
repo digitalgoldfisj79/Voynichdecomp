@@ -6,7 +6,7 @@
 
 ## S5.1 Overview
 
-Section 4.2 of the main paper excludes five classes of production mechanism. This supplement provides the formal arguments and supporting data for each exclusion.
+Section 4.3 of the main paper excludes five classes of production mechanism. This supplement provides the formal arguments and supporting data for each exclusion.
 
 ## S5.2 Monoalphabetic Substitution
 
@@ -104,7 +104,7 @@ The VMS is more morphologically constrained than grille systems can achieve with
 
 ## S5.7 Summary: The Constraint Space
 
-Any admissible production mechanism must simultaneously satisfy all constraints listed in Table 2 of the main paper. No tested single mechanism satisfies more than 74% of the full 90-metric suite (67/90, Tier 5 Section-Profiled). Pure self-citation (Timm 2026) satisfies 33% of a 15-metric benchmark; a historically grounded scribal model satisfies 47%; only the PGCS stochastic generator, explicitly designed to satisfy all structural constraints without semantic content, achieves 88% of the Bowern-Gaskell 42-metric benchmark — approaching the 86% self-consistency ceiling but failing on the position-frequency gradient.
+Any admissible production mechanism must simultaneously satisfy all constraints listed in Table 4 of the main paper. No tested single mechanism satisfies more than 74% of the full 90-metric suite (67/90, Tier 5 Section-Profiled). Pure self-citation (Timm 2026) satisfies 33% of a 15-metric benchmark; a historically grounded scribal model satisfies 47%; only the PGCS stochastic generator, explicitly designed to satisfy all structural constraints without semantic content, achieves 88% of the Bowern-Gaskell 42-metric benchmark — approaching the 86% self-consistency ceiling but failing on the position-frequency gradient.
 
 The within-suffix coupling (NMI(VP; terminal) = 0.644) provides an additional discriminating constraint. This combinatorial structure is reproduced by the PGCS generator (0.615) but not by scribal training alone (0.403) or pure self-citation (0.473), establishing that the production mechanism must enforce within-suffix co-occurrence constraints beyond what calligraphic habit alone produces.
 
