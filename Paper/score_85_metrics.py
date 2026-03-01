@@ -75,11 +75,33 @@ except ImportError:
 # ======================================================================
 
 CORE_15 = [
-    'ttr', 'H1_unigram', 'H2_markov_cond', 'top10_share',
-    'zipf_alpha', 'zipf_r2', 'heaps_beta',
-    'wordlen_mean', 'wordlen_std', 'hapax_ratio_types',
-    'repeated_words', 'mattr_25', 'mattr_100', 'mattr_50',
-    'wordlen_autocorr'
+    # Selected by greedy forward selection on z-score with |r| < 0.80
+    # independence constraint. 8 linguistic dimensions, 0/105 pair violations.
+    # See RUNNING_RESULTS_bg_audit.md for full derivation.
+    #
+    # Sequential structure (3)
+    'autocorr_wordlen',      # Word-length lag-1 AC           z=23.6
+    'autocorr_wordfreq',     # Word-frequency lag-1 AC        z=4.3
+    'autocorr_hapax_25',     # Hapax-rate AC (window=25)      z=4.0
+    # Positional bias — BG methodology (2)
+    'charbias_mean',         # Char line-position CV          z=6.8
+    'charbias_skew',         # Char position bias skewness    z=0.6
+    # Information theory (2)
+    'H1_unigram',            # Character unigram entropy       z=1.1
+    'H2_markov_cond',        # Conditional char entropy        z=1.0
+    # Morphological — BG methodology (2)
+    'wordlen_mean',          # Mean word length (subsampled)   z=5.9
+    'wordlen_unique_mean',   # Mean type length (subsampled)   z=1.5
+    # Lexical diversity (2)
+    'msttr_25',              # Segmented TTR (window=25)       z=1.6
+    'heaps_beta',            # Heaps' law growth exponent      z=0.5
+    # Character distribution — BG methodology (2)
+    'chardist_max',          # Peak character frequency         z=6.3
+    'digraph_coverage',      # Digraph space fill fraction     z=0.8
+    # Frequency law — BG methodology (1)
+    'zipf_lmz',             # Urzúa LMZ Zipf statistic        z=0.1
+    # Repetition — BG methodology (1)
+    'tripled_words',         # 3-word consecutive repeat rate   z=0.7
 ]
 
 # BG-methodology metrics (computed per subsample, averaged)
