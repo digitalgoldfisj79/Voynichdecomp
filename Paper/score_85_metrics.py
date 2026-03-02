@@ -31,7 +31,10 @@ Reference:
     is statistically similar to human-produced samples of meaningless text.
     CEUR Workshop Proceedings, ConfVM 2022, University of Malta.
 
-Version: 2.0.0 (2026-03-01) — corrected BG methodology
+Version: 2.1.0 (2026-03-02) — empirically derived tolerances (v2)
+    Tolerances derived via bootstrap resampling (line-level, 50 iterations)
+    and cross-section variance (9 VMS sections). See Supplement 3 for
+    full methodology. Levenshtein metrics retain provisional tolerances.
 """
 
 import math
@@ -154,63 +157,98 @@ ALL_85 = sorted(set(BG_METRICS + ORIGINAL_METRICS))
 # TOLERANCES
 # ======================================================================
 
+# ======================================================================
+# TOLERANCES (v2 — empirically derived)
+# ======================================================================
+# Each tolerance is max(bootstrap_95%_CI_half_width, cross_section_SD).
+# Source key: boot = bootstrap CI dominant, xsec = cross-section SD dominant
+# prov = provisional (Levenshtein metrics excluded from derivation)
+# See Supplement 3 for full methodology and justification.
+# ======================================================================
+
 TOLERANCES = {
-    # BG word length (subsampled means)
-    'wordlen_mean': 0.50, 'wordlen_std': 0.20, 'wordlen_skew': 0.20,
-    'wordlen_unique_mean': 0.50, 'wordlen_unique_std': 0.30, 'wordlen_unique_skew': 0.30,
-    'wordlen_autocorr': 0.05,
-    # BG Levenshtein-based
-    'wordunique_mean': 0.10, 'wordunique_std': 0.05, 'wordunique_skew': 0.30,
-    'wordchange_mean': 0.10, 'wordchange_std': 0.05, 'wordchange_skew': 0.30,
-    # BG word distribution
-    'worddist_max': 5.0, 'worddist_shape': 1.0,
-    # BG word positional bias
-    'wordbias_mean': 0.05, 'wordbias_std': 0.03, 'wordbias_skew': 0.50,
-    'wordbias_lines_mean': 0.05, 'wordbias_lines_std': 0.03, 'wordbias_lines_skew': 0.50,
-    # BG character distribution
-    'chardist_max': 0.05, 'chardist_shape': 0.01,
-    # BG ngram distribution
-    'ngramdist_max': 20.0, 'ngramdist_shape': 1.0,
-    # BG character positional bias
-    'charbias_mean': 0.03, 'charbias_std': 0.02, 'charbias_skew': 0.50,
-    'charbias_words_mean': 0.03, 'charbias_words_std': 0.02, 'charbias_words_skew': 0.50,
-    # BG counts
-    'unique_words': 20.0, 'repeated_words': 0.005, 'tripled_words': 0.001,
-    'unique_chars': 3, 'repeated_chars': 0.02, 'tripled_chars': 0.005,
-    'unique_ngrams': 50.0,
-    # BG global
-    'entropy': 0.30, 'compression': 0.05, 'zipf_lmz': 5.0, 'flipped_pairs': 0.01,
-    # Entropy hierarchy (original)
-    'H0_max_entropy': 0.30, 'H1_unigram': 0.15,
-    'H2_markov_cond': 0.35, 'h2_conditional': 0.35,
-    'h2_joint_digraph': 0.35,
-    'h3_joint_trigraph': 0.50, 'h3_conditional': 0.35,
-    # Character distribution (original)
-    'char_evenness': 0.05, 'char_redundancy': 0.05,
-    'char_simpson_D': 0.02, 'char_yule_K': 50,
-    # Digraph/trigraph (original)
-    'digraph_unique': 50, 'digraph_coverage': 0.10, 'trigraph_unique': 500,
-    # TTR variants (original)
-    'ttr': 0.03, 'rttr': 8.0, 'cttr': 4.0,
-    'log_ttr': 0.02, 'maas_a2': 0.004, 'uber_index': 15, 'brunet_W': 2.0,
-    'msttr_25': 0.05, 'msttr_50': 0.05, 'msttr_100': 0.05,
-    'mattr_25': 0.05, 'mattr_50': 0.05, 'mattr_100': 0.05,
-    # Hapax & frequency spectrum (original)
-    'hapax_ratio_tokens': 0.03, 'hapax_ratio_types': 0.10,
-    'dis_ratio_tokens': 0.01, 'dis_ratio_types': 0.03,
-    'sichel_S': 0.03, 'hapax_type_proportion': 0.10,
-    'freq_spectrum_1': 0.10, 'freq_spectrum_2': 0.03,
-    'freq_spectrum_3': 0.02, 'freq_spectrum_gt10': 0.02,
-    # Lexical richness (original)
-    'word_yule_K': 15, 'honore_R': 500,
-    # Autocorrelation (original)
-    'autocorr_wordlen': 0.05, 'autocorr_wordfreq': 0.03,
-    'autocorr_ttr_25': 0.10, 'autocorr_hapax_25': 0.10,
-    # Zipf / Heaps (original)
-    'zipf_alpha': 0.10, 'zipf_r2': 0.05, 'heaps_beta': 0.05,
-    # Frequency concentration (original)
-    'top10_share': 0.03, 'top50_share': 0.08,
+    # BG word length — xsec
+    'wordlen_mean': 0.2333, 'wordlen_std': 0.0995, 'wordlen_skew': 0.1148,
+    'wordlen_unique_mean': 0.1999, 'wordlen_unique_std': 0.0673, 'wordlen_unique_skew': 0.0949,  # boot
+    'wordlen_autocorr': 0.0458,  # boot
+    # BG Levenshtein-based — PROVISIONAL (excluded from bootstrap/xsec derivation)
+    'wordunique_mean': 0.10, 'wordunique_std': 0.05, 'wordunique_skew': 0.30,  # prov
+    'wordchange_mean': 0.10, 'wordchange_std': 0.05, 'wordchange_skew': 0.30,  # prov
+    # BG word distribution — xsec
+    'worddist_max': 2.2882, 'worddist_shape': 0.2334,
+    # BG word positional bias — xsec
+    'wordbias_mean': 0.1048, 'wordbias_std': 0.0711, 'wordbias_skew': 0.4360,
+    'wordbias_lines_mean': 0.1028, 'wordbias_lines_std': 0.0695, 'wordbias_lines_skew': 0.4727,
+    # BG character distribution — xsec
+    'chardist_max': 0.0160, 'chardist_shape': 0.0016,
+    # BG ngram distribution — xsec
+    'ngramdist_max': 19.9523, 'ngramdist_shape': 1.0120,
+    # BG character positional bias — mixed
+    'charbias_mean': 0.0639,  # xsec
+    'charbias_std': 0.0163,   # boot
+    'charbias_skew': 0.7708,  # xsec
+    'charbias_words_mean': 0.0702, 'charbias_words_std': 0.0392, 'charbias_words_skew': 0.2893,  # xsec
+    # BG counts — xsec
+    'unique_words': 13.8687, 'repeated_words': 0.0041, 'tripled_words': 0.0005,  # tripled: boot
+    'unique_chars': 0.5425, 'repeated_chars': 0.0089, 'tripled_chars': 0.0014,
+    'unique_ngrams': 33.7496,
+    # BG global — mixed
+    'entropy': 0.1169,       # xsec
+    'compression': 0.0225,   # xsec
+    'zipf_lmz': 3.2543,     # boot
+    'flipped_pairs': 0.0188, # xsec
+    # Entropy hierarchy — xsec
+    'H0_max_entropy': 0.0972, 'H1_unigram': 0.0580,
+    'H2_markov_cond': 0.1489, 'h2_conditional': 0.1489,
+    'h2_joint_digraph': 0.1544,
+    'h3_joint_trigraph': 0.2651, 'h3_conditional': 0.1208,
+    # Character distribution — xsec
+    'char_evenness': 0.0214, 'char_redundancy': 0.0214,
+    'char_simpson_D': 0.0048, 'char_yule_K': 47.9738,
+    # Digraph/trigraph — xsec
+    'digraph_unique': 27.4231, 'digraph_coverage': 0.0436, 'trigraph_unique': 243.9968,
+    # TTR variants — xsec
+    'ttr': 0.1295, 'rttr': 3.4850, 'cttr': 1.7425,
+    'log_ttr': 0.0315, 'maas_a2': 0.0028, 'uber_index': 15.2446, 'brunet_W': 0.7472,
+    'msttr_25': 0.0212, 'msttr_50': 0.0317, 'msttr_100': 0.0439,
+    'mattr_25': 0.0214, 'mattr_50': 0.0331, 'mattr_100': 0.0456,
+    # Hapax & frequency spectrum — xsec
+    'hapax_ratio_tokens': 0.1130, 'hapax_ratio_types': 0.0457,
+    'dis_ratio_tokens': 0.0105, 'dis_ratio_types': 0.0165,
+    'sichel_S': 0.0165, 'hapax_type_proportion': 0.0457,
+    'freq_spectrum_1': 0.0457, 'freq_spectrum_2': 0.0165,
+    'freq_spectrum_3': 0.0096,  # boot
+    'freq_spectrum_gt10': 0.0197,
+    # Lexical richness — xsec
+    'word_yule_K': 18.0255, 'honore_R': 325.4212,
+    # Autocorrelation — xsec
+    'autocorr_wordlen': 0.0765, 'autocorr_wordfreq': 0.0344,
+    'autocorr_ttr_25': 0.0476, 'autocorr_hapax_25': 0.0526,
+    # Zipf / Heaps — mixed
+    'zipf_alpha': 0.1429,   # xsec
+    'zipf_r2': 0.0308,      # xsec
+    'heaps_beta': 0.0531,   # xsec
+    # Frequency concentration — xsec
+    'top10_share': 0.0334, 'top50_share': 0.0524,
 }
+
+# Metrics with provisional (non-empirical) tolerances
+PROVISIONAL_METRICS = [
+    'wordunique_mean', 'wordunique_std', 'wordunique_skew',
+    'wordchange_mean', 'wordchange_std', 'wordchange_skew',
+]
+
+# Source of each tolerance: 'boot' = bootstrap CI, 'xsec' = cross-section SD, 'prov' = provisional
+TOLERANCE_SOURCE = {
+    'charbias_std': 'boot', 'freq_spectrum_3': 'boot', 'tripled_words': 'boot',
+    'wordlen_autocorr': 'boot', 'wordlen_unique_skew': 'boot', 'zipf_lmz': 'boot',
+    'wordunique_mean': 'prov', 'wordunique_std': 'prov', 'wordunique_skew': 'prov',
+    'wordchange_mean': 'prov', 'wordchange_std': 'prov', 'wordchange_skew': 'prov',
+}
+# All others default to 'xsec'
+for _m in TOLERANCES:
+    if _m not in TOLERANCE_SOURCE:
+        TOLERANCE_SOURCE[_m] = 'xsec'
 
 
 # ======================================================================
@@ -911,17 +949,23 @@ def compute_metrics(tokens, lines=None, subset_iterations=100, subset_words=200,
 # SCORING
 # ======================================================================
 
-def score_against_vms(gen_metrics, vms_metrics, metric_list=None, tolerances=None):
+def score_against_vms(gen_metrics, vms_metrics, metric_list=None, tolerances=None,
+                      flag_provisional=True):
     """
     Score generator metrics against VMS baseline.
-    Returns dict: passes, fails, n_pass, n_total, details.
+    Returns dict: passes, fails, n_pass, n_total, details, provisional.
+
+    If flag_provisional=True, metrics in PROVISIONAL_METRICS are tracked
+    separately and excluded from n_pass/n_total counts.
     """
     if metric_list is None:
         metric_list = list(set(ALL_85))
     if tolerances is None:
         tolerances = TOLERANCES
 
-    passes, fails, details = [], [], {}
+    passes, fails, provisional_pass, provisional_fail = [], [], [], []
+    details = {}
+
     for metric in metric_list:
         vms_val = vms_metrics.get(metric)
         gen_val = gen_metrics.get(metric)
@@ -930,15 +974,24 @@ def score_against_vms(gen_metrics, vms_metrics, metric_list=None, tolerances=Non
         tol = tolerances.get(metric, abs(vms_val) * 0.1 if vms_val != 0 else 0.1)
         delta = abs(gen_val - vms_val)
         passed = delta <= tol
+        is_prov = flag_provisional and metric in PROVISIONAL_METRICS
+        source = TOLERANCE_SOURCE.get(metric, 'xsec')
         details[metric] = {
             'vms': vms_val, 'gen': gen_val,
-            'delta': delta, 'tol': tol, 'pass': passed
+            'delta': delta, 'tol': tol, 'pass': passed,
+            'source': source, 'provisional': is_prov
         }
-        (passes if passed else fails).append(metric)
+        if is_prov:
+            (provisional_pass if passed else provisional_fail).append(metric)
+        else:
+            (passes if passed else fails).append(metric)
 
     return {
         'passes': passes, 'fails': fails,
-        'n_pass': len(passes), 'n_total': len(details),
+        'n_pass': len(passes), 'n_total': len(passes) + len(fails),
+        'provisional_pass': provisional_pass,
+        'provisional_fail': provisional_fail,
+        'n_provisional': len(provisional_pass) + len(provisional_fail),
         'details': details
     }
 
@@ -947,22 +1000,25 @@ def print_comparison_table(vms_metrics, generator_dict, metric_list=None):
     """
     Print formatted comparison table.
     generator_dict: {label: metrics_dict}
+    Marks provisional metrics with (p) suffix.
     """
     if metric_list is None:
         metric_list = sorted(vms_metrics.keys())
 
     labels = list(generator_dict.keys())
-    header = f"{'Metric':<28} {'VMS':>12}"
+    header = f"{'Metric':<28} {'Src':>4} {'VMS':>12}"
     for lab in labels:
         header += f" {lab:>14}"
     print(header)
-    print("-" * (30 + 12 + 16 * len(labels)))
+    print("-" * (34 + 12 + 16 * len(labels)))
 
     for metric in metric_list:
         vms_val = vms_metrics.get(metric)
         if vms_val is None:
             continue
-        row = f"{metric:<28} {vms_val:>12.4f}"
+        src = TOLERANCE_SOURCE.get(metric, '?')[:4]
+        prov = '*' if metric in PROVISIONAL_METRICS else ' '
+        row = f"{metric:<27}{prov} {src:>4} {vms_val:>12.4f}"
         for lab in labels:
             gen_val = generator_dict[lab].get(metric)
             if gen_val is not None:
@@ -972,6 +1028,8 @@ def print_comparison_table(vms_metrics, generator_dict, metric_list=None):
             else:
                 row += f" {'N/A':>12}"
         print(row)
+
+    print(f"\n  * = provisional tolerance (Levenshtein, not empirically derived)")
 
 
 # ======================================================================
@@ -1044,3 +1102,9 @@ if __name__ == '__main__':
     # Self-score
     result = score_against_vms(m, m)
     print(f"\nSelf-score: {result['n_pass']}/{result['n_total']} (should be 100%)")
+    if result['n_provisional'] > 0:
+        print(f"  + {len(result['provisional_pass'])}/{result['n_provisional']} provisional (Levenshtein)")
+    if result['fails']:
+        print(f"  FAILURES: {result['fails']}")
+    if result['provisional_fail']:
+        print(f"  PROVISIONAL FAILURES: {result['provisional_fail']}")
