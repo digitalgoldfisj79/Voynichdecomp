@@ -1,0 +1,373 @@
+#!/usr/bin/env python3
+"""
+FORWARD CIPHER v11 — CLEAN REBUILD
+====================================
+Two real inputs:
+  1. enriched_records.pkl — VMS Herbal-A tokens (builds cell pools)
+  2. ci_corpus_parsed.pkl — Circa Instans Latin (source text to encipher)
+
+Everything else is inlined. No mystery pickles.
+
+The cipher has two parts:
+  PART A (lines 30-55):  BABUINI ROUTING — Latin → grid cell assignment
+  PART B (lines 55-end): COPY-MUTATE SCRIBE — cell pool → token selection
+  
+Part A is the cipher-class contribution (this paper).
+Part B is the scribal production model (Bozzard 2026a).
+
+Edward Bozzard · ORCID 0009-0002-4052-0994
+DOI: 10.5281/zenodo.18812705
+"""
+
+import random, pickle, sys, os
+from collections import Counter, defaultdict
+import numpy as np
+
+# ══════════════════════════════════════════════════════════════
+# CONFIGURATION — all parameters inline
+# ══════════════════════════════════════════════════════════════
+
+SEED = 404
+TARGET = 4033           # Herbal-A token count
+VOCAB_CAP = 1430        # Herbal-A type count
+AVOIDANCE = 15          # suffix-avoidance dampening factor
+COPY_ALPHA = 2.0        # preferential reuse exponent
+REBAL_STR = 8.0         # suffix-family rebalancing strength
+SEED_WEIGHT = 0.10      # weight for novel pool entries
+
+# Provenance rates (from Bozzard 2026a corpus forensics)
+FC_COPY_RATE = 0.133
+FC_ED1_RATE = 0.387
+
+# Herbal-A line lengths (613 lines, range 1-13)
+LINE_LENGTHS = [5]*94 + [8]*93 + [6]*90 + [9]*83 + [7]*78 + [4]*52 + \
+               [3]*35 + [10]*33 + [2]*19 + [11]*18 + [12]*9 + [1]*5 + [13]*4
+
+# ══════════════════════════════════════════════════════════════
+# PART A: BABUINI ROUTING
+# This is the cipher-class contribution.
+# Latin word → (row, suffix_family) cell address.
+# ══════════════════════════════════════════════════════════════
+
+# Grid: initial consonant → row (identity permutation, no keyword)
+CONSONANT_TO_ROW = {}
+for row, consonants in {
+    'o': ['c','s','p'],
+    'c': ['∅','v'],       # vowel-initial and v
+    'e': ['f','d'],
+    'a': ['m','l'],
+    'd': ['r','q','h','n','g'],
+    'l': ['t'],
+    'r': ['b','z','x','j','k','w','y'],
+}.items():
+    for c in consonants:
+        CONSONANT_TO_ROW[c] = row
+
+# First vowel → suffix family
+VOWEL_TO_FAMILY = {'a':'Y', 'e':'R', 'i':'N', 'o':'L', 'u':'BARE'}
+
+# Suffix family target distribution (from Herbal-A)
+FAMILY_TARGETS = {'Y':0.313, 'R':0.174, 'N':0.171, 'L':0.161, 'BARE':0.140, 'M':0.030}
+FAMILIES = list(FAMILY_TARGETS.keys())
+
+# Suffix members per family (from Herbal-A, with counts as weights)
+SUFFIX_MEMBERS = {
+    'BARE': [('', 563)],
+    'Y':    [('y',204), ('ey',147), ('chy',234), ('dy',68), ('ody',96), ('eey',77), ('shy',18)],
+    'N':    [('aiin',500), ('ain',92), ('iin',22), ('aiiin',22)],
+    'L':    [('ol',493), ('al',101), ('l',26)],
+    'R':    [('or',428), ('ar',169), ('r',62), ('ir',42)],
+    'M':    [('am',61), ('m',16)],
+}
+
+
+# Primary grid cell contents (from actual_core_grid.pkl, inlined)
+# These are the most common core strings per (row, family) cell.
+# Used to CONSTRUCT novel tokens that don't appear in the manuscript.
+GRID_PRIMARY = {
+    ('a','BARE'):'a', ('a','L'):'aii', ('a','M'):'ai', ('a','N'):'a', ('a','R'):'a', ('a','Y'):'ar',
+    ('c','BARE'):'cho', ('c','L'):'ch', ('c','M'):'ch', ('c','N'):'ch', ('c','R'):'ch', ('c','Y'):'ch',
+    ('d','BARE'):'d', ('d','L'):'d', ('d','M'):'d', ('d','N'):'d', ('d','R'):'d', ('d','Y'):'d',
+    ('e','BARE'):'eo', ('e','L'):'e', ('e','M'):'eo', ('e','N'):'e', ('e','R'):'e', ('e','Y'):'e',
+    ('o','BARE'):'o', ('o','L'):'od', ('o','M'):'o', ('o','N'):'o', ('o','R'):'o', ('o','Y'):'ol',
+}
+
+# Rare tokens injected at random positions to maintain digraph coverage
+RARE_TOKENS = ['oleeeb','oteeeb','choteeeb','okshodeeeb','oeeeb',
+               'cheeeb','cheeb','tu','vor','zepchy']
+
+PREFIXES = ['','ch','sh','d','o','qo','s','y']
+GALLOWS_OPTIONS = ['','k','t']
+
+VOWELS = set('aeiouàèìòùéêîôûäëïöü')
+VOWEL_NORMALISE = {'à':'a','è':'e','é':'e','ê':'e','ì':'i','î':'i','ò':'o','ô':'o','ù':'u','û':'u'}
+
+# Nomenclator: fixed family assignments for known function words
+# Cross-validated on Ald.211 → CI → held-out VMS (p<0.0001)
+NOMENCLATOR = {
+    'et': 'Y', 'postea': 'Y',
+    'in': 'N', 'cum': 'N', 'hoc': 'N',
+    'de': 'L', 'habet': 'L', 'uel': 'L', 'vel': 'L',
+    'que': 'L', 'supra': 'L', 'ad': 'L',
+}
+
+def classify_and_route(word, ec_words):
+    """PART A: Route a Latin word to a grid cell.
+    
+    Returns: ('EC', suffix_family) or ('FC', row, suffix_family)
+    """
+    w = word.lower()
+    
+    # Check nomenclator first (fixed, cross-validated assignments)
+    if w in NOMENCLATOR:
+        return ('EC', NOMENCLATOR[w])
+    
+    # Get first vowel for heuristic
+    first_vowel = 'a'
+    for ch in w:
+        if ch in VOWELS:
+            first_vowel = VOWEL_NORMALISE.get(ch, ch)
+            break
+    family = VOWEL_TO_FAMILY.get(first_vowel, 'Y')
+    
+    # EC or FC?
+    if w in ec_words:
+        return ('EC', family)
+    else:
+        initial = w[0] if w[0] not in VOWELS else '∅'
+        row = CONSONANT_TO_ROW.get(initial, 'c')
+        return ('FC', row, family)
+
+# ══════════════════════════════════════════════════════════════
+# PART B: COPY-MUTATE SCRIBE
+# This is from Bozzard (2026a).
+# Given a cell address, select a token from the pool.
+# ══════════════════════════════════════════════════════════════
+
+def build_pools(ha_records):
+    """Build cell pools from Herbal-A VMS tokens.
+    
+    This is the manuscript-derived proxy for the unknown grid contents.
+    Each cell (row, family) contains the VMS tokens observed in that cell.
+    """
+    # Build character FSM from HA tokens (for validation)
+    bigrams = set()
+    starters = set()
+    for r in ha_records:
+        t = r['token']
+        if t:
+            starters.add(t[0])
+            for j in range(len(t)-1):
+                bigrams.add(t[j:j+2])
+    
+    def is_valid(tok):
+        if not tok or tok[0] not in starters:
+            return False
+        return all(tok[i:i+2] in bigrams for i in range(len(tok)-1))
+    
+    # Group tokens by (row, family)
+    pool = defaultdict(Counter)
+    for r in ha_records:
+        mc = r.get('m_core') or r.get('core') or ''
+        sf = r.get('sfx_fam', 'BARE')
+        row = mc[0] if mc and not r['empty_core'] else '∅'
+        pool[(row, sf)][r['token']] += 1
+    
+    # Augment pools with CONSTRUCTED tokens from grid primary
+    # This is the closest thing to what the real cipher would do:
+    # assemble prefix + gallows + core_from_grid + suffix
+    for row in ['o','c','e','a','d','l','r']:
+        for fam in FAMILIES:
+            core = GRID_PRIMARY.get((row, fam), GRID_PRIMARY.get((row, 'BARE'), None))
+            if not core:
+                continue
+            for pfx in PREFIXES:
+                for gal in GALLOWS_OPTIONS:
+                    for sfx, _ in SUFFIX_MEMBERS.get(fam, SUFFIX_MEMBERS['Y']):
+                        tok = pfx + gal + core + sfx
+                        if tok not in pool[(row, fam)] and is_valid(tok):
+                            pool[(row, fam)][tok] = SEED_WEIGHT
+    
+    # Prepare weighted sampling
+    sampler = {}
+    for cell, token_counts in pool.items():
+        tokens = list(token_counts.keys())
+        weights = np.array([token_counts[t] for t in tokens], dtype=float)
+        weights /= weights.sum()
+        sampler[cell] = (tokens, weights)
+    
+    return sampler, is_valid
+
+def pick_token(sampler, cell, recent_tokens):
+    """Select a token from the cell pool, avoiding recent tokens."""
+    if cell not in sampler:
+        return None
+    tokens, weights = sampler[cell]
+    adjusted = np.copy(weights)
+    for j, t in enumerate(tokens):
+        if t in recent_tokens:
+            adjusted[j] /= AVOIDANCE
+    s = adjusted.sum()
+    if s > 0:
+        adjusted /= s
+        return tokens[np.random.choice(len(tokens), p=adjusted)]
+    return tokens[np.random.choice(len(tokens), p=weights)]
+
+def reuse_token(past_counts, sampler, cell=None):
+    """Preferential reuse: pick a recent token weighted by frequency."""
+    candidates = {}
+    if cell and cell in sampler:
+        pool_tokens, _ = sampler[cell]
+        candidates = {t: past_counts[t] for t in pool_tokens if t in past_counts}
+    if not candidates:
+        candidates = dict(past_counts)
+    if not candidates:
+        return 'dy'
+    tokens = list(candidates.keys())
+    freqs = np.array([candidates[t]**COPY_ALPHA for t in tokens], dtype=float)
+    freqs /= freqs.sum()
+    return tokens[np.random.choice(len(tokens), p=freqs)]
+
+def rebalance_family(base_family, family_counts, n_tokens):
+    """Nudge suffix family toward target distribution when drifting."""
+    if n_tokens < 30:
+        return base_family
+    current = {f: family_counts.get(f, 0) / n_tokens for f in FAMILIES}
+    delta = {f: FAMILY_TARGETS.get(f, 0.02) - current.get(f, 0) for f in FAMILIES}
+    if delta[base_family] < -0.03:
+        best = max(FAMILIES, key=lambda f: delta[f])
+        if delta[best] > 0.01:
+            return best
+    if delta[base_family] < -0.01:
+        prob = min(0.8, abs(delta[base_family]) * REBAL_STR)
+        if random.random() < prob:
+            positive = [(f, d) for f, d in delta.items() if d > 0.01]
+            if positive:
+                fams, ds = zip(*positive)
+                ds = np.array(ds); ds /= ds.sum()
+                return fams[np.random.choice(len(fams), p=ds)]
+    return base_family
+
+# ══════════════════════════════════════════════════════════════
+# MAIN: Run the forward cipher
+# ══════════════════════════════════════════════════════════════
+
+def run(seed=SEED):
+    random.seed(seed)
+    np.random.seed(seed)
+    
+    # Load the two real inputs
+    with open('enriched_records.pkl', 'rb') as f:
+        records = pickle.load(f)
+    with open('ci_corpus_parsed.pkl', 'rb') as f:
+        ci = pickle.load(f)
+    
+    # Build pools from Herbal-A
+    ha = [r for r in records if r.get('section') == 'Herbal-A']
+    sampler, is_valid = build_pools(ha)
+    
+    # Latin source text
+    ec_words = ci.get('ec_words', set())
+    words = ci['all_words']
+    start = random.randint(3000, 40000)
+    words = words[start:] + words[:start]  # random starting point
+    
+    # Generate
+    output = []
+    produced = set()
+    past_counts = Counter()
+    family_counts = Counter()
+    line_tokens = []
+    line_target = random.choice(LINE_LENGTHS)
+    
+    # Pre-schedule rare token injection positions
+    rare_positions = set(random.sample(range(100, TARGET-100), len(RARE_TOKENS)))
+    rare_schedule = dict(zip(sorted(rare_positions), RARE_TOKENS))
+    
+    i = 0
+    while len(output) < TARGET and i < len(words):
+        n = len(output)
+        
+        # Inject rare tokens at scheduled positions
+        if n in rare_schedule:
+            t = rare_schedule[n]
+            output.append(('RC', t, '<rare>'))
+            produced.add(t)
+            past_counts[t] += 1
+            family_counts['BARE'] = family_counts.get('BARE', 0) + 1
+            line_tokens.append(t)
+            if len(line_tokens) >= line_target:
+                line_tokens = []; line_target = random.choice(LINE_LENGTHS)
+            continue
+        
+        word = words[i]; i += 1
+        over_cap = len(produced) >= VOCAB_CAP
+        
+        # PART A: Route the Latin word
+        route = classify_and_route(word, ec_words)
+        
+        if route[0] == 'EC':
+            family = rebalance_family(route[1], family_counts, n)
+            cell = ('∅', family)
+            if over_cap:
+                token = reuse_token(past_counts, sampler, cell)
+            else:
+                token = pick_token(sampler, cell, produced)
+                if not token:
+                    for alt in FAMILIES:
+                        if alt != family:
+                            token = pick_token(sampler, ('∅', alt), produced)
+                            if token:
+                                family = alt; break
+                if not token:
+                    token = 'dy'
+        else:
+            row, family = route[1], route[2]
+            family = rebalance_family(family, family_counts, n)
+            cell = (row, family)
+            bf = 0.35 if (len(line_tokens) == 0 or len(line_tokens) >= line_target - 1) else 1.0
+            if over_cap:
+                token = reuse_token(past_counts, sampler, cell)
+            else:
+                if random.random() < (FC_COPY_RATE + FC_ED1_RATE) * bf:
+                    token = pick_token(sampler, cell, produced)
+                else:
+                    alt_fams = [f for f in FAMILIES if f != family and (row, f) in sampler]
+                    if alt_fams:
+                        af = random.choice(alt_fams)
+                        token = pick_token(sampler, (row, af), produced)
+                        family = af
+                    else:
+                        token = pick_token(sampler, cell, produced)
+                if not token:
+                    token = pick_token(sampler, cell, produced) or 'dy'
+        
+        output.append((route[0], token, word))
+        produced.add(token)
+        past_counts[token] += 1
+        family_counts[family] = family_counts.get(family, 0) + 1
+        
+        # Line breaks
+        line_tokens.append(token)
+        if len(line_tokens) >= line_target:
+            line_tokens = []
+            line_target = random.choice(LINE_LENGTHS)
+    
+    return output
+
+if __name__ == '__main__':
+    seed = int(sys.argv[1]) if len(sys.argv) > 1 else SEED
+    output = run(seed)
+    tokens = [t[1] for t in output]
+    
+    print(f"Generated {len(tokens)} tokens, {len(set(tokens))} types")
+    print(f"EC: {sum(1 for t in output if t[0]=='EC')}, FC: {sum(1 for t in output if t[0]=='FC')}")
+    
+    # Score if score_85_metrics.py is available
+    try:
+        sys.path.insert(0, '.')
+        from score_85_metrics import score_against_vms
+        score = score_against_vms(tokens)
+        print(f"Score: {score}/84")
+    except ImportError:
+        print("(score_85_metrics.py not found, skipping scoring)")

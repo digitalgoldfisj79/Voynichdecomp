@@ -1,0 +1,20 @@
+34c34,35
+< COPY_ALPHA = 2.0        # preferential reuse exponent
+---
+> COPY_ALPHA = 1.3        # preferential reuse exponent (was 2.0; lowered to fix EC concentration)
+> P_STICKY = 0.16         # column stickiness: prob of staying in previous token's suffix family
+285a287
+>     prev_family = 'Y'  # column stickiness: track previous token's suffix family
+297a300
+>             prev_family = 'BARE'
+310a314,316
+>             # Column stickiness: override to previous family
+>             if random.random() < P_STICKY and prev_family in FAMILIES:
+>                 family = prev_family
+326a333,336
+>             # Column stickiness: override to previous family if pool exists
+>             if random.random() < P_STICKY and prev_family in FAMILIES:
+>                 if (row, prev_family) in sampler:
+>                     family = prev_family
+348a359
+>         prev_family = family

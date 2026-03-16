@@ -1,0 +1,258 @@
+[
+  {
+    "rank": 1,
+    "language": "Latin (pharma)",
+    "corpus": "Circa Instans",
+    "n_tokens": 24300,
+    "chi2": 0.024945,
+    "distribution": {
+      "o": 0.3332,
+      "c": 0.2725,
+      "e": 0.1346,
+      "a": 0.0941,
+      "l": 0.04,
+      "d": 0.101,
+      "r": 0.0216
+    }
+  },
+  {
+    "rank": 2,
+    "language": "Italian vernac.",
+    "corpus": "Dante Commedia",
+    "n_tokens": 89823,
+    "chi2": 0.086829,
+    "distribution": {
+      "o": 0.3257,
+      "c": 0.2122,
+      "e": 0.1312,
+      "a": 0.1377,
+      "l": 0.0478,
+      "d": 0.1287,
+      "r": 0.0162
+    }
+  },
+  {
+    "rank": 3,
+    "language": "Occitan",
+    "corpus": "Leys d'Amors",
+    "n_tokens": 120012,
+    "chi2": 0.132278,
+    "distribution": {
+      "o": 0.2456,
+      "c": 0.2541,
+      "e": 0.1433,
+      "a": 0.1214,
+      "l": 0.0406,
+      "d": 0.1661,
+      "r": 0.023
+    }
+  },
+  {
+    "rank": 4,
+    "language": "Portuguese",
+    "corpus": "Os Lus\u00edadas",
+    "n_tokens": 49491,
+    "chi2": 0.173231,
+    "distribution": {
+      "o": 0.2298,
+      "c": 0.2476,
+      "e": 0.153,
+      "a": 0.093,
+      "l": 0.0604,
+      "d": 0.1932,
+      "r": 0.0159
+    }
+  },
+  {
+    "rank": 5,
+    "language": "Spanish",
+    "corpus": "Don Quijote",
+    "n_tokens": 354176,
+    "chi2": 0.189987,
+    "distribution": {
+      "o": 0.2339,
+      "c": 0.2196,
+      "e": 0.1384,
+      "a": 0.1534,
+      "l": 0.0431,
+      "d": 0.1801,
+      "r": 0.0166
+    }
+  },
+  {
+    "rank": 6,
+    "language": "Greek (Diosc.)",
+    "corpus": "Dioscorides preface",
+    "n_tokens": 465,
+    "chi2": 0.205054,
+    "distribution": {
+      "o": 0.2559,
+      "c": 0.3505,
+      "e": 0.0946,
+      "a": 0.0624,
+      "l": 0.1742,
+      "d": 0.0538,
+      "r": 0.0086
+    }
+  },
+  {
+    "rank": 7,
+    "language": "Latin (biblical)",
+    "corpus": "Vulgate Gen+Exod",
+    "n_tokens": 45557,
+    "chi2": 0.217312,
+    "distribution": {
+      "o": 0.2,
+      "c": 0.4051,
+      "e": 0.1155,
+      "a": 0.0715,
+      "l": 0.0521,
+      "d": 0.1382,
+      "r": 0.0104
+    }
+  },
+  {
+    "rank": 8,
+    "language": "Latin (rhetoric)",
+    "corpus": "Cicero In Catilinam",
+    "n_tokens": 12490,
+    "chi2": 0.24785,
+    "distribution": {
+      "o": 0.2521,
+      "c": 0.367,
+      "e": 0.0719,
+      "a": 0.0699,
+      "l": 0.0444,
+      "d": 0.1879,
+      "r": 0.0064
+    }
+  },
+  {
+    "rank": 9,
+    "language": "MHG",
+    "corpus": "Nibelungenlied",
+    "n_tokens": 250915,
+    "chi2": 0.552705,
+    "distribution": {
+      "o": 0.1669,
+      "c": 0.2834,
+      "e": 0.0699,
+      "a": 0.058,
+      "l": 0.1778,
+      "d": 0.1282,
+      "r": 0.1045
+    }
+  },
+  {
+    "rank": 10,
+    "language": "Middle English",
+    "corpus": "Canterbury Tales",
+    "n_tokens": 269139,
+    "chi2": 0.641169,
+    "distribution": {
+      "o": 0.1458,
+      "c": 0.2405,
+      "e": 0.0759,
+      "a": 0.0752,
+      "l": 0.1626,
+      "d": 0.1593,
+      "r": 0.1215
+    }
+  },
+  {
+    "rank": 11,
+    "language": "English (Early Mod)",
+    "corpus": "Bacon Novum Organum",
+    "n_tokens": 92831,
+    "chi2": 0.69139,
+    "distribution": {
+      "o": 0.1359,
+      "c": 0.3492,
+      "e": 0.0674,
+      "a": 0.0599,
+      "l": 0.171,
+      "d": 0.0974,
+      "r": 0.1136
+    }
+  },
+  {
+    "rank": 12,
+    "language": "Catalan",
+    "corpus": "catalan_tirant.txt",
+    "n_tokens": 157659,
+    "chi2": 0.829035,
+    "distribution": {
+      "o": 0.1313,
+      "c": 0.2222,
+      "e": 0.0603,
+      "a": 0.0728,
+      "l": 0.2021,
+      "d": 0.1517,
+      "r": 0.1227
+    }
+  },
+  {
+    "rank": 13,
+    "language": "Old French",
+    "corpus": "old_french_original.",
+    "n_tokens": 5174,
+    "chi2": 0.996955,
+    "distribution": {
+      "o": 0.1233,
+      "c": 0.1991,
+      "e": 0.0535,
+      "a": 0.0684,
+      "l": 0.1875,
+      "d": 0.1933,
+      "r": 0.1492
+    }
+  },
+  {
+    "rank": 14,
+    "language": "Hebrew",
+    "corpus": "Guide of Perplexed",
+    "n_tokens": 168391,
+    "chi2": 1.231532,
+    "distribution": {
+      "o": 0.1268,
+      "c": 0.4682,
+      "e": 0.0247,
+      "a": 0.1534,
+      "l": 0.0398,
+      "d": 0.13,
+      "r": 0.0571
+    }
+  },
+  {
+    "rank": 15,
+    "language": "Arabic (Guide)",
+    "corpus": "Guide (Ar)",
+    "n_tokens": 168391,
+    "chi2": 1.333598,
+    "distribution": {
+      "o": 0.0749,
+      "c": 0.3576,
+      "e": 0.0766,
+      "a": 0.1534,
+      "l": 0.0398,
+      "d": 0.13,
+      "r": 0.1676
+    }
+  },
+  {
+    "rank": 16,
+    "language": "Arabic (Quran)",
+    "corpus": "Ibn al-Arabi",
+    "n_tokens": 2731129,
+    "chi2": 1.739892,
+    "distribution": {
+      "o": 0.0606,
+      "c": 0.337,
+      "e": 0.0729,
+      "a": 0.1397,
+      "l": 0.0615,
+      "d": 0.2131,
+      "r": 0.1152
+    }
+  }
+]
