@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-FORWARD CIPHER v11 — CLEAN REBUILD
-====================================
+SUPPLEMENT S1: FORWARD CIPHER v11 WITH ABLATION STUDY
+=======================================================
 Two real inputs:
   1. enriched_records.pkl — VMS Herbal-A tokens (builds cell pools)
   2. ci_corpus_parsed.pkl — Circa Instans Latin (source text to encipher)
@@ -9,11 +9,28 @@ Two real inputs:
 Everything else is inlined. No mystery pickles.
 
 The cipher has two parts:
-  PART A (lines 30-55):  BABUINI ROUTING — Latin → grid cell assignment
-  PART B (lines 55-end): COPY-MUTATE SCRIBE — cell pool → token selection
+  PART A (lines ~50-140):  BABUINI ROUTING — Latin → grid cell assignment
+  PART B (lines ~140-370): COPY-MUTATE SCRIBE — cell pool → token selection
   
 Part A is the cipher-class contribution (this paper).
 Part B is the scribal production model (Bozzard 2026a).
+
+The ablation study (lines ~390+) systematically disables each component
+and reports the effect on the 84-metric scoring battery:
+
+  Configuration          n/84    C15   BG42   Δ
+  ───────────────────────────────────────────────
+  Full v11               62.0   12.3   33.3    —
+  Minus nomenclator      60.7   11.0   33.3  -1.3
+  Minus stickiness       65.3   13.3   34.7  +3.3
+  Minus reuse            38.3   10.0   23.0  -23.7
+  Minus avoidance        65.0   14.0   36.7  +3.0
+  Architecture only      48.3    8.0   30.3  -13.7
+
+Usage:
+  python S1_v11_nomenclator.py              # Single run (default seed)
+  python S1_v11_nomenclator.py 42           # Single run (seed 42)
+  python S1_v11_nomenclator.py --ablation   # Full ablation study
 
 Edward Bozzard · ORCID 0009-0002-4052-0994
 DOI: 10.5281/zenodo.18812705
@@ -370,19 +387,273 @@ def run(seed=SEED):
     
     return output
 
-if __name__ == '__main__':
-    seed = int(sys.argv[1]) if len(sys.argv) > 1 else SEED
-    output = run(seed)
-    tokens = [t[1] for t in output]
+
+# ══════════════════════════════════════════════════════════════
+# ABLATION STUDY
+# ══════════════════════════════════════════════════════════════
+#
+# Systematically disables each component to measure its
+# contribution to the 84-metric scoring battery.
+#
+# Six configurations:
+#   1. Full v11           — baseline (all components)
+#   2. Minus nomenclator  — random family assignments (et→Y, in→N fixed)
+#   3. Minus stickiness   — P_STICKY = 0.0
+#   4. Minus reuse        — COPY_ALPHA = 0.0 (uniform weighting)
+#   5. Minus avoidance    — AVOIDANCE = 1.0 (no penalty)
+#   6. Architecture only  — S4 clean baseline (uniform random from pools)
+#
+# Results (seeds 42, 404, 501):
+#
+#   Configuration          n/84    C15   BG42       Δ
+#   ────────────────────────────────────────────────────
+#   Full v11               62.0   12.3   33.3      —
+#   Minus nomenclator      60.7   11.0   33.3    -1.3
+#   Minus stickiness       65.3   13.3   34.7    +3.3
+#   Minus reuse            38.3   10.0   23.0   -23.7
+#   Minus avoidance        65.0   14.0   36.7    +3.0
+#   Architecture only      48.3    8.0   30.3   -13.7  (requires S4)
+#
+# Interpretation:
+#
+# Preferential reuse (COPY_ALPHA) is the dominant scribe component:
+# removing it drops the score by 24 points. The two-table routing
+# architecture provides the base (48.3/84); reuse raises it to 62.
+#
+# Column stickiness and suffix avoidance both reduce the general
+# metric score by ~3 points each, but they target specific VMS
+# properties. Stickiness targets the suffix-family bigram rate
+# (sfx_bi = 0.252); avoidance targets vocabulary size (types =
+# 1430). Without avoidance, types collapse to ~1120. These are
+# refinement parameters that trade general metric performance
+# for specific structural matches.
+#
+# The nomenclator contributes only 1.3 points to the metric score,
+# confirming that the 84-metric battery validates the architecture,
+# not the specific function-word assignments. The nomenclator is
+# validated separately by bigram correlation (r = 0.96 training,
+# r = 0.89 cross-validation on CI, p < 0.0001).
+# ══════════════════════════════════════════════════════════════
+
+def run_ablation(seeds=None):
+    """Run the complete ablation study.
     
-    print(f"Generated {len(tokens)} tokens, {len(set(tokens))} types")
-    print(f"EC: {sum(1 for t in output if t[0]=='EC')}, FC: {sum(1 for t in output if t[0]=='FC')}")
+    Requires score_85_metrics.py and metric_defs.py in the same directory.
+    Results are printed and saved to ablation_results.pkl.
+    """
+    global P_STICKY, COPY_ALPHA, AVOIDANCE, NOMENCLATOR
     
-    # Score if score_85_metrics.py is available
+    if seeds is None:
+        seeds = [42, 404, 501]
+    
     try:
         sys.path.insert(0, '.')
-        from score_85_metrics import score_against_vms
-        score = score_against_vms(tokens)
-        print(f"Score: {score}/84")
+        import score_85_metrics as _scorer
+        import metric_defs as _mdefs
     except ImportError:
-        print("(score_85_metrics.py not found, skipping scoring)")
+        print("ERROR: score_85_metrics.py and metric_defs.py required.")
+        print("Place them in the same directory as this script.")
+        return None
+    
+    # Load VMS reference
+    with open('enriched_records.pkl', 'rb') as f:
+        _records = pickle.load(f)
+    _ha = [r for r in _records if r.get('section') == 'Herbal-A']
+    _toks_vms = [r['token'] for r in _ha][:4032]
+    _lines_vms = [_toks_vms[i:i+84] for i in range(0, 4032, 84)]
+    print("Computing VMS reference metrics...")
+    _VMS_M = _scorer.compute_metrics(
+        _toks_vms, lines=_lines_vms,
+        subset_iterations=30, seed=42, verbose=False)
+    
+    def _score(toks):
+        gl = [toks[i:i+84] for i in range(0, len(toks), 84)]
+        gm = _scorer.compute_metrics(
+            toks, lines=gl, subset_iterations=30,
+            seed=42, verbose=False)
+        sr = _scorer.score_against_vms(gm, _VMS_M)
+        c15 = sum(1 for m in _mdefs.CORE_15
+                  if m in sr['details'] and sr['details'][m]['pass'])
+        bg42 = sum(1 for m in _mdefs.BG_METRICS
+                   if m in sr['details'] and sr['details'][m]['pass'])
+        return sr['n_pass'], c15, bg42
+    
+    # Save originals
+    _orig_sticky = P_STICKY
+    _orig_alpha = COPY_ALPHA
+    _orig_avoid = AVOIDANCE
+    _orig_nom = dict(NOMENCLATOR)
+    _families = ['Y', 'N', 'L', 'R', 'BARE', 'M']
+    
+    def _restore():
+        global P_STICKY, COPY_ALPHA, AVOIDANCE, NOMENCLATOR
+        P_STICKY = _orig_sticky
+        COPY_ALPHA = _orig_alpha
+        AVOIDANCE = _orig_avoid
+        NOMENCLATOR.clear()
+        NOMENCLATOR.update(_orig_nom)
+    
+    def _run_silent(seed):
+        import io as _io
+        old = sys.stdout; sys.stdout = _io.StringIO()
+        try:
+            out = run(seed=seed)
+        finally:
+            sys.stdout = old
+        return [t[1] for t in out]
+    
+    configs = []
+    
+    # 1. Full v11
+    def _cfg_full(seed):
+        _restore()
+        return _run_silent(seed)
+    configs.append(("Full v11", _cfg_full))
+    
+    # 2. Minus nomenclator (random assignments, anchors fixed)
+    def _cfg_no_nom(seed):
+        global NOMENCLATOR
+        _restore()
+        rng = random.Random(seed + 10000)
+        NOMENCLATOR.clear()
+        NOMENCLATOR['et'] = 'Y'
+        NOMENCLATOR['in'] = 'N'
+        for w in ['postea','cum','hoc','de','habet','uel','vel','que','supra','ad']:
+            NOMENCLATOR[w] = rng.choice(_families)
+        return _run_silent(seed)
+    configs.append(("Minus nomenclator", _cfg_no_nom))
+    
+    # 3. Minus stickiness
+    def _cfg_no_sticky(seed):
+        global P_STICKY
+        _restore()
+        P_STICKY = 0.0
+        return _run_silent(seed)
+    configs.append(("Minus stickiness", _cfg_no_sticky))
+    
+    # 4. Minus reuse
+    def _cfg_no_reuse(seed):
+        global COPY_ALPHA
+        _restore()
+        COPY_ALPHA = 0.0
+        return _run_silent(seed)
+    configs.append(("Minus reuse", _cfg_no_reuse))
+    
+    # 5. Minus avoidance
+    def _cfg_no_avoid(seed):
+        global AVOIDANCE
+        _restore()
+        AVOIDANCE = 1.0
+        return _run_silent(seed)
+    configs.append(("Minus avoidance", _cfg_no_avoid))
+    
+    # 6. Architecture only (S4 clean baseline if available,
+    #    else v11 with scribe rules zeroed — note these differ because
+    #    v11 retains rebalancing, vocab cap, and weighted pool sampling)
+    def _cfg_arch(seed):
+        try:
+            import S4_forward_cipher_clean as _s4
+            import importlib; importlib.reload(_s4)
+            import io as _io2
+            old = sys.stdout; sys.stdout = _io2.StringIO()
+            try:
+                out = _s4.run(seed=seed, n=4033)
+            finally:
+                sys.stdout = old
+            return [t[1] for t in out]
+        except ImportError:
+            # Fallback: v11 with scribe rules disabled
+            # NOTE: this scores ~64/84, not ~48/84, because v11 retains
+            # rebalancing, vocab cap, and frequency-weighted pools.
+            # Use S4_forward_cipher_clean.py for the true minimal baseline.
+            global P_STICKY, COPY_ALPHA, AVOIDANCE
+            _restore()
+            P_STICKY = 0.0
+            COPY_ALPHA = 0.0
+            AVOIDANCE = 1.0
+            return _run_silent(seed)
+    configs.append(("Architecture only (S4)", _cfg_arch))
+    
+    # Run all configurations
+    results = {}
+    full_mean = None
+    
+    print("\n" + "=" * 65)
+    print("ABLATION STUDY — v11 Forward Cipher")
+    print(f"Seeds: {seeds}")
+    print("=" * 65)
+    
+    for name, fn in configs:
+        print(f"\n--- {name} ---")
+        scores = []
+        for seed in seeds:
+            toks = fn(seed)
+            n84, c15, bg42 = _score(toks)
+            scores.append((n84, c15, bg42))
+            print(f"  seed {seed}: {n84}/84, C15={c15}, BG42={bg42}, "
+                  f"types={len(set(toks))}")
+        
+        n_mean = np.mean([s[0] for s in scores])
+        c_mean = np.mean([s[1] for s in scores])
+        b_mean = np.mean([s[2] for s in scores])
+        
+        if name == "Full v11":
+            full_mean = n_mean
+        
+        delta = round(n_mean - full_mean, 1) if full_mean is not None else 0.0
+        results[name] = {
+            'scores': scores, 'seeds': seeds,
+            'n84_mean': round(n_mean, 1),
+            'c15_mean': round(c_mean, 1),
+            'bg42_mean': round(b_mean, 1),
+            'delta': delta,
+        }
+        print(f"  MEAN: {n_mean:.1f}/84, C15={c_mean:.1f}, "
+              f"BG42={b_mean:.1f}, Δ={delta:+.1f}")
+    
+    # Restore originals
+    _restore()
+    
+    # Summary table
+    print("\n" + "=" * 65)
+    print("ABLATION SUMMARY")
+    print("=" * 65)
+    print(f"\n{'Configuration':<25} {'n/84':>6} {'C15':>6} "
+          f"{'BG42':>6} {'Δ':>8}")
+    print("-" * 55)
+    for name, _ in configs:
+        r = results[name]
+        print(f"{name:<25} {r['n84_mean']:>6.1f} {r['c15_mean']:>6.1f} "
+              f"{r['bg42_mean']:>6.1f} {r['delta']:>+8.1f}")
+    print("-" * 55)
+    
+    # Save
+    with open('ablation_results.pkl', 'wb') as f:
+        pickle.dump(results, f)
+    print("\nSaved ablation_results.pkl")
+    
+    return results
+
+
+# ══════════════════════════════════════════════════════════════
+# MAIN
+# ══════════════════════════════════════════════════════════════
+
+if __name__ == '__main__':
+    if '--ablation' in sys.argv:
+        run_ablation()
+    else:
+        seed = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1] != '--ablation' else SEED
+        output = run(seed)
+        tokens = [t[1] for t in output]
+        
+        print(f"Generated {len(tokens)} tokens, {len(set(tokens))} types")
+        print(f"EC: {sum(1 for t in output if t[0]=='EC')}, FC: {sum(1 for t in output if t[0]=='FC')}")
+        
+        try:
+            sys.path.insert(0, '.')
+            from score_85_metrics import score_against_vms
+            score = score_against_vms(tokens)
+            print(f"Score: {score}/84")
+        except ImportError:
+            print("(score_85_metrics.py not found, skipping scoring)")
