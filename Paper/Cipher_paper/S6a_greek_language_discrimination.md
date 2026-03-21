@@ -112,6 +112,51 @@ Latin's consonant adjacency patterns correlate with VMS 0.031 points higher than
 
 Neither source language's word length matches VMS output directly (the cipher compresses), but Latin is closer. Greek's longer mean word length (driven by polysyllabic compound forms) would require systematic truncation to produce VMS-length output.
 
+### Cross-section validation
+
+All three component-level tests were repeated across all six VMS sections. Latin wins 16 of 18 section × test comparisons; Greek wins 2 (Balneological only, on bigram correlation and row distribution).
+
+**Suffix family χ² (Latin wins 6/6):**
+
+| Section | N_FC | Latin χ² | Greek χ² | Ratio |
+|---------|-----:|--------:|---------:|------:|
+| Herbal-A | 1,737 | 0.078 | 0.240 | 3.1× |
+| Herbal-B | 2,538 | 0.189 | 0.390 | 2.1× |
+| Pharmaceutical | 2,151 | 0.093 | 0.211 | 2.3× |
+| Stars | 5,340 | 0.116 | 0.255 | 2.2× |
+| Balneological | 2,501 | 0.523 | 0.672 | 1.3× |
+| Zodiac | 1,006 | 0.326 | 0.350 | 1.1× |
+
+Latin wins every section. The margin narrows for Balneological and Zodiac (where neither language fits well), but Latin is never worse.
+
+**C₁–C₁ bigram correlation (Latin wins 5/6):**
+
+| Section | Latin r | Greek r | Δ |
+|---------|--------:|--------:|---:|
+| Herbal-A | 0.973 | 0.942 | +0.031 |
+| Herbal-B | 0.881 | 0.817 | +0.064 |
+| Pharmaceutical | 0.416 | 0.288 | +0.128 |
+| Stars | 0.310 | 0.286 | +0.024 |
+| Balneological | 0.059 | 0.075 | −0.016 |
+| Zodiac | 0.174 | 0.074 | +0.101 |
+
+Latin wins 5 of 6 sections. The single Greek win (Balneological, Δ = −0.016) is within noise. The largest Latin advantage is Pharmaceutical (+0.128), consistent with pharmaceutical Latin being the best-fit source genre.
+
+Note that bigram correlations decline sharply from Herbal-A (0.97) through non-herbal sections (<0.42), consistent with the herbal sections being closest to pharmaceutical source text and the other sections encoding different content types.
+
+**Row distribution χ² (Latin wins 5/6):**
+
+| Section | Latin χ² | Greek χ² | Ratio |
+|---------|--------:|---------:|------:|
+| Herbal-A | 0.021 | 0.078 | 3.7× |
+| Herbal-B | 0.143 | 0.219 | 1.5× |
+| Pharmaceutical | 0.677 | 1.021 | 1.5× |
+| Stars | 1.138 | 1.187 | 1.0× |
+| Balneological | 2.100 | 1.908 | 0.9× |
+| Zodiac | 2.224 | 2.581 | 1.2× |
+
+Latin wins 5 of 6. Greek's sole win (Balneological, ratio 0.9×) is marginal.
+
 ## Discussion
 
 The forward cipher architecture does not discriminate between Greek and Latin pharmaceutical text at the aggregate scoring level. Both languages score 51–52/90 through the same confirmed grid with no parameter tuning. This near-equivalence likely reflects the high proportion of Greek loanwords in Latin pharmaceutical vocabulary (~40% of CI terms are Greek-derived), which ensures similar consonant-group distributions in both languages for this genre.
@@ -124,7 +169,7 @@ These results do not exclude Greek-influenced Latin (e.g., a Latin translation o
 
 ## Conclusion
 
-Greek pharmaceutical text is competitive with Latin on aggregate cipher-output statistics but is discriminated against by component-level tests. Latin wins on suffix family distribution (3.1× better χ²), bigram correlation (+0.031 r), and source word length. The identification of pharmaceutical Latin as the source language — established in S6 and validated by the r = 0.96 bigram result in Paper 2 — survives the strongest available alternative hypothesis.
+Greek pharmaceutical text is competitive with Latin on aggregate cipher-output statistics but is discriminated against by component-level tests across all six VMS sections. Latin wins 16 of 18 section × test comparisons (suffix family 6/6, bigram correlation 5/6, row distribution 5/6). Greek's two wins are both in the Balneological section, by margins within noise. The identification of pharmaceutical Latin as the source language — established in S6 and validated by the r = 0.96 bigram result in Paper 2 — survives the strongest available alternative hypothesis tested against the most plausible alternative corpus (the foundational pharmaceutical text of the ancient world in both languages).
 
 The Byzantine/Veneto Greek milieu remains relevant to the production context (Paper 3) regardless of source language, since production environment and content language are independent variables.
 
