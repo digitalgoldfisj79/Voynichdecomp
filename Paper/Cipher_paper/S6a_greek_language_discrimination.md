@@ -1,4 +1,4 @@
-# Supplement S6a: Greek as Alternative Source Language
+# Supplement S6a: Source Language Discrimination — Greek, Mixed Latin-Italian, and the Limits of Aggregate Scoring
 
 **Addendum to S6 (Language Discrimination Battery)**
 
@@ -8,13 +8,15 @@ Date: 21 March 2026
 
 ---
 
-## Motivation
+## 1. Motivation
 
-The language discrimination battery (S6) identified pharmaceutical Latin as the best-fit source language (χ² = 0.458), with Greek flagged as undertested (N = 465, preface only). Subsequent investigation of the Byzantine/Veneto Greek scholarly milieu — Cardinal Bessarion's Marciana collection, the Dioscorides manuscript tradition, Vaticanus Graecus 1291 zodiac parallels, and the Greek-speaking community in fifteenth-century Venice and Padua — provided independent historical motivation to test Greek rigorously as an alternative source language.
+The language discrimination battery (S6) identified pharmaceutical Latin as the best-fit source language (χ² = 0.458), with Greek flagged as undertested (N = 465, preface only). Two lines of investigation motivated the extended testing reported here.
 
-This addendum reports three progressively stronger tests of Greek pharmaceutical text against the confirmed cipher architecture, culminating in a head-to-head comparison of the same foundational text (Dioscorides, *De Materia Medica*) in both languages.
+First, the Byzantine/Veneto Greek scholarly milieu — Cardinal Bessarion's Marciana collection (482 Greek MSS donated to Venice 1468), the Dioscorides manuscript tradition, Vaticanus Graecus 1291 zodiac parallels, and the Greek-speaking community in fifteenth-century Venice and Padua — provided independent historical motivation to test Greek rigorously as an alternative source language.
 
-## Corpora
+Second, the observation that the forward cipher v11 aggregate score validates the cipher architecture and scribe production model but may not discriminate between source texts (§5 below) required the development of component-level tests that bypass the scribe layer entirely.
+
+## 2. Greek Corpora
 
 Six Greek pharmaceutical corpora were assembled from the OpenGreekAndLatin/First1KGreek repository and the Wellmann critical edition (Kühn reprint):
 
@@ -28,95 +30,119 @@ Six Greek pharmaceutical corpora were assembled from the OpenGreekAndLatin/First
 | Hippocrates, *De morbis* | 0627.026 | 8,125 | Medical prose |
 | **Dioscorides, *De Materia Medica* I–V** | **0530.001** | **111,825** | **Comprehensive materia medica** |
 
-The Dioscorides DMM was extracted from the Wellmann/Kühn edition (Greek text, 111,825 romanised words, 25,257 types). A Latin token list from the same edition (133,224 tokens) was also tested but proved contaminated with editorial apparatus and is excluded from the main comparison.
+The Dioscorides DMM was extracted from the Wellmann/Kühn edition (Greek text, 111,825 romanised words, 25,257 types). All Greek text was romanised using standard scholarly transliteration (α→a, β→b, γ→g, δ→d, θ→th, φ→ph, χ→ch, ψ→ps, ξ→x) before processing through the confirmed cipher architecture. No Greek-specific adaptations were made to the grid, nomenclator, or any other cipher component.
 
-All Greek text was romanised using standard scholarly transliteration (α→a, β→b, γ→g, δ→d, θ→th, φ→ph, χ→ch, ψ→ps, ξ→x) before processing through the confirmed cipher architecture. No Greek-specific adaptations were made to the grid, nomenclator, or any other cipher component.
+## 3. Mixed Latin-Italian Corpus
 
-## Method
+Wellcome Collection MS.208 is a collection of medical recipes and pharmacological compounds, mostly in Italian but also in Latin, from late fifteenth-century Padua. The catalogue identifies the main scribe as probably active at the Benedictine abbey of Santa Giustina in Padua, based on an internal reference. The manuscript's watermarks date to 1486 (Cittadella, north of Padua). The spelling is consistent with the Veneto vernacular. Although the watermarks postdate the VMS vellum (radiocarbon 1404–1438), radiocarbon dates the animal skin, not the writing event. Stockpiled parchment was standard practice. Wellcome 208 is tested as a genre exemplar, not as a candidate source text.
+
+The manuscript was transcribed using Transkribus Text Titan I ter (model ID 356425, v2.42.0, run 21 March 2026). Yield: 46,943 words across 246 pages.
+
+Three segments were defined following the Wellcome catalogue:
+
+| Segment | Folios | Words | Content |
+|---------|--------|------:|---------|
+| W208 Surgical | ff. 1r–19r | ~7,500 | Surgical recipes (plasters, bandages, eye remedies) |
+| W208 Antidotario | ff. 19r–51r | 13,651 | Compound drugs by therapeutic action |
+| W208 Additional | ff. 51r–123v | 25,727 | Additional recipes (electuaries, unguents, waters, oils, pills) |
+| **W208 Full** | **ff. 1r–123v** | **46,943** | **Complete manuscript** |
+
+The Antidotario section is organised by therapeutic action (repercussive → resolutive → mundificative → glutinative → mollificative → cauteristic), the same organising principle as Circa Instans.
+
+## 4. Method
 
 ### Test 1: Screening battery (m_core leading character distribution)
 
-The S6 battery computes χ² between source-language first-consonant group distributions and the VMS Herbal-A m_core leading character distribution. This was extended to include combined Greek pharmaceutical text (122,180 words) with and without a function word filter.
+As S6, extended to Greek pharmaceutical text with and without function word filtering.
 
-The function word filter removes Greek articles (τό, τήν, τοῦ, etc.), particles (δέ, τε, γάρ, μέν), and prepositions (ἐν, ἐκ, εἰς, ἐπί, etc.) — 33.2% of running text — on the grounds that the two-table cipher architecture routes function words through the nomenclator (EC layer), not the grid (FC layer). Under this architecture, function word consonants do not appear in the m_core distribution.
+### Test 2: Forward cipher — clean baseline (S4)
 
-### Test 2: Forward cipher (84-metric scoring suite)
+The confirmed clean-baseline forward cipher (S4) was run with each source corpus using identical parameters: same grid (ROW_MAP), same VMS cell pools, same EC threshold (53%), same scoring suite (S5, 90 metrics with v2 tolerances). Five seeds (42, 404, 501, 606, 808) for each configuration.
 
-The confirmed clean-baseline forward cipher (S4) was run with Greek input using identical parameters: same grid (ROW_MAP), same VMS cell pools (Herbal-A), same EC threshold (53%), same scoring suite (S5, 90 metrics with v2 tolerances). Five seeds (42, 404, 501, 606, 808) were used for each configuration.
+### Test 3: Forward cipher — full v11 (S1)
 
-A Greek nomenclator was constructed by functional analogy to the confirmed Latin nomenclator: καί→Y (parallel to *et*→Y), ἐν→N (*in*→N), ἀπό→L (*de*→L), etc. — 12 entries matching the 12 Latin entries.
+The full v11 forward cipher including all scribe production rules (preferential reuse, suffix avoidance, boundary innovation, column stickiness) was run with CI Latin and all three W208 segments. Five seeds (42, 404, 501, 606, 808).
 
-### Test 3: Component-level discrimination
+### Test 4: Component-level discrimination
 
-Three component-level tests were designed to exploit structural differences between Greek and Latin that survive the cipher transform:
+Three tests designed to exploit structural differences that survive the cipher transform, tested across all six VMS sections:
 
-**Suffix family distribution.** The confirmed mapping V₁→suffix family (a→Y, e→R, i→N, o→L, u→BARE) predicts suffix family proportions from source-language first-vowel distributions. This test has zero free parameters.
+**Suffix family distribution.** The confirmed mapping V₁→suffix family (a→Y, e→R, i→N, o→L, u→BARE) predicts suffix family proportions from source-language first-vowel distributions. Zero free parameters.
 
-**C₁–C₁ bigram correlation.** Adjacent content-word first consonants in the source text produce m_core leading-character bigrams in the cipher output. The Pearson correlation between predicted and observed bigram distributions measures how well each source language reproduces VMS word-adjacency patterns.
+**C₁–C₁ bigram correlation.** Pearson correlation between predicted and observed bigram distributions of adjacent content-word initial consonants.
 
-**Source word length.** Mean word length of content words in each language was compared to VMS token lengths.
+**Row distribution χ².** First-consonant group distribution of content words compared to VMS m_core leading character distribution per section.
 
-## Results
+### Test 5: Cell-sequence tests
 
-### Screening battery
+Tests operating on the cell-assignment sequence (which cell each source word routes to), which the scribe layer cannot modify:
+
+**EC/FC alternation.** EC rate, mean EC run length, mean FC run length.
+
+**Row transition correlation.** FC→FC row adjacency patterns correlated with VMS.
+
+**Family transition correlation.** Suffix family adjacency patterns correlated with VMS.
+
+**Sandwiched FC row distribution.** Row distribution of FC tokens between two EC tokens.
+
+**Conditional entropy.** H(row_i | row_{i-1}) for adjacent FC tokens. Verified by bootstrap (1000 line-level resamples), stability across 20 random starting offsets, and cross-section replication.
+
+## 5. Results
+
+### 5.1 Screening battery
 
 | Corpus | N | χ² | Status |
 |--------|--:|---:|--------|
 | CI Latin (confirmed baseline) | 24,300 | 0.458 | S6 result |
 | Greek pharma (all words) | 122,180 | 0.576 | Competitive |
-| Greek pharma (no function words) | 81,649 | 0.138 | Lowest χ² |
+| Greek pharma (no function words) | 81,649 | 0.138 | Lowest χ², but 3 free parameters |
 
-The function word filter reduces χ² from 0.576 to 0.138, apparently beating CI Latin. However, this comparison is invalid: the Latin battery score (0.458) was computed without an equivalent filter, and the Greek filter introduces three free parameters (function word list, row mapping for Greek consonants, classification of aspirated stops). The screening battery cannot reliably discriminate between Greek and Latin pharmaceutical text.
+The screening battery cannot reliably discriminate between Greek and Latin pharmaceutical text.
 
-### Forward cipher (aggregate score)
+### 5.2 Forward cipher — clean baseline (S4)
 
-| Configuration | Mean score (5 seeds) | C15 | Types |
-|---------------|--------------------:|----:|------:|
+**Greek vs Latin (→ Herbal-A):**
+
+| Configuration | Mean score | C15 | Types |
+|---------------|----------:|----:|------:|
 | CI Latin + Latin nomenclator | 51.4/90 | 9.0 | 872 |
 | Greek DMM (no nomenclator) | 52.2/90 | 9.6 | 800 |
 | Greek DMM + Greek nomenclator | 52.2/90 | 10.4 | 807 |
-| Greek recipe corpus (Galen) | 48.6/90 | 9.4 | 747 |
 
-The Dioscorides DMM in Greek scores 52.2/90, marginally above CI Latin's 51.4/90. Individual seed ranges overlap completely (Latin 49–53, Greek 50–55). The forward cipher aggregate score does not discriminate between the two languages at the clean-baseline level.
+**Wellcome 208 vs CI Latin (→ Herbal-A):**
 
-Greek produces fewer types (800–807 vs 872; VMS target 1430), reflecting greater consonant collision in the grid: Greek κ, γ, ξ, and ψ all route to row 'o', reducing output diversity.
+| Configuration | Mean score | C15 | Types |
+|---------------|----------:|----:|------:|
+| W208 Antidotario | 57.7/90 | 12.7 | 850 |
+| W208 Additional | 56.3/90 | 12.0 | 850 |
+| CI Latin | 51.0/90 | 8.7 | 870 |
 
-### Component-level discrimination
+W208 Antidotario scores 6.7 points above CI Latin with non-overlapping ranges on the clean baseline.
 
-**Suffix family distribution (zero free parameters):**
+**Cross-section (→ Stars):**
 
-| | Y | N | L | R | BARE | χ² vs VMS |
-|---|---:|---:|---:|---:|-----:|----------:|
-| VMS (observed) | 28.0% | 14.5% | 12.6% | 16.7% | 21.9% | — |
-| CI Latin (predicted) | 25.6% | 18.8% | 19.4% | 20.4% | 15.8% | **0.078** |
-| Greek DMM (predicted) | 26.7% | 11.5% | 20.3% | 31.1% | 10.4% | 0.240 |
+| Configuration | Mean score | C15 |
+|---------------|----------:|----:|
+| W208 Additional | 48.0/90 | 10.3 |
+| CI Latin | 46.7/90 | 11.0 |
+| W208 Antidotario | 46.0/90 | 9.7 |
 
-Latin's predicted suffix family distribution matches VMS 3.1× better than Greek's (χ² = 0.078 vs 0.240). The critical mismatch for Greek is the R-family: Greek predicts 31.1% (driven by the high frequency of ε-initial words, since both η and ε romanise to 'e') against VMS 16.7%. Greek also underpredicts BARE (10.4% vs 21.9%), because υ-initial words are rare in Greek. These mismatches are structural properties of the language and are not correctable by corpus selection.
+### 5.3 Forward cipher — full v11 (S1)
 
-**C₁–C₁ bigram correlation:**
+| Configuration | Mean score | C15 | Types | Range |
+|---------------|----------:|----:|------:|-------|
+| W208 Full | 69.6/90 | 12.4 | 1432 | 66–74 |
+| W208 Antidotario | 69.2/90 | 12.0 | 1432 | 66–72 |
+| W208 Additional | 68.8/90 | 11.8 | 1433 | 65–71 |
+| CI Latin | 68.4/90 | 11.8 | 1432 | 64–72 |
 
-| Source | Pearson r | p-value |
-|--------|----------:|--------:|
-| CI Latin | **0.9728** | 1.75 × 10⁻⁵⁴ |
-| Greek DMM | 0.9419 | 4.46 × 10⁻⁴¹ |
+**The scribe production layer absorbs the source-language advantage.** Clean baseline: W208 +6.7 points over CI Latin. Full v11: +0.8 points with fully overlapping ranges. The scribe rules (copy-mutate, preferential reuse, suffix avoidance, column stickiness) dominate output statistics and normalise source-text differences.
 
-Latin's consonant adjacency patterns correlate with VMS 0.031 points higher than Greek's. Both correlations are strong (>0.94), but Latin is consistently closer to the independently validated r = 0.96 from the Ald.211 held-out test (Paper 2, §5.5).
+**The v11 aggregate score validates the cipher architecture and scribe model, not the source language.** Source-language identification rests entirely on the component-level tests (§5.4) and cell-sequence tests (§5.5).
 
-**Source word length:**
+### 5.4 Component-level discrimination: Greek vs Latin
 
-| Corpus | Mean | Median |
-|--------|-----:|-------:|
-| CI Latin content words | 6.32 | 6.0 |
-| Greek DMM content words | 7.03 | 7.0 |
-| VMS Herbal-A tokens | 4.64 | 5.0 |
-
-Neither source language's word length matches VMS output directly (the cipher compresses), but Latin is closer. Greek's longer mean word length (driven by polysyllabic compound forms) would require systematic truncation to produce VMS-length output.
-
-### Cross-section validation
-
-All three component-level tests were repeated across all six VMS sections. Latin wins 16 of 18 section × test comparisons; Greek wins 2 (Balneological only, on bigram correlation and row distribution).
-
-**Suffix family χ² (Latin wins 6/6):**
+**Suffix family distribution (zero free parameters, Latin wins 6/6 sections):**
 
 | Section | N_FC | Latin χ² | Greek χ² | Ratio |
 |---------|-----:|--------:|---------:|------:|
@@ -127,9 +153,9 @@ All three component-level tests were repeated across all six VMS sections. Latin
 | Balneological | 2,501 | 0.523 | 0.672 | 1.3× |
 | Zodiac | 1,006 | 0.326 | 0.350 | 1.1× |
 
-Latin wins every section. The margin narrows for Balneological and Zodiac (where neither language fits well), but Latin is never worse.
+The critical mismatch for Greek: R-family predicted at 31.1% vs VMS 16.7% (driven by η/ε → 'e'), and BARE predicted at 10.4% vs VMS 21.9% (rare υ). These are structural properties of the language.
 
-**C₁–C₁ bigram correlation (Latin wins 5/6):**
+**C₁–C₁ bigram correlation (Latin wins 5/6 sections):**
 
 | Section | Latin r | Greek r | Δ |
 |---------|--------:|--------:|---:|
@@ -140,11 +166,7 @@ Latin wins every section. The margin narrows for Balneological and Zodiac (where
 | Balneological | 0.059 | 0.075 | −0.016 |
 | Zodiac | 0.174 | 0.074 | +0.101 |
 
-Latin wins 5 of 6 sections. The single Greek win (Balneological, Δ = −0.016) is within noise. The largest Latin advantage is Pharmaceutical (+0.128), consistent with pharmaceutical Latin being the best-fit source genre.
-
-Note that bigram correlations decline sharply from Herbal-A (0.97) through non-herbal sections (<0.42), consistent with the herbal sections being closest to pharmaceutical source text and the other sections encoding different content types.
-
-**Row distribution χ² (Latin wins 5/6):**
+**Row distribution χ² (Latin wins 5/6 sections):**
 
 | Section | Latin χ² | Greek χ² | Ratio |
 |---------|--------:|---------:|------:|
@@ -155,30 +177,93 @@ Note that bigram correlations decline sharply from Herbal-A (0.97) through non-h
 | Balneological | 2.100 | 1.908 | 0.9× |
 | Zodiac | 2.224 | 2.581 | 1.2× |
 
-Latin wins 5 of 6. Greek's sole win (Balneological, ratio 0.9×) is marginal.
+**Total: Latin wins 16 of 18 section × test comparisons. Greek wins 2 (Balneological only, margins within noise).**
 
-## Discussion
+### 5.5 Cell-sequence tests: CI Latin vs mixed Latin-Italian
 
-The forward cipher architecture does not discriminate between Greek and Latin pharmaceutical text at the aggregate scoring level. Both languages score 51–52/90 through the same confirmed grid with no parameter tuning. This near-equivalence likely reflects the high proportion of Greek loanwords in Latin pharmaceutical vocabulary (~40% of CI terms are Greek-derived), which ensures similar consonant-group distributions in both languages for this genre.
+**EC/FC alternation:**
 
-Discrimination emerges at the component level. The suffix family test — which has zero free parameters, since the V₁→family mapping is confirmed architecture — separates the two languages cleanly: Latin χ² = 0.078, Greek χ² = 0.240. This test exploits a genuine structural difference: Greek's vowel inventory maps disproportionately to the R-family (via η/ε → 'e') and away from BARE (via rare υ), while Latin's more even first-vowel distribution matches the VMS suffix family proportions three times better.
+| Source | EC% | EC run | FC run |
+|--------|----:|-------:|-------:|
+| VMS Herbal-A | 0.569 | 2.46 | 1.86 |
+| W208 Antidotario | 0.541 | 2.12 | 1.80 |
+| CI Latin | 0.476 | 1.76 | 1.93 |
 
-The bigram correlation reinforces this finding: Latin r = 0.973 vs Greek r = 0.942. The Greek nomenclator, constructed by functional analogy to the validated Latin nomenclator, does not improve the Greek score and slightly worsens it on some configurations — suggesting that Greek function words do not map to VMS suffix families with the same precision as Latin function words.
+W208 closer to VMS on EC rate and run length.
 
-These results do not exclude Greek-influenced Latin (e.g., a Latin translation or adaptation of a Greek pharmaceutical source) as the VMS plaintext. The cipher architecture would produce identical output for a Greek loanword regardless of whether it entered via Greek or Latin. What the results exclude is **untranslated Greek** as the direct cipher input: the first-vowel distribution of Greek pharmaceutical prose is structurally incompatible with the VMS suffix family proportions.
+**Row and family transition correlations (CI wins):**
 
-## Conclusion
+| Test | CI Latin | W208 Antidotario |
+|------|--------:|----------------:|
+| Row transition r | 0.938 | 0.898 |
+| Family transition r | 0.923 | 0.852 |
+| Sandwiched FC χ² | 0.078 | 0.276 |
 
-Greek pharmaceutical text is competitive with Latin on aggregate cipher-output statistics but is discriminated against by component-level tests across all six VMS sections. Latin wins 16 of 18 section × test comparisons (suffix family 6/6, bigram correlation 5/6, row distribution 5/6). Greek's two wins are both in the Balneological section, by margins within noise. The identification of pharmaceutical Latin as the source language — established in S6 and validated by the r = 0.96 bigram result in Paper 2 — survives the strongest available alternative hypothesis tested against the most plausible alternative corpus (the foundational pharmaceutical text of the ancient world in both languages).
+**Conditional entropy H(row_i | row_{i-1}) — W208 wins, verified:**
 
-The Byzantine/Veneto Greek milieu remains relevant to the production context (Paper 3) regardless of source language, since production environment and content language are independent variables.
+VMS Herbal-A: H = 2.511 bits. Bootstrap 95% CI (1000 line-level resamples): [2.437, 2.565].
+
+| Source | H | Status |
+|--------|---:|--------|
+| CI Latin | 2.348 | **Outside 95% CI** (too predictable) |
+| W208 Antidotario | 2.510 | **Inside 95% CI** |
+
+Stability: CI Latin mean 2.378 ± 0.029 across 20 random offsets; W208 mean 2.434 ± 0.040.
+
+Cross-section (W208 wins 5/6):
+
+| Section | VMS H | CI H | W208 H | \|VMS−CI\| | \|VMS−W208\| | Winner |
+|---------|------:|-----:|-------:|--------:|-----------:|--------|
+| Herbal-A | 2.511 | 2.348 | 2.510 | 0.163 | 0.001 | W208 |
+| Herbal-B | 2.564 | 2.355 | 2.507 | 0.209 | 0.058 | W208 |
+| Pharmaceutical | 2.447 | 2.347 | 2.514 | 0.100 | 0.067 | W208 |
+| Stars | 2.649 | 2.365 | 2.486 | 0.284 | 0.163 | W208 |
+| Balneological | 2.646 | 2.345 | 2.514 | 0.301 | 0.132 | W208 |
+| Zodiac | 2.077 | 2.302 | 2.503 | 0.225 | 0.426 | CI |
+
+### 5.6 Summary of discriminating tests
+
+| Test | CI Latin | W208 | Greek | Measures |
+|------|:--------:|:----:|:-----:|----------|
+| Suffix family χ² | ✓ 6/6 | — | 0/6 | V₁ distribution |
+| C₁–C₁ bigram r | ✓ 5/6 | — | 1/6 | Consonant adjacency |
+| Row distribution χ² | ✓ 5/6 | — | 1/6 | Consonant group frequencies |
+| Row transition r | ✓ | | — | FC→FC patterns |
+| Family transition r | ✓ | | — | V₁→V₁ patterns |
+| Sandwiched FC χ² | ✓ | | — | Content between FWs |
+| **Conditional entropy** | | **✓ 5/6** | — | **C₁ sequence information density** |
+| EC% | | ✓ | — | Function word rate |
+| EC run length | | ✓ | — | Function word clustering |
+
+CI Latin wins on *which patterns* appear. W208 wins on *how much information* they carry.
+
+## 6. Discussion
+
+The central finding is that the forward cipher v11 aggregate score cannot discriminate between source texts. The scribe production layer normalises output statistics so effectively that pharmaceutical Latin, Greek pharmaceutical text, and mixed Latin-Italian all score in the same band (68–70/90).
+
+Discrimination requires tests that bypass the scribe layer. Two classes succeed:
+
+**Component-level tests** (suffix family, bigram correlation, row distribution) separate Greek from Latin cleanly (Latin 16/18, Greek 2/18) and confirm pharmaceutical Latin.
+
+**Cell-sequence tests** (conditional entropy, EC/FC alternation) reveal that pure pharmaceutical Latin is too structured. Its consonant transitions are more predictable than the VMS requires (H = 2.348 vs VMS 2.511, outside bootstrap 95% CI). Mixed Latin-Italian matches the VMS entropy (H = 2.510) in 5 of 6 sections.
+
+The two sets of results are not contradictory. The VMS source text has the consonant adjacency *patterns* of Latin (CI wins on correlation) at the information *density* of Italian (W208 wins on entropy). This is consistent with Latin pharmaceutical terminology embedded in Italian syntactic structure — a macaronic register well attested in fifteenth-century Paduan recipe collections.
+
+The nomenclator validation (r = 0.96, main paper §5.5) remains Latin-specific: the function word assignments (*et*, *in*, *cum*, *de*, *ad*, *habet*, *uel*, *que*, *supra*) are Latin regardless of surrounding syntax.
+
+## 7. Conclusion
+
+Greek is excluded by component-level tests (Latin 16/18 vs Greek 2/18). The v11 aggregate score validates architecture, not language; this limitation should be noted when interpreting v11 results. An information-theoretic test reveals pure pharmaceutical Latin is too structured for the VMS (p < 0.05, bootstrap); mixed Latin-Italian matches in 5/6 sections. The source text's register may be macaronic, consistent with the Padua–Pavia–Swabia/Bavaria production triangle.
 
 ## Data availability
 
-All Greek corpora, processing code, and scoring results are archived at:
-- `greek_battery_v2_2.py` — battery and forward cipher code
-- `greek_corpus_parsed.pkl` — romanised Greek pharmaceutical corpus
-- `greek_dmm_corpus.pkl` — romanised Dioscorides DMM
-- `dmm_definitive_results.pkl` — forward cipher scoring results
+| File | Description |
+|------|-------------|
+| `greek_battery_v2_2.py` | Battery and forward cipher code |
+| `greek_corpus_parsed.pkl` | Romanised Greek pharmaceutical corpus (122k words) |
+| `greek_dmm_corpus.pkl` | Romanised Dioscorides DMM (112k words) |
+| `dmm_definitive_results.pkl` | Forward cipher scoring: Greek vs Latin |
+| `w208_multivalent_results.pkl` | Forward cipher scoring: W208 segments × VMS sections |
+| `w208_transkribus_export.zip` | Wellcome 208 Transkribus PAGE XML |
 
-Source texts from OpenGreekAndLatin/First1KGreek (MIT licence) and the Wellmann/Kühn edition (public domain).
+Greek texts from OpenGreekAndLatin/First1KGreek (MIT licence) and the Wellmann/Kühn edition (public domain). Wellcome 208 from Wellcome Collection digital images (Public Domain Mark).
