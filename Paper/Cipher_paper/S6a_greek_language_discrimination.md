@@ -247,13 +247,13 @@ Discrimination requires tests that bypass the scribe layer. Two classes succeed:
 
 **Cell-sequence tests** (conditional entropy, EC/FC alternation) reveal that pure pharmaceutical Latin is too structured. Its consonant transitions are more predictable than the VMS requires (H = 2.348 vs VMS 2.511, outside bootstrap 95% CI). Mixed Latin-Italian matches the VMS entropy (H = 2.510) in 5 of 6 sections.
 
-The two sets of results are not contradictory. The VMS source text has the consonant adjacency *patterns* of Latin (CI wins on correlation) at the information *density* of Italian (W208 wins on entropy). This is consistent with Latin pharmaceutical terminology embedded in Italian syntactic structure — a macaronic register well attested in fifteenth-century Paduan recipe collections.
+The two sets of results are not contradictory. The VMS source text has the consonant adjacency *patterns* of Latin (CI wins on correlation) at the information *density* of Italian (W208 wins on entropy). This is consistent with Latin pharmaceutical terminology embedded in Italian syntactic structure — a mixed latin/vernacular register well attested in fifteenth-century Paduan recipe collections.
 
 The nomenclator validation (r = 0.96, main paper §5.5) remains Latin-specific: the function word assignments (*et*, *in*, *cum*, *de*, *ad*, *habet*, *uel*, *que*, *supra*) are Latin regardless of surrounding syntax.
 
 ## 7. Conclusion
 
-Greek is excluded by component-level tests (Latin 16/18 vs Greek 2/18). The v11 aggregate score validates architecture, not language; this limitation should be noted when interpreting v11 results. An information-theoretic test reveals pure pharmaceutical Latin is too structured for the VMS (p < 0.05, bootstrap); mixed Latin-Italian matches in 5/6 sections. The source text's register may be macaronic, consistent with the Padua–Pavia–Swabia/Bavaria production triangle.
+Greek is excluded by component-level tests (Latin 16/18 vs Greek 2/18). The v11 aggregate score validates architecture, not language; this limitation should be noted when interpreting v11 results. An information-theoretic test reveals pure pharmaceutical Latin is too structured for the VMS (p < 0.05, bootstrap); mixed Latin-Italian matches in 5/6 sections. The source text's register may be mixed latin/vernacular, consistent with the theorised production triangle.
 
 ## Data availability
 
