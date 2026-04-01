@@ -94,6 +94,7 @@ Pools are augmented with constructed tokens assembled from GRID_PRIMARY core str
 
 Ten rare tokens are injected at random positions to maintain digraph coverage for metrics sensitive to rare character combinations.
 
+Core-initial diversity. VMS Herbal-A tokens exhibit 20 distinct m_core first characters because the cipher key specified different core strings within each cell — some starting with the row character, some with compounds. v11 does not have the key; it knows which row a Latin consonant maps to, but not which specific core string the designer placed in that cell. Constructed tokens from GRID_PRIMARY therefore use only the row identifier as core initial, producing five distinct values (a, c, d, e, o). Pool tokens drawn from the manuscript preserve the full 20-character diversity, but as vocabulary saturation forces increasing reliance on construction, output diversity contracts to 7–8 unique core initials. This affects the conditional entropy test (§8): cipher output yields H ≈ 2.34 bits versus VMS 2.51 bits. The gap measures the information lost by not knowing the cell contents. Recovering the keyword and cell assignments would restore the 20-character alphabet and is predicted to raise H into the VMS range — a testable consequence of key recovery, consistent with §10.
 ---
 
 ## 4. Scoring
