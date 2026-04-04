@@ -1,6 +1,6 @@
 ## S10.8 Gallows × house analysis
 
-This section reports two related tests of the gallows axis in EC tokens. The first asks whether gallows identity recovers suffix-family (and thereby function-word) assignments. The second asks whether gallows class constrains house choice within each suffix family.
+This section reports three related tests of the house structure in EC tokens. The first asks whether gallows identity recovers suffix-family assignments. The second asks whether gallows class constrains house choice within each suffix family. The third asks whether scribe identity predicts house preference.
 
 ### S10.8.1 Gallows → suffix-family mapping (negative)
 
@@ -47,7 +47,7 @@ Gallows-class × house interaction is significant within every family: Y (χ² =
 
 Three systematic patterns emerge:
 
-1. **Bare tokens prefer H3 in Y-family** (83.0%) but H2 in N/L/R (40–54%). Bare-Y tokens are overwhelmingly ch/sh-prefixed — the most common tokens in the manuscript (chy, shy, chaiin, etc.).
+1. **Bare tokens prefer H3 in Y-family** (83.0%) but H2 in N/L/R (40–54%). Bare-Y tokens are overwhelmingly ch/sh-prefixed, the most common tokens in the manuscript (chy, shy, chaiin, etc.).
 
 2. **Plain tokens prefer H1** across all families (48–55%), with secondary H2 (34–50%). Plain gallows are rarely H3 (1.6–3.3% in non-Y families).
 
@@ -90,10 +90,54 @@ Despite divergent house usage, bare-Y and ornate-Y show indistinguishable positi
 
 Within Y-family: bare-Y (3.1% LI) and ornate-Y (2.7% LI) are statistically indistinguishable (χ² = 0.1, p = 0.70). Plain-Y (9.4% LI) differs from bare-Y at χ² = 112.0, p = 3.6 × 10⁻²⁶. The positional identity of bare-Y and ornate-Y, combined with their divergent house distributions (§S10.8.3), is consistent with the same function word encoded under different house variants occupying the same syntactic position.
 
-### S10.8.5 Interpretation
+### S10.8.5 Scribe-level homophonic preferences
 
-The gallows axis does not independently recover function-word assignments (§S10.8.1). It does, however, constrain house selection in a systematic and recoverable way (§S10.8.2). The principal constraint is that ornate gallows in non-Y families select H1 prefix at 78–86%, reducing the effective house space for these tokens to a single value. This is the first empirical constraint on the unrecovered house-assignment structure beyond the ckh Y-preference reported in §7.
+If the prefix slot functions as a homophonic variant selector, different scribes should exhibit distinctive prefix preferences, just as documented encipherers in Sforza correspondence show individual preferences among homophonic alternatives. Using the Davis (2020b) folio-level scribe assignments, each of the five identified scribes does exhibit a distinctive prefix distribution:
 
-Two alternative explanations for the ornate/H1 concentration were tested and rejected. First, a production rule based on glyph complexity (ornate gallows avoided at line-initial position for mechanical reasons) was falsified: token length correlates *positively* with line-initial rate across the manuscript (Spearman ρ = 0.89, p = 0.0001), and ornate tokens are enriched rather than depleted at line-final position. Second, the suffix-composition confound (ornate EC is Y-heavy, and Y is non-initial) was controlled by within-family testing: the positional divergence persists within every suffix family (Table S10.8d).
+**Table S10.8e.** Prefix distribution per scribe (% of EC tokens).
 
-**Source:** enriched_records.pkl (37,465 tokens, 19,758 EC). Reproduction code at DOI 10.5281/zenodo.19056347.
+| Scribe | Dialect | ∅ | qo | o | d | ch | sh | y | s | n |
+|--------|---------|------|------|------|------|------|------|------|------|------|
+| 1 | A | 20.1 | 8.7 | 16.2 | 15.5 | 19.9 | 8.8 | 6.2 | 4.6 | 9,013 |
+| 2 | B | 18.1 | 20.0 | 22.1 | 8.7 | 13.1 | 10.2 | 3.7 | 4.1 | 9,133 |
+| 3 | B | 26.5 | 16.6 | 22.8 | 4.8 | 16.2 | 7.3 | 3.8 | 2.0 | 11,653 |
+| 4 | B | 16.5 | 2.0 | 39.2 | 8.8 | 16.0 | 4.8 | 9.5 | 3.2 | 650 |
+| 5 | B | 26.4 | 9.0 | 18.1 | 12.3 | 13.0 | 9.8 | 8.5 | 2.8 | 1,054 |
+
+Scribe-level variation accounts for most of the section-level house variation (house max/min ratio: 2.86× at section level, 2.22× at scribe level). If prefixes encoded cipher-layer content (e.g. keyword-driven alphabet rotation), scribe identity should not predict prefix choice. It does (scribe-level variation 2.22×, compared with gallows variation 1.14× which is content-determined and therefore scribe-independent).
+
+### S10.8.6 Within-house pair compensation
+
+If two prefixes within the same house are genuinely substitutable homophones, their folio-level frequencies should show negative correlation: when the scribe uses more of one, they use less of the other.
+
+**Table S10.8f.** Folio-level Pearson r between prefix pairs within each house.
+
+| House | Prefixes | Folio-level r | Compensatory? |
+|-------|----------|---------------|---------------|
+| H1 | ∅ / qo | +0.28 | No |
+| H2 | o / d | −0.46 | Yes |
+| H3 | ch / sh | −0.29 | Yes |
+| H4 | y / s | +0.09 | Weak |
+
+H2 (o/d) and H3 (ch/sh) show negative within-pair correlation at folio level, confirming substitutable homophones. H1 (∅/qo) shows positive correlation, which may reflect co-variation with section or folio length rather than compensation. H4 (y/s) shows no compensatory behaviour, and the two prefixes differ structurally: y carries gallows 63% of the time versus s at 1.5%, and their suffix-family distributions diverge (χ² = 257, p = 10⁻⁵³). The H4 grouping is the weakest of the four and may represent two distinct functional roles rather than a single homophonic pair.
+
+### S10.8.7 Currier A/B as house preference
+
+The Currier A/B dialect distinction, first identified in the 1970s and widely treated as evidence for two different languages or encoding systems, partially maps to scribe-specific house preference:
+
+| Dialect | Scribes | H1 (∅+qo) | H2 (o+d) | H3 (ch+sh) | H4 (y+s) |
+|---------|---------|-----------|----------|------------|----------|
+| A | Scribe 1 | 28.8% | 31.7% | 28.7% | 10.9% |
+| B | Scribes 2–5 | 40.0% | 25.0% | 23.3% | 7.1% |
+
+Dialect A (Scribe 1) uses more H3 and H4; Dialect B scribes use more H1. The cipher architecture (two tables, suffix-family assignments, grid structure) does not differ between A and B; the scribes' selection among homophonic alternatives does.
+
+### S10.8.8 Interpretation
+
+The gallows axis does not independently recover function-word assignments (§S10.8.1). It does constrain house selection in a systematic way (§S10.8.2): ornate gallows in non-Y families select H1 prefix at 78–86%, reducing the effective house space for these tokens to a single value.
+
+Scribe identity independently predicts house preference (§S10.8.5), and within-house prefix pairs show compensatory behaviour consistent with substitutable homophones for H2 and H3 (§S10.8.6). This is the expected behaviour of any homophonic system with multiple encipherers: the Sforza cipher keys in S12 provide multiple symbols per plaintext unit, and different secretaries using the same key develop individual selection habits. The VMS scribes did the same. The Currier A/B distinction, long treated as evidence for two encoding systems, is at least partly explained by scribe-specific homophonic preferences within a single cipher architecture (§S10.8.7).
+
+Two alternative explanations for the ornate/H1 concentration were tested and rejected. First, a production rule based on glyph complexity (ornate gallows avoided at line-initial position for mechanical reasons) was falsified: token length correlates positively with line-initial rate across the manuscript (Spearman ρ = 0.89, p = 0.0001), and ornate tokens are enriched rather than depleted at line-final position. Second, the suffix-composition confound (ornate EC is Y-heavy, and Y is non-initial) was controlled by within-family testing: the positional divergence persists within every suffix family (Table S10.8d).
+
+**Source:** enriched_records.pkl (37,465 tokens, 19,758 EC); Davis (2020b) folio-level scribe assignments. Reproduction code: `jojo_s_analysis.py` (deposited with supplementary materials at DOI 10.5281/zenodo.19056347).
