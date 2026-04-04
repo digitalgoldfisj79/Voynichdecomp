@@ -65,7 +65,7 @@ The three gallows classes within Y-family show maximally divergent house distrib
 | bare vs ornate | 3,169 | 911 | 1184.3 | 3 | < 10⁻¹⁰⁰ |
 | plain vs ornate | 3,766 | 911 | 1564.5 | 3 | < 10⁻¹⁰⁰ |
 
-All three classes use radically different house distributions to encode Y-family tokens. This is consistent with polyalphabetic substitution: the same function word appears under different house prefixes depending on the gallows variant selected.
+All three classes use radically different house distributions to encode Y-family tokens. This is consistent with homophonic substitution: the same function word appears under different house prefixes depending on the gallows variant selected.
 
 ### S10.8.4 Positional identity across gallows classes
 
