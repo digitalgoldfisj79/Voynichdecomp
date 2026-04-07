@@ -1,0 +1,112 @@
+{
+  "source": "voynich_transcriptions_slim.json / ZLZI",
+  "parse": "longest-match prefix+gallows+exact suffix; m_core re-derived by raw-core normalization: ch->c, sh->\u2205, strip i/h/s/y, \u2205 if empty",
+  "corpus": {
+    "tokens": 37465,
+    "types": 7598,
+    "folios": 226
+  },
+  "inventories": {
+    "prefix": 8,
+    "gallows": 9,
+    "m_core": 1302,
+    "suffix_family": 7,
+    "quadruples": 5166
+  },
+  "entropy": {
+    "H_surface_given_quad": 1.0298110525787507,
+    "effective_options": 2.04175682833432
+  },
+  "ranking": [
+    {
+      "variable": "suffix",
+      "H_surface_given_quad_plus_var": 0.16487524341148685,
+      "deltaH": 0.8649358091672639,
+      "pct_residual_explained": 83.9897578299803
+    },
+    {
+      "variable": "prev_token",
+      "H_surface_given_quad_plus_var": 0.29632845325415147,
+      "deltaH": 0.7334825993245992,
+      "pct_residual_explained": 71.22496864719842
+    },
+    {
+      "variable": "prev_quad",
+      "H_surface_given_quad_plus_var": 0.36555621030633034,
+      "deltaH": 0.6642548422724204,
+      "pct_residual_explained": 64.50259400586732
+    },
+    {
+      "variable": "folio",
+      "H_surface_given_quad_plus_var": 0.37599088882094023,
+      "deltaH": 0.6538201637578105,
+      "pct_residual_explained": 63.489332545089596
+    },
+    {
+      "variable": "line_no",
+      "H_surface_given_quad_plus_var": 0.5603203282158216,
+      "deltaH": 0.46949072436292916,
+      "pct_residual_explained": 45.5899869386017
+    },
+    {
+      "variable": "prev_m_core",
+      "H_surface_given_quad_plus_var": 0.6718677517985192,
+      "deltaH": 0.3579433007802315,
+      "pct_residual_explained": 34.75815295280677
+    },
+    {
+      "variable": "prev_suffix",
+      "H_surface_given_quad_plus_var": 0.7143795369289236,
+      "deltaH": 0.3154315156498271,
+      "pct_residual_explained": 30.63003789481136
+    },
+    {
+      "variable": "line_len",
+      "H_surface_given_quad_plus_var": 0.7222714898869569,
+      "deltaH": 0.30753956269179383,
+      "pct_residual_explained": 29.863688287446884
+    },
+    {
+      "variable": "pos",
+      "H_surface_given_quad_plus_var": 0.7518136088305951,
+      "deltaH": 0.2779974437481556,
+      "pct_residual_explained": 26.994995154890013
+    },
+    {
+      "variable": "rel_line_decile",
+      "H_surface_given_quad_plus_var": 0.7801359851747218,
+      "deltaH": 0.2496750674040289,
+      "pct_residual_explained": 24.24474536166779
+    },
+    {
+      "variable": "rel_pos_decile",
+      "H_surface_given_quad_plus_var": 0.7903258738900529,
+      "deltaH": 0.2394851786886978,
+      "pct_residual_explained": 23.255254261352388
+    },
+    {
+      "variable": "section",
+      "H_surface_given_quad_plus_var": 0.7986718384088949,
+      "deltaH": 0.23113921416985583,
+      "pct_residual_explained": 22.444817774198476
+    },
+    {
+      "variable": "core",
+      "H_surface_given_quad_plus_var": 0.8099458485258602,
+      "deltaH": 0.21986520405289056,
+      "pct_residual_explained": 21.350052857009636
+    },
+    {
+      "variable": "prev_prefix",
+      "H_surface_given_quad_plus_var": 0.8163756074596904,
+      "deltaH": 0.21343544511906032,
+      "pct_residual_explained": 20.72568988112882
+    },
+    {
+      "variable": "prev_gallows",
+      "H_surface_given_quad_plus_var": 0.8755664592093222,
+      "deltaH": 0.15424459336942853,
+      "pct_residual_explained": 14.977950856439588
+    }
+  ]
+}
