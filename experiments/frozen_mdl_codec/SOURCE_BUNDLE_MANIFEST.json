@@ -1,0 +1,19 @@
+{
+  "format": "base64-concatenated-tar-gzip",
+  "archive_name": "frozen_mdl_codec_source.tar.gz",
+  "archive_bytes": 28703,
+  "archive_sha256": "7dd12696bb6b6e550be325a373cf5c44d60b0ea2429b8e8e9fd5090a6f73999e",
+  "base64_bytes": 38272,
+  "base64_sha256": "5ec137d5b2f5711f050267275ae85d595bd1d98a785426b0f9968cdce53f7cdc",
+  "root": "frozen_mdl_codec",
+  "parts": [
+    {"name": "source.b64.part00", "bytes": 6000, "sha256": "edbfea5d2cd03b06918ec3c7f5c989b3b8c853afde7cac7f83435968bff4afd7"},
+    {"name": "source.b64.part01", "bytes": 6000, "sha256": "02752bc225ad8d4bb8afc3c84688a4fadb5ed29de4698d89a343da06130755e8"},
+    {"name": "source.b64.part02", "bytes": 6000, "sha256": "776b5c476070af6510504e012904ed2f2c4c0ebdbd981e48041636e6dfa73a55"},
+    {"name": "source.b64.part03", "bytes": 6000, "sha256": "cdec279600b67cf443ec45f265b5694e7fe44dc4d387252265ea235843ae8640"},
+    {"name": "source.b64.part04", "bytes": 6000, "sha256": "9cf61eab140d705afe4218cd625f37e37f75494d0a2585b597a3b374c7d1d55d"},
+    {"name": "source.b64.part05", "bytes": 6000, "sha256": "e068d9942032d25e283d47e3578c4bd33b7dd54cec26306dcebef859cf254bfa"},
+    {"name": "source.b64.part06", "bytes": 2272, "sha256": "f27a656d9370349306164e1b16fa3a1fe01397e7c5c820d87e9487cc38fa0732"}
+  ],
+  "note": "The archive contains one zero-byte editor temporary file, test_codec.py.tmp. It is non-executable and ignored by every test and runner. Its presence is included in the frozen archive hash for auditability."
+}
