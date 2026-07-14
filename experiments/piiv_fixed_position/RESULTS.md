@@ -1,10 +1,12 @@
-# PIIV-FIXED-POSITION results
+# PIII-FIXED-POSITION results
+
+> **Historical-label correction:** the original branch/path says `piiv`, but source inspection shows that the fixed-second-character coverword table is in *Polygraphia* **III**. See `ERRATUM.md`. This correction changes no analysis or result.
 
 **Formal verdict: `FAIL_EXACT_FIXED_POSITION_PAYLOAD`.**
 
 ## Test
 
-The literal *Polygraphia* IV mechanism predicts that one fixed character inside every coverword—historically the second character—forms the plaintext stream. The Voynich test therefore extracted nine frozen positional streams (`F1`–`F6`, `L1`–`L3`) and attempted to recover each as a globally consistent monoalphabetic substitution of external Latin or Old Italian.
+The literal *Polygraphia* III mechanism predicts that one fixed character inside every coverword—historically the second character—forms the plaintext stream. The Voynich test therefore extracted nine frozen positional streams (`F1`–`F6`, `L1`–`L3`) and attempted to recover each as a globally consistent monoalphabetic substitution of external Latin or Old Italian.
 
 Mappings were learned on complete approximate-quire training groups and evaluated on held-out quires. Language models were trained only on external *Secreta Secretorum*, *Picatrix*, and *Rettorica* corpora. Davis hand labels and Voynich-derived language models were not used.
 
@@ -63,4 +65,4 @@ The result does not reject changing payload positions, polyalphabetic or scribe-
 
 ## Historical source recovery
 
-The exact table was independently located in the 1620 French *Polygraphie* on Gallica. The translated “Troisième livre” begins at frame 179; its table occupies the pages before the epilogue at frame 214. The table entries visibly follow the second-letter rule—for example the columns around frame 185 progress through coverwords whose second characters encode the alphabetic row. A separate OCR/transcription quality-gated harvester is required before using that table for an exact forward-surface test; the fixed-position payload result above does not depend on OCR of the historical table.
+The exact table was independently located in the 1620 French *Polygraphie* on Gallica. The translated “Troisième livre” begins at frame 179; its table occupies the pages before the epilogue at frame 214. “Quatriesme livre” begins at frame 215 and concerns transposition tables. The table entries visibly follow the second-letter rule—for example the columns around frame 185 progress through coverwords whose second characters encode the alphabetic row. A separate OCR/transcription quality-gated harvester is required before using that table for an exact forward-surface test; the fixed-position payload result above does not depend on OCR of the historical table.
