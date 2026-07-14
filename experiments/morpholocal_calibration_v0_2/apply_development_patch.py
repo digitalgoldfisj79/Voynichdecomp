@@ -52,10 +52,16 @@ replacements = [
     ),
 ]
 
+changed = False
 for old, new in replacements:
-    if old not in s:
-        raise RuntimeError(f"Expected source block not found: {old[:80]!r}")
-    s = s.replace(old, new)
+    if old in s:
+        s = s.replace(old, new)
+        changed = True
+    elif new in s:
+        # Already patched by the parent process; safe for spawned workers.
+        continue
+    else:
+        raise RuntimeError(f"Expected original or patched source block not found: {old[:80]!r}")
 
 pattern = re.compile(
     r"def mapping_accuracy\(.*?return 2 \* tp / max\(1, 2 \* tp \+ fp \+ fn\)\n",
@@ -101,9 +107,13 @@ def null_f1(
         return 1.0
     return 2 * tp / max(1, 2 * tp + fp + fn)
 '''
-s, n = pattern.subn(new_block, s, count=1)
-if n != 1:
-    raise RuntimeError(f"Expected one mapping/null block, replaced {n}")
+if "def contextual_key_pairs(" not in s:
+    s, n = pattern.subn(new_block, s, count=1)
+    if n != 1:
+        raise RuntimeError(f"Expected one mapping/null block, replaced {n}")
+    changed = True
+elif "for fitted_key, true_key in contextual_key_pairs" not in s:
+    raise RuntimeError("Partial mapping/null development patch detected")
 
 p.write_text(s, encoding="utf-8")
-print(f"PATCHED {p}")
+print(f"PATCHED {p} changed={changed}")
