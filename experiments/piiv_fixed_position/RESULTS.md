@@ -63,6 +63,8 @@ It therefore directly rejects the historical second-character mechanism as a man
 
 The result does not reject changing payload positions, polyalphabetic or scribe-specific mappings, multi-glyph payloads, insertions/deletions/nulls, sparse encrypted passages, or a separate post-encryption surface realiser. Those are different and substantially more flexible hypotheses.
 
-## Historical source recovery
+## Historical source recovery and relation to the forward test
 
-The exact table was independently located in the 1620 French *Polygraphie* on Gallica. The translated “Troisième livre” begins at frame 179; its table occupies the pages before the epilogue at frame 214. “Quatriesme livre” begins at frame 215 and concerns transposition tables. The table entries visibly follow the second-letter rule—for example the columns around frame 185 progress through coverwords whose second characters encode the alphabetic row. A separate OCR/transcription quality-gated harvester is required before using that table for an exact forward-surface test; the fixed-position payload result above does not depend on OCR of the historical table.
+The exact table was independently located in the 1620 French *Polygraphie* on Gallica. The translated “Troisième livre” begins at frame 179; its table occupies the pages before the epilogue at frame 214. “Quatriesme livre” begins at frame 215 and concerns transposition tables. The table entries visibly follow the second-letter rule—for example the columns around frame 185 progress through coverwords whose second characters encode the alphabetic row.
+
+This is the same Book III table represented by Hermes's `ciphers_poly_III_in_order.csv` and already used in the earlier exact forward-generation closure test. The earlier test asks whether the historical table can generate the Voynich surface; this test asks whether its defining second-character plaintext invariant is present in Voynich. Both fail. What remains incomplete is only an independent image-to-CSV audit of every historical table entry, not the forward experiment itself.
