@@ -1,6 +1,7 @@
 {
   "status": "COMPLETE",
   "formal_verdict": "FAIL_EXACT_FIXED_POSITION_PAYLOAD",
+  "historical_label_correction": "The branch/path says piiv, but the fixed-second-character coverword table is in Polygraphia III. See ERRATUM.md.",
   "primary_transcription": "ZLZI",
   "f2_gain_bits_per_character": -1.4579542181757876,
   "f2_familywise_permutation_p": 1.0,
@@ -45,7 +46,7 @@
     "alternate_transcription_null_replicates_each": 39,
     "passed": true
   },
-  "scope": "Global one-glyph-per-word fixed-position payload under a monoalphabetic substitution; F2 is the literal Polygraphia IV prediction.",
+  "scope": "Global one-glyph-per-word fixed-position payload under a monoalphabetic substitution; F2 is the literal Polygraphia III second-character prediction.",
   "non_exclusions": [
     "changing payload positions",
     "polyalphabetic or scribe-specific mappings",
