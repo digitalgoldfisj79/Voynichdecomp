@@ -1,0 +1,10 @@
+{
+  "version": "morpholocal-calibration-v0.2",
+  "formal_seed": 8675309,
+  "positives": 96,
+  "controls": 320,
+  "steps": 400,
+  "restarts": 2,
+  "source_raw_sha256": "86bd30861251b07f410ecc38f47a3cb45d8b0a9373b45ceb794b97d64070d783",
+  "source_bundle_sha256": "6968279c0a11365cac09f9bb589bf6ffc90247b9f4b963f3f81c3d114fa5ff28"
+}
