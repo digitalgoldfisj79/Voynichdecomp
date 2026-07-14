@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "codec_version": "frozen-mdl-codec-v0.1",
+  "register": "INTERNALLY_VALIDATED_THIRD_PARTY_LLM_REPRODUCED",
+  "implementation_defect_found": false,
+  "asymmetric_accounting_found": false,
+  "selection_policy_gate": "PASS_SELECTION_POLICY_ROBUSTNESS",
+  "third_party_final_verdicts": ["PASS_REPRODUCED", "PASS_REPRODUCED"],
+  "audit_quality_note": "One audit was internally contradictory before withdrawing its objection; the second returned only the final verdict. Both are preserved without inflation.",
+  "voynich_run_authorized": false,
+  "next_requirement": "Class-specific mixed-unit morpho-local planted calibration gate."
+}
