@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """Development-only correctness wrapper for morpholocal calibration v0.3.1.
 
-This wrapper fixes three defects without changing the frozen v0.2 generator:
+Corrections applied without changing the frozen v0.2 generator:
 
-1. object-id caches now retain the exact source object in a bounded LRU, so a
-   recycled Python id cannot return data fitted to another trial;
-2. length subsetting preserves the original event order exactly and never
-   sorts by ``token_index`` (a vocabulary index, not a sequence position);
-3. the charged production-null registry remains fitted on training data only.
+1. object-id caches retain the exact source object in bounded LRUs, preventing
+   recycled Python ids from returning another trial's data;
+2. length subsetting preserves source event order and never sorts by
+   ``token_index`` (a vocabulary index, not a sequence position);
+3. production-null selection remains training-only;
+4. label-specific event caches are identity-safe.
 
-It also emits trial-level audit fields needed to decompose shared false
-positives. The wrapper is for remediation/development runs. Formal use still
-requires a static, patch-free effective-source freeze after validation.
+The wrapper also emits trial-level audit fields. Formal use still requires a
+static, patch-free effective-source freeze after validation.
 """
 from __future__ import annotations
 
@@ -34,18 +34,35 @@ base = kt.base
 
 PREPARE_CACHE_LIMIT = 32
 PRODUCTION_CACHE_LIMIT = 16
+LABEL_EVENTS_CACHE_LIMIT = 64
 _PREPARE_CACHE: OrderedDict[int, tuple[object, kt.SequenceData]] = OrderedDict()
 _PRODUCTION_CACHE: OrderedDict[int, tuple[object, production.FittedNull]] = OrderedDict()
+_LABEL_EVENTS_CACHE: OrderedDict[tuple[int, str, str], tuple[object, list[Any]]] = OrderedDict()
 _ACTIVE_AUDIT: dict[str, Any] = {}
 _ORIGINAL_FIT_CANDIDATE = base.fit_candidate
 _ORIGINAL_SCORE_TRIAL = base.score_trial_v03
 
 
-def _bounded_store(cache: OrderedDict, key: int, value: tuple[object, Any], limit: int) -> None:
+def _bounded_store(cache: OrderedDict, key: Any, value: tuple[object, Any], limit: int) -> None:
     cache[key] = value
     cache.move_to_end(key)
     while len(cache) > limit:
         cache.popitem(last=False)
+
+
+def safe_label_events(module, train, scheme, label):
+    """Return label events from an identity-safe bounded cache."""
+    key = (id(train), str(scheme), str(label))
+    cached = _LABEL_EVENTS_CACHE.get(key)
+    if cached is not None:
+        source, rows = cached
+        if source is train:
+            _LABEL_EVENTS_CACHE.move_to_end(key)
+            return rows
+        del _LABEL_EVENTS_CACHE[key]
+    rows = [event for event in train if module.key_label(event, scheme) == label]
+    _bounded_store(_LABEL_EVENTS_CACHE, key, (train, rows), LABEL_EVENTS_CACHE_LIMIT)
+    return rows
 
 
 def safe_prepare(events: Sequence[Any]) -> kt.SequenceData:
@@ -96,19 +113,14 @@ def safe_production_predictive_nll(data, train, registry, selector) -> float:
 
     if fitted is None:
         fitted = production.fit_registry(train)
-        _bounded_store(
-            _PRODUCTION_CACHE,
-            key,
-            (train, fitted),
-            PRODUCTION_CACHE_LIMIT,
-        )
+        _bounded_store(_PRODUCTION_CACHE, key, (train, fitted), PRODUCTION_CACHE_LIMIT)
 
     if data is train:
         score = float(fitted.train_bits + math.log2(len(production.MODEL_NAMES)))
         _ACTIVE_AUDIT["production_train_bits"] = score
     else:
-        score = production.score_fitted(data, fitted)
-        _ACTIVE_AUDIT["production_test_bits"] = float(score)
+        score = float(production.score_fitted(data, fitted))
+        _ACTIVE_AUDIT["production_test_bits"] = score
 
     _ACTIVE_AUDIT.update(
         {
@@ -118,7 +130,7 @@ def safe_production_predictive_nll(data, train, registry, selector) -> float:
             "production_cache_hit": bool(cache_hit),
         }
     )
-    return float(score)
+    return score
 
 
 def safe_subset_events(events: Sequence[Any], target: int) -> list[Any]:
@@ -138,8 +150,7 @@ def safe_subset_events(events: Sequence[Any], target: int) -> list[Any]:
         groups: list[list[tuple[int, Any]]] = []
         current: list[tuple[int, Any]] = []
         previous = None
-        for row in rows:
-            index, event = row
+        for index, event in rows:
             marker = (event.doc, event.line)
             if previous is not None and marker != previous:
                 groups.append(current)
@@ -209,6 +220,7 @@ def audited_score_trial(*args, **kwargs):
 def install() -> None:
     kt.prepare = safe_prepare
     production.rich_production_predictive_nll = safe_production_predictive_nll
+    base.label_events = safe_label_events
     base.subset_events = safe_subset_events
     base.fit_candidate = audited_fit_candidate
     base.score_trial_v03 = audited_score_trial
