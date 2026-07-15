@@ -1,0 +1,26 @@
+{
+  "format": "gzip+base64",
+  "source_file": "oracle_source_transfer_v040_impl.py",
+  "raw_sha256": "26fc8041e4a953b8241579143f4f541033cacd238772fcb1c5b715632b766ea9",
+  "raw_bytes": 40604,
+  "gzip_base64_sha256": "a6eb997492fe749201761dbd1342aa284ea606cf9c34b3832b9c5d6a18756f6c",
+  "encoded_chars": 14288,
+  "parts": [
+    {
+      "path": "source_bundle/source.b64.part00",
+      "sha256": "00018bf8aab108a6e15d804d6749512dafe9bc5a17d0be7b85daf534042038fe"
+    },
+    {
+      "path": "source_bundle/source.b64.part01",
+      "sha256": "b337319da6dfc44121b32ffa313bb235f17968edaf1e1e78d1ed437286e11cdc"
+    },
+    {
+      "path": "source_bundle/source.b64.part02",
+      "sha256": "6b884f8b769d069f549b0e3920e3741d891c113019f33b5eb19ed65b4f26fc58"
+    },
+    {
+      "path": "source_bundle/source.b64.part03",
+      "sha256": "f12c142863538f0dcd0d25e742d695dcf1cd91316d465c04e087905367096ea3"
+    }
+  ]
+}
