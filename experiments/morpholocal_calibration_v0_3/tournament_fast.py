@@ -41,6 +41,39 @@ def cached_label_events(module, train, scheme, label):
     return rows
 
 
+def ordered_subset(events, target):
+    """Take complete train/test lines without reordering events inside lines."""
+    if target >= len(events):
+        return list(events)
+    n_test = max(1, int(round(target * 0.2)))
+    n_train = target - n_test
+
+    def take(rows, limit):
+        out = []
+        current = []
+        previous = None
+        for event in rows:
+            marker = (event.doc, event.line)
+            if previous is not None and marker != previous:
+                if out and len(out) + len(current) > limit:
+                    break
+                out.extend(current)
+                if len(out) >= limit:
+                    break
+                current = []
+            current.append(event)
+            previous = marker
+        if current and len(out) < limit and (not out or len(out) + len(current) <= limit):
+            out.extend(current)
+        return out
+
+    train = take([e for e in events if not e.test], n_train)
+    test = take([e for e in events if e.test], n_test)
+    # The generator places complete training documents before complete test
+    # documents; concatenation therefore preserves the original event order.
+    return train + test
+
+
 def prepare(module, events, registry):
     key = id(events)
     cached = _POLICY_DATA_CACHE.get(key)
@@ -125,6 +158,7 @@ def fast_label_policy_nll(module, events, mapping, policy, registry, label):
 
 base.label_events = cached_label_events
 base.label_policy_nll = fast_label_policy_nll
+base.subset_events = ordered_subset
 
 if __name__ == "__main__":
     base.main()
