@@ -9,8 +9,9 @@ This wrapper fixes three defects without changing the frozen v0.2 generator:
    sorts by ``token_index`` (a vocabulary index, not a sequence position);
 3. the charged production-null registry remains fitted on training data only.
 
-The wrapper is for remediation/audit runs. Formal use still requires a static,
-patch-free effective-source freeze after the corrected behaviour is validated.
+It also emits trial-level audit fields needed to decompose shared false
+positives. The wrapper is for remediation/development runs. Formal use still
+requires a static, patch-free effective-source freeze after validation.
 """
 from __future__ import annotations
 
@@ -35,6 +36,9 @@ PREPARE_CACHE_LIMIT = 32
 PRODUCTION_CACHE_LIMIT = 16
 _PREPARE_CACHE: OrderedDict[int, tuple[object, kt.SequenceData]] = OrderedDict()
 _PRODUCTION_CACHE: OrderedDict[int, tuple[object, production.FittedNull]] = OrderedDict()
+_ACTIVE_AUDIT: dict[str, Any] = {}
+_ORIGINAL_FIT_CANDIDATE = base.fit_candidate
+_ORIGINAL_SCORE_TRIAL = base.score_trial_v03
 
 
 def _bounded_store(cache: OrderedDict, key: int, value: tuple[object, Any], limit: int) -> None:
@@ -53,8 +57,6 @@ def safe_prepare(events: Sequence[Any]) -> kt.SequenceData:
         if source is events:
             _PREPARE_CACHE.move_to_end(key)
             return value
-        # Defensive only: retaining ``source`` should prevent id reuse while
-        # the entry exists, but never return a mismatched cached value.
         del _PREPARE_CACHE[key]
 
     context_values = sorted({(event.section, event.position) for event in events})
@@ -82,11 +84,13 @@ def safe_production_predictive_nll(data, train, registry, selector) -> float:
     key = id(train)
     cached = _PRODUCTION_CACHE.get(key)
     fitted = None
+    cache_hit = False
     if cached is not None:
         source, candidate = cached
         if source is train:
             _PRODUCTION_CACHE.move_to_end(key)
             fitted = candidate
+            cache_hit = True
         else:
             del _PRODUCTION_CACHE[key]
 
@@ -100,8 +104,21 @@ def safe_production_predictive_nll(data, train, registry, selector) -> float:
         )
 
     if data is train:
-        return float(fitted.train_bits + math.log2(len(production.MODEL_NAMES)))
-    return production.score_fitted(data, fitted)
+        score = float(fitted.train_bits + math.log2(len(production.MODEL_NAMES)))
+        _ACTIVE_AUDIT["production_train_bits"] = score
+    else:
+        score = production.score_fitted(data, fitted)
+        _ACTIVE_AUDIT["production_test_bits"] = float(score)
+
+    _ACTIVE_AUDIT.update(
+        {
+            "production_model": fitted.name,
+            "production_model_train_bits_without_index": float(fitted.train_bits),
+            "production_registry_index_bits": float(math.log2(len(production.MODEL_NAMES))),
+            "production_cache_hit": bool(cache_hit),
+        }
+    )
+    return float(score)
 
 
 def safe_subset_events(events: Sequence[Any], target: int) -> list[Any]:
@@ -146,10 +163,55 @@ def safe_subset_events(events: Sequence[Any], target: int) -> list[Any]:
     return [event for index, event in indexed if index in selected_indices]
 
 
+def audited_fit_candidate(*args, **kwargs):
+    fitted = _ORIGINAL_FIT_CANDIDATE(*args, **kwargs)
+    _ACTIVE_AUDIT.update(
+        {
+            "cipher_selection_score_train": float(fitted["selection_score"]),
+            "selected_scheme": fitted["scheme"],
+            "selected_null_count": int(fitted["null_count"]),
+            "selected_size_profile": fitted["size_profile"],
+            "selected_external_profile": fitted["external_profile"],
+            "selected_policy": fitted["policy"],
+            "selected_selector": fitted["selector"],
+        }
+    )
+    return fitted
+
+
+def audited_score_trial(*args, **kwargs):
+    _ACTIVE_AUDIT.clear()
+    result = _ORIGINAL_SCORE_TRIAL(*args, **kwargs)
+    difference = float(
+        result["differences_bits"]["heldout_predictive_cipher_minus_production"]
+    )
+    production_test = _ACTIVE_AUDIT.get("production_test_bits")
+    if production_test is not None:
+        _ACTIVE_AUDIT["cipher_test_bits"] = float(production_test + difference)
+    _ACTIVE_AUDIT["heldout_cipher_minus_production_bits"] = difference
+    _ACTIVE_AUDIT["heldout_cipher_minus_production_bits_per_token"] = (
+        difference / max(1, int(result["n_test"]))
+    )
+    _ACTIVE_AUDIT["strict_heldout_advantage"] = bool(difference < 0.0)
+    _ACTIVE_AUDIT["strict_cipher_selected"] = bool(
+        result["cipher_selected"] and difference < 0.0
+    )
+    _ACTIVE_AUDIT["legacy_solver_label"] = result.get("solver")
+    _ACTIVE_AUDIT["scientific_solver_label"] = (
+        "parallel_tempering_best_state_optimizer"
+        if result.get("solver") == "bayes"
+        else result.get("solver")
+    )
+    result["remediation_audit"] = dict(_ACTIVE_AUDIT)
+    return result
+
+
 def install() -> None:
     kt.prepare = safe_prepare
     production.rich_production_predictive_nll = safe_production_predictive_nll
     base.subset_events = safe_subset_events
+    base.fit_candidate = audited_fit_candidate
+    base.score_trial_v03 = audited_score_trial
     production.install()
 
 
