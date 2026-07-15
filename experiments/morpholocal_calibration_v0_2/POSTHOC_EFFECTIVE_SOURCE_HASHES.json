@@ -1,0 +1,16 @@
+{
+  "status": "post-hoc provenance supplement; not part of the preregistered freeze",
+  "formal_scientific_commit": "06b124608e8c1a1253aea99a861ff3a7ebc66abc",
+  "formal_job_created_at_utc": "2026-07-15T06:16:31.997Z",
+  "hash_algorithm": "sha256",
+  "files": {
+    "apply_development_patch.py": "a9f2ee9885b0b48ff1b2a17d6dba850f1c27376dbd6c7b9f860881da2f67cf26",
+    "gpu_runner.py": "afbb856b969a3f3cbf2ba43f520662598f84e653d22b69a8157d3f370a80b50a",
+    "cpu_batched_runner.py": "e21761e88dba74f9702d14691021ef8f698b69d8542601bc921527f69faeb5f4",
+    "morpholocal_gate.py": "ad45b666efd8e9727ca082f930bb69525f8c7fb90c7932be09ba62c8f9b027af",
+    "SOURCE_BUNDLE_MANIFEST.json": "7d252d373d73a161d5b160411bfc3125ecc9b091003ebcc77a6a45f8eca41ef1",
+    "SPEC.md": "5845e67cbc3aa5ec17f818b2602402c1cf78b3b53d3bfd7a85466d547d0616e3",
+    "FREEZE_RECORD.json": "535f52f77ac0c416f782968799369c564b93f79d657f645a34cbc5609a92cc5c"
+  },
+  "caveat": "These hashes improve reconstructability but cannot retroactively repair the incomplete effective-source freeze identified by the hostile audit."
+}
