@@ -1,0 +1,36 @@
+{
+  "programme": "voynich-source-transfer-v0.4.0-oracle-identifiability-audit",
+  "base_commit": "0962441a373ca4aa045c19ef56fd010dd926cca9",
+  "seed": 4004001,
+  "chunk_words": 256,
+  "dev_chunks": 20,
+  "test_chunks": 24,
+  "workers": 32,
+  "representations": [
+    "word12",
+    "initial",
+    "char",
+    "syllable",
+    "bpe",
+    "word"
+  ],
+  "orders": [1, 2, 3, 4, 5],
+  "controls": [
+    "shuffle_keep_first",
+    "block_shuffle",
+    "bigram_euler",
+    "iid_unigram",
+    "source_markov1",
+    "source_markov2",
+    "ordered_hmm",
+    "motif_grammar",
+    "topic_fsm",
+    "copy_mutate"
+  ],
+  "bpe_merges": 128,
+  "bpe_max_types": 20000,
+  "word_vocab": 4096,
+  "max_development_false_positive_rate": 0.10,
+  "formal": false,
+  "voynich_scored": false
+}
