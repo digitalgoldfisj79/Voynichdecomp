@@ -115,7 +115,6 @@ def run_one(repo_text: str, task: dict[str, Any], steps: int, restarts: int):
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("MKL_NUM_THREADS", "1")
     torch.set_num_threads(1)
-    torch.set_num_interop_threads(1)
     gr = load_gpu_runner()
     gr.batched_anneal = cpu_batched_anneal_factory(gr)
     repo = Path(repo_text)
