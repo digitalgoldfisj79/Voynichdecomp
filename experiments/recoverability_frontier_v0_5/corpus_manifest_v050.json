@@ -1,0 +1,162 @@
+{
+  "audit_sha256": "6e5008cccfbc3bed379f9a209af3a3b55a357f241ca9168e8f511b2928599e83",
+  "corpora": [
+    {
+      "commit": "4a4d77f599ea53cc405f85d0cec4b2f14f81d42b",
+      "files": {
+        "dev": {
+          "sentences": 2001,
+          "sha256": "39239e0a60db3ae68f4b7036189f11b6692741d10ff8240dd91f74f2760d90f8",
+          "tokens": 25148
+        },
+        "test": {
+          "sentences": 2077,
+          "sha256": "fa024f43dc5da3c5ac02563bc9bd0e974f46cbb1560823976a8f342a37dc494a",
+          "tokens": 25094
+        },
+        "train": {
+          "sentences": 12544,
+          "sha256": "d68e06122a702464c613076523d56740f047e5bbe89dd90ec32737e04d952143",
+          "tokens": 204578
+        }
+      },
+      "iso": "en",
+      "language": "English",
+      "license": "CC BY-SA 4.0",
+      "license_sha256": "b3d1b0f4c6ae151f7eb78738f46ebd5ee140f8a7f76501ba26af123140d35ae7",
+      "prefix": "en_ewt",
+      "repo": "UniversalDependencies/UD_English-EWT"
+    },
+    {
+      "commit": "ce54dbe9c6a5640c93e9952f069f582f6cd1f9fc",
+      "files": {
+        "dev": {
+          "sentences": 799,
+          "sha256": "01e8e674973592747ffe9a8c77fcf9d2f5936a8484e731ad4f76254318a8952c",
+          "tokens": 12480
+        },
+        "test": {
+          "sentences": 977,
+          "sha256": "595070aa50b706a91dc66f17c296f7a9a25cbc75269f177c27680fb1c21528ab",
+          "tokens": 16499
+        },
+        "train": {
+          "sentences": 13813,
+          "sha256": "6cb1b600029292fb7bf60531a1d6d7824544791d732c0f7abae8102a2ac337bf",
+          "tokens": 263777
+        }
+      },
+      "iso": "de",
+      "language": "German",
+      "license": "CC BY-SA 4.0",
+      "license_sha256": "899b1804a12ebc090b96339614eede1b64b686721b650a71430b55b5235f7f79",
+      "prefix": "de_gsd",
+      "repo": "UniversalDependencies/UD_German-GSD"
+    },
+    {
+      "commit": "bfaae13719f249573d940edda6a0d7aa8eec620f",
+      "files": {
+        "dev": {
+          "sentences": 1364,
+          "sha256": "e4c0f4d3afc4a66b71a64756d62f900d1e4c3b58d9bc548dea330f12f15d89b0",
+          "tokens": 18308
+        },
+        "test": {
+          "sentences": 1555,
+          "sha256": "3317528f16ab74333dce44051971e1ed0d115c8ffa1359a20f3bddb8e63498ee",
+          "tokens": 21070
+        },
+        "train": {
+          "sentences": 12217,
+          "sha256": "07217d128d3752e61f1249c1e57de402ca17b31d2fba479d4f857ff78e28b40d",
+          "tokens": 162815
+        }
+      },
+      "iso": "fi",
+      "language": "Finnish",
+      "license": "CC BY-SA 4.0",
+      "license_sha256": "d59ddaa61ea7bef197ae6de9301a5f7dd3f107744766f9049bf9da516d30419b",
+      "prefix": "fi_tdt",
+      "repo": "UniversalDependencies/UD_Finnish-TDT"
+    },
+    {
+      "commit": "0c939115d8277ecfb39e1bbc3f066b1852ab5ddc",
+      "files": {
+        "dev": {
+          "sentences": 1100,
+          "sha256": "f58d60666d3a9a7fea843b36444da5d6a7849b1172a851b2223479682c53d0d4",
+          "tokens": 10542
+        },
+        "test": {
+          "sentences": 1100,
+          "sha256": "299d3af2adb8722b5dd09cd17a20302af3670d36f2e57ed26170bf21526fd3d4",
+          "tokens": 10032
+        },
+        "train": {
+          "sentences": 3435,
+          "sha256": "d7d65fb10bd0f6ed6ecb0258938d6d126a2b93b409582759d2b52195dd5b7313",
+          "tokens": 37522
+        }
+      },
+      "iso": "tr",
+      "language": "Turkish",
+      "license": "CC BY-NC-SA 4.0",
+      "license_sha256": "446deff834665054c41eff659e9a7f22b62c00879574dde2aebb1d5db83b842b",
+      "prefix": "tr_imst",
+      "repo": "UniversalDependencies/UD_Turkish-IMST"
+    },
+    {
+      "commit": "dd6d2133e6b9373e7e4888a1b33724df38e2e549",
+      "files": {
+        "dev": {
+          "sentences": 484,
+          "sha256": "4c7fcc2df3eeec7e0e06841cd2027d2c6f0fe7519758f56a8775ba0a5c6c6640",
+          "tokens": 11412
+        },
+        "test": {
+          "sentences": 491,
+          "sha256": "026fcebd2e953776fe9e954ae5506a2c9d1a7449266ce0cbe76b3297ed793ce7",
+          "tokens": 12282
+        },
+        "train": {
+          "sentences": 5168,
+          "sha256": "85438a480ff81ddc78cbfc14813b4670ea25b98286990a9211cff382f1eb58d7",
+          "tokens": 136501
+        }
+      },
+      "iso": "he",
+      "language": "Hebrew",
+      "license": "CC BY-NC-SA 4.0",
+      "license_sha256": "47c51ab15022b0245959914ecd17f446ab37cb9eedd58a5c0cf5975f7f1c60ee",
+      "prefix": "he_htb",
+      "repo": "UniversalDependencies/UD_Hebrew-HTB"
+    },
+    {
+      "commit": "dfb6b4c547f1fe10f1857b39e44de3f86c47a2fe",
+      "files": {
+        "dev": {
+          "sentences": 909,
+          "sha256": "0d95ee511cf2f26a64e229e86e5e9b37851555ebc8b53c5ebb261f2dfbc185e7",
+          "tokens": 30239
+        },
+        "test": {
+          "sentences": 680,
+          "sha256": "793c87bf173d491af2092ef7f87b04a2cf6c596490e7347a2065058a053a6389",
+          "tokens": 28264
+        },
+        "train": {
+          "sentences": 6075,
+          "sha256": "f0b56962b340f5325bb5d293f47717522e706112c19029e82c225355c6d65e85",
+          "tokens": 223881
+        }
+      },
+      "iso": "ar",
+      "language": "Arabic",
+      "license": "CC BY-NC-SA 3.0",
+      "license_sha256": "79e211ff70191c7f5cf0e33a8cf2bfa5799318d51ae7a5fd1a065abcb3e3ab05",
+      "prefix": "ar_padt",
+      "repo": "UniversalDependencies/UD_Arabic-PADT"
+    }
+  ],
+  "programme": "recoverability-frontier-v0.5.0-corpus-manifest"
+}
