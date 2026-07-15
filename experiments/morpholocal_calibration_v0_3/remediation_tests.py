@@ -8,23 +8,23 @@ from types import SimpleNamespace
 import remediation_runtime as remediation
 
 
-def event(doc, line, cell, position, token_index, test=False):
+def event(doc, line, cell, position, token_index, test=False, section="HERBAL_A"):
     return SimpleNamespace(
         doc=doc,
         line=line,
         cell=cell,
-        section="HERBAL_A",
+        section=section,
         position=position,
         token_index=token_index,
         test=test,
     )
 
 
-def line(doc, line_number, cells, token_indices, test=False):
+def line(doc, line_number, cells, token_indices, test=False, section="HERBAL_A"):
     rows = []
     for index, (cell, token_index) in enumerate(zip(cells, token_indices)):
         position = "FIRST" if index == 0 else "LAST" if index == len(cells) - 1 else "MID"
-        rows.append(event(doc, line_number, cell, position, token_index, test))
+        rows.append(event(doc, line_number, cell, position, token_index, test, section))
     return rows
 
 
@@ -55,6 +55,21 @@ def test_prepare_cache_isolation():
     assert remediation.safe_prepare(second) is second_data
 
 
+def test_label_cache_isolation():
+    module = SimpleNamespace(key_label=lambda row, scheme: row.section)
+    first = line("A", 1, [0, 1], [1, 2], section="A") + line(
+        "A", 2, [2, 3], [3, 4], section="B"
+    )
+    second = line("B", 1, [4, 5], [1, 2], section="A") + line(
+        "B", 2, [6, 7], [3, 4], section="B"
+    )
+    first_a = remediation.safe_label_events(module, first, "currier", "A")
+    second_a = remediation.safe_label_events(module, second, "currier", "A")
+    assert [row.cell for row in first_a] == [0, 1]
+    assert [row.cell for row in second_a] == [4, 5]
+    assert remediation.safe_label_events(module, first, "currier", "A") is first_a
+
+
 def test_production_cache_isolation():
     train_zero = line("A", 1, [0, 0, 0, 0], [1, 2, 3, 4], False)
     train_one = line("B", 1, [1, 1, 1, 1], [1, 2, 3, 4], False)
@@ -65,6 +80,7 @@ def test_production_cache_isolation():
 
 
 def test_cache_bounds():
+    module = SimpleNamespace(key_label=lambda row, scheme: row.section)
     for index in range(remediation.PREPARE_CACHE_LIMIT + 10):
         rows = line(f"P{index}", 1, [index % 24], [index], False)
         remediation.safe_prepare(rows)
@@ -75,11 +91,17 @@ def test_cache_bounds():
         remediation.safe_production_predictive_nll(rows, rows, None, None)
     assert len(remediation._PRODUCTION_CACHE) <= remediation.PRODUCTION_CACHE_LIMIT
 
+    for index in range(remediation.LABEL_EVENTS_CACHE_LIMIT + 10):
+        rows = line(f"L{index}", 1, [index % 24], [index], False, section="A")
+        remediation.safe_label_events(module, rows, "currier", "A")
+    assert len(remediation._LABEL_EVENTS_CACHE) <= remediation.LABEL_EVENTS_CACHE_LIMIT
+
 
 def main():
     tests = [
         test_subset_preserves_order,
         test_prepare_cache_isolation,
+        test_label_cache_isolation,
         test_production_cache_isolation,
         test_cache_bounds,
     ]
