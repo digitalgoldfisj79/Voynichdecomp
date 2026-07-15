@@ -27,6 +27,7 @@ def main() -> None:
     parser.add_argument("--restarts", type=int, required=True)
     parser.add_argument("--workers", type=int, default=32)
     parser.add_argument("--replicates", type=int, default=20)
+    parser.add_argument("--iso", action="append", default=[])
     args = parser.parse_args()
 
     base.anneal_mono = search2.anneal_mono_search2
@@ -35,6 +36,12 @@ def main() -> None:
         experiment / "corpus_manifest_v050.json",
         args.repo / ".cache" / "v050_corpora",
     )
+    if args.iso:
+        requested = tuple(dict.fromkeys(args.iso))
+        missing = [iso for iso in requested if iso not in languages]
+        if missing:
+            raise RuntimeError(f"unknown language codes: {missing}")
+        languages = {iso: languages[iso] for iso in requested}
     models = {iso: base.build_language_model(language) for iso, language in languages.items()}
     first_iso = sorted(languages)[0]
     search2.anneal_mono_search2(
@@ -66,6 +73,7 @@ def main() -> None:
     gate["pass"] = all(gate.values())
     payload = {
         "programme": "recoverability-frontier-v0.5.1-mono-one-shot-test",
+        "language_shard": sorted(languages),
         "selected_schedule": {
             "iterations": args.iterations,
             "restarts": args.restarts,
