@@ -14,6 +14,11 @@ def main() -> None:
         sys.argv = [sys.argv[0], str(repo)]
         lattice.main()
         return
+    if phase == "three":
+        import v060_family_s_final_scoring_phase as scoring
+
+        scoring.run(repo)
+        return
 
     import v060_family_s_neural_final_evaluate as implementation
 
@@ -23,8 +28,6 @@ def main() -> None:
     })()
     if phase == "one":
         implementation.phase1(args)
-    elif phase == "three":
-        implementation.phase3(args)
     else:
         raise SystemExit(f"unknown phase: {phase}")
 
