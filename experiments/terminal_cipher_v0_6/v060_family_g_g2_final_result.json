@@ -1,0 +1,46 @@
+{
+  "amendment_commit": "06ec6c3db3c1ef7410fe07806c3e9ca5f85416ca",
+  "branch": "experiment/terminal-cipher-programme-v0.6-20260716",
+  "date": "2026-07-16",
+  "decision": "FAIL_DEVELOPMENT_CLOSE_FAMILY_NO_LOCKED_TEST_NO_VOYNICH",
+  "family": "G",
+  "final_job_id": "6a58d7b985d9643ce16d6405",
+  "final_sha256": "c5d4bd663f19a14101fa0d2c3f31b6cb91c0411488cb125371cc8939087c8bc5",
+  "final_smoke_job_id": "6a58d724b1669a49bf0778b3",
+  "final_smoke_sha256": "3bd45405e7e92450d1a6adc6d76074ec53b56549e5d3818dbd39aaff298b77b4",
+  "final_solver_commit": "e631167b45026b1b6710c64033aedb06f8a7af87",
+  "final_summary": {
+    "at_least_70_count": 38,
+    "auroc": 0.7855224609375,
+    "carrier_class_accuracy_detected": 0.9473684210526315,
+    "detected_payload_count": 38,
+    "exact_parameter_accuracy_detected": 0.9210526315789473,
+    "false_positive_rate": 0.0078125,
+    "mean_recovery_with_abstention_as_zero": 0.5764973958333334,
+    "minimum_detected_recovery": 0.8854166666666666,
+    "null_covers": 256,
+    "payload_covers": 64,
+    "threshold": -1.0508602310135067
+  },
+  "frozen_gate": {
+    "at_least_54_of_64_at_0_70": false,
+    "auroc_at_least_0_95": false,
+    "carrier_class_accuracy_at_least_0_85": true,
+    "exact_parameter_accuracy_at_least_0_75": true,
+    "false_positive_rate_at_most_0_01": true,
+    "mean_recovery_at_least_0_80": false,
+    "pass": false
+  },
+  "initial_freeze_commit": "044e75d8f6cd9b51c47d29ed0233d3ddea7c7c93",
+  "initial_implementation_commit": "9daebe9e3f7cf7e373d05a175180bb6e70b6247b",
+  "initial_job_id": "6a58d530b1669a49bf077861",
+  "initial_sha256": "6d658fe149fde328319aec5a06309c51cfdb75e2c34afd34bb40bbe2728ed76e",
+  "inventory": {
+    "sha256": "00d3ae0d40c4cbf63c78c75eb779aae7c4cc15e524faa923d0d0d7a4b9584afe",
+    "total": 2935
+  },
+  "programme": "Voynich terminal cipher programme v0.6",
+  "protocol_commit": "b751675e0ffdfa132579feacfe2f0d65f4884479",
+  "sha256": "43e99e18164a780fd4a82a6c09bf92cac13b7b0af25b443ca0bf19ac5e5554a2",
+  "stage": "G2 final amended development"
+}
