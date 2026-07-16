@@ -15,10 +15,8 @@ from pathlib import Path
 from typing import Any
 
 import requests
-from tusclient import client as tus_client
 
 DEFAULT_CHUNK_BYTES = 40 * 1024 * 1024
-TUS_CHUNK_BYTES = 6 * 1024 * 1024
 
 
 def sha256_file(path: Path, block_bytes: int = 4 * 1024 * 1024) -> str:
@@ -60,49 +58,32 @@ def split_exact_bytes(source: Path, working: Path, chunk_bytes: int) -> list[dic
     return parts
 
 
-def _tus_headers(publishable_key: str) -> dict[str, str]:
-    return {
-        "Authorization": f"Bearer {publishable_key}",
-        "apikey": publishable_key,
-    }
-
-
-def upload_tus(
-    local_path: Path,
-    object_path: str,
-    *,
-    project_ref: str,
-    publishable_key: str,
-    bucket: str,
-) -> None:
-    endpoint = f"https://{project_ref}.storage.supabase.co/storage/v1/upload/resumable"
-    client = tus_client.TusClient(endpoint, headers=_tus_headers(publishable_key))
-    with local_path.open("rb") as stream:
-        uploader = client.uploader(
-            file_stream=stream,
-            chunk_size=TUS_CHUNK_BYTES,
-            metadata={
-                "bucketName": bucket,
-                "objectName": object_path,
-                "contentType": "application/octet-stream",
-                "cacheControl": "3600",
-            },
-        )
-        uploader.upload()
-
-
-def signed_download_url(signer_url: str, object_path: str) -> str:
+def signed_url(signer_url: str, action: str, object_path: str) -> str:
     response = requests.post(
         signer_url,
-        json={"action": "download", "path": object_path},
+        json={"action": action, "path": object_path},
         timeout=30,
     )
     response.raise_for_status()
     payload = response.json()
     url = payload.get("signedUrl")
     if not isinstance(url, str) or not url:
-        raise RuntimeError(f"signer did not return signedUrl for {object_path}")
+        raise RuntimeError(
+            f"signer did not return signedUrl for {action} {object_path}"
+        )
     return url
+
+
+def upload_signed(local_path: Path, object_path: str, signer_url: str) -> None:
+    url = signed_url(signer_url, "upload", object_path)
+    with local_path.open("rb") as stream:
+        response = requests.put(
+            url,
+            data=stream,
+            headers={"Content-Type": "application/octet-stream"},
+            timeout=600,
+        )
+    response.raise_for_status()
 
 
 def download_to(url: str, destination: Path) -> tuple[int, str]:
@@ -125,9 +106,6 @@ def persist_checkpoint(
     checkpoint_path: Path,
     *,
     object_prefix: str,
-    project_ref: str,
-    publishable_key: str,
-    bucket: str,
     signer_url: str,
     chunk_bytes: int = DEFAULT_CHUNK_BYTES,
     verify_roundtrip: bool = True,
@@ -149,13 +127,7 @@ def persist_checkpoint(
         for part in parts:
             local_part = Path(part["local_path"])
             object_path = f"{object_prefix}/{part['filename']}"
-            upload_tus(
-                local_part,
-                object_path,
-                project_ref=project_ref,
-                publishable_key=publishable_key,
-                bucket=bucket,
-            )
+            upload_signed(local_part, object_path, signer_url)
             remote_parts.append(
                 {
                     "index": part["index"],
@@ -179,13 +151,7 @@ def persist_checkpoint(
             encoding="utf-8",
         )
         manifest_object_path = f"{object_prefix}/{manifest_path.name}"
-        upload_tus(
-            manifest_path,
-            manifest_object_path,
-            project_ref=project_ref,
-            publishable_key=publishable_key,
-            bucket=bucket,
-        )
+        upload_signed(manifest_path, manifest_object_path, signer_url)
         manifest["manifest_object_path"] = manifest_object_path
         manifest["manifest_sha256"] = sha256_file(manifest_path)
 
@@ -195,7 +161,7 @@ def persist_checkpoint(
                 for part in remote_parts:
                     downloaded = working / "downloaded" / Path(part["object_path"]).name
                     size, digest = download_to(
-                        signed_download_url(signer_url, part["object_path"]),
+                        signed_url(signer_url, "download", part["object_path"]),
                         downloaded,
                     )
                     if size != part["bytes"] or digest != part["sha256"]:
@@ -220,20 +186,7 @@ def persist_checkpoint(
 
 
 def transport_from_environment() -> dict[str, str]:
-    required = {
-        "project_ref": "V060_SUPABASE_PROJECT_REF",
-        "publishable_key": "V060_SUPABASE_PUBLISHABLE_KEY",
-        "bucket": "V060_SUPABASE_BUCKET",
-        "signer_url": "V060_SUPABASE_SIGNER_URL",
-    }
-    result: dict[str, str] = {}
-    missing: list[str] = []
-    for key, environment_name in required.items():
-        value = os.environ.get(environment_name)
-        if not value:
-            missing.append(environment_name)
-        else:
-            result[key] = value
-    if missing:
-        raise RuntimeError("missing persistence environment: " + ", ".join(missing))
-    return result
+    signer_url = os.environ.get("V060_SUPABASE_SIGNER_URL")
+    if not signer_url:
+        raise RuntimeError("missing persistence environment: V060_SUPABASE_SIGNER_URL")
+    return {"signer_url": signer_url}
