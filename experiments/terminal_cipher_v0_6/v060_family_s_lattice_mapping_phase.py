@@ -82,6 +82,7 @@ def solve_one(
 ) -> dict[str, Any]:
     started = time.perf_counter()
     candidates: list[dict[str, Any]] = []
+    invalid_candidates = 0
     for rank, segmentation in enumerate(phase1_row["segmentations"]):
         lengths = [int(value) for value in segmentation["lengths"]]
         decoded = s3.decode_candidate(
@@ -93,17 +94,32 @@ def solve_one(
             700000,
             50,
         )
-        if decoded is not None:
-            candidates.append(
-                {
-                    "rank": rank,
-                    "lengths": lengths,
-                    "boundary_posterior_score": float(segmentation["score"]),
-                    "combined_score": float(decoded["combined_score"]),
-                }
-            )
+        if decoded is None:
+            invalid_candidates += 1
+            continue
+        candidates.append(
+            {
+                "rank": rank,
+                "lengths": lengths,
+                "boundary_posterior_score": float(segmentation["score"]),
+                "combined_score": float(decoded["combined_score"]),
+            }
+        )
     if not candidates:
-        raise RuntimeError(f"no valid lattice candidate for replicate {trial.replicate}")
+        direct = [int(value) for value in phase1_row["direct_plaintext"]]
+        return {
+            "replicate": trial.replicate,
+            "lattice_available": False,
+            "lattice_abstention_reason": "all_eight_paths_exceed_frozen_inventory",
+            "selected_rank": None,
+            "selected_lengths": None,
+            "selected_screen_combined_score": None,
+            "lattice_plaintext": direct,
+            "lattice_final_combined_score": None,
+            "valid_screen_candidates": 0,
+            "invalid_screen_candidates": invalid_candidates,
+            "elapsed_seconds": time.perf_counter() - started,
+        }
     candidates.sort(key=lambda row: (-row["combined_score"], row["rank"]))
     selected = candidates[0]
     final = s3.decode_candidate(
@@ -119,12 +135,15 @@ def solve_one(
         raise RuntimeError(f"final lattice candidate invalid for replicate {trial.replicate}")
     return {
         "replicate": trial.replicate,
+        "lattice_available": True,
+        "lattice_abstention_reason": None,
         "selected_rank": selected["rank"],
         "selected_lengths": selected["lengths"],
         "selected_screen_combined_score": selected["combined_score"],
         "lattice_plaintext": final["plaintext"],
         "lattice_final_combined_score": float(final["combined_score"]),
         "valid_screen_candidates": len(candidates),
+        "invalid_screen_candidates": invalid_candidates,
         "elapsed_seconds": time.perf_counter() - started,
     }
 
@@ -157,8 +176,10 @@ def main() -> None:
             json.dumps(
                 {
                     "replicate": row["replicate"],
+                    "lattice_available": row["lattice_available"],
                     "selected_rank": row["selected_rank"],
                     "valid_screen_candidates": row["valid_screen_candidates"],
+                    "invalid_screen_candidates": row["invalid_screen_candidates"],
                     "elapsed_seconds": row["elapsed_seconds"],
                 },
                 sort_keys=True,
@@ -175,6 +196,8 @@ def main() -> None:
         "split": "dev",
         "phase1_sha256": phase1_payload["sha256"],
         "rows": rows,
+        "lattice_available_count": sum(bool(row["lattice_available"]) for row in rows),
+        "lattice_abstention_count": sum(not bool(row["lattice_available"]) for row in rows),
         "elapsed_seconds": time.perf_counter() - started,
     }
     payload["sha256"] = hashlib.sha256(json_bytes(payload)).hexdigest()
@@ -186,6 +209,8 @@ def main() -> None:
                 "object_path": PHASE2_OBJECT,
                 "sha256": payload["sha256"],
                 "trials": len(rows),
+                "lattice_available_count": payload["lattice_available_count"],
+                "lattice_abstention_count": payload["lattice_abstention_count"],
             },
             sort_keys=True,
         ),
