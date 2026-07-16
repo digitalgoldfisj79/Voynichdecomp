@@ -17,6 +17,9 @@ from typing import Any
 import requests
 
 DEFAULT_CHUNK_BYTES = 40 * 1024 * 1024
+DEFAULT_SIGNER_URL = (
+    "https://ymaqlcfjmdwncdbjprmw.supabase.co/functions/v1/v060-checkpoint-sign"
+)
 
 
 def sha256_file(path: Path, block_bytes: int = 4 * 1024 * 1024) -> str:
@@ -186,7 +189,9 @@ def persist_checkpoint(
 
 
 def transport_from_environment() -> dict[str, str]:
-    signer_url = os.environ.get("V060_SUPABASE_SIGNER_URL")
-    if not signer_url:
-        raise RuntimeError("missing persistence environment: V060_SUPABASE_SIGNER_URL")
-    return {"signer_url": signer_url}
+    return {
+        "signer_url": os.environ.get(
+            "V060_SUPABASE_SIGNER_URL",
+            DEFAULT_SIGNER_URL,
+        )
+    }
