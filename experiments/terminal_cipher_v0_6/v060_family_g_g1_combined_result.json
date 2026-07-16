@@ -1,0 +1,91 @@
+{
+  "branch": "experiment/terminal-cipher-programme-v0.6-20260716",
+  "combined_summary": {
+    "at_least_85_count": 63,
+    "encrypted_mean": 0.9638671875,
+    "encrypted_trials": 32,
+    "mean": 0.98193359375,
+    "minimum": 0.8125,
+    "status_selection_accuracy": 1.0,
+    "trials": 64
+  },
+  "date": "2026-07-16",
+  "decision": "PASS_G1_AUTHORISE_G2_DEVELOPMENT_ONLY",
+  "family": "G",
+  "frozen_gate": {
+    "at_least_58_of_64_at_0_85": true,
+    "encrypted_mean_at_least_0_85": true,
+    "mean_at_least_0_90": true,
+    "minimum_at_least_0_70": true,
+    "pass": true
+  },
+  "implementation_commit": "9e5fb7b97f9078748687033441f1c5e350cb3e1f",
+  "programme": "Voynich terminal cipher programme v0.6",
+  "protocol_commit": "b751675e0ffdfa132579feacfe2f0d65f4884479",
+  "protocol_file": "experiments/terminal_cipher_v0_6/V060_PROTOCOL_FAMILY_G_CARRIER_STEGANOGRAPHY.md",
+  "repository": "digitalgoldfisj79/Voynichdecomp",
+  "sha256": "139c19401fa67b6758430e686d23291cd76a3302f38fdc2f6998cb2baafe4c4c",
+  "source_jobs": [
+    {
+      "generator": "markov2",
+      "job_id": "6a58d1b8b1669a49bf077808",
+      "reported_sha256": "42fe86dac275cba5404e48f5276eb2d6d09a59e87e064e62c30f764a248ed811",
+      "summary": {
+        "at_least_85_count": 15,
+        "encrypted_mean": 0.9322916666666666,
+        "encrypted_trials": 8,
+        "mean": 0.9661458333333334,
+        "median": 1.0,
+        "minimum": 0.8125,
+        "status_selection_accuracy": 1.0,
+        "trials": 16
+      }
+    },
+    {
+      "generator": "motif",
+      "job_id": "6a58d1c285d9643ce16d63a6",
+      "reported_sha256": "8089700547d898759dba20bfe348657a50ccfab7774ba9678ea4391288dbe4cc",
+      "summary": {
+        "at_least_85_count": 16,
+        "encrypted_mean": 0.9752604166666667,
+        "encrypted_trials": 8,
+        "mean": 0.9876302083333334,
+        "median": 1.0,
+        "minimum": 0.9270833333333334,
+        "status_selection_accuracy": 1.0,
+        "trials": 16
+      }
+    },
+    {
+      "generator": "copy_mutate",
+      "job_id": "6a58d1c9b1669a49bf07780a",
+      "reported_sha256": "592b9b146f0bffa0790ef1933572315ffd75976e882be2b5d5cf6d96711a12ec",
+      "summary": {
+        "at_least_85_count": 16,
+        "encrypted_mean": 0.9791666666666666,
+        "encrypted_trials": 8,
+        "mean": 0.9895833333333334,
+        "median": 1.0,
+        "minimum": 0.9479166666666666,
+        "status_selection_accuracy": 1.0,
+        "trials": 16
+      }
+    },
+    {
+      "generator": "slot",
+      "job_id": "6a58d1d185d9643ce16d63a8",
+      "reported_sha256": "296367ab1be534bbccbfdaac785ad19c4955217186a8b888ee9f6002cd706cb9",
+      "summary": {
+        "at_least_85_count": 16,
+        "encrypted_mean": 0.96875,
+        "encrypted_trials": 8,
+        "mean": 0.984375,
+        "median": 1.0,
+        "minimum": 0.90625,
+        "status_selection_accuracy": 1.0,
+        "trials": 16
+      }
+    }
+  ],
+  "stage": "G1 oracle carrier recovery"
+}
