@@ -1,0 +1,85 @@
+{
+  "date": "2026-07-16",
+  "family": "S",
+  "stage": "S3 final neural ensemble development",
+  "status": "FAIL_DEVELOPMENT_GATE_FAMILY_S_CLOSED",
+  "split": "dev",
+  "test_opened": false,
+  "voynich_opened": false,
+  "davis_labels_opened": false,
+  "jobs": {
+    "seed_1731_training": "Digitalgoldfish79/6a58e6ef85d9643ce16d6550",
+    "seed_1732_training": "Digitalgoldfish79/6a58f9b185d9643ce16d676a",
+    "phase1_ensemble_inference": "Digitalgoldfish79/6a592a5e85d9643ce16d6a29",
+    "phase2_lattice_mapping": "Digitalgoldfish79/6a592dbd85d9643ce16d6a4c",
+    "final_scoring": "Digitalgoldfish79/6a592ebc85d9643ce16d6a57"
+  },
+  "checkpoint_sha256": {
+    "1731": "bf31c7ad18c65170d4525f834bb3b32d1a283dc1a693c4356f8c17eb4db6d206",
+    "1732": "9e77411dd192726132380d7481db0661d3030b83a497c7abba01380899a8ff97"
+  },
+  "artifact_chain": {
+    "phase1_object": "v060/s3/evaluation/dev/phase1.json",
+    "phase1_sha256": "dd3d2382b1eada742d51dc01f37dd33fea0fc3a6b092eba5fe560dc90b441e08",
+    "phase1_bytes": 591067,
+    "phase2_object": "v060/s3/evaluation/dev/phase2.json",
+    "phase2_sha256": "525263039243353f6c2b179a78f6de30cfb6bd69b35ecabb74749c4d7ec4e63a",
+    "phase2_bytes": 76813,
+    "final_object": "v060/s3/evaluation/dev/final.json",
+    "final_sha256": "6290934da2bd5020897a7db61f8bb4b3f80b1eaea0d491d4ec3c5a529b76c44f",
+    "final_bytes": 13910
+  },
+  "configuration": {
+    "language": "en",
+    "plaintext_length": 384,
+    "trials": 16,
+    "beam_width": 4,
+    "boundary_lattice_paths": 8,
+    "screen_iterations": 700000,
+    "screen_restarts": 50,
+    "final_iterations": 700000,
+    "final_restarts": 200,
+    "models": 2,
+    "model_updates": 30000,
+    "effective_batch_per_model": 32
+  },
+  "summary": {
+    "plaintext_mean": 0.22379557291666666,
+    "plaintext_median": 0.22265625,
+    "plaintext_minimum": 0.203125,
+    "plaintext_at_least_75_count": 0,
+    "plaintext_exact_count": 0,
+    "boundary_f1_mean": 0.48413263344215807,
+    "boundary_f1_median": 0.48423128066394605,
+    "boundary_f1_minimum": 0.27768014059753954,
+    "lattice_available_count": 0,
+    "lattice_abstention_count": 16,
+    "direct_selected_count": 16,
+    "gate_pass": false
+  },
+  "thresholds": {
+    "plaintext_mean_minimum": 0.75,
+    "plaintext_median_minimum": 0.85,
+    "plaintext_at_least_75_count_minimum": 13,
+    "boundary_f1_mean_minimum": 0.85,
+    "plaintext_trial_minimum": 0.4
+  },
+  "rows": [
+    {"replicate": 0, "plaintext_accuracy": 0.203125, "boundary_f1": 0.37137989778534924},
+    {"replicate": 1, "plaintext_accuracy": 0.25, "boundary_f1": 0.4814159292035398},
+    {"replicate": 2, "plaintext_accuracy": 0.2265625, "boundary_f1": 0.7116968698517299},
+    {"replicate": 3, "plaintext_accuracy": 0.22395833333333337, "boundary_f1": 0.640275387263339},
+    {"replicate": 4, "plaintext_accuracy": 0.25260416666666663, "boundary_f1": 0.48},
+    {"replicate": 5, "plaintext_accuracy": 0.20572916666666663, "boundary_f1": 0.28426395939086296},
+    {"replicate": 6, "plaintext_accuracy": 0.2265625, "boundary_f1": 0.59552495697074},
+    {"replicate": 7, "plaintext_accuracy": 0.21354166666666663, "boundary_f1": 0.4905008635578583},
+    {"replicate": 8, "plaintext_accuracy": 0.22135416666666663, "boundary_f1": 0.5255474452554745},
+    {"replicate": 9, "plaintext_accuracy": 0.2109375, "boundary_f1": 0.27768014059753954},
+    {"replicate": 10, "plaintext_accuracy": 0.21354166666666663, "boundary_f1": 0.3796610169491525},
+    {"replicate": 11, "plaintext_accuracy": 0.25260416666666663, "boundary_f1": 0.2878504672897196},
+    {"replicate": 12, "plaintext_accuracy": 0.22916666666666663, "boundary_f1": 0.5709624796084829},
+    {"replicate": 13, "plaintext_accuracy": 0.22395833333333337, "boundary_f1": 0.4684385382059801},
+    {"replicate": 14, "plaintext_accuracy": 0.21354166666666663, "boundary_f1": 0.6938775510204082},
+    {"replicate": 15, "plaintext_accuracy": 0.21354166666666663, "boundary_f1": 0.48704663212435234}
+  ]
+}
