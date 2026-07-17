@@ -1,0 +1,21 @@
+{
+  "aggregate_sha256": "78f57d1d1ea52c6a8a4f6de9438b094edc56b670ab22863767cfae659aaddeaa",
+  "davis_labels_loaded": false,
+  "frozen_files": {
+    "FROZEN_PROTOCOL.md": {"sha256": "5a1b678a3a7f54d1c74bc0f53ce40b2431b8370f84027340dd31a375fd92d617", "size_bytes": 17360},
+    "LITERATURE_AND_DATA_AUDIT.md": {"sha256": "52701f7fbef220325c4e1f9614a61f76488d58dd0d47b06efdf58513c0c580ca", "size_bytes": 6760},
+    "bootstrap_source.py": {"sha256": "3075ca1fd9643c18bdd5fba9c7c325ebee1815daf93821a89983c1b2ec7b7551", "size_bytes": 1687},
+    "code/freeze_manifest.py": {"sha256": "f2d9f5dadb75b2f9eb2c226b5fabd6f7086446acdf28507ae2b4600f4def799d", "size_bytes": 1985},
+    "code/preflight.py": {"sha256": "1d6fdfc47334898955c0af33275fc0f1d0fa519092fbc630bb185171ab384ce9", "size_bytes": 8094},
+    "config/protocol_v1.json": {"sha256": "bc35626e9c1f47a31626763b16906cb292e58d73018c17ace441028da55bec56", "size_bytes": 2411},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part00": {"sha256": "80eac6ee78344748199354257245c328b8686480364899a24958d513e090e0d9", "size_bytes": 4000},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part01": {"sha256": "384bfa68fedd69847c1c17c6c9c272e8e7f192800fb7ef4d0257a156451716d8", "size_bytes": 4000},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part02": {"sha256": "58e8038e3506c17eff61eaaed171b407d8fddfd6701a0b914d6243000a7cb6d6", "size_bytes": 1032},
+    "source_bundle/external_calibration.py.v2.gz.b64.part00": {"sha256": "1e0f92650f4db675043aea75001edf189ed3dcf3ece137f59ee8fcf5b32f447c", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v2.gz.b64.part01": {"sha256": "ab41025861078e5968a5f44a9993186cc8a77d08577186aa5a3a77af260a005b", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v2.gz.b64.part02": {"sha256": "27f2e50de550de824c7d99759f8dc6740903ee1a8ef0b86546bd1d44217b8dc6", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v2.gz.b64.part03": {"sha256": "dcef07e9f66a9b047b8b31c42c90f1067ec81e70ef5999efd7f3fc9c67ac00de", "size_bytes": 3992}
+  },
+  "phase1_voynich_opened": false,
+  "schema": "blind-palaeography-freeze-v1"
+}
