@@ -1,0 +1,80 @@
+            xx = x[idx]
+            best = (-1e9, None)
+            for k in range(2, min(10, len(xx) - 1) + 1):
+                lab = AgglomerativeClustering(n_clusters=k, linkage="ward").fit_predict(xx)
+                score = silhouette_score(xx, lab) - 0.01 * k
+                if score > best[0]:
+                    best = (score, k)
+            exact += int(best[1] == true_k)
+            within += int(abs(int(best[1]) - true_k) <= 1)
+            total += 1
+            details.append({"true_k": true_k, "selected_k": int(best[1]), "score": float(best[0]), "rep": rep})
+    return {"panels": total, "exact_rate": exact / total, "within_one_rate": within / total, "details": details}
+
+
+def perturb_patches(patches: np.ndarray, targets: np.ndarray, mode: str) -> np.ndarray:
+    out = np.empty_like(patches)
+    for i, (p, m) in enumerate(zip(patches, targets)):
+        if mode == "contrast":
+            out[i] = np.clip((p.astype(np.float32) - 127.5) * 0.8 + 127.5, 0, 255).astype(np.uint8)
+        elif mode == "scale":
+            q = cv2.resize(p, (27, 27), interpolation=cv2.INTER_AREA)
+            out[i] = cv2.resize(q, (32, 32), interpolation=cv2.INTER_CUBIC)
+        elif mode in {"erosion", "dilation"}:
+            k = np.ones((2, 2), np.uint8)
+            mm = cv2.erode(m, k) if mode == "erosion" else cv2.dilate(m, k)
+            out[i] = np.repeat(((1 - mm) * 255)[:, :, None], 3, axis=2).astype(np.uint8)
+        elif mode == "translation":
+            out[i] = cv2.warpAffine(p, np.float32([[1, 0, 2], [0, 1, 1]]), (32, 32), borderValue=(255, 255, 255))
+        else:
+            raise ValueError(mode)
+    return out
+
+
+def emit_bundle(files: list[Path]) -> None:
+    buf = io.BytesIO()
+    with tarfile.open(fileobj=buf, mode="w:gz") as tar:
+        for p in files:
+            tar.add(p, arcname=p.name)
+    raw = buf.getvalue()
+    enc = base64.b64encode(raw).decode()
+    log("V15_BUNDLE_BEGIN", bytes=len(raw), sha256=sha256_bytes(raw), chunks=(len(enc) + 3999) // 4000)
+    for i in range(0, len(enc), 4000):
+        print(f"V15_BUNDLE_CHUNK {i // 4000:05d} {enc[i:i + 4000]}", flush=True)
+    print("V15_BUNDLE_END " + sha256_bytes(raw), flush=True)
+
+
+def main() -> int:
+    WORK.mkdir(parents=True, exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
+    helper = load_helper()
+    MaskedAutoencoderViT, Wrapper = helper.load_upstream()
+    archive = WORK / "archives" / "historical_wi_color.zip"
+    helper.download(ARCHIVE_URL, archive, ARCHIVE_MD5)
+    pages = helper.parse_pages(helper.extract_archive(archive))
+    splits = split_writers(list(pages))
+    manifest = {
+        "schema": "blind-pal-saghog-v1.5-preflight" if PREFLIGHT else "blind-pal-saghog-v1.5-full",
+        "seed": SEED,
+        "splits": splits,
+        "helper_sha256": HELPER_SHA256,
+        "upstream_commit": helper.UPSTREAM_COMMIT,
+        "archive_md5": ARCHIVE_MD5,
+        "settings": {
+            "patches_per_page": PATCHES_PER_PAGE,
+            "mae_updates": MAE_UPDATES,
+            "metric_updates": METRIC_UPDATES,
+            "pca_dim": PCA_DIM,
+            "permutations": PERMUTATIONS,
+        },
+    }
+    (OUT / "writer_split.json").write_text(json.dumps(manifest, indent=2, sort_keys=True))
+    log("V15_SPLIT", **{k: len(v) for k, v in splits.items()}, preflight=PREFLIGHT)
+
+    patch_x: list[np.ndarray] = []
+    patch_t: list[np.ndarray] = []
+    patch_d: list[np.ndarray] = []
+    patch_w: list[str] = []
+    records: list[dict[str, Any]] = []
+    for part, ws in splits.items():
+        for w in ws:
