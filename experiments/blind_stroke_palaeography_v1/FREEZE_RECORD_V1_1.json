@@ -1,0 +1,25 @@
+{
+  "aggregate_sha256": "35ccddae4cc90807126a0d590b764f83a9d218ec9987211bedf2c07bd947561c",
+  "bounded_repairs_consumed": 1,
+  "davis_labels_loaded": false,
+  "frozen_files": {
+    "AMENDMENT_001.md": {"sha256": "509b1a94492f6bfcf9d56fda2471cd78428f27eedcd11c25e234f59e4290beae", "size_bytes": 2712},
+    "FROZEN_PROTOCOL.md": {"sha256": "5a1b678a3a7f54d1c74bc0f53ce40b2431b8370f84027340dd31a375fd92d617", "size_bytes": 17360},
+    "LITERATURE_AND_DATA_AUDIT.md": {"sha256": "52701f7fbef220325c4e1f9614a61f76488d58dd0d47b06efdf58513c0c580ca", "size_bytes": 6760},
+    "bootstrap_source.py": {"sha256": "da2f91eeeeb2c91d5c20a0bfa519ac102b1b20e8830c5eba213ca4bf22dcd278", "size_bytes": 1687},
+    "code/freeze_manifest.py": {"sha256": "d2a442b5eb7c8a7aaf0ba7c0eec7dc00cd7ca761901c713b317cde749f7b9dcd", "size_bytes": 2217},
+    "code/preflight.py": {"sha256": "1d6fdfc47334898955c0af33275fc0f1d0fa519092fbc630bb185171ab384ce9", "size_bytes": 8094},
+    "config/protocol_v1.json": {"sha256": "bc35626e9c1f47a31626763b16906cb292e58d73018c17ace441028da55bec56", "size_bytes": 2411},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part00": {"sha256": "80eac6ee78344748199354257245c328b8686480364899a24958d513e090e0d9", "size_bytes": 4000},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part01": {"sha256": "384bfa68fedd69847c1c17c6c9c272e8e7f192800fb7ef4d0257a156451716d8", "size_bytes": 4000},
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part02": {"sha256": "58e8038e3506c17eff61eaaed171b407d8fddfd6701a0b914d6243000a7cb6d6", "size_bytes": 1032},
+    "source_bundle/external_calibration.py.v4.gz.b64.part00": {"sha256": "0955d85989d68b01060984c6781b0f37f2d3e7c43f511a6152db7c365d117337", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v4.gz.b64.part01": {"sha256": "186b3fa4951d9dd5cb967c3e63abc427f64aba71feddcd444d48a0e017902aa8", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v4.gz.b64.part02": {"sha256": "ef1a393624317225efa2bad66426b7503cdc186f4efd265df3db4c354bcf5e67", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v4.gz.b64.part03": {"sha256": "95238472abf1cb113396d38027860f49efde0c8d46f295311639c8110653416b", "size_bytes": 4000},
+    "source_bundle/external_calibration.py.v4.gz.b64.part04": {"sha256": "634b0a646055528640c107226748d2576abd43cc649bc000d88249ebc0d72018", "size_bytes": 224}
+  },
+  "parent_freeze_sha256": "78f57d1d1ea52c6a8a4f6de9438b094edc56b670ab22863767cfae659aaddeaa",
+  "phase1_voynich_opened": false,
+  "schema": "blind-palaeography-freeze-v1.1"
+}
