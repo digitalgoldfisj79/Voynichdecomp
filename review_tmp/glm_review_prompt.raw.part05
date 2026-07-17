@@ -1,0 +1,51 @@
+Kambhatla, N., L. Born, and A. Sarkar. 2023. “Decipherment as Regression: Solving Historical Substitution Ciphers by Learning Symbol Recurrence Relations.” In *Findings of EACL 2023*, 2136–2152. https://doi.org/10.18653/v1/2023.findings-eacl.160.
+
+Kambhatla, N., A. Mansouri Bigvand, and A. Sarkar. 2018. “Decipherment of Substitution Ciphers with Neural Language Models.” In *Proceedings of EMNLP 2018*, 869–874. https://doi.org/10.18653/v1/D18-1102.
+
+Lehofer, A. 2022. “Applying Hierarchical Clustering to Homophonic Substitution Ciphers Using Historical Corpora.” *Cryptologia* 46 (5): 422–438. https://doi.org/10.1080/01611194.2021.1918801.
+
+Lindemann, L., and C. Bowern. 2020. “Character Entropy in Modern and Historical Texts: Comparison Metrics for an Undeciphered Manuscript.” arXiv:2010.14697. https://doi.org/10.48550/arXiv.2010.14697.
+
+Megyesi, B., J. Sikora, F. Fornmark, M. Waldispühl, N. Kopal, and V. Mikhalev. 2023. “Historical Language Models in Cryptanalysis: Case Studies on English and German.” In *Proceedings of the 6th International Conference on Historical Cryptology*, 120–129. https://doi.org/10.3384/ecp195701.
+
+Megyesi, B., C. Tudor, B. Láng, A. Lehofer, N. Kopal, K. de Leeuw, and M. Waldispühl. 2024. “Keys with Nomenclatures in Early Modern Europe.” *Cryptologia* 48 (2): 97–139. https://doi.org/10.1080/01611194.2022.2113185.
+
+Montemurro, M. A., and D. H. Zanette. 2013. “Keywords and Co-Occurrence Patterns in the Voynich Manuscript: An Information-Theoretic Analysis.” *PLoS ONE* 8 (6): e66344. https://doi.org/10.1371/journal.pone.0066344.
+
+Nuhn, M., J. Schamper, and H. Ney. 2013. “Beam Search for Solving Substitution Ciphers.” In *Proceedings of ACL 2013*, 1568–1576.
+
+Nuhn, M., J. Schamper, and H. Ney. 2014. “Improved Decipherment of Homophonic Ciphers.” In *Proceedings of EMNLP 2014*, 1764–1768. https://doi.org/10.3115/v1/D14-1184.
+
+Ravi, S., and K. Knight. 2011. “Bayesian Inference for Zodiac and Other Homophonic Ciphers.” In *Proceedings of ACL 2011*, 239–247.
+
+Reddy, S., and K. Knight. 2011. “What We Know About the Voynich Manuscript.” In *Proceedings of the 5th ACL-HLT Workshop on Language Technology for Cultural Heritage, Social Sciences, and Humanities*, 78–86.
+
+Rugg, G., and G. Taylor. 2017. “Hoaxing Statistical Features of the Voynich Manuscript.” *Cryptologia* 41 (3): 247–268. https://doi.org/10.1080/01611194.2016.1206753.
+
+Schinner, A. 2007. “The Voynich Manuscript: Evidence of the Hoax Hypothesis.” *Cryptologia* 31 (2): 95–107. https://doi.org/10.1080/01611190601133539.
+
+Sterneck, R., A. Polish, and C. Bowern. 2021. “Topic Modeling in the Voynich Manuscript.” arXiv:2107.02858. https://doi.org/10.48550/arXiv.2107.02858.
+
+Timm, T., and A. Schinner. 2020. “A Possible Generating Algorithm of the Voynich Manuscript.” *Cryptologia* 44 (1): 1–19. https://doi.org/10.1080/01611194.2019.1596999.
+
+---
+
+## Editorial notes for the next revision
+
+1. Complete the page-level claim audit for the remaining literature claims before submission.
+2. Add a dedicated historical-cipher table showing the exact scope of every implemented family.
+3. Generate figures directly from frozen result JSON/CSV:
+   - four-stage evidence diagram;
+   - generator hierarchy;
+   - multilingual monoalphabetic length curve;
+   - homophonic bimodality;
+   - Family P locked distribution;
+   - Family P recognition confusion matrix;
+   - v0.7 held-out codelength by renderer.
+4. Decide whether the early two-table hypothesis belongs in the main text or a short retrospective subsection.
+5. Conduct a clean-room recomputation of all headline values before submission.
+6. Deposit the complete experiments tree, row-level outputs, neural checkpoints, protocols, and canonical scientific payloads in an anonymised reviewer-accessible archive.
+7. Working source snapshot for this editorial bundle: branch `experiment/cipher-generated-mdl-v0.7-20260716`, closure commit `23415e72b26811e7a3cec7a39c945ec09e0ed2a4`. Replace this searchable identifier with the anonymised archive identifier in the review manuscript.
+8. Citation style has been converted to author-date to match current published *Cryptologia* articles; confirm against the ScholarOne style prompt at final submission.
+
+</MANUSCRIPT>
