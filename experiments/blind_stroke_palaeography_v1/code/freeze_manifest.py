@@ -8,15 +8,17 @@ from pathlib import Path
 
 FROZEN_PATHS = [
     "FROZEN_PROTOCOL.md",
+    "AMENDMENT_001.md",
     "config/protocol_v1.json",
     "LITERATURE_AND_DATA_AUDIT.md",
     "bootstrap_source.py",
     "code/preflight.py",
     "code/freeze_manifest.py",
-    "source_bundle/external_calibration.py.v2.gz.b64.part00",
-    "source_bundle/external_calibration.py.v2.gz.b64.part01",
-    "source_bundle/external_calibration.py.v2.gz.b64.part02",
-    "source_bundle/external_calibration.py.v2.gz.b64.part03",
+    "source_bundle/external_calibration.py.v3.gz.b64.part00",
+    "source_bundle/external_calibration.py.v3.gz.b64.part01",
+    "source_bundle/external_calibration.py.v3.gz.b64.part02",
+    "source_bundle/external_calibration.py.v3.gz.b64.part03",
+    "source_bundle/external_calibration.py.v3.gz.b64.part04",
     "source_bundle/blind_model_selection.py.v2.gz.b64.part00",
     "source_bundle/blind_model_selection.py.v2.gz.b64.part01",
     "source_bundle/blind_model_selection.py.v2.gz.b64.part02",
@@ -34,7 +36,7 @@ def sha256(path: Path) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(Path(__file__).resolve().parents[1]))
-    ap.add_argument("--output", default="FREEZE_RECORD.json")
+    ap.add_argument("--output", default="FREEZE_RECORD_V1_1.json")
     args = ap.parse_args()
     root = Path(args.root).resolve()
     rows = {}
@@ -45,7 +47,9 @@ def main() -> int:
         rows[rel] = {"size_bytes": p.stat().st_size, "sha256": sha256(p)}
     canonical = json.dumps(rows, sort_keys=True, separators=(",", ":")).encode()
     record = {
-        "schema": "blind-palaeography-freeze-v1",
+        "schema": "blind-palaeography-freeze-v1.1",
+        "parent_freeze_sha256": "78f57d1d1ea52c6a8a4f6de9438b094edc56b670ab22863767cfae659aaddeaa",
+        "bounded_repairs_consumed": 1,
         "phase1_voynich_opened": False,
         "davis_labels_loaded": False,
         "frozen_files": rows,
