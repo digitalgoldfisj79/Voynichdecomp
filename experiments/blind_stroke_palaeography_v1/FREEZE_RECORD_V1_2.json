@@ -1,0 +1,40 @@
+{
+  "schema": "blind-palaeography-freeze-v1.2",
+  "freeze_date": "2026-07-17",
+  "status": "FROZEN_BEFORE_ANY_V1_2_CALIBRATION_METRIC",
+  "phase1_voynich_opened": false,
+  "davis_labels_loaded": false,
+  "f115r_target_loaded": false,
+  "v1_1_closed_without_calibration_result": true,
+  "parent_freeze_record": {
+    "path": "FREEZE_RECORD_V1_1.json",
+    "sha256": "51eb24cd27b57fc9aef19ce7ff95ebead1f77c361ce16a9088d8ec392829cdf6",
+    "recorded_aggregate_sha256": "35ccddae4cc90807126a0d590b764f83a9d218ec9987211bedf2c07bd947561c"
+  },
+  "frozen_files": {
+    "AMENDMENT_002_V1_2.md": {
+      "size_bytes": 3729,
+      "sha256": "c6d23b8006ac89aee67f3110847f9b82ce7db64bcfbd0fa64748c6b82efcfaf2"
+    },
+    "code/external_calibration_v1_2_launcher.py": {
+      "size_bytes": 3889,
+      "sha256": "91469052db8bb2b4eb4d99e41aecf94891e5fa45bd87393909a52b0c460f7455"
+    },
+    "FREEZE_RECORD_V1_1.json": {
+      "size_bytes": 2555,
+      "sha256": "51eb24cd27b57fc9aef19ce7ff95ebead1f77c361ce16a9088d8ec392829cdf6"
+    }
+  },
+  "aggregate_sha256": "a3b42fca8d99c662513f1fe1742e9d8f7345e032b02255222518e4abfefdeb7e",
+  "external_calibration_source": {
+    "parent_length": 37401,
+    "parent_sha256": "f93fc90c0527266d71d876962050923b9f7e4020c77dc8c7fad83019b80ac883",
+    "derived_length": 37929,
+    "derived_sha256": "edb7fe7b3405e2c41678ab035c267f563657b8e7a379425e9b26a89675b73607"
+  },
+  "historical_wi_split": {
+    "physical_pages_per_writer": 3,
+    "folds": 3,
+    "method": "deterministic writer-balanced leave-one-physical-page-out"
+  }
+}
