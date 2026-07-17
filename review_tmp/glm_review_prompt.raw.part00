@@ -1,0 +1,89 @@
+You are acting as an independent, hostile but fair scientific referee for the journal Cryptologia. Review the manuscript below without deference to the authors and without assuming that any result is true merely because it is reported.
+
+This is a methods paper about evidential standards for unknown structured texts, using the Voynich Manuscript as a motivating testbed. It reports a multi-stage computational programme involving simulation, classical cryptanalysis, neural models, family recognition, generator-disjoint controls, and source-transfer tests.
+
+Important rules for your review:
+1. Do not invent external citations or claim you checked a source that is not contained in the manuscript. Flag any citation you cannot assess.
+2. Distinguish internal scientific validity, external reproducibility, novelty, journal fit, and prose quality.
+3. Treat unarchived numerical results as reported claims, not independently verified facts.
+4. Check internal consistency of denominators, percentages, confidence intervals, experiment names, conclusions, and the four-stage evidential chain.
+5. Identify circularity, leakage, distribution-shift problems, pseudo-replication, selective reporting, over-broad cipher-class claims, and inappropriate inference from negative results.
+6. Evaluate whether the manuscript genuinely covers a coherent full programme or reads as a retrospective collection of experiments.
+7. Evaluate whether the claims about sequential freezing, locked tests, abstention, recoverability, recognisability, and transferability are justified by the described procedures.
+8. Assess whether the Voynich discussion is proportionate and whether the paper belongs in Cryptologia.
+9. Assess the transparency and scientific risks of the LLM-assisted research workflow.
+10. Be specific: quote section headings or short phrases where useful, but do not rewrite the entire paper.
+
+Return a formal referee report with exactly these sections:
+
+A. Recommendation: Accept / Minor revision / Major revision / Reject, followed by a confidence percentage.
+B. One-paragraph summary of the paper and its claimed contribution.
+C. Principal strengths.
+D. Fatal or potentially fatal issues.
+E. Major revisions required, numbered and prioritised.
+F. Statistical and experimental-design audit.
+G. Claims that should be narrowed, removed, or strengthened.
+H. Citation and literature-review audit, explicitly separating verifiable bibliographic defects from sources you simply cannot check.
+I. Reproducibility and artefact requirements.
+J. Journal fit, structure, and prose.
+K. Suggested revised title and a revised abstract of no more than 250 words.
+L. Final publication conditions: the minimum concrete conditions under which you would recommend acceptance.
+
+Be rigorous and concise enough to be actionable, but do not omit serious problems.
+
+<MANUSCRIPT>
+# Recovery Is Not Recognition: A Recoverability-First Framework for Distinguishing Ciphertext from Structured Generated Text
+
+**Anonymous manuscript for review**
+
+## Abstract
+
+Determining whether an unknown structured text encodes a source message is a different problem from deciphering a specified cipher. A mechanism may reproduce selected surface statistics, a decoder may solve examples from a known family, or a model may recover ordered latent structure without establishing that an unknown document was produced by that family or contains an independently selected message. We report a sequential experimental programme motivated by the Voynich Manuscript but designed as a general study of unknown-text cryptanalysis. The programme combined corpus-scale structural analysis, twenty-three non-message generators, charged model comparison, classical cryptanalytic search, neural sequence models, blind cipher-family classification, conditional randomisation, and source-transfer tests. Candidate methods were required to pass progressively stronger gates: **generability**, **recoverability**, **recognisability**, and **transferability**.
+
+The experiments produced distinct outcomes at each gate. A multilingual monoalphabetic solver recovered 94.6% of plaintext characters on 360 fresh-key locked trials. A changing-alphabet solver recovered 94.3% on its locked test, including 13 exact plaintexts in 16 trials. By contrast, the tested fresh-key homophonic, nomenclator, joint substitution-transposition, steganographic, and unsegmented polygraphic solver portfolios failed their frozen reliability gates despite favourable component or oracle results; these are bounded solver results, not exclusions of the corresponding historical cipher classes. Neural polygraphic models trained on 1.92 million fresh examples produced only 22.4% mean plaintext recovery. Most importantly, only 25 of 72 true changing-alphabet samples met the frozen operational evidence rule under an unseen structural regime (34.7%; Wilson 95% CI 24.8–46.2%), although 31 of 72 had the family as their unthresholded top class. An earlier latent-order detector accepted 10 of 16 ordered non-message controls (62.5%; 95% CI 38.6–81.5%) while detecting 2 of 16 independently generated ciphers (12.5%; 95% CI 3.5–36.0%). Finally, a description-length comparison supplied with the true cipher mappings remained dependent on a closely matched pooled source model and failed its source-transfer gate.
+
+These results do not classify the Voynich Manuscript. They show instead that solvability, family identification, and evidence for an underlying source message are logically separate achievements. We recommend that computational decipherment claims demonstrate all three on blinded and distribution-shifted controls, and abstain when any link fails.
+
+**Keywords:** historical cryptanalysis; cipher identification; generated text; neural decipherment; minimum description length; Voynich Manuscript; negative results; simulation
+
+---
+
+## 1. Introduction
+
+Cryptanalysis is usually presented as an inverse problem. A ciphertext is assumed to have been produced by a specified or bounded cipher family, and the analyst attempts to recover the key or plaintext. Unknown historical texts pose an earlier problem. Before a proposed decoder can be interpreted, the analyst must establish that the document belongs to the family the decoder solves, that the relevant representation has been specified independently of the output, and that the apparent signal is not equally compatible with a structured non-message process.
+
+These distinctions are easily obscured. A proposed cipher can generate text resembling an unknown document without being recoverable. A decoder can recover synthetic members of a family without reliably recognising that family in unseen data. A classifier can detect regularity without detecting a source message. A language model can prefer a fluent plaintext because the candidate resembles its training corpus rather than because the key is correct. A description-length calculation can favour an explanatory model in sample while failing when the source distribution or renderer changes.
+
+The Voynich Manuscript provides an unusually demanding example. Its writing is strongly structured, yet no reading has achieved general acceptance. Statistical studies have variously treated its low conditional entropy, word morphology, repetition patterns, topic structure, and positional constraints as evidence for language, cipher, notation, or stochastic generation (Reddy and Knight 2011; Schinner 2007; Lindemann and Bowern 2020; Montemurro and Zanette 2013; Sterneck, Polish, and Bowern 2021; Bowern and Lindemann 2021; Timm and Schinner 2020; Rugg and Taylor 2017; Gaskell and Bowern 2022). Other studies have shown that historical or constructed ciphers can reproduce selected Voynich-like statistics (Bowern and Gaskell 2022; Hermes 2022; Greshko 2025). The resulting literature contains not only competing interpretations but also competing standards for what counts as evidence.
+
+The present study does not attempt to decide whether the Voynich Manuscript is enciphered, generated, notational, or linguistic. It uses the manuscript problem to formulate and test a broader evidential standard. The central proposal is that four questions must be separated:
+
+1. **Generability:** Can a mechanism produce text with the relevant observable properties?
+2. **Recoverability:** Can an inference method recover fresh blinded instances of that mechanism?
+3. **Recognisability:** Can the mechanism be identified among strong cipher and non-cipher alternatives?
+4. **Transferability:** Does the evidence survive unseen keys, source corpora, renderer variants, document partitions, and real historical noise?
+
+A positive answer to an earlier question does not entail a positive answer to a later one. The programme reported here developed through repeated attempts to close those gaps. It began with corpus-scale structural and generative analysis, moved to charged comparison of bounded historical cipher models and production-only controls, expanded into a multilingual recoverability frontier, and ended with blind family identification and true-mapping source-transfer tests.
+
+The principal empirical findings are as follows.
+
+First, surface structure was abundant but non-specific. A four-slot decomposition of 37,465 tokens generalised to held-out folios, and section, line position, preceding suffix family, paragraph status, and quire jointly explained 28.9% of the entropy of the decomposed token distribution. Twenty-three generators reproduced different subsets of an 84-metric battery; the best fully generative system passed 59 of 84 metrics. These results established a strong production grammar but did not identify a source message.
+
+Second, generic neural decoding was not a substitute for cryptanalytic structure. A multilingual sequence-to-sequence model achieved negligible fresh-key recovery across eight cipher families. Family-specific classical solvers then recovered monoalphabetic substitution strongly, while fresh-key homophonic and joint substitution-transposition solvers remained sharply bimodal.
+
+Third, one terminal changing-alphabet family passed an untouched locked recovery test decisively. This positive result is important because it shows that the gates did not make success impossible. Nevertheless, a separately frozen detector identified unseen examples from that family with only 34.7% recall. Recovery therefore did not imply recognition.
+
+Fourth, latent order and source-model fit were not sufficient evidence for an encoded message. A generator-disjoint experiment reversed the apparent performance of a latent-order detector: it rejected most independent ciphers and accepted most ordered non-message controls. A final description-length experiment supplied the true cipher mappings, yet still failed to transfer away from a pooled source model.
+
+The contribution is therefore methodological rather than manuscript-specific. We provide a reproducible experimental account of where contemporary cryptanalytic, neural, and statistical methods cease to support interpretable claims. The central conclusion is:
+
+> **Generability is not recoverability; recoverability is not recognisability; recognisability is not transferability.**
+
+The remainder of the paper reviews the relevant cryptanalytic and unknown-text literature, describes the staged experimental design, reports the principal results, and proposes reporting standards for computational work on unidentified historical texts.
+
+---
+
+## 2. Background and related work
+
+### 2.1 Unknown-text analysis
+
