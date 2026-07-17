@@ -13,6 +13,7 @@ FROZEN_PATHS = [
     "bootstrap_source.py",
     "source_bundle/external_calibration.py.gz.b64.part00",
     "source_bundle/external_calibration.py.gz.b64.part01",
+    "source_bundle/blind_model_selection.py.gz.b64.part00",
 ]
 
 
