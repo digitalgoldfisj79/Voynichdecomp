@@ -1,0 +1,112 @@
+The main obstacle was identifiability. A fresh 24-word codebook sampled from a 96-word pool yielded only two to seven observed code symbols in typical samples. A plausible frequent codeword could outscore the true word without enough repeated evidence. Expanded character accuracy was therefore an unsafe aggregate measure.
+
+### 6.5 Joint substitution and transposition
+
+For substitution followed by a repeated block permutation, both oracle components were recoverable. With the substitution key supplied, the transposition was recovered exactly in 24/24 development trials. With the transposition supplied, mean plaintext recovery was 99.71%.
+
+The joint solver nevertheless failed. Its final permitted search achieved 76.53% mean and 99.48% median recovery, but only 17/24 trials exceeded 70% (70.8%; Wilson 95% CI 50.8–85.1%), with a minimum of 16.93%. Block-size accuracy was 23/24, so failure could not be attributed mainly to choosing the wrong size. The correct joint basin was not reached reliably enough for blind application.
+
+---
+
+## 7. Terminal cipher portfolios
+
+The terminal programme addressed four residual bounded portfolios: transposition-like mechanisms (T), steganographic carriers (G), syllabic or polygraphic unsegmented substitution (S), and changing-alphabet systems (P). Each family had component or oracle stages, development gates, and—only after a development pass—an untouched locked test.
+
+### 7.1 Family T
+
+The final Family T development set contained sixteen deterministic trials with global or line-reset schedules and hidden widths. Mean plaintext recovery was 65.53%, median recovery 98.70%, and minimum recovery 19.79%. Nine trials exceeded 80%, while seven fell below 40%. Mode was identified correctly in 16/16 trials and width in 13/16, but these structural successes did not compensate for unreliable plaintext recovery. Family T closed at development.
+
+### 7.2 Family G
+
+Family G tested bounded carrier steganography followed by either direct plaintext or fresh monoalphabetic recovery. With the true carrier rule supplied, mean recovery was 98.19%. In blind search, the final solver achieved 0.786 AUROC and detected 38 of 64 payload covers (59.4%; Wilson 95% CI 47.1–70.5%) while maintaining a 0.78% false-positive rate over 256 null covers. Among detected payloads, carrier class and parameter recovery were high, and minimum plaintext recovery was 88.54%.
+
+The failure occurred before that stage: too many true carriers lost to incidental extraction maxima or fell below the null-calibrated threshold. Mean recovery with abstentions scored as zero was 57.65%. Family G therefore failed the family-wide development gate despite strong conditional performance after detection.
+
+### 7.3 Family S
+
+Family S represented variable-length one-, two-, and three-symbol code groups with a fixed 63-unit plaintext inventory. The final amendment trained two independent Transformer encoder-decoder models for 30,000 updates each, corresponding to 960,000 fresh synthetic examples per model. Their plaintext and boundary posteriors were ensembled, followed by beam decoding and up to eight exact boundary-posterior lattice paths per trial.
+
+Mean plaintext recovery was 22.38%, median 22.27%, and minimum 20.31%. Mean boundary F1 was 48.41%. More importantly, all 128 proposed lattice paths contained more distinct visible code groups than the frozen inventory allowed. The lattice arm therefore abstained in all sixteen trials rather than truncating or expanding the vocabulary.
+
+The networks had trained stably and produced outputs favoured by train-only likelihood calibration. Those outputs were not aligned with the fresh codebooks. This is a direct example of why low loss, fluent-looking output, and confidence cannot substitute for plaintext recovery.
+
+### 7.4 Family P
+
+Family P used fresh circular base alphabets with periodic or line-reset shifts and candidate periods 2–12. An initial compute run appeared to stall for several hours. Audit showed that no search had occurred: the period-two seed generator could produce only five distinct histogram starts while the code demanded eight unique starts, creating a non-terminating loop. The correction used all available distinct starts and filled the remaining registered trajectories by deterministic sampling with replacement; each retained an independent annealing seed.
+
+After correction, the benchmark completed in under eight minutes. Development recovery averaged 99.51%. The untouched sixteen-trial test achieved 94.32% mean recovery and 100% median recovery. Thirteen of sixteen plaintexts were exact (81.2%; Wilson 95% CI 57.0–93.4%), mode was correct in 16/16, and full structure was correct in 15/16.
+
+One trial failed catastrophically. A periodic period-ten instance was assigned period two and recovered only 10.68%; the other fifteen trials recovered between 99.22% and 100% (15/16, 93.8%; Wilson 95% CI 71.7–98.9%). The outlier was retained. Family P nevertheless passed every registered locked condition and became the only terminal family to pass recovery.
+
+---
+
+## 8. Recovery without recognition
+
+Passing recovery established a conditional statement:
+
+> If a ciphertext is known to belong to the implemented Family P and its circular symbol order is observed, the solver usually recovers the plaintext and schedule.
+
+It did not establish that an unknown text belongs to that family.
+
+A separate label-invariant detector was therefore trained on nine classes: P, S, T, mixed systems, monoalphabetic substitution, generated text, notation-like generation, ordinary text, and out-of-family controls. Features included entropy, collision and recurrence spectra, lagged equality and mutual information, global and line-reset phase statistics for periods 2–12, compression measures, and ranked symbol masses. Calibration and thresholds were fixed on development data.
+
+The locked test produced a macro one-versus-rest AUC of 0.965 and P precision of 0.962, with no P false positives on the structured generated, notation, and out-of-family controls. The unthresholded argmax classifier assigned 31 of 72 true P samples to P (43.1%; Wilson 95% CI 32.3–54.6%), 14 to S, and 27 to mixed systems. Only 25 of 72 satisfied the frozen probability-plus-margin evidence rule, yielding operational P recall of 0.347 (34.7%; Wilson 95% CI 24.8–46.2%). Calibration error also exceeded the frozen ceiling.
+
+The high AUC indicated that the feature space contained family information in aggregate. It did not yield a detector reliable enough for application. Recognition collapsed under unseen period regimes.
+
+This result supplies the paper’s most direct empirical distinction:
+
+> A family can be almost perfectly solvable after specification and still be unreliable to identify from unknown ciphertext.
+
+The representation problem was also material. The Family P solver assumed an independently observed circular ciphertext order with the same cardinality as the source alphabet. EVA transliterations label glyphs but do not provide a historical wheel order. Optimising that order against attractive output would add an enormous uncharged key and invite semantic selection. Because the recognition gate failed first, no manuscript transliteration was scored.
+
+---
+
+## 9. True-mapping source transfer
+
+The final programme replaced family classification with charged model comparison. It asked whether a source-message explanation could outperform structured production when the true cipher mapping, key partition, and null structure were supplied. This removed cryptanalytic search from the comparison.
+
+Sixteen positive trials crossed two Greek corpora with four independent renderers: keyed pseudorandom homophony, rotor homophony, feedback with nulls, and line-keyed homophony with nulls. Sixteen controls used the same surface registry and renderer geometry but latent sequences from ordered HMM, motif, topic finite-state, or copy-mutate processes. Complete documents were held out.
+
+Every positive received a large favourable total two-part codelength advantage, approximately 1.85–2.06 bits per token. All sixteen controls were rejected. On a matched source model, the comparator therefore contained real signal and high specificity.
+
+The registered transfer condition nevertheless failed. Every positive selected a pooled trigram model that included its source-corpus family. None selected the required leave-target-corpus-out model. Allowing the pooled model would treat source familiarity as evidence applicable to an unknown text.
+
+Held-out gain also depended strongly on the renderer. Rotor and line-keyed positives passed in 4/4 trials each, feedback in 1/4, and keyed pseudorandom homophony in 0/4. Even after retrospectively ignoring the source-withholding safeguard, only 9/16 positives exceeded the held-out threshold (56.2%; Wilson 95% CI 33.2–76.9%), below the frozen 75% requirement.
+
+Because the comparator failed while supplied with the true mappings, more search or compute could not repair it. The programme stopped before inferred mapping, real historical validation, or target-document scoring.
+
+---
+
+## 10. Cross-experiment synthesis
+
+Table 1 summarises the principal experiments. The table does not rank methods on a single scale because each addressed a different link in the evidential chain.
+
+### Table 1. Principal experimental results
+
+| Experiment | Positive result | Principal failure | Decision |
+|---|---|---|---|
+| Structural generator hierarchy | Best full generator 59/84 metrics | Surface fit non-specific | Continue to recovery |
+| Morpholocal v0.2 | 0/320 control false positives | 34/96 positives recovered (35.4%; 95% CI 26.6–45.4%) | Decoder failed |
+| Generator-disjoint latent-order test | Some rotor cases detected | 2/16 positives (12.5%; 3.5–36.0%); 10/16 control false positives (62.5%; 38.6–81.5%) | Comparator closed |
+| Generic multilingual Transformer | Sequence loss decreased | 2.16% family-known mean recovery | Architecture closed |
+| Monoalphabetic locked test | 94.62% mean over 360 trials; 107/360 exact (29.7%; 25.2–34.6%) | Short-text exact recovery limited | Recovery passed |
+| Fresh-key homophonic locked test | 70.79% mean; 99.09% median | 13/20 reliable successes (65.0%; 43.3–81.9%) | Family line closed |
+| Joint substitution-transposition | Components near 100% | 17/24 reliable joint successes (70.8%; 50.8–85.1%) | Closed at development |
+| Family T | Correct mode 16/16 | 65.53% mean; seven catastrophic failures | Closed |
+| Family G | Detected cases recovered strongly | 38/64 payloads detected (59.4%; 47.1–70.5%) | Closed |
+| Family S neural ensemble | Stable training | 22.38% recovery; all lattices illegal | Closed |
+| Family P locked recovery | 94.32% mean; 15/16 near-perfect (93.8%; 71.7–98.9%) | One catastrophic outlier | Recovery passed |
+| Blind P recognition | AUC 0.965; precision 0.962 | 25/72 operational detections (34.7%; 24.8–46.2%); 31/72 argmax (43.1%; 32.3–54.6%) | Application blocked |
+| True-map MDL transfer | All controls rejected; matched compression strong | 0/16 complete transfer decisions; retrospective held-out threshold 9/16 (56.2%; 33.2–76.9%) | Comparator closed |
+
+Three recurring patterns deserve emphasis.
+
+### 10.1 Component solvability does not guarantee joint solvability
+
+Nomenclator and substitution-transposition experiments passed oracle components but failed when multiple unknown structures had to be inferred jointly. Search spaces were not merely larger; they introduced alternative high-scoring basins that were difficult to distinguish without ground truth.
+
+### 10.2 Mean performance can conceal phase transitions
+
+Several methods produced near-perfect plaintexts when the correct basin was reached and poor output otherwise. High median recovery did not imply reliability. Trial-count, minimum-recovery, restart-stability, and structural-margin gates were therefore necessary.
+
