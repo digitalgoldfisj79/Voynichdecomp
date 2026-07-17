@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import base64
+import hashlib
+import importlib.util
+import io
+import json
+import math
+import os
+import random
+import tarfile
+import time
+import urllib.request
+from collections import defaultdict
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+import cv2
+import numpy as np
+import torch
+import torch.nn.functional as F
+from scipy.linalg import solve
+from sklearn.cluster import AgglomerativeClustering, MiniBatchKMeans
+from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
+
+SEED = 20260718
+HELPER_URL = (
+    "https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/"
+    "a92b5899b1e9707817058b00b9a1abd259250a5f/"
+    "experiments/blind_stroke_palaeography_v1/code/saghog_v1_4_smoke.py"
+)
+HELPER_BYTES = 19040
+HELPER_SHA256 = "55a6aac2f6fa831e6624c57b57ade5d49d8994ebc8f420b4f267a56c68dabeeb"
+WORK = Path("/tmp/saghog_v15_full")
+OUT = WORK / "output"
+ARCHIVE_URL = "https://zenodo.org/api/records/1324999/files/icdar17-historicalwi-training-color.zip/content"
+ARCHIVE_MD5 = "e5ba2c7049bfb1453946233f681e4d53"
+
+PREFLIGHT = os.environ.get("V15_PREFLIGHT", "0") == "1"
+MAX_WRITERS = 48 if PREFLIGHT else None
+PATCHES_PER_PAGE = 64 if PREFLIGHT else 128
+MAE_UPDATES = 40 if PREFLIGHT else 5000
+METRIC_UPDATES = 40 if PREFLIGHT else 5000
+CHECK_EVERY = 20 if PREFLIGHT else 500
+MAE_BATCH = 128 if PREFLIGHT else 512
+METRIC_CLASSES = 16 if PREFLIGHT else 32
+METRIC_M = 4 if PREFLIGHT else 16
+PCA_DIM = 32 if PREFLIGHT else 512
+PERMUTATIONS = 19 if PREFLIGHT else 199
+K_PANELS_PER_K = 1 if PREFLIGHT else 5
+
+
+def log(event: str, **kw: Any) -> None:
+    print(event + " " + json.dumps(kw, sort_keys=True), flush=True)
+
+
+def sha256_bytes(raw: bytes) -> str:
+    return hashlib.sha256(raw).hexdigest()
+
+
+def digest(path: Path, algo: str = "sha256") -> str:
+    h = hashlib.new(algo)
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(8 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_helper():
+    raw = urllib.request.urlopen(HELPER_URL, timeout=120).read()
+    if len(raw) != HELPER_BYTES or sha256_bytes(raw) != HELPER_SHA256:
+        raise RuntimeError("immutable v1.4 helper digest mismatch")
+    path = WORK / "saghog_v14_helper.py"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(raw)
+    spec = importlib.util.spec_from_file_location("saghog_v14_helper", path)
+    if spec is None or spec.loader is None:
