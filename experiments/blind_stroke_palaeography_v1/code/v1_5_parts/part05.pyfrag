@@ -1,0 +1,80 @@
+        if not torch.isfinite(loss):
+            raise RuntimeError("nonfinite metric loss")
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(wrapped.parameters(), 1.0)
+        opt.step()
+        metric_losses.append(float(loss.detach()))
+        if (step + 1) % CHECK_EVERY == 0 or step + 1 == METRIC_UPDATES:
+            vv, vw = page_vectors(wrapped, patch_xa, records, val_mask, device)
+            vm = helper.retrieval(vv, vw)["map"]
+            log("V15_METRIC_CHECK", step=step + 1, loss=float(np.mean(metric_losses[-CHECK_EVERY:])), val_raw_map=vm)
+            if vm > best_map + 1e-12:
+                best_map, best_step = vm, step + 1
+                torch.save({"model_state_dict": wrapped.state_dict(), "step": best_step, "val_raw_map": best_map, "manifest": manifest}, best_path)
+            wrapped.train()
+
+    state = torch.load(best_path, map_location="cpu")
+    wrapped.load_state_dict(state["model_state_dict"])
+    wrapped.to(device).eval()
+    log("V15_BEST", step=best_step, val_raw_map=best_map, checkpoint_sha256=digest(best_path))
+
+    train_mask = np.array([r["part"] == "train" for r in records])
+    test_mask = np.array([r["part"] == "test" for r in records])
+    trv, trw = page_vectors(wrapped, patch_xa, records, train_mask, device)
+    vav, vaw = page_vectors(wrapped, patch_xa, records, val_mask, device)
+    tev, tew = page_vectors(wrapped, patch_xa, records, test_mask, device)
+
+    pca = PCA(n_components=PCA_DIM, whiten=True, svd_solver="randomized", random_state=SEED)
+    ztr = pca.fit_transform(trv).astype(np.float32)
+    zva = pca.transform(vav).astype(np.float32)
+    zte = pca.transform(tev).astype(np.float32)
+    acq = np.stack([r["acq"] for r in records])
+    ink = np.stack([r["ink"] for r in records])
+    combined = np.concatenate([acq, ink], axis=1)
+    acq_tr, acq_va, acq_te = acq[train_mask], acq[val_mask], acq[test_mask]
+    ink_tr, ink_va, ink_te = ink[train_mask], ink[val_mask], ink[test_mask]
+    com_tr, com_va, com_te = combined[train_mask], combined[val_mask], combined[test_mask]
+
+    residuals = {
+        "resid_acquisition": fit_residual_model(ztr, acq_tr),
+        "resid_ink": fit_residual_model(ztr, ink_tr),
+        "resid_combined": fit_residual_model(ztr, com_tr),
+    }
+    val_candidates = {
+        "raw": zva,
+        "resid_acquisition": residuals["resid_acquisition"].apply(zva, acq_va),
+        "resid_ink": residuals["resid_ink"].apply(zva, ink_va),
+        "resid_combined": residuals["resid_combined"].apply(zva, com_va),
+    }
+    test_candidates = {
+        "raw": zte,
+        "resid_acquisition": residuals["resid_acquisition"].apply(zte, acq_te),
+        "resid_ink": residuals["resid_ink"].apply(zte, ink_te),
+        "resid_combined": residuals["resid_combined"].apply(zte, com_te),
+    }
+    val_metrics = {k: helper.retrieval(v, vaw) for k, v in val_candidates.items()}
+    selected = max(val_metrics, key=lambda k: val_metrics[k]["map"])
+    test_metrics = {k: helper.retrieval(v, tew) for k, v in test_candidates.items()}
+    selected_x = test_candidates[selected]
+    observed = test_metrics[selected]["map"]
+    perm = permutation_p(helper.retrieval, selected_x, tew, observed, PERMUTATIONS)
+    kcal = k_calibration(selected_x, tew)
+    nuisance_metrics = {
+        "acquisition": helper.retrieval(acq_te, tew),
+        "ink": helper.retrieval(ink_te, tew),
+        "combined": helper.retrieval(com_te, tew),
+    }
+
+    perturbation = {}
+    test_record_indices = np.flatnonzero(test_mask)
+    for mode in ["contrast", "scale", "erosion", "dilation", "translation"]:
+        pv = []
+        with torch.inference_mode():
+            for ridx in test_record_indices:
+                r = records[ridx]
+                pp = perturb_patches(patch_xa[r["start"]:r["end"]], patch_ta[r["start"]:r["end"]], mode)
+                total = None
+                for s in range(0, len(pp), 128):
+                    zz = wrapped(eval_tensor(pp[s:s + 128], device)).float().sum(0).cpu().numpy()
+                    total = zz if total is None else total + zz
+                total = np.sign(total) * np.abs(total) ** 0.4
