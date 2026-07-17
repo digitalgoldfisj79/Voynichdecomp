@@ -1,0 +1,56 @@
+                total = total / max(float(np.linalg.norm(total)), 1e-12)
+                pv.append(total.astype(np.float32))
+        pz = pca.transform(np.stack(pv)).astype(np.float32)
+        if selected == "raw":
+            px = pz
+        elif selected == "resid_acquisition":
+            px = residuals[selected].apply(pz, acq_te)
+        elif selected == "resid_ink":
+            px = residuals[selected].apply(pz, ink_te)
+        else:
+            px = residuals[selected].apply(pz, com_te)
+        pm = helper.retrieval(px, tew)
+        perturbation[mode] = {**pm, "retention": pm["map"] / max(observed, 1e-12)}
+
+    acquisition = nuisance_metrics["acquisition"]["map"]
+    criteria = {
+        "absolute_over_acquisition": observed - acquisition >= 0.05,
+        "ratio_over_acquisition": observed / max(acquisition, 1e-12) >= 1.5,
+        "permutation": perm["p"] <= 0.01,
+        "perturbation": all(v["retention"] >= 0.80 for v in perturbation.values()),
+        "exact_k": kcal["exact_rate"] >= 0.70,
+        "within_one_k": kcal["within_one_rate"] >= 0.90,
+    }
+    criteria["all_pass"] = all(criteria.values())
+
+    np.savez_compressed(
+        OUT / "exact_features.npz",
+        train=ztr, val=zva, test=zte, test_selected=selected_x,
+        train_writers=np.array(trw), val_writers=np.array(vaw), test_writers=np.array(tew),
+        acquisition_test=acq_te, ink_test=ink_te,
+    )
+    result = {
+        "schema": manifest["schema"], "seed": SEED, "preflight": PREFLIGHT,
+        "selected_checkpoint_step": best_step, "selected_checkpoint_val_raw_map": best_map,
+        "selected_by_validation": selected, "validation_metrics": val_metrics,
+        "test_metrics": test_metrics, "nuisance_metrics": nuisance_metrics,
+        "permutation": perm, "k_calibration": kcal, "perturbation": perturbation,
+        "criteria": criteria, "mae_loss_last100": float(np.mean(losses[-100:])),
+        "metric_loss_last_check": float(np.mean(metric_losses[-CHECK_EVERY:])),
+        "counts": {"patches": len(patch_xa), "pages": len(records), "writers": len(splits["train"]) + len(splits["val"]) + len(splits["test"])},
+        "davis_labels_loaded": False, "voynich_opened": False, "f115r_loaded": False,
+        "files": {},
+    }
+    (OUT / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True))
+    for p in sorted(OUT.iterdir()):
+        if p.is_file():
+            result["files"][p.name] = {"bytes": p.stat().st_size, "sha256": digest(p)}
+    (OUT / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True))
+    result["files"]["result.json"] = {"bytes": (OUT / "result.json").stat().st_size, "sha256": digest(OUT / "result.json")}
+    print("SAGHOG_V15_RESULT " + json.dumps(result, sort_keys=True), flush=True)
+    emit_bundle([OUT / "result.json", OUT / "writer_split.json", OUT / "exact_features.npz"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
