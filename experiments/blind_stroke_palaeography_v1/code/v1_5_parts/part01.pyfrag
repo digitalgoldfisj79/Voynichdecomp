@@ -1,0 +1,80 @@
+        raise RuntimeError("could not construct helper module")
+    module = importlib.util.module_from_spec(spec)
+    import sys
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    log("V15_HELPER", bytes=len(raw), sha256=sha256_bytes(raw))
+    return module
+
+
+def split_writers(writers: list[str]) -> dict[str, list[str]]:
+    ws = sorted(writers)
+    rng = random.Random(SEED)
+    rng.shuffle(ws)
+    if MAX_WRITERS is not None:
+        ws = ws[:MAX_WRITERS]
+    n = len(ws)
+    n_train = max(1, int(math.floor(0.70 * n)))
+    n_val = max(1, int(math.floor(0.15 * n)))
+    if n_train + n_val >= n:
+        n_train, n_val = n - 2, 1
+    return {
+        "train": sorted(ws[:n_train]),
+        "val": sorted(ws[n_train:n_train + n_val]),
+        "test": sorted(ws[n_train + n_val:]),
+    }
+
+
+def eval_tensor(patches: np.ndarray, device: str) -> torch.Tensor:
+    x = torch.from_numpy(patches).permute(0, 3, 1, 2).float().div_(255.0)
+    gray = 0.2989 * x[:, 0:1] + 0.5870 * x[:, 1:2] + 0.1140 * x[:, 2:3]
+    x = gray.repeat(1, 3, 1, 1)
+    return x.sub_(0.5).div_(0.5).to(device, non_blocking=True)
+
+
+def _morph(mask: torch.Tensor, kernels: torch.Tensor, op: str) -> torch.Tensor:
+    # mask Bx1xHxW, kernels Bx9. Only selected kernel positions contribute.
+    b, _, h, w = mask.shape
+    u = F.unfold(mask, kernel_size=3, padding=1).view(b, 9, h * w)
+    k = kernels.view(b, 9, 1).bool()
+    if op == "dilate":
+        u = torch.where(k, u, torch.full_like(u, -1.0))
+        y = u.max(dim=1).values
+    else:
+        u = torch.where(k, u, torch.full_like(u, 2.0))
+        y = u.min(dim=1).values
+    return y.view(b, 1, h, w).clamp_(0, 1)
+
+
+def train_tensor(patches: np.ndarray, targets: np.ndarray, rng: np.random.Generator, device: str) -> torch.Tensor:
+    x = torch.from_numpy(patches).permute(0, 3, 1, 2).float().div_(255.0).to(device)
+    mask = torch.from_numpy(targets).float().unsqueeze(1).to(device)
+    b = len(x)
+    gray = 0.2989 * x[:, 0:1] + 0.5870 * x[:, 1:2] + 0.1140 * x[:, 2:3]
+
+    use_gray = torch.from_numpy(rng.random(b) < 0.20).to(device)
+    use_bin = torch.from_numpy(rng.random(b) < 0.20).to(device)
+    do_erode = torch.from_numpy(rng.random(b) < 0.30).to(device)
+    do_dilate = torch.from_numpy(rng.random(b) < 0.30).to(device)
+
+    x = torch.where(use_gray[:, None, None, None], gray.repeat(1, 3, 1, 1), x)
+    binary = (1.0 - mask).repeat(1, 3, 1, 1)
+    x = torch.where(use_bin[:, None, None, None], binary, x)
+
+    kernels = torch.from_numpy((rng.random((b, 9)) > 0.45).astype(np.float32)).to(device)
+    kernels[:, 4] = 1.0
+    if do_erode.any():
+        em = _morph(mask, kernels, "erode")
+        ex = (1.0 - em).repeat(1, 3, 1, 1)
+        x = torch.where(do_erode[:, None, None, None], ex, x)
+    kernels2 = torch.from_numpy((rng.random((b, 9)) > 0.45).astype(np.float32)).to(device)
+    kernels2[:, 4] = 1.0
+    if do_dilate.any():
+        dm = _morph(mask, kernels2, "dilate")
+        dx = (1.0 - dm).repeat(1, 3, 1, 1)
+        x = torch.where(do_dilate[:, None, None, None], dx, x)
+    return x.sub_(0.5).div_(0.5)
+
+
+def target_tensor(targets: np.ndarray, device: str) -> torch.Tensor:
+    return torch.from_numpy(targets).float().unsqueeze(1).to(device, non_blocking=True)
