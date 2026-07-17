@@ -1,0 +1,65 @@
+{
+  "schema": "blind-stroke-palaeography-v1",
+  "freeze_date": "2026-07-17",
+  "branch": "experiment/blind-stroke-palaeography-v1-20260717-full",
+  "phase1_blind": true,
+  "prohibited_phase1_field_patterns": ["davis", "scribe", "hand"],
+  "reserved_units": ["neutral_reserved_page_115r"],
+  "k_candidates": [2, 3, 4, 5, 6, 7, 8, 9, 10],
+  "k5_preference": false,
+  "primary_resampling_unit": "physical_bifolium",
+  "primary_validation": "leave_one_quire_out",
+  "secondary_validation": "five_grouped_physical_bifolium_folds",
+  "external_controls": {
+    "historical_wi": {
+      "zenodo_record": 1324999,
+      "color_file": "icdar17-historicalwi-training-color.zip",
+      "color_md5": "e5ba2c7049bfb1453946233f681e4d53",
+      "binarized_file": "icdar17-historicalwi-training-binarized.zip",
+      "binarized_md5": "3caa11320e857cf80694031a568ce6bf"
+    },
+    "hisfrag20": {
+      "zenodo_record": 3893807,
+      "train_file": "hisfrag20_train.zip",
+      "train_md5": "a6c3a9a2c2f170605fcf153792dd78e8",
+      "test_file": "hisfrag20_test.zip",
+      "test_md5": "56ea22f6424cadb2208c1bfd171d8a8a"
+    }
+  },
+  "feature_families": ["F0_nuisance", "F1_classical", "F2_family_residual", "F3_dense_dinov3", "F4_historical_htr", "F5_external_metric"],
+  "ensemble_candidates": {
+    "E1": ["F1", "F2"],
+    "E2": ["F2", "F3"],
+    "E3": ["F2", "F4"],
+    "E4": ["F1", "F2", "F3", "F4"],
+    "E5": ["F5", "F1"]
+  },
+  "external_gates": {
+    "absolute_map_over_nuisance": 0.05,
+    "map_ratio_over_nuisance": 1.5,
+    "permutation_p_max": 0.01,
+    "perturbation_retention_min": 0.8,
+    "heldout_family_retention_min": 0.7,
+    "exact_k_recovery_min": 0.7,
+    "within_one_k_recovery_min": 0.9,
+    "false_discrete_max": 0.05,
+    "null_abstain_min": 0.95,
+    "minimum_panels_per_mechanism": 40
+  },
+  "voynich_discrete_gates": {
+    "bootstrap_ari_median_min": 0.7,
+    "bootstrap_ari_p10_min": 0.5,
+    "predictive_superiority_probability_min": 0.99,
+    "heldout_type_retention_min": 0.7,
+    "heldout_family_retention_min": 0.7,
+    "absolute_over_nuisance_min": 0.05,
+    "ratio_over_nuisance_min": 1.5,
+    "same_k_perturbation_min": 0.7,
+    "within_one_k_perturbation_min": 0.9,
+    "adversarial_empirical_p_max": 0.01,
+    "continuous_preference_elpdb_min": 10.0
+  },
+  "one_bounded_pre_voynich_repair": true,
+  "davis_unseal_only_after_phase1_hash": true,
+  "f115r_selective_use_prohibited": true
+}
