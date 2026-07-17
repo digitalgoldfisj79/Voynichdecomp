@@ -1,0 +1,136 @@
+### 10.3 Better fit can measure the wrong property
+
+The latent-order detector measured compatibility with its external transition model. The source-transfer comparator measured proximity to a pooled source model. The generic message classifier attempted to distinguish a historical selection process not encoded in the channel. Each model found statistical signal, but the signal did not answer the intended question.
+
+---
+
+## 11. Implications for computational cryptanalysis
+
+### 11.1 Positive controls must recover plaintext
+
+A proposed unknown-text decoder should first solve fresh synthetic examples from its own family under the same inference constraints used on the target. Oracle or shared-key performance should be reported separately. A model that cannot recover its own blinded instances cannot yield interpretable target outputs.
+
+### 11.2 Detection must be separated from decoding
+
+Once a family-specific solver passes, a second test should determine whether the family can be recognised among strong alternatives. Applying a successful specialist solver to every unknown text and selecting its most fluent output is not family identification.
+
+### 11.3 Controls must contain structure
+
+Random or shuffled controls are insufficient. The generator-disjoint result showed that ordered HMMs, motif grammars, topic processes, and copied lines can trigger latent-order statistics. Controls should match line lengths, symbol inventories, renderer geometry, local recurrence, and topic or section structure wherever possible.
+
+### 11.4 Source-model proximity must be charged and withheld
+
+Language-model evidence should be tested under source and register shift. If a result disappears when the exact corpus family is withheld, it supports corpus compatibility rather than a general source-message claim.
+
+### 11.5 Representation choices are part of the key
+
+Transliteration, segmentation, glyph equivalence, symbol order, and word boundaries can determine whether a solver works. These choices must be specified independently or charged as latent structure. Optimising them on the target and reporting only the most interpretable result is equivalent to expanding the key after observing the plaintext.
+
+### 11.6 Abstention is a substantive result
+
+A failed detector does not imply the absence of a cipher. It implies that the tested evidence does not identify one. The appropriate outputs include `UNSUPPORTED_FAMILY`, `LOW_RECOVERY_CONFIDENCE`, and `NON_IDENTIFIABLE`, not only cipher or generated.
+
+---
+
+## 12. Neural networks, language models, and LLM-assisted research
+
+Neural methods played three roles in the programme: direct sequence decoding, language-model scoring, and posterior seeding for classical search. Their results were mixed.
+
+Neural models performed well when the code space was shared or when their posterior seeds happened to place classical refinement in the correct basin. They improved substantially with more fresh-key examples. They did not reliably solve arbitrary fresh-key homophony or variable segmentation, and they did not overcome an invalid classification target.
+
+Classical methods produced the strongest positive results: monoalphabetic and changing-alphabet recovery. This should not be read as a general superiority claim. It reflects the importance of matching inference architecture to cipher invariants.
+
+Large language models were also used as research assistants. They supported literature discovery, protocol drafting, code generation, adversarial review, log interpretation, and documentation. They were not treated as scientific authorities or as sources of plaintext evidence. Numerical claims in this paper derive from executable code and frozen records.
+
+The process exposed risks specific to LLM-assisted computational research:
+
+- rapid proliferation of hypotheses and implementations;
+- confident but incorrect runtime explanations;
+- inherited code defects hidden behind fluent descriptions;
+- dependence between designer, programmer, and analyst;
+- temptation to reinterpret failed gates;
+- incomplete bibliographic metadata from search summaries.
+
+The controls used here—locked tests, immutable artefacts, independent recomputation, explicit amendment budgets, and direct plaintext scoring—were partly responses to those risks. Independent human reproduction remains necessary before publication-quality claims can be considered fully validated.
+
+---
+
+## 13. Limitations
+
+The results are bounded in several ways.
+
+First, synthetic ciphers are cleaner than historical documents. Real ciphertexts contain inconsistent key use, transliteration errors, abbreviations, scribal corrections, damaged text, and undocumented conventions. The segmentation gap reported by Aldarrab and May (2022) illustrates how substantially performance can deteriorate from generated to historical material.
+
+Second, the cipher portfolios were implementations, not exhaustive historical classes. Family P did not represent all polyalphabetic or Alberti-like systems. Family S did not cover every syllabic or polygraphic cipher. Family G used a finite carrier inventory. Negative conclusions apply to the tested constructions and solvers.
+
+Third, source corpora were limited. Much of the frontier used modern Universal Dependencies material, while several later tests used two Greek corpora. Historical spelling, register, language mixture, and abbreviation could materially change transfer.
+
+Fourth, the structured controls remained algorithmic. The programme did not yet include a sufficiently large empirical collection of human pseudo-text, glossolalia, scribal notation, or medieval non-message production.
+
+Fifth, the final programmes did not score the Voynich Manuscript. The study therefore supplies no empirical posterior probability that it is ciphered or generated. The manuscript served as the motivating unknown-text problem and a protected prospective target.
+
+Sixth, not every programme began under a single comprehensive preregistration. The accurate description is sequential freezing with protected locked tests. One P development benchmark was exposed before the full development set, although no tuning followed and the subsequent locked test was untouched.
+
+Finally, the same AI-assisted workflow contributed substantially to design, implementation, debugging, and interpretation. External cryptanalytic and statistical review, a clean-room rerun, and an anonymised reproducibility archive are required.
+
+---
+
+## 14. Conclusion
+
+This study examined a problem that precedes decipherment: what evidence justifies treating an unknown structured text as the output of a recoverable cipher rather than a structured generative process?
+
+The experiments show that the problem cannot be reduced to one statistic or one model. Surface generators reproduced broad distributions without messages. A charged nomenclator model rejected controls but lacked sensitivity. A latent-order test detected ordered generators rather than messages. A generic Transformer failed fresh-key recovery, while family-specific classical solvers succeeded on monoalphabetic and changing-alphabet systems. The strongest cipher solver recovered 94.3% of plaintext on a locked test, yet the same family could be recognised with only 34.7% recall under structural shift. Even a true-mapping description-length comparator depended on a closely matched source model and renderer.
+
+The resulting evidential hierarchy is strict but operational:
+
+1. a proposed mechanism may generate the observation;
+2. its solver must recover fresh blinded instances;
+3. the family must be recognisable among strong alternatives;
+4. the evidence must transfer across keys, sources, renderers, and representations.
+
+Failure at any stage requires abstention or a narrower claim.
+
+The paper does not determine whether the Voynich Manuscript contains an enciphered message. It establishes why many apparently positive computational results would not be sufficient to make that determination. In unknown-text cryptanalysis, recovery is not recognition, and recognition without transfer is not manuscript evidence.
+
+---
+
+## Data availability and reproducibility
+
+The experimental code, frozen protocols, machine-readable summaries, job identifiers, and cryptographic hashes will be deposited in an anonymised review archive before submission. The public version will include a tagged source release, dependency lock files, canonical result payloads separated from runtime metadata, and scripts for reproducing all aggregate tables. At present, several experiment records and large neural artefacts remain outside a reviewer-accessible archive; the numerical claims that depend on them must therefore be treated as pending archival verification rather than as independently reproducible evidence.
+
+## Generative AI use statement
+
+Generative AI systems were used to assist literature discovery, research planning, protocol drafting, software implementation, debugging, adversarial review, and preparation of manuscript prose. All numerical results were generated by executable code under recorded configurations. Bibliographic entries and factual claims are being verified against primary publisher or archival records. AI systems are not listed as authors.
+
+## Acknowledgements
+
+Omitted for anonymous review.
+
+---
+
+## References
+
+Aldarrab, N., and J. May. 2021. “Can Sequence-to-Sequence Models Crack Substitution Ciphers?” In *Proceedings of ACL-IJCNLP 2021*, 7226–7235. https://doi.org/10.18653/v1/2021.acl-long.561.
+
+Aldarrab, N., and J. May. 2022. “Segmenting Numerical Substitution Ciphers.” In *Proceedings of EMNLP 2022*, 706–714. https://doi.org/10.18653/v1/2022.emnlp-main.44.
+
+Barron, A. R., J. Rissanen, and B. Yu. 1998. “The Minimum Description Length Principle in Coding and Modeling.” *IEEE Transactions on Information Theory* 44 (6): 2743–2760. https://doi.org/10.1109/18.720554.
+
+Bowern, C. L., and D. E. Gaskell. 2022. “Enciphered after All? Word-Level Text Metrics Are Compatible with Some Types of Encipherment.” In *Proceedings of the 1st International Conference on the Voynich Manuscript 2022*, CEUR Workshop Proceedings 3313, paper 6.
+
+Bowern, C. L., and L. Lindemann. 2021. “The Linguistics of the Voynich Manuscript.” *Annual Review of Linguistics* 7: 285–308. https://doi.org/10.1146/annurev-linguistics-011619-030613.
+
+Bruton, M., M. Beloucif, and B. Megyesi. 2026. “Attention-Augmented LSTMs for Automatic Homophonic Ciphertext Decipherment.” arXiv:2606.05078. Preprint. https://doi.org/10.48550/arXiv.2606.05078.
+
+Chu, C., R. Valenti, and K. Knight. 2020. “Solving Historical Dictionary Codes with a Neural Language Model.” In *Proceedings of EMNLP 2020*, 5845–5854. https://doi.org/10.18653/v1/2020.emnlp-main.471.
+
+Dalton, B., and M. Stamp. 2025. “Classifying World War II Era Ciphers with Machine Learning.” *Cryptologia* 49 (2): 97–127. https://doi.org/10.1080/01611194.2024.2304888.
+
+Dhavare, A., R. Low, and M. Stamp. 2013. “Efficient Cryptanalysis of Homophonic Substitution Ciphers.” *Cryptologia* 37 (3): 250–281. https://doi.org/10.1080/01611194.2013.797041.
+
+Gaskell, D. E., and C. L. Bowern. 2022. “Gibberish after All? Voynichese Is Statistically Similar to Human-Produced Samples of Meaningless Text.” In *Proceedings of the 1st International Conference on the Voynich Manuscript 2022*, CEUR Workshop Proceedings 3313, paper 4.
+
+Greshko, M. A. 2025. “The Naibbe Cipher: A Substitution Cipher That Encrypts Latin and Italian as Voynich Manuscript-Like Ciphertext.” *Cryptologia*. Advance online publication. https://doi.org/10.1080/01611194.2025.2566408.
+
+Hermes, J. 2022. “Polygraphia III: The Cipher That Pretends to Be an Artificial Language.” In *Proceedings of the 1st International Conference on the Voynich Manuscript 2022*, CEUR Workshop Proceedings 3313, paper 7.
+
