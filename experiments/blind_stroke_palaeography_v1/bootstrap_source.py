@@ -9,7 +9,7 @@ from pathlib import Path
 
 BUNDLES = {
     "external_calibration.py": {
-        "pattern": "external_calibration.py.v3.gz.b64.part*",
+        "pattern": "external_calibration.py.v4.gz.b64.part*",
         "size": 37401,
         "sha256": "f93fc90c0527266d71d876962050923b9f7e4020c77dc8c7fad83019b80ac883",
     },
