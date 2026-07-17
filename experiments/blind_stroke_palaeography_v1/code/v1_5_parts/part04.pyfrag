@@ -1,0 +1,80 @@
+            for pid, path in pages[w][:3]:
+                px, pt, pd = helper.page_patches(path, PATCHES_PER_PAGE)
+                start = len(patch_x)
+                patch_x.extend(px)
+                patch_t.extend(pt)
+                patch_d.extend(pd)
+                patch_w.extend([w] * len(px))
+                acq, ink = helper.nuisance(helper.read_rgb(path))
+                records.append({"part": part, "writer": w, "page": pid, "start": start, "end": len(patch_x), "acq": acq, "ink": ink})
+    patch_xa = np.stack(patch_x)
+    patch_ta = np.stack(patch_t)
+    patch_da = np.stack(patch_d)
+    patch_wa = np.array(patch_w)
+    log("V15_PATCH_AUDIT", patches=len(patch_xa), pages=len(records), writers=len(set(patch_wa)), bytes=int(patch_xa.nbytes))
+
+    device = "cuda"
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA required")
+    torch.manual_seed(SEED)
+    np.random.seed(SEED)
+    random.seed(SEED)
+    rng = np.random.default_rng(SEED)
+
+    model = MaskedAutoencoderViT(
+        img_size=32, patch_size=4, embed_dim=512, hog_pool=4, hog_bins=9,
+        depth=8, decoder_depth=1, in_chans=3, global_pool=False,
+        norm_pix_loss=False, target_in_chans=1,
+    ).to(device)
+    train_idx = np.flatnonzero(np.isin(patch_wa, splits["train"]))
+    opt = torch.optim.AdamW(model.parameters(), lr=8e-4, weight_decay=0.05)
+    losses = []
+    model.train()
+    for step in range(MAE_UPDATES):
+        ii = rng.choice(train_idx, size=MAE_BATCH, replace=len(train_idx) < MAE_BATCH)
+        x = train_tensor(patch_xa[ii], patch_ta[ii], rng, device)
+        target = target_tensor(patch_ta[ii], device)
+        opt.zero_grad(set_to_none=True)
+        loss, _, _ = model(x, hog_target_imgs=target, mask_ratio=0.75)
+        if not torch.isfinite(loss):
+            raise RuntimeError("nonfinite MAE loss")
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 0.02)
+        opt.step()
+        losses.append(float(loss.detach()))
+        if step == 0 or (step + 1) % max(20, MAE_UPDATES // 20) == 0:
+            log("V15_MAE", step=step + 1, mean=float(np.mean(losses[-min(100, len(losses)):])))
+
+    valid = np.linalg.norm(patch_da[train_idx], axis=1) > 0
+    ft_idx = train_idx[valid]
+    pseudo = MiniBatchKMeans(n_clusters=128, random_state=SEED, batch_size=4096, n_init=3, max_iter=300).fit_predict(patch_da[ft_idx])
+    args = {"model_options": {"in_dim": -1}, "netvlad": {"num_clusters": 100, "random": True}, "netvlad_pooling": False}
+    wrapped = Wrapper(model, args).to(device)
+    with torch.inference_mode():
+        sample = ft_idx[:min(50000, len(ft_idx))]
+        feats = []
+        for s in range(0, len(sample), 256):
+            feats.append(wrapped.forward_features(eval_tensor(patch_xa[sample[s:s + 256]], device)).float().cpu().numpy())
+    centers = MiniBatchKMeans(n_clusters=100, random_state=SEED, batch_size=4096, n_init=3, max_iter=300).fit(np.concatenate(feats)).cluster_centers_
+    wrapped.nv._init_params(torch.from_numpy(centers).float().to(device))
+
+    from pytorch_metric_learning.losses import MultiSimilarityLoss
+    from pytorch_metric_learning.miners import MultiSimilarityMiner
+    lossfn = MultiSimilarityLoss(alpha=2, beta=40, base=0.2)
+    miner = MultiSimilarityMiner(epsilon=0.1)
+    opt = torch.optim.AdamW(wrapped.parameters(), lr=1e-3, weight_decay=0.01)
+    val_mask = np.array([r["part"] == "val" for r in records])
+    best_map = -1.0
+    best_step = None
+    best_path = OUT / "saghog_v15_best.pt"
+    metric_losses = []
+    wrapped.train()
+    for step in range(METRIC_UPDATES):
+        loc = balanced_indices(pseudo, METRIC_CLASSES, METRIC_M, rng)
+        ii = ft_idx[loc]
+        yy = torch.from_numpy(pseudo[loc]).long().to(device)
+        x = train_tensor(patch_xa[ii], patch_ta[ii], rng, device)
+        opt.zero_grad(set_to_none=True)
+        emb = wrapped(x)
+        hard = miner(emb, yy)
+        loss = lossfn(emb, yy, hard)
