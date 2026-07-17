@@ -1,0 +1,178 @@
+Unknown historical texts are frequently studied through distributional proxies: character and word entropy, type-token statistics, repetition, positional distributions, topic variation, and resemblance to known languages. Such measurements are useful for characterising a document, but their inferential scope is limited. Schinner (2007) interpreted repetition and random-walk statistics as evidence for stochastic generation in the Voynich Manuscript. Lindemann and Bowern (2020) found that Voynich character placement remained unusually predictable across transliteration systems, script manipulations, and multilingual comparison corpora. Bowern and Gaskell (2022) subsequently demonstrated that several encipherment operations, including bigraphic expansion and inserted nulls, can reduce conditional entropy toward Voynich-like levels. Hermes (2022) showed that *Polygraphia* III can produce surfaces with properties resembling an artificial language.
+
+Greshko's (2025) Naibbe cipher provides a recent constructive example. It is a recoverable verbose homophonic system that maps Latin and Italian into Voynich-like strings and reproduces numerous manuscript statistics. This establishes generability. Because its tables and operating ratios were designed against Voynich measurements, however, it is not an independent test that an unknown target belongs to that family; the distinction between constructing a compatible mechanism and recognising that mechanism is central to the present study.
+
+Human-produced meaningless writing supplies an especially important comparator. Gaskell and Bowern (2022) collected forty-two such samples and found that they could reproduce many statistics commonly treated as evidence of meaningful language, although the samples were too short to resolve manuscript-scale organisation. Algorithmic self-citation and grille-based generation provide further non-random null models (Timm and Schinner 2020; Rugg and Taylor 2017).
+
+These studies illustrate the core ambiguity. The same statistic may reject a simple mechanism while remaining compatible with a broader class. Low entropy may be inconsistent with ordinary monoalphabetic substitution yet compatible with verbose, polygraphic, or null-bearing systems. Topic structure may indicate non-random document organisation without establishing whether the organisation originates in plaintext, key schedules, scribal practice, or section-conditioned generation.
+
+### 2.2 Historical cipher classes
+
+Early modern European cryptography commonly combined multiple element types. Nomenclators could include ordinary letter substitutions, homophones, syllables, common words, names, nulls, and variable-length groups. Megyesi et al. (2024) document substantial diversity in more than 1,600 European keys, while Aldarrab and May (2022) distinguish regular elements, nomenclature elements, nulls, and deterministic or ambiguous segmentation. This diversity makes broad claims about “substitution cipher” or “nomenclator” methodologically weak unless the implemented family is specified precisely.
+
+Successful historical cryptanalysis usually benefits from explicit family structure. Ravi and Knight (2011) combined character language models and lexical information in Bayesian inference. Nuhn, Schamper, and Ney (2013, 2014) developed beam-search approaches in which symbol order, rest-cost estimation, and higher-order language models substantially affect tractability. Dhavare, Low, and Stamp (2013) studied nested hill climbing for homophonic systems and quantified the effects of alphabet size and ciphertext length. Lehofer (2022) tested hierarchical clustering first on artificial homophonic ciphers and then on original historical cipher-key pairs, illustrating both the value of synthetic calibration and the need to validate on historical material. Historical and century-specific language models can also improve attacks on older homophonic ciphertexts (Megyesi et al. 2023).
+
+Mixed-unit and unsegmented systems introduce additional burdens. Chu, Valenti, and Knight (2020) used a decoding lattice and neural language model for historical dictionary codes. Aldarrab and May (2022) reported a large gap between segmentation on synthetic monoalphabetic ciphers and real historical homophonic material: approximately 2% average segmentation error on generated controls versus 27% on three historical ciphers. That gap is directly relevant to any programme trained primarily on simulations.
+
+### 2.3 Neural decipherment
+
+Neural decipherment has produced important positive results, but the assumptions differ markedly between systems. Kambhatla, Mansouri Bigvand, and Sarkar (2018) used neural language models to improve candidate scoring within beam search. Aldarrab and May (2021) trained multilingual sequence-to-sequence models for substitution ciphers and evaluated both synthetic and historical examples. Kambhatla, Born, and Sarkar (2023) recast substitution decipherment as recurrence prediction, training a Transformer on large synthetic fresh-key datasets. Bruton, Beloucif, and Megyesi (2026) obtained near-perfect recovery in a shared homophone-pool setting, while explicitly distinguishing it from arbitrary independent-key recovery.
+
+These systems motivate three controls used in the present study. First, results from reused or dataset-wide code pools cannot be treated as evidence for fresh-key generalisation. Second, low sequence loss or fluent output must be accompanied by direct plaintext and key recovery. Third, synthetic positive controls should include altered key-space geometry and source or renderer shifts.
+
+### 2.4 Cipher identification
+
+Cipher identification differs from decryption. Dalton and Stamp (2025) classified five Second World War cipher machines under progressively more difficult plaintext and key regimes, comparing classical machine-learning and deep-learning methods. Their work demonstrates that ciphertext-only classification is possible within a bounded family inventory, but also that performance depends on the experimental scenario and representation.
+
+The unknown-text problem is harder in two respects. The true mechanism may lie outside the candidate inventory, and structured non-message generators may share features with cipher outputs. Consequently, an operational detector requires calibrated abstention rather than forced classification.
+
+### 2.5 Model selection and description length
+
+Minimum description length (MDL) provides a principled way to compare explanatory models by charging both model complexity and residual data cost. Barron, Rissanen, and Yu (1998) describe universal, mixture, and predictive coding approaches for model comparison. For historical cipher hypotheses, this implies that a model must pay for the key, partition, null structure, source model, selection policy, segmentation, and unexplained data. A fitted key or probability table cannot be treated as free.
+
+MDL does not eliminate domain dependence. A model may compress an observation well because it has access to a closely matched source distribution. Transfer to held-out documents, source corpora, and renderer mechanisms therefore remains essential.
+
+---
+
+## 3. Experimental principles and programme design
+
+### 3.1 Research questions
+
+The programme addressed five research questions.
+
+**RQ1.** Which bounded cipher mechanisms are recoverable under fresh keys and unseen plaintext material?
+
+**RQ2.** Does a solver that recovers a family also support reliable ciphertext-only identification of that family?
+
+**RQ3.** Can latent sequential order distinguish enciphered source messages from ordered non-message generation?
+
+**RQ4.** Can charged source-message models retain an advantage when the exact source corpus and renderer are withheld?
+
+**RQ5.** Which failures should yield negative evidence about a mechanism, and which should yield abstention because the method is insufficient?
+
+### 3.2 Sequential freezing
+
+The study was prospectively gated and sequentially frozen. It was not a single preregistration in which every later implementation was fixed at the outset. At each decisive stage, however, the following were fixed before the relevant result was exposed:
+
+- candidate family or generator definitions;
+- train, development, and test partitions;
+- key and parameter generation;
+- solver portfolio;
+- evaluation metrics;
+- thresholds and stopping rules;
+- conditions under which the target document could be opened.
+
+Development results could motivate a new version, but a failed locked result was not amended. Several programmes stopped at development because they failed by a wide margin. The target manuscript was not scored by the terminal programmes.
+
+### 3.3 Evidence hierarchy
+
+The four-stage hierarchy was operationalised as follows. It is proposed as an evidential standard derived from the programme; the programme did not independently validate the hierarchy as a complete standard.
+
+**Generability** was evaluated by comparing simulated outputs with a broad battery of distributional and structural statistics.
+
+**Recoverability** required direct comparison with known synthetic plaintext and key structure. Fluency or source-language classification did not count.
+
+**Recognisability** required blind classification among cipher families, structured generation, notation-like processes, ordinary text, and out-of-family controls, with calibrated abstention.
+
+**Transferability** required performance on new keys, periods, source chunks, languages, renderers, or complete held-out documents. Where possible, controls were generated through the same surface renderer as positives.
+
+### 3.4 Evaluation measures
+
+The principal recovery measure was normalised character accuracy,
+
+\[
+A = \max\left(0,1-\frac{d_{\mathrm{Lev}}(\hat{x},x)}
+{\max(|\hat{x}|,|x|)}\right),
+\]
+
+where \(d_{\mathrm{Lev}}\) is Levenshtein distance. Other measures included exact plaintext recovery, key or mapping accuracy, null F1, boundary F1, mode and parameter recovery, precision, recall, false-positive rate, calibration error, and held-out codelength.
+
+Aggregate means were not allowed to conceal catastrophic failures where the frozen gate included a minimum or trial-count condition. This was important because several solvers showed a two-basin pattern: near-perfect recovery when the correct basin was reached and near-chance output otherwise. Wilson 95% confidence intervals are reported for headline binomial proportions; they describe sampling resolution and do not retrospectively alter any frozen pass/fail gate.
+
+### 3.5 Reproducibility and compute
+
+The experiments used deterministic seeds, immutable commits, job identifiers, machine-readable results, and SHA-256 records. Independent trials were parallelised across CPU or GPU jobs. High compute budgets were permitted, but additional compute was not used after a conceptual or frozen-gate failure.
+
+The programme also documented implementation defects. These included unsafe caching, event-order corruption, an impossible uniqueness loop in Family P, a shared-cache race, and a topic-state transition error. Execution-only corrections were permitted only before a valid scientific result existed and only where the objective, data, thresholds, and registered search budget remained unchanged.
+
+---
+
+## 4. From surface structure to source identifiability
+
+### 4.1 Structural decomposition
+
+The initial corpus contained 37,465 transliterated tokens. Each token was represented through a four-part decomposition consisting of prefix, gallows, minimal core, and suffix family, together with section, folio, line position, and neighbouring-token metadata. A rule inventory of 210 adjacency and slot constraints achieved 92.96% character coverage, 71.93% word-full coverage, and 99.87% word-any coverage, where word-any indicates that at least one rule matched somewhere in the word.
+
+Held-out folio validation produced no structural violations among 3,930 types unseen during grammar development. This does not establish that the decomposition corresponds to linguistic morphemes. It establishes that a compact positional representation captures stable regularities across the manuscript transliteration.
+
+The joint entropy of the four-slot token representation was 9.124 bits. The sum of marginal slot entropies was 10.306 bits, implying 1.182 bits of redundancy. Five conditioning axes—section, line position, previous suffix family, paragraph status, and quire—jointly explained 2.634 bits, or 28.87% of the token entropy. The largest incremental contribution after section and position came from the preceding suffix family. Approximately 71.1% remained unexplained by these production variables.
+
+The residual was initially tempting to describe as lexical or semantic content. That interpretation was later withdrawn as an evidential claim. Residual entropy measures what the selected production model does not explain; it does not identify the cause of the residual.
+
+### 4.2 Generator hierarchy
+
+Twenty-three generators were evaluated using 84 metrics covering entropy, character and n-gram distributions, vocabulary growth, type-token behaviour, repetition, positional effects, autocorrelation, and structural constraints. Tolerances were derived from line-level bootstrap variation and cross-section variance. Split-half manuscript self-consistency produced a practical ceiling of 81/84 metrics.
+
+The best fully generative model passed 59/84 metrics. Simpler character bigrams, copy-mutate processes, section-conditioned templates, slot grammars, and two-stream variants reproduced different subsets. A descriptive all-history avoidance model reached approximately 71/84 under cross-section validation but consumed the observed latent triple stream and was therefore not a free-standing generator. The hierarchy extended the literature's human-gibberish, self-citation, and table-and-grille controls by placing them alongside increasingly constrained slot and section models (Timm and Schinner 2020; Rugg and Taylor 2017; Gaskell and Bowern 2022).
+
+Two lessons followed. First, a large collection of manuscript statistics can be reproduced without a semantic source message. Second, failure to reproduce the remaining metrics does not by itself favour cipher: it may indicate unmodelled production rules, transliteration effects, or ordinary corpus-specific variation.
+
+### 4.3 Source-language resemblance
+
+An early two-table hypothesis mapped one token class to function-word families and another to consonant-vowel rows. Pharmaceutical Latin ranked first in a sixteen-language consonant-distribution comparison, but Italian, Occitan, Portuguese, and Spanish occupied nearby positions. A leave-one-out analysis showed that one high-frequency assignment, *et*, dominated much of the bigram improvement. The model reproduced many surface metrics and cross-corpus correlations but did not recover a key, yield readings, or identify a source text.
+
+This stage exposed the difference between **source compatibility** and **decipherment**. A distribution may resemble a corpus because of register, projection, or mapping choices without implying that the corpus language was encrypted. That recognition motivated explicit synthetic recovery tests.
+
+---
+
+## 5. Charged morpholocal calibration
+
+### 5.1 Bounded cipher model
+
+The first recoverability programme tested a mixed-unit homophonic and nomenclator proxy. Surface tokens mapped to a fixed latent inventory containing letter-, syllable-, preposition-, and whole-word-like units. The design varied:
+
+- global versus partitioned keys;
+- zero or low null inventories;
+- balanced or unequal homophone classes;
+- several source-register profiles;
+- four homophone-selection policies;
+- optional length-based surface selection.
+
+The cipher arm paid for partition, mapping, null structure, policy, source model, selector, and data. Production controls included context-independent sampling, cell Markov models, copy-mutate processes, and permuted-cipher controls.
+
+### 5.2 Formal v0.2 result
+
+On 96 planted positives and 320 controls, the frozen v0.2 estimator recovered 34 positives and accepted no controls. Median mapping accuracy was 0.583, null F1 was 1.0, selector recovery was 1.0, and structural recovery was 0.573. The formal sensitivity gate failed.
+
+The result was informative because it separated specificity from sensitivity. The model did not hallucinate payloads in the tested controls, but it could not recover the bounded cipher family reliably. Frequency-weighted and sticky line-reset homophone policies were especially difficult.
+
+A literature review after this result showed that the implemented annealer was not a class-level test. Published systems often use higher-order language models, lexical constraints, optimised symbol assignment, specialised hill climbing, Bayesian sampling, lattices, or supervised synthetic training (Ravi and Knight 2011; Nuhn, Schamper, and Ney 2013, 2014; Dhavare, Low, and Stamp 2013; Chu, Valenti, and Knight 2020; Kambhatla, Mansouri Bigvand, and Sarkar 2018; Aldarrab and May 2021, 2022; Kambhatla, Born, and Sarkar 2023; Bruton, Beloucif, and Megyesi 2026). The v0.2 result was therefore registered as a decoder failure, not as rejection of historical nomenclators.
+
+### 5.3 Decoder escalation and latent-order test
+
+Subsequent versions added specialised search, beam decoding, Bayesian inference, policy-aware scoring, and neural models. A conditional randomisation statistic tested whether the recovered held-out latent sequence possessed more source-like transition order than within-line permutations.
+
+On development data generated from related transition families, the test appeared promising. It detected 73 of 96 positives with six false positives among 64 controls. A generator-disjoint smoke test then replaced both sides. Positive trials used two independent Greek corpora and four independently coded homophonic renderers. Controls used the same 24-cell surface interface but latent sequences from an ordered HMM, motif grammar, topic finite-state process, or copied-and-mutated lines.
+
+Performance reversed. Only 2/16 independent ciphers were detected, while 10/16 ordered non-message controls were accepted. The test had measured compatibility with the assumed external transition model, not the existence of an encoded source message.
+
+### 5.4 Oracle source identifiability
+
+A subsequent oracle experiment removed mapping inference and compared six source representations: a twelve-class projection, initials, character streams, syllable-like units, BPE units, and capped word identities. Source-family attribution reached 94–98% for most representations. Message sensitivity, however, was between 0% and 27.1% once thresholds constrained control false positives. No representation qualified for inferred mapping.
+
+This established a second distinction:
+
+> Source-family attribution is not message specificity.
+
+A structured generator can produce sequences compatible with a source corpus without carrying an independently selected source message.
+
+---
+
+## 6. Multilingual recoverability frontier
+
+### 6.1 Initial generic neural decoder
+
+The v0.5 pilot crossed six languages, eight cipher families, three lengths, three noise levels, and four structured controls. The cipher families were monoalphabetic, homophonic, null homophonic, periodic polyalphabetic, feedback, nomenclator, substitution-plus-transposition, and fractionated systems. Training, development, and test corpus partitions were disjoint.
+
+A compact Transformer was trained both with and without the true family label. It also attempted to classify whether the latent sequence was an independently selected source chunk or a generated control transformed by the same cipher.
+
