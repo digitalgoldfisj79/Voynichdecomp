@@ -93,7 +93,14 @@ def load_frozen_module():
     if spec is None or spec.loader is None:
         raise RuntimeError("could not load v1.2 calibration module")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # Dataclasses and other runtime type machinery resolve the defining module
+    # through sys.modules during execution. Register it before exec_module.
+    sys.modules[spec.name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(spec.name, None)
+        raise
     return module
 
 
