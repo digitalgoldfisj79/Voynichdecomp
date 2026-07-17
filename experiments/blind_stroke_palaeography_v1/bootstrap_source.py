@@ -9,9 +9,9 @@ from pathlib import Path
 
 BUNDLES = {
     "external_calibration.py": {
-        "pattern": "external_calibration.py.v2.gz.b64.part*",
-        "size": 36922,
-        "sha256": "027e103fbcb440ec6614e535a8ab9d09f31ce3cee723a60c1ef6514aff0c1742",
+        "pattern": "external_calibration.py.v3.gz.b64.part*",
+        "size": 37401,
+        "sha256": "f93fc90c0527266d71d876962050923b9f7e4020c77dc8c7fad83019b80ac883",
     },
     "blind_model_selection.py": {
         "pattern": "blind_model_selection.py.v2.gz.b64.part*",
