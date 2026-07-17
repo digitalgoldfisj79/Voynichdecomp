@@ -11,9 +11,15 @@ FROZEN_PATHS = [
     "config/protocol_v1.json",
     "LITERATURE_AND_DATA_AUDIT.md",
     "bootstrap_source.py",
-    "source_bundle/external_calibration.py.gz.b64.part00",
-    "source_bundle/external_calibration.py.gz.b64.part01",
-    "source_bundle/blind_model_selection.py.gz.b64.part00",
+    "code/preflight.py",
+    "code/freeze_manifest.py",
+    "source_bundle/external_calibration.py.v2.gz.b64.part00",
+    "source_bundle/external_calibration.py.v2.gz.b64.part01",
+    "source_bundle/external_calibration.py.v2.gz.b64.part02",
+    "source_bundle/external_calibration.py.v2.gz.b64.part03",
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part00",
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part01",
+    "source_bundle/blind_model_selection.py.v2.gz.b64.part02",
 ]
 
 
