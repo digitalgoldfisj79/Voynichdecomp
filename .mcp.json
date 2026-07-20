@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "pal": {
+      "command": "bash",
+      "args": [
+        "-c",
+        "for p in $(which uvx 2>/dev/null) $HOME/.local/bin/uvx /opt/homebrew/bin/uvx /usr/local/bin/uvx uvx; do [ -x \"$p\" ] && exec \"$p\" --from git+https://github.com/BeehiveInnovations/pal-mcp-server.git pal-mcp-server; done; echo 'uvx not found' >&2; exit 1"
+      ],
+      "env": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:${HOME}/.local/bin",
+        "GEMINI_API_KEY": "${GEMINI_API_KEY:-}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY:-}",
+        "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY:-}",
+        "AZURE_OPENAI_API_KEY": "${AZURE_OPENAI_API_KEY:-}",
+        "XAI_API_KEY": "${XAI_API_KEY:-}",
+        "DIAL_API_KEY": "${DIAL_API_KEY:-}",
+        "DEFAULT_MODEL": "${PAL_DEFAULT_MODEL:-auto}",
+        "DISABLED_TOOLS": "${PAL_DISABLED_TOOLS:-analyze,refactor,testgen,secaudit,docgen,tracer}"
+      }
+    }
+  }
+}
