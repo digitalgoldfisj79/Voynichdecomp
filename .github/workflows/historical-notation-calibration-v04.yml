@@ -9,6 +9,12 @@ on:
       - '.github/workflows/historical-notation-calibration-v04.yml'
       - 'experiments/notation_packet_v0_4/FROZEN_PROTOCOL_HISTORICAL_NOTATION_v0_4.md'
       - 'experiments/notation_packet_v0_4/scripts/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/historical-notation-calibration-v04.yml'
+      - 'experiments/notation_packet_v0_4/**'
 
 permissions:
   contents: write
@@ -20,7 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: experiment/voynich-notation-historical-calibration-v0.4-20260724
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -48,7 +53,7 @@ jobs:
             'https://open.uni-marburg.de/server/api/core/bitstreams/36a19f39-4439-412e-8181-dedd8a710bc4/content'
           test "$(stat -c%s external/Ammerbach.tar)" -gt 700000000
           tar -xf external/Ammerbach.tar -C external/ammerbach
-          find external/ammerbach -type f -name '*.txt' | wc -l
+          test "$(find external/ammerbach -type f -name '*.txt' | wc -l)" -ge 2400
 
       - name: Download complete public GABC/MEI calibration corpus
         run: git clone --depth 1 https://github.com/ECHOES-from-the-Past/GABCtoMEI.git external/GABCtoMEI
@@ -79,7 +84,15 @@ jobs:
           },indent=2))
           PY
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: historical-notation-calibration-v0.4
+          path: experiments/notation_packet_v0_4/results
+          if-no-files-found: error
+          retention-days: 90
+
       - name: Commit immutable external results
+        if: github.event_name == 'push'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
@@ -88,10 +101,3 @@ jobs:
             git commit -m 'Run historical notation external calibration v0.4 [skip ci]'
             git push origin HEAD:experiment/voynich-notation-historical-calibration-v0.4-20260724
           fi
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: historical-notation-calibration-v0.4
-          path: experiments/notation_packet_v0_4/results
-          if-no-files-found: error
-          retention-days: 90
