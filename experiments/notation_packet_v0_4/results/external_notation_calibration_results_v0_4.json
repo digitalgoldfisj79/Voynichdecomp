@@ -1,0 +1,1996 @@
+{
+  "schema": "historical-notation-external-calibration-v0.4",
+  "selected_representation": "flattened",
+  "external_gate_pass": true,
+  "family_gate_pass": true,
+  "voynich_opened": false,
+  "ammerbach_audit": {
+    "csv_files": [
+      {
+        "path": "external/ammerbach/md/.ipynb_checkpoints/test-checkpoint.csv",
+        "rows": 1000
+      },
+      {
+        "path": "external/ammerbach/md/.ipynb_checkpoints/train-checkpoint.csv",
+        "rows": 1000
+      },
+      {
+        "path": "external/ammerbach/md/test.csv",
+        "rows": 1000
+      },
+      {
+        "path": "external/ammerbach/md/train.csv",
+        "rows": 1000
+      },
+      {
+        "path": "external/ammerbach/md/val.csv",
+        "rows": 400
+      }
+    ],
+    "columns": {
+      "external/ammerbach/md/.ipynb_checkpoints/test-checkpoint.csv": [
+        "file",
+        "top",
+        "bot",
+        "combined"
+      ],
+      "external/ammerbach/md/.ipynb_checkpoints/train-checkpoint.csv": [
+        "file",
+        "top",
+        "bot",
+        "combined"
+      ],
+      "external/ammerbach/md/test.csv": [
+        "file",
+        "top",
+        "bot",
+        "combined"
+      ],
+      "external/ammerbach/md/train.csv": [
+        "file",
+        "top",
+        "bot",
+        "combined"
+      ],
+      "external/ammerbach/md/val.csv": [
+        "file",
+        "top",
+        "bot",
+        "combined"
+      ]
+    },
+    "source_counts": {
+      "ammerbach_inferred_bookA": 1204,
+      "ammerbach_inferred_bookB": 1200
+    },
+    "txt_files_seen": 2404,
+    "annotations_parsed": 2404,
+    "representation_lengths": {
+      "pitch": {
+        "n": 2404,
+        "mean": 26.30990016638935,
+        "median": 26.0,
+        "min": 5,
+        "max": 59
+      },
+      "duration": {
+        "n": 2404,
+        "mean": 25.114808652246257,
+        "median": 24.5,
+        "min": 4,
+        "max": 58
+      },
+      "paired": {
+        "n": 2404,
+        "mean": 26.322379367720465,
+        "median": 26.0,
+        "min": 5,
+        "max": 59
+      },
+      "flattened": {
+        "n": 2404,
+        "mean": 51.42470881863561,
+        "median": 50.0,
+        "min": 10,
+        "max": 116
+      }
+    },
+    "samples": [
+      {
+        "path": "external/ammerbach/img/test/.ipynb_checkpoints/0-checkpoint.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|",
+            "8",
+            "8",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "2",
+            "rep",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "g",
+            "b",
+            "a",
+            "d'",
+            "|",
+            "c'",
+            "b",
+            "a",
+            "g",
+            "b",
+            "|",
+            "a",
+            "d'",
+            "c'",
+            "b",
+            "a",
+            "|",
+            "g",
+            "r4",
+            "c'",
+            "|",
+            "c'",
+            "b",
+            "a",
+            "g",
+            "|",
+            "f",
+            "dis",
+            "d",
+            "g",
+            "|",
+            "g",
+            "g",
+            "f",
+            "g",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 37,
+          "duration": 37,
+          "paired": 37,
+          "flattened": 74
+        },
+        "metadata": null
+      },
+      {
+        "path": "external/ammerbach/img/test/.ipynb_checkpoints/1-checkpoint.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "4",
+            "4.",
+            "8",
+            "|",
+            "8",
+            "8",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "2",
+            "|",
+            "|",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "r4",
+            "g",
+            "d",
+            "b",
+            "|",
+            "f",
+            "g",
+            "d",
+            "g",
+            "g",
+            "|",
+            "d",
+            "b",
+            "f",
+            "g",
+            "d",
+            "|",
+            "g",
+            "r2",
+            "|",
+            "r1",
+            "|",
+            "r2",
+            "r4",
+            "g",
+            "|",
+            "g",
+            "g",
+            "d",
+            "e",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 32,
+          "duration": 27,
+          "paired": 32,
+          "flattened": 59
+        },
+        "metadata": null
+      },
+      {
+        "path": "external/ammerbach/img/test/000.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|",
+            "8",
+            "8",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "2",
+            "rep",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "g",
+            "b",
+            "a",
+            "d'",
+            "|",
+            "c'",
+            "b",
+            "a",
+            "g",
+            "b",
+            "|",
+            "a",
+            "d'",
+            "c'",
+            "b",
+            "a",
+            "|",
+            "g",
+            "r4",
+            "c'",
+            "|",
+            "c'",
+            "b",
+            "a",
+            "g",
+            "|",
+            "f",
+            "dis",
+            "d",
+            "g",
+            "|",
+            "g",
+            "g",
+            "f",
+            "g",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 37,
+          "duration": 37,
+          "paired": 37,
+          "flattened": 74
+        },
+        "metadata": {
+          "file": "val/000.png",
+          "top": " | 2. | 4 8 8 4 | 2. | 2. | 4 4 4 | 4 8 8 4 | 2. | ",
+          "bot": " | d' | e' d' c' d' | c' | d' | b g d' | c' b a g | f | ",
+          "combined": " _|_ _d'_2._ _|_ _e'_4_ _d'_8_ _c'_8_ _d'_4_ _|_ _c'_2._ _|_ _d'_2._ _|_ _b_4_ _g_4_ _d'_4_ _|_ _c'_4_ _b_8_ _a_8_ _g_4_ _|_ _f_2._ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/001.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "4",
+            "4.",
+            "8",
+            "|",
+            "8",
+            "8",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "2",
+            "|",
+            "|",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "r4",
+            "g",
+            "d",
+            "b",
+            "|",
+            "f",
+            "g",
+            "d",
+            "g",
+            "g",
+            "|",
+            "d",
+            "b",
+            "f",
+            "g",
+            "d",
+            "|",
+            "g",
+            "r2",
+            "|",
+            "r1",
+            "|",
+            "r2",
+            "r4",
+            "g",
+            "|",
+            "g",
+            "g",
+            "d",
+            "e",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 32,
+          "duration": 27,
+          "paired": 32,
+          "flattened": 59
+        },
+        "metadata": {
+          "file": "val/001.png",
+          "top": " | 4. 16 16 8 8 | 4 4 4 | 4 4 8 8 | 8 8 4 4 | 4. 8 4 | 4 4 4 | 4 8 8 8 16 16 | ",
+          "bot": " | g f e d g | c f g | a f f e | d c b, b | g a b | f b, c | c' d' c' c' b a | ",
+          "combined": " _|_ _g_4._ _f_16_ _e_16_ _d_8_ _g_8_ _|_ _c_4_ _f_4_ _g_4_ _|_ _a_4_ _f_4_ _f_8_ _e_8_ _|_ _d_8_ _c_8_ _b,_4_ _b_4_ _|_ _g_4._ _a_8_ _b_4_ _|_ _f_4_ _b,_4_ _c_4_ _|_ _c'_4_ _d'_8_ _c'_8_ _c'_8_ _b_16_ _a_16_ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/002.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "4",
+            "4",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "4",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "4",
+            "4",
+            "4",
+            "4",
+            "|",
+            "4",
+            "4",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "2",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "g'",
+            "fis'",
+            "g'",
+            "g'",
+            "g'",
+            "fis'",
+            "|",
+            "g'",
+            "r8",
+            "b'",
+            "b'",
+            "a'",
+            "b'",
+            "g'",
+            "|",
+            "g'",
+            "fis'",
+            "g'",
+            "g'",
+            "|",
+            "b'",
+            "b'",
+            "a'",
+            "b'",
+            "b'",
+            "a'",
+            "|",
+            "b'",
+            "r4",
+            "a'",
+            "|",
+            "b'",
+            "a'",
+            "g'",
+            "f'",
+            "e'",
+            "|",
+            "f'",
+            "a'",
+            "g'",
+            "b'",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 43,
+          "duration": 41,
+          "paired": 43,
+          "flattened": 84
+        },
+        "metadata": {
+          "file": "val/002.png",
+          "top": " | 4 4 4 | 4 2 | 2. | 2. | 4 4 4 | 4. 8 8 8 | 2. | ",
+          "bot": " | d'' d'' d'' | e'' d'' | c'' | d'' | b' g' d'' | c'' b' a' g' | f' | ",
+          "combined": " _|_ _d''_4_ _d''_4_ _d''_4_ _|_ _e''_4_ _d''_2_ _|_ _c''_2._ _|_ _d''_2._ _|_ _b'_4_ _g'_4_ _d''_4_ _|_ _c''_4._ _b'_8_ _a'_8_ _g'_8_ _|_ _f'_2._ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/003.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "4",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "2",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "d'",
+            "dis'",
+            "dis'",
+            "d'",
+            "d'",
+            "r8",
+            "d'",
+            "|",
+            "d'",
+            "d'",
+            "d'",
+            "g'",
+            "f'",
+            "f'",
+            "d'",
+            "dis'",
+            "|",
+            "d'",
+            "dis'",
+            "d'",
+            "d'",
+            "b",
+            "d'",
+            "|",
+            "g'",
+            "f'",
+            "f'",
+            "e'",
+            "f'",
+            "f'",
+            "|",
+            "d'",
+            "d'",
+            "f'",
+            "|",
+            "d'",
+            "f'",
+            "e'",
+            "d'",
+            "cis'",
+            "|",
+            "d'",
+            "f'",
+            "dis'",
+            "f'",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 47,
+          "duration": 46,
+          "paired": 47,
+          "flattened": 93
+        },
+        "metadata": {
+          "file": "val/003.png",
+          "top": " | 4 4 4 | 4 4 8 8 | 4. 8 8 8 | 8 8 8 8 4 | 4 4 8 8 | 4 4 4 | 2. | ",
+          "bot": " | f' d' g' | g' f' e' d' | e' a' a' g' | f' e' d' c' d' | g d' d' e' | f' d' e' | d' | ",
+          "combined": " _|_ _f'_4_ _d'_4_ _g'_4_ _|_ _g'_4_ _f'_4_ _e'_8_ _d'_8_ _|_ _e'_4._ _a'_8_ _a'_8_ _g'_8_ _|_ _f'_8_ _e'_8_ _d'_8_ _c'_8_ _d'_4_ _|_ _g_4_ _d'_4_ _d'_8_ _e'_8_ _|_ _f'_4_ _d'_4_ _e'_4_ _|_ _d'_2._ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/004.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "2",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "4",
+            "|",
+            "4",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "b",
+            "c'",
+            "a",
+            "a",
+            "g",
+            "h",
+            "c'",
+            "a",
+            "|",
+            "g",
+            "b",
+            "b",
+            "b",
+            "d'",
+            "c'",
+            "b",
+            "c'",
+            "|",
+            "b",
+            "c'",
+            "a",
+            "a",
+            "g",
+            "b",
+            "|",
+            "dis'",
+            "d'",
+            "c'",
+            "b",
+            "c'",
+            "c'",
+            "|",
+            "b",
+            "r4",
+            "d'",
+            "|",
+            "b",
+            "f",
+            "c'",
+            "d'",
+            "a",
+            "|",
+            "d",
+            "d'",
+            "b",
+            "d'",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 48,
+          "duration": 47,
+          "paired": 48,
+          "flattened": 95
+        },
+        "metadata": {
+          "file": "val/004.png",
+          "top": " | 4 8 8 8 8 | 4 4 4 | 8 8 8 8 8 8 | 4 4 8 8 | 8 8 8 8 4 | 4 4 4 | 4 4 8 8 | ",
+          "bot": " | a b c' d' b | c' a b | g c' c' a f g | a b g d' | d' c' b a g | a b c' | a b b c' | ",
+          "combined": " _|_ _a_4_ _b_8_ _c'_8_ _d'_8_ _b_8_ _|_ _c'_4_ _a_4_ _b_4_ _|_ _g_8_ _c'_8_ _c'_8_ _a_8_ _f_8_ _g_8_ _|_ _a_4_ _b_4_ _g_8_ _d'_8_ _|_ _d'_8_ _c'_8_ _b_8_ _a_8_ _g_4_ _|_ _a_4_ _b_4_ _c'_4_ _|_ _a_4_ _b_4_ _b_8_ _c'_8_ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/005.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "8",
+            "8",
+            "8",
+            "8",
+            "4",
+            "4",
+            "|",
+            "4.",
+            "8",
+            "8",
+            "8",
+            "8",
+            "8",
+            "|",
+            "2",
+            "|",
+            "|",
+            "4",
+            "4.",
+            "8",
+            "|"
+          ],
+          [
+            "|",
+            "g",
+            "c",
+            "d",
+            "d",
+            "g",
+            "g",
+            "c",
+            "d",
+            "|",
+            "g",
+            "g",
+            "g",
+            "g",
+            "b",
+            "f",
+            "g",
+            "c",
+            "|",
+            "g",
+            "c",
+            "d",
+            "d",
+            "g",
+            "g",
+            "|",
+            "dis",
+            "b",
+            "f",
+            "g",
+            "f",
+            "f",
+            "|",
+            "b",
+            "r2",
+            "|",
+            "r1",
+            "|",
+            "r4",
+            "d",
+            "dis",
+            "b",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 43,
+          "duration": 40,
+          "paired": 43,
+          "flattened": 83
+        },
+        "metadata": {
+          "file": "val/005.png",
+          "top": " | 4 2 | 4 4 4 | 4. 8 8 8 | 4 8 8 8 8 | 4. 8 4 | 4 4 4 | 4 4 8 8 | ",
+          "bot": " | d g | c d b, | c f f e | d d' c' b a | g a b | f g c | d b, b a | ",
+          "combined": " _|_ _d_4_ _g_2_ _|_ _c_4_ _d_4_ _b,_4_ _|_ _c_4._ _f_8_ _f_8_ _e_8_ _|_ _d_4_ _d'_8_ _c'_8_ _b_8_ _a_8_ _|_ _g_4._ _a_8_ _b_4_ _|_ _f_4_ _g_4_ _c_4_ _|_ _d_4_ _b,_4_ _b_8_ _a_8_ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/006.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ],
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 8,
+          "duration": 8,
+          "paired": 8,
+          "flattened": 16
+        },
+        "metadata": {
+          "file": "val/006.png",
+          "top": " | 8 8 8 8 8 8 | 4. 16 16 4 | 4 4 8 8 | 8 8 8 16 16 4 | 8 8 8 8 4 | 8 8 8 8 8 8 | 4 4. 8 | ",
+          "bot": " | a' g' f' e' f' d' | g' fis' e' fis' | g' d'' d'' b' | c'' a' a' g' f' e' | d'' d'' d' b' c'' | c'' b' a' a' a' g' | a' c'' a' | ",
+          "combined": " _|_ _a'_8_ _g'_8_ _f'_8_ _e'_8_ _f'_8_ _d'_8_ _|_ _g'_4._ _fis'_16_ _e'_16_ _fis'_4_ _|_ _g'_4_ _d''_4_ _d''_8_ _b'_8_ _|_ _c''_8_ _a'_8_ _a'_8_ _g'_16_ _f'_16_ _e'_4_ _|_ _d''_8_ _d''_8_ _d'_8_ _b'_8_ _c''_4_ _|_ _c''_8_ _b'_8_ _a'_8_ _a'_8_ _a'_8_ _g'_8_ _|_ _a'_4_ _c''_4._ _a'_8_ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/007.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ],
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 8,
+          "duration": 8,
+          "paired": 8,
+          "flattened": 16
+        },
+        "metadata": {
+          "file": "val/007.png",
+          "top": " | 2. | 4 4 4 | 2. | 2. | 4 4 4 | 8 8 8 8 4 | 2. | ",
+          "bot": " | a' | b' a' a' | g' | a' | f' d' a' | g' g' f' e' d' | c' | ",
+          "combined": " _|_ _a'_2._ _|_ _b'_4_ _a'_4_ _a'_4_ _|_ _g'_2._ _|_ _a'_2._ _|_ _f'_4_ _d'_4_ _a'_4_ _|_ _g'_8_ _g'_8_ _f'_8_ _e'_8_ _d'_4_ _|_ _c'_2._ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/008.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ],
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 8,
+          "duration": 8,
+          "paired": 8,
+          "flattened": 16
+        },
+        "metadata": {
+          "file": "val/008.png",
+          "top": " | 4 4 4 | 4 4 4 | 4 4 4 | 4 4 4 | 4 4 8 16 16 | 4 4 4 | 4 4 4 | ",
+          "bot": " | c' d' d' | b c' d' | d' g d' | e' a a | b f' f' e' d' | e' c' d' | e' c' f' | ",
+          "combined": " _|_ _c'_4_ _d'_4_ _d'_4_ _|_ _b_4_ _c'_4_ _d'_4_ _|_ _d'_4_ _g_4_ _d'_4_ _|_ _e'_4_ _a_4_ _a_4_ _|_ _b_4_ _f'_4_ _f'_8_ _e'_16_ _d'_16_ _|_ _e'_4_ _c'_4_ _d'_4_ _|_ _e'_4_ _c'_4_ _f'_4_ _|_ "
+        }
+      },
+      {
+        "path": "external/ammerbach/img/test/009.txt",
+        "source": "ammerbach_inferred_bookA",
+        "lines": [
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ],
+          [
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|",
+            "|"
+          ]
+        ],
+        "lengths": {
+          "pitch": 8,
+          "duration": 8,
+          "paired": 8,
+          "flattened": 16
+        },
+        "metadata": {
+          "file": "val/009.png",
+          "top": " | 4 4 4 | 4 | 4 4 4 | 8 8 8 8 4 | 8 8 8 16 16 4 | 4 4 4 | 4 4 4 | ",
+          "bot": " | f d d | r2 d | g a b | a b c' d' c' | d' b b b g f | c' f b | a a f | ",
+          "combined": " _|_ _f_4_ _d_4_ _d_4_ _|_ _r2_ _d_4_ _|_ _g_4_ _a_4_ _b_4_ _|_ _a_8_ _b_8_ _c'_8_ _d'_8_ _c'_4_ _|_ _d'_8_ _b_8_ _b_8_ _b_16_ _g_16_ _f_4_ _|_ _c'_4_ _f_4_ _b_4_ _|_ _a_4_ _a_4_ _f_4_ _|_ "
+        }
+      }
+    ]
+  },
+  "gabc_audit": {
+    "files": 116,
+    "families": {
+      "aquitanian": 49,
+      "square": 53,
+      "unknown": 14
+    },
+    "manuscripts": {
+      "P-BRam Nº 003 Códices, Bv": 1,
+      "P-BRs Ms. 034, 330": 1,
+      "P-BRad Pastas 077, Ar": 1,
+      "P-BRs Ms. 034, 123": 1,
+      "P-BRad 15, 026": 1,
+      "P-BRad 23, Bv": 1,
+      "P-BRs Ms. 034, 027": 1,
+      "P-BRad Pastas 023, Av": 1,
+      "P-BRad Pastas 011, 007r": 1,
+      "P-BRs Ms. 034, 012": 1,
+      "P-BRs Ms. 034, 006": 1,
+      "P-Gmas LC 003, 004v": 1,
+      "P-BRad Pastas 051, 157v": 1,
+      "P-BRs Ms. 034, 083": 1,
+      "P-BRad Pastas 015, 023": 1,
+      "P-BRs Ms. 034, 023": 1,
+      "P-BRad Pastas 013, Br": 1,
+      "P-BRs Ms. 034, 366": 1,
+      "P-BRad Pastas 100, Bv": 1,
+      "P-BRad Pastas 169, v": 1,
+      "P-BRs Ms. 034, 039": 1,
+      "P-BRad Pastas 082, Bv": 1,
+      "P-BRs Ms. 034, 344": 2,
+      "P-BRad Pastas 028, Bv": 1,
+      "P-BRad Pastas 176, r": 1,
+      "P-BRs Ms. 034, 066": 1,
+      "P-BRad Pastas 077, Bv": 1,
+      "P-BRs Ms. 034, 126": 1,
+      "P-BRad Pastas 050, Av": 1,
+      "P-BRs Ms. 034, 060": 1,
+      "P-BRad Pastas 208, 089r": 1,
+      "P-BRs Ms. 034, 079": 1,
+      "P-BRam Nº 002 Códices, Ar": 1,
+      "P-BRad 122 (olim Caixa 242, nº 8), 10v": 1,
+      "P-BRs Ms. 034, 131": 1,
+      "P-BRad Pastas 024, 176v": 1,
+      "P-BRs Ms. 034, 355": 1,
+      "P-BRad Pastas 002, v": 1,
+      "P-BRs Ms. 034, 312": 1,
+      "P-BRad Pastas 009, 035r": 1,
+      "P-BRs Ms. 034, 141": 1,
+      "P-BRad Pastas 210, Ar": 1,
+      "P-BRad Pastas 085, Av": 1,
+      "P-BRs Ms. 032, 160v": 1,
+      "P-BRad Pastas 244, Ar": 1,
+      "P-BRs Ms. 032, 306r": 1,
+      "P-BRs Ms. 028, 69r": 1,
+      "P-BRs Ms. 028, 171r": 1,
+      "P-BRs Ms. 034, 296": 1,
+      "P-BRam Nº 008 Códices, Br": 1,
+      "P-BRs Ms. 032, 208r": 1,
+      "P-BRs Frag. 001, r": 1,
+      "P-BRs Ms. 032, 136r": 1,
+      "P-BRam Nº 010 Códices, Ar": 1,
+      "P-BRs Ms. 032, 301r": 1,
+      "P-G C 1152, Av": 1,
+      "P-BRs Ms. 028, 94r": 1,
+      "P-G C 1369, Av": 1,
+      "P-BRs Ms. 032, 224r": 1,
+      "P-BRs Ms. 028, 18r": 1,
+      "P-BRs Ms. 028, 105v": 1,
+      "P-BRs Ms. 034, 278": 1,
+      "P-BRad Pastas 052, 131r": 1,
+      "P-G C 1508": 1,
+      "P-BRs Ms. 032, 203v": 1,
+      "P-BRad Pastas 081, Ar": 9,
+      "P-BRs Ms. 032, 113v": 4,
+      "P-BRs Ms. 032, 114r": 5,
+      "P-G N 328, Av": 9,
+      "P-BRs Ms. 032, 116r": 4,
+      "P-BRs Ms. 032, 116v": 5,
+      "siglum": 14
+    },
+    "parse_failures": [],
+    "groups": 72
+  },
+  "representations": {
+    "paired": {
+      "counts": {
+        "organ_tablature": 2636,
+        "procedural_synthetic": 570,
+        "language_or_substitution": 138,
+        "surface_null": 138,
+        "neume_square": 38,
+        "neume_aquitanian": 25,
+        "neume_unknown": 6
+      },
+      "features": [
+        "n_events",
+        "n_chars",
+        "mean_event_len",
+        "sd_event_len",
+        "cv_event_len",
+        "median_event_len",
+        "max_event_len",
+        "single_char_frac",
+        "length_entropy",
+        "length_autocorr1",
+        "length_change_rate",
+        "char_inventory",
+        "event_inventory",
+        "type_token_ratio",
+        "hapax_type_frac",
+        "top_event_mass",
+        "same_adjacent_event_rate",
+        "char_H0",
+        "char_H1",
+        "char_H2",
+        "char_RED1",
+        "char_RED2",
+        "char_H0_norm",
+        "char_H1_norm",
+        "event_H0",
+        "event_H1",
+        "event_RED1",
+        "first_char_H",
+        "last_char_H",
+        "first_inventory",
+        "last_inventory",
+        "first_last_MI",
+        "position_char_MI",
+        "mean_prefix_overlap",
+        "mean_suffix_overlap",
+        "mean_distinct_chars_per_event",
+        "distinct_char_ratio",
+        "digit_frac",
+        "uppercase_frac",
+        "punct_frac",
+        "space_like_boundary_rate"
+      ],
+      "broad": {
+        "rows": 2981,
+        "groups": 28,
+        "folds": [
+          {
+            "fold": 0,
+            "train": 1413,
+            "test": 1568,
+            "test_groups": [
+              "ammerbach_inferred_bookA",
+              "gabc:P-BRad 15, 026",
+              "gabc:P-BRs Ms. 032, 116r",
+              "gabc:P-BRs Ms. 034, 023",
+              "gabc:P-BRs Ms. 034, 278",
+              "gabc:P-BRs Ms. 034, 344"
+            ],
+            "test_positive": 1516
+          },
+          {
+            "fold": 1,
+            "train": 1773,
+            "test": 1208,
+            "test_groups": [
+              "ammerbach_inferred_bookB",
+              "gabc:P-BRad Pastas 051, 157v",
+              "gabc:P-BRs Ms. 028, 94r",
+              "gabc:P-BRs Ms. 032, 114r",
+              "gabc:P-BRs Ms. 032, 301r",
+              "gabc:P-BRs Ms. 034, 123",
+              "gabc:P-G N 328, Av"
+            ],
+            "test_positive": 1148
+          },
+          {
+            "fold": 2,
+            "train": 2921,
+            "test": 60,
+            "test_groups": [
+              "gabc:P-BRad Pastas 077, Ar",
+              "gabc:P-BRs Ms. 032, 113v",
+              "gabc:P-BRs Ms. 034, 083",
+              "gabc:siglum"
+            ],
+            "test_positive": 6
+          },
+          {
+            "fold": 3,
+            "train": 2911,
+            "test": 70,
+            "test_groups": [
+              "gabc:P-BRad 23, Bv",
+              "gabc:P-BRad Pastas 081, Ar",
+              "gabc:P-BRad Pastas 244, Ar",
+              "gabc:P-BRs Ms. 028, 18r",
+              "gabc:P-BRs Ms. 032, 116v"
+            ],
+            "test_positive": 14
+          },
+          {
+            "fold": 4,
+            "train": 2906,
+            "test": 75,
+            "test_groups": [
+              "gabc:P-BRad Pastas 015, 023",
+              "gabc:P-BRam Nº 010 Códices, Ar",
+              "gabc:P-BRs Ms. 028, 105v",
+              "gabc:P-BRs Ms. 032, 306r",
+              "gabc:P-BRs Ms. 034, 027",
+              "gabc:P-G C 1152, Av"
+            ],
+            "test_positive": 15
+          }
+        ],
+        "metrics": {
+          "logistic": {
+            "roc_auc": 0.9964328790016792,
+            "average_precision": 0.9996008688540667,
+            "balanced_accuracy_0_5": 0.9630832538450017
+          },
+          "forest": {
+            "roc_auc": 0.9989791333275524,
+            "average_precision": 0.9998942613440183,
+            "balanced_accuracy_0_5": 0.9772676510081222
+          },
+          "ensemble": {
+            "roc_auc": 0.9987794271059153,
+            "average_precision": 0.9998734403084224,
+            "balanced_accuracy_0_5": 0.9780086661989337
+          }
+        },
+        "threshold": 0.29000000000000004,
+        "threshold_cv": {
+          "fpr": 0.0851063829787234,
+          "tpr": 0.9959244164505372,
+          "precision": 0.9911504424778761
+        },
+        "balanced_accuracy_threshold": 0.9554090167359068,
+        "organ_recall_threshold": 1.0,
+        "gate_pass": true
+      },
+      "family": {
+        "labels": [
+          "language_or_substitution",
+          "neume_aquitanian",
+          "neume_square",
+          "neume_unknown",
+          "organ_tablature",
+          "procedural_synthetic",
+          "surface_null"
+        ],
+        "macro_f1": 0.736078236146115,
+        "balanced_accuracy": 0.7407409828920126,
+        "confusion_matrix": [
+          [
+            138,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            7,
+            0,
+            0,
+            0,
+            6
+          ],
+          [
+            0,
+            6,
+            29,
+            1,
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            4,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            2636,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            570,
+            0
+          ],
+          [
+            0,
+            6,
+            2,
+            0,
+            0,
+            0,
+            130
+          ]
+        ],
+        "classification_report": {
+          "language_or_substitution": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 138.0
+          },
+          "neume_aquitanian": {
+            "precision": 0.5,
+            "recall": 0.48,
+            "f1-score": 0.4897959183673469,
+            "support": 25.0
+          },
+          "neume_square": {
+            "precision": 0.6904761904761905,
+            "recall": 0.7631578947368421,
+            "f1-score": 0.725,
+            "support": 38.0
+          },
+          "neume_unknown": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "organ_tablature": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 2636.0
+          },
+          "procedural_synthetic": {
+            "precision": 0.9982486865148862,
+            "recall": 1.0,
+            "f1-score": 0.9991235758106923,
+            "support": 570.0
+          },
+          "surface_null": {
+            "precision": 0.935251798561151,
+            "recall": 0.9420289855072463,
+            "f1-score": 0.9386281588447654,
+            "support": 138.0
+          },
+          "accuracy": 0.9898620107012109,
+          "macro avg": {
+            "precision": 0.7319966679360326,
+            "recall": 0.7407409828920126,
+            "f1-score": 0.736078236146115,
+            "support": 3551.0
+          },
+          "weighted avg": {
+            "precision": 0.9886805392151562,
+            "recall": 0.9898620107012109,
+            "f1-score": 0.9892497950131951,
+            "support": 3551.0
+          }
+        },
+        "gate_pass": true
+      }
+    },
+    "pitch": {
+      "counts": {
+        "organ_tablature": 2634,
+        "procedural_synthetic": 570,
+        "language_or_substitution": 138,
+        "surface_null": 138,
+        "neume_square": 38,
+        "neume_aquitanian": 25,
+        "neume_unknown": 6
+      },
+      "features": [
+        "n_events",
+        "n_chars",
+        "mean_event_len",
+        "sd_event_len",
+        "cv_event_len",
+        "median_event_len",
+        "max_event_len",
+        "single_char_frac",
+        "length_entropy",
+        "length_autocorr1",
+        "length_change_rate",
+        "char_inventory",
+        "event_inventory",
+        "type_token_ratio",
+        "hapax_type_frac",
+        "top_event_mass",
+        "same_adjacent_event_rate",
+        "char_H0",
+        "char_H1",
+        "char_H2",
+        "char_RED1",
+        "char_RED2",
+        "char_H0_norm",
+        "char_H1_norm",
+        "event_H0",
+        "event_H1",
+        "event_RED1",
+        "first_char_H",
+        "last_char_H",
+        "first_inventory",
+        "last_inventory",
+        "first_last_MI",
+        "position_char_MI",
+        "mean_prefix_overlap",
+        "mean_suffix_overlap",
+        "mean_distinct_chars_per_event",
+        "distinct_char_ratio",
+        "digit_frac",
+        "uppercase_frac",
+        "punct_frac",
+        "space_like_boundary_rate"
+      ],
+      "broad": {
+        "rows": 2979,
+        "groups": 28,
+        "folds": [
+          {
+            "fold": 0,
+            "train": 1412,
+            "test": 1567,
+            "test_groups": [
+              "ammerbach_inferred_bookA",
+              "gabc:P-BRad 15, 026",
+              "gabc:P-BRs Ms. 032, 116r",
+              "gabc:P-BRs Ms. 034, 023",
+              "gabc:P-BRs Ms. 034, 278",
+              "gabc:P-BRs Ms. 034, 344"
+            ],
+            "test_positive": 1515
+          },
+          {
+            "fold": 1,
+            "train": 2919,
+            "test": 60,
+            "test_groups": [
+              "gabc:P-BRad Pastas 077, Ar",
+              "gabc:P-BRs Ms. 032, 113v",
+              "gabc:P-BRs Ms. 034, 083",
+              "gabc:siglum"
+            ],
+            "test_positive": 6
+          },
+          {
+            "fold": 2,
+            "train": 2909,
+            "test": 70,
+            "test_groups": [
+              "gabc:P-BRad 23, Bv",
+              "gabc:P-BRad Pastas 081, Ar",
+              "gabc:P-BRad Pastas 244, Ar",
+              "gabc:P-BRs Ms. 028, 18r",
+              "gabc:P-BRs Ms. 032, 116v"
+            ],
+            "test_positive": 14
+          },
+          {
+            "fold": 3,
+            "train": 1772,
+            "test": 1207,
+            "test_groups": [
+              "ammerbach_inferred_bookB",
+              "gabc:P-BRad Pastas 051, 157v",
+              "gabc:P-BRs Ms. 028, 94r",
+              "gabc:P-BRs Ms. 032, 114r",
+              "gabc:P-BRs Ms. 032, 301r",
+              "gabc:P-BRs Ms. 034, 123",
+              "gabc:P-G N 328, Av"
+            ],
+            "test_positive": 1147
+          },
+          {
+            "fold": 4,
+            "train": 2904,
+            "test": 75,
+            "test_groups": [
+              "gabc:P-BRad Pastas 015, 023",
+              "gabc:P-BRam Nº 010 Códices, Ar",
+              "gabc:P-BRs Ms. 028, 105v",
+              "gabc:P-BRs Ms. 032, 306r",
+              "gabc:P-BRs Ms. 034, 027",
+              "gabc:P-G C 1152, Av"
+            ],
+            "test_positive": 15
+          }
+        ],
+        "metrics": {
+          "logistic": {
+            "roc_auc": 0.9877484044525437,
+            "average_precision": 0.9976279944958785,
+            "balanced_accuracy_0_5": 0.964586341009317
+          },
+          "forest": {
+            "roc_auc": 0.9978384177849304,
+            "average_precision": 0.9997737358092457,
+            "balanced_accuracy_0_5": 0.948234444891487
+          },
+          "ensemble": {
+            "roc_auc": 0.9980685132153667,
+            "average_precision": 0.9997982131143068,
+            "balanced_accuracy_0_5": 0.9719447928746676
+          }
+        },
+        "threshold": 0.37,
+        "threshold_cv": {
+          "fpr": 0.09574468085106383,
+          "tpr": 0.9922135706340378,
+          "precision": 0.9900110987791343
+        },
+        "balanced_accuracy_threshold": 0.948234444891487,
+        "organ_recall_threshold": 1.0,
+        "gate_pass": true
+      },
+      "family": {
+        "labels": [
+          "language_or_substitution",
+          "neume_aquitanian",
+          "neume_square",
+          "neume_unknown",
+          "organ_tablature",
+          "procedural_synthetic",
+          "surface_null"
+        ],
+        "macro_f1": 0.7215906271444407,
+        "balanced_accuracy": 0.7405270182488012,
+        "confusion_matrix": [
+          [
+            136,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            5,
+            0,
+            2,
+            0,
+            6
+          ],
+          [
+            0,
+            5,
+            30,
+            1,
+            0,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            4,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            11,
+            3,
+            1,
+            2618,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            570,
+            0
+          ],
+          [
+            0,
+            7,
+            2,
+            0,
+            0,
+            0,
+            129
+          ]
+        ],
+        "classification_report": {
+          "language_or_substitution": {
+            "precision": 1.0,
+            "recall": 0.9855072463768116,
+            "f1-score": 0.9927007299270073,
+            "support": 138.0
+          },
+          "neume_aquitanian": {
+            "precision": 0.34285714285714286,
+            "recall": 0.48,
+            "f1-score": 0.4,
+            "support": 25.0
+          },
+          "neume_square": {
+            "precision": 0.6818181818181818,
+            "recall": 0.7894736842105263,
+            "f1-score": 0.7317073170731707,
+            "support": 38.0
+          },
+          "neume_unknown": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "organ_tablature": {
+            "precision": 0.9984744469870328,
+            "recall": 0.9939255884586181,
+            "f1-score": 0.9961948249619482,
+            "support": 2634.0
+          },
+          "procedural_synthetic": {
+            "precision": 0.9982486865148862,
+            "recall": 1.0,
+            "f1-score": 0.9991235758106923,
+            "support": 570.0
+          },
+          "surface_null": {
+            "precision": 0.9280575539568345,
+            "recall": 0.9347826086956522,
+            "f1-score": 0.9314079422382672,
+            "support": 138.0
+          },
+          "accuracy": 0.9847844463229078,
+          "macro avg": {
+            "precision": 0.7070651445905826,
+            "recall": 0.7405270182488012,
+            "f1-score": 0.7215906271444407,
+            "support": 3549.0
+          },
+          "weighted avg": {
+            "precision": 0.9860625265156078,
+            "recall": 0.9847844463229078,
+            "f1-score": 0.9852943031753888,
+            "support": 3549.0
+          }
+        },
+        "gate_pass": true
+      }
+    },
+    "flattened": {
+      "counts": {
+        "organ_tablature": 5150,
+        "procedural_synthetic": 570,
+        "language_or_substitution": 138,
+        "surface_null": 138,
+        "neume_square": 38,
+        "neume_aquitanian": 25,
+        "neume_unknown": 6
+      },
+      "features": [
+        "n_events",
+        "n_chars",
+        "mean_event_len",
+        "sd_event_len",
+        "cv_event_len",
+        "median_event_len",
+        "max_event_len",
+        "single_char_frac",
+        "length_entropy",
+        "length_autocorr1",
+        "length_change_rate",
+        "char_inventory",
+        "event_inventory",
+        "type_token_ratio",
+        "hapax_type_frac",
+        "top_event_mass",
+        "same_adjacent_event_rate",
+        "char_H0",
+        "char_H1",
+        "char_H2",
+        "char_RED1",
+        "char_RED2",
+        "char_H0_norm",
+        "char_H1_norm",
+        "event_H0",
+        "event_H1",
+        "event_RED1",
+        "first_char_H",
+        "last_char_H",
+        "first_inventory",
+        "last_inventory",
+        "first_last_MI",
+        "position_char_MI",
+        "mean_prefix_overlap",
+        "mean_suffix_overlap",
+        "mean_distinct_chars_per_event",
+        "distinct_char_ratio",
+        "digit_frac",
+        "uppercase_frac",
+        "punct_frac",
+        "space_like_boundary_rate"
+      ],
+      "broad": {
+        "rows": 5495,
+        "groups": 28,
+        "folds": [
+          {
+            "fold": 0,
+            "train": 3213,
+            "test": 2282,
+            "test_groups": [
+              "ammerbach_inferred_bookB",
+              "gabc:P-BRad Pastas 051, 157v",
+              "gabc:P-BRs Ms. 028, 94r",
+              "gabc:P-BRs Ms. 032, 114r",
+              "gabc:P-BRs Ms. 032, 301r",
+              "gabc:P-BRs Ms. 034, 123",
+              "gabc:P-G N 328, Av"
+            ],
+            "test_positive": 2222
+          },
+          {
+            "fold": 1,
+            "train": 5435,
+            "test": 60,
+            "test_groups": [
+              "gabc:P-BRad Pastas 077, Ar",
+              "gabc:P-BRs Ms. 032, 113v",
+              "gabc:P-BRs Ms. 034, 083",
+              "gabc:siglum"
+            ],
+            "test_positive": 6
+          },
+          {
+            "fold": 2,
+            "train": 2487,
+            "test": 3008,
+            "test_groups": [
+              "ammerbach_inferred_bookA",
+              "gabc:P-BRad 15, 026",
+              "gabc:P-BRs Ms. 032, 116r",
+              "gabc:P-BRs Ms. 034, 023",
+              "gabc:P-BRs Ms. 034, 278",
+              "gabc:P-BRs Ms. 034, 344"
+            ],
+            "test_positive": 2956
+          },
+          {
+            "fold": 3,
+            "train": 5420,
+            "test": 75,
+            "test_groups": [
+              "gabc:P-BRad Pastas 015, 023",
+              "gabc:P-BRam Nº 010 Códices, Ar",
+              "gabc:P-BRs Ms. 028, 18r",
+              "gabc:P-BRs Ms. 032, 306r",
+              "gabc:P-BRs Ms. 034, 027",
+              "gabc:P-G C 1152, Av"
+            ],
+            "test_positive": 15
+          },
+          {
+            "fold": 4,
+            "train": 5425,
+            "test": 70,
+            "test_groups": [
+              "gabc:P-BRad 23, Bv",
+              "gabc:P-BRad Pastas 081, Ar",
+              "gabc:P-BRad Pastas 244, Ar",
+              "gabc:P-BRs Ms. 028, 105v",
+              "gabc:P-BRs Ms. 032, 116v"
+            ],
+            "test_positive": 14
+          }
+        ],
+        "metrics": {
+          "logistic": {
+            "roc_auc": 0.9992422108939326,
+            "average_precision": 0.9999585825382248,
+            "balanced_accuracy_0_5": 0.9849989728352333
+          },
+          "forest": {
+            "roc_auc": 0.9995578429811994,
+            "average_precision": 0.9999761445512624,
+            "balanced_accuracy_0_5": 0.9831300091288417
+          },
+          "ensemble": {
+            "roc_auc": 0.9995592034643342,
+            "average_precision": 0.9999762065491136,
+            "balanced_accuracy_0_5": 0.9852867150182373
+          }
+        },
+        "threshold": 0.12,
+        "threshold_cv": {
+          "fpr": 0.09219858156028368,
+          "tpr": 0.9990408593899865,
+          "precision": 0.9950324799388612
+        },
+        "balanced_accuracy_threshold": 0.9534211389148515,
+        "organ_recall_threshold": 1.0,
+        "gate_pass": true
+      },
+      "family": {
+        "labels": [
+          "language_or_substitution",
+          "neume_aquitanian",
+          "neume_square",
+          "neume_unknown",
+          "organ_tablature",
+          "procedural_synthetic",
+          "surface_null"
+        ],
+        "macro_f1": 0.7393023021589405,
+        "balanced_accuracy": 0.7445003813882531,
+        "confusion_matrix": [
+          [
+            138,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            7,
+            0,
+            0,
+            0,
+            6
+          ],
+          [
+            0,
+            5,
+            30,
+            0,
+            0,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            4,
+            0,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            5150,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            570,
+            0
+          ],
+          [
+            0,
+            6,
+            2,
+            0,
+            0,
+            0,
+            130
+          ]
+        ],
+        "classification_report": {
+          "language_or_substitution": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 138.0
+          },
+          "neume_aquitanian": {
+            "precision": 0.5217391304347826,
+            "recall": 0.48,
+            "f1-score": 0.5,
+            "support": 25.0
+          },
+          "neume_square": {
+            "precision": 0.6976744186046512,
+            "recall": 0.7894736842105263,
+            "f1-score": 0.7407407407407407,
+            "support": 38.0
+          },
+          "neume_unknown": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1-score": 0.0,
+            "support": 6.0
+          },
+          "organ_tablature": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1-score": 1.0,
+            "support": 5150.0
+          },
+          "procedural_synthetic": {
+            "precision": 0.9982486865148862,
+            "recall": 1.0,
+            "f1-score": 0.9991235758106923,
+            "support": 570.0
+          },
+          "surface_null": {
+            "precision": 0.9285714285714286,
+            "recall": 0.9420289855072463,
+            "f1-score": 0.935251798561151,
+            "support": 138.0
+          },
+          "accuracy": 0.9942291838417148,
+          "macro avg": {
+            "precision": 0.7351762377322498,
+            "recall": 0.7445003813882531,
+            "f1-score": 0.7393023021589405,
+            "support": 6065.0
+          },
+          "weighted avg": {
+            "precision": 0.9933552703419931,
+            "recall": 0.9942291838417148,
+            "f1-score": 0.9937697171577382,
+            "support": 6065.0
+          }
+        },
+        "gate_pass": true
+      }
+    }
+  }
+}
