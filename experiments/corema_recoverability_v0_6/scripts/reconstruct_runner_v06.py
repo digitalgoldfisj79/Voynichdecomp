@@ -11,7 +11,7 @@ raw = zlib.decompress(base64.b64decode(payload))
 out = here / 'run_corema_recoverability_v06.py'
 out.write_bytes(raw)
 sha = hashlib.sha256(raw).hexdigest()
-expected = 'a9b99b6a9e1255883e63423bb743083805aeb62c242656692a787c63362018d8'
+expected = '213603fd38d99725cc99cb640bccb428eea0480de48298630dd3834426a49616'
 if sha != expected:
     raise SystemExit(f'SHA mismatch: {sha} != {expected}')
 print(f'reconstructed {out} sha256={sha} bytes={len(raw)}')
