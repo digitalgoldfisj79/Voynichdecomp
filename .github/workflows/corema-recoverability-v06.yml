@@ -37,7 +37,10 @@ jobs:
       - name: Reconstruct and compile frozen runner
         run: |
           python experiments/corema_recoverability_v0_6/scripts/reconstruct_runner_v06.py
-          python -m py_compile experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py experiments/corema_recoverability_v0_6/scripts/prefetch_corema_v06.py
+          python -m py_compile \
+            experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py \
+            experiments/corema_recoverability_v0_6/scripts/run_corema_parallel_v06.py \
+            experiments/corema_recoverability_v0_6/scripts/prefetch_corema_v06.py
 
       - name: Parallel CoReMA acquisition
         run: |
@@ -48,9 +51,10 @@ jobs:
 
       - name: Run frozen calibration
         run: |
-          python experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py \
+          python experiments/corema_recoverability_v0_6/scripts/run_corema_parallel_v06.py \
             --data-dir external/corema \
             --out experiments/corema_recoverability_v0_6/results \
+            --fold-jobs 5 \
             | tee experiments/corema_recoverability_v0_6/results/run.log
           cp external/corema/prefetch_audit_v0_6.json experiments/corema_recoverability_v0_6/results/
 
