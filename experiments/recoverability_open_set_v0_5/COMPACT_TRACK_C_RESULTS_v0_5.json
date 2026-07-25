@@ -1,0 +1,60 @@
+{
+  "schema": "voynich-compositionality-v0.5-compact",
+  "source_records": 37465,
+  "source_sha256": "dbf87cf5525e065da881b06a26c9d411543ff8ef3f5f8e15a9e4b557808f1174",
+  "gate_c": {
+    "pass": true,
+    "predictive_outcomes": [
+      {
+        "outcome": "next_prefix",
+        "pass": false,
+        "detail": [
+          {"scheme": "p70", "pass": false, "real_mean": -0.21269940928682862, "shuffle_mean": -0.26946905317064146, "resample_mean": -0.2794568497784745},
+          {"scheme": "no_suffix", "pass": false, "real_mean": -0.15086190679722086, "shuffle_mean": -0.1338597817722202, "resample_mean": -0.1346739538662983}
+        ]
+      },
+      {
+        "outcome": "next_suffix",
+        "pass": false,
+        "detail": [
+          {"scheme": "p70", "pass": false, "real_mean": -0.25063731382137044, "shuffle_mean": -0.25146295585557876, "resample_mean": -0.2637114290832705},
+          {"scheme": "no_suffix", "pass": false, "real_mean": -0.13689512583156532, "shuffle_mean": -0.1311959505082611, "resample_mean": -0.12994852678703045}
+        ]
+      },
+      {
+        "outcome": "next_len",
+        "pass": false,
+        "detail": [
+          {"scheme": "p70", "pass": false, "real_mean": -0.22965741408433232, "shuffle_mean": -0.2469969452762757, "resample_mean": -0.24924284330549212},
+          {"scheme": "no_suffix", "pass": false, "real_mean": -0.1341488319705964, "shuffle_mean": -0.1331454162151416, "resample_mean": -0.12481438151413804}
+        ]
+      }
+    ],
+    "frame_effect": {
+      "p70": {"real_mean": 0.10067447139208663, "real_min": 0.09551530160278165, "shuffle_mean": 0.014160313561330472, "resample_mean": 0.0700243135535565},
+      "no_suffix": {"real_mean": 0.07297515067494242, "real_min": 0.06496235428361541, "shuffle_mean": 0.015544239953613004, "resample_mean": 0.05440514677389683}
+    },
+    "core_effect": {
+      "p70": {"real_mean": 0.06977785682943745, "real_min": 0.06321928351070571, "shuffle_mean": 0.037554186497238115, "resample_mean": 0.06660412464870398},
+      "no_suffix": {"real_mean": 0.09588917603253973, "real_min": 0.09197425100830103, "shuffle_mean": 0.03603040334627892, "resample_mean": 0.08279163823102709}
+    }
+  },
+  "paired_control_tests": [
+    {"scheme":"p70","effect":"frame_effect","control":"within_line_shuffle","mean_difference":0.08651415783075617,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"p70","effect":"frame_effect","control":"conditional_resample","mean_difference":0.030650157838530135,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"p70","effect":"core_effect","control":"within_line_shuffle","mean_difference":0.03222367033219932,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"p70","effect":"core_effect","control":"conditional_resample","mean_difference":0.0031737321807334628,"all_positive":false,"exact_one_sided_p":0.15625},
+    {"scheme":"no_suffix","effect":"frame_effect","control":"within_line_shuffle","mean_difference":0.05743091072132942,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"no_suffix","effect":"frame_effect","control":"conditional_resample","mean_difference":0.01857000390104562,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"no_suffix","effect":"core_effect","control":"within_line_shuffle","mean_difference":0.059858772686260796,"all_positive":true,"exact_one_sided_p":0.03125},
+    {"scheme":"no_suffix","effect":"core_effect","control":"conditional_resample","mean_difference":0.013097537801512621,"all_positive":true,"exact_one_sided_p":0.03125}
+  ],
+  "strict_predictive_gate": "failed_all_outcomes",
+  "cross_section_transfer": "negative_all_outcomes",
+  "interpretation": "weak frame compositionality survives both segmentations and both controls; no compact universal operational transition code recovered",
+  "sha256": {
+    "full_results": "c61ad8f66cbad87cdd3791c6120592c0473fe65c29d6df2be83203d9943db150",
+    "runner": "39aaae25da7f34fd08cbbe89f7f95c709a67f642ab533c95998a6fb368556c8f",
+    "report": "663d488fcdf13d0d830ea3078ed2c216dd318d68f9a67b22c6a9f098058304ff"
+  }
+}
