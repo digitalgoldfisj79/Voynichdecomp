@@ -6,6 +6,12 @@ on:
       - experiment/voynich-corema-recoverability-v0.6-20260725
     paths:
       - 'experiments/corema_recoverability_v0_6/RUN_v0_6'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/corema-recoverability-v06.yml'
+      - 'experiments/corema_recoverability_v0_6/**'
   workflow_dispatch:
 
 permissions:
@@ -64,6 +70,7 @@ jobs:
           retention-days: 90
 
       - name: Commit immutable formal outputs
+        if: github.event_name == 'push'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
