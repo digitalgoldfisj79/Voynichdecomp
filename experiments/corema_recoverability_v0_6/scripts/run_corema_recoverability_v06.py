@@ -88,7 +88,10 @@ def download_corema(out_dir: Path) -> dict:
                     r = session.get(url, timeout=60, allow_redirects=True)
                     if r.status_code == 200 and is_xml_payload(r.content):
                         try:
-                            etree.fromstring(r.content)
+                            parser = etree.XMLParser(recover=True, huge_tree=True)
+                            root = etree.fromstring(r.content, parser)
+                            if root is None:
+                                raise ValueError("lxml recovery returned no root")
                         except Exception as exc:
                             errors.append(f"parse:{exc}")
                             break
@@ -170,11 +173,19 @@ def collect_ab_tokens(ab) -> list[dict]:
 def parse_corema(xml_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame, dict]:
     token_rows = []
     recipe_rows = []
-    audit = {"files": [], "parse_failures": [], "types": Counter(), "roles": Counter()}
+    audit = {"files": [], "parse_failures": [], "xml_recovery_issues": [], "types": Counter(), "roles": Counter()}
     for path in sorted(xml_dir.glob("*.recipes.xml")):
         mid = path.name.split(".", 1)[0]
         try:
-            root = etree.fromstring(path.read_bytes())
+            parser = etree.XMLParser(recover=True, huge_tree=True)
+            root = etree.fromstring(path.read_bytes(), parser)
+            if root is None:
+                raise ValueError("lxml recovery returned no root")
+            if parser.error_log:
+                audit["xml_recovery_issues"].append({
+                    "file": path.name,
+                    "issues": [str(item) for item in parser.error_log],
+                })
         except Exception as exc:
             audit["parse_failures"].append({"file": path.name, "error": str(exc)})
             continue

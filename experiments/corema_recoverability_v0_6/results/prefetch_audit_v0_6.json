@@ -1,7 +1,8 @@
 {
   "attempted": 66,
-  "downloaded_or_cached": 27,
-  "failed": 39,
+  "downloaded_or_cached": 29,
+  "failed": 37,
+  "recovered_with_xml_issues": 2,
   "results": [
     {
       "id": "a1",
@@ -89,10 +90,12 @@
     },
     {
       "id": "gr1",
-      "status": "failed",
-      "errors": [
-        "200:text/xml; charset=utf-8:559924",
-        "200:text/xml; charset=utf-8:559924"
+      "status": "downloaded",
+      "bytes": 559924,
+      "url": "https://gams.uni-graz.at/o%3Acorema.gr1.recipes/TEI_SOURCE",
+      "xml_recovery_issues": [
+        "<string>:1514:113:ERROR:VALID:DTD_ID_REDEFINED: ID Klug2019 already defined",
+        "<string>:1576:113:ERROR:VALID:DTD_ID_REDEFINED: ID Klug2019 already defined"
       ]
     },
     {
@@ -449,10 +452,12 @@
     },
     {
       "id": "wo10",
-      "status": "failed",
-      "errors": [
-        "200:text/xml; charset=utf-8:272956",
-        "200:text/xml; charset=utf-8:272956"
+      "status": "downloaded",
+      "bytes": 272956,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo10.recipes/TEI_SOURCE",
+      "xml_recovery_issues": [
+        "<string>:738:114:ERROR:VALID:DTD_ID_REDEFINED: ID Wo10 already defined",
+        "<string>:757:114:ERROR:VALID:DTD_ID_REDEFINED: ID Wo10 already defined"
       ]
     },
     {

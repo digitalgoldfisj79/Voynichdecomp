@@ -1,0 +1,4 @@
+CoReMA v0.6 runner technical erratum
+original_sha256 213603fd38d99725cc99cb640bccb428eea0480de48298630dd3834426a49616
+patched_sha256  dd13e2bfecf0d46d297c09d4c7254c47ea7a7fa46dc2fcd0530800f2e26a6d4b
+scope XML recovery and audit only; frozen scientific gates unchanged
