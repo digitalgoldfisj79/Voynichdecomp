@@ -34,13 +34,15 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --upgrade pip numpy pandas scipy scikit-learn requests lxml
 
-      - name: Reconstruct and compile frozen runner
+      - name: Reconstruct, verify and apply XML recovery erratum
         run: |
           python experiments/corema_recoverability_v0_6/scripts/reconstruct_runner_v06.py
+          python experiments/corema_recoverability_v0_6/scripts/patch_gr1_xml_recovery_v06.py
           python -m py_compile \
             experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py \
             experiments/corema_recoverability_v0_6/scripts/run_corema_parallel_v06.py \
-            experiments/corema_recoverability_v0_6/scripts/prefetch_corema_v06.py
+            experiments/corema_recoverability_v0_6/scripts/prefetch_corema_v06.py \
+            experiments/corema_recoverability_v0_6/scripts/patch_gr1_xml_recovery_v06.py
 
       - name: Parallel CoReMA acquisition
         run: |
@@ -58,18 +60,27 @@ jobs:
             | tee experiments/corema_recoverability_v0_6/results/run.log
           cp external/corema/prefetch_audit_v0_6.json experiments/corema_recoverability_v0_6/results/
 
-      - name: Validate result schema
+      - name: Validate corrected result schema and Gr1 inclusion
         run: |
           python - <<'PY'
           import json, pathlib
-          p=pathlib.Path('experiments/corema_recoverability_v0_6/results/corema_recoverability_results_v0_6.json')
+          base=pathlib.Path('experiments/corema_recoverability_v0_6')
+          p=base/'results/corema_recoverability_results_v0_6.json'
           r=json.loads(p.read_text())
+          pre=json.loads((base/'results/prefetch_audit_v0_6.json').read_text())
           assert r['schema']=='corema-procedural-recoverability-v0.6'
           assert r['corpus']['manuscripts'] >= 8
           assert r['corpus']['recipes'] >= 100
           assert r['corpus']['tokens'] >= 5000
           assert set(r['gates']) == {'lexical_role','neutral_role','role_order','downstream_admissible'}
-          print(json.dumps({'formal_verdict':r['formal_verdict'],'corpus':r['corpus'],'gates':r['gates']},indent=2))
+          gr1=[x for x in pre['results'] if x['id']=='gr1']
+          assert len(gr1)==1 and gr1[0]['status'] in {'downloaded','cached'}
+          assert len(gr1[0].get('xml_recovery_issues',[]))==2
+          issues=r['parse_audit'].get('xml_recovery_issues',[])
+          gr1_issues=[x for x in issues if x['file']=='gr1.recipes.xml']
+          assert len(gr1_issues)==1 and len(gr1_issues[0]['issues'])==2
+          assert not [x for x in r['parse_audit'].get('parse_failures',[]) if x['file']=='gr1.recipes.xml']
+          print(json.dumps({'formal_verdict':r['formal_verdict'],'corpus':r['corpus'],'gates':r['gates'],'gr1':gr1[0]},indent=2))
           PY
 
       - uses: actions/upload-artifact@v4
@@ -84,8 +95,11 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add experiments/corema_recoverability_v0_6/results experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py
+          git add \
+            experiments/corema_recoverability_v0_6/results \
+            experiments/corema_recoverability_v0_6/scripts/run_corema_recoverability_v06.py \
+            experiments/corema_recoverability_v0_6/scripts/PATCHED_RUNNER_SHA256_v0_6.txt
           if ! git diff --cached --quiet; then
-            git commit -m 'Run CoReMA procedural recoverability v0.6 [skip ci]'
+            git commit -m 'Run corrected CoReMA procedural recoverability v0.6 [skip ci]'
             git push origin HEAD:experiment/voynich-corema-recoverability-v0.6-20260725
           fi
