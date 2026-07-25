@@ -1,0 +1,481 @@
+{
+  "attempted": 66,
+  "downloaded_or_cached": 27,
+  "failed": 39,
+  "results": [
+    {
+      "id": "a1",
+      "status": "downloaded",
+      "bytes": 143907,
+      "url": "https://gams.uni-graz.at/o%3Acorema.a1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b1",
+      "status": "downloaded",
+      "bytes": 107250,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b2",
+      "status": "downloaded",
+      "bytes": 34400,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b2.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b3",
+      "status": "downloaded",
+      "bytes": 51883,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b3.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b4",
+      "status": "downloaded",
+      "bytes": 433533,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b4.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b5",
+      "status": "downloaded",
+      "bytes": 45754,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b5.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "b6",
+      "status": "downloaded",
+      "bytes": 63668,
+      "url": "https://gams.uni-graz.at/o%3Acorema.b6.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "br1",
+      "status": "downloaded",
+      "bytes": 94541,
+      "url": "https://gams.uni-graz.at/o%3Acorema.br1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "bs1",
+      "status": "downloaded",
+      "bytes": 511977,
+      "url": "https://gams.uni-graz.at/o%3Acorema.bs1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "bs2",
+      "status": "downloaded",
+      "bytes": 115287,
+      "url": "https://gams.uni-graz.at/o%3Acorema.bs2.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "db1",
+      "status": "downloaded",
+      "bytes": 114449,
+      "url": "https://gams.uni-graz.at/o%3Acorema.db1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "ds1",
+      "status": "downloaded",
+      "bytes": 112048,
+      "url": "https://gams.uni-graz.at/o%3Acorema.ds1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "er1",
+      "status": "downloaded",
+      "bytes": 67184,
+      "url": "https://gams.uni-graz.at/o%3Acorema.er1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "er2",
+      "status": "downloaded",
+      "bytes": 268849,
+      "url": "https://gams.uni-graz.at/o%3Acorema.er2.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "gr1",
+      "status": "failed",
+      "errors": [
+        "200:text/xml; charset=utf-8:559924",
+        "200:text/xml; charset=utf-8:559924"
+      ]
+    },
+    {
+      "id": "h1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "h2",
+      "status": "downloaded",
+      "bytes": 182649,
+      "url": "https://gams.uni-graz.at/o%3Acorema.h2.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "h3",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "h4",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "ha1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "hi1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "k1",
+      "status": "downloaded",
+      "bytes": 282287,
+      "url": "https://gams.uni-graz.at/o%3Acorema.k1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "ka1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "ka2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "ka3",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "ko1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m3",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m4",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m5",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m6",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m7",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m8",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m9",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m10",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m12",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m13",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "m11",
+      "status": "downloaded",
+      "bytes": 217440,
+      "url": "https://gams.uni-graz.at/o%3Acorema.m11.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "mi1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "n1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "n2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "pa1",
+      "status": "downloaded",
+      "bytes": 151633,
+      "url": "https://gams.uni-graz.at/o%3Acorema.pa1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "pr1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "sb1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "sb2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "sb3",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "so1",
+      "status": "downloaded",
+      "bytes": 256222,
+      "url": "https://gams.uni-graz.at/o%3Acorema.so1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "st1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "ste1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "w1",
+      "status": "downloaded",
+      "bytes": 421396,
+      "url": "https://gams.uni-graz.at/o%3Acorema.w1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "w2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "w3",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "w4",
+      "status": "downloaded",
+      "bytes": 160836,
+      "url": "https://gams.uni-graz.at/o%3Acorema.w4.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo1",
+      "status": "downloaded",
+      "bytes": 366677,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo1.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo2",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "wo3",
+      "status": "downloaded",
+      "bytes": 370182,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo3.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo4",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "wo5",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "wo7",
+      "status": "downloaded",
+      "bytes": 1194258,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo7.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo8",
+      "status": "downloaded",
+      "bytes": 836511,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo8.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo9",
+      "status": "downloaded",
+      "bytes": 645820,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo9.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wo10",
+      "status": "failed",
+      "errors": [
+        "200:text/xml; charset=utf-8:272956",
+        "200:text/xml; charset=utf-8:272956"
+      ]
+    },
+    {
+      "id": "wo11",
+      "status": "downloaded",
+      "bytes": 121837,
+      "url": "https://gams.uni-graz.at/o%3Acorema.wo11.recipes/TEI_SOURCE"
+    },
+    {
+      "id": "wol1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    },
+    {
+      "id": "zu1",
+      "status": "failed",
+      "errors": [
+        "404:text/html;charset=UTF8:196",
+        "404:text/html;charset=UTF8:196"
+      ]
+    }
+  ]
+}

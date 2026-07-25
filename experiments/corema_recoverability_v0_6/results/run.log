@@ -1,0 +1,35 @@
+parallel fold 4 complete: 67221 tokens
+parallel fold 1 complete: 66668 tokens
+parallel fold 3 complete: 67998 tokens
+parallel fold 2 complete: 66954 tokens
+parallel fold 5 complete: 66623 tokens
+{
+  "formal_verdict": "CALIBRATION_FAILURE",
+  "corpus": {
+    "manuscripts": 27,
+    "recipes": 4193,
+    "tokens": 335464,
+    "role_counts": {
+      "ACTION": 119732,
+      "OTHER": 105304,
+      "INGREDIENT": 44233,
+      "META": 34278,
+      "OUTPUT": 15641,
+      "TOOL": 9486,
+      "TEMPORAL": 6790
+    },
+    "type_counts": {
+      "RECIPE": 3600,
+      "MEDICINAL": 199,
+      "OTHER_TYPE": 180,
+      "TIP": 115,
+      "TECHNICAL": 99
+    }
+  },
+  "gates": {
+    "lexical_role": false,
+    "neutral_role": false,
+    "role_order": true,
+    "downstream_admissible": false
+  }
+}
