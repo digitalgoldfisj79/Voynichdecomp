@@ -1,0 +1,96 @@
+name: Recoverability-first open-set programme v0.5
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/voynich-recoverability-open-set-v0.5-20260725
+    paths:
+      - '.github/workflows/recoverability-open-set-v05.yml'
+      - 'experiments/recoverability_open_set_v0_5/FROZEN_PROTOCOL_v0_5.md'
+      - 'experiments/recoverability_open_set_v0_5/scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  external-recoverability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pandas scipy scikit-learn
+
+      - name: Reconstruct v0.5 runner
+        run: |
+          python - <<'PY'
+          import base64,zlib,pathlib
+          p=pathlib.Path('experiments/recoverability_open_set_v0_5/scripts')
+          raw=base64.b64decode((p/'run_external_recoverability_v05.py.b64z').read_text().strip())
+          (p/'run_external_recoverability_v05.py').write_bytes(zlib.decompress(raw))
+          PY
+          python -m py_compile experiments/recoverability_open_set_v0_5/scripts/run_external_recoverability_v05.py
+
+      - name: Download corrected Ammerbach calibration corpus
+        run: |
+          mkdir -p external/ammerbach
+          wget --retry-connrefused --waitretry=5 --read-timeout=60 --timeout=60 \
+            -O external/Ammerbach.tar \
+            'https://open.uni-marburg.de/server/api/core/bitstreams/36a19f39-4439-412e-8181-dedd8a710bc4/content'
+          test "$(stat -c%s external/Ammerbach.tar)" -gt 700000000
+          tar -xf external/Ammerbach.tar -C external/ammerbach
+
+      - name: Download complete GABC corpus
+        run: git clone --depth 1 https://github.com/ECHOES-from-the-Past/GABCtoMEI.git external/GABCtoMEI
+
+      - name: Run external representation and recoverability gates
+        run: |
+          rm -rf experiments/recoverability_open_set_v0_5/results_external
+          mkdir -p experiments/recoverability_open_set_v0_5/results_external
+          python experiments/recoverability_open_set_v0_5/scripts/run_external_recoverability_v05.py \
+            --ammerbach-dir external/ammerbach \
+            --gabc-dir external/GABCtoMEI \
+            --out experiments/recoverability_open_set_v0_5/results_external \
+            | tee experiments/recoverability_open_set_v0_5/results_external/run.log
+
+      - name: Validate and hash outputs
+        run: |
+          python - <<'PY'
+          import json
+          p='experiments/recoverability_open_set_v0_5/results_external/external_recoverability_results_v0_5.json'
+          r=json.load(open(p))
+          assert r['ammerbach_audit']['counts']=={'bookA':1200,'bookB':1200}
+          assert len(r['representation_audit'])==10
+          assert len(r['ammerbach_alignment'])==4
+          assert len(r['neume_boundary'])==2
+          print(json.dumps(r['gates'],indent=2))
+          PY
+          cd experiments/recoverability_open_set_v0_5/results_external
+          sha256sum * > SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recoverability-open-set-v0.5-external
+          path: experiments/recoverability_open_set_v0_5/results_external
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit immutable external outputs
+        if: github.event_name == 'push'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add experiments/recoverability_open_set_v0_5/scripts/run_external_recoverability_v05.py experiments/recoverability_open_set_v0_5/results_external
+          if ! git diff --cached --quiet; then
+            git commit -m 'Run external recoverability programme v0.5 [skip ci]'
+            git push origin HEAD:experiment/voynich-recoverability-open-set-v0.5-20260725
+          fi
