@@ -1,0 +1,27 @@
+claim_id,manuscript_location,claim,source_id,claim_status,verification_basis,disposition
+C01,Abstract; 5.2; Table 1,Monoalphabetic locked mean recovery 94.6166% over 360 trials,E05,computer-assisted aggregate verified,locked report + shard hashes,retained
+C02,Abstract; 6.4; Table 1,Family P locked mean 94.3197%; 15/16 >=80%; 13/16 exact,E16,computer-assisted aggregate verified,"locked report, count reconstruction",retained with aggregate boundary
+C03,Abstract; 7; Table 1,Family P operational recognition 25/72; argmax P 31/72,E17,computer-assisted count reconstructed,locked confusion counts + Wilson recomputation,retained
+C04,Abstract; 4.3; Table 1,Generator-disjoint result 2/16 positives and 10/16 controls,E02,computer-assisted count reconstructed,primary report + Wilson recomputation,retained
+C05,Abstract; 6.3; Table 1,Family S mean recovery 22.3796% and boundary F1 48.4133%,E14,computer-assisted row reconstructed,16 committed rows independently recomputed,retained
+C06,4.2; Table 1,Morpholocal v0.2 recovered 34/96 positives with 0/320 control FPs,E01,computer-assisted count reconstructed,formal report + Wilson recomputation,retained
+C07,4.4,Source-transfer v0.4 had high source rank but no eligible representation,E03,computer-assisted aggregate verified,development report; row artefact missing,retained as developmental result
+C08,5.1; Table 1,Generic Transformer family-known sensitivity 9.028% and mean recovery 2.161%,E04,computer-assisted aggregate verified,aggregate report only; no row-level JSON,retained with explicit limitation
+C09,5.3,Six-language homophonic mean 83.8462% with English 384-character collapse,E06,computer-assisted aggregate verified,report + job artefact hashes,retained
+C10,5.3; Table 1,Fresh-key homophonic locked reliability 13/20,E07,computer-assisted count reconstructed,locked report + Wilson recomputation,retained
+C11,5.3,"Shared code-pool positive control 100%, 20/20 exact",E07,computer-assisted aggregate verified,positive-control report,retained
+C12,5.4,Nomenclator oracle-component failures and bimodality,E08,computer-assisted aggregate verified,development report,retained
+C13,5.5; Table 1,"Joint substitution-transposition mean 76.5299%, 17/24 reliable",E09,computer-assisted count reconstructed,development report + Wilson recomputation,retained
+C14,6.1; Table 1,"Family T mean 65.5273%, 9/16 >=80%, 7/16 below 40%",E10,computer-assisted row reconstructed,16 committed rows independently recomputed,retained
+C15,6.2; Table 1,"Family G AUROC .785522, 38/64 detected, FPR .78125%",E12,computer-assisted summary reconstructed,committed machine summary + arithmetic,retained
+C16,8; Table 1,True-map MDL 0/16 complete positives and 0/16 control FPs,E18,computer-assisted clean-clone verified,two independent executions agreed scientifically,retained
+C17,8; Table 1,True-map retrospective held-out threshold 9/16,E18,computer-assisted count reconstructed,primary report + Wilson recomputation,retained
+C18,2.2,Synthetic-to-real segmentation error 2% versus 27%,R02,published,ACL Anthology primary source,retained
+C19,2.2,"Early modern nomenclators mix regular signs, nomenclature elements, nulls and variable segmentation",R18/R02,published,publisher and ACL primary sources,retained
+C20,2.5,MDL charges model complexity and residual data,R03,published general theory,publisher metadata and standard result,retained
+C21,2.1,Forty-two human meaningless-text samples reproduce multiple low-level statistics,R10,published,CEUR primary PDF,retained
+C22,2.1,Naibbe is a recoverable verbose homophonic construction producing Voynich-like statistics,R11,published,Cryptologia publisher record/full text,retained as generability only
+C23,2.2,Lehofer tested clustering on artificial and historical homophonic material,R15,published,Cryptologia publisher record,retained
+C24,3.3; 10; 13,"Four-gate hierarchy is proposed as an evidential standard, not independently validated as complete",methodological,methodological proposal,logical boundary explicit,retained
+C25,1; 13,The paper does not classify the Voynich Manuscript,scope,open target / negative scope,explicit no-classification boundary,retained
+C26,Removed from revision,Voynich four-slot/28.9%/59-of-84 structural paragraph,superseded source,removed,not load-bearing; confounding and verification concerns,removed from final manuscript
