@@ -1,0 +1,9 @@
+PAYLOAD_SHA256 9d3c8e817d57a1678219f13a148f142d6863099e37828d4e63e9044e0e1ee4ba
+CHECKS 71
+MATCHES 71
+OVERALL PASS_WITH_DISCLOSED_PROVENANCE_LIMITATIONS
+LIMITATION generic_transformer: Historical run preserved aggregate report and immutable job logs but not row-level JSON.
+LIMITATION mono_locked: Primary locked report and shard hashes preserved; row-level shard payloads are not included in this local reviewer package.
+LIMITATION homophonic_locked: Primary locked report and scientific payload hash preserved; row-level job artifact remains external.
+LIMITATION family_p_recovery: Locked report preserved with exact job and scientific hash; local package reconstructs counts but not 16 row scores.
+LIMITATION true_map_mdl: Primary and clean-clone diagnostics agree scientifically; runtime metadata prevented byte-identical full-payload hashes.
