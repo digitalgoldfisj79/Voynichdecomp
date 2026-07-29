@@ -4,7 +4,7 @@ C02,Abstract; 6.4; Table 1,Family P locked mean 94.3197%; 15/16 >=80%; 13/16 exa
 C03,Abstract; 7; Table 1,Family P operational recognition 25/72; argmax P 31/72,E17,computer-assisted count reconstructed,locked confusion counts + Wilson recomputation,retained
 C04,Abstract; 4.3; Table 1,Generator-disjoint result 2/16 positives and 10/16 controls,E02,computer-assisted count reconstructed,primary report + Wilson recomputation,retained
 C05,Abstract; 6.3; Table 1,Family S mean recovery 22.3796% and boundary F1 48.4133%,E14,computer-assisted row reconstructed,16 committed rows independently recomputed,retained
-C06,4.2; Table 1,Morpholocal v0.2 recovered 34/96 positives with 0/320 control FPs,E01,computer-assisted count reconstructed,formal report + Wilson recomputation,retained
+C06,4.2; Table 1,Initial morpholocal calibration recovered 34/96 positives with 0/320 control FPs,E01,computer-assisted count reconstructed,formal report + Wilson recomputation,retained
 C07,4.4,Source-transfer v0.4 had high source rank but no eligible representation,E03,computer-assisted aggregate verified,development report; row artefact missing,retained as developmental result
 C08,5.1; Table 1,Generic Transformer family-known sensitivity 9.028% and mean recovery 2.161%,E04,computer-assisted aggregate verified,aggregate report only; no row-level JSON,retained with explicit limitation
 C09,5.3,Six-language homophonic mean 83.8462% with English 384-character collapse,E06,computer-assisted aggregate verified,report + job artefact hashes,retained
