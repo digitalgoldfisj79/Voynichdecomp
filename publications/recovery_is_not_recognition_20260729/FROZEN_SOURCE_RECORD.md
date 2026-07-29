@@ -7,11 +7,17 @@ Decision: **INTERNAL TECHNICAL PASS — HUMAN SPECIALIST REVIEW OPEN.**
 ## Canonical reviewed object
 
 - Source: `manuscript.md`
-- SHA-256: `1bacfc4b472697529e94f634dfdfa89f5e8b763c706ddc3c1bbc17f6b3ebe213`
-- Size: 56,158 bytes
-- Length: 1,125 lines; 7,368 whitespace-delimited words
+- SHA-256: `eb75ff253945c8fa9b614ccec815ae74e98b48daf63694a5027b9bcd16004021`
+- Size: 56,451 bytes
+- Length: 1,129 lines; 7,399 whitespace-delimited words
 
 This Markdown file is the sole canonical scientific source for the release. The LaTeX, PDF and DOCX are presentation derivatives.
+
+## Immediate predecessor
+
+- Path: `archive/manuscript_pre_stage_name_revision_20260729.md`
+- SHA-256: `1bacfc4b472697529e94f634dfdfa89f5e8b763c706ddc3c1bbc17f6b3ebe213`
+- Role: superseded exact source before internal repository-version labels were removed from the article narrative.
 
 ## Reviewed predecessor
 
@@ -22,10 +28,10 @@ The predecessor is retained only to document the revision path. It has no releas
 
 ## Canonical derivatives
 
-- LaTeX: `8d3f5072d973b83f1b41184505060201e7c1b81ddfc04772ae3697bee6ada299`
-- PDF: `15e664e55e3df45155ed80f62ba8e8775d87562381244781f3d628b3cc1816dd`
-- DOCX: `572fdbbfd79977ed8db24f69b547154201362580220b0fe326e6d3aa0eebec8b`
-- Reviewer ZIP: `8ac61c7b81ab45654f90994e7fa292d90dea3939819d91d96efcda679c24fbff`
+- LaTeX: `f5a858cd90b4734d970be4cab316139d4f0fad1310498c9738337c8a1cd66240`
+- PDF: `dd51d28b86973323d535ca71ac628b2b5727d65ab99dd7969144b51b6947d95a`
+- DOCX: `748bea1e86350de568eda1c33e9640e66b7dd5fed0ce3fb93d57c4359fa2b862`
+- Reviewer ZIP: `b098a136dbb6109c8d017d80ebacb703b9275706b20c1aeff2ebb99d8f81fe31`
 
 ## Scientific reconstruction basis
 
@@ -33,5 +39,7 @@ The predecessor is retained only to document the revision path. It has no releas
 - Independent checks: 71
 - Matches: 71
 - Result: **PASS WITH DISCLOSED PROVENANCE LIMITATIONS**
+
+This source incorporates the stage-name revision that removes internal `v0.x` labels from the article narrative while retaining exact identifiers in the audit package.
 
 No later editorial change may be applied without generating a new source hash and rerunning the complete gate sequence.
