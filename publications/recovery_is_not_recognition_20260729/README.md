@@ -9,15 +9,17 @@ This publication branch records the release identity for the manuscript and revi
 ## Frozen object
 
 - Canonical source: `manuscript.md`
-- SHA-256: `1bacfc4b472697529e94f634dfdfa89f5e8b763c706ddc3c1bbc17f6b3ebe213`
-- Length: 1,125 lines; 7,368 words
+- SHA-256: `eb75ff253945c8fa9b614ccec815ae74e98b48daf63694a5027b9bcd16004021`
+- Length: 1,129 lines; 7,399 words
 - Scientific payload SHA-256: `9d3c8e817d57a1678219f13a148f142d6863099e37828d4e63e9044e0e1ee4ba`
+
+The article narrative uses descriptive scientific stage names rather than internal `v0.x` repository labels. Exact protocol identifiers remain in the source manifest, claim ledger and archived provenance records.
 
 ## Gate result
 
 1. Frozen-source integrity — PASS.
 2. Source-to-claim fidelity — PASS (26 claims mapped; one exposed Voynich claim removed and retained in the audit ledger).
-3. Portable validation — PASS.
+3. Portable validation — PASS (21/21 release checks).
 4. Independent reconstruction — PASS WITH DISCLOSED LIMITATIONS (71/71 checks).
 5. Adversarial review and disposition — PASS; human peer review remains open.
 6. PDF/DOCX/ZIP integrity and visual QA — PASS (33 PDF pages; 34 DOCX-render pages).
@@ -25,10 +27,10 @@ This publication branch records the release identity for the manuscript and revi
 
 ## Canonical derivatives
 
-- LaTeX SHA-256: `8d3f5072d973b83f1b41184505060201e7c1b81ddfc04772ae3697bee6ada299`
-- PDF SHA-256: `15e664e55e3df45155ed80f62ba8e8775d87562381244781f3d628b3cc1816dd`
-- DOCX SHA-256: `572fdbbfd79977ed8db24f69b547154201362580220b0fe326e6d3aa0eebec8b`
-- Reviewer ZIP SHA-256: `8ac61c7b81ab45654f90994e7fa292d90dea3939819d91d96efcda679c24fbff`
+- LaTeX SHA-256: `f5a858cd90b4734d970be4cab316139d4f0fad1310498c9738337c8a1cd66240`
+- PDF SHA-256: `dd51d28b86973323d535ca71ac628b2b5727d65ab99dd7969144b51b6947d95a`
+- DOCX SHA-256: `748bea1e86350de568eda1c33e9640e66b7dd5fed0ce3fb93d57c4359fa2b862`
+- Reviewer ZIP SHA-256: `b098a136dbb6109c8d017d80ebacb703b9275706b20c1aeff2ebb99d8f81fe31`
 
 ## Scientific boundary
 
