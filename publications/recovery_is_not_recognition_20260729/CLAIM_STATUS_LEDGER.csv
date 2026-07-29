@@ -25,3 +25,4 @@ C23,2.2,Lehofer tested clustering on artificial and historical homophonic materi
 C24,3.3; 10; 13,"Four-gate hierarchy is proposed as an evidential standard, not independently validated as complete",methodological,methodological proposal,logical boundary explicit,retained
 C25,1; 13,The paper does not classify the Voynich Manuscript,scope,open target / negative scope,explicit no-classification boundary,retained
 C26,Removed from revision,Voynich four-slot/28.9%/59-of-84 structural paragraph,superseded source,removed,not load-bearing; confounding and verification concerns,removed from final manuscript
+C27,2.4; 10.6,"Deniable encryption shows that a ciphertext may admit convincing alternative openings, so internal validity need not establish a historically privileged plaintext",R28,published analogy / methodological implication,Canetti et al. primary paper; scope boundary explicit,"retained as evidential analogy, not Voynich mechanism"
