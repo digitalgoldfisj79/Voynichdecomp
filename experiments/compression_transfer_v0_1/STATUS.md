@@ -1,82 +1,82 @@
 # Programme status
 
-**Status:** Stage 1 period-tolerant calibration executed; formal decision `STAGE1_FAIL`.  
-**Source-language use under v0.1:** closed.  
+**Programme:** Compression-Transfer Distance Programme v0.1  
+**Status:** scientifically complete; negative.  
+**Stage 1 source-language decision:** `STAGE1_FAIL`.  
+**Stage 2 surface-class decision:** `STAGE2_SURFACE_FAIL`.  
 **Voynich:** sealed; never loaded or scored.  
-**Stage 2 surface-class calibration:** permitted as a logically separate programme phase.  
-**Stage 3 Voynich execution:** not permitted.
+**Stage 3 Voynich execution:** prohibited.  
+**Permitted claims from v0.1:** none about Voynich source language or surface family.
 
 ## Implementation
 
 Completed before formal execution:
 
-- protocol and exact escalation/stop rules;
-- directional compressor cross-entropy;
-- self-normalized excess cost;
-- order-retaining NCD;
+- preregistered escalation and stopping rules;
+- directional compressor cross-entropy and self-normalized excess cost;
+- order-retaining normalized compression distance;
 - fixed-width Unicode and label-invariant recurrence representations;
-- document-level manifests and SHA validation;
-- deterministic chunking, reference construction and UPGMA output;
-- row-level results and independent arithmetic validation;
-- consensus evaluator and null-control generator;
-- synthetic engineering smoke fixture and CI workflow.
+- document-level manifests, provenance and SHA validation;
+- deterministic chunking and reference construction;
+- independent arithmetic checks;
+- consensus and null-control machinery;
+- reproducible Stage 1 and Stage 2 corpus builders.
 
-## Stage 1 corpus acquisition
+## Stage 1 — source-language calibration
 
-The frozen period-tolerant panel passed acquisition qualification:
+The frozen period-tolerant panel contained 96 documents: 12 each in Arabic, English, Finnish, German, Greek, Hebrew, Latin and Turkish. Acquisition, split and duplicate gates passed.
 
-- 96 documents;
-- 12 documents in each of Arabic, English, Finnish, German, Greek, Hebrew, Latin and Turkish;
-- train/dev/test partitions in every class;
-- no exact or thresholded near-duplicate failures;
-- acquisition freeze payload: `158749612acf8d7b6ac48c1dd465f54e6b6cc213a71a3dcb17f5e1b0aa1699c3`.
+The intact zlib result appeared strong, but the registered non-space character shuffle retained 100% accuracy in every language. The method was therefore recognizing alphabet, codepoint inventory and unigram profile rather than order-sensitive language structure.
 
-## Intact-text diagnostic
+Formal result: `STAGE1_FAIL`. Source-language use under v0.1 is closed.
 
-Primary representation: `codepoint_u32_ws`; probe length: 4,096 units; 113 held-out probes.
-
-- zlib9 top-1: 0.9912; macro accuracy: 0.9922; worst-language recall: 0.9375;
-- bz2_9 top-1: 0.6726; macro accuracy: 0.6901; worst-language recall: 0.0000;
-- 128/128 cached-versus-frozen arithmetic cross-checks passed.
-
-These intact-text scores are diagnostic only because the registered shuffled-control gate subsequently failed.
-
-## Decisive registered null result
-
-The deterministic non-space character shuffle, seed 1731, destroys character order while retaining each document's character inventory and whitespace positions.
-
-Registered gate:
-
-```text
-shuffled-control macro language accuracy <= 0.50
-```
-
-Observed with zlib9:
-
-```text
-macro accuracy        1.0000
-micro accuracy        1.0000
-worst-language recall 1.0000
-median own rank       1
-```
-
-All eight language recalls were 1.0 after character order was destroyed. The null-result payload is:
-
-```text
-bc4fcc4c7612001b4171a3045d0bd3ae3eaa0201035ce78bc1817104fe968586
-```
-
-## Formal decision
-
-The Stage 1 null gate fails maximally. Under the frozen stop rule, source-language use of compression distance is closed under programme v0.1. The high intact zlib score is compatible with alphabet, codepoint-inventory and unigram-profile recognition; it is not evidence of order-sensitive language recovery.
-
-The longer LZMA, sensitivity-length and optional-compressor runs were stopped after the decisive failure because they could not reverse the formal decision.
-
-Full machine-readable and narrative reports:
+Reports:
 
 - `results/STAGE1_PERIOD_TOLERANT_RESULT.json`;
 - `results/STAGE1_PERIOD_TOLERANT_RESULT.md`.
 
-## Remaining permitted phase
+## Stage 2 — surface-class calibration
 
-Only Stage 2 surface-class calibration may proceed under v0.1. A Stage 2 pass could support surface compatibility only; it cannot reopen source-language interpretation or authorize a source-family claim about Voynich.
+The frozen Stage 2 panel passed acquisition qualification:
+
+- 148 documents;
+- 13 registered families;
+- plaintext, monoalphabetic, homophonic, nomenclator, substitution-plus-transposition, Family P, null-bearing, polygraphic/fractionating, CoReMA procedural, human meaningless, structured-generator, Polygraphia-table and matched-null families;
+- fresh independent keys per synthetic document;
+- source-document split inheritance across transformed families;
+- generator-disjoint test regimes;
+- participant-disjoint human controls and manuscript-disjoint CoReMA controls;
+- no exact or thresholded near-duplicate failures;
+- acquisition freeze payload: `aa4c61d541f05621297dcf6956e38132a38ab92200634b20c16e185152e17c73`.
+
+The primary representation was `codepoint_u32_ws`. A qualifying support set required the primary representation to pass under at least two mandatory compressors.
+
+| Compressor | Top-1 | Macro accuracy | Worst recall | Generator-disjoint accuracy | Matched-null FPR | Median own rank | Cell |
+|---|---:|---:|---:|---:|---:|---:|---|
+| zlib9 | 0.2951 | 0.3798 | 0.0000 | 0.4677 | 1.0000 | 4 | FAIL |
+| bz2_9 | 0.2186 | 0.2821 | 0.0000 | 0.2581 | 1.0000 | 6 | FAIL |
+
+Both cells passed 64/64 independent arithmetic checks.
+
+After these two mandatory primary failures, only LZMA remained. The maximum possible primary support was therefore one compressor against a requirement of two. A qualifying cross-cell support set had become logically impossible, so all scientifically redundant remaining cells were stopped.
+
+Formal result: `STAGE2_SURFACE_FAIL`.
+
+The method separated some grossly distinctive surfaces—particularly plaintext, CoReMA procedural text, human meaningless writing, structured generation and polygraphic output—but collapsed the majority of fresh-key cipher families. Both tested compressors misclassified every matched-null probe as a non-null family.
+
+Reports:
+
+- `results/STAGE2_SURFACE_EARLY_STOP_RESULT.json`;
+- `results/STAGE2_SURFACE_EARLY_STOP_RESULT.md`.
+
+Stage 2 scientific payload:
+
+```text
+32af2b85f96e4bae24185a2427ff9a388086fef5e02cd2967f253c44a9aa981f
+```
+
+## Final interpretation
+
+Compression transfer under v0.1 did not validate either source-language recovery or reliable surface-family recognition. No Voynich matrix was produced. The programme therefore closes without a Voynich compatibility claim.
+
+The negative calibration remains methodologically informative: strong-looking compression results can reflect alphabet, inventory, unigram or gross renderer differences while failing the recoverability and matched-null tests required for interpretation.
