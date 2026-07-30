@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: compression-transfer-v0.1-${{ github.event.pull_request.number || github.ref }}
+  group: compression-transfer-v0.1-acquisition
   cancel-in-progress: true
 
 jobs:
