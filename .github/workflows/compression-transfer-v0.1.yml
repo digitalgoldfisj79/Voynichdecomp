@@ -11,6 +11,10 @@ on:
       - '.github/workflows/compression-transfer-v0.1.yml'
   workflow_dispatch:
 
+concurrency:
+  group: compression-transfer-v0.1-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   smoke:
     runs-on: ubuntu-latest
@@ -62,6 +66,7 @@ jobs:
 
   acquire-period-panel:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: experiments/compression_transfer_v0_1
