@@ -82,6 +82,13 @@ jobs:
       - name: Relativize and verify period manifest
         if: always()
         run: python code/relativize_manifest_paths.py data/stage1_period_wikimedia/manifest.csv
+      - name: Namespace period language classes
+        if: always()
+        run: >-
+          python code/namespace_manifest_classes.py
+          data/stage1_period_wikimedia/manifest.csv
+          --prefix wikimedia_period
+          --expected-classes en de fi tr el he ar la
       - name: Show acquisition decision
         if: always()
         run: |
@@ -113,6 +120,12 @@ jobs:
       - name: Relativize and verify historical manifest
         if: always()
         run: python code/relativize_manifest_paths.py data/stage1_historical_wikisource/manifest.csv
+      - name: Namespace historical language classes
+        if: always()
+        run: >-
+          python code/namespace_manifest_classes.py
+          data/stage1_historical_wikisource/manifest.csv
+          --prefix wikisource_historical
       - name: Show historical source decision
         if: always()
         run: |
