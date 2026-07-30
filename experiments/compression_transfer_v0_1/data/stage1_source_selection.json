@@ -5,12 +5,7 @@
   "record_files": [
     "stage1_sources/arabic.json",
     "stage1_sources/english.json",
-    "stage1_sources/finnish.json",
-    "stage1_sources/german.json",
-    "stage1_sources/greek.json",
-    "stage1_sources/hebrew.json",
-    "stage1_sources/latin.json",
-    "stage1_sources/turkish.json"
+    "stage1_sources/remaining.json.gz.b64"
   ],
   "voynich_status": "SEALED"
 }
