@@ -74,6 +74,9 @@ jobs:
         id: acquire
         continue-on-error: true
         run: python code/acquire_wikimedia_period_panel.py --output data/stage1_period_wikimedia
+      - name: Relativize and verify period manifest
+        if: always()
+        run: python code/relativize_manifest_paths.py data/stage1_period_wikimedia/manifest.csv
       - name: Show acquisition decision
         if: always()
         run: |
@@ -102,6 +105,9 @@ jobs:
           python code/discover_wikisource_historical_panel_api.py
           --output data/stage1_historical_wikisource
           --cutoff-year 1800
+      - name: Relativize and verify historical manifest
+        if: always()
+        run: python code/relativize_manifest_paths.py data/stage1_historical_wikisource/manifest.csv
       - name: Show historical source decision
         if: always()
         run: |
