@@ -99,7 +99,7 @@ jobs:
           python-version: '3.12'
       - name: Discover dated and attributed Wikisource works
         run: >-
-          python code/discover_wikisource_historical_panel.py
+          python code/discover_wikisource_historical_panel_api.py
           --output data/stage1_historical_wikisource
           --cutoff-year 1800
       - name: Show historical source decision
