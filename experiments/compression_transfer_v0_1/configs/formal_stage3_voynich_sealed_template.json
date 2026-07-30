@@ -1,0 +1,22 @@
+{
+  "programme": "compression-transfer-v0.1-stage3-voynich-sealed",
+  "manifest": "../data/formal_stage3_sealed_manifest.csv",
+  "output_dir": "../results/formal_stage3_sealed",
+  "sealed": true,
+  "open_only_if": ["stage1_known_source_gate_pass", "stage2_surface_class_gate_pass"],
+  "compressors": ["zlib9", "bz2_9", "lzma9e", "zstd19", "ppmd6"],
+  "mandatory_compressors": ["zlib9", "bz2_9", "lzma9e"],
+  "representations": ["codepoint_u32_ws", "surface_utf8", "codepoint_u32_nospace", "token_recurrence_u32", "char_recurrence_u32", "token_length_u32"],
+  "evaluation_split": "sealed",
+  "probe_units": 4096,
+  "probe_stride": 4096,
+  "reference_units": 131072,
+  "allowed_decisions": ["NON_IDENTIFIABLE", "SURFACE_COMPATIBILITY_ONLY", "SOURCE_FAMILY_COMPATIBILITY_ONLY"],
+  "forbidden_claims": ["decipherment", "plaintext language identification", "semantic reading", "rejection of untested cipher families"],
+  "registered_consensus_rule": {
+    "minimum_representations_agreeing": 4,
+    "minimum_mandatory_compressors_agreeing": 2,
+    "bootstrap_cluster_support_min": 0.75,
+    "family_margin_ci_excludes_zero": true
+  }
+}
