@@ -1,0 +1,28 @@
+{
+  "acquisition_job_id": "6a6b23ffb36a6516e96a2532",
+  "acquisition_specification_commit": "bbe679b7bb7d36c2822905cb00d8e2c41961b244",
+  "duplicate_screen_sha256": "df0d583f1b7028d08b5ddeea518a30441c39fbd4036a5f0d248ed57047a46e67",
+  "freeze_payload_sha256": "158749612acf8d7b6ac48c1dd465f54e6b6cc213a71a3dcb17f5e1b0aa1699c3",
+  "manifest_sha256": "5304b526ffda19272ef310fae0433730a3d60663706f808f81db05c2b7733f98",
+  "panel": "stage1_period_tolerant_v0.1",
+  "programme": "compression-transfer-v0.1",
+  "qualification": {
+    "documents_per_corpus": {
+      "arabic": 12,
+      "english": 12,
+      "finnish": 12,
+      "german": 12,
+      "greek": 12,
+      "hebrew": 12,
+      "latin": 12,
+      "turkish": 12
+    },
+    "errors": [],
+    "n_documents": 96,
+    "status": "PASS"
+  },
+  "scientific_results_computed": false,
+  "selection_payload_sha256": "2d66aec4f8b7497ec4f6ed54a9fc21c135b2b6b720c1f6f2727cba106ff2a85a",
+  "source_metadata_sha256": "4cd0366ef4013d8eb30b59057395c7ef66f64725ee298dbefc957b80ae75e47e",
+  "voynich_status": "SEALED"
+}

@@ -1,0 +1,21 @@
+{
+  "base_commit": "f86759d6651fdde135c427682c79a07ef8df38f9",
+  "branch": "experiment/compression-transfer-v0.1-20260730",
+  "date": "2026-07-30",
+  "formal_execution_status": "NOT_STARTED",
+  "implementation_commit": "29e4543fb24529176fcdee2df7c5e97fc8b6aea7",
+  "programme": "compression-transfer-v0.1",
+  "registered_primary_representation": "codepoint_u32_ws",
+  "registered_mandatory_compressors": ["zlib9", "bz2_9", "lzma9e"],
+  "smoke_result": {
+    "engineering_status": "PASS",
+    "independent_validation_checks": 194,
+    "independent_validation_passed": 194,
+    "primary_zlib_top1": "8/8",
+    "primary_bz2_top1": "8/8",
+    "scientific_payload_sha256": "12f4b35579f1ea58a81413cb647530cb0208ff22871054ac4aa41cdfd6833358"
+  },
+  "scientific_result_status": "NONE",
+  "voynich_status": "SEALED",
+  "opening_rule": "Stage 1 source decision and Stage 2 surface-class decision must be frozen before any Voynich execution."
+}

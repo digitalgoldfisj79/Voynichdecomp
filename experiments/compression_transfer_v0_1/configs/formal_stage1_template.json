@@ -1,0 +1,29 @@
+{
+  "programme": "compression-transfer-v0.1-stage1-known-source",
+  "manifest": "../data/formal_stage1_manifest.csv",
+  "output_dir": "../results/formal_stage1",
+  "verify_hashes": true,
+  "compressors": ["zlib9", "bz2_9", "lzma9e", "zstd19", "ppmd6"],
+  "require_all_compressors": false,
+  "mandatory_compressors": ["zlib9", "bz2_9", "lzma9e"],
+  "representations": ["codepoint_u32_ws", "surface_utf8", "codepoint_u32_nospace", "token_recurrence_u32"],
+  "primary_representation": "codepoint_u32_ws",
+  "evaluation_split": "test",
+  "label_field": "language",
+  "probe_units": 4096,
+  "probe_stride": 4096,
+  "reference_units": 131072,
+  "max_probes_per_document": 8,
+  "registered_sensitivity_probe_units": [1024, 2048, 4096],
+  "registered_gates": {
+    "mandatory_compressors_passing_top1_0_80": 2,
+    "macro_top1_accuracy_min": 0.80,
+    "worst_language_recall_min": 0.50,
+    "median_own_source_rank_max": 1.0,
+    "consensus_coverage_min": 0.80,
+    "consensus_accuracy_min": 0.85,
+    "median_ncd_concat_order_gap_max": 0.05,
+    "leave_author_out_drop_max": 0.15,
+    "unigram_shuffle_top1_max": 0.50
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "programme": "compression-transfer-v0.1",
+  "stage": "stage1_period_tolerant",
+  "date": "2026-07-30",
+  "branch": "experiment/compression-transfer-v0.1-20260730",
+  "acquisition": {
+    "status": "PASS",
+    "job_id": "6a6b23ffb36a6516e96a2532",
+    "n_documents": 96,
+    "documents_per_language": 12,
+    "languages": [
+      "arabic",
+      "english",
+      "finnish",
+      "german",
+      "greek",
+      "hebrew",
+      "latin",
+      "turkish"
+    ],
+    "freeze_payload_sha256": "158749612acf8d7b6ac48c1dd465f54e6b6cc213a71a3dcb17f5e1b0aa1699c3",
+    "manifest_sha256": "5304b526ffda19272ef310fae0433730a3d60663706f808f81db05c2b7733f98",
+    "selection_payload_sha256": "2d66aec4f8b7497ec4f6ed54a9fc21c135b2b6b720c1f6f2727cba106ff2a85a",
+    "source_metadata_sha256": "4cd0366ef4013d8eb30b59057395c7ef66f64725ee298dbefc957b80ae75e47e",
+    "duplicate_screen_sha256": "df0d583f1b7028d08b5ddeea518a30441c39fbd4036a5f0d248ed57047a46e67"
+  },
+  "intact_primary_diagnostic": {
+    "job_id": "6a6b2b01b36a6516e96a25f7",
+    "probe_units": 4096,
+    "representation": "codepoint_u32_ws",
+    "n_probes": 113,
+    "payload_sha256": "0aaef7cc7d1d6bd4f993530652bb723aab684baaf8109a169303b67e3c82d8a7",
+    "zlib9": {
+      "top1_accuracy": 0.9911504424778761,
+      "macro_accuracy": 0.9921875,
+      "median_own_source_rank": 1,
+      "mean_own_source_rank": 1.008849557522124,
+      "worst_language_recall": 0.9375,
+      "recalls": {
+        "arabic": 1.0,
+        "english": 1.0,
+        "finnish": 1.0,
+        "german": 1.0,
+        "greek": 0.9375,
+        "hebrew": 1.0,
+        "latin": 1.0,
+        "turkish": 1.0
+      },
+      "median_ncd_order_gap": 0.0009317037105148751,
+      "arithmetic_crosschecks": {
+        "passed": 64,
+        "total": 64
+      }
+    },
+    "bz2_9": {
+      "top1_accuracy": 0.672566371681416,
+      "macro_accuracy": 0.6901041666666666,
+      "median_own_source_rank": 1,
+      "mean_own_source_rank": 2.327433628318584,
+      "worst_language_recall": 0.0,
+      "recalls": {
+        "arabic": 0.0,
+        "english": 1.0,
+        "finnish": 1.0,
+        "german": 1.0,
+        "greek": 0.1875,
+        "hebrew": 1.0,
+        "latin": 1.0,
+        "turkish": 0.3333333333333333
+      },
+      "median_ncd_order_gap": 0.008664390504871444,
+      "arithmetic_crosschecks": {
+        "passed": 64,
+        "total": 64
+      }
+    },
+    "two_compressor_unanimous_consensus": {
+      "coverage": 0.672566371681416,
+      "accepted_accuracy": 1.0,
+      "worst_language_recall": 0.0
+    },
+    "interpretation": "diagnostic only; LZMA was not completed because the preregistered null gate subsequently failed decisively"
+  },
+  "registered_null_gate": {
+    "job_id": "6a6b2d7923ed89c748ec7417",
+    "control": "deterministic_nonspace_character_shuffle",
+    "seed": 1731,
+    "compressor": "zlib9",
+    "representation": "codepoint_u32_ws",
+    "probe_units": 4096,
+    "n_probes": 113,
+    "registered_max_accuracy": 0.5,
+    "top1_accuracy": 1.0,
+    "macro_accuracy": 1.0,
+    "median_own_source_rank": 1,
+    "worst_language_recall": 1.0,
+    "recalls": {
+      "arabic": 1.0,
+      "english": 1.0,
+      "finnish": 1.0,
+      "german": 1.0,
+      "greek": 1.0,
+      "hebrew": 1.0,
+      "latin": 1.0,
+      "turkish": 1.0
+    },
+    "payload_sha256": "bc4fcc4c7612001b4171a3045d0bd3ae3eaa0201035ce78bc1817104fe968586",
+    "gate_status": "FAIL"
+  },
+  "formal_decision": {
+    "status": "STAGE1_FAIL",
+    "failed_gate": "unigram_or_character_shuffle_language_accuracy_must_be_at_most_0.50",
+    "reason": "zlib9 retained 1.0 macro language accuracy after deterministic non-space character shuffling",
+    "source_language_use_under_v0_1": "CLOSED",
+    "voynich_status": "SEALED",
+    "stage2_surface_class_calibration_permitted": true,
+    "stage3_voynich_execution_permitted": false
+  },
+  "stopped_jobs_after_decisive_gate_failure": [
+    "6a6b252eb36a6516e96a2538",
+    "6a6b2688b36a6516e96a2558",
+    "6a6b27b7b36a6516e96a2569",
+    "6a6b2d1423ed89c748ec740e"
+  ],
+  "limitations": [
+    "The period-tolerant panel is not the separate historical-domain panel.",
+    "LZMA, sensitivity-length and optional-compressor diagnostics were stopped after the decisive null-gate failure, as required by the stop rule.",
+    "The acquired panel does not operationalize a clean within-author versus leave-author-out drop because most selected authors contribute one document; this is an additional design limitation, not the basis of the formal failure.",
+    "No Voynich text was loaded or scored."
+  ]
+}

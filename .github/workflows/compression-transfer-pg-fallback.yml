@@ -1,0 +1,61 @@
+name: compression-transfer-pg-fallback
+
+on:
+  push:
+    paths:
+      - 'corpus_acquisition_staging/compression_transfer_v0_1/pg_acquire.py'
+      - '.github/workflows/compression-transfer-pg-fallback.yml'
+  pull_request:
+    paths:
+      - 'corpus_acquisition_staging/compression_transfer_v0_1/pg_acquire.py'
+      - '.github/workflows/compression-transfer-pg-fallback.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: compression-transfer-pg-fallback
+  cancel-in-progress: true
+
+jobs:
+  acquire-gutenberg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile acquisition code
+        run: python -m py_compile corpus_acquisition_staging/compression_transfer_v0_1/pg_acquire.py
+      - name: Acquire catalogued texts
+        run: >-
+          python corpus_acquisition_staging/compression_transfer_v0_1/pg_acquire.py
+          --output corpus_acquisition_staging/compression_transfer_v0_1/results/gutenberg
+          --death-cutoff 1800
+          --target-docs 12
+          --min-units 4096
+      - name: Validate manifest paths and hashes
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json
+          from collections import Counter
+          from pathlib import Path
+          root = Path('corpus_acquisition_staging/compression_transfer_v0_1/results/gutenberg')
+          manifest = root / 'manifest.csv'
+          rows = list(csv.DictReader(manifest.open(encoding='utf-8', newline='')))
+          for row in rows:
+              path = root / row['path']
+              assert path.is_file(), path
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == row['sha256'], row['document_id']
+          counts = Counter(row['class_label'] for row in rows)
+          summary = json.loads((root / 'summary.json').read_text())
+          assert summary['voynich_accessed'] is False
+          assert summary['contributor_death_cutoff'] == 1800
+          assert counts == Counter(summary['counts'])
+          print(json.dumps({'rows': len(rows), 'counts': dict(counts), 'status': summary['status']}, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compression-transfer-gutenberg-fallback
+          path: corpus_acquisition_staging/compression_transfer_v0_1/results/gutenberg/
+          if-no-files-found: error

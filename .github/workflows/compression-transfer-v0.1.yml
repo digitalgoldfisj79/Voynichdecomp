@@ -1,0 +1,143 @@
+name: compression-transfer-v0.1
+
+on:
+  push:
+    paths:
+      - 'experiments/compression_transfer_v0_1/**'
+      - '.github/workflows/compression-transfer-v0.1.yml'
+  pull_request:
+    paths:
+      - 'experiments/compression_transfer_v0_1/**'
+      - '.github/workflows/compression-transfer-v0.1.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: compression-transfer-v0.1-acquisition
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Regenerate smoke fixture
+        run: python code/make_smoke_fixture.py
+      - name: Run smoke benchmark
+        run: python code/run_benchmark.py configs/smoke.json
+      - name: Validate row-level results
+        run: python code/validate_results.py results/smoke
+      - name: Evaluate consensus
+        run: >-
+          python code/evaluate_consensus.py
+          results/smoke/directional_observations.csv
+          --required-votes 2
+          --output results/smoke/consensus.json
+      - name: Build registered smoke tree
+        run: >-
+          python code/build_tree.py
+          results/smoke/ncd_pairs.csv
+          --representation codepoint_u32_ws
+          --compressor zlib9
+          --output results/smoke/tree.newick
+      - name: Assert smoke gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path('results/smoke/summary.json').read_text())
+          primary = [row for row in summary['summary_cells'] if row['representation'] == 'codepoint_u32_ws']
+          assert primary
+          assert all(row['top1_accuracy'] == 1.0 for row in primary), primary
+          validation = json.loads(Path('results/smoke/validation.json').read_text())
+          assert validation['verdict'] == 'PASS', validation
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compression-transfer-smoke
+          path: experiments/compression_transfer_v0_1/results/smoke/
+
+  acquire-period-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire exact Wikimedia revisions
+        id: acquire
+        continue-on-error: true
+        run: >-
+          python code/acquisition_launcher.py
+          code/acquire_wikimedia_period_panel.py
+          --output data/stage1_period_wikimedia
+      - name: Relativize and verify period manifest
+        if: always()
+        run: python code/relativize_manifest_paths.py data/stage1_period_wikimedia/manifest.csv
+      - name: Namespace period language classes
+        if: always()
+        run: >-
+          python code/namespace_manifest_classes.py
+          data/stage1_period_wikimedia/manifest.csv
+          --prefix wikimedia_period
+          --expected-classes en de fi tr el he ar la
+      - name: Show acquisition decision
+        if: always()
+        run: |
+          test -f data/stage1_period_wikimedia/summary.json
+          cat data/stage1_period_wikimedia/summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compression-transfer-stage1-period-sources
+          path: experiments/compression_transfer_v0_1/data/stage1_period_wikimedia/
+          if-no-files-found: error
+
+  discover-historical-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover dated and attributed Wikisource works
+        run: >-
+          python code/acquisition_launcher.py
+          code/discover_wikisource_historical_panel_api.py
+          --output data/stage1_historical_wikisource
+          --cutoff-year 1800
+      - name: Relativize and verify historical manifest
+        if: always()
+        run: python code/relativize_manifest_paths.py data/stage1_historical_wikisource/manifest.csv
+      - name: Namespace historical language classes
+        if: always()
+        run: >-
+          python code/namespace_manifest_classes.py
+          data/stage1_historical_wikisource/manifest.csv
+          --prefix wikisource_historical
+      - name: Show historical source decision
+        if: always()
+        run: |
+          test -f data/stage1_historical_wikisource/summary.json
+          cat data/stage1_historical_wikisource/summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compression-transfer-stage1-historical-sources
+          path: experiments/compression_transfer_v0_1/data/stage1_historical_wikisource/
+          if-no-files-found: error

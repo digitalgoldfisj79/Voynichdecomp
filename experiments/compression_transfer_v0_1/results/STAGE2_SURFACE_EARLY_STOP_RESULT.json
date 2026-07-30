@@ -1,0 +1,126 @@
+{
+  "acquisition_freeze_payload_sha256": "aa4c61d541f05621297dcf6956e38132a38ab92200634b20c16e185152e17c73",
+  "allowed_interpretation": "none under compression-transfer v0.1; Stage 2 surface calibration failed",
+  "completed_primary_cells": {
+    "bz2_9": {
+      "arithmetic_crosschecks": {
+        "passed": 64,
+        "total": 64
+      },
+      "cell_support_gate": {
+        "generator_disjoint_accuracy": false,
+        "macro_accuracy": false,
+        "matched_null_false_positive_rate": false,
+        "median_ncd_order_gap": true,
+        "median_own_rank": false,
+        "worst_class_recall": false
+      },
+      "cell_support_pass": false,
+      "metrics": {
+        "generator_disjoint_accuracy": 0.25806451612903225,
+        "macro_accuracy": 0.28205128205128205,
+        "matched_null_false_positive_rate": 1.0,
+        "max_ncd_order_gap": 0.0661135597614726,
+        "mean_own_rank": 6.371584699453552,
+        "median_ncd_order_gap": 0.012937034307704876,
+        "median_own_rank": 6,
+        "n_probes": 183,
+        "per_family_recall": {
+          "corema_procedural": 1.0,
+          "family_p": 0.0,
+          "homophonic": 0.0,
+          "human_meaningless": 0.6666666666666666,
+          "matched_null": 0.0,
+          "monoalphabetic": 0.0,
+          "nomenclator": 0.0,
+          "null_bearing_cipher": 0.0,
+          "plaintext": 1.0,
+          "polygraphia_table": 0.0,
+          "polygraphic_fractionating": 1.0,
+          "structured_generator": 0.0,
+          "substitution_transposition": 0.0
+        },
+        "top1_accuracy": 0.2185792349726776,
+        "worst_class_recall": 0.0
+      },
+      "scientific_payload_sha256": "41af47efb8279a86e119b9f85500272bde088af924f7e3b0f851256453808e68"
+    },
+    "zlib9": {
+      "arithmetic_crosschecks": {
+        "passed": 64,
+        "total": 64
+      },
+      "cell_support_gate": {
+        "generator_disjoint_accuracy": false,
+        "macro_accuracy": false,
+        "matched_null_false_positive_rate": false,
+        "median_ncd_order_gap": true,
+        "median_own_rank": false,
+        "worst_class_recall": false
+      },
+      "cell_support_pass": false,
+      "metrics": {
+        "generator_disjoint_accuracy": 0.46774193548387094,
+        "macro_accuracy": 0.3798076923076923,
+        "matched_null_false_positive_rate": 1.0,
+        "max_ncd_order_gap": 0.015175254040019848,
+        "mean_own_rank": 3.73224043715847,
+        "median_ncd_order_gap": 0.0011369253583785044,
+        "median_own_rank": 4,
+        "n_probes": 183,
+        "per_family_recall": {
+          "corema_procedural": 1.0,
+          "family_p": 0.0,
+          "homophonic": 0.0,
+          "human_meaningless": 1.0,
+          "matched_null": 0.0,
+          "monoalphabetic": 0.0,
+          "nomenclator": 0.0,
+          "null_bearing_cipher": 0.0,
+          "plaintext": 1.0,
+          "polygraphia_table": 0.0,
+          "polygraphic_fractionating": 0.9375,
+          "structured_generator": 1.0,
+          "substitution_transposition": 0.0
+        },
+        "top1_accuracy": 0.29508196721311475,
+        "worst_class_recall": 0.0
+      },
+      "scientific_payload_sha256": "059b2a0d223c07cf7e6ce98984aec9dc37f6a628c1964fd02dc83a0c950c9aa7"
+    }
+  },
+  "decision": "STAGE2_SURFACE_FAIL",
+  "decision_basis": "LOGICAL_EARLY_STOP_AFTER_TWO_PRIMARY_MANDATORY_FAILURES",
+  "formal_gates": {
+    "consensus_coverage": false,
+    "consensus_generator_disjoint_accuracy": false,
+    "consensus_macro_accuracy": false,
+    "consensus_matched_null_false_positive_rate": false,
+    "consensus_worst_class_recall": false,
+    "cross_cell_support": false
+  },
+  "logical_certificate": {
+    "failed_primary_mandatory_compressors": [
+      "zlib9",
+      "bz2_9"
+    ],
+    "maximum_possible_primary_support_after_failures": 1,
+    "qualifying_cross_cell_support_possible": false,
+    "remaining_untested_primary_mandatory_compressors": [
+      "lzma9e"
+    ],
+    "required_primary_support": 2
+  },
+  "mandatory_compressors": [
+    "zlib9",
+    "bz2_9",
+    "lzma9e"
+  ],
+  "primary_representation": "codepoint_u32_ws",
+  "primary_support_required_from_mandatory_compressors": 2,
+  "programme": "compression-transfer-v0.1-stage2-surface",
+  "scientific_payload_sha256": "32af2b85f96e4bae24185a2427ff9a388086fef5e02cd2967f253c44a9aa981f",
+  "source_language_use": "CLOSED_BY_STAGE1_FAIL",
+  "unrun_or_stopped_cells": "all cells not required after logical impossibility certificate",
+  "voynich_loaded_or_scored": false
+}

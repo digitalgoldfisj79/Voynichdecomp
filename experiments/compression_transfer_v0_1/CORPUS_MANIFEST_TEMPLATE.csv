@@ -1,0 +1,3 @@
+corpus_id,document_id,split,class_label,language,family,path,sha256,encoding,license,author_id,work_id,date_band,notes
+example_latin,latin_work1_train,train,latin,latin,plaintext,data/latin_work1_train.txt,REPLACE_SHA256,utf-8,REPLACE_LICENSE,author_1,work_1,medieval,document-grouped split
+example_latin,latin_work2_test,test,latin,latin,plaintext,data/latin_work2_test.txt,REPLACE_SHA256,utf-8,REPLACE_LICENSE,author_2,work_2,medieval,untouched test document

@@ -1,0 +1,4 @@
+# Mandatory implementation uses only the Python 3 standard library.
+# Optional registered compressors:
+zstandard==0.23.0
+pyppmd==1.1.0

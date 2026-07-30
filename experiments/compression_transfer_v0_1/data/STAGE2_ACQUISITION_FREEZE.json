@@ -1,0 +1,73 @@
+{
+  "corema_recipe_rows_sha256": "de087c576bee231d9274bf79af6b998de3588bd6b786aa59b92813c2012ed56f",
+  "duplicate_screen_sha256": "8fcb48c3d24b0e0c915eacf1b8ccc07ed34b98b743e78c8df958875f443dc978",
+  "freeze_payload_sha256": "aa4c61d541f05621297dcf6956e38132a38ab92200634b20c16e185152e17c73",
+  "human_archive_sha256": "a4bfa58af956603ab6607227ad640e01cb695c7b492c6914488bd30f6d0aebbe",
+  "manifest_sha256": "cc8c4841e3829e2bca12ec87857e406768e68d22b475b6fd646fcc2d98bc5bac",
+  "metadata_sha256": "c75447d790ea2f5aa9884f97bf3f9085300384e68add4e96a8f1a552d0423889",
+  "qualification": {
+    "corema_manuscripts": [
+      "a1", "b1", "b4", "br1", "bs1", "bs2", "db1", "ds1", "er2", "gr1", "h2", "k1"
+    ],
+    "documents_per_family": {
+      "corema_procedural": 12,
+      "family_p": 12,
+      "homophonic": 12,
+      "human_meaningless": 4,
+      "matched_null": 12,
+      "monoalphabetic": 12,
+      "nomenclator": 12,
+      "null_bearing_cipher": 12,
+      "plaintext": 12,
+      "polygraphia_table": 12,
+      "polygraphic_fractionating": 12,
+      "structured_generator": 12,
+      "substitution_transposition": 12
+    },
+    "errors": [],
+    "generator_disjoint_rules": {
+      "family_p": {
+        "dev": ["line_reset_periodic"],
+        "test": ["irregular_state_change", "alberti_rotation"],
+        "train": ["periodic_independent"]
+      },
+      "matched_null": {
+        "dev": ["first_order_markov"],
+        "test": ["token_shuffle", "first_order_markov"],
+        "train": ["token_shuffle", "block_shuffle"]
+      },
+      "polygraphic_fractionating": {
+        "dev": ["mixed_character_digraph"],
+        "test": ["variable_one_to_three"],
+        "train": ["fixed_digraph"]
+      },
+      "structured_generator": {
+        "dev": ["topic_fsm"],
+        "test": ["copy_mutate_latent"],
+        "train": ["ordered_hmm", "motif_grammar"]
+      }
+    },
+    "human_composite_token_totals": [2473, 2548, 2585, 2489],
+    "n_documents": 148,
+    "split_counts": {
+      "corema_procedural": {"dev": 2, "test": 2, "train": 8},
+      "family_p": {"dev": 2, "test": 2, "train": 8},
+      "homophonic": {"dev": 2, "test": 2, "train": 8},
+      "human_meaningless": {"dev": 1, "test": 1, "train": 2},
+      "matched_null": {"dev": 2, "test": 2, "train": 8},
+      "monoalphabetic": {"dev": 2, "test": 2, "train": 8},
+      "nomenclator": {"dev": 2, "test": 2, "train": 8},
+      "null_bearing_cipher": {"dev": 2, "test": 2, "train": 8},
+      "plaintext": {"dev": 2, "test": 2, "train": 8},
+      "polygraphia_table": {"dev": 2, "test": 2, "train": 8},
+      "polygraphic_fractionating": {"dev": 2, "test": 2, "train": 8},
+      "structured_generator": {"dev": 2, "test": 2, "train": 8},
+      "substitution_transposition": {"dev": 2, "test": 2, "train": 8}
+    },
+    "status": "PASS",
+    "voynich_loaded_or_scored": false
+  },
+  "source_lock_sha256": "d16dc359c85f351b84143e084505d8b93d8c91554b6c5e5210598b098d120657",
+  "stage1_freeze_payload_sha256": "158749612acf8d7b6ac48c1dd465f54e6b6cc213a71a3dcb17f5e1b0aa1699c3",
+  "truth_sha256": "7724872228779a68219cec10a83acf07b28e759f72f6f4200bc2aee580eb9ef5"
+}

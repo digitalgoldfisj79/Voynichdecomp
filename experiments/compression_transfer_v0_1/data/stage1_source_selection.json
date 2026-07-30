@@ -1,0 +1,11 @@
+{
+  "created_date": "2026-07-30",
+  "panel": "stage1_period_tolerant_v0.1",
+  "programme": "compression-transfer-v0.1",
+  "record_files": [
+    "stage1_sources/arabic.json",
+    "stage1_sources/english.json",
+    "stage1_sources/remaining.json.gz.b64"
+  ],
+  "voynich_status": "SEALED"
+}

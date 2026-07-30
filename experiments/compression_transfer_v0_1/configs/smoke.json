@@ -1,0 +1,15 @@
+{
+  "programme": "compression-transfer-v0.1-smoke",
+  "manifest": "../fixtures/smoke/manifest.csv",
+  "output_dir": "../results/smoke",
+  "verify_hashes": true,
+  "compressors": ["zlib9", "bz2_9"],
+  "require_all_compressors": true,
+  "representations": ["codepoint_u32_ws", "token_recurrence_u32"],
+  "evaluation_split": "test",
+  "label_field": "corpus_id",
+  "probe_units": 512,
+  "probe_stride": 512,
+  "reference_units": 3000,
+  "max_probes_per_document": 1
+}
