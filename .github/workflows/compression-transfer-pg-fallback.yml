@@ -30,7 +30,7 @@ jobs:
         run: >-
           python corpus_acquisition_staging/compression_transfer_v0_1/pg_acquire.py
           --output corpus_acquisition_staging/compression_transfer_v0_1/results/gutenberg
-          --death-cutoff 1900
+          --death-cutoff 1800
           --target-docs 12
           --min-units 4096
       - name: Validate manifest paths and hashes
@@ -49,6 +49,7 @@ jobs:
           counts = Counter(row['class_label'] for row in rows)
           summary = json.loads((root / 'summary.json').read_text())
           assert summary['voynich_accessed'] is False
+          assert summary['contributor_death_cutoff'] == 1800
           assert counts == Counter(summary['counts'])
           print(json.dumps({'rows': len(rows), 'counts': dict(counts), 'status': summary['status']}, indent=2, sort_keys=True))
           PY
