@@ -10,8 +10,10 @@ metric and never opens Voynich data.
 from __future__ import annotations
 
 import argparse
+import base64
 import bz2
 import csv
+import gzip
 import hashlib
 import json
 import re
@@ -202,7 +204,18 @@ def main() -> None:
 
     selection_path = args.selection.resolve()
     specification = json.loads(selection_path.read_text(encoding="utf-8"))
-    records: list[dict[str, Any]] = specification["records"]
+    records: list[dict[str, Any]] = list(specification.get("records", []))
+    for relative in specification.get("record_files", []):
+        record_path = (selection_path.parent / relative).resolve()
+        if record_path.name.endswith(".json.gz.b64"):
+            packed = base64.b64decode(record_path.read_text(encoding="ascii").strip())
+            payload = json.loads(gzip.decompress(packed).decode("utf-8"))
+        else:
+            payload = json.loads(record_path.read_text(encoding="utf-8"))
+        records.extend(payload["records"])
+    if not records:
+        raise ValueError("selection contains no records")
+
     output_dir = args.output_dir.resolve()
     data_dir = output_dir / "documents"
     data_dir.mkdir(parents=True, exist_ok=True)
@@ -300,7 +313,7 @@ def main() -> None:
         "programme": specification["programme"],
         "panel": specification["panel"],
         "voynich_status": "SEALED",
-        "selection_sha256": sha256_bytes(selection_path.read_bytes()),
+        "selection_payload_sha256": sha256_bytes(canonical_json({"specification": specification, "records": records})),
         "manifest_sha256": sha256_bytes(manifest_path.read_bytes()),
         "source_metadata_sha256": sha256_bytes((output_dir / "source_metadata.json").read_bytes()),
         "duplicate_screen_sha256": sha256_bytes((output_dir / "duplicate_screen.json").read_bytes()),
