@@ -1,0 +1,60 @@
+name: compression-transfer-v0.1
+
+on:
+  push:
+    paths:
+      - 'experiments/compression_transfer_v0_1/**'
+      - '.github/workflows/compression-transfer-v0.1.yml'
+  pull_request:
+    paths:
+      - 'experiments/compression_transfer_v0_1/**'
+      - '.github/workflows/compression-transfer-v0.1.yml'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Regenerate smoke fixture
+        run: python code/make_smoke_fixture.py
+      - name: Run smoke benchmark
+        run: python code/run_benchmark.py configs/smoke.json
+      - name: Validate row-level results
+        run: python code/validate_results.py results/smoke
+      - name: Evaluate consensus
+        run: >-
+          python code/evaluate_consensus.py
+          results/smoke/directional_observations.csv
+          --required-votes 2
+          --output results/smoke/consensus.json
+      - name: Build registered smoke tree
+        run: >-
+          python code/build_tree.py
+          results/smoke/ncd_pairs.csv
+          --representation codepoint_u32_ws
+          --compressor zlib9
+          --output results/smoke/tree.newick
+      - name: Assert smoke gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          summary = json.loads(Path('results/smoke/summary.json').read_text())
+          primary = [row for row in summary['summary_cells'] if row['representation'] == 'codepoint_u32_ws']
+          assert primary
+          assert all(row['top1_accuracy'] == 1.0 for row in primary), primary
+          validation = json.loads(Path('results/smoke/validation.json').read_text())
+          assert validation['verdict'] == 'PASS', validation
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compression-transfer-smoke
+          path: experiments/compression_transfer_v0_1/results/smoke/
