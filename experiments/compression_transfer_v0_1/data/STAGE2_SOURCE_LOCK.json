@@ -1,0 +1,116 @@
+{
+  "programme": "compression-transfer-v0.1-stage2-surface",
+  "date_frozen": "2026-07-30",
+  "status": "FROZEN_BEFORE_STAGE2_ACQUISITION_OR_SCORES",
+  "voynich_status": "SEALED",
+  "current_repository": {
+    "repository": "digitalgoldfisj79/Voynichdecomp",
+    "branch": "experiment/compression-transfer-v0.1-20260730",
+    "pre_stage2_head": "d32856a37982b0759f783e45c7e07fc4fb2d656a"
+  },
+  "source_assets": {
+    "stage1_acquisition_freeze_payload_sha256": "158749612acf8d7b6ac48c1dd465f54e6b6cc213a71a3dcb17f5e1b0aa1699c3",
+    "terminal_cipher_branch": "experiment/terminal-cipher-programme-v0.6-20260716",
+    "terminal_cipher_commit": "65c38347fca2d99dadd39f4062a84b6b99288ecf",
+    "cipher_generated_mdl_branch": "experiment/cipher-generated-mdl-v0.7-20260716",
+    "cipher_generated_mdl_commit": "23415e72b26811e7a3cec7a39c945ec09e0ed2a4",
+    "corema_closeout_commit": "f86759d6651fdde135c427682c79a07ef8df38f9",
+    "human_meaningless_repository": "danielgaskell/voynich",
+    "human_meaningless_commit": "d076a7d081f35098fa405928239595afd2e75927",
+    "human_meaningless_archive": "data/gibberish_transcriptions.zip"
+  },
+  "primary_source_policy": {
+    "synthetic_cipher_plaintext_class": "English",
+    "same_source_documents_across_synthetic_families": true,
+    "source_split_inherited_across_all_renderings": true,
+    "fresh_key_per_document_and_family": true,
+    "shared_key_or_code_pool_allowed_in_formal_test": false,
+    "normalized_source_prefix_characters": 24576
+  },
+  "surface_families": [
+    "plaintext",
+    "monoalphabetic",
+    "homophonic",
+    "nomenclator",
+    "substitution_transposition",
+    "family_p",
+    "null_bearing_cipher",
+    "polygraphic_fractionating",
+    "corema_procedural",
+    "human_meaningless",
+    "structured_generator",
+    "polygraphia_table",
+    "matched_null"
+  ],
+  "generator_disjoint_rules": {
+    "family_p": {
+      "train": ["periodic_independent"],
+      "dev": ["line_reset_periodic"],
+      "test": ["irregular_state_change", "alberti_rotation"]
+    },
+    "polygraphic_fractionating": {
+      "train": ["fixed_digraph"],
+      "dev": ["mixed_character_digraph"],
+      "test": ["variable_one_to_three"]
+    },
+    "structured_generator": {
+      "train": ["ordered_hmm", "motif_grammar"],
+      "dev": ["topic_fsm"],
+      "test": ["copy_mutate_latent"]
+    },
+    "matched_null": {
+      "train": ["token_shuffle", "block_shuffle"],
+      "dev": ["first_order_markov"],
+      "test": ["token_shuffle", "first_order_markov"]
+    }
+  },
+  "human_meaningless_policy": {
+    "unit": "participant-complete transcription",
+    "composite_documents": 4,
+    "allocation": "deterministic greedy balancing by token count",
+    "split_counts": {"train": 2, "dev": 1, "test": 1},
+    "participant_may_cross_composites_or_splits": false
+  },
+  "corema_policy": {
+    "unit": "manuscript",
+    "eligible_minimum_normalized_characters": 16384,
+    "eligible_minimum_tokens": 2048,
+    "documents": 12,
+    "split_counts": {"train": 8, "dev": 2, "test": 2},
+    "manuscript_may_cross_splits": false
+  },
+  "surface_renderer": {
+    "common_abstract_token_registry_size": 512,
+    "common_token_shape": "q plus three base-26 lower-case letters",
+    "word_boundaries_retained": true,
+    "punctuation_policy": "converted to deterministic boundaries",
+    "null_rate": 0.055,
+    "transposition_width_range": [8, 16],
+    "family_p_period_range": [2, 12]
+  },
+  "matched_null_decision": {
+    "null_is_explicit_family": true,
+    "false_positive": "a matched-null locked probe accepted as any non-null family",
+    "registered_false_positive_rate_max": 0.05
+  },
+  "formal_geometry": {
+    "probe_units": 4096,
+    "probe_stride": 4096,
+    "reference_units": 131072,
+    "max_probes_per_document": 8,
+    "representations": [
+      "codepoint_u32_ws",
+      "surface_utf8",
+      "codepoint_u32_nospace",
+      "token_recurrence_u32",
+      "char_recurrence_u32",
+      "token_length_u32"
+    ],
+    "mandatory_compressors": ["zlib9", "bz2_9", "lzma9e"]
+  },
+  "decision_scope": {
+    "formal_target": "surface_class_recognition_only",
+    "source_language_transfer": "CLOSED_BY_STAGE1_FAIL",
+    "voynich_opening_before_stage2_decision": false
+  }
+}
