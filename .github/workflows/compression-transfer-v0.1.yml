@@ -66,7 +66,7 @@ jobs:
 
   acquire-period-panel:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     defaults:
       run:
         working-directory: experiments/compression_transfer_v0_1
@@ -78,7 +78,10 @@ jobs:
       - name: Acquire exact Wikimedia revisions
         id: acquire
         continue-on-error: true
-        run: python code/acquire_wikimedia_period_panel.py --output data/stage1_period_wikimedia
+        run: >-
+          python code/acquisition_launcher.py
+          code/acquire_wikimedia_period_panel.py
+          --output data/stage1_period_wikimedia
       - name: Relativize and verify period manifest
         if: always()
         run: python code/relativize_manifest_paths.py data/stage1_period_wikimedia/manifest.csv
@@ -103,7 +106,7 @@ jobs:
 
   discover-historical-panel:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     defaults:
       run:
         working-directory: experiments/compression_transfer_v0_1
@@ -114,7 +117,8 @@ jobs:
           python-version: '3.12'
       - name: Discover dated and attributed Wikisource works
         run: >-
-          python code/discover_wikisource_historical_panel_api.py
+          python code/acquisition_launcher.py
+          code/discover_wikisource_historical_panel_api.py
           --output data/stage1_historical_wikisource
           --cutoff-year 1800
       - name: Relativize and verify historical manifest
