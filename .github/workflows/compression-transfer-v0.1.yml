@@ -9,6 +9,7 @@ on:
     paths:
       - 'experiments/compression_transfer_v0_1/**'
       - '.github/workflows/compression-transfer-v0.1.yml'
+  workflow_dispatch:
 
 jobs:
   smoke:
@@ -58,3 +59,57 @@ jobs:
         with:
           name: compression-transfer-smoke
           path: experiments/compression_transfer_v0_1/results/smoke/
+
+  acquire-period-panel:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire exact Wikimedia revisions
+        id: acquire
+        continue-on-error: true
+        run: python code/acquire_wikimedia_period_panel.py --output data/stage1_period_wikimedia
+      - name: Show acquisition decision
+        if: always()
+        run: |
+          test -f data/stage1_period_wikimedia/summary.json
+          cat data/stage1_period_wikimedia/summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compression-transfer-stage1-period-sources
+          path: experiments/compression_transfer_v0_1/data/stage1_period_wikimedia/
+          if-no-files-found: error
+
+  discover-historical-panel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: experiments/compression_transfer_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover dated and attributed Wikisource works
+        run: >-
+          python code/discover_wikisource_historical_panel.py
+          --output data/stage1_historical_wikisource
+          --cutoff-year 1800
+      - name: Show historical source decision
+        if: always()
+        run: |
+          test -f data/stage1_historical_wikisource/summary.json
+          cat data/stage1_historical_wikisource/summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compression-transfer-stage1-historical-sources
+          path: experiments/compression_transfer_v0_1/data/stage1_historical_wikisource/
+          if-no-files-found: error
