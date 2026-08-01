@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "checks": [
+    {"name":"title","pass":true,"detail":"Recovery Is Not Recognition: A Recoverability-First Framework for Cipher-Like and Structured Historical Texts"},
+    {"name":"generator_section","pass":true,"detail":"# 4. Structural and generative baseline"},
+    {"name":"generator_scope","pass":true,"detail":"Twenty-two models generated complete token sequences"},
+    {"name":"generator_score","pass":true,"detail":"passed 59 of 84 metrics, with seed scores from 56 to 61"},
+    {"name":"split_half","pass":true,"detail":"manuscript split-halves passed 81 of 84 metrics"},
+    {"name":"capacity","pass":true,"detail":"maximum state-space capacity of $\\log_2 30 = 4.9069$ bits"},
+    {"name":"complete_redactions","pass":true,"detail":"Redactions 1 and 4 are complete"},
+    {"name":"incomplete_r2","pass":true,"detail":"twenty-nine scored entries 14/15, giving 0.9991 bits"},
+    {"name":"incomplete_r3","pass":true,"detail":"twenty-five scored entries 12/13, giving 0.9988 bits"},
+    {"name":"edge_clause","pass":true,"detail":"Edge (2014) independently describes variable letter-number assignments"},
+    {"name":"checksum","pass":true,"detail":"1a90e584399aa3627dc28588d0691265b2829b0191696a194d59733479d580f7"},
+    {"name":"onomancy_firewall","pass":true,"detail":"not as a candidate explanation of the Voynich Manuscript"},
+    {"name":"stage_decisions","pass":true,"detail":"`STAGE1_FAIL` and `STAGE2_SURFACE_FAIL`"},
+    {"name":"voynich_sealed","pass":true,"detail":"No Voynich distance matrix was produced"},
+    {"name":"conclusion_boundary","pass":true,"detail":"The paper does not determine whether the Voynich Manuscript contains"},
+    {"name":"forbidden:The complete calculation therefore yields one bit","pass":true,"detail":"The complete calculation therefore yields one bit"},
+    {"name":"forbidden:in four redactions, all thirty residues map onto exactly two outcomes","pass":true,"detail":"in four redactions, all thirty residues map onto exactly two outcomes"},
+    {"name":"forbidden:twenty-three non-message generators","pass":true,"detail":"twenty-three non-message generators"},
+    {"name":"forbidden:Voynich Manuscript uses onomancy","pass":true,"detail":"Voynich Manuscript uses onomancy"},
+    {"name":"forbidden:all compression methods fail","pass":true,"detail":"all compression methods fail"},
+    {"name":"forbidden:decipherment of the Voynich","pass":true,"detail":"decipherment of the Voynich"},
+    {"name":"forbidden:This shift - from compatibility","pass":true,"detail":"This shift - from compatibility"},
+    {"name":"single_abstract","pass":true,"detail":""},
+    {"name":"single_conclusion","pass":true,"detail":""},
+    {"name":"single_generator_section","pass":true,"detail":""},
+    {"name":"duplicate_numbered_headings","pass":true,"detail":""},
+    {"name":"reference_order_barron_benedetto","pass":true,"detail":""},
+    {"name":"reference_order_chu_cilibrasi","pass":true,"detail":""}
+  ],
+  "word_count": 11604,
+  "heading_count": 71,
+  "artifacts": {
+    "manuscript_v0_4_1.md":{"sha256":"1b02ee95a572ccb366c400d1f7cfe03ad60967841015118f6508a70aa7fc4b72","bytes":87564},
+    "cryptologia_recovery_not_recognition_v0_4_1.docx":{"sha256":"7d1d2ce66135c7f09eda2367f9c48d406099f8d74386375b65015ed86dc71d61","bytes":47403},
+    "cryptologia_recovery_not_recognition_v0_4_1.tex":{"sha256":"11a151f9555dcab9cefcade9c27d754d87073160d3f74a49485e62787435a018","bytes":92892},
+    "cryptologia_recovery_not_recognition_v0_4_1.pdf":{"sha256":"e02e053943daac19f3f1acf3d4eab76d54cedb2c846f40819d25fd30db4a22b7","bytes":166251},
+    "cryptologia_recovery_not_recognition_v0_4_1_word.pdf":{"sha256":"32ca5e56111f756bebdc603b195de354ea7ce8abbfef57bc560c2a62b53c21c7","bytes":351495}
+  }
+}
