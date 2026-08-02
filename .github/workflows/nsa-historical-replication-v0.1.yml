@@ -32,9 +32,7 @@ jobs:
       - name: Smoke
         run: python experiments/nsa_historical_replication_v0_1/run.py --mode smoke
       - name: Full Stage 0-1
-        id: full
-        continue-on-error: true
-        run: python experiments/nsa_historical_replication_v0_1/run.py --mode full
+        run: python experiments/nsa_historical_replication_v0_1/run_schema_v2.py --mode full
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -42,6 +40,3 @@ jobs:
           name: nsa-historical-replication-v0.1-results
           path: experiments/nsa_historical_replication_v0_1/results/
           if-no-files-found: error
-      - name: Preserve fail-closed status
-        if: steps.full.outcome != 'success'
-        run: exit 1
