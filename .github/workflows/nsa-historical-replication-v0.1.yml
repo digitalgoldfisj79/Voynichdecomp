@@ -1,0 +1,42 @@
+name: NSA historical replication v0.1
+
+on:
+  push:
+    branches:
+      - experiment/nsa-historical-replication-v0.1-20260802
+    paths:
+      - 'experiments/nsa_historical_replication_v0_1/**'
+      - 'voynich_transcriptions_slim.json'
+      - 'voynich_slim_loader.py'
+      - '.github/workflows/nsa-historical-replication-v0.1.yml'
+  pull_request:
+    paths:
+      - 'experiments/nsa_historical_replication_v0_1/**'
+      - 'voynich_transcriptions_slim.json'
+      - 'voynich_slim_loader.py'
+      - '.github/workflows/nsa-historical-replication-v0.1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replicate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Smoke
+        run: python experiments/nsa_historical_replication_v0_1/run.py --mode smoke
+      - name: Full Stage 0-1
+        run: python experiments/nsa_historical_replication_v0_1/run_schema_v2.py --mode full
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsa-historical-replication-v0.1-results
+          path: experiments/nsa_historical_replication_v0_1/results/
+          if-no-files-found: error
