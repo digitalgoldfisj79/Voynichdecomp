@@ -9,10 +9,16 @@ on:
       - 'voynich_transcriptions_slim.json'
       - 'voynich_slim_loader.py'
       - '.github/workflows/nsa-historical-replication-v0.1.yml'
+  pull_request:
+    paths:
+      - 'experiments/nsa_historical_replication_v0_1/**'
+      - 'voynich_transcriptions_slim.json'
+      - 'voynich_slim_loader.py'
+      - '.github/workflows/nsa-historical-replication-v0.1.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   replicate:
