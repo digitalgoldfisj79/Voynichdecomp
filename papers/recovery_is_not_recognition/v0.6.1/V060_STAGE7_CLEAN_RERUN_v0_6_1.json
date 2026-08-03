@@ -1,0 +1,37 @@
+{
+  "audit_version": "v0.6.1",
+  "source_branch": "experiment/terminal-cipher-programme-v0.6-20260716",
+  "entry_point": "experiments/terminal_cipher_v0_6/v060_blind_model_selection.py",
+  "clean_clone_job": "Digitalgoldfish79/6a70bf2ba00abefd4b28fbf0",
+  "registered_scientific_sha256": "63d1ffac893e2e0449a22c87d5ff92aee2ab2c6d02a28f93cad8980204091add",
+  "reproduced_scientific_sha256": "63d1ffac893e2e0449a22c87d5ff92aee2ab2c6d02a28f93cad8980204091add",
+  "scientific_hash_match": true,
+  "threshold": {
+    "probability": 0.51,
+    "margin": 0.02,
+    "dev_p_recall": 0.9444444444444444,
+    "dev_structured_fpr": 0.0
+  },
+  "locked_test": {
+    "classes": ["P", "S", "T", "generated", "mixed", "mono", "none", "notation", "ordinary"],
+    "macro_auc": 0.9650487075617283,
+    "ece": 0.060706592848792096,
+    "p_precision": 0.9615384615384616,
+    "p_recall": 0.3472222222222222,
+    "p_structured_fpr": 0.0,
+    "gate_pass": false,
+    "confusion_matrix": [
+      [31, 14, 0, 0, 27, 0, 0, 0, 0],
+      [0, 71, 0, 0, 1, 0, 0, 0, 0],
+      [0, 0, 56, 2, 0, 0, 14, 0, 0],
+      [0, 0, 4, 55, 0, 9, 0, 0, 4],
+      [1, 2, 0, 0, 69, 0, 0, 0, 0],
+      [0, 0, 0, 12, 0, 47, 0, 0, 13],
+      [0, 0, 6, 0, 0, 0, 66, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 72, 0],
+      [0, 0, 0, 9, 1, 52, 0, 0, 10]
+    ]
+  },
+  "voynich": {"status": "NOT_OPENED_SYNTHETIC_GATE_FAILED"},
+  "note": "The raw JSON file hash differs because the file embeds reporting metadata. The registered internal scientific payload hash reproduced exactly."
+}
