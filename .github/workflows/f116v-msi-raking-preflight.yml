@@ -1,0 +1,72 @@
+name: f116v MSI raking preflight
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/f116v_msi_raking_v0_1/**'
+      - '.github/workflows/f116v-msi-raking-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: experiments/f116v_msi_raking_v0_1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: experiments/f116v_msi_raking_v0_1/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Verify executable payload
+        run: |
+          python - <<'PY'
+          import base64, hashlib, pathlib, zlib
+          payload = pathlib.Path('run_pipeline.py.b85').read_text(encoding='ascii')
+          source = zlib.decompress(base64.b85decode(payload))
+          digest = hashlib.sha256(source).hexdigest()
+          assert digest == 'bfacf92c0c19b27004775bbc1238c09f255d8d9597d9200e8f8a7db4029fcfb9', digest
+          print('Executable payload verified:', digest)
+          PY
+      - name: Run synthetic positive and blank controls
+        run: |
+          python generate_synthetic_control.py --mode positive --output _controls/positive
+          python generate_synthetic_control.py --mode blank --output _controls/blank
+          python run_pipeline.py --input _controls/positive --output _control_results/positive --max-dim 450 --bootstrap 2
+          python run_pipeline.py --input _controls/blank --output _control_results/blank --max-dim 450 --bootstrap 2
+          python - <<'PY'
+          import json
+          positive = json.load(open('_control_results/positive/metrics.json'))
+          blank = json.load(open('_control_results/blank/metrics.json'))
+          assert positive['hidden_text_status'] == 'CANDIDATE_ERASED_TEXT_SIGNAL', positive
+          assert positive['candidate_region_count'] >= 2, positive
+          assert blank['hidden_text_status'] == 'NO_RECOVERABLE_SIGNAL', blank
+          assert blank['candidate_region_count'] == 0, blank
+          print('Synthetic controls passed.')
+          PY
+      - name: Run real f116v public-folder preflight
+        run: |
+          python run_pipeline.py \
+            --drive-url 'https://drive.google.com/drive/folders/1mNQGKQDSCR4M_c2M2JrsU5soghvYwMig?usp=sharing' \
+            --output _real_result \
+            --max-dim 1200 \
+            --bootstrap 8 \
+            --profile preflight
+      - name: Upload evidence bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f116v-msi-raking-preflight
+          path: |
+            experiments/f116v_msi_raking_v0_1/_real_result
+            experiments/f116v_msi_raking_v0_1/_control_results
+          if-no-files-found: warn
+          retention-days: 14
