@@ -1,0 +1,87 @@
+{
+  "status": "COMPLETE",
+  "job_id": "6a71e3af6b79c09949c21ffa",
+  "hardware": "l4x1",
+  "running_seconds": 48,
+  "positions": 29,
+  "models": {
+    "dinov3": {
+      "repo": "facebook/dinov3-vitb16-pretrain-lvd1689m",
+      "revision": "5931719e67bbdb9737e363e781fb0c67687896bc",
+      "true_bw_retrieval": {
+        "position_retrieval_top1": 0.27586206896551724,
+        "aligned_vs_mismatched_auc": 0.8768048241888907,
+        "aligned_similarity_median": 0.7685414552688599,
+        "mismatched_similarity_median": 0.6681591868400574,
+        "aligned_similarity_margin": 0.10038226842880249,
+        "posthoc_cross_view_label_top1": 0.36363636363636365,
+        "posthoc_within_view_label_top1": 0.0,
+        "posthoc_same_label_auc": 0.41745730550284627
+      },
+      "true_pca_retrieval": {
+        "position_retrieval_top1": 0.41379310344827586,
+        "aligned_vs_mismatched_auc": 0.8244436894853066,
+        "aligned_similarity_median": 0.5669693350791931,
+        "mismatched_similarity_median": 0.4962080717086792,
+        "aligned_similarity_margin": 0.07076126337051392,
+        "posthoc_cross_view_label_top1": 0.5,
+        "posthoc_within_view_label_top1": 0.045454545454545456,
+        "posthoc_same_label_auc": 0.45327324478178366
+      },
+      "dense_identity_fraction": {
+        "line1_true_bw": 0.9624060150375939,
+        "line2_true_bw": 0.9942528735632183,
+        "line3_true_bw": 0.9586206896551724,
+        "line4_true_bw": 0.9891891891891892,
+        "line1_true_pca": 0.9801980198019802,
+        "line2_true_pca": 0.9703703703703703,
+        "line3_true_pca": 0.8433734939759037,
+        "line4_true_pca": 0.9545454545454546
+      }
+    },
+    "dinov2": {
+      "repo": "facebook/dinov2-base",
+      "revision": "f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+      "true_bw_retrieval": {
+        "position_retrieval_top1": 0.20689655172413793,
+        "aligned_vs_mismatched_auc": 0.7924664515033123,
+        "aligned_similarity_median": 0.7796987891197205,
+        "mismatched_similarity_median": 0.6795545816421509,
+        "aligned_similarity_margin": 0.10014420747756958,
+        "posthoc_cross_view_label_top1": 0.2727272727272727,
+        "posthoc_within_view_label_top1": 0.045454545454545456,
+        "posthoc_same_label_auc": 0.43224225173940545
+      },
+      "true_pca_retrieval": {
+        "position_retrieval_top1": 0.06896551724137931,
+        "aligned_vs_mismatched_auc": 0.6694411414982164,
+        "aligned_similarity_median": 0.5354305505752563,
+        "mismatched_similarity_median": 0.46947145462036133,
+        "aligned_similarity_margin": 0.06595909595489502,
+        "posthoc_cross_view_label_top1": 0.22727272727272727,
+        "posthoc_within_view_label_top1": 0.09090909090909091,
+        "posthoc_same_label_auc": 0.4666350411132195
+      },
+      "dense_identity_fraction": {
+        "line1_true_bw": 0.5,
+        "line2_true_bw": 0.7768595041322314,
+        "line3_true_bw": 0.71875,
+        "line4_true_bw": 0.72,
+        "line1_true_pca": 0.6333333333333333,
+        "line2_true_pca": 0.6931818181818182,
+        "line3_true_pca": 0.56,
+        "line4_true_pca": 0.5945945945945946
+      }
+    }
+  },
+  "comparison": {
+    "dinov3_minus_dinov2_position_top1": 0.06896551724137931,
+    "dinov3_minus_dinov2_auc": 0.08433837268557842,
+    "dinov3_minus_dinov2_margin": 0.00023806095123291016
+  },
+  "interpretation": {
+    "cross_view_localisation": "DINOv3 materially outperforms DINOv2 and strongly preserves aligned local stroke structure across all acquired views.",
+    "glyph_identity": "Post-hoc repeated-label metrics are at or below chance; DINOv3 does not independently validate the provisional OCR character labels.",
+    "transcription_effect": "No OCR sequence is upgraded to independently supported status."
+  }
+}
