@@ -62,9 +62,23 @@ jobs:
             --max-dim 1200 \
             --bootstrap 8 \
             --profile preflight
+      - name: Apply mandatory f116r show-through control
+        run: |
+          python recto_showthrough_control.py --result-dir _real_result
+          python - <<'PY'
+          import json
+          result = json.load(open('_real_result/recto_control.json'))
+          allowed = {
+              'NO_RECOVERABLE_SIGNAL',
+              'NO_RECTO_INDEPENDENT_ERASED_TEXT_SIGNAL_AT_PREFLIGHT_RESOLUTION',
+              'RECTO_CONTROL_INCONCLUSIVE',
+          }
+          assert result['verdict'] in allowed, result
+          print('Recto-control verdict:', result['verdict'])
+          PY
       - name: Remove source images before artifact upload
         if: always()
-        run: rm -rf _targeted_f116v _real_result/_work/source || true
+        run: rm -rf _targeted_f116v _real_result/_work/source _real_result/_f116r_reference.jpg || true
       - name: Upload evidence bundle
         if: always()
         uses: actions/upload-artifact@v4
