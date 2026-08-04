@@ -52,14 +52,19 @@ jobs:
           assert blank['candidate_region_count'] == 0, blank
           print('Synthetic controls passed.')
           PY
-      - name: Run real f116v public-folder preflight
+      - name: Download targeted f116v raw cube
+        run: python download_targeted_f116v.py --output _targeted_f116v --retries 3 --minimum 14
+      - name: Run real f116v raw-cube preflight
         run: |
           python run_pipeline.py \
-            --drive-url 'https://drive.google.com/drive/folders/1mNQGKQDSCR4M_c2M2JrsU5soghvYwMig?usp=sharing' \
+            --input _targeted_f116v \
             --output _real_result \
             --max-dim 1200 \
             --bootstrap 8 \
             --profile preflight
+      - name: Remove source images before artifact upload
+        if: always()
+        run: rm -rf _targeted_f116v _real_result/_work/source || true
       - name: Upload evidence bundle
         if: always()
         uses: actions/upload-artifact@v4
