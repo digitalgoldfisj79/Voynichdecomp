@@ -1,0 +1,31 @@
+{
+  "primary_htr": {
+    "framework": "Kraken",
+    "runtime_version": "7.0.3",
+    "model": "CATMuS Medieval",
+    "zenodo_record": "21488839",
+    "record_version": "1.6.2",
+    "model_filename": "catmus-medieval-1.6.0.mlmodel",
+    "language_model": false,
+    "dictionary": false,
+    "abbreviation_expansion": false
+  },
+  "independent_htr_control": {
+    "model_id": "medieval-data/trocr-medieval-base",
+    "architecture": "VisionEncoderDecoderModel / TrOCR",
+    "decoding": "5-beam, five returned hypotheses",
+    "external_language_model": false
+  },
+  "visual_encoder": {
+    "model_id": "facebook/dinov2-base",
+    "revision": "f9e44c814b77203eaa57a6bdbbd535f21ede1415",
+    "role": "shape comparison and clustering only",
+    "letter_classification": false
+  },
+  "rejected_or_unavailable": {
+    "facebook/dinov3-vits16-pretrain-lvd1689m": "gated repository; the compute identity lacked access",
+    "Teklia/pylaia-himanis": "model inspected, but the published container image could not be pulled anonymously; not used in the final verdict",
+    "generic_fal_ocr": "not used in the final evidence path because the medieval HTR controls already demonstrated the relevant hallucination risk"
+  },
+  "generative_models_used": false
+}
