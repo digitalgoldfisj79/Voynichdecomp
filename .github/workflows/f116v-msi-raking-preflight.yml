@@ -76,6 +76,11 @@ jobs:
           assert result['verdict'] in allowed, result
           print('Recto-control verdict:', result['verdict'])
           PY
+      - name: Render final controlled result
+        run: |
+          python render_revised_result.py --result-dir _real_result
+          test -s _real_result/FINAL_CONTROLLED_RESULT.md
+          test -s _real_result/posthoc_candidate_audit.json
       - name: Remove source images before artifact upload
         if: always()
         run: rm -rf _targeted_f116v _real_result/_work/source _real_result/_f116r_reference.jpg || true
