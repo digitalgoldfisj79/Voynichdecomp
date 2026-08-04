@@ -17,6 +17,46 @@ source = source.replace(
     "return np.clip((x - lo) / (hi - lo), 0, 1).astype(np.float32)\n",
 )
 
+# Download source bytes through the direct Drive content endpoint. The gdown metadata
+# inventory remains in use, but repeated full-cube runs can otherwise trigger gdown's
+# public-link quota path despite the underlying files remaining directly readable.
+old_download = '''def download_one(band: Band, dest: Path) -> Path:
+    out = dest / band.name
+    if out.exists() and out.stat().st_size > 1_000_000:
+        return out
+    tmp = out.with_suffix(out.suffix + ".part")
+    if tmp.exists():
+        tmp.unlink()
+    run(["gdown", band.url, "-O", str(tmp)])
+    tmp.rename(out)
+    return out
+'''
+new_download = '''def download_one(band: Band, dest: Path) -> Path:
+    out = dest / band.name
+    if out.exists() and out.stat().st_size > 1_000_000:
+        return out
+    tmp = out.with_suffix(out.suffix + ".part")
+    if tmp.exists():
+        tmp.unlink()
+    m = re.search(r"[?&]id=([^&]+)", band.url)
+    if not m:
+        raise RuntimeError(f"No Google Drive file id in {band.url}")
+    url = f"https://drive.usercontent.google.com/download?id={m.group(1)}&export=download&confirm=t"
+    with requests.get(url, stream=True, timeout=300) as r:
+        r.raise_for_status()
+        with open(tmp, "wb") as f:
+            for chunk in r.iter_content(1024 * 1024):
+                if chunk:
+                    f.write(chunk)
+    if tmp.stat().st_size < 1_000_000:
+        raise RuntimeError(f"Short download for {band.name}: {tmp.stat().st_size}")
+    tmp.rename(out)
+    return out
+'''
+if old_download not in source:
+    raise RuntimeError("Frozen download block not found")
+source = source.replace(old_download, new_download)
+
 # Correct the synthetic control. The original planted an unsigned signature at a fixed
 # coordinate that could fall inside the recto/stain veto. The corrected control plants a
 # signed acquired-stroke signature in the largest frozen eligible region and measures an
