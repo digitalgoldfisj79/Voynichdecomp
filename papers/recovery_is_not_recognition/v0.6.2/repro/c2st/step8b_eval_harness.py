@@ -17,6 +17,7 @@ cand=pickle.load(open('/tmp/vms/work/candidates.pkl','rb'))
 GAL=set('pfkt')
 
 def chunks_of(tokens, line_lens, target=120):
+    # segment tokens into lines by line_lens, then accumulate lines into ~target-token chunks
     lines=[]; i=0
     for L in line_lens:
         if i>=len(tokens): break
@@ -26,33 +27,37 @@ def chunks_of(tokens, line_lens, target=120):
         cur.append(ln); n+=len(ln)
         if n>=target: out.append(cur); cur=[]; n=0
     if cur: out.append(cur)
-    return out
+    return out  # list of chunks; chunk = list of lines
 
 def feats(chunk):
     toks=[t for ln in chunk for t in ln]
     if len(toks)<20: return None
     wl=[len(t) for t in toks]
+    # wl autocorr lag1
     a=np.array(wl,float)
     ac=np.corrcoef(a[:-1],a[1:])[0,1] if len(a)>3 and a.std()>0 else 0.0
     ttr=len(set(toks))/len(toks)
     fr=Counter(toks); hapax=sum(1 for w in fr if fr[w]==1)/len(fr)
     chars=''.join(toks); cc=Counter(chars); tot=len(chars)
     H1=-sum((n/tot)*math.log2(n/tot) for n in cc.values())
+    # H2 order-1 char
     tr=defaultdict(Counter)
     for x,y in zip(chars,chars[1:]): tr[x][y]+=1
     t2=sum(sum(c.values()) for c in tr.values())
     H2=sum((sum(c.values())/t2)*(-sum((n/sum(c.values()))*math.log2(n/sum(c.values())) for n in c.values())) for c in tr.values()) if t2 else 0
     chardist_max=max(cc.values())/tot
     digs=set(zip(chars,chars[1:])); digcov=len(digs)/(len(cc)**2) if cc else 0
+    # within-token next-char entropy
     wt=defaultdict(Counter)
     for t in toks:
         for x,y in zip(t,t[1:]): wt[x][y]+=1
     wtt=sum(sum(c.values()) for c in wt.values())
     wH=sum((sum(c.values())/wtt)*(-sum((n/sum(c.values()))*math.log2(n/sum(c.values())) for n in c.values())) for c in wt.values()) if wtt else 0
+    # line-position features
     opener=np.mean([1.0 if ln and ln[0] and ln[0][0] in GAL else 0.0 for ln in chunk]) if chunk else 0
     fh=[]
     for ln in chunk:
-        s=''.join(ln)
+        s=''.join(ln); 
         if not s: continue
         g=[i for i,ch in enumerate(s) if ch in GAL]
         if g: fh.append(np.mean([1.0 if i<len(s)/2 else 0.0 for i in g]))
@@ -83,6 +88,7 @@ for name in ['real_B','line-shuffle','word-shuffle','gen_template_v10','delex_ch
     verdict=('INDISTINGUISHABLE (~real)' if m<0.6 else 'detectable' if m<0.8 else 'EASILY REJECTED')
     print(f"{name:18s} {m:8.3f} +/- {s:5.3f}      {verdict}")
 
+# (2) standardized discrepancy in bootstrap-SE units, compact metric vector
 def corpus_metrics(toks):
     wl=[len(t) for t in toks]; fr=Counter(toks); chars=''.join(toks); cc=Counter(chars); tot=len(chars)
     H1=-sum((n/tot)*math.log2(n/tot) for n in cc.values())
@@ -90,6 +96,7 @@ def corpus_metrics(toks):
             'hapax':sum(1 for w in fr if fr[w]==1)/len(fr),
             'H1':H1,'chardist_max':max(cc.values())/tot}
 realA=cand['real_A'][0]
+# bootstrap SE via line resampling of real_A
 lines=[]; i=0
 for L in cand['real_A'][1]:
     if i>=len(realA): break
