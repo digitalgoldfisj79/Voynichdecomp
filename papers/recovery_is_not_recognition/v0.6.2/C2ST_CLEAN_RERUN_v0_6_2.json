@@ -1,0 +1,39 @@
+{
+  "version": "v0.6.2",
+  "source_provenance": "step8a and step8b transcript-recovered from dated 2026-06-11 session; corpus builder and ablation arm explicitly reconstructed",
+  "environment": {"python": "3.12.13", "numpy": "2.4.4", "scikit_learn": "1.8.0"},
+  "full_feature_count": 13,
+  "chunk_tokens": 120,
+  "cross_validation": "5-fold StratifiedKFold, shuffle=True, random_state=0",
+  "reference_chunks": 151,
+  "full_feature_results": [
+    {"candidate": "real_B", "auc_mean": 0.485, "auc_sd": 0.063},
+    {"candidate": "line-shuffle", "auc_mean": 0.872, "auc_sd": 0.053},
+    {"candidate": "word-shuffle", "auc_mean": 0.97, "auc_sd": 0.022},
+    {"candidate": "gen_template_v10", "auc_mean": 0.992, "auc_sd": 0.008},
+    {"candidate": "delex_char3", "auc_mean": 1.0, "auc_sd": 0.0}
+  ],
+  "full_feature_exact_match_to_published": true,
+  "ablation": {
+    "retained_features": ["wl_mean", "wl_std", "wl_autocorr", "ttr", "hapax", "H1", "H2", "chardist_max"],
+    "dropped_features": ["digcov", "within_tok_nextH", "opener_gallows", "charpos_gallows", "adj_repeat"],
+    "provenance": "labelled reconstruction after preregistered subset identification",
+    "results": [
+      {"candidate": "real_B", "auc_mean": 0.421, "auc_sd": 0.056, "published": 0.421, "delta": 0.0},
+      {"candidate": "line-shuffle", "auc_mean": 0.842, "auc_sd": 0.06, "published": 0.844, "delta": -0.002},
+      {"candidate": "word-shuffle", "auc_mean": 0.957, "auc_sd": 0.023, "published": 0.955, "delta": 0.002},
+      {"candidate": "gen_template_v10", "auc_mean": 0.989, "auc_sd": 0.006, "published": 0.988, "delta": 0.001},
+      {"candidate": "delex_char3", "auc_mean": 0.968, "auc_sd": 0.01, "published": 0.97, "delta": -0.002}
+    ],
+    "max_abs_delta": 0.002,
+    "subset_forensics": {
+      "search_space": 1287,
+      "qualifying_subsets_at_max_abs_delta_le_0_005": 1,
+      "best_max_abs_delta": 0.002448,
+      "second_best_max_abs_delta": 0.008688,
+      "clean_forensics_job": "Digitalgoldfish79/6a72cc966b79c09949c22cc7",
+      "interpretation": "Unique forensic identification under the preregistered threshold; original inline edit not textually recovered."
+    }
+  },
+  "clean_rerun_job": "Digitalgoldfish79/6a72c659a00abefd4b2931a0"
+}
