@@ -1,0 +1,17 @@
+{
+  "status": "historical arithmetic reproduced; interpretation withdrawn",
+  "n_tokens": 37465,
+  "quad_categories": 5172,
+  "context_cells": 345,
+  "h_quad_bits": 9.124152,
+  "observed_plugin_mi_bits": 2.634319,
+  "observed_percent": 28.872,
+  "permutation_count": 200,
+  "permutation_seed": 20260805,
+  "null_mean_bits": 2.122178,
+  "null_95th_percentile_bits": 2.130212,
+  "observed_minus_null_mean_bits": 0.512141,
+  "observed_minus_null_percent_hquad": 5.613,
+  "interpretation": "The 28.9% plug-in estimate is dominated by high-cardinality finite-sample bias and is withdrawn. The chance-subtracted difference is post hoc diagnostic only, not a replacement headline.",
+  "clean_audit_job": "Digitalgoldfish79/6a72c7eda00abefd4b2931b6"
+}

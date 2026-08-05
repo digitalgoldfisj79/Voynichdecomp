@@ -1,0 +1,25 @@
+# Build report v0.6.1
+
+- Scientific results changed: no
+- Main manuscript source: `manuscript_v0_6_1.md`
+- Main DOCX: `cryptologia_recovery_not_recognition_v0_6_1.docx`
+- Main canonical PDF: `cryptologia_recovery_not_recognition_v0_6_1.pdf`
+- Supplement source: `supplementary_material_v0_6_1.md`
+- Supplement DOCX/PDF: `supplementary_material_v0_6_1.docx` / `.pdf`
+- New supplementary table: S5, repository-level reproducibility status
+- Main Word layout: 53 pages
+- Supplement Word layout: 15 pages
+- Main canonical PDF: 22 pages
+- Supplement canonical PDF: 7 pages
+- Main and supplement Word renders inspected page by page
+- Main and supplement canonical PDF renders inspected page by page
+- Blind-recognition clean-clone scientific SHA-256: `63d1ffac893e2e0449a22c87d5ff92aee2ab2c6d02a28f93cad8980204091add`
+- H2 archive SHA-256: `8e7f6205154990db88b19fe3c378fcabb43a55a5f056d1e2897370aff2062a39`
+- Main manuscript words including references: 11,695
+- Main manuscript words before references: 10,021
+- Abstract: 288 words
+- References: 59
+- Supplement: approximately 2,173 words plus tables
+- Verifier: PASS, 78/78
+- Main DOCX accessibility: 0 high, 0 medium; low findings are raw-URL advisories in references
+- Supplement DOCX accessibility: 0 high, 0 medium, 0 low

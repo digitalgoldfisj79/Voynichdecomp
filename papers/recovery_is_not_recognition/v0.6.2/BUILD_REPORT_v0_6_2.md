@@ -1,0 +1,27 @@
+# Build report v0.6.2
+
+- Revision type: evidentiary closure and correction; the C2ST source gap is closed with provenance qualifications, and the early 28.9% information-budget interpretation is withdrawn.
+- Main manuscript source: `manuscript_v0_6_2.md`
+- Main DOCX: `cryptologia_recovery_not_recognition_v0_6_2.docx`
+- Main canonical PDF: `cryptologia_recovery_not_recognition_v0_6_2.pdf`
+- Supplement source: `supplementary_material_v0_6_2.md`
+- Supplement DOCX/PDF: `supplementary_material_v0_6_2.docx` / `.pdf`
+- Main Word layout: 53 pages
+- Main canonical PDF: 22 pages
+- Supplement Word layout: 5 landscape pages
+- Supplement canonical PDF: 7 landscape pages
+- Main and supplement Word renders inspected page by page after the final metadata scrub
+- Main and supplement canonical PDF renders inspected page by page
+- Main manuscript words including references: 11,824
+- Main manuscript words before references: 10,153
+- Abstract: 286 words
+- References: 59
+- Main tables: 6
+- Supplement: 2,539 words, 5 tables and 1 corrective note
+- Main DOCX accessibility: 0 high, 0 medium; 43 low raw-URL advisories in references
+- Supplement DOCX accessibility: 0 high, 0 medium, 0 low
+- C2ST full-feature clean rerun: exact 5/5 means and 5/5 standard deviations
+- C2ST subset forensics: 1 qualifying subset among 1,287; best maximum deviation 0.002448, next best 0.008688
+- Blind-recognition clean-clone scientific SHA-256: `63d1ffac893e2e0449a22c87d5ff92aee2ab2c6d02a28f93cad8980204091add`
+- H2 archive SHA-256: `8e7f6205154990db88b19fe3c378fcabb43a55a5f056d1e2897370aff2062a39`
+- Verifier: PASS, 116/116
