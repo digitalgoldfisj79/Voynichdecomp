@@ -1,0 +1,22 @@
+{
+  "version": "v0.6.2",
+  "method": "exhaustive search over all C(13,8)=1287 feature subsets using the transcript-recovered feature and chunk definitions, fixed candidate order, default_rng(0), and 5-fold StratifiedKFold(random_state=0)",
+  "environment": {"python": "3.12.13", "numpy": "2.4.4", "scikit_learn": "1.8.0", "cpu_count": 64},
+  "search_space": 1287,
+  "acceptance_threshold_max_abs_delta": 0.005,
+  "qualifying_subsets": 1,
+  "identified_unique": true,
+  "best_subset": {
+    "max_abs_delta": 0.002448,
+    "retained_features": ["wl_mean", "wl_std", "wl_autocorr", "ttr", "hapax", "H1", "H2", "chardist_max"],
+    "dropped_features": ["digcov", "within_tok_nextH", "opener_gallows", "charpos_gallows", "adj_repeat"],
+    "auc_values": {"real_B": 0.421090, "line-shuffle": 0.842401, "word-shuffle": 0.957448, "gen_template_v10": 0.988860, "delex_char3": 0.968975},
+    "excludes_opener_and_adjacent_repeat": true
+  },
+  "second_best": {
+    "max_abs_delta": 0.008688,
+    "retained_features": ["wl_mean", "wl_std", "wl_autocorr", "ttr", "hapax", "H1", "digcov", "within_tok_nextH"]
+  },
+  "clean_forensics_job": "Digitalgoldfish79/6a72cc966b79c09949c22cc7",
+  "interpretation": "The eight-feature subset is uniquely identified under the preregistered threshold, but the original inline ablation edit is not textually recovered. The supplied ablation program remains correctly labelled as a reconstruction."
+}
