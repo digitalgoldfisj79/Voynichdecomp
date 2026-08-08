@@ -1,0 +1,98 @@
+{
+  "programme": "alpine_venetian_corridor_v0_1",
+  "frozen_at": "2026-08-08",
+  "rng_seed": 20260808,
+  "supabase_project_id": "ymaqlcfjmdwncdbjprmw",
+  "route_nodes": [
+    {"canonical": "Bressanone", "aliases": ["Brixen", "Bressanone"]},
+    {"canonical": "Bolzano", "aliases": ["Bolzano", "Bozen"]},
+    {"canonical": "Trento", "aliases": ["Trento", "Trient"]},
+    {"canonical": "Rovereto", "aliases": ["Rovereto"]},
+    {"canonical": "Verona", "aliases": ["Verona"]},
+    {"canonical": "Padua", "aliases": ["Padua", "Padova"]},
+    {"canonical": "Venice", "aliases": ["Venice", "Venezia"]}
+  ],
+  "geography_classes": [
+    "corridor_core",
+    "corridor_buffer",
+    "control_lombardy",
+    "control_tuscany",
+    "control_bavaria_swabia",
+    "control_east_alpine",
+    "unresolved"
+  ],
+  "time_bins": {
+    "A_primary": [1390, 1450],
+    "B_antecedent": [1350, 1389],
+    "C_reception": [1451, 1475],
+    "D_late_reception": [1476, 1500]
+  },
+  "antecedent_latest_end_year": 1438,
+  "visual_classes": [
+    "plant",
+    "root",
+    "flower",
+    "zodiac",
+    "star_astronomy",
+    "bath_human",
+    "architecture_cartography",
+    "diagram_geometry",
+    "other_relevant",
+    "none"
+  ],
+  "broad_content_tags": [
+    "botanical",
+    "medical",
+    "pharmaceutical",
+    "astronomical",
+    "astrological",
+    "calendrical",
+    "cosmological",
+    "balneological",
+    "alchemical",
+    "natural_philosophy",
+    "cartographic",
+    "architectural_technical",
+    "practical_miscellany",
+    "incidental_drawing"
+  ],
+  "image_variants": ["gray_bgdiv_v1", "inkmask_v1", "rgb_norm_v1"],
+  "image_backbone_preferred": "facebook/dinov3-vit7b16-pretrain-lvd1689m",
+  "image_backbone_policy": "frozen_no_finetune",
+  "matching": {
+    "target_controls_per_corridor": 3,
+    "minimum_controls_per_corridor": 1,
+    "priority": ["time_bin", "content_tags", "substrate", "image_coverage", "different_holding_institution"],
+    "tie_break": "sha256(candidate_key||20260808)"
+  },
+  "scoring": {
+    "top_k_max": 5,
+    "within_class_summary": "median_top_k_best_match",
+    "class_matching_strict": true,
+    "missing_is_zero": false,
+    "arm_weighting": "equal_after_null_calibration"
+  },
+  "statistics": {
+    "permutations": 100000,
+    "alpha": 0.01,
+    "fdr_q": 0.05,
+    "minimum_positive_families": 3,
+    "minimum_fdr_families": 2,
+    "max_single_manuscript_effect_fraction": 0.35,
+    "loo_positive_fraction": 0.9
+  },
+  "confound_gate": {
+    "pass_auc_max": 0.65,
+    "caution_auc_max": 0.70,
+    "failure_action": "exclude_pixel_embedding_arm"
+  },
+  "coverage_gate": {
+    "minimum_corridor_core_AB": 12,
+    "minimum_controls_per_required_ecology": 8,
+    "minimum_control_ecologies": 2,
+    "max_geographically_nonrandom_missing_image_fraction": 0.30
+  },
+  "primary_registry_table": "public.manuscripts",
+  "existing_object_table": "public.herbal_objects",
+  "existing_folio_table": "public.cat_herbal_folios"
+}
