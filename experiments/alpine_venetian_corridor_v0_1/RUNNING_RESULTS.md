@@ -64,10 +64,32 @@ The programme will not spend effort proving that the corridor idea has been thou
 
 Every future candidate is archive-scanned even if it remains statistically eligible; prior discussion affects novelty and research priority, not cohort inclusion.
 
+### Amendment 002 — Bouveret signed-colophon / prosopography arm
+
+User supplied Bénédictins du Bouveret, *Colophons de manuscrits occidentaux des origines au XVIe siècle*, Tome II, no. **5912**, as a high-value source because it records named manuscript personnel.
+
+External bibliographic verification confirms Tome II is *Colophons signés E–H*, entries **3562–7391**, published in Fribourg in 1967. Published reviews of the Bouveret series warn that the named person in a signed colophon is not necessarily the copyist: entries can identify copyists, illuminators, binders, recipients or other persons. The programme therefore stores raw colophons before assigning roles.
+
+Additive RLS-enabled schema now includes:
+
+- `corridor_colophon_records`
+- `corridor_people`
+- `corridor_person_manuscript_links`
+
+Bouveret II no. 5912 is seeded in `corridor_colophon_records` as `pending_transcription`. No name, role, manuscript, date or place has been guessed because the entry itself has not yet been directly inspected in this build session.
+
+Files added:
+
+- `AMENDMENT_002_COLOPHON_PROSOPOGRAPHY.md`
+- `PROSOPOGRAPHY.md`
+- `src/colophon_prosopography.py`
+
+The prosopographical arm is independent of VMS visual similarity. It will enumerate all recoverable signed-colophon records satisfying frozen geography/time rules, resolve named book-workers and person ↔ manuscript ↔ place edges, and compare cross-node mobility against controls. No. 5912 may generate a lead but cannot be the only selected entry.
+
 ### No hypothesis result yet
 
 No VMS similarity score has been used to select or rank the cohort. No primary or family test has been run. No hypothesis verdict is permissible at this point.
 
 ### Next executable stage
 
-`stage -1/0/1`: run candidate-by-candidate archive prior-art scans, verify the 67 staged metadata records, resolve facsimiles, and independently enumerate additional 1350–1500 illustrated manuscripts from neutral institutional/scholarly catalogues for the corridor and frozen controls. New external finds are checked against the archive before being escalated.
+`stage -1/-0.5/0/1`: archive-scan candidates, directly inspect/transcribe Bouveret II no. 5912, begin the full eligible signed-colophon census, verify the 67 staged metadata records, resolve facsimiles, and independently enumerate additional 1350–1500 illustrated manuscripts from neutral institutional/scholarly catalogues for the corridor and frozen controls. New external finds and named persons are checked against the archive before being escalated.
