@@ -1,0 +1,38 @@
+{
+  "namespace": "TRANCHSTA24B1O1",
+  "date": "2026-08-09",
+  "verdict": "B1-O1 SYLLABARY COMPONENT NOT QUALIFIED",
+  "voynich_fit_authorised": false,
+  "scientific_payload_sha256": "b4667314565983dd1a943e9f397216a019299894fa312746a095a72090b325cb",
+  "source": {
+    "status": "sufficient",
+    "q1_lines": 175,
+    "q1_letters19": 6619,
+    "q1_pages": [243, 251],
+    "minimum_observed_syllable_identities": 61,
+    "minimum_syllable_occurrences": 491
+  },
+  "summary": {
+    "median_occurrence_weighted_recovery": 0.9622997683842651,
+    "minimum_occurrence_weighted_recovery": 0.5885947046843177,
+    "median_observed_identity_recovery": 0.8809523809523809,
+    "minimum_observed_identity_recovery": 0.43548387096774194,
+    "median_expanded_plaintext_edit_accuracy": 0.9876869617767035,
+    "minimum_expanded_plaintext_edit_accuracy": 0.9507552870090634,
+    "median_AB_map_agreement": 0.9587628576667053,
+    "minimum_AB_map_agreement": 0.7841140529531568
+  },
+  "gates": {
+    "occurrence_median": true,
+    "occurrence_minimum": false,
+    "identity_median": false,
+    "identity_minimum": false,
+    "plaintext_median": true,
+    "plaintext_minimum": true,
+    "agreement_median": true,
+    "agreement_minimum": false
+  },
+  "failed_gate_count": 4,
+  "joint_solver_authorised": false,
+  "next_target_stage_authorised": false
+}
