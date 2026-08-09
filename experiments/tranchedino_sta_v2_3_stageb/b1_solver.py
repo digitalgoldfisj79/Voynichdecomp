@@ -185,13 +185,12 @@ def perturb(m,sclass,seed,level):
 def solve_ensemble(fitlines,name,rep,sclass,out,lens,logq,logu,fixed,subexp,wordrates):
     cipher=flatten(fitlines);best=None
     for pi,pguess in enumerate(RATES):
-        base=init_freq(fitlines,pguess,fixed,subexp,wordrates)
-        for restart in range(4):
-            if restart==0 and name=='A':m=base.copy()
-            else:m=perturb(base,sclass,seedint(f'TRANCHSTA23B1::{name}::{rep}::{pi}::{restart}'),restart+1)
-            m,es,cs,n,e=polish(cipher,m,out,lens,sclass,logq,logu,8)
-            row=(es,cs,m.copy(),pguess,restart,n,e)
-            if best is None or es>best[0]+1e-12:best=row
+        base=init_freq(fitlines,pguess,fixed,subexp,wordrates);restart=0
+        if name=='A':m=base.copy()
+        else:m=perturb(base,sclass,seedint(f'TRANCHSTA23B1::{name}::{rep}::{pi}::0'),1)
+        m,es,cs,n,e=polish(cipher,m,out,lens,sclass,logq,logu,8)
+        row=(es,cs,m.copy(),pguess,restart,n,e)
+        if best is None or es>best[0]+1e-12:best=row
     return best
 
 def decode_lines(lines,m,sem):return [''.join(sem[int(m[x])] for x in z) for z in lines]
