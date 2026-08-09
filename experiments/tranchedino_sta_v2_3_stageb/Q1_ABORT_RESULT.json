@@ -1,0 +1,45 @@
+{
+  "namespace": "TRANCHSTA23B1",
+  "date": "2026-08-09",
+  "replicate": 0,
+  "p_null": 0.01,
+  "lines": 317,
+  "fit_lines": 253,
+  "heldout_lines": 64,
+  "ensemble_A": {
+    "search_event_score": -2.3785559578260203,
+    "fit_char_score": -2.457012153050205,
+    "p_guess": 0.1,
+    "restart": 0
+  },
+  "ensemble_B": {
+    "search_event_score": -2.3809218190386954,
+    "fit_char_score": -2.4605169623474406,
+    "p_guess": 0.1,
+    "restart": 0
+  },
+  "AB_fit_char_score_delta": 0.0035048092972354006,
+  "AB_occ_semantic_agreement": 0.985206597517429,
+  "selected": "A",
+  "plaintext_recovery": 0.90525,
+  "semantic_occ_recovery": 0.9302839653120217,
+  "component_occ_recovery": {
+    "alpha": 0.9566173882435762,
+    "gem": 0.0,
+    "word": 0.08333333333333333,
+    "null_f1": 0.21465076660988078
+  },
+  "heldout_char_score": -2.528781625223636,
+  "heldout_surface_coverage": 0.9990821477742083,
+  "heldout_decoded_chars": 2125,
+  "binding_failures": {
+    "AB_objective_convergence": true,
+    "geminate_minimum": true,
+    "nomenclator_minimum": true,
+    "null_f1_minimum": true
+  },
+  "minimum_gate_irrecoverably_failed": true,
+  "verdict": "B1 INSTRUMENT NOT QUALIFIED",
+  "remaining_Q1_controls_run": false,
+  "voynich_target_scored": false
+}
