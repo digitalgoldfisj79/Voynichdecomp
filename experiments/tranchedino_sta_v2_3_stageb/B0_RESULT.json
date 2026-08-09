@@ -1,0 +1,46 @@
+{
+  "namespace": "TRANCHSTA23B0",
+  "date": "2026-08-09",
+  "verdict": "STAGE B0 PASS",
+  "voynich_target_fit_authorised": false,
+  "historical_inventory": {
+    "K": 92,
+    "alphabetic": 36,
+    "geminate": 11,
+    "null": 7,
+    "nomenclator": 38,
+    "syllabic": 0
+  },
+  "sta_census": {
+    "RF1b": {"sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17", "chars": 157254, "types": 166, "K92_coverage": 0.999046003790043, "tail_events": 150, "gate": true},
+    "ZL3b": {"sha256": "8438ba1c45f47fe1d06b5262cbcdf60ce69158a0edbd4dd802612896f3217e2a", "chars": 156460, "types": 216, "K92_coverage": 0.9990540713273667, "tail_events": 148, "gate": true},
+    "GC2a_1": {"sha256": "0c0d1eea4b5ab87f8a65fb7f4346864cd90758ad993812b4f2122b3899d4ac88", "chars": 157096, "types": 190, "K92_coverage": 0.9986059479553903, "tail_events": 219, "gate": true}
+  },
+  "paduan_source": {
+    "archive_sha256": "ddae949a2d4ff13714204f3751feaf9e836333ef57a45def77c803cd87fc7b61",
+    "paduan_cipher_letters_sha256": "9d21818c13a425639a68ae2c6fb400f35d3f81a49a77bb1f9d610162012f39fe",
+    "paduan_lines_sha256": "c5eba63cbe8055d3506d099043f5df23fd427df709546df6de70e084fedd3cf6",
+    "tranchedino_homophone_cells_sha256": "d0b96b4c5311e7d1f620a0e63742fc949ec3c7b382f0430478f53f782db97053",
+    "csv_rows": 5735,
+    "cut_page": 183,
+    "train_lines": 4119,
+    "heldout_lines": 1423,
+    "train_letters19": 172347,
+    "heldout_letters19": 54750,
+    "train_word_tokens": 39011,
+    "train_word_types": 11248,
+    "heldout_word_tokens": 12113,
+    "heldout_word_types": 5067,
+    "gate": true
+  },
+  "B1_frozen_observation_regime": {
+    "candidate_pool": "top96 training words",
+    "fresh_codebook_size": 38,
+    "control_plaintext_letters": 12000,
+    "twelve_control_min_distinct_codes_observed": 26,
+    "twelve_control_median_distinct_codes_observed": 31.0,
+    "twelve_control_min_code_occurrences": 171,
+    "twelve_control_median_code_occurrences": 309.0
+  },
+  "heldout_geminate_occurrences": {"bb": 2, "cc": 34, "dd": 19, "ff": 25, "gg": 3, "ll": 459, "nn": 49, "pp": 18, "rr": 40, "ss": 280, "tt": 69}
+}
