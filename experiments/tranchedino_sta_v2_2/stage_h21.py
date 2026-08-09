@@ -26,9 +26,10 @@ def model():
 def seedint(s):return int.from_bytes(hashlib.sha256(s.encode()).digest()[:8],'big')&0x7fffffff
 
 def score_shuffle(segs,meta,key,q,u,r):
-    out=[]
+    out=[]; per_folio_index={}
     for s,(f,si,sub) in zip(segs,meta):
-        a=np.asarray(s,np.int32).copy();rng=np.random.default_rng(seedint(f'TRANCHSTA21Hshuffle::{r}::{f}::{si}:{sub}'));rng.shuffle(a);out.append(a.tolist())
+        segment_index=per_folio_index.get(f,0);per_folio_index[f]=segment_index+1
+        a=np.asarray(s,np.int32).copy();rng=np.random.default_rng(seedint(f'TRANCHSTA21Hshuffle::{r}::{f}::{segment_index}'));rng.shuffle(a);out.append(a.tolist())
     return float(m.score_key(m.flatten(out),key,q,u))
 
 def main():
