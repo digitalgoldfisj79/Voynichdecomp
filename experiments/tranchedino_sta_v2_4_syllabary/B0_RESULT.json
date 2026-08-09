@@ -1,0 +1,49 @@
+{
+  "namespace": "TRANCHSTA24B0",
+  "date": "2026-08-09",
+  "verdict": "STAGE B0 PASS",
+  "voynich_fit_authorised": false,
+  "scientific_payload_sha256": "348c50a46dd53e1a297bf395850272192048456312d7da99d1f3ed03719a9923",
+  "source": {
+    "paduan_lines_sha256": "c5eba63cbe8055d3506d099043f5df23fd427df709546df6de70e084fedd3cf6",
+    "cut_page": 183,
+    "train_lines": 4119,
+    "train_letters19": 172347,
+    "heldout_lines": 1423,
+    "heldout_letters19": 54750,
+    "window_start_pages": [189, 244, 240, 235]
+  },
+  "grid": {
+    "p_syll": [0.25, 0.5, 0.75, 1.0],
+    "p_null": [0.0, 0.03, 0.1],
+    "windows_per_cell": 4,
+    "controls": 48
+  },
+  "aggregate": {
+    "K_active": {"min": 112, "median": 122, "max": 124},
+    "expansion_ratio": {"min": 0.9946125, "median": 1.2156211, "max": 1.5643332},
+    "cipher_events": {"min": 7671, "median": 9871.5, "max": 12065},
+    "surface_entropy_bits": {"min": 5.65255, "median": 6.22998, "max": 6.57700},
+    "alphabet_distinct": {"min": 43, "median": 43, "max": 43},
+    "syllable_distinct": {"min": 59, "median": 64, "max": 64},
+    "syllable_occurrences": {"min": 875, "median": 2442, "max": 4096},
+    "geminate_distinct": {"min": 7, "median": 7, "max": 7},
+    "secure_lexical_distinct": {"min": 2, "median": 3, "max": 3},
+    "secure_lexical_occurrences": {"min": 5, "median": 23, "max": 30}
+  },
+  "representation": {
+    "RF1b_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "RF1b_characters": 157254,
+    "RF1b_observed_types": 166,
+    "K_active_range": [112,124],
+    "rf_top_K112_coverage": 0.9996566065092144,
+    "rf_top_K124_coverage": 0.9997329161738334,
+    "full_sta_controls_passing": 48,
+    "full_sta_controls_total": 48,
+    "aaa_signature_types": 150,
+    "aaa_cardinality_diagnostic": true,
+    "aaa_mapping_authorised": false,
+    "hf_job": "6a78a1afda2af92a634f04a8"
+  },
+  "next_stage_authorised": "B1 positive-control/component-oracle calibration only"
+}
