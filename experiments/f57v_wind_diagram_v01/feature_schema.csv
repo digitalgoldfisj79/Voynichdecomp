@@ -1,0 +1,13 @@
+feature,group,allowed_values,description
+circular_layout,geometry,"0|0.5|1","Dominant composition is organized around a common circular/rotational centre."
+concentric_annuli,geometry,"0|0.5|1","Two or more visually meaningful concentric bands/rings organize the diagram."
+radial_sectoring,geometry,"0|0.5|1","Spokes, rays, wedges, or repeated radial divisions connect/partition centre and perimeter."
+fourfold_orthogonal_humans,anthropomorph,"0|0.5|1","Human faces/heads/busts/figures occupy approximately four orthogonal/cardinal positions."
+radial_personifications,anthropomorph,"0|0.5|1","Human/anthropomorphic personifications are positioned radially around a centre."
+inward_orientation,anthropomorph,"0|0.5|1","Radial personifications face, point, blow, or otherwise orient materially toward the centre."
+explicit_breath,anthropomorph,"0|0.5|1","Visible breath/exhalation/air stream issues from a face or mouth."
+central_emblem,centre,"0|0.5|1","A discrete visual object/emblem/body occupies the diagram centre."
+centre_directed_relation,centre,"0|0.5|1","Outer radial agents have a clear graphical relation directed toward/from the central object."
+modular_4_8_12,geometry,"0|0.5|1","Visual organization prominently instantiates 4-, 8-, or 12-fold modularity."
+annular_marks_or_writing,geometry,"0|0.5|1","Writing or repeated marks are arranged along circular/annular paths; content is not read."
+rotational_symmetry,geometry,"0|0.5|1","Overall arrangement has approximate rotational symmetry around a common centre."
