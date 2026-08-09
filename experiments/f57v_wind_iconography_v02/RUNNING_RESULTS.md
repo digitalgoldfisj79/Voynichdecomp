@@ -62,17 +62,60 @@ Phase-3 endpoint status after round 1:
 
 `NOT MET` means no qualified example in the screened evidence, not proof of nonexistence.
 
+## Deep research on alternatives — new result
+Full synthesis: `DEEP_RESEARCH_ALTERNATIVES.md`.
+
+The main result is a change in the *type of question*. The current evidence no longer favours assuming that the four f57v humans must be four equivalent personifications. A historically grounded alternative is that they are **functional agents / operators / markers** embedded in a cosmological or computational rota.
+
+### Strongest matched control: Royal MS 19 C I, `Breviari d'Amor`
+The British Library catalogue distinguishes within one early-14th-century scientific-encyclopaedic manuscript:
+- f.34v: universe with **two angels turning the axes**;
+- f.50r: spheres of the elements and planets with **four angels holding them**;
+- f.51r: a **separate wind diagram**;
+- f.53r: daylight hours;
+- f.53v: circular planets/days-of-week diagram;
+- f.54v: seasons.
+
+This is a decisive control against the shortcut `four anthropomorphs physically interacting with a cosmological circle = winds`. In the same codex, agents physically operate/hold the cosmos and winds are represented separately.
+
+### Ranked alternatives after deep research
+1. **Cosmological operators / movers / supporters** — strongest functional fit.
+2. **Paired-opposition natural philosophy (elements / qualities / seasons / humours)** — strongest semantic architecture; medieval diagrams explicitly distribute correlated quaternities across two crossed axes, and BnF Latin 6556 places this language in 14th-century Milan.
+3. **Gestural computation / finger reckoning** — strongest hand-specific alternative. Morgan M.925 (Italy, possibly Piacenza) proves that male half-figures and isolated hands can encode numbers through finger positions and can combine numerical gestures with pointing/head turns inside a scientific/computistical manuscript culture.
+4. **Cyclic-state / Wheel-of-Fortune-like state machine** — strongest proof that four humans at orthogonal positions may be intentionally non-equivalent; 14th-century Fortune wheels encode ascending, reigning, descending and fallen states around one wheel.
+5. **Annus / weather / time-of-day hybrid cosmology** — strong multi-ring architecture; one circular diagram can overlay winds, weather, seasons, zodiac, light/dark and solar/lunar material.
+6. **Cardinal directions / world quarters** — plausible, but historically entangled with winds and does not explain the gesture asymmetry alone.
+7. **Astronomical / lunar / calendrical computation** — strong annular substrate, especially given Austrian `De sphaera` ca.1425 and Milanese 14th-century cosmography, but needs an operator model for the humans.
+8. **Prognostic/divinatory wheel** — architectural possibility; e.g. the Sphere of Petosiris combines concentric circles with four cardinal circles.
+9. **Four Rivers of Paradise** — broad graphic grammar remains relevant, but corrected 2-1-2-1 morphology fits worse than the explicit 2-2-2-2 Troyes comparator.
+10. **Theological quaternity** — low without attributes.
+
+A **transformed wind/cosmography hybrid remains live**. A *conventional* wind rota is no longer the default morphological interpretation.
+
+### Most important period/geographic evidence
+- **Milan, BnF Latin 6556, 14th c.**: cosmographic diagrams combine cardinal points, zodiac, solar course, seasons and qualitative natural-philosophical information; the manuscript includes a tract on the four elements.
+- **Austria, Morgan M.722, ca.1425**: concentric planetary/zodiac diagrams lie inside the Voynich radiocarbon period.
+These establish that complex annular cosmological/computational diagramming with correlated cycles was active in relevant central/northern-European and northern-Italian environments.
+
+## Next decisive tests
+The alternatives create stronger falsifiable tests than another generic iconographic search:
+
+1. **Hand-shape/dactylonomy test** — record individual finger configurations before calling the gestures `points`; compare blindly with medieval reckoning signs.
+2. **Endpoint-to-ring registration test** — map every secure hand vector and ask whether extrapolated endpoints hit annular word/glyph/divider/ring anchors more often than rotation/permutation controls.
+3. **Opposed-sector text test** — compare N/S textual sectors against E/W sectors; test whether within-pair similarity exceeds across-pair similarity under permutation.
+4. **Cyclic-state ordering test** — test N→E→S→W and reverse sequences for ordered transitions rather than four interchangeable sectors.
+5. **Operator-versus-personification matched panel** — code four classes (sphere holders/movers, winds, quaternity diagrams, Fortune/state figures, reckoning figures) for facing, hand structure, relation to rings and equivalence/non-equivalence of figures.
+
 ## v0.1 classifier status
 The preregistered blind visual classifier remains a formal **NO TEST**. Qwen2.5-VL-3B qualified only 5/12 historical wind positives overall and 1/3 late positives, below frozen qualification thresholds. No target inference is permitted from that run.
 
 ## Current scientific position
 The historical-impossibility objection remains falsified: f57v can legitimately be compared to medieval wind/cosmological diagram traditions.
 
-However, the corrected target morphology and phase-3 adversarial search **weaken the narrower claim that f57v is a straightforward conventional wind rota**. The currently screened canonical wind examples either direct winds uniformly toward the centre or treat the four principals as a common axial class; none reproduces f57v's vertical-outward / horizontal-inward 2+2 posture polarity.
+However, the corrected target morphology, Phase-3 adversarial search and alternative-population deep research **weaken the narrower claim that f57v is a straightforward conventional wind rota**.
 
-The surviving models are narrower:
+The leading working model is now functional rather than icon-name driven:
 
-1. **hybrid / transformed descendant**: inherited wind/cosmographic grammar with differentiated or reassigned figure functions;
-2. **broader non-wind quaternity**: f57v uses a medieval radial cosmological/allegorical grammar related to winds but semantically represents another paired-opposition system.
+> f57v may be a cosmological/computational rota in which the four humans are agents, pointers, counters or state markers, while the rings carry the primary information.
 
-The next discriminant is the D2-like opposed-axis code itself. Medieval quaternity diagrams explicitly encode pairs of opposites (for example hot/cold and wet/dry) on orthogonal axes. The next programme should therefore test whether the f57v N/S versus E/W figure classes align with a known paired-opposition system, and independently test whether their gestures terminate at meaningful annular-text anchors. If gesture endpoints systematically index token/ring boundaries, the figures may be diagrammatic operators/pointers rather than simple pictorial personifications.
+This model explains why the four figures need not form one rotationally equivalent class. The immediate programme should test this functional hypothesis before conducting further semantic icon hunting.
