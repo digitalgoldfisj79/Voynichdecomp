@@ -1,43 +1,56 @@
 # TARGET ARM/HAND AUDIT — f57v
 Date: 2026-08-09
-Status: descriptive target morphology only; not a classifier result
+Status: corrected descriptive target morphology only; not a classifier result
 
-High-resolution and enhanced crops of the four inner anthropomorphs were inspected separately. The aim was deliberately narrower than semantic identification: count visible arm/hand structures and ask whether a 4 × 2 directional grammar is graphically plausible.
+The previous `near-4×2` reading is retracted. Reinspection of the dedicated crops, together with the user's direct visual correction, supports a cleaner but different directional grammar. The labels N/E/S/W below are **page positions only**; they are not assumed to be actual cardinal directions.
 
-## Top figure
-- Left/down arm: **clear**. Long bent arm terminates in a hand with several finger strokes.
-- Right/up arm: **clear on dedicated crop**. A second long arm extends across the upper-right sector and terminates in a small hand/finger structure.
-- Secure hand count: **2**.
+## Positional north figure
+- Two clear pointing/hand gestures.
+- One points approximately page-east and one approximately page-west.
+- The head/face is oriented **away from the centre**.
 
-## Right figure
-- Inward/left arm: **clear**. Ends in a rounded/fist-like hand toward the centre.
-- Outer/up-right arm: **clear**. A second arm runs behind/above the head toward the outer ring and terminates in a hand-like structure.
-- Secure hand count: **2**.
+## Positional east figure
+- One clear pointing/hand gesture.
+- It points approximately page-west, i.e. toward the central side of the diagram.
+- The head/face is oriented **toward the centre**.
+- The previously proposed second secure outer/up-right hand is withdrawn; the crop does not justify coding it as a second pointing endpoint.
 
-## Bottom figure
-- Upper-left arm: **clear**, ending in a hand.
-- Upper-right arm: **clear**, ending in a hand.
-- The two arms form a broad bilateral spread around the head/body.
-- Secure hand count: **2**.
+## Positional south figure
+- Two clear pointing/hand gestures.
+- One points approximately page-east and one approximately page-west.
+- The head/face is oriented **away from the centre**.
 
-## Left figure
-- Lower/inner-right arm: **clear**, with hand/finger structure at its end.
-- Second arm: **not securely recoverable** in the current crops. Several faint strokes near the upper side of the figure could belong to an arm/body contour but do not justify a second-hand call.
-- Secure hand count: **1**; possible total: **2**, but second is unresolved.
+## Positional west figure
+- One clear pointing/hand gesture.
+- It points approximately page-south.
+- The head/face is oriented **toward the centre**.
+- No second secure pointing endpoint is coded.
 
 ## Ensemble result
-- **At least 7 hand/arm endpoints are visually defensible**, with three of the four figures securely bilateral (2 arms/hands each).
-- An intended 4 × 2 structure is therefore **plausible but not yet proven**, because the second arm/hand of the left figure is unresolved.
-- The gestures are not all simply `pointing at the centre`. They occupy different angular directions around each figure, which is structurally compatible with a principal-plus-two-collateral directional scheme.
-- No endpoint is securely identifiable as a held human/wind head.
-- No breath jet is secure.
+
+The secure pattern is therefore:
+
+- N: `E + W`, faces outward;
+- E: `W`, faces inward;
+- S: `E + W`, faces outward;
+- W: `S`, faces inward.
+
+This is a **2-1-2-1 gesture-count pattern**, not a near-4×2 pattern.
+
+The most robust structural feature is an opposed-axis distinction:
+- the vertical positional pair (N/S) behaves as one class: both face outward and both carry two transverse E/W gestures;
+- the horizontal positional pair (E/W) behaves as another class: both face inward and each has one secure gesture.
+
+The pointing vectors of the E/W pair are not themselves rotationally symmetric (E→W, W→S), so no stronger fourfold symmetry should be imposed.
+
+No pointing endpoint is securely identifiable as a held human/wind head. No breath jet is secure.
 
 ## Scientific consequence
 
-This is more specific than the earlier frozen description `four figures with centre-related extended arms/hands`, but the evidential wording must remain:
+The earlier inference that f57v may encode four equivalent principals each with two collaterals is weakened substantially and should not be used as positive evidence for the Nemrod 4+8 held-head grammar.
 
-> f57v appears to encode a near-4×2 arm/hand pattern: seven hand endpoints are clear and an eighth is possible but unresolved.
+The corrected morphology instead raises a different question: whether the diagram deliberately distinguishes **two opposed classes of axial figures (N/S versus E/W)**. That 2+2 facing structure may be more diagnostic than raw hand count and should now be compared against wind, Paradise-river, elemental, astronomical, and theological rota controls.
 
-That morphology is compatible with the Nemrod / principal-plus-two-collaterals grammar, in which each of four principal winds uses two outstretched arms for the two side winds. It is **not diagnostic**, because the `Speculum virginum` Mystical Paradise provides a documented non-wind four-axial-figures-each-holding-two-subordinate-medallions analogue.
+A useful negative benchmark is the standard medieval wind rota in Walters W.73, where the wind busts blow **toward the earth at the centre**. f57v does not show a uniform inward-facing/inward-blowing arrangement, because its N/S figures face away from the centre.
 
-The next image-level target should therefore be the unresolved second arm of the left figure and the nature of the seven secure endpoints, using multispectral/raking variants if available rather than further semantic prompting of a generic vision model.
+The next historical search should therefore target diagrams with the exact combination `four axial anthropomorphs + opposed-pair facing difference + asymmetric gesture vectors`, rather than searching further for generic fourfold circles or 4+8 numerology.
