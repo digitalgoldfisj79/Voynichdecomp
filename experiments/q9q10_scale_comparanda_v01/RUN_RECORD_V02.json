@@ -1,0 +1,19 @@
+{
+  "programme": "Q9/Q10 Scale Comparanda",
+  "date": "2026-08-10",
+  "branch": "experiment/q9q10-scale-comparanda-v0.1-20260810",
+  "v02_job": "6a7a4b963b2516b29b154689",
+  "runner_sha256": "ae2507cfafdabdbbe7d01f1e1aa661b41e99b9fb473f73314f118f78a83343b6",
+  "candidate_rows": 1340,
+  "resolved_unique_urls": 500,
+  "unique_visual_entities": 420,
+  "calibration": {
+    "zodiac_aries": {"median_enrichment": 0.9, "queries_above_1": 3, "n_queries": 8, "pass": false},
+    "zodiac_pisces": {"median_enrichment": 1.255813953488372, "queries_above_1": 5, "n_queries": 8, "pass": false},
+    "astro_diagram": {"median_enrichment": 2.6, "queries_above_1": 7, "n_queries": 8, "pass": true}
+  },
+  "overall_calibration_pass": false,
+  "downstream_vlm_run": false,
+  "verdict": "NO_GO",
+  "reason": "Independent manuscript-held-out known-answer calibration failed for Aries and Pisces; target ranks remain exploratory."
+}
