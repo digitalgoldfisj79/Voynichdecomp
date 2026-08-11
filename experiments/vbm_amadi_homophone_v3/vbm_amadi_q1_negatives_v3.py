@@ -18,12 +18,11 @@ def seed(*x):return b.seed(NS,*x)
 
 def target_profile():
     pages,_=ar.parse_rf();T,H,_,_,_=ar.target_split(pages);FIT=T+H;lines,_,core,bridges,geom=vt.target_geometry();seqs,meta=vt.target_sequences(lines,FIT,core,bridges);flat,_=b.flatten(seqs);freq=np.bincount(flat,minlength=b.NOBS).astype(float);freq+=0.05;freq/=freq.sum();lengths=np.array([len(q) for q in seqs if len(q)>=4],int)
-    # Empirical successor rows, smoothed. Used only by the deliberately corrupted Markov generator.
     C=np.full((b.NOBS,b.NOBS),0.05,float)
     for q in seqs:
         for x,y in zip(q,q[1:]):C[int(x),int(y)]+=1
     C/=C.sum(1,keepdims=True)
-    pc=freq[:b.KCORE];pc/=pc.sum();pv=freq[b.KCORE:];pv/=pv.sum()
+    pc=freq[:b.KCORE].copy();pc/=pc.sum();pv=freq[b.KCORE:].copy();pv/=pv.sum()
     return freq,lengths,C,pc,pv,meta
 
 def split_lengths(rng,lengths,total):
@@ -34,7 +33,6 @@ def split_lengths(rng,lengths,total):
 
 def gen_one(kind,rep,total,freq,lengths,C,pc,pv,phase):
     rng=np.random.default_rng(seed('gen',kind,rep,phase));lens=split_lengths(rng,lengths,total);seqs=[]
-    # Row permutation is NOT a symbol relabeling: only conditioning rows are shuffled within typed classes.
     rowperm=np.arange(b.NOBS)
     if kind=='markov':
         q=np.arange(b.KCORE);rng.shuffle(q);rowperm[:b.KCORE]=q
@@ -62,7 +60,6 @@ def gen_one(kind,rep,total,freq,lengths,C,pc,pv,phase):
                 if rng.random()<.14:x=int(rng.choice(b.NOBS,p=freq))
                 out.append(x)
         elif kind=='slot':
-            # Fixed four-slot C,C,C,V production with random phase; preserves target-like ~25% bridge events.
             ph=int(rng.integers(0,4))
             for j in range(L):
                 if (j+ph)%4==3:x=b.KCORE+int(rng.choice(b.KBR,p=pv))
