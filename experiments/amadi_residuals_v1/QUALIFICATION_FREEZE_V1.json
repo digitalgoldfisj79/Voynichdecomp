@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-11",
+  "status": "QUALIFICATION_PASSED_FROZEN_BEFORE_H2",
+  "job_id": "6a7b55d627caad61c6eac050",
+  "executable_bundle_sha256": "a51fe37a1e00a7f4c6189e481d077f0fda62f48d6dd4ff8a5216e1c8f11fe2f4",
+  "q0_pass": true,
+  "q1_gates": {"R12H": true, "VC": true, "PWA": true, "GH": true},
+  "q2_summary": {
+    "R12H_pass": true,
+    "admitted_multifamily_universe": ["VC", "PWA", "GH"],
+    "family_accuracy": 1.0,
+    "language_accuracy": 1.0,
+    "median_recovery": 1.0,
+    "multifamily_pass": true,
+    "pwa_rule_accuracy": 1.0,
+    "pwa_rule_accuracy_applicable": true,
+    "per_language": {"latin":[3,3],"italian":[3,3],"german":[3,3],"french":[3,3],"greek":[3,3],"hebrew":[3,3],"arabic":[3,3],"spanish":[3,3]}
+  },
+  "q3_summary": {
+    "active": ["R12H", "VC", "PWA", "GH"],
+    "cells": {
+      "R12H:italian": {"ABS_FLOOR": -2.365407229160311, "DELTA_FLOOR": 1.3695919636022802, "all_converged": true, "median_recovery": 1.0},
+      "VC:latin": {"ABS_FLOOR": -2.163860996970218, "DELTA_FLOOR": 2.5239020181940752, "all_converged": true, "median_recovery": 1.0},
+      "VC:italian": {"ABS_FLOOR": -2.3822580564971303, "DELTA_FLOOR": 1.7151939985654958, "all_converged": true, "median_recovery": 1.0},
+      "VC:german": {"ABS_FLOOR": -2.3135046865104414, "DELTA_FLOOR": 1.3664414402509992, "all_converged": true, "median_recovery": 1.0},
+      "VC:french": {"ABS_FLOOR": -2.3231422290558505, "DELTA_FLOOR": 1.3394752428354877, "all_converged": true, "median_recovery": 1.0},
+      "VC:greek": {"ABS_FLOOR": -2.327478424643454, "DELTA_FLOOR": 1.3372179786136245, "all_converged": true, "median_recovery": 1.0},
+      "VC:hebrew": {"ABS_FLOOR": -2.4499509719976436, "DELTA_FLOOR": 0.6293143483724422, "all_converged": true, "median_recovery": 1.0},
+      "VC:arabic": {"ABS_FLOOR": -2.5349501449424303, "DELTA_FLOOR": 0.3351535442760497, "all_converged": true, "median_recovery": 1.0},
+      "VC:spanish": {"ABS_FLOOR": -2.3152151767552756, "DELTA_FLOOR": 1.7400000896779515, "all_converged": true, "median_recovery": 1.0},
+      "PWA:latin": {"ABS_FLOOR": -2.099952985762681, "DELTA_FLOOR": 2.375561358035971, "RESET_DELTA_FLOOR": 1.9501832838856665, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 0.75},
+      "PWA:italian": {"ABS_FLOOR": -2.4075455475004794, "DELTA_FLOOR": 1.7166388957410401, "RESET_DELTA_FLOOR": 1.5591425159114594, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 0.75},
+      "PWA:german": {"ABS_FLOOR": -2.367032086932955, "DELTA_FLOOR": 1.5156142831329293, "RESET_DELTA_FLOOR": 1.3925626051966475, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 1.0},
+      "PWA:french": {"ABS_FLOOR": -2.36499513150676, "DELTA_FLOOR": 1.3919692028357136, "RESET_DELTA_FLOOR": 1.1736251033693106, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 0.75},
+      "PWA:greek": {"ABS_FLOOR": -2.40007650867376, "DELTA_FLOOR": 1.6184546449214587, "RESET_DELTA_FLOOR": 1.3552747325412655, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 0.75},
+      "PWA:hebrew": {"ABS_FLOOR": -2.633879690715283, "DELTA_FLOOR": 1.2293079272628706, "RESET_DELTA_FLOOR": 1.3637129752070443, "all_converged": true, "median_recovery": 1.0, "rule_accuracy": 0.75},
+      "PWA:arabic": {"ABS_FLOOR": -2.674863827571231, "DELTA_FLOOR": 1.2780261319165243, "RESET_DELTA_FLOOR": 1.4206729894721135, "all_converged": true, "median_recovery": 0.9983361064891847, "rule_accuracy": 0.75},
+      "PWA:spanish": {"ABS_FLOOR": -2.3616929854611324, "DELTA_FLOOR": 2.0402035723514214, "RESET_DELTA_FLOOR": 1.8396990723472388, "all_converged": true, "median_recovery": 0.9983348750016177, "rule_accuracy": 0.875},
+      "GH:latin": {"ABS_FLOOR": -2.1520050034842257, "DELTA_FLOOR": 3.0305416642908676, "all_converged": true, "median_recovery": 1.0},
+      "GH:italian": {"ABS_FLOOR": -2.4499520435045956, "DELTA_FLOOR": 2.217398952212879, "all_converged": true, "median_recovery": 1.0},
+      "GH:german": {"ABS_FLOOR": -2.3923829223426756, "DELTA_FLOOR": 2.029034167375807, "all_converged": true, "median_recovery": 1.0},
+      "GH:french": {"ABS_FLOOR": -2.4108029815557304, "DELTA_FLOOR": 2.0215591088623457, "all_converged": true, "median_recovery": 1.0},
+      "GH:greek": {"ABS_FLOOR": -2.3792355012314097, "DELTA_FLOOR": 2.1453214891302466, "all_converged": true, "median_recovery": 0.9988904278239459},
+      "GH:hebrew": {"ABS_FLOOR": -2.637213910093561, "DELTA_FLOOR": 1.807984355056556, "all_converged": true, "median_recovery": 1.0},
+      "GH:arabic": {"ABS_FLOOR": -2.755946939535443, "DELTA_FLOOR": 1.9123829896897957, "all_converged": true, "median_recovery": 0.9983370267808747},
+      "GH:spanish": {"ABS_FLOOR": -2.3419571478613004, "DELTA_FLOOR": 2.39021628866653, "all_converged": true, "median_recovery": 1.0}
+    }
+  },
+  "q4_summary": {"pass": true, "false_positives": 0, "trials": 80, "by_generator": {"iid":0,"markov2":0,"motif":0,"copy":0,"slot":0}}
+}
