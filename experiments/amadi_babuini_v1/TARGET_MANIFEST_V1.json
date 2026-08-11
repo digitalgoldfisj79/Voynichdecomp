@@ -1,0 +1,26 @@
+{
+  "namespace": "AMADIBABUINISTAV1DEVsplit",
+  "fit_derivation": "Inherited Amadi Residuals v1 FIT_A = prior T + H, 181 folios; no BAB_H1/BAB_C1 content used for vocabulary selection.",
+  "BAB_H1": ["f1r", "f73r", "f16v", "f54v", "f40r", "f7r", "f9v", "f42v", "f70v2", "f77v", "f35r"],
+  "BAB_C1": ["f31v", "f10r", "f85r1", "f53v", "f23r", "f28v", "f81v", "f33r", "f34r", "f111r", "f5r", "f88r"],
+  "sta_vocab_K89": ["A1", "A2", "A3", "K1", "B2", "B1", "J1", "Q1", "C1", "Q2", "D1", "K2", "G1", "L1", "C2", "Ba", "F1", "P1", "B3", "U2", "U1", "Aa", "F3", "M1", "P2", "Lb", "Ab", "T1", "G3", "H1", "E1", "B4", "E2", "Z1", "Qa", "F2", "T2", "X1", "B5", "W1", "W2", "Cd", "U3", "U4", "S1", "Ja", "Cg", "Tb", "N1", "S2", "V2", "G2", "V1", "X2", "U6", "U7", "Da", "Lp", "N2", "Ta", "A4", "Ac", "Eb", "Lh", "U5", "Bd", "Ch", "Kb", "M2", "Ma", "Pc", "Xb", "Xd", "Jc", "Kc", "Lg", "Rb", "Sa", "Xf", "Ae", "Ci", "H2", "Jb", "Lo", "Mb", "Pd", "T4", "Ua", "Wa"],
+  "aaa_vocab_K89": ["o0", "c0", "y0", "a0", "i0", "c2:c1", "e0", "d0", "l2:p1", "i0:t0", "i0:b0", "q2:p1", "g0", "c2:v3:c1", "c0:t0", "d5", "q2:x1", "i2:j1", "c2:q3:p3:c1", "c2:l3:p3:c1", "a4", "l2:x1", "c2:c1:v0", "y4", "c2:q3:x1:c1", "c2:j1", "z0", "c2:l3:x1:c1", "e4", "d4", "c2:l3:p3:c3:c1", "c2:q3:p3:c3:c1", "i2:l3:p3:c1", "i2:q3:p3:c1", "c2:l3:p1", "c2", "i4:t0", "c0:b0", "c2:p3:c1", "c2:l3:x1:c3:c1", "c2:q3:p1", "a5", "c2:q3:x1:c3:c1", "c2:q3:p3:y1", "y2:l3:p3:c1", "i2", "c2:q3:c1", "c2:v3:y1", "g0:v0", "a0:b0", "c2:i1:t0", "c2:q3:p3:o1", "o0:v0", "c0:v0", "c2:c3:c1", "c2:o1", "c4", "j1", "l5", "u0", "c2:q2:x1", "c2:y1", "i2:v3:c1", "j5", "l3:p3:c1", "u4:a5", "a0:v0", "c1", "c2:l3:p3:c3:c3:c1", "c2:l3:p3:y1", "c2:v3:c3:c1", "c2:v3:o1", "i2:l3:x1:c1", "q0", "v3", "c0:t6", "c2:a1", "c2:c3:v3:c1", "c2:j5", "c2:l2:x1", "c2:l3:p3:c3:v3:c1", "c2:l3:p3:o1", "a2:i1", "c2:c3:l3:p3:y1", "c2:e1", "c2:l3:c1", "c2:l3:p3:a2", "c2:l3:p3:a3:c1", "c2:l3:p3:c3:y1"],
+  "fit_census": {
+    "sta_top89_occurrence_coverage": 0.9993814999770926,
+    "sta_top89_whole_word_char_coverage": 0.9976558085551535,
+    "aaa_top89_occurrence_coverage": 0.9997246677083405,
+    "aaa_top89_whole_word_char_coverage": 0.9988711376041961
+  },
+  "source_sha256": {
+    "RF_STA": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "bitrans_c": "3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a",
+    "STA_aaa_bit": "622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64"
+  },
+  "release_code_sha256": {
+    "babuini_core_v1.py": "13c20943192cbe2d7d664297d4a8cea1b79ff5fc1205371489e17075d07f9555",
+    "babuini_sta_v1.py": "753a7bb8a309ec3a2d49a16c35327b4bcd22178d0ae0a3a279290ba5b3c565d8",
+    "babuini_sta_release_v1.py": "247049baed0f2a883621921881e72d8aaf553a457016aadc37e82d8c3ed6ea15",
+    "sta_representation_census.py": "9650a217f881893e4ac36f0434a191b7d565d754acfeabb582122574d34ec5b4"
+  },
+  "BAB_C1_content_opened": false
+}
