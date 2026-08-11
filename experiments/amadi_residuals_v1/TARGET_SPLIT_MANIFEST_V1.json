@@ -1,0 +1,38 @@
+{
+  "date": "2026-08-11",
+  "status": "FROZEN_BEFORE_QUALIFICATION_OR_H2_SCORING",
+  "source": {
+    "sha256": "eb857a1f353b18983fbc25b954e1bbce227a26d99cefabfda9206ff9b57644d2",
+    "pages": 227,
+    "raw_words": 37848,
+    "retained_words": 37647,
+    "total_alpha": 194617,
+    "retained_alpha": 193776,
+    "coverage": 0.9956786919950467,
+    "uncertain_words": 88,
+    "rare_words": 113
+  },
+  "FIT_A": {
+    "count": 181,
+    "chars": 161296,
+    "definition": "prior Cipher Coverage v1 T1 plus already-used H1; fitting only",
+    "folios": ["f45v","f70r1","f17v","f82r","f77r","f68r3","f23v","f103v","f116r","f111v","f67r1","f107v","f4v","f104r","f90v2","f37v","f25r","f48v","f115r","f96v","f48r","f29r","f90r2","f107r","f2v","f89v1","f22r","f103r","f78r","f18v","f105r","f46r","f8r","f68r2","f95r2","f69v","f94r","f106r","f108r","f39v","f68v1","f75r","f19r","f36v","f49v","f75v","f1v","f38r","f30v","f57r","f71r","f104v","f24v","f102v1","f40v","f112v","f9r","f11r","f85r2","f93v","f13r","f93r","f71v","f114v","f7v","f99v","f81r","f36r","f108v","f105v","f67r2","f82v","f86v6","f101r","f67v1","f79v","f90v1","f21r","f70v1","f51r","f10v","f58v","f76r","f44v","f47v","f16r","f79r","f70r2","f72v3","f20v","f2r","f96r","f55r","f72v1","f113v","f89r1","f87r","f73v","f58r","f89r2","f19v","f72v2","f20r","f41r","f113r","f66v","f95v2","f6r","f25v","f38v","f57v","f5v","f67v2","f14r","f52v","f86v5","f35v","f32v","f65v","f33v","f100v","f116v","f43v","f106v","f21v","f39r","f83r","f114r","f47r","f4r","f17r","f88v","f86v3","f37r","f18r","f11v","f72r2","f13v","f95r1","f68r1","f78v","f95v1","f66r","f14v","f27v","f68v3","f43r","f44r","f84r","f100r","f45r","f68v2","f80v","f34v","f26v","f8v","f50v","f3v","f72r3","f80r","f87v","f24r","f42r","f89v2","f27r","f115v","f69r","f65r","f6v","f51v","f22v","f56v","fRos","f55v","f86v4","f28r","f15v","f84v","f26r","f99r","f101v"]
+  },
+  "prior_C1": {
+    "count": 46,
+    "chars": 32480,
+    "folios": ["f73r","f33r","f3r","f49r","f70v2","f53v","f54r","f28v","f52r","f83v","f29v","f31v","f90r1","f85r1","f35r","f54v","f111r","f31r","f34r","f102r1","f76v","f94v","f77v","f7r","f9v","f23r","f50r","f30r","f10r","f46v","f81v","f40r","f5r","f15r","f88r","f32r","f16v","f102v2","f1r","f72r1","f41v","f56r","f112r","f102r2","f53r","f42v"]
+  },
+  "H2": {
+    "count": 23,
+    "chars": 15224,
+    "namespace": "AMADIRESIDUALV1::<folio>",
+    "folios": ["f102v2","f53r","f32r","f54r","f83v","f52r","f3r","f31r","f41v","f102r2","f56r","f94v","f29v","f72r1","f15r","f30r","f50r","f46v","f49r","f76v","f112r","f102r1","f90r1"]
+  },
+  "C2": {
+    "count": 23,
+    "chars": 17256,
+    "sealed": true,
+    "folios": ["f73r","f70v2","f111r","f81v","f34r","f10r","f16v","f28v","f40r","f7r","f33r","f5r","f23r","f35r","f88r","f42v","f54v","f77v","f1r","f85r1","f53v","f9v","f31v"]
+  }
+}
