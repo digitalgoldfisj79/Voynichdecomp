@@ -27,25 +27,24 @@ def core_counts(lm,regime,rng):
 
 def make_key(lm,core_regime,bridge_schedule,tag):
     rng=np.random.default_rng(b.seed(NS,'key',tag,core_regime,bridge_schedule));pools={};probs={};cycle_phase={}
-    # core surfaces
     cc=core_counts(lm,core_regime,rng);sur=np.arange(0,b.KCORE,dtype=int);rng.shuffle(sur);k=0
     for st,c in zip(b.CIDX,cc):
         q=sur[k:k+int(c)].copy();k+=int(c);pools[int(st)]=q;probs[int(st)]=np.full(len(q),1/len(q));cycle_phase[int(st)]=0
-    # bridge surfaces, exact source ratio
+    assert k==b.KCORE
     sur=np.arange(b.KCORE,b.NOBS,dtype=int);rng.shuffle(sur);k=0
     for ch in 'aeiou':
         st=b.P2I[ch];c=BR_COUNTS[ch];q=sur[k:k+c].copy();k+=c;pools[st]=q;probs[st]=np.full(len(q),1/len(q));cycle_phase[st]=int(rng.integers(0,len(q)))
-    assert k==b.NOBS
+    assert k==b.KBR
     census={b.PLAIN[s]:len(pools[s]) for s in range(b.A)}
     return pools,probs,cycle_phase,census
 
 def encrypt_v3(seqs,pools,probs,phase,bridge_schedule,tag):
-    out=[];truth=[];global_counts={int(s):0 for s in b.VIDX}
+    out=[];truth=[];global_counts={int(s):0 for s in b.VIDX};vset=set(global_counts)
     for si,s in enumerate(seqs):
         rng=np.random.default_rng(b.seed(NS,'emit',tag,si));q=[];z=[]
         for ch in s:
             st=b.P2I[ch];pool=pools[st]
-            if st in set(map(int,b.VIDX)) and bridge_schedule=='CYCLE':
+            if st in vset and bridge_schedule=='CYCLE':
                 j=(phase[st]+global_counts[st])%len(pool);global_counts[st]+=1;obs=int(pool[j])
             else:obs=int(pool[int(rng.choice(len(pool),p=probs[st]))])
             q.append(obs);z.append(st)
@@ -67,7 +66,7 @@ def main():
         for z in ex.map(one,jobs):rows.append(z);print('Q0V3',json.dumps({k:z[k] for k in ['truth','core_regime','bridge_schedule','winner_A','winner_B','winner_mean','margin_mean','truth_score_gap','truth_recovery_diag','qualified']},sort_keys=True),flush=True)
     per={};floors={};cycle_ok=True
     for la in lms:
-        z=[x for x in rows if x['truth']==la]; cyc=[x for x in z if x['bridge_schedule']=='CYCLE'];per[la]={'qualified':sum(x['qualified'] for x in z),'total':12,'cycle_qualified':sum(x['qualified'] for x in cyc),'median_margin':statistics.median(x['margin_mean'] for x in z),'min_margin':min(x['margin_mean'] for x in z)};floors[la]=float(np.quantile(np.array([x['margin_mean'] for x in z]),.05,method='linear'));cycle_ok &= per[la]['cycle_qualified']>=5
+        z=[x for x in rows if x['truth']==la];cyc=[x for x in z if x['bridge_schedule']=='CYCLE'];per[la]={'qualified':sum(x['qualified'] for x in z),'total':12,'cycle_qualified':sum(x['qualified'] for x in cyc),'median_margin':statistics.median(x['margin_mean'] for x in z),'min_margin':min(x['margin_mean'] for x in z)};floors[la]=float(np.quantile(np.array([x['margin_mean'] for x in z]),.05,method='linear'));cycle_ok &= per[la]['cycle_qualified']>=5
     bavfp=all(x['qualified'] for x in rows if x['truth']=='bavarian' and x['core_regime']=='FREQ_PROP');overall=sum(x['qualified'] for x in rows);passed=bool(overall>=32 and all(per[la]['qualified']>=10 for la in per) and per['bavarian']['qualified']>=10 and cycle_ok and bavfp)
     out={'namespace':NS,'source_bridge_counts':BR_COUNTS,'overall_qualified':overall,'total':36,'per_language':per,'margin_floors':floors,'cycle_gate_all_languages':cycle_ok,'bavarian_freqprop_both_pass':bavfp,'pass':passed,'rows':rows}
     print('RESULT_JSON',json.dumps(out,sort_keys=True))
