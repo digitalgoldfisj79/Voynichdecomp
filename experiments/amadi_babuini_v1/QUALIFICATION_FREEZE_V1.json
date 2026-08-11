@@ -1,0 +1,40 @@
+{
+  "programme": "Amadi Babuini v1.2 STA/aaa",
+  "date": "2026-08-11",
+  "namespace": "AMADIBABUINISTAV1Q1",
+  "job": "6a7b63c5f6d0f3ee953a9f18",
+  "status": "QUALIFIED",
+  "summary": {
+    "ABS_FLOOR": -3.15949537058939,
+    "all_converged": true,
+    "false_positives": 0,
+    "median_recovery": 0.9999722268510804,
+    "min_agreement": 1.0,
+    "min_recovery": 0.9996667407242835,
+    "neg_trials": 60,
+    "pass": true
+  },
+  "positive_controls": {
+    "count": 12,
+    "fit_units_each": 18000,
+    "holdout_units_each": 18000,
+    "minimum_restarts_per_ensemble": 6,
+    "all_A_B_agreement": 1.0
+  },
+  "structured_negatives": {
+    "iid": 12,
+    "markov": 12,
+    "motif": 12,
+    "copy": 12,
+    "slot": 12,
+    "false_positives_at_frozen_floor": 0
+  },
+  "release_code_sha256": {
+    "babuini_core_v1.py": "13c20943192cbe2d7d664297d4a8cea1b79ff5fc1205371489e17075d07f9555",
+    "babuini_sta_v1.py": "753a7bb8a309ec3a2d49a16c35327b4bcd22178d0ae0a3a279290ba5b3c565d8",
+    "babuini_sta_release_v1.py": "247049baed0f2a883621921881e72d8aaf553a457016aadc37e82d8c3ed6ea15",
+    "sta_representation_census.py": "9650a217f881893e4ac36f0434a191b7d565d754acfeabb582122574d34ec5b4"
+  },
+  "BAB_H1_authorised": true,
+  "BAB_C1_authorised": false
+}
