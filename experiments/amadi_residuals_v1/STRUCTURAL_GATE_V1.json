@@ -1,0 +1,59 @@
+{
+  "date": "2026-08-11",
+  "status": "FROZEN_BEFORE_QUALIFICATION_OR_H2",
+  "target_source_sha256": "eb857a1f353b18983fbc25b954e1bbce227a26d99cefabfda9206ff9b57644d2",
+  "inherited_target_alphabet": {
+    "core_symbols": "acdefghiklmnopqrsty",
+    "count": 19,
+    "core_definition": "each symbol occurs at least 100 times in the source-only census",
+    "total_alphabetic_positions_pre_exclusion": 194619,
+    "required_retained_character_coverage": 0.995
+  },
+  "gates": {
+    "NTRC_EXACT": {
+      "source_output_alphabet_max": 4,
+      "minimum_disallowed_core_symbols": 15,
+      "minimum_disallowed_occurrences_from_core_definition": 1500,
+      "best_case_position_coverage_upper_bound": 0.9922922240899398,
+      "whole_word_exclusion_can_only_reduce_coverage_further": true,
+      "verdict": "SURFACE_INCOMPATIBLE_EXACT",
+      "reason": "Even choosing the best four RF core symbols, at least fifteen other core symbols each occur >=100 times. The exact 4-symbol historical surface therefore cannot attain 0.995 coverage without an unlicensed latent glyph collapse."
+    },
+    "MOD105_EXACT": {
+      "source_output_alphabet_max": 7,
+      "minimum_disallowed_core_symbols": 12,
+      "minimum_disallowed_occurrences_from_core_definition": 1200,
+      "best_case_position_coverage_upper_bound": 0.9938349246486741,
+      "whole_word_exclusion_can_only_reduce_coverage_further": true,
+      "verdict": "SURFACE_INCOMPATIBLE_EXACT",
+      "reason": "The literal 0..6 output cannot attain 0.995 RF coverage without an unlicensed 19-to-7 representation collapse."
+    },
+    "VC_END": {
+      "alphabet_cardinality": 19,
+      "length_behavior": "length_preserving_after_historical_normalization",
+      "word_boundaries": "preserved",
+      "verdict": "SURVIVES_TO_QUALIFICATION"
+    },
+    "PWA_K": {
+      "alphabet_cardinality": 19,
+      "length_behavior": "length_preserving",
+      "word_boundaries": "preserved_and_phase_reset",
+      "K": [2, 3, 4, 5],
+      "verdict": "SURVIVES_TO_QUALIFICATION"
+    },
+    "GHOUSE5": {
+      "surface_marker_classes": ["k", "t", "p", "f", "NONE"],
+      "payload_alphabet": 19,
+      "selector_rule": "leftmost k/t/p/f in retained word; remove exactly that occurrence from scored payload; NONE if absent; later gallows remain payload",
+      "verdict": "SURVIVES_TO_QUALIFICATION_WITH_TARGET_SELECTOR_PERMUTATION_GATE"
+    },
+    "R12H": {
+      "latent_alphabet": "aceilmnorstu",
+      "latent_count": 12,
+      "observable_count": 19,
+      "mapping": "document-global surjective 19-to-12",
+      "source_exact_reduction_rules_admitted": ["R12_V1_024"],
+      "verdict": "SURVIVES_TO_QUALIFICATION_AS_BROAD_STRESS_TEST"
+    }
+  }
+}
