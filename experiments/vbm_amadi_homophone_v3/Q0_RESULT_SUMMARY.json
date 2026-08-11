@@ -1,0 +1,30 @@
+{
+  "namespace": "VBMAMADIV3",
+  "source_bridge_counts": {"a": 26, "e": 18, "i": 26, "o": 35, "u": 18},
+  "overall_qualified": 35,
+  "total": 36,
+  "pass": true,
+  "per_language": {
+    "bavarian": {"qualified": 11, "total": 12, "cycle_qualified": 5, "median_margin": 0.08257164773431747, "min_margin": 0.016483234640684685},
+    "german": {"qualified": 12, "total": 12, "cycle_qualified": 6, "median_margin": 0.09500091624510798, "min_margin": 0.08221244572431585},
+    "italian": {"qualified": 12, "total": 12, "cycle_qualified": 6, "median_margin": 0.1662269702735748, "min_margin": 0.1501029861954697}
+  },
+  "margin_floors": {
+    "bavarian": 0.03265678670240173,
+    "german": 0.08360344975587261,
+    "italian": 0.15600209198750553
+  },
+  "cycle_gate_all_languages": true,
+  "bavarian_freqprop_both_pass": true,
+  "sole_failure": {
+    "truth": "bavarian",
+    "core_regime": "SUPER_FREQ",
+    "bridge_schedule": "CYCLE",
+    "winner_A": "german",
+    "winner_B": "bavarian",
+    "winner_mean": "bavarian",
+    "margin_mean": 0.016483234640684685,
+    "truth_score_gap": 0.10031447097073265
+  },
+  "hf_job": "6a7b75d7f6d0f3ee953aa09c"
+}
