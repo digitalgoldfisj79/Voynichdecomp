@@ -1,0 +1,45 @@
+{
+  "namespace": "VBMAMADIV3NEG",
+  "status": "IRREVERSIBLE_GATE_FAIL_CANCELLED",
+  "gate": {
+    "maximum_false_positives_total": 1,
+    "maximum_false_positives_per_generator": 1
+  },
+  "observed_before_cancel": {
+    "iid_completed": 8,
+    "iid_false_positives": 1,
+    "markov_rows_emitted": 4,
+    "markov_false_positives": 2,
+    "false_positives_total": 3
+  },
+  "false_positive_rows": [
+    {
+      "kind": "iid",
+      "rep": 1,
+      "winner": "bavarian",
+      "margin_mean": 0.0339067699368103,
+      "bavarian_margin_floor": 0.03265678670240173,
+      "winner_score_gap": 0.000876374838834959
+    },
+    {
+      "kind": "markov",
+      "rep": 1,
+      "winner": "bavarian",
+      "margin_mean": 0.032882456412726135,
+      "bavarian_margin_floor": 0.03265678670240173,
+      "winner_score_gap": 0.00038795546955627813
+    },
+    {
+      "kind": "markov",
+      "rep": 2,
+      "winner": "bavarian",
+      "margin_mean": 0.0769227445572267,
+      "bavarian_margin_floor": 0.03265678670240173,
+      "winner_score_gap": 0.031427761113455244
+    }
+  ],
+  "hf_job": "6a7b789c27caad61c6eac495",
+  "action": "CANCELLED_IMMEDIATELY_AFTER_GATE_BECAME_IRREVERSIBLE",
+  "target_H1_scored": false,
+  "VBM_C1_opened": false
+}
