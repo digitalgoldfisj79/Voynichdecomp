@@ -1,0 +1,33 @@
+{
+  "programme": "Amadi Babuini v1.2 STA/aaa",
+  "date": "2026-08-11",
+  "qualification_job": "6a7b63c5f6d0f3ee953a9f18",
+  "target_job": "6a7b649b27caad61c6eac23e",
+  "ABS_FLOOR": -3.15949537058939,
+  "BAB_C1_opened": false,
+  "candidate_for_narrowing": false,
+  "representations": {
+    "full_STA": {
+      "FIT_A_whole_word_char_coverage": 0.9976558085551535,
+      "BAB_H1_whole_word_char_coverage": 0.9983425414364641,
+      "fit_score": -4.301624449168872,
+      "H1_score": -4.279588419185551,
+      "A_B_map_agreement": 0.6437947265699744,
+      "converged": false,
+      "absolute_floor_pass": false,
+      "verdict": "UNRESOLVED_SEARCH"
+    },
+    "connected_aaa": {
+      "FIT_A_whole_word_char_coverage": 0.9988711376041961,
+      "BAB_H1_whole_word_char_coverage": 0.9986733001658374,
+      "fit_score": -4.352243418665481,
+      "H1_score": -4.378581312732606,
+      "A_B_map_agreement": 0.4837749371188368,
+      "converged": false,
+      "absolute_floor_pass": false,
+      "verdict": "UNRESOLVED_SEARCH"
+    }
+  },
+  "binding_conclusion": "NO ADMISSIBLE CORE-BABUINI VOYNICH CANDIDATE. Both qualified representations are descriptively far below the natural-message floor but target optimizer nonconvergence prevents formal negative inference.",
+  "expanded_1365_status": "SOURCE_UNDERDETERMINED: the supplied source establishes the 1,365-entry syllable inventory but does not prospectively fix a unique target-executable segmentation/use schedule; it was not post-hoc invented after the core H1 result."
+}
