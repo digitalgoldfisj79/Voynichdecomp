@@ -1,6 +1,7 @@
 # Draft 16 final QA
 
-- Word count (`wc -w` equivalent): 15513
+- Word count (GNU `wc -w`): 15513
+- Word count (Python Unicode whitespace split): 15513
 - Word count (independent Unicode token regex): 15876
 - Footnote definitions: 94 raw / 94 unique
 - Referenced footnote keys (including recursive references): 94
