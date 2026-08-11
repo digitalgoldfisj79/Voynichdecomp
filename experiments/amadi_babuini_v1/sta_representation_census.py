@@ -13,6 +13,10 @@ BIT_SHA='3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a'
 MAP_URL='https://www.voynich.nu/software/bitrans/STA-aaa.bit'
 MAP_SHA='622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64'
 HEAD={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36','Referer':'https://voynich.nu/transcr.html','Accept':'text/plain,*/*;q=0.8'}
+ar.HEADERS={
+    'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131.0 Safari/537.36',
+    'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+    'Accept-Language':'en-GB,en;q=0.9','Referer':'https://www.voynich.nu/transcr.html'}
 STA_RE=re.compile(r'[A-Z][0-9a-z]')
 
 def get(url,want):
