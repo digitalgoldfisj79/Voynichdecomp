@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["numpy>=1.26,<2.2", "Unidecode>=1.3,<2"]
+# dependencies = ["numpy>=1.26,<2.2", "numba>=0.60,<0.62", "Unidecode>=1.3,<2"]
 # ///
 from __future__ import annotations
 import collections,hashlib,json,os,re,subprocess,tempfile,urllib.request
