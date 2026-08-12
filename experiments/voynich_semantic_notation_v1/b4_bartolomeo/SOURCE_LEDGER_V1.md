@@ -35,7 +35,23 @@ Verified from the repository metadata:
 - Part Two examines Bartolomeo da Mantova's *Liber memoriae artificialis* (1429);
 - the thesis describes the work as including one hundred illuminations.
 
-Verified from parsed PDF pp. 135–136 (PDF page index 135 in tool output):
+### S1-A — architectural inventory and directional rule
+
+Verified from parsed PDF pp. 131–135:
+- Bartolomeo supplies ten architectural loci;
+- each architectural locus has ten loci-objects, yielding one hundred loci-objects overall;
+- three imagines are placed on each locus-object, yielding three hundred imagines;
+- Cacopardo states that these three imagines belong to flora, fauna and human-figure categories;
+- the images are placed horizontally left-to-right as **human figure – fauna – flora**;
+- Bartolomeo's instruction is quoted as requiring recitation in the opposite direction, **right-to-left**.
+
+The last point is a source-relevant positional constraint and is frozen before any new Voynich comparison. It is not interpreted as a Voynich analogue at this stage.
+
+The thesis also supplies Latin lists of the ten loci-objects for each architectural locus. For example, the first architectural locus begins `Tripode, Mensa, Mantile, Phyala, Ciphus aureus...`; the second begins `Lectum extensum, Cervical vergatum, Linteamina munda...`. These secondary transcriptions may be used as reading aids but may not overwrite a conflicting primary-witness reading.
+
+### S1-B — syllabic codewords
+
+Verified from parsed PDF pp. 135–136:
 - at the end of Bartolomeo's text, before the illuminations, the list is written again with shorter code words;
 - for the four figures on each table, first syllables of the four names are strung together to form a four-syllable artificial name;
 - the first example is Tripode + Pepo + Corvus + Vetula mancina -> `TRI PE COR VE`;
@@ -66,3 +82,4 @@ The programme obeyed the requirement to attempt visual PDF inspection of the Cac
 1. Larger f.8v braces are **not** currently classified as recursive codeword generation.
 2. `20` is **not** currently accepted as the total Bartolomeo codeword inventory size.
 3. `De numeris ficticiis` is **not** merged with the syllabic codeword system into a single historical grammar.
+4. The attested right-to-left recitation rule is **not** treated as evidence of Voynich right-edge morphology until the target gate is legitimately opened.
