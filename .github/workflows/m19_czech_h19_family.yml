@@ -1,0 +1,48 @@
+name: M19 Czech H19 family
+
+on:
+  push:
+    branches:
+      - experiment/m19-czech-diagnostic-v1-20260812
+    paths:
+      - '.github/workflows/m19_czech_h19_family.yml'
+  workflow_dispatch:
+
+jobs:
+  h19_family:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install frozen runtime dependencies
+        run: python -m pip install --disable-pip-version-check numpy unidecode
+      - name: Acquire exact frozen Czech runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 28c2d16f08ccbfb0d0279003eace5431b5401619
+          git show 28c2d16f08ccbfb0d0279003eace5431b5401619:experiments/m19_czech_diagnostic_v1/run_czech_v1.py > /tmp/run_czech_v1.py
+          sha256sum /tmp/run_czech_v1.py | tee runner_sha256.txt
+      - name: Run permitted Czech H19 STA-family fit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python /tmp/run_czech_v1.py --phase h19-family | tee h19_family.log
+          grep 'CZ_H19_RESULT=' h19_family.log | sed 's/^CZ_H19_RESULT=//' > h19_family.json
+          python - <<'PY'
+          import json
+          x=json.load(open('h19_family.json'))
+          print('H19_COMPACT',{k:x[k] for k in ['czech_score','czech_rank','top','margin','coverage','czech_fit_agreement','czech_converged','gate']})
+          print('RANKING',x['ranking'])
+          PY
+          sha256sum h19_family.json h19_family.log | tee h19_output_sha256.txt
+      - name: Upload H19 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-czech-h19-family
+          path: |
+            h19_family.json
+            h19_family.log
+            runner_sha256.txt
+            h19_output_sha256.txt
+          retention-days: 30
