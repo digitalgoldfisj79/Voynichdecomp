@@ -1,0 +1,51 @@
+name: M19 Czech diagnostic
+
+on:
+  push:
+    branches:
+      - experiment/m19-czech-diagnostic-v1-20260812
+    paths:
+      - '.github/workflows/m19_czech_diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    strategy:
+      fail-fast: false
+      matrix:
+        k: [22, 26, 36]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install frozen runtime dependencies
+        run: python -m pip install --disable-pip-version-check numpy unidecode
+      - name: Acquire exact frozen Czech runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 28c2d16f08ccbfb0d0279003eace5431b5401619
+          git show 28c2d16f08ccbfb0d0279003eace5431b5401619:experiments/m19_czech_diagnostic_v1/run_czech_v1.py > /tmp/run_czech_v1.py
+          sha256sum /tmp/run_czech_v1.py | tee runner_sha256.txt
+      - name: Czech positive-control qualification K=${{ matrix.k }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python /tmp/run_czech_v1.py --phase qual --K '${{ matrix.k }}' | tee qual_K${{ matrix.k }}.log
+          grep 'CZ_QUAL_RESULT=' qual_K${{ matrix.k }}.log | sed 's/^CZ_QUAL_RESULT=//' > qual_K${{ matrix.k }}.json
+          python - <<PY
+          import json
+          x=json.load(open('qual_K${{ matrix.k }}.json'))
+          print('QUAL_COMPACT', {k:x[k] for k in ['K','gate','top','czech_rank','margin','mapping_acc','fit_agreement','converged','best_minus_true_score']})
+          PY
+          sha256sum qual_K${{ matrix.k }}.json qual_K${{ matrix.k }}.log | tee output_K${{ matrix.k }}_sha256.txt
+      - name: Upload qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: m19-czech-qual-K${{ matrix.k }}
+          path: |
+            qual_K${{ matrix.k }}.json
+            qual_K${{ matrix.k }}.log
+            runner_sha256.txt
+            output_K${{ matrix.k }}_sha256.txt
+          retention-days: 30
