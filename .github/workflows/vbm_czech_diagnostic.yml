@@ -1,0 +1,27 @@
+name: VBM Czech diagnostic v1
+
+on:
+  push:
+    branches:
+      - experiment/vbm-language-extension-cz-v1-20260812
+    paths:
+      - 'experiments/vbm_czech_diagnostic_v1/**'
+      - '.github/workflows/vbm_czech_diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Run diagnostic
+        run: uv run experiments/vbm_czech_diagnostic_v1/run_vbm_czech.py
