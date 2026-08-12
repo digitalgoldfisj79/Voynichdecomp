@@ -1,0 +1,40 @@
+name: VSN B4 source audit
+
+on:
+  push:
+    branches:
+      - experiment/vsn-b4-bartolomeo-notation-v1-20260812
+    paths:
+      - 'experiments/voynich_semantic_notation_v1/b4_bartolomeo/**'
+      - '.github/workflows/vsn_b4_source_audit.yml'
+  workflow_dispatch:
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run source-only audit
+        run: |
+          python experiments/voynich_semantic_notation_v1/b4_bartolomeo/run_b4_source_metrics_v1.py \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/bartolomeo_codewords_draft_v0.csv \
+            --output experiments/voynich_semantic_notation_v1/b4_bartolomeo/b4_source_audit.json
+      - name: Show hashes
+        run: |
+          sha256sum \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/B4_PROTOCOL_V1.md \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/PRIMARY_SOURCE_MANIFEST.csv \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/SOURCE_LEDGER_V1.md \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/TRANSCRIPTION_SCHEMA_V1.md \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/bartolomeo_codewords_draft_v0.csv \
+            experiments/voynich_semantic_notation_v1/b4_bartolomeo/run_b4_source_metrics_v1.py
+      - name: Upload source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsn-b4-source-audit
+          path: experiments/voynich_semantic_notation_v1/b4_bartolomeo/b4_source_audit.json
+          if-no-files-found: error
