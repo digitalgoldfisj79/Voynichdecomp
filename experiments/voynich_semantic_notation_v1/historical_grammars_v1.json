@@ -1,0 +1,195 @@
+{
+  "namespace": "VSN-B2-v1",
+  "frozen_date": "2026-08-12",
+  "principle": "source-faithful mechanisms only; missing serialization is unavailable, not invented",
+  "systems": [
+    {
+      "id": "MATTEO_1420",
+      "name": "Matteo da Verona, De arte memorandi",
+      "place": "Padua",
+      "date": "1420/1423",
+      "grade": "B+",
+      "operations": [
+        {
+          "id": "artificial_word",
+          "modality": "linear_string",
+          "input": "ordered selected source words",
+          "component_transform": "first syllable of each selected word",
+          "serialization": "concatenate components in source order",
+          "attested_slot_counts": [2, 3, 5],
+          "slot_count_variable": true,
+          "order_semantic": true,
+          "omission": "selection-dependent; no fixed optional slot grammar",
+          "recursion": true,
+          "free_cartesian_recombination": false,
+          "attested_examples": [
+            {
+              "components": ["cre", "sa", "ar", "mi", "mu"],
+              "surface": "cresa armimu / cre-sa-ar-mi-mu",
+              "note": "critical edition lines around the five-syllable composite example"
+            }
+          ]
+        },
+        {
+          "id": "medical_quality_degree",
+          "modality": "spatial_state",
+          "categories": [
+            ["hot", "dry"],
+            ["hot", "moist"],
+            ["cold", "moist"],
+            ["cold", "dry"]
+          ],
+          "dimensions_per_category": 2,
+          "degree_values": [1, 2, 3, 4],
+          "degree_encoding": "vertical ordinal peg position",
+          "dimension_encoding": "left/right side of column",
+          "category_encoding": "column class/colour",
+          "order_semantic": true,
+          "linear_serialization_attested": false
+        },
+        {
+          "id": "logical_proposition_class",
+          "modality": "spatial_state",
+          "proposition_classes": [
+            "universal_affirmative",
+            "universal_negative",
+            "particular_affirmative",
+            "particular_negative"
+          ],
+          "encoding": "fixed hand/box position",
+          "order_semantic": true,
+          "linear_serialization_attested": false
+        }
+      ],
+      "sources": [
+        "Documenta Mnemonica III (2019), critical edition of Matthaeus de Verona",
+        "Cacopardo 2021, Memory and Imagination in the Ars Memorativa in Fifteenth-Century Italy"
+      ]
+    },
+    {
+      "id": "BARTOLOMEO_1429",
+      "name": "Bartolomeo da Mantova, Liber memoriae artificialis",
+      "place": "Mantua",
+      "date": "1429",
+      "grade": "B+",
+      "architecture": {
+        "architectural_loci": 10,
+        "locus_objects_per_architectural_locus": 10,
+        "prepared_tables": 100,
+        "associated_images_per_locus_object": 3,
+        "source_names_total": 400,
+        "roles_per_table": ["locus_object", "human", "fauna", "flora"],
+        "image_order": "three associated images are spatially ordered by type; Cacopardo describes human-fauna-flora placement and reverse recitation"
+      },
+      "codeword_rule": {
+        "modality": "linear_string",
+        "slot_count": 4,
+        "component_transform": "first syllable of each of the four prepared names",
+        "serialization": "concatenate in table order",
+        "free_cartesian_recombination": false,
+        "prepared_lookup_inventory": true,
+        "expected_outputs_from_architecture": 100,
+        "secondary_source_reported_outputs": 20,
+        "secondary_source_output_count_status": "REJECTED_AS_INTERNALLY_INCONSISTENT",
+        "attested_example": {
+          "source_names": ["tripode", "pepo", "corvus", "vetula mancina"],
+          "components": ["TRI", "PE", "COR", "VE"],
+          "surface": "TRIPECORVE"
+        }
+      },
+      "exact_codeword_inventory_status": "NOT_YET_TRANSCRIBED",
+      "sources": [
+        "Cacopardo 2021, pp. 131-136 / PDF pages 131-135",
+        "Paris BnF Latin 8684 and BAV Vat. lat. 3677 as manuscript witnesses"
+      ]
+    },
+    {
+      "id": "RAGONA_1434",
+      "name": "Jacopo Ragona, Artificialis memoriae regulae",
+      "place": "Vicenza/Mantua",
+      "date": "1434",
+      "grade": "B",
+      "operations": [
+        {
+          "id": "debt_record",
+          "modality": "spatial_record",
+          "fields": [
+            "day",
+            "month",
+            "year",
+            "debtor_name",
+            "father_name",
+            "lineage",
+            "weight",
+            "measure",
+            "money_amount",
+            "debit_or_credit"
+          ],
+          "field_count": 10,
+          "field_identity": "stable distinct body positions/order",
+          "order_semantic": true,
+          "weekday_mapping": {
+            "Sunday": "gold",
+            "Monday": "silver",
+            "Tuesday": "iron",
+            "Wednesday": "mercury",
+            "Thursday": "tin",
+            "Friday": "copper",
+            "Saturday": "lead"
+          },
+          "month_mapping": "12 fixed month-specific images; full mapping not yet frozen here",
+          "linear_serialization_attested": false
+        },
+        {
+          "id": "unknown_name_syllabification",
+          "modality": "image_sequence",
+          "input": "unknown name",
+          "transform": "divide into syllables and assign a familiar word/image to each syllable",
+          "attested_example": {
+            "surface_name": "Abraam",
+            "components": ["A", "BRA", "AM"]
+          },
+          "linear_codeword_generation": false
+        }
+      ],
+      "sources": [
+        "Documenta Mnemonica III (2019), Jacobus Ragona Vicentinus",
+        "Cacopardo 2021, chapter II.2"
+      ]
+    },
+    {
+      "id": "VAT10488_1424",
+      "name": "BAV Vat. lat. 10488, Venetian abbacus compilation",
+      "place": "Venice",
+      "date": "1424",
+      "grade": "B",
+      "operations": [
+        {
+          "id": "algebraic_expression",
+          "modality": "written_operational_expression",
+          "components": [
+            "coefficient",
+            "algebraic_species_abbreviation",
+            "operator_or_relation",
+            "spatial_or_superscript_placement"
+          ],
+          "attested_species": ["radice", "cosa", "censo", "numero"],
+          "attested_features": [
+            "radice frequently abbreviated",
+            "meno appears in several abbreviated forms",
+            "co / related species marks and no can occur above coefficients",
+            "formal fractions",
+            "schematic equation-like layouts on fols. 37v and 39v"
+          ],
+          "order_semantic": true,
+          "context_dependent": true,
+          "word_token_generator": false
+        }
+      ],
+      "sources": [
+        "Jens Høyrup, Hesitating progress (2009)",
+        "Ptolemaeus Arabus et Latinus manuscript record"
+      ]
+    }
+  ]
+}
