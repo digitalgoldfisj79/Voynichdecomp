@@ -1,0 +1,5 @@
+source_id,manuscript,folio,gallica_seq,local_filename,width,height,sha256,status,notes
+B4P01,BnF Latin 8684,7r,f17,f17.jpeg,1024,1387,4c247d9708b5e96a50863922b201207a6e798936f5cfa4288b9243c2b87d817d,FROZEN,"User-supplied Gallica image; bridge material before De numeris ficticiis"
+B4P02,BnF Latin 8684,7v,f18,f18.jpeg,1024,1387,203a6783b71f0feecf97039a4fe99dbb2bed0762eedc6c1b12c855af049efd4b,FROZEN,"User-supplied Gallica image; heading/readings associated with De numeris ficticiis"
+B4P03,BnF Latin 8684,8r,f19,f19.jpeg,1024,1387,cd88764d55f88c394535219d83197beabbcb6722bc77b3f1d3054b193ac08d9d,FROZEN,"User-supplied Gallica image; continuation of numerical/positional material"
+B4P04,BnF Latin 8684,8v,f20,f8v.jpeg,1024,1387,e07c1834831987c4e5cc08c90de34c68680dfda96820df2d7d203acb102a2034,FROZEN,"User-supplied Gallica image; terminal brace/codeword diagram; f.9r reported blank"
