@@ -1,0 +1,50 @@
+name: VSN B3 state-gated holdout
+
+on:
+  push:
+    branches:
+      - experiment/voynich-semantic-notation-v1-20260812
+    paths:
+      - '.github/workflows/vsn_b3_state_gated_holdout.yml'
+  workflow_dispatch:
+
+jobs:
+  holdout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire exact frozen scientific files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 924ef5edd25f884227410dbfad0b59998b33f62f
+          git show 924ef5edd25f884227410dbfad0b59998b33f62f:experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_k2_v1.py > /tmp/state_gated_k2_v1.py
+          git show 924ef5edd25f884227410dbfad0b59998b33f62f:experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_targets_v1.json > /tmp/state_gated_targets_v1.json
+          sha256sum /tmp/state_gated_k2_v1.py /tmp/state_gated_targets_v1.json | tee frozen_sha256.txt
+      - name: Run frozen LINE-w21-l2 holdout
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_URL='https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/924ef5edd25f884227410dbfad0b59998b33f62f/experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_targets_v1.json'
+          CFG='{"family":"LINE","id":"LINE-w21-l2","w1":2,"w2":1,"line_w":2}'
+          python /tmp/state_gated_k2_v1.py --phase holdout --targets-url "$TARGET_URL" --config-json "$CFG" > state_gated_holdout_raw.json
+          python - <<'PY'
+          import json
+          x=json.load(open('state_gated_holdout_raw.json'))
+          r=x['result']
+          print('HOLDOUT_CONFIG',json.dumps(r['config'],sort_keys=True))
+          print('HOLDOUT_OVERALL_PASS',r['overall_pass'])
+          print('HOLDOUT_SUMMARY',json.dumps(r['summary'],sort_keys=True))
+          print('META',json.dumps(x['meta'],sort_keys=True))
+          PY
+          sha256sum state_gated_holdout_raw.json | tee holdout_output_sha256.txt
+      - name: Upload raw holdout evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsn-b3-state-gated-holdout
+          path: |
+            state_gated_holdout_raw.json
+            frozen_sha256.txt
+            holdout_output_sha256.txt
+          retention-days: 30
