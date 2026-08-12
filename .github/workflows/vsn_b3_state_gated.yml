@@ -1,0 +1,50 @@
+name: VSN B3 state-gated discovery
+
+on:
+  push:
+    branches:
+      - experiment/voynich-semantic-notation-v1-20260812
+    paths:
+      - '.github/workflows/vsn_b3_state_gated.yml'
+  workflow_dispatch:
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify frozen scientific files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git show 924ef5edd25f884227410dbfad0b59998b33f62f:experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_k2_v1.py > /tmp/state_gated_k2_v1.py
+          git show 924ef5edd25f884227410dbfad0b59998b33f62f:experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_targets_v1.json > /tmp/state_gated_targets_v1.json
+          sha256sum /tmp/state_gated_k2_v1.py /tmp/state_gated_targets_v1.json | tee frozen_sha256.txt
+      - name: Run immutable discovery scorer
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET_URL='https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/924ef5edd25f884227410dbfad0b59998b33f62f/experiments/voynich_semantic_notation_v1/state_gated_k2_v1/state_gated_targets_v1.json'
+          python /tmp/state_gated_k2_v1.py --phase discovery --targets-url "$TARGET_URL" > state_gated_discovery_raw.json
+          python - <<'PY'
+          import json
+          x=json.load(open('state_gated_discovery_raw.json'))
+          r=x['result']
+          print('DISCOVERY_WINNER',json.dumps(r['winner'],sort_keys=True))
+          print('DISCOVERY_BASE',json.dumps(r['base'],sort_keys=True))
+          print('RELATIVE_IMPROVEMENT',r['relative_improvement'])
+          print('SECTIONS_IMPROVED',r['sections_improved'])
+          print('HOLDOUT_UNLOCKED',r['holdout_unlocked'])
+          print('META',json.dumps(x['meta'],sort_keys=True))
+          PY
+          sha256sum state_gated_discovery_raw.json | tee discovery_output_sha256.txt
+      - name: Upload raw discovery evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: vsn-b3-state-gated-discovery
+          path: |
+            state_gated_discovery_raw.json
+            frozen_sha256.txt
+            discovery_output_sha256.txt
+          retention-days: 30
