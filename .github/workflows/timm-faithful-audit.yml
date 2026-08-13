@@ -1,0 +1,79 @@
+name: Timm faithful tight-null generator panel
+
+on:
+  push:
+    branches:
+      - experiment/timm-faithful-tight-null-v0.1-20260813
+    paths:
+      - '.github/workflows/timm-faithful-audit.yml'
+      - 'experiments/timm_faithful_tight_null_v0_1/**'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout audit repo
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Fetch pinned published generator
+        run: |
+          git clone https://github.com/TorstenTimm/SelfCitationTextgenerator.git external
+          cd external
+          git checkout a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7
+          test "$(git rev-parse HEAD)" = "a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7"
+
+      - name: Run published default and frozen seed/ablation panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p outputs runs
+
+          run_one () {
+            mode="$1"; seed="$2"
+            d="runs/${mode}_${seed}"
+            cp -a external/executable "$d"
+            sed -i -E "s/^method.random.pseudo.seed=.*/method.random.pseudo.seed=${seed}/" "$d/conf.properties"
+            case "$mode" in
+              default) ;;
+              random) sed -i 's/^method.sourceChooser=page$/method.sourceChooser=random/' "$d/conf.properties" ;;
+              noreuse) sed -i 's/^method.morph.reuse_last.probability=10$/method.morph.reuse_last.probability=0/' "$d/conf.properties" ;;
+              position) sed -i 's/^method.sourceChooser=page$/method.sourceChooser=position/' "$d/conf.properties" ;;
+              *) echo "unknown mode $mode" >&2; exit 2 ;;
+            esac
+            (cd "$d" && java -jar text-generator.jar)
+            cp "$d/generate/generated_text.txt" "outputs/${mode}_seed${seed}.txt"
+          }
+
+          # Published default and seed replication 1..20
+          for seed in $(seq 1 20); do run_one default "$seed"; done
+          # Frozen mechanistic ablations, seeds 1..10
+          for seed in $(seq 1 10); do
+            run_one random "$seed"
+            run_one noreuse "$seed"
+            run_one position "$seed"
+          done
+
+          # Fidelity gate: untouched default seed 19 must reproduce repository copy byte-for-byte.
+          if cmp -s outputs/default_seed19.txt external/executable/generate/generated_text.txt; then
+            echo 'F0_PASS byte-identical default seed 19' | tee outputs/FIDELITY.txt
+          else
+            echo 'F0_FAIL default seed 19 differs from pinned repository output' | tee outputs/FIDELITY.txt
+            sha256sum outputs/default_seed19.txt external/executable/generate/generated_text.txt | tee -a outputs/FIDELITY.txt
+          fi
+          sha256sum external/executable/text-generator.jar external/executable/conf.properties > outputs/PINNED_SHA256.txt
+          git -C external rev-parse HEAD > outputs/PINNED_COMMIT.txt
+
+      - name: Upload generator outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: timm-faithful-generator-panel
+          path: outputs/
+          if-no-files-found: error
+          retention-days: 30
