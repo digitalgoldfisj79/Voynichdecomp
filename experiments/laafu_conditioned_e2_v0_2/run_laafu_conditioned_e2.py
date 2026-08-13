@@ -135,7 +135,7 @@ def analyse(lines,null,nperm,seed,detail=False):
         for b in range(4): ls.append(summ(act['length'][b],sim['length'][:,b],act['denom_length'][b]) if act['denom_length'][b] else None)
         # concentration criterion, evaluated candidate by candidate with pooled complement null
         excess=np.array(act['length'],dtype=float)-sim['length'].mean(axis=0)
-        total_pos=float(max(0,excess).sum()); candidates=[]
+        total_pos=float(np.maximum(0,excess).sum()); candidates=[]
         for b in range(4):
             others=[j for j in range(4) if j!=b and act['denom_length'][j]>0]
             pooled_actual=sum(act['length'][j] for j in others); pooled_sim=sim['length'][:,others].sum(axis=1)
