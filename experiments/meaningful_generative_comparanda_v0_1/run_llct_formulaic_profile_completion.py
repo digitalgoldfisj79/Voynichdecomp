@@ -70,9 +70,6 @@ def safe_bootstrap(rows, seed, nboot=1000):
         else ('OPPOSITE' if (finite_h2 and dR <= .90*dF and (1-finite_p) >= .95)
               else 'UNRESOLVED')
     )
-    # Literal preregistered H2 requires the requested 1000 charter-block
-    # bootstrap comparisons. We do not invent a pseudocount after seeing the
-    # sparse exact-repeat cells; any undefined replicate makes H2 unresolved.
     H2 = conditional_H2 if invalid_h2 == 0 else 'UNRESOLVED_ZERO_BOOTSTRAP'
 
     return {
@@ -96,6 +93,20 @@ def safe_bootstrap(rows, seed, nboot=1000):
     }
 
 
+def _json_default(obj):
+    if isinstance(obj, np.generic):
+        return obj.item()
+    raise TypeError(f'Object of type {obj.__class__.__name__} is not JSON serializable')
+
+
+_original_json_dump = base.json.dump
+
+def _safe_json_dump(obj, fp, *args, **kwargs):
+    kwargs.setdefault('default', _json_default)
+    return _original_json_dump(obj, fp, *args, **kwargs)
+
+
 base.bootstrap = safe_bootstrap
+base.json.dump = _safe_json_dump
 if __name__ == '__main__':
     base.main()
