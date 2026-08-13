@@ -18,7 +18,8 @@ jobs:
         run: |
           mkdir -p results
           python experiments/meaningful_generative_comparanda_v0_1/inspect_llct1.py external/LLCT1_v1_2.xml > results/LLCT1_SCHEMA_INSPECTION.txt
+          python experiments/meaningful_generative_comparanda_v0_1/inspect_llct1_samples.py external/LLCT1_v1_2.xml > results/LLCT1_SCHEMA_SAMPLES.txt
       - uses: actions/upload-artifact@v4
         with:
           name: llct1-schema-inspection
-          path: results/LLCT1_SCHEMA_INSPECTION.txt
+          path: results/LLCT1_SCHEMA_*.txt
