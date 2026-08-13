@@ -20,10 +20,10 @@ jobs:
           mkdir -p external results
           curl -L --fail --retry 3 'https://zenodo.org/records/3633607/files/LLCT1%2C%20version%201.2.xml?download=1' -o external/LLCT1_v1_2.xml
           echo 'ec45ae3a6844fad40a00d2e8050cfc74  external/LLCT1_v1_2.xml' | md5sum -c -
-      - name: Run LLCT formulaic/free panel
+      - name: Run LLCT formulaic/free panel with conservative bootstrap completion
         run: |
           set -o pipefail
-          python experiments/meaningful_generative_comparanda_v0_1/run_llct_formulaic_profile.py external/LLCT1_v1_2.xml --out results/RESULTS_llct_formulaic_profile_v0_1.json | tee results/LLCT_RUN.log
+          python experiments/meaningful_generative_comparanda_v0_1/run_llct_formulaic_profile_completion.py external/LLCT1_v1_2.xml --out results/RESULTS_llct_formulaic_profile_v0_1.json | tee results/LLCT_RUN.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
