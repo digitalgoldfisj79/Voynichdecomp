@@ -45,8 +45,8 @@ jobs:
           mkdir -p external/chant21_parser external/cantus results
           curl -L --fail 'https://raw.githubusercontent.com/bacor/chant21/ad52f6084efce4a440d083b588d7b51ff6973730/chant21/cantus/parser_volpiano.py' -o external/chant21_parser/parser_volpiano.py
           curl -L --fail 'https://raw.githubusercontent.com/bacor/chant21/ad52f6084efce4a440d083b588d7b51ff6973730/chant21/cantus/cantus_volpiano.peg' -o external/chant21_parser/cantus_volpiano.peg
-          echo 'b4e3dda7555f4f1362d04f8dea0ab6e0dbfa1402  external/chant21_parser/parser_volpiano.py' | sha1sum -c -
-          echo '33e260a0958ac6c5c1d6deb955472877b3cf0cc2  external/chant21_parser/cantus_volpiano.peg' | sha1sum -c -
+          test "$(git hash-object external/chant21_parser/parser_volpiano.py)" = 'b4e3dda7555f4f1362d04f8dea0ab6e0dbfa1402'
+          test "$(git hash-object external/chant21_parser/cantus_volpiano.peg)" = '33e260a0958ac6c5c1d6deb955472877b3cf0cc2'
           curl -L --fail --retry 3 'https://github.com/bacor/cantuscorpus/releases/download/v0.2/cantuscorpus-v0.2.zip' -o external/cantuscorpus-v0.2.zip
           unzip -q external/cantuscorpus-v0.2.zip -d external/cantus
       - name: Run chant boundary-formulaicity panel
