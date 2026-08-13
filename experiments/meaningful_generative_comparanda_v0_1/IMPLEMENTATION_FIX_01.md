@@ -21,4 +21,6 @@ Only execution/compatibility plumbing is changed:
 - retain Arpeggio, which is the published parser dependency;
 - no change to Volpiano preprocessing/parsing rules, note-position mapping, corpora, normalization, statistic definitions, permutations, seeds, controls, decision thresholds, or hypotheses.
 
-No LLCT or Cantus target values had been produced or inspected before this correction.
+The first attempt at the direct-file integrity gate then stopped **before Cantus download/scoring** because the workflow compared Git blob object IDs with ordinary raw-file SHA-1 checksums. Git blob IDs hash the object header plus content and therefore are not raw-file SHA-1s. The correction is purely to validate the same downloaded bytes with `git hash-object`, which must equal the published blob IDs `b4e3dda7555f4f1362d04f8dea0ab6e0dbfa1402` and `33e260a0958ac6c5c1d6deb955472877b3cf0cc2`.
+
+No LLCT or Cantus target values had been produced or inspected before these corrections.
