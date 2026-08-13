@@ -1,0 +1,24 @@
+name: Meaningful generative comparanda v0.1
+on:
+  push:
+    branches:
+      - experiment/meaningful-generative-comparanda-v0.1-20260813
+  workflow_dispatch:
+jobs:
+  inspect-llct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch frozen LLCT1 v1.2
+        run: |
+          mkdir -p external
+          curl -L --fail --retry 3 'https://zenodo.org/records/3633607/files/LLCT1%2C%20version%201.2.xml?download=1' -o external/LLCT1_v1_2.xml
+          echo 'ec45ae3a6844fad40a00d2e8050cfc74  external/LLCT1_v1_2.xml' | md5sum -c -
+      - name: Inspect author schema without scoring targets
+        run: |
+          mkdir -p results
+          python experiments/meaningful_generative_comparanda_v0_1/inspect_llct1.py external/LLCT1_v1_2.xml > results/LLCT1_SCHEMA_INSPECTION.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: llct1-schema-inspection
+          path: results/LLCT1_SCHEMA_INSPECTION.txt
