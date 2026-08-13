@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install LLCT analysis dependency
+        run: python -m pip install 'numpy<2'
       - name: Fetch frozen LLCT1 v1.2
         run: |
           mkdir -p external results
@@ -20,6 +22,7 @@ jobs:
           echo 'ec45ae3a6844fad40a00d2e8050cfc74  external/LLCT1_v1_2.xml' | md5sum -c -
       - name: Run LLCT formulaic/free panel
         run: |
+          set -o pipefail
           python experiments/meaningful_generative_comparanda_v0_1/run_llct_formulaic_profile.py external/LLCT1_v1_2.xml --out results/RESULTS_llct_formulaic_profile_v0_1.json | tee results/LLCT_RUN.log
       - uses: actions/upload-artifact@v4
         if: always()
@@ -34,20 +37,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install pinned chant21 parser
+      - name: Install exact parser dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install 'numpy<2' 'music21>=5.7.2' 'Arpeggio>=1.9.2' 'Jinja2>=2.11.1' 'PyYAML>=6'
-          python -m pip install --no-deps 'git+https://github.com/bacor/chant21.git@ad52f6084efce4a440d083b588d7b51ff6973730'
-      - name: Fetch frozen CantusCorpus v0.2
+          python -m pip install 'numpy<2' 'Arpeggio>=1.9.2'
+      - name: Fetch pinned chant21 parser and frozen CantusCorpus v0.2
         run: |
-          mkdir -p external/cantus results
+          mkdir -p external/chant21_parser external/cantus results
+          curl -L --fail 'https://raw.githubusercontent.com/bacor/chant21/ad52f6084efce4a440d083b588d7b51ff6973730/chant21/cantus/parser_volpiano.py' -o external/chant21_parser/parser_volpiano.py
+          curl -L --fail 'https://raw.githubusercontent.com/bacor/chant21/ad52f6084efce4a440d083b588d7b51ff6973730/chant21/cantus/cantus_volpiano.peg' -o external/chant21_parser/cantus_volpiano.peg
+          echo 'b4e3dda7555f4f1362d04f8dea0ab6e0dbfa1402  external/chant21_parser/parser_volpiano.py' | sha1sum -c -
+          echo '33e260a0958ac6c5c1d6deb955472877b3cf0cc2  external/chant21_parser/cantus_volpiano.peg' | sha1sum -c -
           curl -L --fail --retry 3 'https://github.com/bacor/cantuscorpus/releases/download/v0.2/cantuscorpus-v0.2.zip' -o external/cantuscorpus-v0.2.zip
           unzip -q external/cantuscorpus-v0.2.zip -d external/cantus
-          find external/cantus -maxdepth 3 -type f | head -50
       - name: Run chant boundary-formulaicity panel
         run: |
-          python experiments/meaningful_generative_comparanda_v0_1/run_cantus_boundary_formulaicity.py external/cantus --out results/RESULTS_cantus_boundary_formulaicity_v0_1.json | tee results/CANTUS_RUN.log
+          set -o pipefail
+          python experiments/meaningful_generative_comparanda_v0_1/run_cantus_boundary_formulaicity.py external/cantus --parser-dir external/chant21_parser --out results/RESULTS_cantus_boundary_formulaicity_v0_1.json | tee results/CANTUS_RUN.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
