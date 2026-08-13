@@ -5,22 +5,51 @@ on:
       - experiment/meaningful-generative-comparanda-v0.1-20260813
   workflow_dispatch:
 jobs:
-  inspect-llct:
+  llct:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
       - name: Fetch frozen LLCT1 v1.2
         run: |
-          mkdir -p external
+          mkdir -p external results
           curl -L --fail --retry 3 'https://zenodo.org/records/3633607/files/LLCT1%2C%20version%201.2.xml?download=1' -o external/LLCT1_v1_2.xml
           echo 'ec45ae3a6844fad40a00d2e8050cfc74  external/LLCT1_v1_2.xml' | md5sum -c -
-      - name: Inspect author schema without scoring targets
+      - name: Run LLCT formulaic/free panel
         run: |
-          mkdir -p results
-          python experiments/meaningful_generative_comparanda_v0_1/inspect_llct1.py external/LLCT1_v1_2.xml > results/LLCT1_SCHEMA_INSPECTION.txt
-          python experiments/meaningful_generative_comparanda_v0_1/inspect_llct1_samples.py external/LLCT1_v1_2.xml > results/LLCT1_SCHEMA_SAMPLES.txt
-          python experiments/meaningful_generative_comparanda_v0_1/validate_llct_structure.py external/LLCT1_v1_2.xml > results/LLCT1_STRUCTURE_VALIDATION.txt
+          python experiments/meaningful_generative_comparanda_v0_1/run_llct_formulaic_profile.py external/LLCT1_v1_2.xml --out results/RESULTS_llct_formulaic_profile_v0_1.json | tee results/LLCT_RUN.log
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: llct1-schema-inspection
-          path: results/LLCT1_*.txt
+          name: meaningful-generative-llct-results
+          path: results/
+  cantus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned chant21 parser
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'numpy<2' 'music21>=5.7.2' 'Arpeggio>=1.9.2' 'Jinja2>=2.11.1' 'PyYAML>=6'
+          python -m pip install --no-deps 'git+https://github.com/bacor/chant21.git@ad52f6084efce4a440d083b588d7b51ff6973730'
+      - name: Fetch frozen CantusCorpus v0.2
+        run: |
+          mkdir -p external/cantus results
+          curl -L --fail --retry 3 'https://github.com/bacor/cantuscorpus/releases/download/v0.2/cantuscorpus-v0.2.zip' -o external/cantuscorpus-v0.2.zip
+          unzip -q external/cantuscorpus-v0.2.zip -d external/cantus
+          find external/cantus -maxdepth 3 -type f | head -50
+      - name: Run chant boundary-formulaicity panel
+        run: |
+          python experiments/meaningful_generative_comparanda_v0_1/run_cantus_boundary_formulaicity.py external/cantus --out results/RESULTS_cantus_boundary_formulaicity_v0_1.json | tee results/CANTUS_RUN.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: meaningful-generative-cantus-results
+          path: results/
