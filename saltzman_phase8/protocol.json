@@ -1,0 +1,119 @@
+{
+  "experiment": "ASC-MECHANISM-CIPHER-ORDER-v0.1",
+  "date": "2026-08-14",
+  "freeze_timing": "Frozen before Phase-6 and Phase-7 adjudications are visible.",
+  "scientific_question": "Does the K2 origin-state operation act before or after the frozen SWITCH_LINE cipher transformation, and is that ordering stable across dwell/reset contexts?",
+  "prerequisites": {
+    "phase6": "must have replication_guard_pass=true",
+    "phase7": "must complete with replication_guard_pass=true; Phase-8 POST arms are checked against the corresponding Phase-7 medians before ordering is adjudicated"
+  },
+  "invariants": {
+    "source": "ReM v2.1 diplomatic MHG",
+    "eligible_documents": 190,
+    "first_tokens_per_document": 2000,
+    "line_width_tokens": 10,
+    "cipher_schedule": "SWITCH_LINE",
+    "state_alphabet_K": 2,
+    "tau_int": 3.0,
+    "rotation_offset_rule": "exact Phase-4 K2 half-rotation",
+    "representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "robust_rule": "worst case across ATOMIC/LITERAL",
+    "replicates_per_document": 20,
+    "permutation_replicates": 100,
+    "cipher_plan_rule": "Generate the cipher plan once from the original plaintext lines using seed_of('P5-plan',doc,replicate); reuse that exact plan for PRE and POST ordering.",
+    "no_concurrent_tuning": [
+      "cipher",
+      "language",
+      "source",
+      "line width",
+      "tau",
+      "state alphabet",
+      "rotation offset",
+      "dwell parameters",
+      "reset parameters",
+      "scorer",
+      "target vector"
+    ]
+  },
+  "strata": {
+    "fixed_continuous": {
+      "state_law": "TAU3_FIXED_CONTINUOUS_K2",
+      "reset": "continuous"
+    },
+    "fixed_line_reset": {
+      "state_law": "TAU3_FIXED_LINE_RESET_K2",
+      "reset": "line"
+    },
+    "geometric_continuous": {
+      "state_law": "TAU3_GEOM_CONTINUOUS_K2",
+      "reset": "continuous"
+    },
+    "geometric_line_reset": {
+      "state_law": "TAU3_GEOM_LINE_RESET_K2",
+      "reset": "line"
+    }
+  },
+  "ordering": {
+    "POST": "ciphered = encode_with_plan(plain, frozen_plan, representation); output = apply_k2_states(ciphered, state_sequence)",
+    "PRE": "rotated_plain = apply_k2_states(plain, state_sequence); output = encode_with_plan(rotated_plain, frozen_plan, representation)",
+    "important": "The frozen cipher plan is always generated from the unmodified original plaintext, so PRE versus POST changes only operator order, not plan generation."
+  },
+  "baselines": {
+    "CIPHER_ONLY": "encode_with_plan(plain, frozen_plan, representation)",
+    "ORIGIN_ONLY": "apply_k2_states(plain, state_sequence), scored as a secondary mechanistic diagnostic"
+  },
+  "primary_test": {
+    "metric": "robust d3 = worst ATOMIC/LITERAL distance_of_median_Q3; lower is better",
+    "paired_difference": "Delta_order = d3_PRE - d3_POST; positive means cipher→state (POST) is better",
+    "estimator": "median paired-document Delta_order within each locked stratum",
+    "bootstrap": {
+      "resamples": 10000,
+      "ci": 0.95,
+      "seed_namespace": "ASC-MECHANISM-CIPHER-ORDER-v0.1|bootstrap"
+    },
+    "materiality_margin_d3": 0.04,
+    "materiality_basis": "Inherited prospectively from Phase-4 same-law noise control."
+  },
+  "replication_guard": {
+    "rule": "Before ordering inference, each Phase-8 POST stratum median must equal the corresponding completed Phase-7 arm median to absolute tolerance 1e-12. The expected reset medians are read from the immutable Phase-7 final artifact, not selected or tuned.",
+    "tolerance_abs": 1e-12,
+    "failure_label": "PHASE7_POST_ENDPOINTS_NOT_REPLICATED"
+  },
+  "adjudication_order": [
+    "PHASE7_POST_ENDPOINTS_NOT_REPLICATED",
+    "POST_ORDER_REQUIRED_ALL",
+    "PRE_ORDER_REQUIRED_ALL",
+    "ORDER_EQUIVALENT_ALL",
+    "POST_ORDER_ROBUST_MAJORITY",
+    "PRE_ORDER_ROBUST_MAJORITY",
+    "ORDER_DIRECTIONALLY_CONSISTENT",
+    "ORDER_CONTEXT_DEPENDENT"
+  ],
+  "adjudication_rules": {
+    "POST_ORDER_REQUIRED_ALL": "All four strata have lower 95% CI of Delta_order > +0.04.",
+    "PRE_ORDER_REQUIRED_ALL": "All four strata have upper 95% CI of Delta_order < -0.04.",
+    "ORDER_EQUIVALENT_ALL": "All four strata have entire 95% CI inside [-0.04,+0.04].",
+    "POST_ORDER_ROBUST_MAJORITY": "At least 3/4 strata have lower 95% CI > +0.04 and no stratum has upper 95% CI < -0.04.",
+    "PRE_ORDER_ROBUST_MAJORITY": "At least 3/4 strata have upper 95% CI < -0.04 and no stratum has lower 95% CI > +0.04.",
+    "ORDER_DIRECTIONALLY_CONSISTENT": "All four median Delta_order values have the same nonzero sign but no prior rule applies.",
+    "ORDER_CONTEXT_DEPENDENT": "Any remaining pattern."
+  },
+  "secondary": {
+    "E1_order_contrast": true,
+    "representation_specific_d3": true,
+    "cipher_only_vs_POST": true,
+    "cipher_only_vs_PRE": true,
+    "origin_only_descriptives": true,
+    "individual_gate4_hits": true
+  },
+  "phase9_link": {
+    "sealed_panel": "saltzman_phase9/SEALED_VOYNICH_CONSEQUENCE_PANEL.json",
+    "rule": "Phase-8 Q-based ordering is mechanistic selection only. The Phase-9 confirmatory verdict is determined exclusively by the already-sealed independent consequence panel."
+  },
+  "execution_guard": {
+    "rule": "Protocol/code/preregistration are committed without a workflow. Workflow launch occurs only after Phase-7 replication guard passes."
+  }
+}
