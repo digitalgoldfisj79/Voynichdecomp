@@ -1,0 +1,21 @@
+name: Trigger ASC Section Residual v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-section-residual-v0.1-20260814
+    paths:
+      - '.github/workflows/trigger-section-residual-v01.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch frozen residual workflow at current branch head
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run asc-section-residual-v01.yml --repo ${{ github.repository }} --ref experiment/saltzman-section-residual-v0.1-20260814
