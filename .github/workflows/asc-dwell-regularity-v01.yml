@@ -34,7 +34,7 @@ jobs:
           test "$(cat saltzman_phase6/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
           test "$(git hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
           python -m py_compile saltzman_phase6/dwell_operators.py saltzman_phase6/design_utils.py saltzman_phase6/run_phase6_remote.py
-          python saltzman_phase6/dwell_operators.py
+          PYTHONPATH="$PWD/saltzman_phase4:$PWD/saltzman_phase6" python saltzman_phase6/dwell_operators.py
           python saltzman_phase6/design_utils.py
           echo "FROZEN_PROTOCOL_SHA=$PROTOCOL_SHA"
       - uses: actions/upload-artifact@v4
