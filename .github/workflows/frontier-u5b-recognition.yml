@@ -1,0 +1,52 @@
+name: Frontier U5-B fresh-codebook recognition
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u5b-recognition.yml'
+      - 'experiments/frontier_v0_1/U5_RECOGNITION_PROTOCOL_v0_1.md'
+      - 'experiments/frontier_v0_1/src/u5_verbose_recognition.py'
+
+permissions:
+  contents: write
+
+jobs:
+  calibrate-recognition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout frozen Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+      - name: Checkout public Naibbe reference implementation
+        uses: actions/checkout@v4
+        with:
+          repository: greshko/naibbe-cipher
+          ref: main
+          path: naibbe
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen recognition dependencies
+        run: pip install 'numpy<2' 'scikit-learn>=1.4,<1.6'
+      - name: Run U5-B with Voynich inaccessible to the script
+        run: |
+          python experiments/frontier_v0_1/src/u5_verbose_recognition.py \
+            --naibbe-repo naibbe \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u5
+      - name: Persist locked recognition result
+        run: |
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RECOGNITION_RESULT.json
+          if [ -f experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RESULT.md ]; then
+            git add experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RESULT.md
+          fi
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record U5-B fresh-codebook recognition result [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
