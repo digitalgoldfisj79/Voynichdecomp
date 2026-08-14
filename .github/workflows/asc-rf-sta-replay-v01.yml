@@ -160,6 +160,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s /tmp/p8/results/COMBINED.json
+          test -s /tmp/targets/results/TARGETS.json
           python - <<'PY'
           import json
           z=json.load(open('/tmp/p8/results/COMBINED.json'))
@@ -176,7 +177,7 @@ jobs:
           cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/run_rf_sta_replay.py" .
           cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/protocol.json" .
           cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/PROTOCOL_SHA256" .
-          cp /tmp/targets/TARGETS.json .
+          cp /tmp/targets/results/TARGETS.json .
           python run_rf_sta_replay.py replay TARGETS.json /tmp/p8/results/COMBINED.json results/SUMMARY.json | tee FINAL.log
           test -s results/SUMMARY.json
       - uses: actions/upload-artifact@v4
