@@ -5,7 +5,7 @@ from collections import defaultdict
 URL="https://zenodo.org/record/13982324/files/ReM-v2.1_tei.zip?download=1"
 NS="{http://www.tei-c.org/ns/1.0}";XMLID="{http://www.w3.org/XML/1998/namespace}id"
 CLEAN=re.compile(r"[\[\]<>|\\/*()=+#%$\"'{}0-9\-.,;:!?]")
-EXPECTED_SHA="ac7e5c24743c7e8faac819a5f331ec99baecc6e5aef37025294c4252d4d4487c"
+EXPECTED_CONTENT_SHA="79f298a9f40b27da413bd07cf445de834038fa0ebc1749f470685dd263fc463f"
 def build(tei_dir="ReM-v2.1_tei/tei"):
     docs={}
     for fp in sorted(glob.glob(os.path.join(tei_dir,"*.xml"))):
@@ -24,7 +24,7 @@ if __name__=="__main__":
         print("downloading ReM",flush=True);data=urllib.request.urlopen(URL,timeout=600).read();zipfile.ZipFile(io.BytesIO(data)).extractall(".")
     docs=build();n=sum(map(len,docs.values()));chars=sum(len(w) for v in docs.values() for w in v);alpha=len({c for v in docs.values() for w in v for c in w})
     assert (len(docs),n,chars,alpha)==(406,2236137,9967570,118),(len(docs),n,chars,alpha)
-    raw=lzma.compress(json.dumps(docs,ensure_ascii=False,separators=(",",":")).encode("utf-8"));open(out,"wb").write(raw)
-    sha=hashlib.sha256(raw).hexdigest();print(json.dumps({"docs":len(docs),"tokens":n,"chars":chars,"alpha":alpha,"sha256":sha}),flush=True)
-    # JSON serialization is required to match the frozen bundled corpus byte-for-byte.
-    assert sha==EXPECTED_SHA,(sha,EXPECTED_SHA)
+    canonical=json.dumps(docs,ensure_ascii=False,separators=(",",":")).encode("utf-8")
+    content_sha=hashlib.sha256(canonical).hexdigest();assert content_sha==EXPECTED_CONTENT_SHA,(content_sha,EXPECTED_CONTENT_SHA)
+    raw=lzma.compress(canonical);open(out,"wb").write(raw)
+    print(json.dumps({"docs":len(docs),"tokens":n,"chars":chars,"alpha":alpha,"content_sha256":content_sha,"file_sha256":hashlib.sha256(raw).hexdigest()}),flush=True)
