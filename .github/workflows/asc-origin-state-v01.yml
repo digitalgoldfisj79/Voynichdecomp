@@ -1,0 +1,202 @@
+name: ASC Origin State v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-state-h3-20260814
+    paths:
+      - .github/workflows/asc-origin-state-v01.yml
+
+permissions:
+  contents: read
+
+env:
+  FREEZE_SHA: ad6a85bc24114a9e5c19c85ce6c3fee6a4dbfbbd6dbc1cbb0776f3cdda888be6
+
+jobs:
+  build-rem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build exact canonical ReM corpus
+        run: |
+          mkdir -p /tmp/rem
+          cd /tmp/rem
+          python "$GITHUB_WORKSPACE/saltzman_phase3/build_rem_docs.py" rem_docs.json.xz | tee BUILD_REM.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: origin-state-rem
+          path: |
+            /tmp/rem/rem_docs.json.xz
+            /tmp/rem/BUILD_REM.log
+          retention-days: 7
+
+  discovery:
+    needs: build-rem
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p3
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3
+          unzip -q /tmp/payload.zip
+          mkdir -p inputs results
+          test -f scorer.py
+          test -f mechanisms.py
+          echo '926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5  scorer.py' | sha256sum -c -
+          echo 'eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838  mechanisms.py' | sha256sum -c -
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-rem
+          path: /tmp/p3/inputs
+      - name: Run discovery shard
+        working-directory: /tmp/p3
+        run: python run_phase3_remote.py discovery ${{ matrix.shard }} 10 | tee DISCOVERY.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: origin-state-discovery-${{ matrix.shard }}
+          path: |
+            /tmp/p3/results/DISCOVERY_SHARD_*_OF_10.json
+            /tmp/p3/DISCOVERY.log
+          retention-days: 7
+
+  select:
+    needs: discovery
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          mkdir -p /tmp/p3/results /tmp/discovery
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3 && unzip -q /tmp/payload.zip
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+          mkdir -p results
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: origin-state-discovery-*
+          path: /tmp/discovery
+          merge-multiple: true
+      - name: Seal selection
+        working-directory: /tmp/p3
+        run: python run_phase3_remote.py select /tmp/discovery | tee SELECTION.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: origin-state-selection
+          path: |
+            /tmp/p3/results/SELECTION.json
+            /tmp/p3/SELECTION.log
+          retention-days: 7
+
+  confirmation:
+    needs: [build-rem, select]
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p3/inputs /tmp/p3/results /tmp/selection
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3 && unzip -q /tmp/payload.zip
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-rem
+          path: /tmp/p3/inputs
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-selection
+          path: /tmp/selection
+      - name: Run sealed confirmation shard
+        working-directory: /tmp/p3
+        run: python run_phase3_remote.py confirmation ${{ matrix.shard }} 10 /tmp/selection/SELECTION.json | tee CONFIRMATION.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: origin-state-confirmation-${{ matrix.shard }}
+          path: |
+            /tmp/p3/results/CONFIRMATION_SHARD_*_OF_10.json
+            /tmp/p3/CONFIRMATION.log
+          retention-days: 7
+
+  merge:
+    needs: confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          mkdir -p /tmp/p3/results /tmp/confirmation /tmp/selection
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3 && unzip -q /tmp/payload.zip
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: origin-state-confirmation-*
+          path: /tmp/confirmation
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-selection
+          path: /tmp/selection
+      - name: Merge and adjudicate
+        working-directory: /tmp/p3
+        run: python run_phase3_remote.py merge /tmp/confirmation /tmp/selection/SELECTION.json | tee FINAL.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-origin-state-v01-final
+          path: |
+            /tmp/p3/results/SUMMARY.json
+            /tmp/p3/results/CONFIRMATION_COMBINED.json
+            /tmp/p3/FINAL.log
+          retention-days: 7
