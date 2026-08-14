@@ -1,0 +1,211 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+from pathlib import Path
+from collections import Counter, defaultdict
+import hashlib, json, math, re, statistics, sys, lzma
+import numpy as np
+
+ROOT=Path(__file__).resolve().parent
+PROTOCOL_SHA='b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0'
+RF_REPS=('RF_MEMBER','STA_FAMILY','AAA_CONNECTED')
+SYN_REPS=('ATOMIC','LITERAL')
+LAGS=(1,2,3,4,8,12)
+STA_WORD=re.compile(r'(?:[A-Z][0-9a-z])+')
+
+# ---------- protocol ----------
+def load_protocol():
+    b=(ROOT/'protocol.json').read_bytes(); got=hashlib.sha256(b).hexdigest()
+    assert got==PROTOCOL_SHA,(got,PROTOCOL_SHA)
+    return json.loads(b)
+
+def parse_rules(path):
+    rules={}
+    for ln in Path(path).read_text(encoding='utf-8').splitlines():
+        if not ln or ln.startswith('#') or ln.startswith('<') or ln.startswith('-'): continue
+        f=ln.split()
+        if len(f)>=2 and re.fullmatch(r'[A-Z][0-9a-z]',f[0]): rules[f[0]]=f[1]
+    assert len(rules)>=250,len(rules)
+    return rules
+
+def parse_header_meta(body):
+    return {k:v for k,v in re.findall(r'\$([A-Z])=([^\s>]+)',body)}
+
+def page_and_line(tag):
+    # f68v3.12,@Ri -> (f68v3, 12)
+    if '.' not in tag:return tag,None
+    page,tail=tag.split('.',1)
+    m=re.match(r'(\d+)',tail)
+    return page,(int(m.group(1)) if m else None)
+
+def hand_for(page,line_no,meta):
+    h=meta.get('H')
+    if h and h in {'1','2','3','4','5'}: return 'S'+h
+    if page=='f115r' and h=='@' and line_no is not None: return 'S2' if line_no<=12 else 'S3'
+    return None
+
+def parse_clean_rf_records(path,rules,section_map):
+    headers={}; records=[]; stats=Counter()
+    for ln in Path(path).read_text(encoding='utf-8').splitlines():
+        mh=re.match(r'^<([^>.]+)>\s+<!\s*(.*?)>$',ln)
+        if mh:
+            headers[mh.group(1)]=parse_header_meta(mh.group(2)); continue
+        m=re.match(r'^<([^>]+)>\s+(.*)$',ln)
+        if not m: continue
+        tag,body=m.group(1),m.group(2); page,line_no=page_and_line(tag)
+        if line_no is None: continue
+        stats['raw_text_line_records']+=1
+        meta=headers.get(page,{})
+        sec=section_map.get(page)
+        if sec is None:
+            # some maps use base fNNr/v for unsplit page only
+            mb=re.match(r'^(f\d+[rv])\d+$',page)
+            if mb: sec=section_map.get(mb.group(1))
+        parts=body.split('<->'); stats['drawing_interruptions']+=max(0,len(parts)-1)
+        all_raw=[]
+        for pidx,part in enumerate(parts):
+            toks=part.split('.')
+            cur=[]; seg_start_idx=None
+            def flush(end_idx):
+                nonlocal cur,seg_start_idx
+                if cur:
+                    records.append({
+                        'page':page,'line_no':line_no,'section':sec,
+                        'currier':meta.get('L') if meta.get('L') in ('A','B') else None,
+                        'hand':hand_for(page,line_no,meta),
+                        'members':[x[:] for x in cur],
+                        'touch_left': bool(pidx==0 and seg_start_idx==0),
+                        'touch_right': bool(pidx==len(parts)-1 and end_idx==len(toks)),
+                        'raw_part_count':len(parts)
+                    }); stats['clean_segments']+=1
+                    cur=[];seg_start_idx=None
+            for i,raw in enumerate(toks):
+                w=raw.strip()
+                if not w:
+                    flush(i); continue
+                if STA_WORD.fullmatch(w):
+                    members=re.findall(r'[A-Z][0-9a-z]',w)
+                    if ''.join(members)==w and all(x in rules for x in members):
+                        if seg_start_idx is None: seg_start_idx=i
+                        cur.append(members);stats['clean_words']+=1;continue
+                stats['excluded_or_uncertain_words']+=1;flush(i)
+            flush(len(toks))
+    assert stats['clean_words']>10000 and len(records)>1000,(stats,len(records))
+    return records,dict(stats)
+
+def unitize_records(records,rules,rep):
+    if rep=='RF_MEMBER': to_units=lambda ms: ms[:]
+    elif rep=='STA_FAMILY': to_units=lambda ms:[m[0] for m in ms]
+    elif rep=='AAA_CONNECTED':
+        def to_units(ms):
+            out=[]
+            for m in ms:
+                parts=rules[m].split('~')
+                assert all(re.fullmatch(r'[a-z][0-9](?::[a-z][0-9])*',x) for x in parts),(m,rules[m])
+                out.extend(parts)
+            return out
+    else: raise ValueError(rep)
+    vocab=sorted({u for r in records for ms in r['members'] for u in to_units(ms)})
+    mp={u:chr(0xE000+i) for i,u in enumerate(vocab)}
+    out=[]
+    for r in records:
+        rr={k:v for k,v in r.items() if k!='members'}
+        rr['tokens']=[''.join(mp[u] for u in to_units(ms)) for ms in r['members']]
+        out.append(rr)
+    return out,{'unit_vocabulary':len(vocab)}
+
+# ---------- corpus grouping ----------
+def build_corpus(records,predicate=lambda r:True):
+    rr=[r for r in records if predicate(r) and r.get('tokens')]
+    segs=[r['tokens'] for r in rr if r['tokens']]
+    # safe starts/ends only when clean segment touches the actual line edge
+    starts=[r['tokens'][0] for r in rr if r.get('touch_left') and r['tokens']]
+    ends=[r['tokens'][-1] for r in rr if r.get('touch_right') and r['tokens']]
+    # connect physical consecutive raw lines only if both exact edges are clean
+    bypage=defaultdict(dict)
+    for r in rr:
+        # if multiple segments on a line, store left/right edge separately
+        z=bypage[r['page']].setdefault(r['line_no'],{'left':None,'right':None})
+        if r.get('touch_left'): z['left']=r['tokens'][0]
+        if r.get('touch_right'): z['right']=r['tokens'][-1]
+    cross=[]
+    for page,z in bypage.items():
+        for n in sorted(z):
+            if n+1 in z and z[n]['right'] and z[n+1]['left']:
+                cross.append((z[n]['right'],z[n+1]['left']))
+    return {'segments':segs,'starts':starts,'ends':ends,'cross_pairs':cross,'n_tokens':sum(map(len,segs)),'n_segments':len(segs)}
+
+def model_corpus(lines):
+    starts=[x[0] for x in lines if x]; ends=[x[-1] for x in lines if x]
+    cross=[(lines[i][-1],lines[i+1][0]) for i in range(len(lines)-1) if lines[i] and lines[i+1]]
+    return {'segments':lines,'starts':starts,'ends':ends,'cross_pairs':cross,'n_tokens':sum(map(len,lines)),'n_segments':len(lines)}
+
+# ---------- edit relations ----------
+def ed1_info(a,b):
+    la,lb=len(a),len(b)
+    if a==b:return None
+    if la==lb:
+        idx=-1; n=0
+        for i,(x,y) in enumerate(zip(a,b)):
+            if x!=y:n+=1;idx=i
+            if n>1:return None
+        if n==1:return ('sub',loc_class(idx,la))
+        return None
+    if la+1==lb:
+        # insertion going a -> b; find skipped index in b
+        i=j=0;skip=None
+        while i<la and j<lb:
+            if a[i]==b[j]:i+=1;j+=1
+            elif skip is None:skip=j;j+=1
+            else:return None
+        if skip is None:skip=lb-1
+        if j<lb-1:return None
+        return ('ins',loc_class(skip,lb))
+    if la==lb+1:
+        # deletion going a -> b; skipped index in a
+        i=j=0;skip=None
+        while i<la and j<lb:
+            if a[i]==b[j]:i+=1;j+=1
+            elif skip is None:skip=i;i+=1
+            else:return None
+        if skip is None:skip=la-1
+        if i<la-1:return None
+        return ('del',loc_class(skip,la))
+    return None
+
+def loc_class(i,n):
+    if i==0:return 'first'
+    if i==n-1:return 'final'
+    return 'interior'
+
+def lag_pairs(segs,h):
+    for s in segs:
+        for i in range(len(s)-h):yield s[i],s[i+h]
+
+def pair_rate(segs,h,kind):
+    n=c=0
+    for a,b in lag_pairs(segs,h):
+        n+=1
+        if kind=='same':c+=(a==b)
+        elif kind=='ed1':c+=(ed1_info(a,b) is not None)
+        elif kind=='first':c+=(bool(a and b and a[0]==b[0]))
+        elif kind=='last':c+=(bool(a and b and a[-1]==b[-1]))
+        elif kind=='leneq':c+=(len(a)==len(b))
+        elif kind=='lenclose':c+=(abs(len(a)-len(b))<=1)
+    return (c/n if n else None),n
+
+def js_div(c1,c2):
+    n1=sum(c1.values());n2=sum(c2.values())
+    if n1==0 or n2==0:return None
+    keys=set(c1)|set(c2); p=np.array([c1[k]/n1 for k in keys],float);q=np.array([c2[k]/n2 for k in keys],float);m=(p+q)/2
+    def kl(x,y):
+        mask=x>0
+        return float(np.sum(x[mask]*np.log2(x[mask]/y[mask])))
+    return .5*kl(p,m)+.5*kl(q,m)
+
+def entropy_counts(c):
+    n=sum(c.values())
+    if n<=0:return None
+    return -sum((v/n)*math.log2(v/n) for v in c.values() if v)
+
+def cond_entropy_ratio(segs):
+    unig=Counter(); pairs=Counter(); prev=Counter(); N=0
