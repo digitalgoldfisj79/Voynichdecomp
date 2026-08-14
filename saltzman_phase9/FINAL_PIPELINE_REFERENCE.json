@@ -1,0 +1,60 @@
+{
+  "reference": "PHASE9-FINAL-PIPELINE-REFERENCE-v0.1",
+  "date": "2026-08-14",
+  "selection_rule_sha256": "185e8d00d3ef7b0960cac1a31552d85bb4362b16cecee3cff2c3ca1c80551911",
+  "phase7": {
+    "workflow_run": 31799994835,
+    "artifact_id": 9218996277,
+    "artifact_digest": "sha256:2310c78fdf4b0dd9bc478e6b2c2e5e3974633aa3b5811116ad2535ee730cfda3",
+    "protocol_sha256": "b17c9cb4f13b7f8f76e25ce636177929560ead0c6512190a99fb2c38a24c5c52",
+    "replication_guard_pass": true,
+    "adjudication": "CONSISTENT_DIRECTION_NOT_ROBUST",
+    "primary_reset_d3": {
+      "fixed": {
+        "median": -0.026954860181808482,
+        "ci95": [-0.04419007178877277, 0.009038886255074263]
+      },
+      "geometric": {
+        "median": -0.01060212660495699,
+        "ci95": [-0.023587482244149194, 0.005818905338565883]
+      }
+    }
+  },
+  "phase8": {
+    "workflow_run": 31800905368,
+    "artifact_id": 9219418134,
+    "artifact_name": "asc-mechanism-cipher-order-v01-final",
+    "artifact_digest": "sha256:3486fb343363d192691dded1ed8d3f9d546a5afa4e4c1dde59c5030bd20b9c5c",
+    "protocol_sha256": "36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4",
+    "replication_guard_pass": true,
+    "adjudication": "ORDER_EQUIVALENT_ALL",
+    "primary_order_d3": {
+      "fixed_continuous": {"n": 190, "median": 0.0, "ci95": [0.0, 0.0]},
+      "fixed_line_reset": {"n": 188, "median": 0.0, "ci95": [0.0, 0.0]},
+      "geometric_continuous": {"n": 190, "median": 0.0, "ci95": [0.0, 0.0]},
+      "geometric_line_reset": {"n": 190, "median": 0.0, "ci95": [0.0, 0.0]}
+    }
+  },
+  "phase8_replication_guard_pass": true,
+  "canonical": {
+    "dwell": "fixed",
+    "tau_int": 3.0,
+    "reset": "line_reset",
+    "reset_resolved": false,
+    "reset_basis": "Phase-7 CONSISTENT_DIRECTION_NOT_ROBUST with both locked stratum median Delta_reset values negative; frozen sign rule selects line_reset but marks it unresolved.",
+    "order": "POST",
+    "order_resolved": true,
+    "order_basis": "Phase-8 ORDER_EQUIVALENT_ALL; frozen equivalence rule retains POST (cipher then state) as the canonical/simple order."
+  },
+  "sensitivity_pipelines": [
+    {
+      "name": "RESET_SENSITIVITY_CONTINUOUS_POST",
+      "dwell": "fixed",
+      "tau_int": 3.0,
+      "reset": "continuous",
+      "order": "POST",
+      "reason": "Reset semantics remained unresolved in Phase 7; this alternate was required by the pre-frozen selection rule."
+    }
+  ],
+  "no_phase9_selection": "The canonical pipeline and sensitivity arm are fixed before any Phase-9 metric is computed. Phase-9 performance cannot alter them."
+}
