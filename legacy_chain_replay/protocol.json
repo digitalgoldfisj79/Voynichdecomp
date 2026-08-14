@@ -1,0 +1,84 @@
+{
+  "experiment": "VOYNICH-LEGACY-CHAIN-REPLAY-v0.1",
+  "date": "2026-08-14",
+  "purpose": "Test whether the representation-robust Voynich ED1-chain-lift residual is already implied by frozen legacy generator mechanisms, without fitting any mechanism to chain lift.",
+  "upstream": {
+    "section_residual_branch": "experiment/saltzman-section-residual-v0.1-20260814",
+    "section_residual_head": "ffe36d8ce36ab663d17e7710e3f36337e2d72553",
+    "section_residual_protocol_sha256": "b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0",
+    "representation_qualification": "ed1_chain_lift was a positive shared residual in at least 7/9 sections under RF_MEMBER, STA_FAMILY and AAA_CONNECTED. Legacy generators are scored in their native EVA-like output space; no invented EVA-to-STA conversion is permitted."
+  },
+  "target": {
+    "source": "voynich_transcriptions_slim.json",
+    "transcription": "ZLZI",
+    "unit": "lowercase alphabetic token",
+    "segmentation": "physical transcription line; drawing/uncertain material excluded by alphabetic-token cleaning",
+    "primary_scope": "all eligible physical lines pooled",
+    "secondary_scope": "section-wise using voynich_section_map.json"
+  },
+  "primary_metric": {
+    "name": "ed1_chain_lift",
+    "definition": "P(ED1 at transition i+1 | ED1 at transition i) - P(ED1 at an adjacent transition), computed only within lines; exact-equal pairs are not ED1.",
+    "relation": "character Levenshtein distance exactly one",
+    "secondary": ["ed1_chain_rate", "ed1_rate_l1", "ed1_rate_l2", "ed1_rate_l3", "ed1_rate_l4", "exact_rate_l1", "len_close_l1", "len_diff_mean_l1", "aba_rate", "ed1_return_rate"]
+  },
+  "legacy_arms": {
+    "GPRIME": {
+      "status": "specification reconstruction",
+      "source_record": "2026-07-08 G-prime preregistration/results",
+      "parameters": {"region_tokens": 64, "beta": 8.0, "double_substitution_s": 0.186, "adjacent_nearforming_mu": 0.0009},
+      "mechanism": "frequency-weighted global type distribution; each page split into 64-token regions; frequency-weighted anchor plus its ED1 radius-1 ball boosted x8; iid draws within region; would-be adjacent exact doubles converted to an ED1 neighbour with probability .186; independently replace current token by an ED1 neighbour of predecessor with probability .0009.",
+      "seeds": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
+      "no_retuning": true
+    },
+    "TIMM_DEFAULT": {
+      "status": "exact published executable",
+      "repository": "TorstenTimm/SelfCitationTextgenerator",
+      "commit": "a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7",
+      "seeds": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    },
+    "TIMM_NOREUSE": {
+      "status": "exact frozen causal ablation",
+      "change": "method.morph.reuse_last.probability=10 -> 0",
+      "seeds": [1,2,3,4,5,6,7,8,9,10]
+    },
+    "TIMM_RANDOM_SOURCE": {
+      "status": "exact frozen mechanistic ablation",
+      "change": "method.sourceChooser=page -> random",
+      "seeds": [1,2,3,4,5,6,7,8,9,10]
+    },
+    "TIMM_POSITION_SOURCE": {
+      "status": "exact frozen mechanistic ablation",
+      "change": "method.sourceChooser=page -> position",
+      "seeds": [1,2,3,4,5,6,7,8,9,10]
+    },
+    "Q57B": {
+      "status": "exact replay only if complete archived dependency stack is available",
+      "parameters": {"Herbal-A": {"beta": 0.1, "gamma": 0.18, "edge_lambda": 0.35}, "Stars": {"beta": 0.15, "gamma": 0.18, "edge_lambda": 0.35}},
+      "rule": "If q56_injective_anonymous_realiser.py is unavailable, record NOT_EXACTLY_REPLAYABLE and do not substitute a later generator."
+    }
+  },
+  "controls": {
+    "within_line_shuffle": {"per_target": 500, "per_model_seed": 50, "preserves": "exact token multiset and line lengths", "purpose": "destroy transition ordering while retaining each line inventory"},
+    "line_order_shuffle": {"repetitions": 20, "expected": "ed1_chain_lift exactly invariant up to floating point", "purpose": "implementation QA"}
+  },
+  "adjudication": {
+    "equivalence_margin_relative": 0.25,
+    "null_z_min": 2.0,
+    "model_match": "same sign as target AND abs(model_median/target - 1) <= 0.25 AND model_median exceeds its pooled within-line-shuffle null by z>=2",
+    "model_partial": "same sign as target AND abs(model_median/target - 1) <= 0.50 but full match fails",
+    "primary_rules": [
+      "CHAIN_LIFT_ALREADY_IMPLIED_BY_LEGACY_MECHANISM if GPRIME or TIMM_DEFAULT is MODEL_MATCH",
+      "CHAIN_LIFT_NEW_MECHANISTIC_GAP_WITHIN_TESTED_LEGACY_ARMS if neither GPRIME nor TIMM_DEFAULT is MODEL_MATCH",
+      "Q57B absence cannot by itself trigger or prevent either verdict and must be disclosed"
+    ],
+    "ablation_interpretation": "Ablations are causal diagnostics only and cannot be selected as the winning legacy mechanism."
+  },
+  "prohibitions": [
+    "No fitting or parameter search against ed1_chain_lift",
+    "No target-dependent choice among generator variants",
+    "No invented EVA-to-RF/STA/aaa conversion",
+    "No replacement of an unrecoverable Q57b dependency with a later generator",
+    "No semantic interpretation from a chain-lift match"
+  ]
+}
