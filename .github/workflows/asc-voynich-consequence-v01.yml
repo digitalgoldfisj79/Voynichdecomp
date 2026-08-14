@@ -1,6 +1,9 @@
 name: Voynich Consequence Panel v0.1
 
 on:
+  push:
+    branches:
+      - experiment/saltzman-voynich-consequence-v0.1-20260814
   workflow_dispatch:
 
 permissions:
