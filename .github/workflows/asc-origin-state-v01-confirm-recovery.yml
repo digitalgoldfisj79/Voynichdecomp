@@ -1,0 +1,133 @@
+name: ASC Origin State v0.1 Confirmation Recovery
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-state-h3-20260814
+    paths:
+      - .github/workflows/asc-origin-state-v01-confirm-recovery.yml
+
+permissions:
+  actions: read
+  contents: read
+
+env:
+  SOURCE_RUN_ID: 31785635980
+  FREEZE_SHA: ad6a85bc24114a9e5c19c85ce6c3fee6a4dbfbbd6dbc1cbb0776f3cdda888be6
+
+jobs:
+  confirmation:
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p3/inputs /tmp/p3/results /tmp/selection
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3
+          unzip -q /tmp/payload.zip
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+          echo '926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5  scorer.py' | sha256sum -c -
+          echo 'eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838  mechanisms.py' | sha256sum -c -
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-rem
+          path: /tmp/p3/inputs
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-selection
+          path: /tmp/selection
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Verify sealed inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f /tmp/p3/inputs/rem_docs.json.xz
+          test -f /tmp/selection/results/SELECTION.json
+          python - <<'PY'
+          import json
+          s=json.load(open('/tmp/selection/results/SELECTION.json'))
+          assert s['advanced']==['TYPE_LOCKED_RANDOM_K2','TYPE_HASH_K2','RUN4_LOCKED_K2','RUN4_LOCKED_K4']
+          assert s['minimal_entropy']==2
+          print('sealed selection verified')
+          PY
+      - name: Run sealed confirmation shard
+        working-directory: /tmp/p3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python run_phase3_remote.py confirmation ${{ matrix.shard }} 10 /tmp/selection/results/SELECTION.json | tee CONFIRMATION.log
+          test -s results/CONFIRMATION_SHARD_${{ matrix.shard }}_OF_10.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: origin-state-confirmation-recovery-${{ matrix.shard }}
+          path: |
+            /tmp/p3/results/CONFIRMATION_SHARD_*_OF_10.json
+            /tmp/p3/CONFIRMATION.log
+          retention-days: 7
+
+  merge:
+    needs: confirmation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scoring payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p3/results /tmp/confirmation /tmp/selection
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p3
+          unzip -q /tmp/payload.zip
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/origin_operators.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase3/run_phase3_remote.py" .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: origin-state-confirmation-recovery-*
+          path: /tmp/confirmation
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          name: origin-state-selection
+          path: /tmp/selection
+          github-token: ${{ github.token }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Merge and adjudicate
+        working-directory: /tmp/p3
+        shell: bash
+        run: |
+          set -euo pipefail
+          python run_phase3_remote.py merge /tmp/confirmation /tmp/selection/results/SELECTION.json | tee FINAL.log
+          test -s results/SUMMARY.json
+          test -s results/CONFIRMATION_COMBINED.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-origin-state-v01-final-recovery
+          path: |
+            /tmp/p3/results/SUMMARY.json
+            /tmp/p3/results/CONFIRMATION_COMBINED.json
+            /tmp/p3/FINAL.log
+          retention-days: 7
