@@ -1,0 +1,189 @@
+name: ASC RF-STA Replay v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-rf-sta-replay-v0.1-20260814
+    paths:
+      - '.github/workflows/asc-rf-sta-replay-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PROTOCOL_SHA: 8952d3d7990a349e3f8b6cbce4786a69067ace95bed6e07ef935efb072741592
+  SCORER_SHA: 926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5
+  RF_SHA: 81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17
+  BITRANS_SHA: 3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a
+  AAA_TABLE_SHA: 622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64
+  AAA_OUTPUT_SHA: c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167
+  PHASE8_PROTOCOL_SHA: 36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy
+      - name: Verify frozen design and unchanged scorer
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$PROTOCOL_SHA  saltzman_rfsta_v01/protocol.json" | sha256sum -c -
+          test "$(cat saltzman_rfsta_v01/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
+          python -m py_compile saltzman_rfsta_v01/run_rf_sta_replay.py
+          ! grep -q 'enriched_records.pkl' saltzman_rfsta_v01/protocol.json
+          ! grep -q 'enriched_records.pkl' saltzman_rfsta_v01/run_rf_sta_replay.py
+          mkdir -p /tmp/sc
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/sc
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          python - <<'PY'
+          import scorer
+          scorer.self_test_ed1()
+          print('SCORER_SELF_TEST_OK')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rf-sta-freeze
+          path: |
+            saltzman_rfsta_v01/protocol.json
+            saltzman_rfsta_v01/PROTOCOL_SHA256
+            saltzman_rfsta_v01/PREREGISTRATION.md
+            saltzman_rfsta_v01/TARGET_FREE_QA.md
+            saltzman_rfsta_v01/run_rf_sta_replay.py
+          retention-days: 14
+
+  sources:
+    needs: freeze
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve and verify RF/STA sources; regenerate aaa
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rfsta
+          cd /tmp/rfsta
+          curl --fail --location --retry 3 --silent --show-error 'https://mail.voynich.nu/data/sta/RF1b.txt' -o RF1b.txt
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/bitrans.c' -o bitrans.c
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/STA-aaa.bit' -o STA-aaa.bit
+          echo "$RF_SHA  RF1b.txt" | sha256sum -c -
+          echo "$BITRANS_SHA  bitrans.c" | sha256sum -c -
+          echo "$AAA_TABLE_SHA  STA-aaa.bit" | sha256sum -c -
+          gcc -O2 bitrans.c -o bitrans
+          ./bitrans -1 -s -w1 -f STA-aaa.bit RF1b.txt RF1b.aaa.txt 2>BITRANS.log
+          echo "$AAA_OUTPUT_SHA  RF1b.aaa.txt" | sha256sum -c -
+          grep -E '0 line|0.*incomplete|Starting|processed' BITRANS.log || true
+          sha256sum RF1b.txt bitrans.c STA-aaa.bit RF1b.aaa.txt > SOURCE_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rf-sta-sources
+          path: |
+            /tmp/rfsta/RF1b.txt
+            /tmp/rfsta/STA-aaa.bit
+            /tmp/rfsta/RF1b.aaa.txt
+            /tmp/rfsta/BITRANS.log
+            /tmp/rfsta/SOURCE_SHA256.txt
+          retention-days: 14
+
+  target:
+    needs: sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy
+      - uses: actions/download-artifact@v4
+        with:
+          name: rf-sta-sources
+          path: /tmp/rfsta_inputs
+      - name: Restore frozen scorer and compute representation-specific Voynich Q
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rfsta_run/results
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/rfsta_run
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/run_rf_sta_replay.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/protocol.json" .
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/PROTOCOL_SHA256" .
+          cp /tmp/rfsta_inputs/RF1b.txt .
+          cp /tmp/rfsta_inputs/STA-aaa.bit .
+          python run_rf_sta_replay.py target RF1b.txt STA-aaa.bit results/TARGETS.json | tee TARGET.log
+          test -s results/TARGETS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rf-sta-targets
+          path: |
+            /tmp/rfsta_run/results/TARGETS.json
+            /tmp/rfsta_run/TARGET.log
+          retention-days: 14
+
+  replay:
+    needs: target
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy
+      - uses: actions/download-artifact@v4
+        with:
+          name: rf-sta-targets
+          path: /tmp/targets
+      - uses: actions/download-artifact@v4
+        with:
+          name: asc-mechanism-cipher-order-v01-final
+          path: /tmp/p8
+          run-id: 31800905368
+          github-token: ${{ github.token }}
+      - name: Verify immutable Phase 8 and replay without resimulation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s /tmp/p8/results/COMBINED.json
+          python - <<'PY'
+          import json
+          z=json.load(open('/tmp/p8/results/COMBINED.json'))
+          assert z['protocol_sha256']=='36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4'
+          assert len({c['corpus'] for c in z['cells']})==190
+          print('PHASE8_IMMUTABLE_Q_VECTORS_OK',len(z['cells']))
+          PY
+          mkdir -p /tmp/rfsta_final/results
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/rfsta_final
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/run_rf_sta_replay.py" .
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/protocol.json" .
+          cp "$GITHUB_WORKSPACE/saltzman_rfsta_v01/PROTOCOL_SHA256" .
+          cp /tmp/targets/TARGETS.json .
+          python run_rf_sta_replay.py replay TARGETS.json /tmp/p8/results/COMBINED.json results/SUMMARY.json | tee FINAL.log
+          test -s results/SUMMARY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-rf-sta-replay-v01-final
+          path: |
+            /tmp/rfsta_final/results/SUMMARY.json
+            /tmp/rfsta_final/TARGETS.json
+            /tmp/rfsta_final/FINAL.log
+          retention-days: 14
