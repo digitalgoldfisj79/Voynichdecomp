@@ -1,0 +1,185 @@
+name: ASC Mechanism Cipher Order v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-ordering-v0.1-20260814
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PROTOCOL_SHA: 36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4
+  SCORER_SHA: 926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5
+  MECHANISMS_SHA: eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838
+  PERSISTENCE_BLOB: d6ad9687c7bd76226d37f53324a064909375cb66
+  RESET_BLOB: adde3260a28aa987dc27aed54daf6a5afa67acac
+  PANEL_SHA: fe3ea81545f998f0eb5dea896d6a4c4485e8bf76fac790193e665e1747a30bf0
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy
+      - name: Verify frozen Phase 8 before any target scorer exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum saltzman_phase8/protocol.json
+          echo "$PROTOCOL_SHA  saltzman_phase8/protocol.json" | sha256sum -c -
+          test "$(cat saltzman_phase8/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
+          python - <<'PY'
+          import json
+          z=json.load(open('saltzman_phase8/PHASE7_REFERENCE.json'))
+          assert z['replication_guard_pass'] is True
+          assert z['protocol_sha256']=='b17c9cb4f13b7f8f76e25ce636177929560ead0c6512190a99fb2c38a24c5c52'
+          print('PHASE7_PREREQUISITE_OK',z['adjudication'])
+          PY
+          test "$(git hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
+          test "$(git hash-object saltzman_phase7/reset_operators.py)" = "$RESET_BLOB"
+          echo "$PANEL_SHA  saltzman_phase9/SEALED_VOYNICH_CONSEQUENCE_PANEL.json" | sha256sum -c -
+          python -m py_compile saltzman_phase8/design_utils.py saltzman_phase8/run_phase8_remote.py
+          python saltzman_phase8/design_utils.py
+          echo "FROZEN_PROTOCOL_SHA=$PROTOCOL_SHA"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mechanism-cipher-order-freeze
+          path: |
+            saltzman_phase8/protocol.json
+            saltzman_phase8/PROTOCOL_SHA256
+            saltzman_phase8/PREREGISTRATION.md
+            saltzman_phase8/TARGET_FREE_QA.md
+            saltzman_phase8/PHASE7_REFERENCE.json
+            saltzman_phase8/design_utils.py
+            saltzman_phase8/run_phase8_remote.py
+            saltzman_phase9/SEALED_VOYNICH_CONSEQUENCE_PANEL.json
+            saltzman_phase9/SEALED_VOYNICH_CONSEQUENCE_PANEL_SHA256
+            saltzman_phase9/FINAL_PIPELINE_SELECTION_RULE.json
+            saltzman_phase9/FINAL_PIPELINE_SELECTION_RULE_SHA256
+          retention-days: 14
+
+  build-rem:
+    needs: freeze
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build exact canonical ReM corpus
+        run: |
+          mkdir -p /tmp/rem
+          cd /tmp/rem
+          python "$GITHUB_WORKSPACE/saltzman_phase3/build_rem_docs.py" rem_docs.json.xz | tee BUILD_REM.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mechanism-cipher-order-rem
+          path: |
+            /tmp/rem/rem_docs.json.xz
+            /tmp/rem/BUILD_REM.log
+          retention-days: 14
+
+  score:
+    needs: [freeze, build-rem]
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scorer and exact operators
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p8/inputs /tmp/p8/results
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p8
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          echo "$MECHANISMS_SHA  mechanisms.py" | sha256sum -c -
+          test "$(git -C "$GITHUB_WORKSPACE" hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
+          test "$(git -C "$GITHUB_WORKSPACE" hash-object saltzman_phase7/reset_operators.py)" = "$RESET_BLOB"
+          cp "$GITHUB_WORKSPACE/saltzman_phase4/persistence_operators.py" persistence_operators.py
+          cp "$GITHUB_WORKSPACE/saltzman_phase7/reset_operators.py" reset_operators.py
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/"*.py .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/protocol.json" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/PROTOCOL_SHA256" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/PHASE7_REFERENCE.json" .
+          echo "$PROTOCOL_SHA  protocol.json" | sha256sum -c -
+      - uses: actions/download-artifact@v4
+        with:
+          name: mechanism-cipher-order-rem
+          path: /tmp/p8/inputs
+      - name: Score frozen ordering shard ${{ matrix.shard }}
+        working-directory: /tmp/p8
+        run: python run_phase8_remote.py score ${{ matrix.shard }} 12 | tee SCORE.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mechanism-cipher-order-score-s${{ matrix.shard }}
+          path: |
+            /tmp/p8/results/SCORE_SHARD_*_OF_12.json
+            /tmp/p8/SCORE.log
+          retention-days: 14
+
+  merge:
+    needs: score
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Restore frozen scorer and Phase 8 code
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p8/results /tmp/scored
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p8
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          echo "$MECHANISMS_SHA  mechanisms.py" | sha256sum -c -
+          cp "$GITHUB_WORKSPACE/saltzman_phase4/persistence_operators.py" persistence_operators.py
+          cp "$GITHUB_WORKSPACE/saltzman_phase7/reset_operators.py" reset_operators.py
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/"*.py .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/protocol.json" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/PROTOCOL_SHA256" .
+          cp "$GITHUB_WORKSPACE/saltzman_phase8/PHASE7_REFERENCE.json" .
+          echo "$PROTOCOL_SHA  protocol.json" | sha256sum -c -
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: mechanism-cipher-order-score-*
+          path: /tmp/scored
+          merge-multiple: true
+      - name: Merge and adjudicate without parameter selection
+        working-directory: /tmp/p8
+        run: |
+          python run_phase8_remote.py merge /tmp/scored | tee FINAL.log
+          test -s results/SUMMARY.json
+          test -s results/COMBINED.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-mechanism-cipher-order-v01-final
+          path: |
+            /tmp/p8/results/SUMMARY.json
+            /tmp/p8/results/COMBINED.json
+            /tmp/p8/FINAL.log
+          retention-days: 14
