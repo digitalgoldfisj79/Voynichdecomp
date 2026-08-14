@@ -1,0 +1,101 @@
+name: Voynich Frontier v0.1
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-frontier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact branch state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install programme dependencies
+        run: python -m pip install --disable-pip-version-check -q numpy scipy scikit-learn pandas pytest
+
+      - name: Compile and smoke test
+        working-directory: experiments/frontier_v0_1
+        run: |
+          python -m compileall -q src
+          python -m pytest -q
+
+      - name: Run Gate 0 without relaxing any threshold
+        id: gate0
+        working-directory: experiments/frontier_v0_1
+        shell: bash
+        run: |
+          mkdir -p results/gate0
+          set +e
+          python -m src.gate0_freeze \
+            --repo-root ../.. \
+            --fold-manifest data/fold_manifest.json \
+            --out results/gate0 2>&1 | tee results/gate0/GATE0_STDOUT.txt
+          code=${PIPESTATUS[0]}
+          set -e
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          if [ "$code" -ne 0 ]; then
+            echo '{"formal_verdict":"FAIL","target_opened":false,"reason":"Gate 0 process failed; dependent targets remain sealed"}' > results/gate0/EXECUTION_BLOCK.json
+          fi
+
+      - name: Run U1 uncertainty lattice only if Gate 0 passed
+        if: steps.gate0.outputs.exit_code == '0'
+        working-directory: experiments/frontier_v0_1
+        run: |
+          mkdir -p results/u1
+          python -m src.transliteration_uncertainty build \
+            --slim ../../voynich_transcriptions_slim.json \
+            --out results/u1 \
+            --config PROGRAMME_CONFIG.json | tee results/u1/U1_STDOUT.txt
+          python -m src.transliteration_uncertainty sample \
+            --lattice results/u1/LINE_LATTICE.jsonl \
+            --seed 20260814 \
+            --out results/u1/POSTERIOR_SAMPLE_SEED_20260814.jsonl
+
+      - name: Record sealed downstream stages
+        if: always()
+        working-directory: experiments/frontier_v0_1
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          root=pathlib.Path('results')
+          gate0=(root/'gate0'/'GATE0_RESULT.json')
+          g=json.loads(gate0.read_text()) if gate0.exists() else {'formal_verdict':'FAIL'}
+          u1p=root/'u1'/'U1_LATTICE_SUMMARY.json'
+          u1=json.loads(u1p.read_text()) if u1p.exists() else {'formal_verdict':'NOT_RUN'}
+          status={
+            'programme':'voynich-frontier-v0.1',
+            'gate0':g,
+            'u1_lattice':u1,
+            'u1_effect_test':{'formal_verdict':'NOT_OPENED','target_opened':False,'reason':'effect adapters/calibration not implemented in v0.1 build'},
+            'u2':{'formal_verdict':'NOT_OPENED','target_opened':False,'reason':'page-to-folio mapping panel and independent folio-label panel not yet present in frozen build'},
+            'u3':{'formal_verdict':'ABSTAIN_UNRESOLVED','target_opened':False,'reason':'synthetic calibration and leave-feature-family-out gates are prerequisites'},
+            'u4':{'formal_verdict':'SEALED_INHERITED_SURFACE_GATE_FAIL','target_opened':False,'reason':'prior surface closure: 4/5 absolute adequacy, 3/5 dynamic-better; overall FAIL'},
+            'u5':{'formal_verdict':'NOT_OPENED','target_opened':False,'reason':'blind recovery/recognition instrument not qualified in this build'},
+            'u6':{'formal_verdict':'NOT_OPENED','target_opened':False,'reason':'VTPS target labels remain sealed pending qualified external instrument'}
+          }
+          (root/'RUN_STATUS.json').write_text(json.dumps(status,indent=2,sort_keys=True)+'\n')
+          PY
+          find results -type f -print0 | sort -z | xargs -0 sha256sum > results/SHA256SUMS
+
+      - name: Upload complete run artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voynich-frontier-v0-1-run-${{ github.sha }}
+          path: experiments/frontier_v0_1/results
+          if-no-files-found: error
+          retention-days: 30
