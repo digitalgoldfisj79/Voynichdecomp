@@ -1,0 +1,54 @@
+name: Frontier U5-C Voynich compatibility
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u5c-target.yml'
+      - 'experiments/frontier_v0_1/U5_TARGET_PROTOCOL_v0_1.md'
+      - 'experiments/frontier_v0_1/src/u5_target_score.py'
+
+permissions:
+  contents: write
+
+jobs:
+  reproduce-then-open-target:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+      - name: Checkout public Naibbe reference implementation
+        uses: actions/checkout@v4
+        with:
+          repository: greshko/naibbe-cipher
+          ref: main
+          path: naibbe
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen scorer dependencies
+        run: pip install 'numpy<2' 'scikit-learn>=1.4,<1.6'
+      - name: Reproduce frozen recogniser before target opening, then score target once
+        run: |
+          python experiments/frontier_v0_1/src/u5_target_score.py \
+            --records enriched_records.pkl \
+            --slim voynich_transcriptions_slim.json \
+            --naibbe-repo naibbe \
+            --u5b-result experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RECOGNITION_RESULT.json \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u5
+      - name: Persist target result
+        run: |
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/frontier_v0_1/runs/2026-08-14/u5/U5C_INSTRUMENT_REPRODUCTION.json \
+                  experiments/frontier_v0_1/runs/2026-08-14/u5/U5C_VOYNICH_COMPATIBILITY_RESULT.json \
+                  experiments/frontier_v0_1/runs/2026-08-14/u5/U5C_RESULT.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record U5-C frozen Voynich compatibility result [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
