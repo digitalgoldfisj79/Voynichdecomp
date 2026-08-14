@@ -1,4 +1,4 @@
-# Execution amendment 01: exact authoritative SECTION_MAP bytes restored; scientific protocol unchanged.
+# Execution amendment 02: verify canonical JSON map hash because GitHub UTF-8 contents serialization differs bytewise; scientific mapping unchanged.
 name: ASC Section Residual Fingerprint v0.1
 
 on:
@@ -17,6 +17,7 @@ env:
   PROTOCOL_SHA: b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0
   RUNNER_SHA: 36f727cf1594fe015eb4bcb30c2d564a42641997047f73f2d0dc8e9eee11154a
   SECTION_MAP_SHA: a5d2a9e7aec3d3511ff00de828a17abd2d2255d065c70940ba72ed8abc753cb3
+  SECTION_MAP_CANONICAL_SHA: 88a581352476a5fa09b970c38e9ea08b18be3e7cbe486cc1cfc018caf25c7bb0
   RF_SHA: 81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17
   BITRANS_SHA: 3ffc7e6c74078f9b395179aaf5daaae3c8dfbc2896d21162c8ff0354108e9a
   AAA_TABLE_SHA: 622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64
@@ -42,7 +43,14 @@ jobs:
           set -euo pipefail
           echo "$PROTOCOL_SHA  saltzman_residual_v01/protocol.json" | sha256sum -c -
           test "$(cat saltzman_residual_v01/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
-          echo "$SECTION_MAP_SHA  saltzman_residual_v01/SECTION_MAP.json" | sha256sum -c -
+          python - <<'PY'
+          import json,hashlib,os
+          z=json.load(open('saltzman_residual_v01/SECTION_MAP.json'))
+          b=json.dumps(z,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+          got=hashlib.sha256(b).hexdigest(); exp=os.environ['SECTION_MAP_CANONICAL_SHA']
+          assert got==exp,(got,exp)
+          print('SECTION_MAP_CANONICAL_OK',got)
+          PY
           cat saltzman_residual_v01/run_section_residual.part00 \
               saltzman_residual_v01/run_section_residual.part01 \
               saltzman_residual_v01/run_section_residual.part02 \
