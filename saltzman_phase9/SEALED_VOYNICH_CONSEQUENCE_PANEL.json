@@ -1,0 +1,115 @@
+{
+  "panel": "VOYNICH-CONSEQUENCE-PANEL-v0.1",
+  "date": "2026-08-14",
+  "freeze_timing": "Frozen while Phase-6 target scoring is still in progress, before Phase-6/7/8 adjudications are visible.",
+  "purpose": "Confirmatory assessment of the final frozen mechanism+cipher ordering against Voynich consequences not used to discover the Saltzman origin-state mechanism.",
+  "discovery_metrics_excluded": {
+    "Q_order": [
+      "ED1_N0",
+      "ED1_N1",
+      "ED1_N3",
+      "E1_N0"
+    ],
+    "rule": "The four Saltzman Q metrics may be reported descriptively but cannot contribute to Phase-9 adjudication or model selection."
+  },
+  "metric_source": {
+    "implementation": "Paper/Cipher_paper/S5_score_85_metrics.py",
+    "tolerances": "the pre-existing v2 empirical TOLERANCES in that file",
+    "vms_target": "the pre-existing VMS baseline used by the 85-metric suite; do not recompute from a transformed representation after Phase-8 results"
+  },
+  "families": {
+    "sequential": [
+      "autocorr_wordlen",
+      "autocorr_wordfreq",
+      "autocorr_ttr_25",
+      "autocorr_hapax_25"
+    ],
+    "positional": [
+      "wordbias_mean",
+      "wordbias_lines_mean",
+      "charbias_mean",
+      "charbias_words_mean"
+    ],
+    "information": [
+      "H1_unigram",
+      "H2_markov_cond",
+      "h3_conditional",
+      "char_redundancy"
+    ],
+    "morpholexical": [
+      "wordlen_mean",
+      "wordlen_unique_mean",
+      "msttr_25",
+      "heaps_beta"
+    ],
+    "distribution": [
+      "chardist_max",
+      "digraph_coverage",
+      "zipf_lmz",
+      "compression"
+    ],
+    "repetition": [
+      "repeated_words",
+      "tripled_words",
+      "repeated_chars",
+      "flipped_pairs"
+    ]
+  },
+  "metric_count": 24,
+  "loss": {
+    "per_metric": "abs(model_metric - VMS_target_metric) / pre-existing TOLERANCE[metric]",
+    "per_document": "median normalized loss over the 24 locked metrics",
+    "primary_gain": "per_document_loss(cipher_only) - per_document_loss(final_pipeline); positive means the final pipeline improves held-out Voynich fit",
+    "bootstrap": {
+      "unit": "ReM document",
+      "resamples": 10000,
+      "ci": 0.95,
+      "seed_namespace": "VOYNICH-CONSEQUENCE-PANEL-v0.1|bootstrap"
+    }
+  },
+  "family_guard": {
+    "rule": "Compute the median normalized-loss gain within each of the six metric families. A broad improvement requires positive median gain in at least five of six families.",
+    "catastrophic_degradation": "No family may have median gain < -0.5 normalized tolerance units."
+  },
+  "line_boundary_holdout": {
+    "metrics": [
+      "exact-token adjacent-repeat rate across line boundaries minus matched within-line adjacent-repeat rate",
+      "absolute word-length difference across line boundaries minus matched within-line adjacent word-length difference"
+    ],
+    "target": "Compute once on the frozen Voynich transcription/lineation used by the existing scorer, with line-level bootstrap 95% intervals.",
+    "model_rule": "For cipher-only and final pipeline, compute the same two contrasts on synthetic lines without fitting any threshold or state parameter.",
+    "use": "Secondary confirmatory prediction; direction and interval overlap are reported, not used to choose among Phase-8 orderings."
+  },
+  "primary_adjudication": {
+    "CONFIRMATORY_BROAD_IMPROVEMENT": "Primary gain lower 95% CI > 0, at least 5/6 families have positive median gain, and no family violates catastrophic-degradation guard.",
+    "CONFIRMATORY_NO_GAIN": "Primary gain upper 95% CI <= 0.",
+    "CONFIRMATORY_NARROW_OR_MIXED": "Any other result."
+  },
+  "representation_robustness": {
+    "locked_representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "external_extension": [
+      "RF",
+      "STA-family",
+      "full-STA",
+      "aaa"
+    ],
+    "rule": "ATOMIC/LITERAL are mandatory. RF/STA/aaa are run only if their frozen transliterations and VMS targets can be recovered without re-estimation; they are robustness extensions, never a basis for tuning the final pipeline."
+  },
+  "comparison_set": [
+    "CIPHER_ONLY",
+    "FINAL_PIPELINE"
+  ],
+  "no_tuning": [
+    "no metric substitution",
+    "no tolerance changes",
+    "no best-folio selection",
+    "no best-section selection",
+    "no cipher retuning",
+    "no state retuning",
+    "no representation selection",
+    "no Q-based Phase-9 adjudication"
+  ]
+}
