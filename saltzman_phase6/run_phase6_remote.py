@@ -10,7 +10,7 @@ from dwell_operators import states_for_phase6_arm, self_tests as dwell_self_test
 from design_utils import adjudicate as design_adjudicate, self_tests as design_self_tests
 
 ROOT=Path(__file__).resolve().parent
-PROTOCOL_SHA="5a75df7cdc08dcb6a7c078801aabdce9e4d939b712a0a4460987624a18610710"
+PROTOCOL_SHA="0b1928efa25cc54e82e0f4edea08d5cd42777b123e00899c9666acb768ae5d3b"
 SCHEDULE="SWITCH_LINE"
 WIDTH=10
 REPS=("ATOMIC","LITERAL")
