@@ -34,6 +34,34 @@ jobs:
           python-version: '3.11'
       - name: Install frozen scorer dependencies
         run: pip install 'numpy<2' 'scikit-learn>=1.4,<1.6'
+      - name: Prefetch frozen U5-B development sources with retry
+        run: |
+          set -euo pipefail
+          CACHE='experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache'
+          mkdir -p "$CACHE"
+          curl -fL --retry 10 --retry-delay 2 --retry-all-errors \
+            'https://www.gutenberg.org/cache/epub/218/pg218.txt' \
+            -o "$CACHE/train_la.txt"
+          curl -fL --retry 10 --retry-delay 2 --retry-all-errors \
+            'https://www.gutenberg.org/cache/epub/52484/pg52484.txt' \
+            -o "$CACHE/train_it.txt"
+      - name: Verify frozen normalized training lengths before target opening
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, 'experiments/frontier_v0_1/src')
+          import u5_verbose_recognition as u5
+          base=Path('experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache')
+          expected={'la':123354,'it':194755}
+          for iso,n in expected.items():
+              raw=(base/f'train_{iso}.txt').read_text(encoding='utf-8', errors='ignore')
+              normalized=u5.normalize(u5.strip_gutenberg(raw))
+              print(iso, len(normalized), 'expected', n)
+              if len(normalized) != n:
+                  raise SystemExit(f'pre-target source drift for {iso}: {len(normalized)} != {n}')
+          print('U5C_SOURCE_PREFLIGHT_PASS')
+          PY
       - name: Reproduce frozen recogniser before target opening, then score target once
         run: |
           python experiments/frontier_v0_1/src/u5_target_score.py \
