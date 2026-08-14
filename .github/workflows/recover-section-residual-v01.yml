@@ -1,0 +1,100 @@
+name: Recover ASC Section Residual v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-section-residual-v0.1-20260814
+    paths:
+      - '.github/workflows/recover-section-residual-v01.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PROTOCOL_SHA: b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0
+  RUNNER_SHA: 36f727cf1594fe015eb4bcb30c2d564a42641997047f73f2d0dc8e9eee11154a
+  RF_SHA: 81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17
+  BITRANS_SHA: 3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a
+  AAA_TABLE_SHA: 622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64
+  AAA_OUTPUT_SHA: c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167
+  SCORE_RUN_ID: 31810009033
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Reconstruct and verify frozen runner/protocol
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/recover/results /tmp/recover/rfsta /tmp/recover/scored
+          cat saltzman_residual_v01/run_section_residual.part00 \
+              saltzman_residual_v01/run_section_residual.part01 \
+              saltzman_residual_v01/run_section_residual.part02 \
+              saltzman_residual_v01/run_section_residual.part03 > /tmp/recover/run_section_residual.py
+          echo "$RUNNER_SHA  /tmp/recover/run_section_residual.py" | sha256sum -c -
+          echo "$PROTOCOL_SHA  saltzman_residual_v01/protocol.json" | sha256sum -c -
+          cp saltzman_residual_v01/protocol.json /tmp/recover/protocol.json
+          cp saltzman_residual_v01/SECTION_MAP.json /tmp/recover/SECTION_MAP.json
+      - name: Retrieve and verify RF/STA provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/recover/rfsta
+          curl --fail --location --retry 3 --silent --show-error 'https://mail.voynich.nu/data/sta/RF1b.txt' -o RF1b.txt
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/bitrans.c' -o bitrans.c
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/STA-aaa.bit' -o STA-aaa.bit
+          echo "$RF_SHA  RF1b.txt" | sha256sum -c -
+          echo "$BITRANS_SHA  bitrans.c" | sha256sum -c -
+          echo "$AAA_TABLE_SHA  STA-aaa.bit" | sha256sum -c -
+          gcc -O2 bitrans.c -o bitrans
+          ./bitrans -1 -s -w1 -f STA-aaa.bit RF1b.txt RF1b.aaa.txt 2>BITRANS.log
+          echo "$AAA_OUTPUT_SHA  RF1b.aaa.txt" | sha256sum -c -
+      - name: Compute frozen section-conditioned Voynich fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp/recover
+          python run_section_residual.py vms rfsta/RF1b.txt rfsta/STA-aaa.bit SECTION_MAP.json results/VMS_FINGERPRINTS.json | tee VMS.log
+          test -s results/VMS_FINGERPRINTS.json
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: section-residual-score-*
+          path: /tmp/recover/scored
+          merge-multiple: true
+          run-id: 31810009033
+          github-token: ${{ github.token }}
+      - name: Verify all frozen score shards and adjudicate
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import glob,json
+          fs=glob.glob('/tmp/recover/scored/**/SCORE_SHARD_*.json',recursive=True)
+          assert len(fs)==12,len(fs)
+          docs=set()
+          for f in fs:
+              z=json.load(open(f)); assert z['protocol_sha256']=='b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0'; docs.update(z['docs'])
+          assert len(docs)==190,len(docs)
+          print('FROZEN_SCORE_SHARDS_OK',len(fs),len(docs))
+          PY
+          cd /tmp/recover
+          python run_section_residual.py merge results/VMS_FINGERPRINTS.json '/tmp/recover/scored/**/SCORE_SHARD_*.json' results/SUMMARY.json | tee FINAL.log
+          test -s results/SUMMARY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-section-residual-v01-final-recovered
+          path: |
+            /tmp/recover/results/SUMMARY.json
+            /tmp/recover/results/VMS_FINGERPRINTS.json
+            /tmp/recover/FINAL.log
+            /tmp/recover/VMS.log
+            /tmp/recover/rfsta/BITRANS.log
+          retention-days: 14
