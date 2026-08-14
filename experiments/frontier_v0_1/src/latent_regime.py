@@ -79,16 +79,13 @@ def main():
     med_ari, assign = bootstrap_stability(Xw, k, cfg["global"]["default_seed"], uc["bootstrap_reps"])
     fold_wins = sum(scores[k][i] > scores[1][i] for i in range(len(scores[1]))) if k != 1 else 0
     if k == 1:
-        formal = "PASS"
-        interpretation = "ONE_STATE_SELECTED"
+        interpretation = "ONE_STATE_PRESELECTION_REQUIRES_SYNTHETIC_CALIBRATION"
     elif fold_wins >= uc["min_outer_fold_wins"] and med_ari >= uc["min_stability_ari"]:
-        formal = "PASS"
-        interpretation = f"DISCRETE_K{k}_CANDIDATE_REQUIRES_CALIBRATION_AND_LOFO"
+        interpretation = f"DISCRETE_K{k}_CANDIDATE_REQUIRES_SYNTHETIC_CALIBRATION_AND_LOFO"
     else:
-        formal = "ABSTAIN_UNRESOLVED"
         interpretation = "UNSTABLE_DISCRETE_STRUCTURE"
     res = {
-        "formal_verdict": formal,
+        "formal_verdict": "ABSTAIN_UNRESOLVED",
         "target_opened": False,
         "selected_k": k,
         "heldout_mean_loglik": means,
@@ -96,7 +93,7 @@ def main():
         "fold_wins_vs_k1": fold_wins,
         "median_bootstrap_ari": med_ari,
         "interpretation": interpretation,
-        "warning": "Currier/hand/section associations must remain sealed until calibration and leave-feature-family-out gates pass."
+        "warning": "This is preselection only. Synthetic calibration and leave-feature-family-out gates must pass before any regime claim or Currier/hand/section association is opened."
     }
     a.out.mkdir(parents=True, exist_ok=True)
     atomic_json(a.out / "U3_PRESELECTION.json", res)
