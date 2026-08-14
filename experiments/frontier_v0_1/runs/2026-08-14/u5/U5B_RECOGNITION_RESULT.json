@@ -1,0 +1,167 @@
+{
+  "calibration_metrics": {
+    "aggregate_fpr": 0.0,
+    "fn": 0,
+    "fp": 0,
+    "per_family_fpr": {
+      "dependent_slot3": 0.0,
+      "global_char_reshuffle": 0.0,
+      "token_internal_shuffle": 0.0,
+      "type_recode": 0.0
+    },
+    "precision": 1.0,
+    "recall": 1.0,
+    "tp": 40
+  },
+  "calibration_n": 200,
+  "classifier": "StandardScaler + LogisticRegression(C=1,class_weight=balanced,liblinear)",
+  "consequence": "Voynich recognition target may open",
+  "fit_n": 400,
+  "formal_verdict": "PASS_RECOGNITION_CALIBRATION",
+  "locked_metrics": {
+    "aggregate_fpr": 0.0,
+    "fn": 4,
+    "fp": 0,
+    "per_family_fpr": {
+      "dependent_slot3": 0.0,
+      "global_char_reshuffle": 0.0,
+      "token_internal_shuffle": 0.0,
+      "type_recode": 0.0
+    },
+    "precision": 1.0,
+    "recall": 0.96,
+    "tp": 96
+  },
+  "locked_n": 500,
+  "provenance": {
+    "feature_names": [
+      "type_token",
+      "hapax_type_share",
+      "repeat_occurrence_share",
+      "prefix_support_1",
+      "prefix_support_2",
+      "prefix_support_3",
+      "suffix_support_1",
+      "suffix_support_2",
+      "suffix_support_3",
+      "best_split_log_support",
+      "recomposable_ge3",
+      "recomposable_ge5",
+      "dictionary_cost_ratio",
+      "rectangle_edge_fraction",
+      "suffix_partner_entropy",
+      "prefix_partner_entropy",
+      "within_equal_rate",
+      "boundary_equal_rate",
+      "within_bigram_mi",
+      "boundary_bigram_mi",
+      "best_lcp_fraction",
+      "best_lcs_fraction"
+    ],
+    "locked_lengths": {
+      "it": 808976,
+      "la": 52641
+    },
+    "target_opened": false,
+    "train_lengths": {
+      "it": 194755,
+      "la": 123354
+    },
+    "voynich_read": false
+  },
+  "schema": "frontier-u5-b-v0.1",
+  "stage": "LOCKED_TEST",
+  "target_opened": false,
+  "threshold": 0.9997460219719421,
+  "top_coefficients": [
+    [
+      "prefix_support_3",
+      0.893539654373036
+    ],
+    [
+      "suffix_support_3",
+      0.8781746885355669
+    ],
+    [
+      "dictionary_cost_ratio",
+      -0.8611428870725124
+    ],
+    [
+      "recomposable_ge5",
+      0.7902023972555572
+    ],
+    [
+      "rectangle_edge_fraction",
+      0.7732180228978778
+    ],
+    [
+      "best_split_log_support",
+      0.6616484759289075
+    ],
+    [
+      "suffix_support_1",
+      -0.5116978733588143
+    ],
+    [
+      "prefix_support_1",
+      -0.49473388359858633
+    ],
+    [
+      "recomposable_ge3",
+      0.4425435915196487
+    ],
+    [
+      "best_lcp_fraction",
+      -0.3303468532246443
+    ],
+    [
+      "prefix_support_2",
+      0.3098607281962775
+    ],
+    [
+      "best_lcs_fraction",
+      -0.29440294148141055
+    ],
+    [
+      "boundary_bigram_mi",
+      -0.24039881308373062
+    ],
+    [
+      "type_token",
+      -0.22900067120773723
+    ],
+    [
+      "suffix_support_2",
+      0.21352157826787996
+    ],
+    [
+      "repeat_occurrence_share",
+      0.21288742599321517
+    ],
+    [
+      "hapax_type_share",
+      0.1701452108242086
+    ],
+    [
+      "within_bigram_mi",
+      0.147317744723703
+    ],
+    [
+      "suffix_partner_entropy",
+      -0.14584820784142224
+    ],
+    [
+      "within_equal_rate",
+      0.030118202706603776
+    ],
+    [
+      "prefix_partner_entropy",
+      -0.019426287653297906
+    ],
+    [
+      "boundary_equal_rate",
+      -0.008067930853776613
+    ]
+  ],
+  "voynich_read": false
+}
