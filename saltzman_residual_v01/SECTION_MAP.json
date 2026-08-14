@@ -250,11 +250,25 @@
     "f116v": "text-only"
   },
   "old_to_new": {
-    "Herbal": ["Herbal-A", "Herbal-B"],
-    "Astronomical": ["Astronomical", "Cosmological", "Zodiac", "Rosettes"],
-    "Biological": ["Balneological"],
-    "Pharmaceutical": ["Pharmaceutical"],
-    "Recipes": ["Stars"],
+    "Herbal": [
+      "Herbal-A",
+      "Herbal-B"
+    ],
+    "Astronomical": [
+      "Astronomical",
+      "Cosmological",
+      "Zodiac",
+      "Rosettes"
+    ],
+    "Biological": [
+      "Balneological"
+    ],
+    "Pharmaceutical": [
+      "Pharmaceutical"
+    ],
+    "Recipes": [
+      "Stars"
+    ],
     "Unassigned": []
   }
 }
