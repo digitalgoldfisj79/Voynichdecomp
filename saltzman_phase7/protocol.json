@@ -1,0 +1,113 @@
+{
+  "experiment": "ASC-RESET-SEMANTICS-v0.1",
+  "date": "2026-08-14",
+  "scientific_question": "At fixed tau_int=3, does the latent K2 origin-state process need to persist across artificial line boundaries, or is line-wise state reset equivalent/better?",
+  "parent_phase6": {
+    "branch": "experiment/saltzman-dwell-regularity-v0.1-20260814",
+    "workflow_run": 31799215406,
+    "protocol_sha256": "0b1928efa25cc54e82e0f4edea08d5cd42777b123e00899c9666acb768ae5d3b",
+    "outcome_policy": "Phase 7 is preregistered before Phase-6 adjudication is visible. It does not select a dwell law from Phase 6; fixed and geometric tau=3 are locked parallel strata. If the Phase-6 endpoint replication guard fails, Phase 7 must not be launched."
+  },
+  "invariants": {
+    "source": "ReM v2.1 diplomatic MHG",
+    "eligible_documents": 190,
+    "document_rule": "canonical ReM documents with >=2000 clean tokens; use first 2000",
+    "line_width_tokens": 10,
+    "cipher_schedule": "SWITCH_LINE",
+    "state_alphabet_K": 2,
+    "tau_int": 3.0,
+    "rotation_offset_rule": "exact Phase-4 K2 within-token half-rotation rule",
+    "representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "robust_rule": "worst case across ATOMIC/LITERAL",
+    "replicates_per_document": 20,
+    "permutation_replicates": 100,
+    "no_concurrent_tuning": [
+      "cipher",
+      "language",
+      "source",
+      "line width",
+      "tau",
+      "state alphabet K",
+      "rotation offset rule",
+      "scorer",
+      "target vector",
+      "dwell-law parameters"
+    ]
+  },
+  "strata": {
+    "fixed_tau3": {
+      "continuous_arm": "TAU3_FIXED_CONTINUOUS_K2",
+      "reset_arm": "TAU3_FIXED_LINE_RESET_K2",
+      "continuous_law": "exact Phase-4 FIXED_RUN3_K2 over all 2000 tokens",
+      "reset_law": "restart an independent FIXED_RUN3_K2 process at each 10-token line boundary"
+    },
+    "geometric_tau3": {
+      "continuous_arm": "TAU3_GEOM_CONTINUOUS_K2",
+      "reset_arm": "TAU3_GEOM_LINE_RESET_K2",
+      "continuous_law": "exact Phase-4 MARKOV_M4_K2 (p_stay=3/4) over all 2000 tokens",
+      "reset_law": "restart an independent MARKOV_M4_K2 process at each 10-token line boundary"
+    }
+  },
+  "baselines": [
+    "IDENTITY",
+    "OCCURRENCE_K2"
+  ],
+  "common_random_numbers": {
+    "plan_seed": "seed_of('P5-plan',doc,replicate), identical to Phase 5/6 W10",
+    "continuous_state_seed": "seed_of('P5-state',doc,replicate), exact Phase-5/6 endpoint reproduction",
+    "line_reset_seed": "derive deterministic line-specific seed from the same P5-state numeric seed and the label 'P7-LINE-RESET'; this is the intended reset intervention",
+    "stat_seed": "seed_of('P5-stat',doc,representation,replicate), common across all arms"
+  },
+  "primary_test": {
+    "metric": "robust d3 = worst ATOMIC/LITERAL distance_of_median_Q3; lower is better",
+    "paired_difference": "Delta_reset = d3_line_reset - d3_continuous; positive means continuity is better",
+    "estimator": "median paired-document Delta_reset",
+    "bootstrap": {
+      "resamples": 10000,
+      "ci": 0.95,
+      "seed_namespace": "ASC-RESET-SEMANTICS-v0.1|bootstrap"
+    },
+    "materiality_margin_d3": 0.04,
+    "materiality_basis": "Inherited prospectively from the Phase-4 same-law control upper 95% CI 0.0361, rounded up to 0.04.",
+    "no_best_cell_selection": true
+  },
+  "replication_guard": {
+    "failure_label": "P6_CONTINUOUS_ENDPOINTS_NOT_REPLICATED",
+    "expected_median_robust_d3": {
+      "TAU3_FIXED_CONTINUOUS_K2": 0.5910917342010585,
+      "TAU3_GEOM_CONTINUOUS_K2": 0.6655336741140667
+    },
+    "tolerance_abs": 1e-12,
+    "rule": "Recompute exact Phase-5/6 W10 continuous endpoint medians and require absolute difference <=1e-12."
+  },
+  "adjudication_order": [
+    "P6_CONTINUOUS_ENDPOINTS_NOT_REPLICATED",
+    "CONTINUITY_REQUIRED_BOTH",
+    "LINE_RESET_BETTER_BOTH",
+    "RESET_EQUIVALENT_BOTH",
+    "DWELL_DEPENDENT_RESET",
+    "CONSISTENT_DIRECTION_NOT_ROBUST",
+    "MIXED_OR_UNRESOLVED"
+  ],
+  "adjudication_rules": {
+    "CONTINUITY_REQUIRED_BOTH": "For both fixed and geometric strata, lower 95% CI of Delta_reset > +0.04.",
+    "LINE_RESET_BETTER_BOTH": "For both strata, upper 95% CI of Delta_reset < -0.04.",
+    "RESET_EQUIVALENT_BOTH": "For both strata, entire 95% CI lies within [-0.04,+0.04].",
+    "DWELL_DEPENDENT_RESET": "One stratum has lower 95% CI > +0.04 while the other has upper 95% CI < -0.04.",
+    "CONSISTENT_DIRECTION_NOT_ROBUST": "Both stratum medians have the same nonzero sign, but none of the preceding rules applies.",
+    "MIXED_OR_UNRESOLVED": "Any remaining pattern."
+  },
+  "secondary": {
+    "E1_reset_contrast": true,
+    "representation_specific_d3": true,
+    "Q3_component_descriptives": true,
+    "individual_gate4_hits": true,
+    "boundary_local_diagnostics": "report within-line versus across-line adjacent token statistics descriptively only; not used for model selection"
+  },
+  "execution_guard": {
+    "rule": "Protocol, code, preregistration and target-free QA are committed before the workflow. Workflow launch occurs only after Phase-6 endpoint replication status is known; if Phase-6 replication fails, no Phase-7 scoring."
+  }
+}
