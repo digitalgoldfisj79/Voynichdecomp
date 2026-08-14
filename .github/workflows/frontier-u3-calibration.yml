@@ -1,0 +1,70 @@
+name: Frontier U3 calibration
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u3-calibration.yml'
+      - 'experiments/frontier_v0_1/src/calibrate_u3.py'
+      - 'experiments/frontier_v0_1/src/build_u3_features.py'
+      - 'experiments/frontier_v0_1/U3_FEATURE_REGISTRY_v0_1.md'
+      - 'experiments/frontier_v0_1/data/U3_PERSISTENCE_FEATURES.csv'
+
+permissions:
+  contents: write
+
+jobs:
+  calibrate-and-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen dependencies
+        run: pip install -r experiments/frontier_v0_1/requirements.txt
+      - name: Run U3 synthetic calibration with target sealed
+        run: |
+          python -m experiments.frontier_v0_1.src.calibrate_u3 \
+            --config experiments/frontier_v0_1/PROGRAMME_CONFIG.json \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u3
+      - name: Check calibration gate
+        id: gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          p='experiments/frontier_v0_1/runs/2026-08-14/u3/U3_CALIBRATION.json'
+          x=json.load(open(p))
+          ok=bool(x.get('target_may_open')) and x.get('formal_verdict')=='PASS'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f: f.write('open=' + ('true' if ok else 'false') + '\n')
+          print('U3 calibration:', x.get('formal_verdict'), 'target_may_open=', ok)
+          PY
+      - name: Build exact Voynich U3 feature matrix only after calibration PASS
+        if: steps.gate.outputs.open == 'true'
+        run: |
+          python -m experiments.frontier_v0_1.src.build_u3_features \
+            --records enriched_records.pkl \
+            --fold-manifest experiments/frontier_v0_1/data/fold_manifest.json \
+            --persistence experiments/frontier_v0_1/data/U3_PERSISTENCE_FEATURES.csv \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u3
+      - name: Run U3 target preselection only after calibration PASS
+        if: steps.gate.outputs.open == 'true'
+        run: |
+          python -m experiments.frontier_v0_1.src.latent_regime \
+            --features experiments/frontier_v0_1/runs/2026-08-14/u3/U3_FEATURE_MATRIX.csv \
+            --config experiments/frontier_v0_1/PROGRAMME_CONFIG.json \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u3
+      - name: Persist calibration and any permitted target outputs
+        run: |
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/frontier_v0_1/runs/2026-08-14/u3
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record U3 calibration-gated run [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
