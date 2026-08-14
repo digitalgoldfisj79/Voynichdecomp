@@ -1,0 +1,10 @@
+{
+  "workflow_run": 31799215406,
+  "artifact_id": 9218702210,
+  "artifact_name": "asc-dwell-regularity-v01-final",
+  "artifact_digest": "sha256:e3ca99ef8e7e80393481bd42a986e2c84c9e857904df942fb2bf6e3b8e605b53",
+  "protocol_sha256": "0b1928efa25cc54e82e0f4edea08d5cd42777b123e00899c9666acb768ae5d3b",
+  "replication_guard_pass": true,
+  "adjudication": "DWELL_LAW_MATTERS_NONMONOTONIC",
+  "note": "Recorded after Phase-6 completion. Phase-7 protocol and reset intervention were already frozen before this adjudication was visible."
+}
