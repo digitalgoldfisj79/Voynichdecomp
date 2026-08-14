@@ -82,14 +82,19 @@ def verdict(n: int) -> str:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--panel", type=Path, required=True, help="Frozen 40-page CSV after page-to-folio mapping gate")
+    ap.add_argument("--mapping-gate", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
     a = ap.parse_args()
+    gate = json.loads(a.mapping_gate.read_text(encoding="utf-8"))
+    if gate.get("formal_verdict") != "PASS" or not gate.get("selected_mapping"):
+        raise SystemExit("U2 target remains sealed: page mapping gate has not passed")
     rows = load_panel(a.panel)
     if len(rows) != 40:
         raise SystemExit("U2 requires exactly 40 frozen pages")
     res = consensus_flags(rows)
     res["formal_verdict"] = verdict(res["n_replicated"])
     res["target_opened"] = True
+    res["selected_mapping"] = gate["selected_mapping"]
     a.out.mkdir(parents=True, exist_ok=True)
     atomic_json(a.out / "U2_RESULT.json", res)
     print(json.dumps(res, indent=2))
