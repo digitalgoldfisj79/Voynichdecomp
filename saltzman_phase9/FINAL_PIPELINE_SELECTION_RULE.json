@@ -1,0 +1,81 @@
+{
+  "rule": "PHASE9-FINAL-PIPELINE-SELECTION-v0.1",
+  "date": "2026-08-14",
+  "freeze_timing": "Frozen after Phase-6 completion but before Phase-7 and Phase-8 adjudications are visible.",
+  "dwell_tau_selection": {
+    "choice": "fixed tau_int=3",
+    "basis": "Locked canonical reference from pre-Phase-6 evidence: Phase-4/5 fixed tau=3 was the robust d3 minimum. Phase-6 is not used to choose the dwell law or tau for Phase 9.",
+    "arm_base": "TAU3_FIXED"
+  },
+  "reset_selection": {
+    "CONTINUITY_REQUIRED_BOTH": {
+      "choice": "continuous",
+      "resolved": true
+    },
+    "LINE_RESET_BETTER_BOTH": {
+      "choice": "line_reset",
+      "resolved": true
+    },
+    "RESET_EQUIVALENT_BOTH": {
+      "choice": "continuous",
+      "resolved": true,
+      "reason": "choose simpler/no-reset intervention under equivalence"
+    },
+    "CONSISTENT_DIRECTION_NOT_ROBUST": {
+      "choice_rule": "continuous if both fixed/geometric median Delta_reset >0; line_reset if both <0",
+      "resolved": false
+    },
+    "DWELL_DEPENDENT_RESET": {
+      "choice": "continuous",
+      "resolved": false,
+      "sensitivity": "also score line_reset"
+    },
+    "MIXED_OR_UNRESOLVED": {
+      "choice": "continuous",
+      "resolved": false,
+      "sensitivity": "also score line_reset"
+    }
+  },
+  "ordering_selection": {
+    "POST_ORDER_REQUIRED_ALL": {
+      "choice": "POST",
+      "resolved": true
+    },
+    "POST_ORDER_ROBUST_MAJORITY": {
+      "choice": "POST",
+      "resolved": true
+    },
+    "PRE_ORDER_REQUIRED_ALL": {
+      "choice": "PRE",
+      "resolved": true
+    },
+    "PRE_ORDER_ROBUST_MAJORITY": {
+      "choice": "PRE",
+      "resolved": true
+    },
+    "ORDER_EQUIVALENT_ALL": {
+      "choice": "POST",
+      "resolved": true,
+      "reason": "retain current/simple production ordering under equivalence"
+    },
+    "ORDER_DIRECTIONALLY_CONSISTENT": {
+      "choice_rule": "POST if all four median Delta_order >0; PRE if all four <0",
+      "resolved": false
+    },
+    "ORDER_CONTEXT_DEPENDENT": {
+      "choice": "POST",
+      "resolved": false,
+      "sensitivity": "also score PRE"
+    }
+  },
+  "phase9_reporting": {
+    "primary_panel": "always run sealed 24-metric panel on the canonical selected pipeline versus CIPHER_ONLY if Phase-8 replication guard passes",
+    "causal_architecture_claim": "requires reset resolved=true and ordering resolved=true in addition to Phase-9 confirmatory broad improvement",
+    "unresolved_sensitivity": "If reset or ordering is unresolved, run the predeclared alternate sensitivity but never switch the primary pipeline based on Phase-9 scores."
+  },
+  "no_tuning": [
+    "no Phase-9 metric feedback into dwell/reset/order choice",
+    "no best-context selection",
+    "no substitution of geometric/semi dwell after Phase-6 result"
+  ]
+}
