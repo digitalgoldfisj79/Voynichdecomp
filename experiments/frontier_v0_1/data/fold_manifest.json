@@ -1,0 +1,16 @@
+{
+  "source": {
+    "artifact": "structural_persistence_tournament_complete.zip/data/events_structural.pkl",
+    "source_sha256": "dec8708b380c7b85e40967240f21468c2a636ce5ac3e3761b9a4793cf3258eec",
+    "events": 27586,
+    "bifolia": 50,
+    "folds": 5
+  },
+  "rows": [
+    {"bifolium":"B009_016","fold":0},{"bifolium":"B027_030","fold":0},{"bifolium":"B036_037","fold":0},{"bifolium":"B043_046","fold":0},{"bifolium":"B044_045","fold":0},{"bifolium":"B049_056","fold":0},{"bifolium":"B057_066","fold":0},{"bifolium":"B058_065","fold":0},{"bifolium":"B067_068","fold":0},{"bifolium":"B069_070","fold":0},{"bifolium":"B077_082","fold":0},{"bifolium":"B085_086","fold":0},{"bifolium":"B087_090","fold":0},{"bifolium":"B094_095","fold":0},{"bifolium":"B099_102","fold":0},{"bifolium":"B103_116","fold":0},{"bifolium":"B108_111","fold":0},
+    {"bifolium":"B017_024","fold":1},{"bifolium":"B018_023","fold":1},{"bifolium":"B019_022","fold":1},{"bifolium":"B026_031","fold":1},{"bifolium":"B035_038","fold":1},{"bifolium":"B041_048","fold":1},{"bifolium":"B051_054","fold":1},{"bifolium":"B078_081","fold":1},{"bifolium":"B093_096","fold":1},{"bifolium":"B100_101","fold":1},{"bifolium":"B106_113","fold":1},
+    {"bifolium":"B001_008","fold":2},{"bifolium":"B002_007","fold":2},{"bifolium":"B011_014","fold":2},{"bifolium":"B012_013","fold":2},{"bifolium":"B034_039","fold":2},{"bifolium":"B079_080","fold":2},{"bifolium":"B088_089","fold":2},{"bifolium":"B104_115","fold":2},
+    {"bifolium":"B003_006","fold":3},{"bifolium":"B004_005","fold":3},{"bifolium":"B028_029","fold":3},{"bifolium":"B033_040","fold":3},{"bifolium":"B052_053","fold":3},{"bifolium":"B075_084","fold":3},{"bifolium":"B105_114","fold":3},
+    {"bifolium":"B010_015","fold":4},{"bifolium":"B020_021","fold":4},{"bifolium":"B025_032","fold":4},{"bifolium":"B042_047","fold":4},{"bifolium":"B050_055","fold":4},{"bifolium":"B076_083","fold":4},{"bifolium":"B107_112","fold":4}
+  ]
+}
