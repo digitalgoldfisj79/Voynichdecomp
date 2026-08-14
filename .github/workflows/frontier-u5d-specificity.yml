@@ -1,0 +1,71 @@
+name: Frontier U5-D specificity challenge
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u5d-specificity.yml'
+      - 'experiments/frontier_v0_1/U5_POSTHOC_SPECIFICITY_PROTOCOL_v0_1.md'
+      - 'experiments/frontier_v0_1/src/u5_specificity_challenge.py'
+
+permissions:
+  contents: write
+
+jobs:
+  posthoc-specificity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+      - name: Checkout public Naibbe reference implementation
+        uses: actions/checkout@v4
+        with:
+          repository: greshko/naibbe-cipher
+          ref: main
+          path: naibbe
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen scorer dependencies
+        run: pip install 'numpy<2' 'scikit-learn>=1.4,<1.6'
+      - name: Prefetch exact U5-B development sources
+        run: |
+          set -euo pipefail
+          CACHE='experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache'
+          mkdir -p "$CACHE"
+          curl -fL --retry 10 --retry-delay 2 --retry-all-errors 'https://www.gutenberg.org/cache/epub/218/pg218.txt' -o "$CACHE/train_la.txt"
+          curl -fL --retry 10 --retry-delay 2 --retry-all-errors 'https://www.gutenberg.org/cache/epub/52484/pg52484.txt' -o "$CACHE/train_it.txt"
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,'experiments/frontier_v0_1/src')
+          import u5_verbose_recognition as u5
+          base=Path('experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache')
+          for iso,n in {'la':123354,'it':194755}.items():
+              s=u5.normalize(u5.strip_gutenberg((base/f'train_{iso}.txt').read_text(encoding='utf-8',errors='ignore')))
+              if len(s)!=n: raise SystemExit(f'frozen source drift {iso}: {len(s)} != {n}')
+          print('U5D_SOURCE_PREFLIGHT_PASS')
+          PY
+      - name: Run frozen post-hoc specificity panel
+        run: |
+          python experiments/frontier_v0_1/src/u5_specificity_challenge.py \
+            --records enriched_records.pkl \
+            --naibbe-repo naibbe \
+            --u5b-result experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RECOGNITION_RESULT.json \
+            --cache experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u5
+      - name: Persist specificity result
+        run: |
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/frontier_v0_1/runs/2026-08-14/u5/U5D_SPECIFICITY_RESULT.json \
+                  experiments/frontier_v0_1/runs/2026-08-14/u5/U5D_RESULT.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record U5-D post-hoc specificity result [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
