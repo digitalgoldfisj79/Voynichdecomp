@@ -1,0 +1,86 @@
+{
+  "experiment": "VOYNICH-CONSEQUENCE-PANEL-v0.1",
+  "date": "2026-08-14",
+  "scientific_question": "Does the final frozen ReM+SWITCH_LINE+K2 production pipeline improve independent Voynich statistics beyond the cipher alone?",
+  "prerequisites": {
+    "phase8": "must complete with replication_guard_pass=true",
+    "sealed_panel_sha256": "fe3ea81545f998f0eb5dea896d6a4c4485e8bf76fac790193e665e1747a30bf0",
+    "selection_rule_sha256": "185e8d00d3ef7b0960cac1a31552d85bb4362b16cecee3cff2c3ca1c80551911"
+  },
+  "inputs": {
+    "source": "ReM v2.1 diplomatic MHG",
+    "eligible_documents": 190,
+    "first_tokens_per_document": 2000,
+    "line_width_tokens": 10,
+    "cipher_schedule": "SWITCH_LINE",
+    "representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "robust_rule": "for each metric and arm, take the worse normalized Voynich loss across ATOMIC/LITERAL after median aggregation over production replicates",
+    "vms_records_path": "Paper/Cipher_paper/enriched_records.pkl",
+    "vms_records_git_blob_sha1": "512dd1748ddf50f17aa53dccb685870f221877a9",
+    "metric_code_path": "Paper/Cipher_paper/S5_score_85_metrics.py",
+    "metric_code_git_blob_sha1": "3d1846b6ca469029b96067e87e4db98f877bb2e2"
+  },
+  "simulation": {
+    "production_replicates_per_document": [
+      0,
+      1,
+      2
+    ],
+    "plan_seed": "seed_of('P5-plan',doc,replicate)",
+    "state_seed": "seed_of('P5-state',doc,replicate)",
+    "metric_seed": "42000 + replicate; identical for CIPHER_ONLY and FINAL_PIPELINE and both representations within a replicate",
+    "metric_subset_iterations": 100,
+    "metric_subset_words": 200,
+    "do_levenshtein": false,
+    "ngram_max_len": 3,
+    "vms_metric_seed": 42,
+    "vms_metric_subset_iterations": 100,
+    "vms_do_levenshtein": false
+  },
+  "pipeline": {
+    "dwell_tau": "fixed tau_int=3, locked by FINAL_PIPELINE_SELECTION_RULE",
+    "reset": "read canonical reset choice from FINAL_PIPELINE_REFERENCE.json generated mechanically from frozen selection rule",
+    "ordering": "read canonical PRE/POST choice from FINAL_PIPELINE_REFERENCE.json generated mechanically from frozen selection rule",
+    "sensitivity": "if reset or order is unresolved, run the predeclared alternate sensitivity arm(s), but never replace the canonical arm based on Phase-9 scores"
+  },
+  "confirmatory_panel": {
+    "source_file": "saltzman_phase9/SEALED_VOYNICH_CONSEQUENCE_PANEL.json",
+    "metric_count": 24,
+    "discovery_Q_excluded": true,
+    "per_metric_loss": "abs(model_metric-vms_metric)/existing_v2_tolerance",
+    "per_document_arm_loss": "median of the 24 robust per-metric losses",
+    "primary_gain": "document_loss(CIPHER_ONLY)-document_loss(FINAL_PIPELINE); positive is improvement",
+    "family_gain": "for each locked 4-metric family, per-document median(cipher_loss-final_loss), then median over documents",
+    "bootstrap": {
+      "resamples": 10000,
+      "ci": 0.95,
+      "seed_namespace": "VOYNICH-CONSEQUENCE-PANEL-v0.1|bootstrap"
+    }
+  },
+  "vms_baseline": {
+    "construction": "build once from immutable enriched_records.pkl grouped into real lines by (folio,line_no), using the frozen 85-metric code and seed 42 before synthetic scoring",
+    "stored_fields": "24 panel metrics, existing tolerances, VMS boundary diagnostics, input/code blob ids",
+    "no_refit": true
+  },
+  "line_boundary_holdout": {
+    "matching_rule": "for every boundary between consecutive lines in the same folio where the preceding line has >=2 tokens and next line >=1, cross pair=(prev[-1],next[0]); matched within pair=(prev[-2],prev[-1])",
+    "metrics": [
+      "mean I(cross tokens equal)-mean I(matched within tokens equal)",
+      "mean absolute word-length difference(cross)-mean absolute word-length difference(matched within)"
+    ],
+    "synthetic_rule": "apply exactly the same endpoint-matched rule to consecutive W10 synthetic lines",
+    "use": "secondary only; no model selection"
+  },
+  "primary_adjudication": {
+    "CONFIRMATORY_BROAD_IMPROVEMENT": "lower 95% bootstrap CI of median document gain >0, >=5/6 family median gains >0, and no family median gain < -0.5",
+    "CONFIRMATORY_NO_GAIN": "upper 95% bootstrap CI of median document gain <=0",
+    "CONFIRMATORY_NARROW_OR_MIXED": "otherwise"
+  },
+  "execution_guard": {
+    "rule": "verify sealed panel, selection rule, Phase-8 final reference, metric-code blob and VMS-record blob before building VMS baseline or scoring ReM; no Q scorer is used in Phase 9",
+    "workflow_launch": "only after Phase-8 replication guard passes"
+  }
+}
