@@ -1,0 +1,268 @@
+name: ASC Section Residual Fingerprint v0.1
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-section-residual-v0.1-20260814
+    paths:
+      - '.github/workflows/asc-section-residual-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  PROTOCOL_SHA: b600d0e80beecc609823e2b24f303eec45c7e8862fae7b14ca6f725ff7b67dd0
+  RUNNER_SHA: 36f727cf1594fe015eb4bcb30c2d564a42641997047f73f2d0dc8e9eee11154a
+  SECTION_MAP_SHA: a5d2a9e7aec3d3511ff00de828a17abd2d2255d065c70940ba72ed8abc753cb3
+  RF_SHA: 81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17
+  BITRANS_SHA: 3ffc7e6c74078f9b395179aaf5daaae3c8dfbc2896d21162c8ff0354108e9a
+  AAA_TABLE_SHA: 622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64
+  AAA_OUTPUT_SHA: c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167
+  SCORER_SHA: 926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5
+  MECHANISMS_SHA: eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838
+  PERSISTENCE_BLOB: d6ad9687c7bd76226d37f53324a064909375cb66
+  RESET_BLOB: adde3260a28aa987dc27aed54daf6a5afa67acac
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - name: Verify frozen protocol, map, runner, and exact operators
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "$PROTOCOL_SHA  saltzman_residual_v01/protocol.json" | sha256sum -c -
+          test "$(cat saltzman_residual_v01/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
+          echo "$SECTION_MAP_SHA  saltzman_residual_v01/SECTION_MAP.json" | sha256sum -c -
+          cat saltzman_residual_v01/run_section_residual.part00 \
+              saltzman_residual_v01/run_section_residual.part01 \
+              saltzman_residual_v01/run_section_residual.part02 \
+              saltzman_residual_v01/run_section_residual.part03 > /tmp/run_section_residual.py
+          echo "$RUNNER_SHA  /tmp/run_section_residual.py" | sha256sum -c -
+          python -m py_compile /tmp/run_section_residual.py
+          ! grep -q 'enriched_records.pkl' /tmp/run_section_residual.py
+          python - <<'PY'
+          import importlib.util
+          p='/tmp/run_section_residual.py'
+          spec=importlib.util.spec_from_file_location('resid',p);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
+          m.self_tests()
+          PY
+          mkdir -p /tmp/sc
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/sc
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          echo "$MECHANISMS_SHA  mechanisms.py" | sha256sum -c -
+          cd "$GITHUB_WORKSPACE"
+          test "$(git hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
+          test "$(git hash-object saltzman_phase7/reset_operators.py)" = "$RESET_BLOB"
+          echo FROZEN_SECTION_RESIDUAL_OK
+      - uses: actions/upload-artifact@v4
+        with:
+          name: section-residual-freeze
+          path: |
+            saltzman_residual_v01/protocol.json
+            saltzman_residual_v01/PROTOCOL_SHA256
+            saltzman_residual_v01/SECTION_MAP.json
+            saltzman_residual_v01/PREREGISTRATION.md
+            saltzman_residual_v01/TARGET_FREE_QA.md
+            saltzman_residual_v01/run_section_residual.part00
+            saltzman_residual_v01/run_section_residual.part01
+            saltzman_residual_v01/run_section_residual.part02
+            saltzman_residual_v01/run_section_residual.part03
+          retention-days: 14
+
+  sources:
+    needs: freeze
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve and verify RF/STA sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/rfsta
+          cd /tmp/rfsta
+          curl --fail --location --retry 3 --silent --show-error 'https://mail.voynich.nu/data/sta/RF1b.txt' -o RF1b.txt
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/bitrans.c' -o bitrans.c
+          curl --fail --location --retry 3 --silent --show-error 'https://www.voynich.nu/software/bitrans/STA-aaa.bit' -o STA-aaa.bit
+          echo "$RF_SHA  RF1b.txt" | sha256sum -c -
+          echo "$BITRANS_SHA  bitrans.c" | sha256sum -c -
+          echo "$AAA_TABLE_SHA  STA-aaa.bit" | sha256sum -c -
+          gcc -O2 bitrans.c -o bitrans
+          ./bitrans -1 -s -w1 -f STA-aaa.bit RF1b.txt RF1b.aaa.txt 2>BITRANS.log
+          echo "$AAA_OUTPUT_SHA  RF1b.aaa.txt" | sha256sum -c -
+          sha256sum RF1b.txt bitrans.c STA-aaa.bit RF1b.aaa.txt > SOURCE_SHA256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: section-residual-rf-sta-sources
+          path: /tmp/rfsta
+          retention-days: 14
+
+  vms:
+    needs: sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - uses: actions/download-artifact@v4
+        with:
+          name: section-residual-rf-sta-sources
+          path: /tmp/rfsta
+      - name: Compute frozen section-conditioned Voynich fingerprints
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/vmsrun/results
+          cat saltzman_residual_v01/run_section_residual.part00 \
+              saltzman_residual_v01/run_section_residual.part01 \
+              saltzman_residual_v01/run_section_residual.part02 \
+              saltzman_residual_v01/run_section_residual.part03 > /tmp/vmsrun/run_section_residual.py
+          echo "$RUNNER_SHA  /tmp/vmsrun/run_section_residual.py" | sha256sum -c -
+          cp saltzman_residual_v01/protocol.json /tmp/vmsrun/protocol.json
+          cp saltzman_residual_v01/SECTION_MAP.json /tmp/vmsrun/SECTION_MAP.json
+          cd /tmp/vmsrun
+          python run_section_residual.py vms /tmp/rfsta/RF1b.txt /tmp/rfsta/STA-aaa.bit SECTION_MAP.json results/VMS_FINGERPRINTS.json | tee VMS.log
+          test -s results/VMS_FINGERPRINTS.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: section-residual-vms-fingerprints
+          path: |
+            /tmp/vmsrun/results/VMS_FINGERPRINTS.json
+            /tmp/vmsrun/VMS.log
+          retention-days: 14
+
+  build-rem:
+    needs: freeze
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: reset-semantics-rem
+          path: /tmp/rem
+          run-id: 31799994835
+          github-token: ${{ github.token }}
+      - name: Verify canonical ReM corpus artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s /tmp/rem/rem_docs.json.xz
+          python - <<'PY'
+          import json,lzma
+          z=json.loads(lzma.decompress(open('/tmp/rem/rem_docs.json.xz','rb').read()).decode())
+          assert len([k for k,v in z.items() if len(v)>=2000])==190
+          print('REM_190_OK')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: section-residual-rem
+          path: /tmp/rem/rem_docs.json.xz
+          retention-days: 14
+
+  score:
+    needs: [freeze, build-rem]
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - uses: actions/download-artifact@v4
+        with:
+          name: section-residual-rem
+          path: /tmp/resid/inputs
+      - name: Restore exact scorer/mechanisms and score shard ${{ matrix.shard }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/resid/results
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/resid
+          unzip -q /tmp/payload.zip
+          echo "$SCORER_SHA  scorer.py" | sha256sum -c -
+          echo "$MECHANISMS_SHA  mechanisms.py" | sha256sum -c -
+          test "$(git -C "$GITHUB_WORKSPACE" hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
+          test "$(git -C "$GITHUB_WORKSPACE" hash-object saltzman_phase7/reset_operators.py)" = "$RESET_BLOB"
+          cp "$GITHUB_WORKSPACE/saltzman_phase4/persistence_operators.py" persistence_operators.py
+          cp "$GITHUB_WORKSPACE/saltzman_phase7/reset_operators.py" reset_operators.py
+          cat "$GITHUB_WORKSPACE/saltzman_residual_v01/run_section_residual.part00" \
+              "$GITHUB_WORKSPACE/saltzman_residual_v01/run_section_residual.part01" \
+              "$GITHUB_WORKSPACE/saltzman_residual_v01/run_section_residual.part02" \
+              "$GITHUB_WORKSPACE/saltzman_residual_v01/run_section_residual.part03" > run_section_residual.py
+          echo "$RUNNER_SHA  run_section_residual.py" | sha256sum -c -
+          cp "$GITHUB_WORKSPACE/saltzman_residual_v01/protocol.json" protocol.json
+          python run_section_residual.py score inputs/rem_docs.json.xz ${{ matrix.shard }} 12 results/SCORE_SHARD_${{ matrix.shard }}_OF_12.json | tee SCORE.log
+          test -s results/SCORE_SHARD_${{ matrix.shard }}_OF_12.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: section-residual-score-s${{ matrix.shard }}
+          path: |
+            /tmp/resid/results/SCORE_SHARD_*_OF_12.json
+            /tmp/resid/SCORE.log
+          retention-days: 14
+
+  merge:
+    needs: [vms, score]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --quiet numpy regex
+      - uses: actions/download-artifact@v4
+        with:
+          name: section-residual-vms-fingerprints
+          path: /tmp/vms
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: section-residual-score-*
+          path: /tmp/scored
+          merge-multiple: true
+      - name: Merge and adjudicate frozen residual panel
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/final
+          cat saltzman_residual_v01/run_section_residual.part00 \
+              saltzman_residual_v01/run_section_residual.part01 \
+              saltzman_residual_v01/run_section_residual.part02 \
+              saltzman_residual_v01/run_section_residual.part03 > /tmp/final/run_section_residual.py
+          echo "$RUNNER_SHA  /tmp/final/run_section_residual.py" | sha256sum -c -
+          cp saltzman_residual_v01/protocol.json /tmp/final/protocol.json
+          cd /tmp/final
+          python run_section_residual.py merge /tmp/vms/results/VMS_FINGERPRINTS.json '/tmp/scored/**/SCORE_SHARD_*.json' SUMMARY.json | tee FINAL.log
+          test -s SUMMARY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: asc-section-residual-v01-final
+          path: |
+            /tmp/final/SUMMARY.json
+            /tmp/final/FINAL.log
+            /tmp/vms/results/VMS_FINGERPRINTS.json
+          retention-days: 14
