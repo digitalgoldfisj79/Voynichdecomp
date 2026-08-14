@@ -16,8 +16,13 @@ def main():
     u1 = sub.add_parser("u1-build")
     u1.add_argument("--slim", required=True)
     u1.add_argument("--out", default="results/u1")
+    u2m = sub.add_parser("u2-map")
+    u2m.add_argument("--mapping-panel", required=True)
+    u2m.add_argument("--folio-labels", required=True)
+    u2m.add_argument("--out", default="results/u2_mapping")
     u2 = sub.add_parser("u2")
     u2.add_argument("--panel", required=True)
+    u2.add_argument("--mapping-gate", required=True)
     u2.add_argument("--out", default="results/u2")
     u3 = sub.add_parser("u3")
     u3.add_argument("--features", required=True)
@@ -27,8 +32,10 @@ def main():
         call("src.gate0_freeze", ["--repo-root", a.repo_root, "--fold-manifest", a.fold_manifest, "--out", a.out])
     if a.stage == "u1-build":
         call("src.transliteration_uncertainty", ["build", "--slim", a.slim, "--out", a.out])
+    if a.stage == "u2-map":
+        call("src.dimperio_mapping_gate", ["--mapping-panel", a.mapping_panel, "--folio-labels", a.folio_labels, "--out", a.out])
     if a.stage == "u2":
-        call("src.dimperio_replication", ["--panel", a.panel, "--out", a.out])
+        call("src.dimperio_replication", ["--panel", a.panel, "--mapping-gate", a.mapping_gate, "--out", a.out])
     if a.stage == "u3":
         call("src.latent_regime", ["--features", a.features, "--out", a.out])
 
