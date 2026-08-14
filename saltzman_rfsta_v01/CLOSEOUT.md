@@ -18,7 +18,7 @@ This v0.1 replay restored the upstream representation requirement. No synthetic 
 All passed before target scoring:
 
 - RF1b SHA-256 `81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17`
-- `bitrans.c` SHA-256 `3ffc7e6c74078f9b395179aaf5daaae3c8dfbc2896d21162c8ff0354108e9a`
+- `bitrans.c` SHA-256 `3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a`
 - `STA-aaa.bit` SHA-256 `622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64`
 - regenerated RF1b `aaa` SHA-256 `c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167`
 - unchanged ED1 scorer SHA-256 `926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5`
