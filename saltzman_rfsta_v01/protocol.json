@@ -1,0 +1,106 @@
+{
+  "adjudication": {
+    "NO_REPRESENTATION_ROBUST_GAIN": "target robust and no representation has positive median canonical d3 gain",
+    "REPRESENTATION_ROBUST_ED1_GAIN_NOT_MATCH": "target robust and d3 gains have lower CI>0 all, but >=1 canonical median d3>0.15",
+    "REPRESENTATION_ROBUST_ED1_MATCH_ONLY": "target robust; canonical robust d3<=0.15 all representations and d3 gains have lower CI>0 all, but full Q4 criterion fails",
+    "REPRESENTATION_ROBUST_FULL_Q_MATCH": "target robust; canonical robust d3<=0.15 all representations; d3 gains have lower CI>0 all; and finite median robust d4<=0.15 all representations",
+    "REPRESENTATION_SENSITIVE_OR_UNRESOLVED": "target robust but directional gain is not robust across all representations and at least one representation has positive median gain",
+    "VMS_Q_NOT_REPRESENTATION_ROBUST": "binding target-robustness gate fails"
+  },
+  "date": "2026-08-14",
+  "experiment": "VOYNICH-RF-STA-REPLAY-v0.1",
+  "parsing": {
+    "clean_word_rule": "retain only words composed entirely of full two-character STA members [A-Z][0-9a-z], all of which occur in the verified STA-aaa table",
+    "drawing_interruptions": "split at <->; no adjacency is permitted across an interruption",
+    "line_source": "RF1b IVTFF physical/text line records",
+    "same_word_loci_all_representations": true,
+    "uncertain_or_nonclean_word": "exclude and split adjacency at that position",
+    "unit_encoding": "injective single-Unicode-codepoint analytical encoding before the unchanged ED1 scorer",
+    "word_boundaries": "RF1b periods"
+  },
+  "primary_test": {
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed_namespace": "RFSTA-replay-bootstrap-v0.1",
+    "gain": "robust d3(CIPHER_ONLY) - robust d3(canonical); positive favors origin-state mechanism",
+    "metric": "d3 = Euclidean log-ratio distance on ED1_N0, ED1_N1, ED1_N3 to each newly measured Voynich target",
+    "robust_directional_gain": "lower 95% bootstrap CI of median gain > 0 for all three Voynich representations",
+    "robust_match": "robust directional gain AND median canonical robust d3 <= 0.15 for all three representations"
+  },
+  "purpose": "Correct the Voynich-facing Saltzman/origin-state test to the upstream binding RF/STA/aaa representation hierarchy without retuning the synthetic mechanism.",
+  "representations": {
+    "AAA_CONNECTED": "apply the verified STA-aaa table member-by-member inside the original RF word; '~' separates analytical units, ':' remains inside a connected unit",
+    "RF_MEMBER": "each full two-character STA member is one edit-distance unit",
+    "STA_FAMILY": "each full STA member is collapsed to its leading uppercase family; one family is one edit-distance unit"
+  },
+  "secondary_tests": {
+    "E1": "worst absolute log E1 error across ATOMIC/LITERAL where finite; paired gain baseline minus mechanism",
+    "Q4": "log-distance including E1 where both arms are finite; report coverage and gains, no imputation",
+    "continuous_reset_sensitivity": "same replay using FIXED_CONTINUOUS__POST",
+    "legacy_Q": "retain old [1.1642,1.1039,1.0257,1.0182] only as archaeological reference, not as the corrected target"
+  },
+  "status": "FROZEN_BEFORE_RF_STA_TARGET_SCORING",
+  "stopping_rule": "No mechanism retuning follows a failure. A positive ED1 result may proceed only to a separately frozen representation-matched held-out consequence panel.",
+  "synthetic_replay": {
+    "arms": {
+      "baseline": "CIPHER_ONLY",
+      "canonical": "FIXED_LINE_RESET__POST",
+      "sensitivity": "FIXED_CONTINUOUS__POST"
+    },
+    "artifact_digest": "sha256:3486fb343363d192691dded1ed8d3f9d546a5afa4e4c1dde59c5030bd20b9c5c",
+    "artifact_name": "asc-mechanism-cipher-order-v01-final",
+    "document_count": 190,
+    "no_parameter_refit": true,
+    "no_resimulation": true,
+    "robust_distance": "for each document/arm/Voynich representation take max distance over ATOMIC and LITERAL synthetic representations",
+    "source_artifact_run": 31800905368,
+    "synthetic_representations": [
+      "ATOMIC",
+      "LITERAL"
+    ]
+  },
+  "target_estimation": {
+    "mechanisms_sha256": "eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838",
+    "null_seeds": 20,
+    "per_seed_permutations": 200,
+    "scorer_sha256": "926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5",
+    "seed_namespace": "RFSTA-target-v0.1",
+    "target_vector": "median Q4 over the 20 frozen null seeds for each representation"
+  },
+  "target_robustness": {
+    "binding_pass": "all three representation medians pass the inherited structural thresholds AND >=80% of target null-seed Q4 rows pass in every representation",
+    "median_gate": "apply the inherited ED1_N0/E1/order/ED1_N3 structural thresholds to each representation-specific median Q4",
+    "qualitative_secondary": "also record Q1>1, Q1>Q2>Q3, |log Q3|<|log Q1|, and E1 in [0.90,1.10]",
+    "seed_stability_min_fraction": 0.8
+  },
+  "upstream_binding": {
+    "legacy_Q": [
+      1.1642,
+      1.1039,
+      1.0257,
+      1.0182
+    ],
+    "legacy_gate": {
+      "E1_N0": [
+        0.9,
+        1.1
+      ],
+      "ED1_N0_min": 1.1,
+      "ED1_N3": [
+        0.95,
+        1.1
+      ],
+      "log_distance_max": 0.15,
+      "ordering": "ED1_N0 > ED1_N1 > ED1_N3"
+    },
+    "representation_rule": "RF member -> STA family -> connected aaa; correlated projections, not independent replications"
+  },
+  "voynich_sources": {
+    "RF1b_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "RF1b_url": "https://mail.voynich.nu/data/sta/RF1b.txt",
+    "STA_aaa_sha256": "622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64",
+    "STA_aaa_url": "https://www.voynich.nu/software/bitrans/STA-aaa.bit",
+    "bitrans_sha256": "3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a",
+    "bitrans_url": "https://www.voynich.nu/software/bitrans/bitrans.c",
+    "converted_RF1b_aaa_sha256": "c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167"
+  }
+}
