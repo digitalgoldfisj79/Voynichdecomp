@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: python -m pip install --quiet numpy
+        run: python -m pip install --quiet numpy regex
       - name: Restore frozen H3 payload
         shell: bash
         run: |
@@ -33,7 +33,10 @@ jobs:
           sha256sum /tmp/payload.zip
       - name: Build canonical ReM lineation
         working-directory: /tmp/saltzman_h3
-        run: python build_rem_lineation.py --work /tmp/rem_lineation_build | tee H3_LINEATION_BUILD.log
+        shell: bash
+        run: |
+          set -o pipefail
+          python build_rem_lineation.py --work /tmp/rem_lineation_build | tee H3_LINEATION_BUILD.log
       - name: Write execution-only parallel runner
         working-directory: /tmp/saltzman_h3
         shell: bash
@@ -91,11 +94,14 @@ jobs:
           PY
           cat > EXECUTION_AMENDMENT_H3_PARALLEL.md <<'EOF'
           # H3 execution amendment
-          H3 was parallelised across the already frozen corpus cells solely to reduce wall-clock time. Corpus membership, plaintext, authentic ReM lineation, mechanisms, representations, replicate counts, null-permutation counts, seeds, target vector, gates and decision rule are unchanged. Cell seeds are deterministic functions of phase/corpus/arm/representation/replicate and therefore independent of batching/order.
+          H3 was parallelised across already frozen cells solely to reduce wall-clock time. Corpus membership, plaintext, authentic ReM lineation, mechanisms, representations, replicate counts, null-permutation counts, seeds, target vector, gates and decision rule are unchanged. A missing runtime dependency (`regex`) was added after the first execution attempt failed before scoring; pipelines were also changed to propagate Python failures. No scientific result existed from the failed attempt.
           EOF
       - name: Run frozen H3 in parallel
         working-directory: /tmp/saltzman_h3
-        run: python run_h3_parallel.py | tee H3_RUN.log
+        shell: bash
+        run: |
+          set -o pipefail
+          python run_h3_parallel.py | tee H3_RUN.log
       - name: Build result manifest
         if: always()
         working-directory: /tmp/saltzman_h3
