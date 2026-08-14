@@ -1,0 +1,99 @@
+name: Frontier U5-A Naibbe recovery calibration
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u5a-naibbe-recovery.yml'
+      - 'experiments/frontier_v0_1/U5_RECOVERY_PROTOCOL_v0_1.md'
+      - 'experiments/frontier_v0_1/src/u5_naibbe_recovery.py'
+      - 'experiments/frontier_v0_1/src/u5_naibbe_recovery_single.py'
+      - 'experiments/frontier_v0_1/src/aggregate_u5a.py'
+
+permissions:
+  contents: write
+
+jobs:
+  locked-trial:
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        language: [la, it]
+        trial: [0,1,2,3,4,5,6,7,8,9]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout frozen Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 1
+      - name: Checkout inherited validated mono solver
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/terminal-cipher-programme-v0.6-20260716
+          path: legacy
+          fetch-depth: 1
+      - name: Checkout public Naibbe reference implementation
+        uses: actions/checkout@v4
+        with:
+          repository: greshko/naibbe-cipher
+          ref: main
+          path: naibbe
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install inherited solver dependencies
+        run: pip install 'numpy<2' 'numba<0.61' 'rapidfuzz>=3.0'
+      - name: Run one locked fresh-key recovery trial
+        run: |
+          python experiments/frontier_v0_1/src/u5_naibbe_recovery_single.py \
+            --legacy-repo legacy \
+            --naibbe-repo naibbe \
+            --language '${{ matrix.language }}' \
+            --trial '${{ matrix.trial }}' \
+            --out trial_out
+      - name: Upload immutable trial result
+        uses: actions/upload-artifact@v4
+        with:
+          name: u5a-${{ matrix.language }}-${{ matrix.trial }}
+          path: trial_out/U5A_trial_*.json
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate-gate:
+    needs: locked-trial
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+      - name: Download all 20 trial artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: u5a-*
+          path: u5a_trials
+          merge-multiple: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply frozen U5-A aggregate gate
+        run: |
+          python experiments/frontier_v0_1/src/aggregate_u5a.py \
+            --trials u5a_trials \
+            --out experiments/frontier_v0_1/runs/2026-08-14/u5
+      - name: Persist the locked aggregate only
+        run: |
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/frontier_v0_1/runs/2026-08-14/u5/U5A_RECOVERY_RESULT.json \
+                  experiments/frontier_v0_1/runs/2026-08-14/u5/U5A_RESULT.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record U5-A locked recovery calibration [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
