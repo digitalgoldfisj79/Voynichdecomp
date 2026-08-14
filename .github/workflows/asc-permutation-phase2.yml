@@ -1,0 +1,77 @@
+name: ASC Permutation Phase2
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-state-h3-20260814
+    paths:
+      - .github/workflows/asc-permutation-phase2.yml
+
+permissions:
+  contents: read
+
+jobs:
+  phase2:
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --quiet numpy regex
+      - name: Restore frozen Saltzman payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/p2
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/p2
+          unzip -q /tmp/payload.zip
+          mkdir -p results inputs
+          test -f inputs/rem_docs.json.xz
+          echo 'ac7e5c24743c7e8faac819a5f331ec99baecc6e5aef37025294c4252d4d4487c  inputs/rem_docs.json.xz' | sha256sum -c -
+          echo '926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5  scorer.py' | sha256sum -c -
+          echo 'eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838  mechanisms.py' | sha256sum -c -
+      - name: Restore frozen Phase2 operator code
+        shell: bash
+        working-directory: /tmp/p2
+        run: |
+          set -euo pipefail
+          echo 'IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwppbXBvcnQgbnVtcHkgYXMgbnAKCk9QRVJBVE9SUz0oCiAgICAnaURFTlRJVFknLAogICAgJ1JFVkVSU0UnLAogICAgJ1JPVEFURV9MRUZUXzEnLAogICAgJ0FESkFDRU5UX1BBSVJfU1dBUCcsCiAgICAnT0REX0VWRU4nLAogICAgJ09VVFNJREVfSU4nLAogICAgJ0hBTEZfU1dBUCcsCiAgICAnQkxPQ0syX1NIVUZGTEUnLAogICAgJ0JMT0NLM19TSFVG RkxFJywKICAgICdCTE9DSzRfU0hVRkZMRScsCiAgICAnRlVMTF9TSFVG RkxFJywKKQoKQ09NUExFWElUWT17CiAgICAnaURFTlRJVFknOjAsCiAgICAnUkVWRVJTRSc6MSwKICAgICdST1RBVEVfTEVGVF8xJzoxLAogICAgJ0FESkFDRU5UX1BBSVJfU1dBUCc6MSwKICAgICdPRERfRVZFTic6MiwKICAgICdPVVRTSURFX0lOJzoyLAogICAgJ0hBTEZfU1dBUCc6MiwKICAgICdCTE9DSzJfU0hVRkZMRSc6MywKICAgICdCTE9DSzNfU0hVRkZMRSc6NCwKICAgICdCTE9DSzRfU0hVRkZMRSc6NSwKICAgICdGVUxMX1NIVUZGTEUnOjk5LAp9CgpTVE9DSEFTVElDPXsnQkxPQ0syX1NIVUZGTEUnLCdCTE9DSzNfU0hVRkZMRScsJ0JMT0NLM19TSFVG RkxFJywnRlVMTF9TSFVG RkxFJ30KCgpkZWYgX291dHNpZGVfaW5faWR4KG4pOgogICAgb3V0PVtdOyBpPTA7IGo9bi0xCiAgICB3aGlsZSBpPD1qOgogICAgICAgIG91dC5hcHBlbmQoaSkKICAgICAgICBpZiBqIT1pOiBvdXQuYXBwZW5kKGopCiAgICAgICAgaSs9MTsgai09MQogICAgcmV0dXJuIG91dAoKCmRlZiB0cmFuc2Zvcm1fd29yZCh3LCBvcCwgcm5nPU5vbmUpOgogICAgbj1sZW4odykKICAgIGlmIG48MiBvciBvcD09J0lERU5USVRZJzogcmV0dXJuIHcKICAgIGlmIG9wPT0nUkVWRVJTRSc6IHJldHVybiB3Wzo6LTFdCiAgICBpZiBvcD09J1JPVEFURV9MRUZUXzEnOiByZXR1cm4gd1sxOl0rd1s6MV0KICAgIGlmIG9wPT0nQURKQUNFTlRfUEFJUl9TV0FQJzoKICAgICAgICBhPWxpc3QodykKICAgICAgICBmb3IgaSBpbiByYW5nZSgwLG4tMSwyKTogYVtpXSxhW2krMV09YVtpKzFdLGFbaV0KICAgICAgICByZXR1cm4gJycuam9pbihhKQogICAgaWYgb3A9PSdPRERfRVZFTic6IHJldHVybiB3WzA6OjJdK3dbMTo6Ml0KICAgIGlmIG9wPT0nT1VUU0lERV9JTic6IHJldHVybiAnJy5qb2luKHdbaV0gZm9yIGkgaW4gX291dHNpZGVfaW5faWR4KG4pKQogICAgaWYgb3A9PSdIQUxGX1NXQVAnOgogICAgICAgIGs9KG4rMSkvLzIKICAgICAgICByZXR1cm4gd1trOl0rd1s6a10KICAgIGlmIG9wLnN0YXJ0c3dpdGgoJ0JMT0NLJykgYW5kIG9wLmVuZHN3aXRoKCdfU0hVRkZMRScpOgogICAgICAgIGlmIHJuZyBpcyBOb25lOiByYWlzZSBWYWx1ZUVycm9yKCdybmcgcmVxdWlyZWQnKQogICAgICAgIGI9aW50KG9wLnJlbW92ZXByZWZpeCgnQkxPQ0snKS5yZW1vdmVzdWZmaXgoJ19TSFVG RkxFJykpCiAgICAgICAgb3V0PVtdCiAgICAgICAgZm9yIHMgaW4gcmFuZ2UoMCxuLGIpOgogICAgICAgICAgICBjaHVuaz1saXN0KHdbc3M6cytiXSkKICAgICAgICAgICAgaWYgbGVuKGNodW5rKT4xOgogICAgICAgICAgICAgICAgaWR4PXJuZy5wZXJtdXRhdGlvbihsZW4oY2h1bmspKTsgY2h1bms9W2NodW5rW2ldIGZvciBpIGluIGlkeF0KICAgICAgICAgICAgb3V0LmV4dGVuZChjaHVuaykKICAgICAgICByZXR1cm4gJycuam9pbihvdXQpCiAgICBpZiBvcD09J0ZVTExfU0hVRkZMRSc6CiAgICAgICAgaWYgcm5nIGlzIE5vbmU6IHJhaXNlIFZhbHVlRXJyb3IoJ3JuZyByZXF1aXJlZCcpCiAgICAgICAgaWR4PXJuZy5wZXJtdXRhdGlvbihuKTsgcmV0dXJuICcnLmpvaW4od1tpXSBmb3IgaSBpbiBpZHgpCiAgICByYWlzZSBWYWx1ZUVycm9yKG9wKQoKCmRlZiB0cmFuc2Zvcm1fbGluZXMobGluZXMsIG9wLCBzZWVkKToKICAgIHJuZz1ucC5yYW5kb20uZGVmYXVsdF9ybmcoc2VlZCkgaWYgb3AgaW4gU1RPQ0hBU1RJQyBlbHNlIE5vbmUKICAgIHJldHVybiBbW3RyYW5zZm9ybV93b3JkKHcsb3Ascm5nKSBmb3IgdyBpbiBsaW5lXSBmb3IgbGluZSBpbiBsaW5lc10KCgpkZWYgbW92ZWRfZnJhY3Rpb24obixvcCk6CiAgICBpZiBuPDIgb3Igb3A9PSdJREVOVElUWSc6IHJldHVybiAwLjAKICAgIGJhc2U9Jycuam9pbihjaHIoMHgxMDAwK2kpIGZvciBpIGluIHJhbmdlKG4pKQogICAgIyBEZXRlcm1pbmlzdGljIG9wZXJhdG9ycyBvbmx5LiBTdG9jaGFzdGljIHZhbHVlcyBhcmUgdGhlb3JldGljYWwgbGFiZWxzIGVsc2V3aGVyZS4KICAgIGlmIG9wIGluIFNUT0NIQVNUSUM6IHJldHVybiBOb25lCiAgICBvdXQ9dHJhbnNmb3JtX3dvcmQoYmFzZSxvcCxOb25lKQogICAgcmV0dXJuIHN1bShhIT1iIGZvciBhLGIgaW4gemlwKGJhc2Usb3V0KSkvbgp=" + "
+          echo 'IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwppbXBvcnQgbnVtcHkgYXMgbnAKZnJvbSBwZXJtdXRhdGlvbl9vcGVyYXRvcnMgaW1wb3J0IHRyYW5zZm9ybV9saW5lcyBhcyBiYXNlX3RyYW5zZm9ybQpORVdfT1BTPSgnUkFORE9NX1JFVkVSU0FMJywnUkFORE9NX1JPVEFUSU9OJywnQkxPQ0syX1NIVUZGTEUnLCdCTE9DSzNfU0hVRkZMRScsJ0JMT0NLM19TSFVG RkxFJykKCmRlZiB0cmFuc2Zvcm1fbGluZXMobGluZXMsb3Asc2VlZCk6CiAgICBpZiBvcCBpbiAoJ0JMT0NLMl9TSFVG RkxFJywnQkxPQ0szX1NIVUZGTEUnLCdCTE9DSzRfU0hVRkZMRScpOgogICAgICAgIHJldHVybiBiYXNlX3RyYW5zZm9ybShsaW5lcyxvcCxzZWVkKQogICAgcm5nPW5wLnJhbmRvbS5kZWZhdWx0X3JuZyhzZWVkKTtvdXQ9W10KICAgIGZvciBsaW5lIGluIGxpbmVzOgogICAgICAgIHE9W10KICAgICAgICBmb3IgdyBpbiBsaW5lOgogICAgICAgICAgICBuPWxlbih3KQogICAgICAgICAgICBpZiBuPDI6IHEuYXBwZW5kKHcpOyBjb250aW51ZQogICAgICAgICAgICBpZiBvcD09J1JBTkRPTV9SRVZFUlNBTCc6CiAgICAgICAgICAgICAgICBxLmFwcGVuZCh3Wzo6LTFdIGlmIGludChybmcuaW50ZWdlcnMoMCwyKSkgZWxzZSB3KQogICAgICAgICAgICBlbGlmIG9wPT0nUkFORE9NX1JPVEFUSU9OJzoKICAgICAgICAgICAgICAgIGs9aW50KHJuZy5pbnRlZ2VycygwLG4pKTtxLmFwcGVuZCh3W2s6XSt3WzprXSkKICAgICAgICAgICAgZWxzZTogcmFpc2UgVmFsdWVFcnJvcihvcCkKICAgICAgICBvdXQuYXBwZW5kKHEpCiAgICByZXR1cm4gb3V0CgpkZWYgc2VsZl90ZXN0cygpOgogICAgZm9yIG9wIGluIE5FV19PUFM6CiAgICAgICAgeD10cmFuc2Zvcm1fbGluZXMoW1snYWJjZGVmJywnYWJjJ11dLG9wLDEyMylbMF0KICAgICAgICBhc3NlcnQgc29ydGVkKHhbMF0pPT1zb3J0ZWQoJ2FiY2RlZicpIGFuZCBzb3J0ZWQoeFsxXSk9PXNvcnRlZCgnYWJjJykKICAgIHJldHVybiBUcnVlCg==' | base64 -d > phase2_operators.py
+          echo 'IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwpmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSBjb25jdXJyZW50LmZ1dHVyZXMgaW1wb3J0IFByb2Nlc3NQb29sRXhlY3V0b3IsYXNfY29tcGxldGVkCmltcG9ydCBqc29uLGx6bWEsc3lzLG9zCmltcG9ydCBzY29yZXIKZnJvbSBtZWNoYW5pc21zIGltcG9ydCBtYWtlX3BsYW4sZW5jb2RlX3dpdGhfcGxhbixzZWxmX3Rlc3RzIGFzIG1lY2hhbmlzbV9zZWxmX3Rlc3RzCmZyb20gcGhhc2UyX29wZXJhdG9ycyBpbXBvcnQgTkVXX09QUyx0cmFuc2Zvcm1fbGluZXMsc2VsZl90ZXN0cyBhcyBwMnRlc3RzClJPT1Q9UGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudApzaGFyZD1pbnQoc3lzLmFyZ3ZbMV0pO25zaGFyZHM9aW50KHN5cy5hcmd2WzJdKTtSRVBTPSgnQVRPTUlDJywnTElURVJBTCcpO1NDSEVEVUxFPSdTV0lUQ0hfTElORScKbWVjaGFuaXNtX3NlbGZfdGVzdHMoKTtwMnRlc3RzKCk7c2NvcmVyLnNlbGZfdGVzdF9lZDEoKQpyZW09anNvbi5sb2Fkcyhsem1hLmRlY29tcHJlc3MoKFJPT1QvJ2lucHV0cycvJ3JlbV9kb2NzLmpzb24ueHonKS5yZWFkX2J5dGVzKCkpLmRlY29kZSgndXRmLTgnKSkKZG9jcz1zb3J0ZWQoZCBmb3IgZCx3IGluIHJlbS5pdGVtcygpIGlmIGxlbih3KT49MjAwMCk7YXNzZXJ0IGxlbihkb2NzKT09MTkwCmNob3Nlbj1kb2NzW3NoYXJkOjpuc2hhcmRzXQpkZWYgdzEwKHdvcmRzKToKICAgIGY9d29yZHNbOjIwMDBdO3JldHVybiBbZltpOmkrMTBdIGZvciBpIGluIHJhbmdlKDAsbGVuKGYpLDEwKSBpZiBsZW4oZltpOmkrMTBdKT49Ml0KZGVmIHNjb3JlX2NlbGwoZGlkLHBsYWluLG9wLHJlcHJlc2VudGF0aW9uKToKICAgIGUxPXNjb3Jlci5hZGpfcmVwZWF0cyhwbGFpbik+MDtyb3dzPVtdCiAgICBmb3IgcmVwIGluIHJhbmdlKDIwKToKICAgICAgICBwbGFuPW1ha2VfcGxhbihwbGFpbixTQ0hFRFVMRSxzY29yZXIuc2VlZF9vZignUExBRERFUi1WQUwtcGxhbidcLGRpZFwscmVwKSkKICAgICAgICBvdXQ9ZW5jb2RlX3dpdGhfcGxhbihwbGFpbixwbGFuLHJlcHJlc2VudGF0aW9uKQogICAgICAgIG91dD10cmFuc2Zvcm1fbGluZXMob3V0LG9wLHNjb3Jlci5zZWVkX29mKCdQTEFEREVSLVAyLW9wJyxsZGlkLG9wLHJlcCkpCiAgICAgICAgcm93cy5hcHBlbmQoc2NvcmVyLm9uZV9ldmFsKHNjb3Jlci5wcmVwKG91dCksc2NvcmVyLnNlZWRfb2YoJ1BMQURERVItVkFMLXN0YXQnLGRpZCxyZXByZXNlbnRhdGlvbixyZXApLGUxLDUwKSkKICAgIHJldHVybiB7J2NvcnB1cyc6ZGlkLCdvcGVyYXRvcic6b3AsJ3JlcHJlc2VudGF0aW9uJzpyZXByZXNlbnRhdGlvbix**scorer.aggregate(rows),'rows':rows}
+def one(did):
+    plain=w10(rem[did]);return did,[score_cell(did,plain,op,r) for op in NEW_OPS for r in REPS]
+cells=[]
+with ProcessPoolExecutor(max_workers=min(12,os.cpu_count() or 1)) as ex:
+    fs=[ex.submit(one,d) for d in chosen]
+    for f in as_completed(fs):
+        n,x=f.result();print('DONE',n,flush=True);cells.extend(x)
+cells.sort(key=lambda c:(c['corpus'],c['operator'],c['representation']))
+p=ROOT/'results'/f'P2_SHARD_{shard:02d}_OF_{nshards:02d}.json';p.write_text(json.dumps({'shard':shard,'nshards':nshards,'docs':chosen,'cells':cells},ensure_ascii=False),encoding='utf-8')
+print(p,len(chosen),len(cells))
+' | base64 -d > run_phase2_shard_fast.py
+          echo '9913f34f5ee11564f017923ea73f3f005cb6097a507b18010a07598c1dce00ab  permutation_operators.py' | sha256sum -c -
+          echo 'cbd47a8b8507e617fa1902ac3665d17714bde1926539cb590ff5f7d7a1c0f507  phase2_operators.py' | sha256sum -c -
+          echo 'c9e61e11469f5472ed6a5aae32a77fedd1bb2cf4c56ccec05d2ce7902b33e0b9  run_phase2_shard_fast.py' | sha256sum -c -
+          printf '%s\n' 'Phase-2 preregistered freeze: d0b1f1558e745b73fc158cf68b5f447c3aba68857c1a6e7657fb2405786a14ef' > PHASE2_FREEZE_REF.txt
+      - name: Run frozen Phase2 shard
+        working-directory: /tmp/p2
+        run: python run_phase2_shard_fast.py ${{ matrix.shard }} 10 | tee phase2.log
+      - name: Upload shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: asc-permutation-phase2-${{ matrix.shard }}
+          path: |
+            /tmp/p2/results/P2_SHARD_*_OF_10.json
+            /tmp/p2/phase2.log
+            /tmp/p2/PHASE2_FREEZE_REF.txt
+          retention-days: 7
