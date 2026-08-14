@@ -1,0 +1,80 @@
+name: ASC Saltzman H3 Sharded
+
+on:
+  push:
+    branches:
+      - experiment/saltzman-state-h3-20260814
+    paths:
+      - .github/workflows/asc-saltzman-h3-sharded.yml
+
+permissions:
+  contents: read
+
+jobs:
+  h3-shard:
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --quiet numpy regex
+      - name: Restore frozen payload
+        shell: bash
+        run: |
+          mkdir -p /tmp/h3
+          cat saltzman_h3/h3part00.txt saltzman_h3/h3part01.txt saltzman_h3/h3part02.txt saltzman_h3/h3part03.txt saltzman_h3/h3part04.txt > /tmp/payload.b64
+          base64 -d /tmp/payload.b64 > /tmp/payload.zip
+          cd /tmp/h3 && unzip -q /tmp/payload.zip && mkdir -p inputs results
+          sha256sum /tmp/payload.zip
+      - name: Build canonical ReM lineation
+        working-directory: /tmp/h3
+        shell: bash
+        run: |
+          set -o pipefail
+          python build_rem_lineation.py --work /tmp/rem_lineation_build > H3_LINEATION_BUILD.log
+      - name: Run frozen fresh shard
+        working-directory: /tmp/h3
+        env:
+          SHARD: ${{ matrix.shard }}
+        shell: bash
+        run: |
+          set -o pipefail
+          cat > run_shard.py <<'PY'
+          from pathlib import Path
+          from concurrent.futures import ProcessPoolExecutor,as_completed
+          import json,lzma,os
+          import run_h3_line_end as h3
+          ROOT=Path(__file__).resolve().parent; S=int(os.environ['SHARD']); K=7
+          rem=json.loads(lzma.decompress((ROOT/'inputs'/'rem_lineation.json.xz').read_bytes()).decode())
+          panel=json.loads((ROOT/'REM_FRESH_PANELS.json').read_text())['H3_LINE_END'][S::K]
+          def one(rec):
+              did=rec['doc_id']; plain=h3.cap_lines(rem[did],2000); cells=[]
+              for arm in h3.ARMS:
+                  for repn in h3.REPS:
+                      cells.append(h3.score_cell(did,plain,arm,repn,100,200,'FRESH'))
+              return did,cells
+          cells=[]
+          with ProcessPoolExecutor(max_workers=min(5,os.cpu_count() or 1)) as ex:
+              fs=[ex.submit(one,r) for r in panel]
+              for f in as_completed(fs):
+                  d,c=f.result(); print('DONE',d,flush=True); cells.extend(c)
+          cells.sort(key=lambda x:(x['corpus'],x['arm'],x['representation']))
+          (ROOT/'results'/f'H3_FRESH_SHARD_{S}.json').write_text(json.dumps({'shard':S,'docs':[r['doc_id'] for r in panel],'cells':cells},ensure_ascii=False))
+          PY
+          python run_shard.py | tee H3_SHARD.log
+      - name: Upload shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: asc-saltzman-h3-shard-${{ matrix.shard }}
+          path: |
+            /tmp/h3/results/H3_FRESH_SHARD_${{ matrix.shard }}.json
+            /tmp/h3/inputs/rem_lineation_qc.json
+            /tmp/h3/H3_SHARD.log
+          retention-days: 7
