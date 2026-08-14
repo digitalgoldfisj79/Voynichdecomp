@@ -29,6 +29,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          sha256sum saltzman_phase6/protocol.json
           echo "$PROTOCOL_SHA  saltzman_phase6/protocol.json" | sha256sum -c -
           test "$(cat saltzman_phase6/PROTOCOL_SHA256)" = "$PROTOCOL_SHA"
           test "$(git hash-object saltzman_phase4/persistence_operators.py)" = "$PERSISTENCE_BLOB"
