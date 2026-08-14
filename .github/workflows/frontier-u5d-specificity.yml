@@ -60,7 +60,7 @@ jobs:
             --u5b-result experiments/frontier_v0_1/runs/2026-08-14/u5/U5B_RECOGNITION_RESULT.json \
             --cache experiments/frontier_v0_1/runs/2026-08-14/u5/instrument_source_cache \
             --out experiments/frontier_v0_1/runs/2026-08-14/u5
-      - name: Persist specificity result
+      - name: Persist specificity result after rebasing concurrent programme commits
         run: |
           git config user.name 'voynich-frontier-bot'
           git config user.email 'actions@users.noreply.github.com'
@@ -68,4 +68,5 @@ jobs:
                   experiments/frontier_v0_1/runs/2026-08-14/u5/U5D_RESULT.md
           git diff --cached --quiet && exit 0
           git commit -m 'Record U5-D post-hoc specificity result [skip ci]'
+          git pull --rebase origin experiment/voynich-frontier-programme-v0.1-20260814
           git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
