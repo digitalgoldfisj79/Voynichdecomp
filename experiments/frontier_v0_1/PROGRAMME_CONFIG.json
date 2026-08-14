@@ -1,0 +1,69 @@
+{
+  "schema": "voynich-frontier-programme-v0.1",
+  "status": "BUILT_NOT_FROZEN",
+  "base_repo": "digitalgoldfisj79/Voynichdecomp",
+  "base_sha": "f5a2ac824c9f720738f6706360477273f467e563",
+  "branch": "experiment/voynich-frontier-programme-v0.1-20260814",
+  "canonical": {
+    "record_paths": ["enriched_records.pkl", "enriched_records.json"],
+    "expected_record_count": 37465,
+    "required_record_fields": ["token", "prefix", "gallows", "core", "suffix", "sfx_fam", "m_core", "section", "folio", "line_no", "pos", "line_len"],
+    "allowed_sections": ["Herbal-A", "Herbal-B", "Astronomical", "Cosmological", "Zodiac", "Rosettes", "Balneological", "Pharmaceutical", "Stars"],
+    "slim_paths": ["voynich_transcriptions_slim.json", "voynich_transcriptions_slim (1).json"],
+    "p70c_paths": ["Paper/p70c_full_spec_v1.json"],
+    "expected_p70c_entries": 6750
+  },
+  "u1": {
+    "reference": "ZLZI",
+    "independent_family_representatives": {"ZL": "ZLZI", "IT": "TTII", "VT": "TTVE", "RF": "VDRB-1", "GC": "GCGI"},
+    "min_family_readings_per_line": 3,
+    "min_reference_line_coverage": 0.90,
+    "posterior_draws": 2000,
+    "primary_sign_probability": 0.975,
+    "min_positive_folds": 4,
+    "max_leave_one_family_mass": 0.50,
+    "calibration": {"interval_nominal": 0.90, "min_interval_coverage": 0.85, "max_false_positive_rate": 0.05, "min_detection_power": 0.80}
+  },
+  "u2": {
+    "mapping_min_correct": 26,
+    "mapping_total": 28,
+    "historical_anomaly_pages": [59, 60, 76, 79, 94],
+    "confirm_min": 4,
+    "falsify_max": 1,
+    "sample_lengths": [350, 400],
+    "consensus_methods_required": 2
+  },
+  "u3": {
+    "k_values": [1, 2, 3, 4, 5, 6],
+    "bootstrap_reps": 500,
+    "min_outer_fold_wins": 4,
+    "min_stability_ari": 0.70,
+    "min_leave_family_out_ami": 0.60,
+    "max_feature_family_separation_share": 0.50,
+    "calibration_min_accuracy": 0.80,
+    "calibration_max_false_discrete": 0.05
+  },
+  "u4": {
+    "surface_required_folds": 4,
+    "payload_min_power": 0.80,
+    "payload_max_fpr": 0.05,
+    "provisional_rate_grid_bits_per_token": [0.005, 0.01, 0.02, 0.04, 0.08, 0.12, 0.20],
+    "multiplicity": "Holm"
+  },
+  "u5": {
+    "mean_recovery_min": 0.85,
+    "trial_success_min": 16,
+    "trial_total": 20,
+    "per_trial_recovery_min": 0.75,
+    "recognition_recall_min": 0.80,
+    "recognition_precision_min": 0.95,
+    "matched_null_fpr_max": 0.05
+  },
+  "u6": {"external_auc_min": 0.80, "detection_power_min": 0.80, "nuisance_fpr_max": 0.05},
+  "global": {
+    "single_bounded_repair": true,
+    "default_seed": 20260814,
+    "formal_verdicts": ["PASS", "FAIL", "ABSTAIN_UNRESOLVED", "CONTAMINATED_SUPERSEDED"],
+    "target_open_default": false
+  }
+}
