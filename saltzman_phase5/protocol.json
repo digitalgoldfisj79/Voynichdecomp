@@ -1,0 +1,208 @@
+{
+  "adjudication_order": [
+    "P4_CURVE_NOT_REPLICATED_W10",
+    "ABSOLUTE_SHORT_SCALE_ROBUST",
+    "SHORT_SCALE_ROBUST_WITH_LINE_INTERACTION",
+    "LINE_RELATIVE_SHIFT_SUPPORTED",
+    "MIXED_OR_UNRESOLVED"
+  ],
+  "arms": {
+    "baselines": [
+      "IDENTITY",
+      "OCCURRENCE_K2"
+    ],
+    "fixed_block_K2": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      12
+    ],
+    "law_equivalence_control": "OCCURRENCE_K2 is exactly FIXED_RUN1_K2 under the same state seed",
+    "locked_phase4_controls": [
+      "FIXED_RUN4_K2",
+      "MARKOV_M4_K2"
+    ],
+    "markov_K2": [
+      {
+        "expected_run": 2.0,
+        "label": "M2",
+        "p_stay_den": 2,
+        "p_stay_num": 1,
+        "tau_int": 1.0
+      },
+      {
+        "expected_run": 3.0,
+        "label": "M3",
+        "p_stay_den": 3,
+        "p_stay_num": 2,
+        "tau_int": 2.0
+      },
+      {
+        "expected_run": 4.0,
+        "label": "M4",
+        "p_stay_den": 4,
+        "p_stay_num": 3,
+        "tau_int": 3.0
+      },
+      {
+        "expected_run": 5.0,
+        "label": "M5",
+        "p_stay_den": 5,
+        "p_stay_num": 4,
+        "tau_int": 4.0
+      },
+      {
+        "expected_run": 8.0,
+        "label": "M8",
+        "p_stay_den": 8,
+        "p_stay_num": 7,
+        "tau_int": 7.0
+      },
+      {
+        "expected_run": 12.0,
+        "label": "M12",
+        "p_stay_den": 12,
+        "p_stay_num": 11,
+        "tau_int": 11.0
+      }
+    ]
+  },
+  "correlation_time_parameterization": {
+    "fixed": "tau_int = L for fixed blocks after random block phase averaging",
+    "markov": "tau_int = p_stay/(1-p_stay) = expected_run - 1 for the symmetric binary Markov chain under the Phase-4 definition",
+    "posthoc_phase4_observation": "At W=10, the median robust d3 minimum in each family occurs at tau_int=3 (FIXED_RUN3_K2 and MARKOV_M4_K2). This observation motivates but does not count as Phase-5 evidence."
+  },
+  "date": "2026-08-14",
+  "execution_guard": {
+    "protocol_hash_file": "saltzman_phase5/PROTOCOL_SHA256",
+    "rule": "No scorer payload is restored, no scorer.one_eval is called, and no target-derived Phase-5 score is computed until the workflow freeze job verifies the exact protocol SHA-256.",
+    "workflow_dependency": "all build/score jobs require freeze; workflow file is committed only after protocol, code, preregistration, and target-free QA are committed"
+  },
+  "experiment": "ASC-LINE-SCALE-v0.1",
+  "invariants": {
+    "cipher_schedule": "SWITCH_LINE",
+    "document_rule": "canonical ReM documents with >=2000 clean tokens; use first 2000",
+    "eligible_documents": 190,
+    "no_concurrent_tuning": [
+      "cipher",
+      "language",
+      "source",
+      "state alphabet K",
+      "rotation offset rule",
+      "scorer",
+      "target vector"
+    ],
+    "primary_state_alphabet_K": 2,
+    "representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "robust_rule": "worst case across ATOMIC/LITERAL",
+    "source": "ReM v2.1 diplomatic MHG",
+    "state_operator": "exact Phase-4 persistence_operators.py, Git blob d6ad9687c7bd76226d37f53324a064909375cb66",
+    "state_process_continuity": "state sequence runs continuously across artificial line boundaries; no reset at line boundaries"
+  },
+  "line_scale": {
+    "all_widths_preserve_2000_tokens": true,
+    "lineation_rule": "partition first 2000 source tokens consecutively into groups of W; retain final group iff it has >=2 tokens",
+    "phase4_reference_width": 10,
+    "token_widths": [
+      6,
+      8,
+      10,
+      12,
+      16,
+      20
+    ]
+  },
+  "parent_phase4": {
+    "adjudication": "INTERMEDIATE_PERSISTENCE_BOTH",
+    "branch": "experiment/saltzman-origin-memory-v0.1-20260814",
+    "commit": "f74a22f20c286d9761181c2b616fbb3e11f74202",
+    "protocol_sha256": "594d6363522225de8ec46c0e3dab23f04b6cdd341578159772a966e7d1e86930",
+    "workflow_run": 31791117619
+  },
+  "primary_test": {
+    "absolute_short_scale_rule": "For both families: lower 95% CI of C(W)>0 at every W, and the entire 95% CI of the median interaction slope lies within [-0.04,+0.04].",
+    "bootstrap": {
+      "ci": 0.95,
+      "resamples": 10000,
+      "seed_namespace": "ASC-LINE-SCALE-v0.1|bootstrap"
+    },
+    "document_contrast": "C(W)=mean(long-arm robust d3)-mean(short-arm robust d3); positive means the short absolute correlation-time band is better",
+    "fixed_long_arms": [
+      "FIXED_RUN6_K2",
+      "FIXED_RUN8_K2",
+      "FIXED_RUN12_K2"
+    ],
+    "fixed_short_arms": [
+      "FIXED_RUN2_K2",
+      "FIXED_RUN3_K2",
+      "FIXED_RUN4_K2"
+    ],
+    "line_interaction": "For each document, regress C(W) on log2(W/10) over all six widths; primary interaction estimator is the median document slope.",
+    "line_relative_shift_rule": "For both families the entire 95% CI of the median interaction slope is below -0.04; negative slope means the short-band advantage materially weakens as artificial line width grows.",
+    "markov_long_arms": [
+      "MARKOV_M8_K2",
+      "MARKOV_M12_K2"
+    ],
+    "markov_short_arms": [
+      "MARKOV_M3_K2",
+      "MARKOV_M4_K2",
+      "MARKOV_M5_K2"
+    ],
+    "material_slope_margin": 0.04,
+    "material_slope_margin_basis": "Frozen before Phase-5 scoring. Phase-4 same-law OCCURRENCE_K2 versus independently constructed MARKOV_M2 had paired robust median d3 difference 0.0120 with bootstrap 95% CI [-0.0056,0.0361]; 0.04 is the rounded-up upper envelope used as a conservative per-doubling materiality threshold.",
+    "no_best_cell_selection": true,
+    "no_posthoc_width_interpolation": true,
+    "per_width_estimator": "median paired-document C(W)",
+    "short_scale_with_interaction_rule": "For both families: lower 95% CI of C(W)>0 at every W, but at least one family fails slope equivalence."
+  },
+  "replication_guard": {
+    "failure_label": "P4_CURVE_NOT_REPLICATED_W10",
+    "requirements": [
+      "OCCURRENCE_K2 median robust d3 < IDENTITY and wins on >=60% of documents",
+      "FIXED_RUN4_K2 median robust d3 < IDENTITY and wins on >=60% of documents",
+      "MARKOV_M4_K2 median robust d3 < IDENTITY and wins on >=60% of documents"
+    ],
+    "width": 10
+  },
+  "scientific_question": "Is the Phase-4 short-memory optimum an absolute token-scale property, or does it move with the artificial line/chunk length used by SWITCH_LINE?",
+  "secondary": {
+    "E1_short_long_contrasts": true,
+    "component_Q3_descriptives": true,
+    "discrete_tau_minimum": "At each W and family, report the preregistered candidate tau_int whose median robust d3 is smallest; ties choose smaller tau_int.",
+    "full_gate": true,
+    "individual_gate4_hits": true,
+    "lag_law": "not rerun as an endpoint because the state sequence is deliberately identical across W; Phase-4 already verified the fixed triangular and Markov exponential laws",
+    "representation_specific_d3_curves": true
+  },
+  "simulation": {
+    "common_random_numbers_reason": "Across line widths, use the same latent state sequence, plan RNG start, and scorer permutation RNG so line width is the intended changed variable.",
+    "mechanisms_sha256": "eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838",
+    "permutation_replicates": 100,
+    "phase4_persistence_operator_git_blob_sha1": "d6ad9687c7bd76226d37f53324a064909375cb66",
+    "replicates_per_document": 20,
+    "scorer_sha256": "926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5",
+    "seeding": {
+      "plan_seed": "seed_of('P5-plan',doc,replicate), deliberately common across W and arms",
+      "stat_seed": "seed_of('P5-stat',doc,representation,replicate), deliberately common across W and arms",
+      "state_seed": "seed_of('P5-state',doc,replicate), deliberately common across W and K2 arms"
+    },
+    "target_order": [
+      "ED1_N0",
+      "ED1_N1",
+      "ED1_N3",
+      "E1_N0"
+    ],
+    "target_vector": [
+      1.1642,
+      1.1039,
+      1.0257,
+      1.0182
+    ]
+  }
+}
