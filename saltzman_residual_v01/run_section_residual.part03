@@ -1,0 +1,3 @@
+])
+    else:raise SystemExit('vms RF1b STA-aaa.bit SECTION_MAP OUT | score REM SHARD NSHARDS OUT | merge VMS SCORE_GLOB OUT')
+if __name__=='__main__':main()
