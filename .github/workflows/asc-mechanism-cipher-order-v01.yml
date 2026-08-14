@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 env:
   PROTOCOL_SHA: 36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4
@@ -70,20 +71,29 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Reuse immutable successful Phase 7 ReM artifact
+        uses: actions/download-artifact@v4
         with:
-          python-version: '3.12'
-      - name: Build exact canonical ReM corpus
+          name: reset-semantics-rem
+          path: /tmp/rem
+          run-id: 31799994835
+          github-token: ${{ github.token }}
+      - name: Verify canonical ReM artifact exists
+        shell: bash
         run: |
-          mkdir -p /tmp/rem
-          cd /tmp/rem
-          python "$GITHUB_WORKSPACE/saltzman_phase3/build_rem_docs.py" rem_docs.json.xz | tee BUILD_REM.log
+          set -euo pipefail
+          test -s /tmp/rem/rem_docs.json.xz
+          python - <<'PY'
+          import json,lzma
+          p='/tmp/rem/rem_docs.json.xz'
+          z=json.loads(lzma.decompress(open(p,'rb').read()).decode())
+          assert len([k for k,v in z.items() if len(v)>=2000])==190
+          print('REM_OK',len(z))
+          PY
       - uses: actions/upload-artifact@v4
         with:
           name: mechanism-cipher-order-rem
-          path: |
-            /tmp/rem/rem_docs.json.xz
-            /tmp/rem/BUILD_REM.log
+          path: /tmp/rem/rem_docs.json.xz
           retention-days: 14
 
   score:
@@ -127,7 +137,11 @@ jobs:
           path: /tmp/p8/inputs
       - name: Score frozen ordering shard ${{ matrix.shard }}
         working-directory: /tmp/p8
-        run: python run_phase8_remote.py score ${{ matrix.shard }} 12 | tee SCORE.log
+        shell: bash
+        run: |
+          set -euo pipefail
+          python run_phase8_remote.py score ${{ matrix.shard }} 12 | tee SCORE.log
+          test -s results/SCORE_SHARD_${{ matrix.shard }}_OF_12.json
       - uses: actions/upload-artifact@v4
         with:
           name: mechanism-cipher-order-score-s${{ matrix.shard }}
@@ -171,7 +185,9 @@ jobs:
           merge-multiple: true
       - name: Merge and adjudicate without parameter selection
         working-directory: /tmp/p8
+        shell: bash
         run: |
+          set -euo pipefail
           python run_phase8_remote.py merge /tmp/scored | tee FINAL.log
           test -s results/SUMMARY.json
           test -s results/COMBINED.json
