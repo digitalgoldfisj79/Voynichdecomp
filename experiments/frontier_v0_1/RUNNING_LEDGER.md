@@ -12,8 +12,9 @@
 - U1: lattice coverage **PASS (99.845%)**; substantive measurement result **SEALED / ABSTAIN** because GC and EVA-family component representations are not directly commensurate under the frozen adapter.
 - U2: **ABSTAIN_UNRESOLVED** — 3/5 historical anomalies replicate robustly under the primary PCCA representation at 350, 400 and full page.
 - U3: **FAIL_CALIBRATION_POWER; TARGET UNOPENED** — synthetic shared-K2 effect at the frozen 1.50-SD floor failed before 16/20 success could remain possible.
-- U4: not opened.
-- U5: not opened.
+- U4: **NOT OPENABLE under v0.1** because U1 did not produce the required measurement-robust target effect set and the programme's single bounded repair is already consumed.
+- U5-A recovery: **PASS_RECOVERY_CALIBRATION; VOYNICH SEALED** — mean 0.98867, 20/20 fresh keys ≥0.75.
+- U5-B recognition: protocol/build stage permitted; target remains sealed unless recognition qualifies.
 - U6: not opened.
 - Target-opening default: SEALED.
 - Single bounded repair: **USED by U2; none remain.**
@@ -38,6 +39,18 @@
 **Finding:** at the registered 1.50 pooled-SD shared-K2 effect floor, the detector produced 0 qualifying detections in the first five fixed trials. The fifth failure makes the required 16/20 success count mathematically impossible, so calibration stopped exactly under the prewritten early-fail rule. Individual trials sometimes selected K=2 and won 4/5 held-out folds, but bootstrap ARI values 0.2161 and 0.5693 remained below the frozen 0.70 stability threshold.  
 **Consequence:** the workflow skipped construction of the real Voynich U3 feature matrix and skipped latent-regime fitting. This is an instrument failure, not evidence for one state or against corpus heterogeneity.  
 **Next allowed action:** no U3 target analysis under v0.1. A future U3 v0.2 would require a new independently preregistered/calibrated instrument, not a threshold relaxation.
+
+## 2026-08-14 — U5-A Naibbe-family fresh-key recovery
+
+**Protocol:** `U5_RECOVERY_PROTOCOL_v0_1.md`, frozen before locked trials.  
+**Calibration status:** PASS.  
+**Target opened:** NO.  
+**Formal verdict:** `PASS_RECOVERY_CALIBRATION`.  
+
+**Finding:** with verbose segmentation/equivalence roles supplied as an oracle but the global 23-letter key hidden, the inherited V0.5.1 solver recovered the 20 source-family-disjoint 384-character controls at mean **0.988671875** accuracy; **20/20** exceeded the frozen 0.75 per-trial threshold. Median was 1.0. Italian/Dante mean 0.996875; Latin/Pliny mean 0.98046875. The frequency-only initialization averaged 0.3196614583.  
+**Confirm criterion:** mean ≥0.85 AND ≥16/20 trials ≥0.75 — both cleared widely.  
+**Consequence:** key recovery under known verbose roles is qualified. This is not mechanism recognition and does not identify an unknown ciphertext. U5-B blind fresh-codebook recognition is licensed; Voynich remains sealed until U5-B also passes operational recall/precision/FPR gates.  
+**Result:** `runs/2026-08-14/u5/U5A_RECOVERY_RESULT.json`.
 
 ## Required entry template
 
