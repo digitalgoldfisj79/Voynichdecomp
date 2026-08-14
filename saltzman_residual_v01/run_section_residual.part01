@@ -1,0 +1,144 @@
+(); N=0
+    for s in segs:
+        unig.update(s)
+        for a,b in zip(s,s[1:]):pairs[(a,b)]+=1;prev[a]+=1;N+=1
+    h1=entropy_counts(unig)
+    if not h1 or not N:return h1,None
+    h2=0.0
+    for (a,b),n in pairs.items():
+        h2 -= (n/N)*math.log2(n/prev[a])
+    return h1,h2/h1
+
+def fingerprint(c):
+    segs=c['segments']; out={}
+    # lags
+    same={};ed={};first={};last={}
+    for h in LAGS:
+        same[h],_=pair_rate(segs,h,'same');ed[h],_=pair_rate(segs,h,'ed1')
+        if h in (1,12):
+            first[h],_=pair_rate(segs,h,'first');last[h],_=pair_rate(segs,h,'last')
+        out[f'same_rate_l{h}']=same[h];out[f'ed1_rate_l{h}']=ed[h]
+    out['same_decay_l1_l4']=diff(same[1],same[4]);out['same_decay_l1_l12']=diff(same[1],same[12])
+    out['ed1_decay_l1_l4']=diff(ed[1],ed[4]);out['ed1_decay_l1_l12']=diff(ed[1],ed[12])
+    # lag1 ED1 topology and pair direction
+    kinds=Counter();locs=Counter();dirc=Counter();edn=0
+    for a,b in lag_pairs(segs,1):
+        info=ed1_info(a,b)
+        if info:
+            edn+=1;kinds[info[0]]+=1;locs[info[1]]+=1;dirc[(a,b)]+=1
+    if edn:
+        out['ed1_sub_frac']=kinds['sub']/edn;out['ed1_ins_frac']=kinds['ins']/edn;out['ed1_del_frac']=kinds['del']/edn
+        out['ed1_first_frac']=locs['first']/edn;out['ed1_interior_frac']=locs['interior']/edn;out['ed1_final_frac']=locs['final']/edn
+        out['ed1_equal_len_frac']=kinds['sub']/edn
+    else:
+        for k in ['ed1_sub_frac','ed1_ins_frac','ed1_del_frac','ed1_first_frac','ed1_interior_frac','ed1_final_frac','ed1_equal_len_frac']:out[k]=None
+    if edn>=20:
+        seen=set();num=den=0
+        for a,b in dirc:
+            key=tuple(sorted((a,b)))
+            if key in seen:continue
+            seen.add(key);x=dirc.get((a,b),0);y=dirc.get((b,a),0);num+=abs(x-y);den+=x+y
+        out['ed1_directional_asym']=num/den if den else None
+    else:out['ed1_directional_asym']=None
+    # token-family adjacency
+    out['same_first_l1']=first[1];out['same_last_l1']=last[1]
+    out['same_first_decay_l1_l12']=diff(first[1],first[12]);out['same_last_decay_l1_l12']=diff(last[1],last[12])
+    out['len_equal_l1'],_=pair_rate(segs,1,'leneq');out['len_close_l1'],_=pair_rate(segs,1,'lenclose')
+    lens=[]
+    for a,b in lag_pairs(segs,1):lens.append(abs(len(a)-len(b)))
+    out['len_diff_mean_l1']=float(np.mean(lens)) if lens else None
+    # boundaries
+    all_tokens=[w for s in segs for w in s]; startset=c['starts'];endset=c['ends']
+    # interior means from positions not line edges, not multiset subtraction
+    interior=[w for s in segs for i,w in enumerate(s) if i>0 and i<len(s)-1]
+    mi=float(np.mean([len(x) for x in interior])) if interior else None
+    out['start_len_minus_interior']=diff(float(np.mean([len(x) for x in startset])) if startset else None,mi)
+    out['end_len_minus_interior']=diff(float(np.mean([len(x) for x in endset])) if endset else None,mi)
+    cr=c['cross_pairs']; wn=sum(max(0,len(s)-1) for s in segs)
+    ce=sum(ed1_info(a,b) is not None for a,b in cr); cs=sum(a==b for a,b in cr)
+    we=sum(ed1_info(a,b) is not None for a,b in lag_pairs(segs,1));ws=sum(a==b for a,b in lag_pairs(segs,1))
+    out['crossline_ed1_rate']=ce/len(cr) if cr else None;out['withinline_ed1_rate']=we/wn if wn else None;out['cross_minus_within_ed1']=diff(out['crossline_ed1_rate'],out['withinline_ed1_rate'])
+    out['crossline_same_rate']=cs/len(cr) if cr else None;out['withinline_same_rate']=ws/wn if wn else None;out['cross_minus_within_same']=diff(out['crossline_same_rate'],out['withinline_same_rate'])
+    out['start_first_unit_js']=js_div(Counter(x[0] for x in startset if x),Counter(x[0] for x in interior if x))
+    out['end_last_unit_js']=js_div(Counter(x[-1] for x in endset if x),Counter(x[-1] for x in interior if x))
+    # higher order relation grammar
+    triples=chains=aba=ret=repeat3=eligible_prev=0; cond_chain=0
+    for s in segs:
+        for i in range(len(s)-2):
+            a,b,d=s[i],s[i+1],s[i+2];triples+=1
+            e1=ed1_info(a,b) is not None;e2=ed1_info(b,d) is not None
+            chains+=e1 and e2;aba+=(a==d and a!=b);ret+=(e1 and a==d);repeat3+=(a==b==d)
+            if e1:eligible_prev+=1;cond_chain+=e2
+    out['ed1_chain_rate']=chains/triples if triples else None
+    base=ed[1]
+    out['ed1_chain_lift']=((cond_chain/eligible_prev)-base) if eligible_prev and base is not None else None
+    out['aba_rate']=aba/triples if triples else None;out['ed1_return_rate']=ret/triples if triples else None;out['repeat_chain_rate']=repeat3/triples if triples else None
+    h1,h2r=cond_entropy_ratio(segs);out['h1_token_bits']=h1;out['h2_cond_ratio']=h2r
+    out['_support']={'tokens':c['n_tokens'],'segments':c['n_segments'],'cross_pairs':len(cr),'ed1_adj_events':edn,'triples':triples}
+    return out
+
+def diff(a,b):return None if a is None or b is None else a-b
+
+# ---------- VMS target construction ----------
+def group_targets(records,P):
+    groups={}
+    secs=P['primary_conditioning']['sections']
+    for sec in secs:
+        c=build_corpus(records,lambda r,s=sec:r.get('section')==s)
+        if c['n_tokens']>=P['primary_conditioning']['minimum_clean_tokens'] and c['n_segments']>=P['primary_conditioning']['minimum_clean_segments']:
+            groups['SECTION:'+sec]=fingerprint(c)
+    pooled=build_corpus(records,lambda r:r.get('section') in secs);groups['POOLED']=fingerprint(pooled)
+    for cur in ('A','B'):
+        c=build_corpus(records,lambda r,x=cur:r.get('currier')==x and r.get('section') in secs)
+        if c['n_tokens']>=400:groups['CURRIER:'+cur]=fingerprint(c)
+    for h in ('S1','S2','S3','S4','S5'):
+        c=build_corpus(records,lambda r,x=h:r.get('hand')==x and r.get('section') in secs)
+        if c['n_tokens']>=400:groups['HAND:'+h]=fingerprint(c)
+    for sec in secs:
+        for h in ('S1','S2','S3','S4','S5'):
+            c=build_corpus(records,lambda r,s=sec,x=h:r.get('section')==s and r.get('hand')==x)
+            if c['n_tokens']>=300 and c['n_segments']>=10:groups[f'SECTION_HAND:{sec}|{h}']=fingerprint(c)
+        for cur in ('A','B'):
+            c=build_corpus(records,lambda r,s=sec,x=cur:r.get('section')==s and r.get('currier')==x)
+            if c['n_tokens']>=300 and c['n_segments']>=10:groups[f'SECTION_CURRIER:{sec}|{cur}']=fingerprint(c)
+    return groups
+
+def vms_mode(P,rf_path,rules_path,map_path,out_path):
+    sm=json.load(open(map_path)); sm=sm.get('mapping',sm)
+    rules=parse_rules(rules_path); raw,parse_stats=parse_clean_rf_records(rf_path,rules,sm)
+    out={'experiment':P['experiment'],'protocol_sha256':PROTOCOL_SHA,'parse_stats':parse_stats,'representations':{}}
+    for rep in RF_REPS:
+        rr,ustats=unitize_records(raw,rules,rep); groups=group_targets(rr,P)
+        out['representations'][rep]={'unit_stats':ustats,'groups':groups}
+        print('VMS',rep,'groups',len(groups),'primary_sections',sum(k.startswith('SECTION:') for k in groups),flush=True)
+    Path(out_path).write_text(json.dumps(out,indent=2));print('WROTE',out_path,flush=True)
+
+# ---------- synthetic generation ----------
+def lineate(words,width=10):
+    x=words[:2000];return [x[i:i+width] for i in range(0,2000,width)]
+
+def median_metrics(rows,metric_names):
+    out={}
+    for m in metric_names:
+        vals=[r.get(m) for r in rows if r.get(m) is not None and math.isfinite(r.get(m))]
+        out[m]=float(np.median(vals)) if vals else None
+    return out
+
+def all_metric_names(P):return [m for fam in P['metric_families'].values() for m in fam]
+
+def synthetic_doc(doc,words,P):
+    # imported here so VMS target mode remains independent of mechanism code
+    import scorer
+    from mechanisms import make_plan,encode_with_plan
+    from persistence_operators import apply_k2_states
+    from reset_operators import states_for_phase7_arm
+    plain=lineate(words,P['frozen_mechanism']['line_width']);assert len(plain)==200
+    reps=P['frozen_mechanism']['replicate_subset']; names=all_metric_names(P)
+    buckets={(arm,rep):[] for arm in ('CIPHER_ONLY','FIXED_LINE_RESET__POST','FIXED_CONTINUOUS__POST') for rep in SYN_REPS}
+    for rix in reps:
+        plan=make_plan(plain,'SWITCH_LINE',scorer.seed_of('P5-plan',doc,rix));sseed=scorer.seed_of('P5-state',doc,rix)
+        reset=states_for_phase7_arm('TAU3_FIXED_LINE_RESET_K2',2000,10,sseed)
+        cont=states_for_phase7_arm('TAU3_FIXED_CONTINUOUS_K2',2000,10,sseed)
+        for rep in SYN_REPS:
+            cipher=encode_with_plan(plain,plan,rep)
+            outs={'CIPHER_ONLY':cipher,'FIXED_LINE_RESET__POST':apply_k2_states(cipher,reset),'FI
