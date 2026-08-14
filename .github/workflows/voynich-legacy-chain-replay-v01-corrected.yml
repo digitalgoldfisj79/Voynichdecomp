@@ -1,0 +1,120 @@
+name: Voynich legacy ED1-chain replay v0.1 corrected
+
+on:
+  push:
+    branches:
+      - experiment/voynich-legacy-chain-replay-v0.1-20260814
+    paths:
+      - '.github/workflows/voynich-legacy-chain-replay-v01-corrected.yml'
+
+jobs:
+  replay-corrected:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Frozen protocol and correction QA gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(sha256sum legacy_chain_replay/protocol.json | awk '{print $1}')" = "d464cdc717e55d4233e2e5700be85b14fa2bc62a7691ac024b9e9bf98949533f"
+          test "$(cat legacy_chain_replay/PROTOCOL_SHA256)" = "d464cdc717e55d4233e2e5700be85b14fa2bc62a7691ac024b9e9bf98949533f"
+          python -m py_compile legacy_chain_replay/run_legacy_chain_replay.py legacy_chain_replay/run_legacy_chain_replay_corrected.py
+          sha256sum legacy_chain_replay/run_legacy_chain_replay.py legacy_chain_replay/run_legacy_chain_replay_corrected.py | tee RUNNER_SHA256.txt
+          test -f legacy_chain_replay/PARSER_CORRECTION.md
+          if test -f legacy_chain_replay/q56_injective_anonymous_realiser.py; then
+            echo 'Q57_DEPENDENCY_PRESENT' | tee Q57_STATUS.txt
+          else
+            echo 'Q57_NOT_EXACTLY_REPLAYABLE_missing_q56_injective_anonymous_realiser.py' | tee Q57_STATUS.txt
+          fi
+
+      - name: Fetch pinned published Timm generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone https://github.com/TorstenTimm/SelfCitationTextgenerator.git external_timm
+          git -C external_timm checkout a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7
+          test "$(git -C external_timm rev-parse HEAD)" = "a6ede2202dd7ad6285ce2c007bf22c2a0e7709b7"
+          sha256sum external_timm/executable/text-generator.jar external_timm/executable/conf.properties | tee TIMM_PINNED_SHA256.txt
+
+      - name: Generate exact frozen Timm panel and verify file format
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p timm_outputs timm_runs
+          run_one () {
+            mode="$1"; seed="$2"
+            d="timm_runs/${mode}_${seed}"
+            cp -a external_timm/executable "$d"
+            sed -i -E "s/^method.random.pseudo.seed=.*/method.random.pseudo.seed=${seed}/" "$d/conf.properties"
+            case "$mode" in
+              default) ;;
+              random) sed -i 's/^method.sourceChooser=page$/method.sourceChooser=random/' "$d/conf.properties" ;;
+              noreuse) sed -i 's/^method.morph.reuse_last.probability=10$/method.morph.reuse_last.probability=0/' "$d/conf.properties" ;;
+              position) sed -i 's/^method.sourceChooser=page$/method.sourceChooser=position/' "$d/conf.properties" ;;
+              *) exit 2 ;;
+            esac
+            (cd "$d" && java -jar text-generator.jar >/dev/null)
+            cp "$d/generate/generated_text.txt" "timm_outputs/${mode}_seed${seed}.txt"
+          }
+          for seed in $(seq 1 20); do run_one default "$seed"; done
+          for seed in $(seq 1 10); do
+            run_one noreuse "$seed"
+            run_one random "$seed"
+            run_one position "$seed"
+          done
+          if cmp -s timm_outputs/default_seed19.txt external_timm/executable/generate/generated_text.txt; then
+            echo 'F0_PASS byte-identical default seed 19' | tee TIMM_FIDELITY.txt
+          else
+            echo 'F0_FAIL default seed 19 differs from pinned repository output' | tee TIMM_FIDELITY.txt
+            exit 3
+          fi
+          test "$(grep -vc '^#' timm_outputs/default_seed19.txt)" = "1200"
+          test "$(grep -v '^#' timm_outputs/default_seed19.txt | awk 'NF{n+=NF} END{print n}')" = "10832"
+          echo 'FORMAT_QA_PASS seed19=1200_generated_lines_10832_tokens' | tee TIMM_FORMAT_QA.txt
+
+      - name: Execute corrected frozen replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          python legacy_chain_replay/run_legacy_chain_replay_corrected.py \
+            --root legacy_chain_replay \
+            --vms voynich_transcriptions_slim.json \
+            --section-map voynich_section_map.json \
+            --timm-dir timm_outputs \
+            --out legacy_chain_results | tee FINAL.log
+          cat legacy_chain_results/RESULTS.md
+
+      - name: Upload corrected final replay artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: voynich-legacy-chain-replay-v01-corrected-final
+          path: |
+            legacy_chain_results/
+            FINAL.log
+            RUNNER_SHA256.txt
+            Q57_STATUS.txt
+            TIMM_FIDELITY.txt
+            TIMM_FORMAT_QA.txt
+            TIMM_PINNED_SHA256.txt
+            legacy_chain_replay/protocol.json
+            legacy_chain_replay/PROTOCOL_SHA256
+            legacy_chain_replay/PREREGISTRATION.md
+            legacy_chain_replay/TARGET_FREE_QA.md
+            legacy_chain_replay/PARSER_CORRECTION.md
+            legacy_chain_replay/run_legacy_chain_replay_corrected.py
+          if-no-files-found: error
+          retention-days: 30
