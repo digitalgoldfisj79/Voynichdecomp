@@ -1,0 +1,85 @@
+{
+  "experiment": "ASC-SECTION-RESIDUAL-FINGERPRINT-v0.1",
+  "date": "2026-08-14",
+  "purpose": "Identify representation-robust properties present in Voynich but still missing after the frozen ReM Saltzman-origin-state mechanism, with section as the primary conditioning axis.",
+  "upstream": {
+    "rf_sta_replay_run": 31806441650,
+    "rf_sta_protocol_sha256": "8952d3d7990a349e3f8b6cbce4786a69067ace95bed6e07ef935efb072741592",
+    "phase8_run": 31800905368,
+    "phase8_protocol_sha256": "36a9656f7dfa647a9c215e5dd1681e316c51d16064d9d9c0efb07cafb70b79f4",
+    "rem_artifact_run": 31799994835
+  },
+  "source_provenance": {
+    "rf1b_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "bitrans_sha256": "3ffc7e6c74078f9b395179aaf5daaae3c8dfbc2896d21162c8ff0354108e9a",
+    "sta_aaa_table_sha256": "622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64",
+    "aaa_output_sha256": "c14f43c731f46274f35b604356c6bb96a1186e0836aa9aa2b518666cce854167",
+    "section_map_sha256": "a5d2a9e7aec3d3511ff00de828a17abd2d2255d065c70940ba72ed8abc753cb3",
+    "section_map_source": "Existing uploaded Voynich.nu-derived per-page section map used by the prior generator programme; committed unchanged as SECTION_MAP.json."
+  },
+  "voynich_representations": ["RF_MEMBER", "STA_FAMILY", "AAA_CONNECTED"],
+  "synthetic_representations": ["ATOMIC", "LITERAL"],
+  "primary_conditioning": {
+    "axis": "section",
+    "sections": ["Herbal-A", "Herbal-B", "Astronomical", "Cosmological", "Zodiac", "Rosettes", "Balneological", "Pharmaceutical", "Stars"],
+    "exclude": ["text-only"],
+    "macro_average": "equal weight per eligible section, not token weighted",
+    "minimum_clean_tokens": 400,
+    "minimum_clean_segments": 15
+  },
+  "secondary_conditioning": {
+    "currier": "Use RF1b page-header $L=A/B directly; do not infer Currier from section.",
+    "hand": "Use RF1b page-header $H=1..5 directly; f115r ($H=@) is split S2 for lines 1-12 and S3 thereafter, matching the prior Davis sensitivity convention.",
+    "section_by_hand": "Report cells with >=300 clean tokens and >=10 clean segments; descriptive only.",
+    "section_by_currier": "Report cells with >=300 clean tokens and >=10 clean segments; descriptive only."
+  },
+  "frozen_mechanism": {
+    "source": "ReM v2.1 diplomatic MHG",
+    "documents": 190,
+    "tokens_per_document": 2000,
+    "line_width": 10,
+    "cipher_schedule": "SWITCH_LINE",
+    "state_K": 2,
+    "tau_int": 3.0,
+    "canonical_arm": "FIXED_LINE_RESET__POST",
+    "sensitivity_arm": "FIXED_CONTINUOUS__POST",
+    "baseline_arm": "CIPHER_ONLY",
+    "replicate_subset": [0, 4, 8, 12, 16],
+    "replicate_subset_rule": "Fixed every-fourth subset of the existing Phase-8 20-replicate index before any residual target scoring; same P5 plan/state namespaces.",
+    "no_retuning": ["source", "cipher", "line width", "state K", "tau", "dwell law", "reset rule", "operator order", "rotation offset", "representation", "replicate subset"]
+  },
+  "metric_families": {
+    "repeat_recurrence": ["same_rate_l1", "same_rate_l2", "same_rate_l3", "same_rate_l4", "same_rate_l8", "same_rate_l12", "same_decay_l1_l4", "same_decay_l1_l12"],
+    "ed1_lag": ["ed1_rate_l1", "ed1_rate_l2", "ed1_rate_l3", "ed1_rate_l4", "ed1_rate_l8", "ed1_rate_l12", "ed1_decay_l1_l4", "ed1_decay_l1_l12"],
+    "ed1_topology": ["ed1_sub_frac", "ed1_ins_frac", "ed1_del_frac", "ed1_first_frac", "ed1_interior_frac", "ed1_final_frac", "ed1_equal_len_frac", "ed1_directional_asym"],
+    "token_family": ["same_first_l1", "same_last_l1", "same_first_decay_l1_l12", "same_last_decay_l1_l12", "len_equal_l1", "len_close_l1", "len_diff_mean_l1"],
+    "boundary": ["start_len_minus_interior", "end_len_minus_interior", "crossline_ed1_rate", "withinline_ed1_rate", "cross_minus_within_ed1", "crossline_same_rate", "withinline_same_rate", "cross_minus_within_same", "start_first_unit_js", "end_last_unit_js"],
+    "higher_order": ["ed1_chain_rate", "ed1_chain_lift", "aba_rate", "ed1_return_rate", "repeat_chain_rate", "h1_token_bits", "h2_cond_ratio"]
+  },
+  "residual_scoring": {
+    "baseline_scale": "For each metric and synthetic representation, use the 190-document CIPHER_ONLY median and robust scale 1.4826*MAD. The same scale is used to score CIPHER_ONLY, canonical and sensitivity arms.",
+    "scale_floor": {"probability": 0.01, "difference": 0.01, "ratio": 0.02, "entropy": 0.05},
+    "distance": "absolute z = abs(VMS metric - model median) / max(1.4826*MAD_baseline, metric floor)",
+    "signed_residual": "z = (VMS metric - canonical model median) / frozen baseline scale",
+    "synthetic_robustness": "A residual is robust across ATOMIC/LITERAL only if signs agree; magnitude is the smaller absolute z. Distance uses the worse (larger) absolute z.",
+    "voynich_robustness": "A section-metric residual is representation-robust only if RF_MEMBER, STA_FAMILY and AAA_CONNECTED have the same residual sign and each synthetic-robust abs(z)>=2.0.",
+    "shared_residual": "A metric is manuscript-shared if the representation-robust residual has the same sign in >=6 of 9 eligible sections.",
+    "section_interaction": "A metric is section-modulated if representation-robust residuals include opposite signs in >=2 eligible sections, or if max(abs(z))-min(abs(z))>=3.0 with max(abs(z))>=4.0 across eligible sections.",
+    "mechanism_gain": "For each target cell, gain = baseline absolute distance - canonical absolute distance; positive means the frozen origin-state mechanism moves toward Voynich. Robust gain is the minimum across ATOMIC/LITERAL and then across the three Voynich representations."
+  },
+  "adjudication": {
+    "shared_metric_min": 3,
+    "interaction_metric_min": 3,
+    "rules": [
+      "SHARED_PLUS_SECTION_SPECIFIC if >=3 shared metrics and >=3 section-modulated metrics",
+      "SHARED_RESIDUAL_DOMINANT if >=3 shared metrics only",
+      "SECTION_SPECIFIC_RESIDUAL_DOMINANT if >=3 section-modulated metrics only",
+      "MIXED_OR_WEAK_RESIDUAL_FINGERPRINT otherwise"
+    ]
+  },
+  "reporting": {
+    "primary": ["section x representation fingerprint", "equal-section macro distances and gains", "shared residual metrics", "section-modulated metrics", "per-section family gains"],
+    "secondary": ["Currier A/B", "Davis hand", "section x hand", "section x Currier", "continuous-state sensitivity"],
+    "prohibitions": ["No use of enriched_records.pkl", "No use of the legacy 85-metric panel", "No parameter selection from Voynich residuals", "No semantic glosses from residual structure"]
+  }
+}
