@@ -1,0 +1,32 @@
+{
+  "workflow_run": 31799994835,
+  "artifact_id": 9218996277,
+  "artifact_name": "asc-reset-semantics-v01-final",
+  "artifact_digest": "sha256:2310c78fdf4b0dd9bc478e6b2c2e5e3974633aa3b5811116ad2535ee730cfda3",
+  "protocol_sha256": "b17c9cb4f13b7f8f76e25ce636177929560ead0c6512190a99fb2c38a24c5c52",
+  "replication_guard_pass": true,
+  "adjudication": "CONSISTENT_DIRECTION_NOT_ROBUST",
+  "primary_reset_d3": {
+    "fixed": {"median": -0.026954860181808482, "ci95": [-0.04419007178877277, 0.009038886255074263]},
+    "geometric": {"median": -0.01060212660495699, "ci95": [-0.023587482244149194, 0.005818905338565883]}
+  },
+  "strata": {
+    "fixed_continuous": {
+      "phase7_arm": "TAU3_FIXED_CONTINUOUS_K2",
+      "median_robust_d3": 0.5910917342010585
+    },
+    "fixed_line_reset": {
+      "phase7_arm": "TAU3_FIXED_LINE_RESET_K2",
+      "median_robust_d3": 0.5791415596634549
+    },
+    "geometric_continuous": {
+      "phase7_arm": "TAU3_GEOM_CONTINUOUS_K2",
+      "median_robust_d3": 0.6655336741140667
+    },
+    "geometric_line_reset": {
+      "phase7_arm": "TAU3_GEOM_LINE_RESET_K2",
+      "median_robust_d3": 0.6507572257433305
+    }
+  },
+  "note": "Reset-arm robust medians were computed from the immutable Phase-7 COMBINED.json using the preregistered worst-ATOMIC/LITERAL per-document robust map. Phase-8 protocol was frozen before this result."
+}
