@@ -1,0 +1,95 @@
+{
+  "arms": {
+    "shared_k2": {
+      "attempted": 5,
+      "pass": false,
+      "rows": [
+        {
+          "detected": false,
+          "fold_wins": 0,
+          "means": {
+            "1": -11.53935141518957,
+            "2": -11.89427868171767,
+            "3": -12.425829789344494,
+            "4": -12.264504938573218,
+            "5": -13.055062965331505,
+            "6": -13.557804589730207
+          },
+          "median_ari": null,
+          "selected_k": 1,
+          "trial": 0
+        },
+        {
+          "detected": false,
+          "fold_wins": 4,
+          "means": {
+            "1": -10.300713843181047,
+            "2": -10.152373711981165,
+            "3": -10.54816231016234,
+            "4": -11.35524693342535,
+            "5": -11.54529476253975,
+            "6": -11.715179016886102
+          },
+          "median_ari": 0.2160649700609955,
+          "selected_k": 2,
+          "trial": 1
+        },
+        {
+          "detected": false,
+          "fold_wins": 3,
+          "means": {
+            "1": -10.069487963359862,
+            "2": -10.022036233408013,
+            "3": -10.912693960221606,
+            "4": -11.10177879658958,
+            "5": -11.663903314073503,
+            "6": -12.473407071775139
+          },
+          "median_ari": null,
+          "selected_k": 2,
+          "trial": 2
+        },
+        {
+          "detected": false,
+          "fold_wins": 4,
+          "means": {
+            "1": -10.541050147665882,
+            "2": -10.356794104500773,
+            "3": -10.681107718912646,
+            "4": -11.0198907737483,
+            "5": -11.075313243684025,
+            "6": -11.46979379182773
+          },
+          "median_ari": 0.5692548668605952,
+          "selected_k": 2,
+          "trial": 3
+        },
+        {
+          "detected": false,
+          "fold_wins": 0,
+          "means": {
+            "1": -10.887745629594894,
+            "2": -11.327546803310481,
+            "3": -11.83853729416671,
+            "4": -12.082783788434236,
+            "5": -12.21024358322041,
+            "6": -13.484928963225167
+          },
+          "median_ari": null,
+          "selected_k": 1,
+          "trial": 4
+        }
+      ],
+      "stop": "EARLY_FAIL_16_OF_20_IMPOSSIBLE",
+      "successes": 0
+    }
+  },
+  "effect_floor_sd": 1.5,
+  "formal_verdict": "FAIL_CALIBRATION_POWER",
+  "note": "U3 target remains sealed; null/FPR arms need not be run because the instrument already fails the mandatory power gate.",
+  "schema": "u3-calibration-v0.1",
+  "successes_required": 16,
+  "target_may_open": false,
+  "target_opened": false,
+  "trials_required_for_power": 20
+}
