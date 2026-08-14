@@ -1,0 +1,178 @@
+{
+  "adjudication_order": [
+    "P5_W10_ENDPOINTS_NOT_REPLICATED",
+    "TAU_SUFFICIENT_NO_DWELL_EFFECT",
+    "REGULARITY_GRADIENT_BOTH_TAU",
+    "REGULARITY_GRADIENT_TAU3_ONLY",
+    "REGULARITY_GRADIENT_TAU4_ONLY",
+    "DWELL_LAW_MATTERS_NONMONOTONIC",
+    "MIXED_OR_UNRESOLVED"
+  ],
+  "arms": {
+    "baselines": [
+      "IDENTITY",
+      "OCCURRENCE_K2"
+    ],
+    "tau3": {
+      "fixed": {
+        "arm": "TAU3_FIXED_K2",
+        "construction": "exact Phase-4 FIXED_RUN3_K2 state law",
+        "refresh_interval_cv": 0.0,
+        "refresh_interval_mean": 3.0,
+        "regularity": "deterministic refresh blocks",
+        "tau_int": 3.0
+      },
+      "geometric": {
+        "arm": "TAU3_GEOM_K2",
+        "construction": "exact Phase-4 MARKOV_M4_K2 state law; equivalent to geometric independent-state refresh with hazard 1/2",
+        "refresh_interval_cv": 0.7071067811865476,
+        "refresh_interval_mean": 2.0,
+        "regularity": "memoryless/geometric",
+        "tau_int": 3.0
+      },
+      "semi": {
+        "arm": "TAU3_SEMI_K2",
+        "construction": "iid refresh blocks D in {2,4}, P(D=2)=2/3, P(D=4)=1/3; independent fair state per block",
+        "refresh_interval_cv": 0.3535533905932738,
+        "refresh_interval_mean": 2.6666666666666665,
+        "regularity": "intermediate-variance renewal",
+        "tau_int": 3.0
+      }
+    },
+    "tau4": {
+      "fixed": {
+        "arm": "TAU4_FIXED_K2",
+        "construction": "exact Phase-4 FIXED_RUN4_K2 state law",
+        "refresh_interval_cv": 0.0,
+        "refresh_interval_mean": 4.0,
+        "regularity": "deterministic refresh blocks",
+        "tau_int": 4.0
+      },
+      "geometric": {
+        "arm": "TAU4_GEOM_K2",
+        "construction": "exact Phase-4 MARKOV_M5_K2 state law; equivalent to geometric independent-state refresh with hazard 2/5",
+        "refresh_interval_cv": 0.7745966692414834,
+        "refresh_interval_mean": 2.5,
+        "regularity": "memoryless/geometric",
+        "tau_int": 4.0
+      },
+      "semi": {
+        "arm": "TAU4_SEMI_K2",
+        "construction": "iid refresh blocks D in {3,5}, P(D=3)=5/8, P(D=5)=3/8; independent fair state per block",
+        "refresh_interval_cv": 0.2581988897471611,
+        "refresh_interval_mean": 3.75,
+        "regularity": "intermediate-variance renewal",
+        "tau_int": 4.0
+      }
+    },
+    "tau_identity": "For iid independent-state refresh blocks with duration D, tau_int=E[D^2]/E[D]. The semi-renewal supports are chosen exactly to equal tau=3 or 4. The geometric-refresh representation is distributionally equivalent to the corresponding Phase-4 binary Markov state sequence."
+  },
+  "date": "2026-08-14",
+  "execution_guard": {
+    "protocol_hash_file": "saltzman_phase6/PROTOCOL_SHA256",
+    "rule": "Workflow file is committed last. Freeze verifies protocol hash, exact Phase-4 persistence blob, compiles Phase-6 code, and runs target-free dwell-law self-tests before any target scorer is restored."
+  },
+  "experiment": "ASC-DWELL-REGULARITY-v0.1",
+  "invariants": {
+    "cipher_schedule": "SWITCH_LINE",
+    "document_rule": "canonical ReM documents with >=2000 clean tokens; use first 2000",
+    "eligible_documents": 190,
+    "line_width_tokens": 10,
+    "no_concurrent_tuning": [
+      "cipher",
+      "language",
+      "source",
+      "line width",
+      "state alphabet K",
+      "rotation offset rule",
+      "scorer",
+      "target vector",
+      "reset semantics"
+    ],
+    "primary_state_alphabet_K": 2,
+    "representations": [
+      "ATOMIC",
+      "LITERAL"
+    ],
+    "robust_rule": "worst case across ATOMIC/LITERAL",
+    "source": "ReM v2.1 diplomatic MHG",
+    "state_application": "same Phase-4 K2 within-token rotation offset rule",
+    "state_process_continuity": "state sequence continuous across artificial line boundaries; no reset at line boundaries"
+  },
+  "parent_phase5": {
+    "adjudication": "MIXED_OR_UNRESOLVED",
+    "branch": "experiment/saltzman-line-scale-v0.1-20260814",
+    "commit": "c68dbec50840ebffa03272b66cb7322ab66022ac",
+    "interpretation": "Short-lived state survives W6-W20 but deterministic fixed blocks show material line interaction; the preferred tau remains short rather than scaling with W.",
+    "protocol_sha256": "74aaeffd009fbcebaa57327c2867ee15bf501385cdb822c9af9528a98c73a96a",
+    "workflow_run": 31792703537
+  },
+  "primary_test": {
+    "bootstrap": {
+      "ci": 0.95,
+      "resamples": 10000,
+      "seed_namespace": "ASC-DWELL-REGULARITY-v0.1|bootstrap"
+    },
+    "estimator": "median paired-document difference",
+    "law_matters_nonmonotonic_rule": "At least one tau has FG 95% CI excluding 0, but the preregistered monotone regularity-gradient rule is not met.",
+    "materiality_basis": "Inherited prospectively from the Phase-4 same-law control upper 95% CI 0.0361, rounded up to 0.04; frozen before Phase-6 target scoring.",
+    "materiality_margin_d3": 0.04,
+    "metric": "robust d3 = worst ATOMIC/LITERAL distance_of_median_Q3; lower is better",
+    "no_best_cell_selection": true,
+    "no_tau_interpolation": true,
+    "paired_differences": {
+      "FG": "d3_geometric - d3_fixed; positive means fixed/regular refresh is better",
+      "FS": "d3_semi - d3_fixed; positive means fixed is better than semi",
+      "SG": "d3_geometric - d3_semi; positive means semi is better than geometric"
+    },
+    "regularity_gradient_rule": "At a tau, FG lower 95% CI > +0.04 and both FS and SG lower 95% CIs >0; this requires a material endpoint effect with the semi-renewal law statistically ordered between fixed and geometric.",
+    "tau_sufficient_rule": "For both tau=3 and tau=4, all three pairwise-difference 95% CIs lie wholly inside [-0.04,+0.04]."
+  },
+  "replication_guard": {
+    "expected_phase5_w10_median_robust_d3": {
+      "IDENTITY": 0.9384617831683659,
+      "OCCURRENCE_K2": 0.8414083793591833,
+      "TAU3_FIXED_K2": 0.5910917342010585,
+      "TAU3_GEOM_K2": 0.6655336741140667,
+      "TAU4_FIXED_K2": 0.6275627239976337,
+      "TAU4_GEOM_K2": 0.662609692540857
+    },
+    "failure_label": "P5_W10_ENDPOINTS_NOT_REPLICATED",
+    "rule": "For each endpoint arm, recompute the Phase-5 arm-summary median on the exact common-document rule and require absolute difference from the frozen Phase-5 W10 value <=1e-12.",
+    "tolerance_abs": 1e-12
+  },
+  "scientific_question": "At fixed short integrated correlation time tau_int in {3,4}, does the regularity/renewal law of the latent K2 origin state materially affect Voynich-target fit, or is tau_int alone sufficient?",
+  "secondary": {
+    "E1_pairwise_differences": true,
+    "Q3_component_descriptives": true,
+    "individual_gate4_hits": true,
+    "representation_specific_d3": true,
+    "target_free_state_law_validation": "verify exact support probabilities/moments and long-sequence empirical lag autocorrelation before any scorer is restored",
+    "tau3_vs_tau4_within_each_law": true
+  },
+  "simulation": {
+    "mechanisms_sha256": "eb5ea3f0d3e8aa2f93301e8870b1198f5dc69a879d53c04dda711011cc440838",
+    "permutation_replicates": 100,
+    "phase4_persistence_operator_git_blob_sha1": "d6ad9687c7bd76226d37f53324a064909375cb66",
+    "replicates_per_document": 20,
+    "scorer_sha256": "926da655b603981bc197c248f6dce94fad7b242ab40a89d9d8d69cd40839d6b5",
+    "seeding": {
+      "phase4_endpoint_state_seed": "seed_of('P5-state',doc,replicate) to reproduce FIXED_RUN3/4 and MARKOV_M4/5 exactly",
+      "plan_seed": "seed_of('P5-plan',doc,replicate) to reproduce the Phase-5 W10 endpoint controls exactly",
+      "semi_state_seed": "same numeric P5-state seed, but a disjoint P6-SEMI internal namespace for renewal durations/states",
+      "stat_seed": "seed_of('P5-stat',doc,representation,replicate), common across all Phase-6 arms and exact Phase-5 W10 controls"
+    },
+    "target_order": [
+      "ED1_N0",
+      "ED1_N1",
+      "ED1_N3",
+      "E1_N0"
+    ],
+    "target_vector": [
+      1.1642,
+      1.1039,
+      1.0257,
+      1.0182
+    ]
+  }
+}
