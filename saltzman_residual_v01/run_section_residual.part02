@@ -1,0 +1,127 @@
+XED_CONTINUOUS__POST':apply_k2_states(cipher,cont)}
+            for arm,z in outs.items():buckets[(arm,rep)].append(fingerprint(model_corpus(z)))
+    cells=[]
+    for (arm,rep),rows in buckets.items():cells.append({'corpus':doc,'arm':arm,'representation':rep,'metrics':median_metrics(rows,names),'replicates':len(rows)})
+    return cells
+
+def score_mode(P,rem_path,shard,nshards,out_path):
+    rem=json.loads(lzma.decompress(Path(rem_path).read_bytes()).decode());docs=sorted(k for k,v in rem.items() if len(v)>=2000);assert len(docs)==190,len(docs)
+    take=docs[shard::nshards];cells=[]
+    for i,d in enumerate(take,1):
+        cells.extend(synthetic_doc(d,rem[d],P));print('SCORE',shard,i,len(take),d,flush=True)
+    Path(out_path).write_text(json.dumps({'protocol_sha256':PROTOCOL_SHA,'shard':shard,'nshards':nshards,'docs':take,'cells':cells}));
+
+# ---------- residual scoring ----------
+def med_mad(vals,floor):
+    a=np.asarray([x for x in vals if x is not None and math.isfinite(x)],float)
+    if not len(a):return None,None,None
+    med=float(np.median(a));mad=float(np.median(np.abs(a-med)));scale=max(1.4826*mad,floor)
+    return med,mad,scale
+
+def metric_floor(name,P):
+    f=P['residual_scoring']['scale_floor']
+    if 'bits' in name:return f['entropy']
+    if name.endswith('_frac') or name.endswith('_rate') or name.startswith('same_') or name.startswith('len_equal') or name.startswith('len_close') or name.endswith('_ratio') or name.endswith('_asym'):return f['probability']
+    return f['difference']
+
+def load_cells(rootglob):
+    import glob
+    cells=[]
+    for fn in glob.glob(rootglob,recursive=True):
+        z=json.load(open(fn));assert z['protocol_sha256']==PROTOCOL_SHA;cells.extend(z['cells'])
+    assert len({c['corpus'] for c in cells})==190,len({c['corpus'] for c in cells})
+    return cells
+
+def model_distributions(cells,P):
+    names=all_metric_names(P); by=defaultdict(list)
+    for c in cells:
+        for m in names:by[(c['arm'],c['representation'],m)].append(c['metrics'].get(m))
+    out={}
+    for rep in SYN_REPS:
+        out[rep]={}
+        for m in names:
+            bmed,bmad,scale=med_mad(by[('CIPHER_ONLY',rep,m)],metric_floor(m,P))
+            z={'baseline_median':bmed,'baseline_mad':bmad,'scale':scale}
+            for arm in ('FIXED_LINE_RESET__POST','FIXED_CONTINUOUS__POST'):
+                med,_,_=med_mad(by[(arm,rep,m)],metric_floor(m,P));z[arm]=med
+            out[rep][m]=z
+    return out
+
+def score_target_metric(t,dist):
+    if t is None or not math.isfinite(t) or dist['scale'] is None:return None
+    s=dist['scale'];b=dist['baseline_median'];c=dist['FIXED_LINE_RESET__POST'];x=dist['FIXED_CONTINUOUS__POST']
+    if any(v is None for v in (b,c,x)):return None
+    return {'target':t,'baseline_z':(t-b)/s,'canonical_z':(t-c)/s,'sensitivity_z':(t-x)/s,
+            'canonical_gain':abs(t-b)/s-abs(t-c)/s,'sensitivity_gain':abs(t-b)/s-abs(t-x)/s}
+
+def robust_syn(target_metric,models,m):
+    z={rep:score_target_metric(target_metric,models[rep][m]) for rep in SYN_REPS}
+    if any(v is None for v in z.values()):return {'by_synrep':z,'robust_signed_z':None,'robust_abs_distance':None,'robust_gain':None}
+    signs=[math.copysign(1,v['canonical_z']) if v['canonical_z']!=0 else 0 for v in z.values()]
+    signed=None
+    if signs[0]==signs[1] and signs[0]!=0:signed=signs[0]*min(abs(v['canonical_z']) for v in z.values())
+    return {'by_synrep':z,'robust_signed_z':signed,'robust_abs_distance':max(abs(v['canonical_z']) for v in z.values()),'robust_gain':min(v['canonical_gain'] for v in z.values())}
+
+def merge_mode(P,vms_path,score_glob,out_path):
+    V=json.load(open(vms_path));assert V['protocol_sha256']==PROTOCOL_SHA
+    cells=load_cells(score_glob);models=model_distributions(cells,P);names=all_metric_names(P);secs=P['primary_conditioning']['sections']
+    scored={}
+    for vrep in RF_REPS:
+        scored[vrep]={}
+        for g,fp in V['representations'][vrep]['groups'].items():
+            scored[vrep][g]={m:robust_syn(fp.get(m),models,m) for m in names}
+    # representation-robust section residuals
+    sec_metric={}
+    for sec in secs:
+        g='SECTION:'+sec;sec_metric[sec]={}
+        for m in names:
+            vals=[scored[r].get(g,{}).get(m,{}).get('robust_signed_z') for r in RF_REPS]
+            if all(v is not None and abs(v)>=2 for v in vals) and (all(v>0 for v in vals) or all(v<0 for v in vals)):
+                sign=1 if vals[0]>0 else -1;rz=sign*min(abs(v) for v in vals)
+            else:rz=None
+            gains=[scored[r].get(g,{}).get(m,{}).get('robust_gain') for r in RF_REPS]
+            rg=min(gains) if all(v is not None for v in gains) else None
+            sec_metric[sec][m]={'representation_robust_signed_z':rz,'representation_robust_gain':rg,'by_vms_rep':{r:scored[r].get(g,{}).get(m) for r in RF_REPS}}
+    shared=[];interact=[]
+    for m in names:
+        vals={s:sec_metric[s][m]['representation_robust_signed_z'] for s in secs}
+        non={s:v for s,v in vals.items() if v is not None};pos=[v for v in non.values() if v>0];neg=[v for v in non.values() if v<0]
+        same_count=max(len(pos),len(neg)); shared_sign='positive' if len(pos)>=len(neg) else 'negative'
+        if same_count>=6:shared.append({'metric':m,'sections':same_count,'sign':shared_sign,'values':non})
+        av=[abs(v) for v in non.values()]
+        mod=(len(pos)>=1 and len(neg)>=1 and len(non)>=2) or (len(av)>=2 and max(av)-min(av)>=3 and max(av)>=4)
+        if mod:interact.append({'metric':m,'values':non,'opposite_signs':bool(pos and neg),'abs_range':(max(av)-min(av) if av else None)})
+    # family summaries and equal-section macro gains/distances
+    famsum={}
+    for fam,metrics in P['metric_families'].items():
+        pg=[];dist=[]
+        for sec in secs:
+            for m in metrics:
+                x=sec_metric[sec][m];
+                if x['representation_robust_gain'] is not None:pg.append(x['representation_robust_gain'])
+                # worst across vms reps after already worst across syn reps
+                ds=[scored[r].get('SECTION:'+sec,{}).get(m,{}).get('robust_abs_distance') for r in RF_REPS]
+                if all(v is not None for v in ds):dist.append(max(ds))
+        famsum[fam]={'macro_median_gain':float(np.median(pg)) if pg else None,'macro_median_canonical_distance':float(np.median(dist)) if dist else None,'cells_gain':len(pg),'cells_distance':len(dist),'shared_metrics':[x['metric'] for x in shared if x['metric'] in metrics],'section_modulated_metrics':[x['metric'] for x in interact if x['metric'] in metrics]}
+    ns=len(shared);ni=len(interact);thr=P['adjudication']
+    if ns>=thr['shared_metric_min'] and ni>=thr['interaction_metric_min']:verdict='SHARED_PLUS_SECTION_SPECIFIC'
+    elif ns>=thr['shared_metric_min']:verdict='SHARED_RESIDUAL_DOMINANT'
+    elif ni>=thr['interaction_metric_min']:verdict='SECTION_SPECIFIC_RESIDUAL_DOMINANT'
+    else:verdict='MIXED_OR_WEAK_RESIDUAL_FINGERPRINT'
+    result={'experiment':P['experiment'],'protocol_sha256':PROTOCOL_SHA,'document_count':190,'adjudication':verdict,'shared_residual_metrics':shared,'section_modulated_metrics':interact,'family_summary':famsum,'section_metric_summary':sec_metric,'model_distributions':models,'scored_targets':scored,'vms_parse_stats':V['parse_stats'],'notes':{'primary':'section-conditioned, equal-section macro; no mechanism tuning','secondary_groups':'Currier, hand, section×hand, section×Currier are included under scored_targets and do not affect adjudication.'}}
+    Path(out_path).write_text(json.dumps(result,indent=2));print(json.dumps({'adjudication':verdict,'n_shared':ns,'n_section_modulated':ni,'family_summary':famsum,'shared':[x['metric'] for x in shared],'section_modulated':[x['metric'] for x in interact]},indent=2),flush=True)
+
+def self_tests():
+    assert ed1_info('abc','abd')==('sub','final')
+    assert ed1_info('abc','xbc')==('sub','first')
+    assert ed1_info('abc','abbc')[0]=='ins'
+    assert ed1_info('abbc','abc')[0]=='del'
+    assert ed1_info('abc','abc') is None and ed1_info('abc','axy') is None
+    c=model_corpus([['aa','ab','aa'],['b','bb']]);f=fingerprint(c);assert f['aba_rate']>0 and f['_support']['tokens']==5
+    print('SELF_TESTS_OK')
+
+def main():
+    P=load_protocol();self_tests();mode=sys.argv[1]
+    if mode=='vms':vms_mode(P,sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
+    elif mode=='score':score_mode(P,sys.argv[2],int(sys.argv[3]),int(sys.argv[4]),sys.argv[5])
+    elif mode=='merge':merge_mode(P,sys.argv[2],sys.argv[3],sys.argv[4
