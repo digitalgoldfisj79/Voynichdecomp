@@ -1,0 +1,57 @@
+name: Frontier U6 Stage-B encoder bridge
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - .github/workflows/frontier-u6-stageb-bridge.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  bridge-encoder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+
+      - name: Recover qualified U6 encoder artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: u6-v02-external-encoder
+          path: /tmp/u6-v02
+          github-token: ${{ github.token }}
+          repository: digitalgoldfisj79/Voynichdecomp
+          run-id: 31867562371
+
+      - name: Stage public non-sensitive encoder checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$(find /tmp/u6-v02 -type f -name 'U6_EXTERNAL_ENCODER.pt' -print -quit)"
+          test -n "$src"
+          mkdir -p experiments/frontier_v0_1/_stageb_bridge
+          cp "$src" experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt
+          sha256sum experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt > experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt.sha256
+          test "$(sha256sum experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt | awk '{print $1}')" = "999e60a763b8a77ea78d776de852885099813ba332464b5e690b5d97523bd16b"
+
+      - name: Commit bridge checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt.sha256
+          if git diff --cached --quiet; then
+            echo "Encoder bridge already present"
+          else
+            git commit -m "Bridge qualified U6 encoder for sealed Stage B"
+            git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
+          fi
