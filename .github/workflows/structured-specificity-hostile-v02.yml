@@ -1,0 +1,199 @@
+name: Structured Specificity Hostile v0.2
+
+on:
+  push:
+    branches:
+      - experiment/structured-specificity-hostile-v0.2-20260815
+    paths:
+      - .github/workflows/structured-specificity-hostile-v02.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Reconstruct frozen programme bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          cd "$EXP"
+          base64 -d hostile_v02_bundle.tar.gz.b64 | tar -xzf -
+          python -m py_compile run_hostile_v02.py
+          sha256sum PROTOCOL_HOSTILE_V02.md run_hostile_v02.py REAL_CONTROL_MANIFEST.json TARGET_SOURCE_MANIFEST.json voynich_section_map.json hostile_v02_bundle.tar.gz.b64
+          cd - >/dev/null
+
+      - name: Reconstruct frozen C corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          mkdir -p "$EXP/external/C"
+          cat experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part* \
+            | tr -d '\n\r' | base64 -d | gzip -d > "$EXP/external/C/lecouteux_formula_corpus_v02.csv"
+          sha256sum "$EXP/external/C/lecouteux_formula_corpus_v02.csv"
+
+      - name: Download frozen real controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          mkdir -p "$EXP/external/controls"
+          python - <<'PY'
+          import json, pathlib, urllib.request
+          exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2')
+          m=json.loads((exp/'REAL_CONTROL_MANIFEST.json').read_text())['families']
+          for fam,spec in m.items():
+              if not isinstance(spec,list): continue
+              d=exp/'external'/'controls'/fam; d.mkdir(parents=True,exist_ok=True)
+              for i,u in enumerate(spec):
+                  name=u.rsplit('/',1)[-1] or f'{fam}_{i}.txt'
+                  print('DOWNLOAD',fam,u)
+                  urllib.request.urlretrieve(u,d/name)
+          PY
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/HTR-United/CREMMA-Medieval-LAT.git "$EXP/external/cremma_repo"
+          git -C "$EXP/external/cremma_repo" sparse-checkout set data data-registry.csv
+          python - <<'PY'
+          import csv, pathlib, shutil
+          exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2')
+          src=exp/'external'/'cremma_repo'; dst=exp/'external'/'cremma_snapshot'
+          dst.mkdir(parents=True,exist_ok=True); shutil.copy2(src/'data-registry.csv',dst/'data-registry.csv')
+          rows=list(csv.DictReader((src/'data-registry.csv').open(encoding='utf-8')))
+          keep={'Medic.','Eccl.','Schol.'}
+          n=0
+          for r in rows:
+              if r.get('Type') not in keep: continue
+              rel=pathlib.Path(r['Folder']); d=src/rel
+              if not d.exists(): continue
+              for p in d.rglob('*'):
+                  if p.is_file() and p.suffix.lower() in {'.xml','.txt'}:
+                      q=dst/p.relative_to(src); q.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(p,q); n+=1
+          print('CREMMA_TEXT_FILES',n)
+          PY
+          curl -fL --retry 3 --retry-delay 2 \
+            'https://www.uni-giessen.de/de/fbz/fb05/germanistik/absprache/sprachverwendung/gloning/tx/bvgs.htm' \
+            -o "$EXP/external/bvgs.htm"
+          find "$EXP/external/controls" "$EXP/external/cremma_snapshot" -type f -print0 | sort -z | xargs -0 sha256sum > "$EXP/external/real_control_hashes.sha256"
+          sha256sum "$EXP/external/bvgs.htm" >> "$EXP/external/real_control_hashes.sha256"
+          cat "$EXP/external/real_control_hashes.sha256"
+
+      - name: Unit tests and hostile preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          python "$EXP/run_hostile_v02.py" test
+          sha256sum "$EXP/PROTOCOL_HOSTILE_V02.md" "$EXP/run_hostile_v02.py" "$EXP/REAL_CONTROL_MANIFEST.json" "$EXP/TARGET_SOURCE_MANIFEST.json" "$EXP/voynich_section_map.json"
+
+      - name: External-only qualification
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          mkdir -p "$EXP/results"
+          PYTHONUNBUFFERED=1 python "$EXP/run_hostile_v02.py" external \
+            --controls "$EXP/external/controls" \
+            --cremma "$EXP/external/cremma_snapshot" \
+            --bvgs "$EXP/external/bvgs.htm" \
+            --corpus "$EXP/external/C/lecouteux_formula_corpus_v02.csv" \
+            --out "$EXP/results" 2>&1 | tee "$EXP/external_run.log"
+
+      - name: Check external stop gate
+        id: extgate
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          STATUS=$(python - <<'PY'
+          import json
+          p='experiments/structured_specificity_hostile_v0_2/results/external_freeze.json'
+          print(json.load(open(p))['status'])
+          PY
+          )
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "EXTERNAL_STATUS=$STATUS"
+
+      - name: Download target only after external PASS
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          T="$EXP/target_inputs"; mkdir -p "$T"
+          curl -fL --retry 3 'https://www.voynich.nu/data/RF1b-er.txt' -o "$T/RF1b-er.txt"
+          curl -fL --retry 3 'https://www.voynich.nu/data/sta/RF1b.txt' -o "$T/RF1b-sta.txt"
+          curl -fL --retry 3 'https://www.voynich.nu/software/bitrans/bitrans.c' -o "$T/bitrans.c"
+          curl -fL --retry 3 'https://www.voynich.nu/software/bitrans/STA-aaa.bit' -o "$T/STA-aaa.bit"
+          python - <<'PY'
+          import hashlib,json,pathlib,sys
+          exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2'); t=exp/'target_inputs'
+          m=json.loads((exp/'TARGET_SOURCE_MANIFEST.json').read_text())
+          for key,name in [('STA','RF1b-sta.txt'),('bitrans.c','bitrans.c'),('STA-aaa.bit','STA-aaa.bit')]:
+              got=hashlib.sha256((t/name).read_bytes()).hexdigest(); want=m[key]['expected_sha256']
+              print('HASH',key,got,'EXPECTED',want)
+              if got!=want: raise SystemExit(f'hash mismatch: {key}')
+          print('RF_EVA_SHA256',hashlib.sha256((t/'RF1b-er.txt').read_bytes()).hexdigest())
+          PY
+          gcc -O2 -o "$T/bitrans" "$T/bitrans.c"
+          "$T/bitrans" -1 -m2 -f "$T/STA-aaa.bit" "$T/RF1b-sta.txt" "$T/RF1b-aaa.txt"
+          sha256sum "$T/RF1b-er.txt" "$T/RF1b-sta.txt" "$T/RF1b-aaa.txt" "$T/bitrans.c" "$T/STA-aaa.bit" > "$T/target_hashes.sha256"
+          cat "$T/target_hashes.sha256"
+
+      - name: Run target matched-null audit
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/structured_specificity_hostile_v0_2"; T="$EXP/target_inputs"
+          PYTHONUNBUFFERED=1 python "$EXP/run_hostile_v02.py" target \
+            --out "$EXP/results" \
+            --eva "$T/RF1b-er.txt" \
+            --sta "$T/RF1b-sta.txt" \
+            --aaa "$T/RF1b-aaa.txt" \
+            --section-map "$EXP/voynich_section_map.json" \
+            --nulls 250 2>&1 | tee "$EXP/target_run.log"
+
+      - name: Print decisive outputs
+        if: always()
+        shell: bash
+        run: |
+          EXP="experiments/structured_specificity_hostile_v0_2"
+          echo '=== EXTERNAL ==='
+          cat "$EXP/results/external_freeze.json" 2>/dev/null || true
+          echo '=== TARGET ==='
+          cat "$EXP/results/result.json" 2>/dev/null || echo 'TARGET_NOT_ACCESSED_OR_NOT_COMPLETED'
+          echo '=== FILES ==='
+          find "$EXP/results" -maxdepth 1 -type f -printf '%f %s bytes\n' 2>/dev/null | sort || true
+
+      - name: Upload audit-complete artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: structured-specificity-hostile-v02-results
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            experiments/structured_specificity_hostile_v0_2/PROTOCOL_HOSTILE_V02.md
+            experiments/structured_specificity_hostile_v0_2/run_hostile_v02.py
+            experiments/structured_specificity_hostile_v0_2/REAL_CONTROL_MANIFEST.json
+            experiments/structured_specificity_hostile_v0_2/TARGET_SOURCE_MANIFEST.json
+            experiments/structured_specificity_hostile_v0_2/voynich_section_map.json
+            experiments/structured_specificity_hostile_v0_2/external/C/
+            experiments/structured_specificity_hostile_v0_2/external/controls/
+            experiments/structured_specificity_hostile_v0_2/external/cremma_snapshot/
+            experiments/structured_specificity_hostile_v0_2/external/bvgs.htm
+            experiments/structured_specificity_hostile_v0_2/external/real_control_hashes.sha256
+            experiments/structured_specificity_hostile_v0_2/results/
+            experiments/structured_specificity_hostile_v0_2/external_run.log
+            experiments/structured_specificity_hostile_v0_2/target_run.log
+            experiments/structured_specificity_hostile_v0_2/target_inputs/
