@@ -1,0 +1,45 @@
+name: STA boundary robustness v0.1
+on:
+  push:
+    branches:
+      - experiment/sta-boundary-robustness-v0.1-20260815
+    paths:
+      - 'experiments/sta_boundary_robustness_v0_1/**'
+      - '.github/workflows/sta-boundary-robustness-v0.1.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sta-robustness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical dependency
+        run: python -m pip install 'numpy<2'
+      - name: Acquire canonical RF1b STA source
+        run: |
+          curl --fail --location --retry 3 --output /tmp/RF1b.txt https://voynich.nu/data/sta/RF1b.txt
+          head -1 /tmp/RF1b.txt
+          sha256sum /tmp/RF1b.txt
+      - name: Run frozen STA robustness programme
+        run: python experiments/sta_boundary_robustness_v0_1/run_sta_robustness.py /tmp/RF1b.txt
+      - name: Commit deterministic results
+        run: |
+          git config user.name 'voynich-recovery-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/sta_boundary_robustness_v0_1/
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add STA boundary robustness results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sta-boundary-robustness-v0.1-results
+          path: results/sta_boundary_robustness_v0_1/
