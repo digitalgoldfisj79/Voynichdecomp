@@ -40,7 +40,7 @@ jobs:
           mkdir -p experiments/frontier_v0_1/_stageb_bridge
           cp "$src" experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt
           sha256sum experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt > experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt.sha256
-          test "$(sha256sum experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt | awk '{print $1}')" = "999e60a763b8a77ea78d776de852885099813ba332464b5e690b5d97523bd16b"
+          test "$(sha256sum experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt | awk '{print $1}')" = "54ef0612e623fa1755a488cdb975263c93f77c034085b3fa11eff21b62ba52b0"
 
       - name: Commit bridge checkpoint
         shell: bash
