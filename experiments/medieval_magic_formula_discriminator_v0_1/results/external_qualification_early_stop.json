@@ -1,0 +1,50 @@
+{
+  "Q1": {
+    "accuracy": 0.81875,
+    "accuracy_bootstrap_95": [0.7625, 0.875],
+    "class_auc": {"G0": 0.925, "G1": 0.9266666666666666, "G3": 0.9985416666666667, "G4": 1.0},
+    "macro_auc": 0.9625520833333333,
+    "n": {"test": 160, "train": 640, "val": 320},
+    "pass": true
+  },
+  "Q2": {
+    "accuracy": 0.5528846153846154,
+    "class_auc": {"A": 0.7835286458333335, "B": 0.5844559585492228, "C": 0.6673782156540777},
+    "macro_auc": 0.6784542733455448,
+    "pass": false,
+    "split_counts": {"test": {"A": 48, "B": 15, "C": 145}, "train": {"A": 72, "B": 23, "C": 435}, "val": {"A": 48, "B": 7, "C": 145}},
+    "thresholds": {"each_class_auc_min": 0.65, "macro_auc_min": 0.75}
+  },
+  "Q3": {
+    "grouped_macro_auc": 0.6784542733455448,
+    "pass": true,
+    "random_split_macro_auc": 0.672457237688805,
+    "ratio": 1.0089180922155752,
+    "threshold_ratio_min": 0.9
+  },
+  "Q4": {
+    "full_macro_auc": 0.6784542733455448,
+    "full_minus_nuisance": 0.009723121946292657,
+    "matched_class_auc": {"A": 0.6517857142857143, "B": 0.43333333333333335, "C": 0.7833333333333334},
+    "matched_counts": {"A": 41, "B": 41, "C": 41},
+    "matched_macro_auc": 0.6228174603174603,
+    "matched_n": 123,
+    "nuisance_only_macro_auc": 0.6687311513992521,
+    "pass": false,
+    "required_full_minus_nuisance": 0.05,
+    "required_matched_macro_auc": 0.7,
+    "symbol_invariance_pass": true,
+    "symbol_renaming_max_feature_diff": 0.0
+  },
+  "Q5": {"reason": "Already disqualified by Q2 and Q4; frozen protocol requires stopping at decisive negatives.", "status": "NOT_RUN_EARLY_STOP"},
+  "decision": "FAIL_EXTERNAL_Q2_Q4_STOP_BEFORE_VOYNICH",
+  "formula_counts": {"B": 45, "C": 725},
+  "gates": {"Q1": "PASS", "Q2": "FAIL", "Q3": "PASS", "Q4": "FAIL", "Q5": "NOT_RUN_EARLY_STOP"},
+  "hashes": {"implementation_freeze_sha256": "470eb1d11b1c3129d2a751c7456b6fe244938dd0028f686dbb5ee2594ce7e834", "runner_sha256": "4c78ee6f0f646d1edf321f336f3e5a729c78667cec691827cd3a2b9ba2f95c09"},
+  "programme": "medieval_magic_formula_discriminator_v0_1",
+  "real_sample_counts": {"A": 168, "B": 45, "C": 725},
+  "seed": 20260815,
+  "stage": "external_qualification_early_stop",
+  "stop_reason": "Q2 and Q4 failed; per frozen protocol Q5 and Voynich evaluation were not run.",
+  "voynich_status": "SEALED"
+}
