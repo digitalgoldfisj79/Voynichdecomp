@@ -1,0 +1,46 @@
+name: Export Medieval Magic v0.2 local audit bundle
+
+on:
+  push:
+    branches:
+      - experiment/medieval-magic-formula-discriminator-v0.2-full-20260815
+    paths:
+      - .github/workflows/export-medieval-magic-v02-local-audit-bundle.yml
+  workflow_dispatch:
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build audit bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP=experiments/medieval_magic_formula_discriminator_v0_2_full
+          mkdir -p bundle
+          base64 -d "$EXP/run_full_v02.py.gz.b64" | gzip -d > bundle/run_full_v02.py
+          cp "$EXP/a_sources_bundle.json" bundle/
+          cp experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part00 bundle/
+          cp voynich_section_map.json bundle/
+          python - <<'PY'
+          import hashlib, urllib.request, pathlib, subprocess
+          out=pathlib.Path('bundle')
+          src={
+          'RF.txt':('https://voynich.nu/data/sta/RF1b.txt','81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17'),
+          'bitrans.c':('https://www.voynich.nu/software/bitrans/bitrans.c','3ffc7e6c74078f9b395179aaf5daaae3c8dfbbfc2896d21162c8ff0354108e9a'),
+          'STA-aaa.bit':('https://www.voynich.nu/software/bitrans/STA-aaa.bit','622621463ff2973ff456b02f0b46ba99fef8ad9103c464e44427762863e3cb64')}
+          for fn,(url,want) in src.items():
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Referer':'https://voynich.nu/transcr.html'})
+              b=urllib.request.urlopen(req,timeout=60).read(); got=hashlib.sha256(b).hexdigest()
+              assert got==want,(fn,got,want);(out/fn).write_bytes(b)
+          subprocess.run(['gcc','-O2','-o',str(out/'bitrans'),str(out/'bitrans.c')],check=True)
+          p=subprocess.run([str(out/'bitrans'),'-1','-m2','-f',str(out/'STA-aaa.bit'),str(out/'RF.txt'),str(out/'RF.aaa.txt')],capture_output=True,text=True)
+          assert p.returncode==0,p.stderr
+          PY
+          sha256sum bundle/* > bundle/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: medieval-magic-v02-local-audit-bundle
+          path: bundle/
+          retention-days: 30
