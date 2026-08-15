@@ -17,10 +17,18 @@ jobs:
           python-version: '3.11'
       - name: Install analysis dependencies
         run: python -m pip install 'numpy<2' 'scipy<2'
-      - name: Apply documented implementation fix 01
+      - name: Apply documented implementation fixes 01-02
         run: |
-          sed -i "s/dominant,n=parse=parses.most_common(1)\[0\]\[0\],parses.most_common(1)\[0\]\[1\],None/dominant,n=parses.most_common(1)[0]/" experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
-          grep -n "dominant,n=" experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py')
+          s=p.read_text()
+          old="""        rr=bytoken[c]; parses=Counter((r['prefix'],r['gallows'],r['core'],r['suffix']) for r in rr)\n        dominant,n=parse=parses.most_common(1)[0][0],parses.most_common(1)[0][1],None\n        cprofiles[c]={'frequency':len(rr),'empty_core_fraction':sum(bool(r['empty_core']) for r in rr)/len(rr) if rr else None,'dominant_parse':{'prefix':dominant[0],'gallows':dominant[1],'core':dominant[2],'suffix':dominant[3]},'dominant_parse_share':n/len(rr) if rr else None}\n"""
+          new="""        rr=bytoken[c]\n        if not rr:\n            cprofiles[c]={'frequency':0,'empty_core_fraction':None,'dominant_parse':None,'dominant_parse_share':None}\n            continue\n        parses=Counter((r['prefix'],r['gallows'],r['core'],r['suffix']) for r in rr)\n        dominant,n=parses.most_common(1)[0]\n        cprofiles[c]={'frequency':len(rr),'empty_core_fraction':sum(bool(r['empty_core']) for r in rr)/len(rr),'dominant_parse':{'prefix':dominant[0],'gallows':dominant[1],'core':dominant[2],'suffix':dominant[3]},'dominant_parse_share':n/len(rr)}\n"""
+          if old not in s:
+              raise SystemExit('Expected frozen reporting block not found; refusing broad patch')
+          p.write_text(s.replace(old,new))
+          PY
       - name: Run recovery and bridge
         run: python experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
       - name: Commit deterministic results
