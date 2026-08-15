@@ -1,0 +1,1 @@
+Execute the frozen STA within-line / within-zone short-lag discriminator v0.2 exactly as preregistered.
