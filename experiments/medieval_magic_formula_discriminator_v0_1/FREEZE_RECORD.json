@@ -1,0 +1,13 @@
+{
+  "programme": "medieval_magic_formula_discriminator_v0_1",
+  "frozen_date": "2026-08-15",
+  "branch": "experiment/medieval-magic-formula-discriminator-v0.1-20260815",
+  "base_branch": "experiment/compression-transfer-v0.1-20260730",
+  "base_commit": "3d5e5a78b8b514e36432caa94bd6563fbd93dc5b",
+  "protocol_sha256": "42c783e3389557225d21b49a5dbf4523bf1a2ceecc1bb0a7cdc5113dc29e338a",
+  "lecouteux_pdf_sha256": "b6f1260c921c233b95ea35bebf5c1625a14fd9d3318b2cb13859eaee0bddb6c4",
+  "lecouteux_pdftotext_sha256": "202f1d4cb81c4a793d7794565e2a5ee651c8800aa3e7ba2caca4401fb93caf01",
+  "voynich_status": "SEALED",
+  "voynich_open_condition": "Q1-Q5 external qualification passes",
+  "copyright_policy": "No source PDF or bulk prose redistributed; commit only short formula strings, metadata, code and derived features/results."
+}
