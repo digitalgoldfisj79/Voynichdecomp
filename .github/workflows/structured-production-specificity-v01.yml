@@ -1,0 +1,83 @@
+name: Structured Production Specificity v0.1
+
+on:
+  push:
+    branches:
+      - experiment/structured-production-specificity-v0.1-20260815
+    paths:
+      - .github/workflows/structured-production-specificity-v01.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Reconstruct frozen inputs and runners
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP0="experiments/medieval_magic_formula_discriminator_v0_2_full"
+          EXP1="experiments/structured_production_specificity_v0_1"
+          mkdir -p "$EXP0/data/a_sources"
+          cp experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part00 "$EXP0/data/lecouteux_formula_corpus_v02.part00"
+          python - <<'PY'
+          import json, pathlib
+          exp=pathlib.Path('experiments/medieval_magic_formula_discriminator_v0_2_full')
+          d=json.loads((exp/'a_sources_bundle.json').read_text(encoding='utf-8'))
+          out=exp/'data'/'a_sources'; out.mkdir(parents=True,exist_ok=True)
+          for name,text in d.items():
+              (out/name).write_text(text,encoding='utf-8')
+          print('A_SOURCES',len(d))
+          PY
+          cd "$EXP0"
+          cat data/lecouteux_formula_corpus_v02.part* | tr -d '\n\r' | base64 -d | gzip -d > data/lecouteux_formula_corpus_v02.csv
+          base64 -d run_full_v02.py.gz.b64 | gzip -d > run_full_v02.py
+          cd ../../
+          base64 -d "$EXP1/structured_specificity_v01.py.gz.b64" | gzip -d > "$EXP1/structured_specificity_v01.py"
+          cp "$EXP0/run_full_v02.py" "$EXP1/run_full_v02.py"
+          rm -rf "$EXP1/data"
+          cp -r "$EXP0/data" "$EXP1/data"
+          python -m py_compile "$EXP1/run_full_v02.py" "$EXP1/structured_specificity_v01.py"
+          sha256sum "$EXP1/structured_specificity_v01.py" "$EXP1/structured_specificity_v01.py.gz.b64" "$EXP1/run_full_v02.py" "$EXP1/data/lecouteux_formula_corpus_v02.csv"
+
+      - name: Run frozen specificity audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd experiments/structured_production_specificity_v0_1
+          PYTHONUNBUFFERED=1 python structured_specificity_v01.py 2>&1 | tee structured_specificity_v01.log
+
+      - name: Print decisive result
+        if: always()
+        shell: bash
+        run: |
+          EXP="experiments/structured_production_specificity_v0_1"
+          echo '=== FILES ==='
+          find "$EXP/results" -maxdepth 1 -type f -printf '%f %s bytes\n' 2>/dev/null | sort || true
+          echo '=== RESULT ==='
+          cat "$EXP/results/structured_specificity_result.json" 2>/dev/null || true
+          echo '=== CONTROL FREEZE ==='
+          cat "$EXP/results/control_freeze.json" 2>/dev/null || true
+
+      - name: Upload complete audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: structured-production-specificity-v01-results
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            experiments/structured_production_specificity_v0_1/results/
+            experiments/structured_production_specificity_v0_1/structured_specificity_v01.log
+            experiments/structured_production_specificity_v0_1/PROTOCOL.md
