@@ -1,0 +1,48 @@
+name: Historical operator pairs v0.1 full
+
+on:
+  push:
+    branches:
+      - experiment/historical-operator-pairs-v0.1-20260815
+    paths:
+      - .github/workflows/historical-operator-pairs-v01.yml
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install numerical dependency
+        run: python -m pip install --quiet numpy
+      - name: Download external paired corpora
+        run: |
+          mkdir -p /tmp/operator_data
+          curl -fL --retry 5 --retry-delay 5 -o /tmp/operator_data/nuremberg_labels.zip 'https://zenodo.org/records/13881575/files/labels.zip?download=1'
+          curl -fL --retry 5 --retry-delay 5 -o /tmp/operator_data/oriflamms.zip 'https://zenodo.org/records/6507965/files/Dated-and-Datable-Manuscripts_resegmented.zip?download=1'
+          sha256sum /tmp/operator_data/*.zip
+      - name: Run paired operator experiment
+        run: |
+          rm -rf experiments/historical_operator_pairs_v0_1/results_v01
+          mkdir -p experiments/historical_operator_pairs_v0_1/results_v01
+          python experiments/historical_operator_pairs_v0_1/run_operator_pairs_v01.py \
+            --nuremberg /tmp/operator_data/nuremberg_labels.zip \
+            --oriflamms /tmp/operator_data/oriflamms.zip \
+            --voynich voynich_transcriptions_slim.json \
+            --out experiments/historical_operator_pairs_v0_1/results_v01 \
+            | tee experiments/historical_operator_pairs_v0_1/results_v01/run.log
+      - name: Include protocol and amendments
+        if: always()
+        run: |
+          cp experiments/historical_operator_pairs_v0_1/PROTOCOL.md experiments/historical_operator_pairs_v0_1/results_v01/ || true
+          cp experiments/historical_operator_pairs_v0_1/AMENDMENT_001_SIGN_CONVENTION.md experiments/historical_operator_pairs_v0_1/results_v01/ || true
+          cp experiments/historical_operator_pairs_v0_1/AMENDMENT_002_TARGET_BRIDGE_RULE.md experiments/historical_operator_pairs_v0_1/results_v01/ || true
+          cp experiments/historical_operator_pairs_v0_1/run_operator_pairs_v01.py experiments/historical_operator_pairs_v0_1/results_v01/ || true
+      - name: Upload complete result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-operator-pairs-v01-results
+          path: experiments/historical_operator_pairs_v0_1/results_v01/
+          retention-days: 30
