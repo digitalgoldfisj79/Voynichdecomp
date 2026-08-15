@@ -1,0 +1,30 @@
+{
+  "purpose": "Pin a reproducible BVGS snapshot by parsed scientific content after live-site HTML drift, before target access.",
+  "parent_entropy_run_id": 31906169329,
+  "snapshot_source": {
+    "workflow_run_id": 31893199016,
+    "artifact_id": 9249108075,
+    "artifact_name": "structured-specificity-hostile-v02-results",
+    "artifact_digest": "sha256:8296cc5a12b7b37f5859efcceba53ccfdbee6c6e7025c06a458fd8d780a10298",
+    "artifact_member": "external/bvgs.htm",
+    "snapshot_raw_sha256": "c793d8d7ba3c08a745cded86f3ad19a15099b298ade1af8bba17d2ac51a9be03"
+  },
+  "parsed_content": {
+    "all_units_sha256": "a283bbcdb474ebb2f45a795d5028562c6e95b6500b83bc918b116f3b14068264",
+    "train_units_sha256": "ca0f390825fdbda955e9b17ad8a9108e398e962f9e68af7a883902329c432193",
+    "test_units_sha256": "ff94a3b51e16e4ffcadc4151cadbee14f52f8e3e2a94575dcd2ceed7dbc667c7",
+    "units": 786,
+    "train_units": 390,
+    "test_units": 396,
+    "eval_windows_3000_chars": 5
+  },
+  "parent_equivalence_audit": {
+    "rows_compared": 1020,
+    "comparison": "Regenerated every BVGS mechanism/seed/representation row with the frozen parent runner and compared against parent run raw_results.csv.",
+    "key_fields_exact": true,
+    "maximum_absolute_numeric_difference": 8.881784197001252e-16,
+    "tolerance": 1e-12,
+    "equivalent_within_tolerance": true
+  },
+  "note": "The live BVGS webpage raw HTML hash drifted after the parent run, but this earlier immutable snapshot yields the same parsed training/test corpus and all frozen generated metrics as the successful parent entropy run. No target data were accessed during this audit."
+}
