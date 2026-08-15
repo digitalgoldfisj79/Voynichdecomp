@@ -3,7 +3,6 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
-import os
 from pathlib import Path
 import subprocess
 import sys
@@ -12,12 +11,11 @@ import traceback
 import zlib
 
 import requests
-from huggingface_hub import HfApi
 
 BRANCH = "experiment/voynich-frontier-programme-v0.1-20260814"
 BASE = f"https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/{BRANCH}/"
-RESULT_REPO = "Digitalgoldfish79/vtps-u6-stageb-results"
-RUN_PATH = "2026-08-15_manifest_v0_2"
+BRIDGE_URL = "https://ymaqlcfjmdwncdbjprmw.supabase.co/functions/v1/vtps_hf_bridge_20260814"
+BRIDGE_CODE = "frontier-u6-stageb-20260815"
 EXPECTED_ENCODER_SHA256 = "54ef0612e623fa1755a488cdb975263c93f77c034085b3fa11eff21b62ba52b0"
 EXPECTED_PAIR_SHA256 = "7f29bb7fe782130ddffe3d7809ce024e04a7eb01fa5c4194440d3be18cea3ed4"
 
@@ -36,32 +34,25 @@ def download(rel: str, dst: Path) -> None:
     dst.write_bytes(r.content)
 
 
-def persist(api: HfApi, status: dict, out: Path | None = None) -> None:
-    api.create_repo(repo_id=RESULT_REPO, repo_type="dataset", private=True, exist_ok=True)
-    status_path = Path("/tmp/U6_STAGEB_HF_STATUS.json")
-    status_path.write_text(json.dumps(status, indent=2, sort_keys=True), encoding="utf-8")
-    api.upload_file(
-        path_or_fileobj=str(status_path),
-        path_in_repo=f"{RUN_PATH}/U6_STAGEB_HF_STATUS.json",
-        repo_id=RESULT_REPO,
-        repo_type="dataset",
-        commit_message="Update sealed U6 Stage-B execution status",
+def bridge(identifier: str, obj: dict, meta: dict | None = None) -> None:
+    if not identifier.startswith("u6-stageb-20260815-"):
+        raise ValueError(identifier)
+    r = requests.post(
+        BRIDGE_URL,
+        json={
+            "secret": BRIDGE_CODE,
+            "id": identifier,
+            "payload": json.dumps(obj, sort_keys=True),
+            "meta": meta or {},
+        },
+        timeout=120,
     )
-    if out is not None and out.is_dir():
-        api.upload_folder(
-            folder_path=str(out),
-            path_in_repo=RUN_PATH,
-            repo_id=RESULT_REPO,
-            repo_type="dataset",
-            commit_message="Persist sealed U6 Stage-B outputs",
-        )
+    r.raise_for_status()
 
 
 def main() -> int:
-    token = os.environ["HF_TOKEN"]
-    api = HfApi(token=token)
     status = {
-        "schema": "frontier-u6-stageb-hf-runner-v0.2",
+        "schema": "frontier-u6-stageb-hf-runner-v0.3",
         "status": "starting",
         "target_opened": False,
         "true_retention_read": False,
@@ -98,7 +89,7 @@ def main() -> int:
             pair_skeleton_sha256=pair_hash,
             status="running_stageb",
         )
-        persist(api, status)
+        bridge("u6-stageb-20260815-status", status, {"phase": "pre-calibration"})
 
         cmd = [
             sys.executable,
@@ -133,7 +124,8 @@ def main() -> int:
                 }
                 for k, v in result.get("components", {}).items()
             }
-        persist(api, status, out)
+            bridge("u6-stageb-20260815-result", result, {"phase": "sealed-calibration-result"})
+        bridge("u6-stageb-20260815-status", status, {"phase": "terminal"})
         print(json.dumps(status, indent=2, sort_keys=True))
         return p.returncode
     except Exception as exc:
@@ -146,7 +138,7 @@ def main() -> int:
             finished_unix=time.time(),
         )
         try:
-            persist(api, status, out)
+            bridge("u6-stageb-20260815-status", status, {"phase": "wrapper-failure"})
         finally:
             print(json.dumps(status, indent=2, sort_keys=True))
         return 1
