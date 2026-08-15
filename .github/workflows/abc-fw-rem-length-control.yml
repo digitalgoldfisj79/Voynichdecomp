@@ -1,0 +1,39 @@
+name: ABC FW reconstructed ReM length control
+on:
+  push:
+    branches:
+      - experiment/abc-fw-recovery-p70-bridge-v0.1-20260815
+    paths:
+      - 'experiments/abc_fw_recovery_p70_bridge_v0_1/run_rem_length_control.py'
+      - 'experiments/abc_fw_recovery_p70_bridge_v0_1/REM_CONTROL_RECOVERY_PROTOCOL_20260815.md'
+      - '.github/workflows/abc-fw-rem-length-control.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rem-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run reconstructed ReM control
+        run: python experiments/abc_fw_recovery_p70_bridge_v0_1/run_rem_length_control.py
+      - name: Commit deterministic result
+        run: |
+          git config user.name 'voynich-recovery-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/abc_fw_recovery_p70_bridge_v0_1/REM_LENGTH_CONTROL_20260815.*
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add reconstructed ABC-B ReM length control result'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: abc-fw-rem-length-control
+          path: results/abc_fw_recovery_p70_bridge_v0_1/REM_LENGTH_CONTROL_20260815.*
