@@ -1,0 +1,181 @@
+name: Northern Italian Cipher Entropy Compatibility v0.1
+
+on:
+  push:
+    branches:
+      - experiment/italian-cipher-entropy-transfer-v0.1-20260815
+    paths:
+      - .github/workflows/italian-cipher-target-compat-v01.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Reconstruct frozen runners and preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          P="experiments/italian_cipher_entropy_transfer_v0_1"
+          T="experiments/italian_cipher_target_compat_v0_1"
+          base64 -d "$P/run_entropy_transfer_v01.py.gz.b64" | gzip -d > "$P/run_entropy_transfer_v01.py"
+          base64 -d "$T/run_target_compat_v01.py.gz.b64" | gzip -d > "$T/run_target_compat_v01.py"
+          echo "a1d5ad2d18fec6f657e6f89248b1ac726e2909fc184774d9e75eb87569d57963  $P/run_entropy_transfer_v01.py" | sha256sum -c -
+          echo "eda94d458c4c64e2e44c50e7b9799c40efe1e9d0bc064a261963b3e026e19af3  $T/run_target_compat_v01.py" | sha256sum -c -
+          echo "f9dba93894d94576635206ffb4e0f8138507592ea84f8e23d9c70aa130815633  $T/run_target_compat_v01.py.gz.b64" | sha256sum -c -
+          python -m py_compile "$P/run_entropy_transfer_v01.py" "$T/run_target_compat_v01.py"
+          python "$T/run_target_compat_v01.py" test --parent-runner "$P/run_entropy_transfer_v01.py"
+          sha256sum "$T/PROTOCOL_ITALIAN_CIPHER_TARGET_COMPAT_V01.md" \
+                    "$T/AMENDMENT_001_COLLINEARITY_FAMILY_BALANCE.md" \
+                    "$T/AMENDMENT_002_GLOBAL_SELECTION_NULL.md" \
+                    "$T/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md" \
+                    "$T/SOURCE_MANIFEST.json" "$T/run_target_compat_v01.py"
+
+      - name: Download and verify exact external sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          P="experiments/italian_cipher_entropy_transfer_v0_1"
+          T="experiments/italian_cipher_target_compat_v0_1"
+          E="$T/external"; mkdir -p "$E/controls"
+          python - <<'PY'
+          import json,pathlib,urllib.request
+          p=pathlib.Path('experiments/italian_cipher_entropy_transfer_v0_1/SOURCE_MANIFEST.json')
+          t=pathlib.Path('experiments/italian_cipher_target_compat_v0_1/SOURCE_MANIFEST.json')
+          fams=json.loads(p.read_text())['families']; expected=json.loads(t.read_text())['external_sources']
+          root=t.parent/'external'/'controls'
+          for fam,spec in fams.items():
+              if not isinstance(spec,list): continue
+              d=root/fam;d.mkdir(parents=True,exist_ok=True)
+              for u in spec:
+                  name=u.rsplit('/',1)[-1]; q=d/name
+                  print('DOWNLOAD',fam,u); urllib.request.urlretrieve(u,q)
+                  key=f'{fam}/{name}'; import hashlib
+                  got=hashlib.sha256(q.read_bytes()).hexdigest(); want=expected[key]
+                  print('HASH',key,got)
+                  if got!=want: raise SystemExit(f'external hash mismatch {key}')
+          PY
+          curl -fL --retry 3 --retry-delay 2 \
+            'https://www.uni-giessen.de/de/fbz/fb05/germanistik/absprache/sprachverwendung/gloning/tx/bvgs.htm' \
+            -o "$E/bvgs.htm"
+          python - <<'PY'
+          import hashlib,json,pathlib
+          t=pathlib.Path('experiments/italian_cipher_target_compat_v0_1')
+          want=json.loads((t/'SOURCE_MANIFEST.json').read_text())['external_sources']['BVGS_RECIPE']
+          got=hashlib.sha256((t/'external'/'bvgs.htm').read_bytes()).hexdigest();print('BVGS_HASH',got)
+          if got!=want: raise SystemExit('BVGS hash mismatch')
+          PY
+          git clone --filter=blob:none --no-checkout https://github.com/HTR-United/CREMMA-Medieval-LAT.git "$E/cremma_repo"
+          git -C "$E/cremma_repo" sparse-checkout init --cone
+          git -C "$E/cremma_repo" sparse-checkout set data
+          git -C "$E/cremma_repo" checkout 292525969ad98380b398e6606a9c2a36d51913ae
+          test "$(git -C "$E/cremma_repo" rev-parse HEAD)" = "292525969ad98380b398e6606a9c2a36d51913ae"
+          test -f "$E/cremma_repo/data-registry.csv"
+          find "$E/controls" -type f -print0 | sort -z | xargs -0 sha256sum > "$E/source_hashes.sha256"
+          sha256sum "$E/bvgs.htm" >> "$E/source_hashes.sha256"
+          git -C "$E/cremma_repo" rev-parse HEAD > "$E/cremma_commit.txt"
+
+      - name: External-only target-stage calibration
+        shell: bash
+        run: |
+          set -euo pipefail
+          P="experiments/italian_cipher_entropy_transfer_v0_1"
+          T="experiments/italian_cipher_target_compat_v0_1"
+          mkdir -p "$T/results"
+          PYTHONUNBUFFERED=1 python "$T/run_target_compat_v01.py" external \
+            --parent-runner "$P/run_entropy_transfer_v01.py" \
+            --controls "$T/external/controls" \
+            --cremma "$T/external/cremma_repo" \
+            --bvgs "$T/external/bvgs.htm" \
+            --out "$T/results" \
+            --parent-artifact-digest 'sha256:b500336c6688822e4f79ffdf53632bf4c35ef7abe809e581053731c0a8a9669d' \
+            2>&1 | tee "$T/external_calibration.log"
+
+      - name: Check external freeze gate
+        id: extgate
+        shell: bash
+        run: |
+          set -euo pipefail
+          STATUS=$(python - <<'PY'
+          import json
+          print(json.load(open('experiments/italian_cipher_target_compat_v0_1/results/external_freeze.json'))['status'])
+          PY
+          )
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "EXTERNAL_STATUS=$STATUS"
+
+      - name: Download target only after external PASS
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          T="experiments/italian_cipher_target_compat_v0_1"; X="$T/target_inputs"; mkdir -p "$X"
+          curl -fL --retry 3 'https://www.voynich.nu/data/RF1b-er.txt' -o "$X/RF1b-er.txt"
+          curl -fL --retry 3 'https://www.voynich.nu/data/sta/RF1b.txt' -o "$X/RF1b-sta.txt"
+          cp experiments/structured_specificity_hostile_v0_2/voynich_section_map.json "$X/voynich_section_map.json"
+          python - <<'PY'
+          import hashlib,json,pathlib
+          t=pathlib.Path('experiments/italian_cipher_target_compat_v0_1'); x=t/'target_inputs'; m=json.loads((t/'SOURCE_MANIFEST.json').read_text())['target']
+          checks=[('RF_EVA',x/'RF1b-er.txt'),('STA',x/'RF1b-sta.txt')]
+          for k,p in checks:
+              got=hashlib.sha256(p.read_bytes()).hexdigest();want=m[k]['expected_sha256'];print('TARGET_HASH',k,got)
+              if got!=want: raise SystemExit(f'target hash mismatch {k}')
+          p=x/'voynich_section_map.json';got=hashlib.sha256(p.read_bytes()).hexdigest();want=m['section_map_expected_sha256'];print('SECTION_MAP_HASH',got)
+          if got!=want: raise SystemExit('section-map hash mismatch')
+          PY
+          sha256sum "$X"/* > "$X/target_hashes.sha256"
+
+      - name: Run frozen target compatibility
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          T="experiments/italian_cipher_target_compat_v0_1"; X="$T/target_inputs"
+          PYTHONUNBUFFERED=1 python "$T/run_target_compat_v01.py" target \
+            --out "$T/results" --eva "$X/RF1b-er.txt" --sta "$X/RF1b-sta.txt" \
+            --section-map "$X/voynich_section_map.json" 2>&1 | tee "$T/target_run.log"
+
+      - name: Print decisive outputs
+        if: always()
+        shell: bash
+        run: |
+          T="experiments/italian_cipher_target_compat_v0_1"
+          echo '=== EXTERNAL FREEZE COMPACT ==='
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('experiments/italian_cipher_target_compat_v0_1/results/external_freeze.json')
+          if p.exists():
+              d=json.loads(p.read_text());print('STATUS',d.get('status'));print('ACTIVE',d.get('active_mechanisms'));print('POSITIVE',{k:v.get('pass') for k,v in d.get('positive_controls',{}).items()});print('GLOBAL_NULL',d.get('global_plaintext_null_threshold'))
+          else: print('NO_EXTERNAL_FREEZE')
+          PY
+          echo '=== TARGET RESULT ==='
+          cat "$T/results/result.json" 2>/dev/null || echo TARGET_NOT_ACCESSED_OR_NOT_COMPLETED
+
+      - name: Upload audit-complete compatibility artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: italian-cipher-target-compat-v01-results
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            experiments/italian_cipher_target_compat_v0_1/PROTOCOL_ITALIAN_CIPHER_TARGET_COMPAT_V01.md
+            experiments/italian_cipher_target_compat_v0_1/AMENDMENT_001_COLLINEARITY_FAMILY_BALANCE.md
+            experiments/italian_cipher_target_compat_v0_1/AMENDMENT_002_GLOBAL_SELECTION_NULL.md
+            experiments/italian_cipher_target_compat_v0_1/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md
+            experiments/italian_cipher_target_compat_v0_1/SOURCE_MANIFEST.json
+            experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.py
+            experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.py.gz.b64
+            experiments/italian_cipher_target_compat_v0_1/external/source_hashes.sha256
+            experiments/italian_cipher_target_compat_v0_1/external/cremma_commit.txt
+            experiments/italian_cipher_target_compat_v0_1/results/
+            experiments/italian_cipher_target_compat_v0_1/external_calibration.log
+            experiments/italian_cipher_target_compat_v0_1/target_run.log
+            experiments/italian_cipher_target_compat_v0_1/target_inputs/target_hashes.sha256
