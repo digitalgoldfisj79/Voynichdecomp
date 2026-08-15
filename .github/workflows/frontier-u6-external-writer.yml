@@ -56,6 +56,10 @@ jobs:
         run: |
           git config user.name 'voynich-frontier-bot'
           git config user.email 'actions@users.noreply.github.com'
+          # Operational-only repair: concurrent Frontier workflows can advance the branch
+          # while this long CPU calibration is running. Rebase before persisting the
+          # already-computed result; this does not alter code, data, thresholds, or output.
+          git pull --rebase origin experiment/voynich-frontier-programme-v0.1-20260814
           git add experiments/frontier_v0_1/runs/2026-08-14/u6/U6_EXTERNAL_RESULT.json
           if [ -f experiments/frontier_v0_1/runs/2026-08-14/u6/U6_EXTERNAL_RESULT.md ]; then
             git add experiments/frontier_v0_1/runs/2026-08-14/u6/U6_EXTERNAL_RESULT.md
