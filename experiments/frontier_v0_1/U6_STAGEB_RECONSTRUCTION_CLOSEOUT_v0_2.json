@@ -1,0 +1,85 @@
+{
+  "schema": "u6-stageb-reconstruction-closeout-v0.2",
+  "date": "2026-08-15",
+  "formal_verdict": "FAIL_RECONSTRUCTION__ABSTAIN_UNRESOLVED",
+  "stageb_calibration_run": false,
+  "stageb_calibration_verdict": null,
+  "target_opened": false,
+  "true_retention_read": false,
+  "scientific_interpretation": "No inference about physical retention/echo is licensed because the exact frozen calibration image population could not be reconstructed under the frozen registration QC gate.",
+  "frozen_population": {
+    "word_rows": 9620,
+    "folios": 107,
+    "word_keyset_sha256": "c494eb695691e899d6e1dc648f9f7d7ec4afe49141a8890f9c1c40638b6a3f84",
+    "pair_skeleton_sha256": "7f29bb7fe782130ddffe3d7809ce024e04a7eb01fa5c4194440d3be18cea3ed4",
+    "encoder_sha256": "54ef0612e623fa1755a488cdb975263c93f77c034085b3fa11eff21b62ba52b0"
+  },
+  "reconstruction": {
+    "folios_required": 107,
+    "folios_reconstructed": 104,
+    "folios_failed": ["f32r", "f39r", "f40r"],
+    "partial_population_forbidden": true,
+    "posthoc_threshold_relaxation_forbidden": true
+  },
+  "registration_contract": {
+    "pipeline_repo": "Digitalgoldfish79/voynich-dinov3-pipeline",
+    "pipeline_revision": "fabb7413736a13497f80cb2fd930b3cf5681d371",
+    "max_candidates": 6,
+    "derivative_px": 2500,
+    "min_inliers": 50,
+    "min_inlier_ratio": 0.55,
+    "max_median_reproj_px": 3.0,
+    "ratio_test": 0.75,
+    "usac_conf": 0.999,
+    "usac_reproj_px": 3.0
+  },
+  "failed_folios": {
+    "f32r": {
+      "correct_canvas_service_id": "https://collections.library.yale.edu/iiif/2/1006136",
+      "matches": 1455,
+      "inliers": 793,
+      "inlier_ratio": 0.5450171821305841,
+      "median_reproj_px": 1.6010812520980835,
+      "p95_reproj_px": 2.845078945159912,
+      "passed": false,
+      "passing_candidates": 0
+    },
+    "f39r": {
+      "correct_canvas_service_id": "https://collections.library.yale.edu/iiif/2/1006150",
+      "matches": 2417,
+      "inliers": 1031,
+      "inlier_ratio": 0.42656185353744314,
+      "median_reproj_px": 1.745926856994629,
+      "p95_reproj_px": 2.8439412117004395,
+      "passed": false,
+      "passing_candidates": 0
+    },
+    "f40r": {
+      "correct_canvas_service_id": "https://collections.library.yale.edu/iiif/2/1006152",
+      "matches": 2630,
+      "inliers": 1407,
+      "inlier_ratio": 0.5349809885931559,
+      "median_reproj_px": 1.6720490455627441,
+      "p95_reproj_px": 2.8485372066497803,
+      "passed": false,
+      "passing_candidates": 0
+    }
+  },
+  "candidate_selection_audit": {
+    "selection_rule": "Any passing candidate ranks above every failing candidate; within pass/fail status, higher inlier count wins.",
+    "all_candidates_passing": {
+      "f32r": [],
+      "f39r": [],
+      "f40r": []
+    },
+    "selection_bug_found": false
+  },
+  "asset_audit": {
+    "full_corpus_manifest_rows_available": true,
+    "full_corpus_manifest_contains_persisted_crop_paths": false,
+    "persisted_png_shard_manifest_covers_required_population": false,
+    "old_dinov3_embeddings_usable_as_u6_input": false,
+    "saved_full_corpus_registration_ledger_available": false
+  },
+  "stop_rule": "Do not run U6 Stage-B calibration or open retained-vs-switched target labels from this v0.2 branch. A future attempt requires a separately preregistered reconstruction protocol or a recovered exact original full-corpus pixel/registration asset; it must not retroactively alter this verdict."
+}
