@@ -1,0 +1,159 @@
+{
+  "metadata": {
+    "seed": 20260813,
+    "nperm": 2000,
+    "P0_lines": 3885,
+    "P0_tokens": 33200,
+    "vocab": 6597
+  },
+  "mapping": {
+    "coverage": {
+      "tokens": 33200,
+      "labelled": 33200,
+      "coverage": 1.0,
+      "state_counts": {
+        "empty_core": 18012,
+        "nonempty_core": 15188,
+        "unlabelled": 0
+      }
+    },
+    "ambiguous_P70_types": 0
+  },
+  "S1_E2": {
+    "empty_core": {
+      "N0_whole": {
+        "observed": 261,
+        "null_mean": 215.327,
+        "null_sd": 12.834735533625501,
+        "ratio": 1.2121099536983286,
+        "z": 3.5585462497721205,
+        "empirical_p_two_sided": 0.0004997501249375312
+      },
+      "N1_whole": {
+        "observed": 261,
+        "null_mean": 241.8455,
+        "null_sd": 12.821381503638012,
+        "ratio": 1.0792013909706817,
+        "z": 1.4939497740212322,
+        "empirical_p_two_sided": 0.13993003498250875
+      },
+      "N3_interior": {
+        "observed": 136,
+        "null_mean": 125.514,
+        "null_sd": 9.340365368260832,
+        "ratio": 1.0835444651592652,
+        "z": 1.1226541560817431,
+        "empirical_p_two_sided": 0.27936031984008
+      }
+    },
+    "nonempty_core": {
+      "N0_whole": {
+        "observed": 32,
+        "null_mean": 25.5155,
+        "null_sd": 4.393564777686549,
+        "ratio": 1.2541396406106093,
+        "z": 1.4759085908856093,
+        "empirical_p_two_sided": 0.16891554222888555
+      },
+      "N1_whole": {
+        "observed": 32,
+        "null_mean": 29.7285,
+        "null_sd": 4.594490441954429,
+        "ratio": 1.076408160519367,
+        "z": 0.4943965013525497,
+        "empirical_p_two_sided": 0.6731634182908546
+      },
+      "N3_interior": {
+        "observed": 12,
+        "null_mean": 14.243,
+        "null_sd": 3.1796235630969747,
+        "ratio": 0.8425191322052938,
+        "z": -0.7054294181337942,
+        "empirical_p_two_sided": 0.5412293853073463
+      }
+    }
+  },
+  "S2_ED1": {
+    "both_empty": {
+      "N0_whole": {
+        "observed": 701,
+        "null_mean": 605.6565,
+        "null_sd": 20.93890461827711,
+        "ratio": 1.1574217398806088,
+        "z": 4.553413931537598,
+        "empirical_p_two_sided": 0.0004997501249375312
+      },
+      "N1_whole": {
+        "observed": 701,
+        "null_mean": 639.2025,
+        "null_sd": 18.43405546672992,
+        "ratio": 1.0966790649285634,
+        "z": 3.352355107726194,
+        "empirical_p_two_sided": 0.0009995002498750624
+      },
+      "N3_interior": {
+        "observed": 382,
+        "null_mean": 364.012,
+        "null_sd": 14.973742434049031,
+        "ratio": 1.0494159533202203,
+        "z": 1.2013028859837205,
+        "empirical_p_two_sided": 0.24187906046976512
+      }
+    },
+    "mixed": {
+      "N0_whole": {
+        "observed": 223,
+        "null_mean": 207.363,
+        "null_sd": 12.41121469176416,
+        "ratio": 1.0754088241393112,
+        "z": 1.2599089120887104,
+        "empirical_p_two_sided": 0.21189405297351324
+      },
+      "N1_whole": {
+        "observed": 223,
+        "null_mean": 212.091,
+        "null_sd": 10.126450093480335,
+        "ratio": 1.0514354687374758,
+        "z": 1.0772778119968698,
+        "empirical_p_two_sided": 0.30484757621189407
+      },
+      "N3_interior": {
+        "observed": 99,
+        "null_mean": 105.0525,
+        "null_sd": 7.671386369778099,
+        "ratio": 0.9423859498822018,
+        "z": -0.7889708206907936,
+        "empirical_p_two_sided": 0.4357821089455272
+      }
+    },
+    "both_nonempty": {
+      "N0_whole": {
+        "observed": 150,
+        "null_mean": 109.3185,
+        "null_sd": 8.88231419747981,
+        "ratio": 1.372137378394325,
+        "z": 4.580056401466029,
+        "empirical_p_two_sided": 0.0004997501249375312
+      },
+      "N1_whole": {
+        "observed": 150,
+        "null_mean": 123.581,
+        "null_sd": 7.911240918239895,
+        "ratio": 1.2137788171320834,
+        "z": 3.3394255431014908,
+        "empirical_p_two_sided": 0.0024987506246876563
+      },
+      "N3_interior": {
+        "observed": 64,
+        "null_mean": 61.7125,
+        "null_sd": 6.102906396401768,
+        "ratio": 1.0370670447640267,
+        "z": 0.37482141317925105,
+        "empirical_p_two_sided": 0.7421289355322339
+      }
+    }
+  },
+  "S1_verdict": "POSITIONAL_SCAFFOLDING_SUPPORTED",
+  "S2_verdict": "BOUNDARY_POSITION_COUPLED",
+  "S3_architecture_consequence": "NO_NEW_LOCAL_KERNELS_YET"
+}
