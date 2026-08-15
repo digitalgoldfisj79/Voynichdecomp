@@ -1,0 +1,180 @@
+name: Structured Specificity Hostile v0.3
+
+on:
+  push:
+    branches:
+      - experiment/structured-specificity-hostile-v0.3-20260815
+    paths:
+      - .github/workflows/structured-specificity-hostile-v03.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Reconstruct inherited v0.2 support bundle and frozen v0.3 runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"
+          NEW="experiments/structured_specificity_hostile_v0_3"
+          cd "$OLD"
+          cat bundle.part* > hostile_v02_bundle.reconstructed.b64
+          echo "a5f4476e81617d0b622d7e904c0e15951def50adf35d5833853365f5e10a77fb  hostile_v02_bundle.reconstructed.b64" | sha256sum -c -
+          base64 -d hostile_v02_bundle.reconstructed.b64 | tar -xzf -
+          cd - >/dev/null
+          echo "2bca6fa3165c568547d10ea2691f8e13924c76cddfc69c9039b957f298ac31f6  $NEW/run_hostile_v03.py.gz.b64" | sha256sum -c -
+          base64 -d "$NEW/run_hostile_v03.py.gz.b64" | gzip -d > "$NEW/run_hostile_v03.py"
+          echo "99539ee2e2b9eea1ecf00faa679295a6e8323242e68b76cb18bdb9e0e45bb889  $NEW/run_hostile_v03.py" | sha256sum -c -
+          echo "77428c7cb119311a58195a436ef5f02ad961baa0a8e7cab705de439a2b59e95c  $NEW/PROTOCOL_HOSTILE_V03.md" | sha256sum -c -
+          python -m py_compile "$NEW/run_hostile_v03.py"
+
+      - name: Reconstruct frozen C corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"
+          mkdir -p "$OLD/external/C"
+          cat experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part00 \
+              experiments/medieval_magic_formula_discriminator_v0_2_full/data/lecouteux_formula_corpus_v02.part0{1,2,3,4,5,6} \
+            | tr -d '\n\r' | base64 -d | gzip -d > "$OLD/external/C/lecouteux_formula_corpus_v02.csv"
+          sha256sum "$OLD/external/C/lecouteux_formula_corpus_v02.csv"
+
+      - name: Download frozen real controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"
+          mkdir -p "$OLD/external/controls"
+          python - <<'PY'
+          import json, pathlib, urllib.request
+          exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2')
+          m=json.loads((exp/'REAL_CONTROL_MANIFEST.json').read_text())['families']
+          for fam,spec in m.items():
+              if not isinstance(spec,list): continue
+              d=exp/'external'/'controls'/fam; d.mkdir(parents=True,exist_ok=True)
+              for i,u in enumerate(spec):
+                  name=u.rsplit('/',1)[-1] or f'{fam}_{i}.txt'
+                  urllib.request.urlretrieve(u,d/name)
+          PY
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/HTR-United/CREMMA-Medieval-LAT.git "$OLD/external/cremma_repo"
+          git -C "$OLD/external/cremma_repo" sparse-checkout set data
+          python - <<'PY'
+          import csv, pathlib, shutil
+          exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2')
+          src=exp/'external'/'cremma_repo'; dst=exp/'external'/'cremma_snapshot'
+          dst.mkdir(parents=True,exist_ok=True); shutil.copy2(src/'data-registry.csv',dst/'data-registry.csv')
+          for r in csv.DictReader((src/'data-registry.csv').open(encoding='utf-8')):
+              if r.get('Type') not in {'Medic.','Eccl.','Schol.'}: continue
+              d=src/pathlib.Path(r['Folder'])
+              if not d.exists(): continue
+              for p in d.rglob('*'):
+                  if p.is_file() and p.suffix.lower() in {'.xml','.txt'}:
+                      q=dst/p.relative_to(src); q.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(p,q)
+          PY
+          curl -fL --retry 3 --retry-delay 2 'https://www.uni-giessen.de/de/fbz/fb05/germanistik/absprache/sprachverwendung/gloning/tx/bvgs.htm' -o "$OLD/external/bvgs.htm"
+          find "$OLD/external/controls" "$OLD/external/cremma_snapshot" -type f -print0 | sort -z | xargs -0 sha256sum > "$OLD/external/real_control_hashes_v03.sha256"
+          sha256sum "$OLD/external/bvgs.htm" >> "$OLD/external/real_control_hashes_v03.sha256"
+
+      - name: Unit tests and frozen hostile preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          NEW="experiments/structured_specificity_hostile_v0_3"
+          python "$NEW/run_hostile_v03.py" test
+          sha256sum "$NEW/PROTOCOL_HOSTILE_V03.md" "$NEW/run_hostile_v03.py"
+
+      - name: External-only qualification rerun
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"; NEW="experiments/structured_specificity_hostile_v0_3"
+          mkdir -p "$NEW/results"
+          PYTHONUNBUFFERED=1 python "$NEW/run_hostile_v03.py" external \
+            --controls "$OLD/external/controls" \
+            --cremma "$OLD/external/cremma_snapshot" \
+            --bvgs "$OLD/external/bvgs.htm" \
+            --corpus "$OLD/external/C/lecouteux_formula_corpus_v02.csv" \
+            --out "$NEW/results" 2>&1 | tee "$NEW/external_run.log"
+
+      - name: Check external stop gate
+        id: extgate
+        shell: bash
+        run: |
+          STATUS=$(python - <<'PY'
+          import json
+          print(json.load(open('experiments/structured_specificity_hostile_v0_3/results/external_freeze.json'))['status'])
+          PY
+          )
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
+          echo "EXTERNAL_STATUS=$STATUS"
+
+      - name: Download target only after external PASS
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"; NEW="experiments/structured_specificity_hostile_v0_3"; T="$NEW/target_inputs"; mkdir -p "$T"
+          curl -fL --retry 3 'https://www.voynich.nu/data/RF1b-er.txt' -o "$T/RF1b-er.txt"
+          curl -fL --retry 3 'https://www.voynich.nu/data/sta/RF1b.txt' -o "$T/RF1b-sta.txt"
+          python - <<'PY'
+          import hashlib,json,pathlib
+          old=pathlib.Path('experiments/structured_specificity_hostile_v0_2'); t=pathlib.Path('experiments/structured_specificity_hostile_v0_3/target_inputs')
+          m=json.loads((old/'TARGET_SOURCE_MANIFEST.json').read_text())
+          got=hashlib.sha256((t/'RF1b-sta.txt').read_bytes()).hexdigest(); want=m['STA']['expected_sha256']
+          print('STA_HASH',got,'EXPECTED',want)
+          if got!=want: raise SystemExit('STA hash mismatch')
+          print('RF_EVA_SHA256',hashlib.sha256((t/'RF1b-er.txt').read_bytes()).hexdigest())
+          PY
+          sha256sum "$T/RF1b-er.txt" "$T/RF1b-sta.txt" > "$T/target_hashes.sha256"
+
+      - name: Run decisive target matched-null audit
+        if: steps.extgate.outputs.status == 'PASS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          OLD="experiments/structured_specificity_hostile_v0_2"; NEW="experiments/structured_specificity_hostile_v0_3"; T="$NEW/target_inputs"
+          PYTHONUNBUFFERED=1 python "$NEW/run_hostile_v03.py" target \
+            --out "$NEW/results" \
+            --eva "$T/RF1b-er.txt" \
+            --sta "$T/RF1b-sta.txt" \
+            --section-map "$OLD/voynich_section_map.json" \
+            --nulls 250 2>&1 | tee "$NEW/target_run.log"
+
+      - name: Print decisive outputs
+        if: always()
+        shell: bash
+        run: |
+          NEW="experiments/structured_specificity_hostile_v0_3"
+          echo '=== EXTERNAL ==='; cat "$NEW/results/external_freeze.json" 2>/dev/null || true
+          echo '=== TARGET ==='; cat "$NEW/results/result.json" 2>/dev/null || echo TARGET_NOT_ACCESSED_OR_NOT_COMPLETED
+
+      - name: Upload audit-complete artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: structured-specificity-hostile-v03-results
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            experiments/structured_specificity_hostile_v0_3/PROTOCOL_HOSTILE_V03.md
+            experiments/structured_specificity_hostile_v0_3/run_hostile_v03.py
+            experiments/structured_specificity_hostile_v0_3/run_hostile_v03.py.gz.b64
+            experiments/structured_specificity_hostile_v0_3/results/
+            experiments/structured_specificity_hostile_v0_3/external_run.log
+            experiments/structured_specificity_hostile_v0_3/target_run.log
+            experiments/structured_specificity_hostile_v0_3/target_inputs/
+            experiments/structured_specificity_hostile_v0_2/REAL_CONTROL_MANIFEST.json
+            experiments/structured_specificity_hostile_v0_2/TARGET_SOURCE_MANIFEST.json
+            experiments/structured_specificity_hostile_v0_2/voynich_section_map.json
+            experiments/structured_specificity_hostile_v0_2/external/real_control_hashes_v03.sha256
