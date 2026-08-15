@@ -1,0 +1,30 @@
+{
+  "purpose": "External-only source families for Northern Italian Cipher Entropy Transfer v0.1",
+  "families": {
+    "LATIN_LLCT": [
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-LLCT/master/la_llct-ud-dev.conllu",
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-LLCT/master/la_llct-ud-test.conllu"
+    ],
+    "LATIN_PROIEL": [
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-PROIEL/master/la_proiel-ud-dev.conllu",
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-PROIEL/master/la_proiel-ud-test.conllu"
+    ],
+    "OLD_ITALIAN": [
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Italian-Old/master/it_old-ud-dev.conllu",
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_Italian-Old/master/it_old-ud-test.conllu"
+    ],
+    "GERMAN_GSD": [
+      "https://raw.githubusercontent.com/UniversalDependencies/UD_German-GSD/master/de_gsd-ud-test.conllu"
+    ],
+    "BVGS_RECIPE": {
+      "url": "https://www.uni-giessen.de/de/fbz/fb05/germanistik/absprache/sprachverwendung/gloning/tx/bvgs.htm",
+      "description": "Buch von guter Speise, c. 1350 edition text"
+    },
+    "CREMMA_MEDICAL": {
+      "repository": "https://github.com/HTR-United/CREMMA-Medieval-LAT.git",
+      "selector": "Type == Medic. in data-registry.csv"
+    }
+  },
+  "forbidden": ["Voynich target text", "Naibbe target-informed calibration", "magic/class-C comparator"],
+  "note": "No target data are downloaded by the workflow. Source hashes are recorded at run time."
+}
