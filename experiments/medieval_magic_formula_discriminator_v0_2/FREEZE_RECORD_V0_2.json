@@ -1,0 +1,24 @@
+{
+  "programme": "medieval_magic_formula_discriminator_v0_2_full",
+  "frozen_date": "2026-08-15",
+  "branch": "experiment/medieval-magic-formula-discriminator-v0.2-full-20260815",
+  "parent_v0_1_closeout": "5104468d1b81f785f3e76c79abb932a2f7e0b5ca",
+  "protocol_commit": "bd362b16d654eb8396c1aeebf0fcf6910e8d2b6f",
+  "pre_freeze_head": "9dfdbd28127fdebdd631a43770e0955f4625cb00",
+  "protocol_sha256": "370bfa6698b59da3635b8e25b9001eef212b7d40349ed6d65b7380fbdfd299a3",
+  "runner_sha256": "71aa3f5a3f25b3195ec15c3602b1a63b55ae7160878567959b2210b5e26accb9",
+  "sources_manifest_sha256": "3f42bbe09a249b3cd0f21bf16e18611c85ce01102f966978fdf0c67359a34ee9",
+  "data_location": "inherited experiments/medieval_magic_formula_discriminator_v0_1/data; runtime symlink only",
+  "lecouteux_part_sha256": [
+    "3fbc1505af331d37a2fe8540f483c301798555384a67ca36b2bba9c1cb0455f8",
+    "42607c031de6655380891fdd67287de50f3e231acc80adb8a9c518b6925e9973",
+    "158faaba8dd7dc829e3da42740929a9101fbdb6da92576a676f4b7009f4773ac",
+    "7e919f37c88319b7e8144f2d3868bc90af0b81b0cbf86dc02b9fab1a533b7b0d",
+    "83c7c9b79f75e31f130816e5b3daabc93061f45c82eff52717903c4ac44d006b",
+    "146793b46df4e6001acf96071b9fb3abdac8e784833de17ec75a45f71a8db941",
+    "0e653c49d8278902beb153f2968e776568873e1f16b6e14a53e0838a43a5de4c"
+  ],
+  "voynich_status_at_freeze": "SEALED",
+  "external_then_voynich_order_enforced_in_runner": true,
+  "local_preflight": "python syntax passed; full external-only run exceeded local interactive timeout, so scientific run delegated unchanged to remote CPU"
+}
