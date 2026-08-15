@@ -1,0 +1,26 @@
+name: Relaunch Northern Italian Cipher Target Compatibility
+
+on:
+  push:
+    branches:
+      - experiment/italian-cipher-entropy-transfer-v0.1-20260815
+    paths:
+      - .github/workflows/relaunch-italian-cipher-target-compat.yml
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch frozen compatibility workflow at latest branch head
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          curl -fL -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/digitalgoldfisj79/Voynichdecomp/actions/workflows/italian-cipher-target-compat-v01.yml/dispatches \
+            -d '{"ref":"experiment/italian-cipher-entropy-transfer-v0.1-20260815"}'
