@@ -17,6 +17,10 @@ jobs:
           python-version: '3.11'
       - name: Install analysis dependencies
         run: python -m pip install 'numpy<2' 'scipy<2'
+      - name: Apply documented implementation fix 01
+        run: |
+          sed -i "s/dominant,n=parse=parses.most_common(1)\[0\]\[0\],parses.most_common(1)\[0\]\[1\],None/dominant,n=parses.most_common(1)[0]/" experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
+          grep -n "dominant,n=" experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
       - name: Run recovery and bridge
         run: python experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
       - name: Commit deterministic results
