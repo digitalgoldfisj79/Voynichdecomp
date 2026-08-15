@@ -65,7 +65,7 @@ jobs:
                   urllib.request.urlretrieve(u,d/name)
           PY
           git clone --depth 1 --filter=blob:none --sparse https://github.com/HTR-United/CREMMA-Medieval-LAT.git "$EXP/external/cremma_repo"
-          git -C "$EXP/external/cremma_repo" sparse-checkout set data data-registry.csv
+          git -C "$EXP/external/cremma_repo" sparse-checkout set data
           python - <<'PY'
           import csv, pathlib, shutil
           exp=pathlib.Path('experiments/structured_specificity_hostile_v0_2')
