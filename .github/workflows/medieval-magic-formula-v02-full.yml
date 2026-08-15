@@ -1,0 +1,65 @@
+name: Medieval Magic Formula v0.2 Full
+
+on:
+  push:
+    branches:
+      - experiment/medieval-magic-formula-discriminator-v0.2-full-20260815
+    paths:
+      - '.github/workflows/medieval-magic-formula-v02-full.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check numpy
+      - name: Reconstruct frozen runner and link frozen data
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd experiments/medieval_magic_formula_discriminator_v0_2
+          cat run_full_v02.py.gz.b64.part* | base64 -d | gzip -d > run_full_v02.py
+          echo '71aa3f5a3f25b3195ec15c3602b1a63b55ae7160878567959b2210b5e26accb9  run_full_v02.py' | sha256sum -c -
+          ln -s ../medieval_magic_formula_discriminator_v0_1/data data
+          python -m py_compile run_full_v02.py
+      - name: Run full frozen programme
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd experiments/medieval_magic_formula_discriminator_v0_2
+          PYTHONUNBUFFERED=1 python run_full_v02.py --repo-root ../..
+      - name: Summarize artifacts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          d=experiments/medieval_magic_formula_discriminator_v0_2/results_v02
+          if [ -f "$d/external_freeze.json" ]; then sha256sum "$d/external_freeze.json"; fi
+          if [ -f "$d/full_result.json" ]; then
+            sha256sum "$d/full_result.json"
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('experiments/medieval_magic_formula_discriminator_v0_2/results_v02/full_result.json')
+          if p.exists():
+              x=json.loads(p.read_text())
+              print('FINAL_ARTIFACT_SUMMARY', json.dumps({k:x.get(k) for k in ['verdict','representation_wins','delta_magic','same_magic_class_layers','historical_generator_layer_wins_vs_controls']}, sort_keys=True))
+          PY
+          fi
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medieval-magic-formula-v02-results
+          path: experiments/medieval_magic_formula_discriminator_v0_2/results_v02/
+          if-no-files-found: warn
+          retention-days: 30
