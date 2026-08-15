@@ -28,9 +28,11 @@ jobs:
           set -euo pipefail
           EXP="experiments/structured_specificity_hostile_v0_2"
           cd "$EXP"
-          base64 -d hostile_v02_bundle.tar.gz.b64 | tar -xzf -
+          cat bundle.part* > hostile_v02_bundle.reconstructed.b64
+          echo "a5f4476e81617d0b622d7e904c0e15951def50adf35d5833853365f5e10a77fb  hostile_v02_bundle.reconstructed.b64" | sha256sum -c -
+          base64 -d hostile_v02_bundle.reconstructed.b64 | tar -xzf -
           python -m py_compile run_hostile_v02.py
-          sha256sum PROTOCOL_HOSTILE_V02.md run_hostile_v02.py REAL_CONTROL_MANIFEST.json TARGET_SOURCE_MANIFEST.json voynich_section_map.json hostile_v02_bundle.tar.gz.b64
+          sha256sum PROTOCOL_HOSTILE_V02.md run_hostile_v02.py REAL_CONTROL_MANIFEST.json TARGET_SOURCE_MANIFEST.json voynich_section_map.json bundle.part*
           cd - >/dev/null
 
       - name: Reconstruct frozen C corpus
