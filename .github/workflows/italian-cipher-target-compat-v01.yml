@@ -26,17 +26,19 @@ jobs:
           P="experiments/italian_cipher_entropy_transfer_v0_1"
           T="experiments/italian_cipher_target_compat_v0_1"
           base64 -d "$P/run_entropy_transfer_v01.py.gz.b64" | gzip -d > "$P/run_entropy_transfer_v01.py"
-          base64 -d "$T/run_target_compat_v01.py.gz.b64" | gzip -d > "$T/run_target_compat_v01.py"
+          cat "$T"/runner.part* | tr -d '\r\n' > "$T/run_target_compat_v01.correct.b64"
+          echo "f9dba93894d94576635206ffb4e0f8138507592ea84f8e23d9c70aa130815633  $T/run_target_compat_v01.correct.b64" | sha256sum -c -
+          base64 -d "$T/run_target_compat_v01.correct.b64" | gzip -d > "$T/run_target_compat_v01.py"
           echo "a1d5ad2d18fec6f657e6f89248b1ac726e2909fc184774d9e75eb87569d57963  $P/run_entropy_transfer_v01.py" | sha256sum -c -
           echo "eda94d458c4c64e2e44c50e7b9799c40efe1e9d0bc064a261963b3e026e19af3  $T/run_target_compat_v01.py" | sha256sum -c -
-          echo "f9dba93894d94576635206ffb4e0f8138507592ea84f8e23d9c70aa130815633  $T/run_target_compat_v01.py.gz.b64" | sha256sum -c -
           python -m py_compile "$P/run_entropy_transfer_v01.py" "$T/run_target_compat_v01.py"
           python "$T/run_target_compat_v01.py" test --parent-runner "$P/run_entropy_transfer_v01.py"
           sha256sum "$T/PROTOCOL_ITALIAN_CIPHER_TARGET_COMPAT_V01.md" \
                     "$T/AMENDMENT_001_COLLINEARITY_FAMILY_BALANCE.md" \
                     "$T/AMENDMENT_002_GLOBAL_SELECTION_NULL.md" \
                     "$T/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md" \
-                    "$T/SOURCE_MANIFEST.json" "$T/run_target_compat_v01.py"
+                    "$T/AMENDMENT_004_RUNNER_PAYLOAD_REPAIR.md" \
+                    "$T/SOURCE_MANIFEST.json" "$T/run_target_compat_v01.py" "$T"/runner.part*
 
       - name: Download and verify exact external sources
         shell: bash
@@ -46,7 +48,7 @@ jobs:
           T="experiments/italian_cipher_target_compat_v0_1"
           E="$T/external"; mkdir -p "$E/controls"
           python - <<'PY'
-          import json,pathlib,urllib.request
+          import json,pathlib,urllib.request,hashlib
           p=pathlib.Path('experiments/italian_cipher_entropy_transfer_v0_1/SOURCE_MANIFEST.json')
           t=pathlib.Path('experiments/italian_cipher_target_compat_v0_1/SOURCE_MANIFEST.json')
           fams=json.loads(p.read_text())['families']; expected=json.loads(t.read_text())['external_sources']
@@ -57,7 +59,7 @@ jobs:
               for u in spec:
                   name=u.rsplit('/',1)[-1]; q=d/name
                   print('DOWNLOAD',fam,u); urllib.request.urlretrieve(u,q)
-                  key=f'{fam}/{name}'; import hashlib
+                  key=f'{fam}/{name}'
                   got=hashlib.sha256(q.read_bytes()).hexdigest(); want=expected[key]
                   print('HASH',key,got)
                   if got!=want: raise SystemExit(f'external hash mismatch {key}')
@@ -170,9 +172,11 @@ jobs:
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_001_COLLINEARITY_FAMILY_BALANCE.md
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_002_GLOBAL_SELECTION_NULL.md
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md
+            experiments/italian_cipher_target_compat_v0_1/AMENDMENT_004_RUNNER_PAYLOAD_REPAIR.md
             experiments/italian_cipher_target_compat_v0_1/SOURCE_MANIFEST.json
             experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.py
-            experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.py.gz.b64
+            experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.correct.b64
+            experiments/italian_cipher_target_compat_v0_1/runner.part*
             experiments/italian_cipher_target_compat_v0_1/external/source_hashes.sha256
             experiments/italian_cipher_target_compat_v0_1/external/cremma_commit.txt
             experiments/italian_cipher_target_compat_v0_1/results/
