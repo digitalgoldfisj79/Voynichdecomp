@@ -26,7 +26,7 @@ jobs:
           head -1 /tmp/RF1b.txt
           sha256sum /tmp/RF1b.txt
       - name: Run frozen STA robustness programme
-        run: python experiments/sta_boundary_robustness_v0_1/run_sta_robustness.py /tmp/RF1b.txt
+        run: python experiments/sta_boundary_robustness_v0_1/run_sta_robustness_fast.py /tmp/RF1b.txt
       - name: Commit deterministic results
         run: |
           git config user.name 'voynich-recovery-bot'
