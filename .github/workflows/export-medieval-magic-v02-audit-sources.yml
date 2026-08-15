@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir -p audit_sources
           base64 -d experiments/medieval_magic_formula_discriminator_v0_2_full/run_full_v02.py.gz.b64 | gzip -dc > audit_sources/run_full_v02.py
-          base64 -d experiments/medieval_magic_formula_discriminator_v0_2_full/voynich_transcriptions_slim.json.gz.b64 | gzip -dc > audit_sources/voynich_transcriptions_slim.json
+          cp voynich_transcriptions_slim.json audit_sources/voynich_transcriptions_slim.json
           cp voynich_section_map.json audit_sources/voynich_section_map.json
           cp experiments/medieval_magic_formula_discriminator_v0_2_full/PROTOCOL_V0_2_FULL.md audit_sources/PROTOCOL_V0_2_FULL.md || true
           cp experiments/medieval_magic_formula_discriminator_v0_2_full/AMENDMENT_001_IMPLEMENTATION_BUGFIX.md audit_sources/AMENDMENT_001_IMPLEMENTATION_BUGFIX.md || true
