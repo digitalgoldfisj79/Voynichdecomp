@@ -1,0 +1,35 @@
+name: Position-conditioned P70 emission v0.1
+on:
+  push:
+    branches:
+      - experiment/position-conditioned-p70-emission-v0.1-20260815
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run preregistered held-out experiment
+        run: python experiments/position_conditioned_p70_emission_v0_1/run_experiment.py
+      - name: Commit deterministic results
+        run: |
+          git config user.name 'voynich-recovery-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/position_conditioned_p70_emission_v0_1/
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add held-out position-conditioned P70 emission results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: position-conditioned-p70-emission-v0.1-results
+          path: results/position_conditioned_p70_emission_v0_1/
