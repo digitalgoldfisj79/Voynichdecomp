@@ -1,0 +1,49 @@
+name: STA boundary-return discriminator v0.1 full execution
+
+on:
+  push:
+    branches:
+      - experiment/sta-boundary-return-discriminator-v0.1-20260815
+    paths:
+      - 'experiments/sta_boundary_return_discriminator_v0_1/EXECUTE_FULL_20260815.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  full-discriminator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numerical dependency
+        run: python -m pip install 'numpy<2'
+      - name: Verify frozen executable compiles
+        run: python -m py_compile experiments/sta_boundary_return_discriminator_v0_1/run_discriminator.py experiments/sta_boundary_return_discriminator_v0_1/run_build_checks.py
+      - name: Re-run target-blind build checks
+        run: python experiments/sta_boundary_return_discriminator_v0_1/run_build_checks.py
+      - name: Acquire canonical RF1b STA source
+        run: |
+          curl --fail --location --retry 3 --output /tmp/RF1b.txt https://voynich.nu/data/sta/RF1b.txt
+          echo '81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17  /tmp/RF1b.txt' | sha256sum --check --strict
+      - name: Run frozen full discriminator
+        run: python experiments/sta_boundary_return_discriminator_v0_1/run_discriminator.py /tmp/RF1b.txt
+      - name: Commit deterministic results
+        run: |
+          git config user.name 'voynich-discriminator-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/sta_boundary_return_discriminator_v0_1/
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add STA boundary-return discriminator results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sta-boundary-return-discriminator-v0.1-results
+          path: results/sta_boundary_return_discriminator_v0_1/
