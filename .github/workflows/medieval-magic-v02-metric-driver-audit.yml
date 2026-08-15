@@ -1,0 +1,58 @@
+name: Medieval Magic v0.2 Metric Driver Audit
+
+on:
+  push:
+    branches:
+      - experiment/medieval-magic-formula-discriminator-v0.2-full-20260815
+    paths:
+      - '.github/workflows/medieval-magic-v02-metric-driver-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --disable-pip-version-check numpy
+      - name: Reconstruct frozen external inputs and runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP=experiments/medieval_magic_formula_discriminator_v0_2_full
+          mkdir -p "$EXP/data/a_sources"
+          cp experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part00 "$EXP/data/lecouteux_formula_corpus_v02.part00"
+          python - <<'PY'
+          import json,pathlib
+          exp=pathlib.Path('experiments/medieval_magic_formula_discriminator_v0_2_full')
+          d=json.loads((exp/'a_sources_bundle.json').read_text())
+          out=exp/'data'/'a_sources';out.mkdir(parents=True,exist_ok=True)
+          for name,text in d.items():(out/name).write_text(text)
+          PY
+          cd "$EXP"
+          cat data/lecouteux_formula_corpus_v02.part* | tr -d '\n\r' | base64 -d | gzip -d > data/lecouteux_formula_corpus_v02.csv
+          base64 -d run_full_v02.py.gz.b64 | gzip -d > run_full_v02.py
+          python -m py_compile run_full_v02.py audit_metric_drivers_v02.py
+      - name: Run metric-driver audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd experiments/medieval_magic_formula_discriminator_v0_2_full
+          PYTHONUNBUFFERED=1 python audit_metric_drivers_v02.py 2>&1 | tee metric_driver_audit_v02.log
+      - name: Print result
+        if: always()
+        shell: bash
+        run: cat experiments/medieval_magic_formula_discriminator_v0_2_full/results_metric_driver_audit_v02/metric_driver_audit.json 2>/dev/null || true
+      - name: Upload audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medieval-magic-v02-metric-driver-audit
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            experiments/medieval_magic_formula_discriminator_v0_2_full/results_metric_driver_audit_v02/
+            experiments/medieval_magic_formula_discriminator_v0_2_full/metric_driver_audit_v02.log
