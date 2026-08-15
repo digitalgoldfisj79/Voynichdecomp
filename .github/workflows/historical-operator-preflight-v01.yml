@@ -1,0 +1,34 @@
+name: Historical operator pairs v0.1 preflight
+
+on:
+  push:
+    branches:
+      - experiment/historical-operator-pairs-v0.1-20260815
+    paths:
+      - .github/workflows/historical-operator-preflight-v01.yml
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Nuremberg labels
+        run: |
+          mkdir -p /tmp/operator_data
+          curl -fL --retry 5 --retry-delay 5 -o /tmp/operator_data/nuremberg_labels.zip 'https://zenodo.org/records/13881575/files/labels.zip?download=1'
+          ls -lh /tmp/operator_data/nuremberg_labels.zip
+      - name: Download ORIFLAMMS dated manuscripts
+        run: |
+          curl -fL --retry 5 --retry-delay 5 -o /tmp/operator_data/oriflamms.zip 'https://zenodo.org/records/6507965/files/Dated-and-Datable-Manuscripts_resegmented.zip?download=1'
+          ls -lh /tmp/operator_data/oriflamms.zip
+      - name: Inspect schemas
+        run: |
+          python experiments/historical_operator_pairs_v0_1/preflight.py /tmp/operator_data/nuremberg_labels.zip /tmp/operator_data/oriflamms.zip | tee experiments/historical_operator_pairs_v0_1/preflight_out/preflight.log
+      - name: Upload schema artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-operator-pairs-v01-preflight
+          path: experiments/historical_operator_pairs_v0_1/preflight_out/
+          retention-days: 14
