@@ -6,6 +6,7 @@ on:
       - experiment/italian-cipher-entropy-transfer-v0.1-20260815
     paths:
       - .github/workflows/italian-cipher-entropy-transfer-v01.yml
+      - experiments/italian_cipher_entropy_transfer_v0_1/**
   workflow_dispatch:
 
 permissions:
@@ -28,7 +29,7 @@ jobs:
           echo "a1d5ad2d18fec6f657e6f89248b1ac726e2909fc184774d9e75eb87569d57963  $EXP/run_entropy_transfer_v01.py" | sha256sum -c -
           echo "27b9afa2a7b08d322e2001e45d832aef83245266e368add31066f602243ef8f7  $EXP/run_entropy_transfer_v01.py.gz.b64" | sha256sum -c -
           python -m py_compile "$EXP/run_entropy_transfer_v01.py"
-          sha256sum "$EXP/PROTOCOL_ENTROPY_TRANSFER_V01.md" "$EXP/AMENDMENT_001_MICROPARAMETERS.md" "$EXP/SOURCE_MANIFEST.json" "$EXP/run_entropy_transfer_v01.py"
+          sha256sum "$EXP/PROTOCOL_ENTROPY_TRANSFER_V01.md" "$EXP/AMENDMENT_001_MICROPARAMETERS.md" "$EXP/AMENDMENT_002_PROTOCOL_PATH_FIX.md" "$EXP/SOURCE_MANIFEST.json" "$EXP/run_entropy_transfer_v01.py"
 
       - name: Hostile firewall and unit tests
         shell: bash
@@ -128,6 +129,7 @@ jobs:
           path: |
             experiments/italian_cipher_entropy_transfer_v0_1/PROTOCOL_ENTROPY_TRANSFER_V01.md
             experiments/italian_cipher_entropy_transfer_v0_1/AMENDMENT_001_MICROPARAMETERS.md
+            experiments/italian_cipher_entropy_transfer_v0_1/AMENDMENT_002_PROTOCOL_PATH_FIX.md
             experiments/italian_cipher_entropy_transfer_v0_1/SOURCE_MANIFEST.json
             experiments/italian_cipher_entropy_transfer_v0_1/run_entropy_transfer_v01.py
             experiments/italian_cipher_entropy_transfer_v0_1/run_entropy_transfer_v01.py.gz.b64
