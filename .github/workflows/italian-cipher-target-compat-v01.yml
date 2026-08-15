@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   compatibility:
@@ -38,10 +39,14 @@ jobs:
                     "$T/AMENDMENT_002_GLOBAL_SELECTION_NULL.md" \
                     "$T/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md" \
                     "$T/AMENDMENT_004_RUNNER_PAYLOAD_REPAIR.md" \
+                    "$T/AMENDMENT_005_BVGS_IMMUTABLE_SNAPSHOT.md" \
+                    "$T/BVGS_PARENT_FINGERPRINT.json" \
                     "$T/SOURCE_MANIFEST.json" "$T/run_target_compat_v01.py" "$T"/runner.part*
 
       - name: Download and verify exact external sources
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           P="experiments/italian_cipher_entropy_transfer_v0_1"
@@ -64,16 +69,34 @@ jobs:
                   print('HASH',key,got)
                   if got!=want: raise SystemExit(f'external hash mismatch {key}')
           PY
-          curl -fL --retry 3 --retry-delay 2 \
-            'https://www.uni-giessen.de/de/fbz/fb05/germanistik/absprache/sprachverwendung/gloning/tx/bvgs.htm' \
-            -o "$E/bvgs.htm"
+
+          # The live BVGS HTML drifted after the parent run. Use the independently
+          # archived pre-existing snapshot whose parsed corpus was verified to
+          # regenerate all 1,020 parent BVGS result rows within 1e-12.
+          curl -fL --retry 3 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            'https://api.github.com/repos/digitalgoldfisj79/Voynichdecomp/actions/artifacts/9249108075/zip' \
+            -o "$E/bvgs_snapshot_artifact.zip"
+          mkdir -p "$E/bvgs_snapshot_unpack"
+          unzip -q "$E/bvgs_snapshot_artifact.zip" 'external/bvgs.htm' -d "$E/bvgs_snapshot_unpack"
+          cp "$E/bvgs_snapshot_unpack/external/bvgs.htm" "$E/bvgs.htm"
+          echo "c793d8d7ba3c08a745cded86f3ad19a15099b298ade1af8bba17d2ac51a9be03  $E/bvgs.htm" | sha256sum -c -
           python - <<'PY'
-          import hashlib,json,pathlib
-          t=pathlib.Path('experiments/italian_cipher_target_compat_v0_1')
-          want=json.loads((t/'SOURCE_MANIFEST.json').read_text())['external_sources']['BVGS_RECIPE']
-          got=hashlib.sha256((t/'external'/'bvgs.htm').read_bytes()).hexdigest();print('BVGS_HASH',got)
-          if got!=want: raise SystemExit('BVGS hash mismatch')
+          import importlib.util,hashlib,json,pathlib
+          P=pathlib.Path('experiments/italian_cipher_entropy_transfer_v0_1')
+          T=pathlib.Path('experiments/italian_cipher_target_compat_v0_1')
+          spec=importlib.util.spec_from_file_location('parent',P/'run_entropy_transfer_v01.py')
+          m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+          fp=json.loads((T/'BVGS_PARENT_FINGERPRINT.json').read_text())['parsed_content']
+          units=m.parse_bvgs(T/'external'/'bvgs.htm'); tr,te=m.split_units(units)
+          def h(xs): return hashlib.sha256(('\n'.join(' '.join(u) for u in xs)).encode()).hexdigest()
+          got={'all_units_sha256':h(units),'train_units_sha256':h(tr),'test_units_sha256':h(te)}
+          print('BVGS_PARSED_HASHES',got)
+          for k,v in got.items():
+              if v!=fp[k]: raise SystemExit(f'BVGS parsed-content mismatch {k}: {v} != {fp[k]}')
           PY
+
           git clone --filter=blob:none --no-checkout https://github.com/HTR-United/CREMMA-Medieval-LAT.git "$E/cremma_repo"
           git -C "$E/cremma_repo" sparse-checkout init --cone
           git -C "$E/cremma_repo" sparse-checkout set data
@@ -173,12 +196,15 @@ jobs:
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_002_GLOBAL_SELECTION_NULL.md
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_003_POSITIVE_CONTROL_ACTIVE_SET.md
             experiments/italian_cipher_target_compat_v0_1/AMENDMENT_004_RUNNER_PAYLOAD_REPAIR.md
+            experiments/italian_cipher_target_compat_v0_1/AMENDMENT_005_BVGS_IMMUTABLE_SNAPSHOT.md
+            experiments/italian_cipher_target_compat_v0_1/BVGS_PARENT_FINGERPRINT.json
             experiments/italian_cipher_target_compat_v0_1/SOURCE_MANIFEST.json
             experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.py
             experiments/italian_cipher_target_compat_v0_1/run_target_compat_v01.correct.b64
             experiments/italian_cipher_target_compat_v0_1/runner.part*
             experiments/italian_cipher_target_compat_v0_1/external/source_hashes.sha256
             experiments/italian_cipher_target_compat_v0_1/external/cremma_commit.txt
+            experiments/italian_cipher_target_compat_v0_1/external/bvgs.htm
             experiments/italian_cipher_target_compat_v0_1/results/
             experiments/italian_cipher_target_compat_v0_1/external_calibration.log
             experiments/italian_cipher_target_compat_v0_1/target_run.log
