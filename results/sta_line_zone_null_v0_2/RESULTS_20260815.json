@@ -1,0 +1,463 @@
+{
+  "metadata": {
+    "seed": 20260815,
+    "nperm": 20000,
+    "n_null_pseudo": 200,
+    "n_planted": 30,
+    "plant_q": 0.1
+  },
+  "validation": {
+    "source_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "header_ok": true,
+    "folios": 203,
+    "segments": 4625,
+    "tokens": 32111,
+    "parser": {
+      "p0_loci": 3885,
+      "eligible_words": 32449,
+      "invalid_words_or_breaks": 553
+    },
+    "anchors": {
+      "E2_N0": 1.1800904913758463,
+      "E2_N1": 1.0719739715651742,
+      "E2_N3": 1.0483566501764499
+    },
+    "pass": true
+  },
+  "calibration": {
+    "C0_exact_line_zone_preservation": true,
+    "C1_null_pseudo": {
+      "n": 200,
+      "gate_passes": 1,
+      "gate_fraction": 0.005,
+      "median_z2": -0.02612170758250229,
+      "p99_z2": 2.4724015423983468,
+      "median_contrast": -0.8359966603793161,
+      "median_pmax": 0.9888505574721264,
+      "median_pspecificity": 0.4794260286985651,
+      "pass": true
+    },
+    "C2_planted_identity": {
+      "n": 30,
+      "q": 0.1,
+      "gate_passes": 18,
+      "gate_fraction": 0.6,
+      "median_swaps": 32.5,
+      "median_z2": 3.1594523878444956,
+      "median_contrast": 3.0533702224502335,
+      "pass": false,
+      "replicates": [
+        {
+          "swaps": 39,
+          "z2": 3.8482251652341164,
+          "contrast": 3.4751023171808297,
+          "pass": true
+        },
+        {
+          "swaps": 38,
+          "z2": 3.0733557906707927,
+          "contrast": 3.0450856855465167,
+          "pass": true
+        },
+        {
+          "swaps": 28,
+          "z2": 4.450901345450035,
+          "contrast": 4.018565101462098,
+          "pass": true
+        },
+        {
+          "swaps": 29,
+          "z2": 1.7819068330652532,
+          "contrast": 1.6798503475642992,
+          "pass": false
+        },
+        {
+          "swaps": 36,
+          "z2": 4.27870815110263,
+          "contrast": 5.120957064431768,
+          "pass": true
+        },
+        {
+          "swaps": 32,
+          "z2": 4.623094539797441,
+          "contrast": 5.153526233585263,
+          "pass": true
+        },
+        {
+          "swaps": 33,
+          "z2": 2.384583013281172,
+          "contrast": 2.4651277854635727,
+          "pass": false
+        },
+        {
+          "swaps": 39,
+          "z2": 2.2123898189337665,
+          "contrast": 2.401749468422844,
+          "pass": false
+        },
+        {
+          "swaps": 23,
+          "z2": 1.609713638717848,
+          "contrast": 1.581443533593572,
+          "pass": false
+        },
+        {
+          "swaps": 30,
+          "z2": 1.9541000274126585,
+          "contrast": 1.5809771793593717,
+          "pass": false
+        },
+        {
+          "swaps": 42,
+          "z2": 2.815065999149685,
+          "contrast": 2.871731524138738,
+          "pass": false
+        },
+        {
+          "swaps": 42,
+          "z2": 3.6760319708867115,
+          "contrast": 3.8450418479380906,
+          "pass": true
+        },
+        {
+          "swaps": 27,
+          "z2": 3.0733557906707927,
+          "contrast": 3.06165475935395,
+          "pass": true
+        },
+        {
+          "swaps": 31,
+          "z2": 1.609713638717848,
+          "contrast": 2.451962552046986,
+          "pass": false
+        },
+        {
+          "swaps": 41,
+          "z2": 3.5899353737130086,
+          "contrast": 3.487878888212055,
+          "pass": true
+        },
+        {
+          "swaps": 29,
+          "z2": 3.5899353737130086,
+          "contrast": 3.2553994835204696,
+          "pass": true
+        },
+        {
+          "swaps": 24,
+          "z2": 2.9011625963233874,
+          "contrast": 2.1754252909492564,
+          "pass": false
+        },
+        {
+          "swaps": 34,
+          "z2": 2.4706796104548743,
+          "contrast": 2.3335946280239215,
+          "pass": false
+        },
+        {
+          "swaps": 30,
+          "z2": 2.040196624586361,
+          "contrast": 1.901261441984618,
+          "pass": false
+        },
+        {
+          "swaps": 29,
+          "z2": 3.1594523878444956,
+          "contrast": 3.3284622648958746,
+          "pass": true
+        },
+        {
+          "swaps": 28,
+          "z2": 2.2123898189337665,
+          "contrast": 1.7800535749458293,
+          "pass": false
+        },
+        {
+          "swaps": 36,
+          "z2": 3.5899353737130086,
+          "contrast": 2.7999611274419953,
+          "pass": true
+        },
+        {
+          "swaps": 32,
+          "z2": 3.762128568060414,
+          "contrast": 4.503396569617253,
+          "pass": true
+        },
+        {
+          "swaps": 46,
+          "z2": 3.9343217624078193,
+          "contrast": 4.555108910379753,
+          "pass": true
+        },
+        {
+          "swaps": 36,
+          "z2": 3.331645582191901,
+          "contrast": 4.4945654552685,
+          "pass": true
+        },
+        {
+          "swaps": 31,
+          "z2": 1.2653272500230373,
+          "contrast": 0.735190652239702,
+          "pass": false
+        },
+        {
+          "swaps": 31,
+          "z2": 3.4177421793656033,
+          "contrast": 3.7678087657408503,
+          "pass": true
+        },
+        {
+          "swaps": 33,
+          "z2": 3.762128568060414,
+          "contrast": 2.9372284490865725,
+          "pass": true
+        },
+        {
+          "swaps": 45,
+          "z2": 3.5899353737130086,
+          "contrast": 3.3531998373158673,
+          "pass": true
+        },
+        {
+          "swaps": 39,
+          "z2": 3.1594523878444956,
+          "contrast": 3.3139182666289466,
+          "pass": true
+        }
+      ]
+    },
+    "pass": false
+  },
+  "target": {
+    "lags": {
+      "1": {
+        "observed": 219,
+        "events": 15992,
+        "null_mean": 200.7402,
+        "null_sd": 9.189919841398757,
+        "ratio": 1.0909623483487614,
+        "z": 1.9869378966444575,
+        "p_one_sided": 0.028998550072496375
+      },
+      "2": {
+        "observed": 225,
+        "events": 14169,
+        "null_mean": 206.3034,
+        "null_sd": 11.614860898421664,
+        "ratio": 1.0906267177370803,
+        "z": 1.609713638717848,
+        "p_one_sided": 0.05934703264836758
+      },
+      "3": {
+        "observed": 178,
+        "events": 12294,
+        "null_mean": 172.8705,
+        "null_sd": 11.067400513115349,
+        "ratio": 1.0296725005133902,
+        "z": 0.46347830223739783,
+        "p_one_sided": 0.3367331633418329
+      },
+      "4": {
+        "observed": 150,
+        "events": 10484,
+        "null_mean": 140.5794,
+        "null_sd": 10.224911886229341,
+        "ratio": 1.0670126633062882,
+        "z": 0.9213380129649272,
+        "p_one_sided": 0.19174041297935104
+      }
+    },
+    "p_maxT_lag2": 0.21583920803959802,
+    "lag2_specificity_contrast": -0.37722425792660963,
+    "p_specificity": 0.3501824908754562,
+    "full_lag2_specific_gate": false,
+    "sides_lag2": {
+      "left": {
+        "observed": 133,
+        "null_mean": 109.3942,
+        "null_sd": 8.340160926158061,
+        "ratio": 1.215786577350536,
+        "z": 2.830377040563189,
+        "p_one_sided": 0.0027498625068746564
+      },
+      "right": {
+        "observed": 127,
+        "null_mean": 123.63535,
+        "null_sd": 8.96998346752492,
+        "ratio": 1.0272143039996247,
+        "z": 0.3751010257913444,
+        "p_one_sided": 0.3711814409279536
+      }
+    }
+  },
+  "diagnostics": {
+    "top_identity_excess": [
+      {
+        "token": "DAQAF",
+        "observed": 11,
+        "expected": 4.885714285714286,
+        "excess": 6.114285714285714
+      },
+      {
+        "token": "KJBA",
+        "observed": 9,
+        "expected": 4.504761904761905,
+        "excess": 4.495238095238095
+      },
+      {
+        "token": "BAB",
+        "observed": 9,
+        "expected": 5.000793650793651,
+        "excess": 3.999206349206349
+      },
+      {
+        "token": "LJBA",
+        "observed": 9,
+        "expected": 5.879761904761902,
+        "excess": 3.120238095238098
+      },
+      {
+        "token": "KJA",
+        "observed": 6,
+        "expected": 3.1051587301587302,
+        "excess": 2.8948412698412698
+      },
+      {
+        "token": "DAQAB",
+        "observed": 6,
+        "expected": 3.4785714285714295,
+        "excess": 2.5214285714285705
+      },
+      {
+        "token": "LJA",
+        "observed": 5,
+        "expected": 2.5003968253968263,
+        "excess": 2.4996031746031737
+      },
+      {
+        "token": "KUA",
+        "observed": 4,
+        "expected": 1.735714285714286,
+        "excess": 2.2642857142857142
+      },
+      {
+        "token": "KJAC",
+        "observed": 4,
+        "expected": 2.0,
+        "excess": 2.0
+      },
+      {
+        "token": "DAQAC",
+        "observed": 4,
+        "expected": 2.0436507936507935,
+        "excess": 1.9563492063492065
+      },
+      {
+        "token": "AC",
+        "observed": 11,
+        "expected": 9.284920634920628,
+        "excess": 1.7150793650793723
+      },
+      {
+        "token": "QAG",
+        "observed": 2,
+        "expected": 0.5,
+        "excess": 1.5
+      },
+      {
+        "token": "AQAB",
+        "observed": 7,
+        "expected": 5.568650793650792,
+        "excess": 1.431349206349208
+      },
+      {
+        "token": "AQA",
+        "observed": 3,
+        "expected": 1.5749999999999997,
+        "excess": 1.4250000000000003
+      },
+      {
+        "token": "CAB",
+        "observed": 2,
+        "expected": 0.6428571428571428,
+        "excess": 1.3571428571428572
+      },
+      {
+        "token": "A",
+        "observed": 2,
+        "expected": 0.7277777777777779,
+        "excess": 1.2722222222222221
+      },
+      {
+        "token": "DAQKA",
+        "observed": 9,
+        "expected": 7.745238095238092,
+        "excess": 1.2547619047619083
+      },
+      {
+        "token": "BKJBA",
+        "observed": 2,
+        "expected": 0.8666666666666667,
+        "excess": 1.1333333333333333
+      },
+      {
+        "token": "KA",
+        "observed": 5,
+        "expected": 3.9833333333333334,
+        "excess": 1.0166666666666666
+      },
+      {
+        "token": "AQJA",
+        "observed": 2,
+        "expected": 1.0694444444444444,
+        "excess": 0.9305555555555556
+      }
+    ],
+    "section_residuals": {
+      "Astronomical": {
+        "observed": 5,
+        "expected": 4.253571428571429,
+        "excess": 0.746428571428571
+      },
+      "Balneological": {
+        "observed": 68,
+        "expected": 54.19722222222234,
+        "excess": 13.802777777777663
+      },
+      "Cosmological": {
+        "observed": 0,
+        "expected": 0.36666666666666664,
+        "excess": -0.36666666666666664
+      },
+      "Herbal-A": {
+        "observed": 31,
+        "expected": 32.376190476190494,
+        "excess": -1.3761904761904944
+      },
+      "Herbal-B": {
+        "observed": 37,
+        "expected": 43.83888888888892,
+        "excess": -6.838888888888917
+      },
+      "Pharmaceutical": {
+        "observed": 28,
+        "expected": 18.58905040607826,
+        "excess": 9.410949593921739
+      },
+      "Rosettes": {
+        "observed": 8,
+        "expected": 6.539682539682535,
+        "excess": 1.460317460317465
+      },
+      "Stars": {
+        "observed": 48,
+        "expected": 46.20129870129883,
+        "excess": 1.7987012987011681
+      }
+    }
+  },
+  "verdict": "INSTRUMENT_FAIL"
+}
