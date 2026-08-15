@@ -1,0 +1,41 @@
+name: ABC FW P70 state split
+on:
+  push:
+    branches:
+      - experiment/abc-fw-recovery-p70-bridge-v0.1-20260815
+    paths:
+      - 'experiments/abc_fw_recovery_p70_bridge_v0_1/STATE_SPLIT_PREREG_20260815.md'
+      - 'experiments/abc_fw_recovery_p70_bridge_v0_1/run_state_split.py'
+      - '.github/workflows/abc-fw-state-split.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  state-split:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install numpy
+        run: python -m pip install 'numpy<2'
+      - name: Run state-split discriminator
+        run: python experiments/abc_fw_recovery_p70_bridge_v0_1/run_state_split.py
+      - name: Commit deterministic result
+        run: |
+          git config user.name 'voynich-recovery-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/abc_fw_recovery_p70_bridge_v0_1/STATE_SPLIT_RESULTS_20260815.*
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add P70 core-state x LAAFU discriminator results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: abc-fw-p70-state-split
+          path: results/abc_fw_recovery_p70_bridge_v0_1/STATE_SPLIT_RESULTS_20260815.*
