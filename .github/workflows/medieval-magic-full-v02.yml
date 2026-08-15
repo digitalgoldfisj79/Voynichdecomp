@@ -1,0 +1,79 @@
+name: Medieval Magic Formula Discriminator v0.2 FULL
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/medieval-magic-formula-discriminator-v0.2-full-20260815
+    paths:
+      - .github/workflows/medieval-magic-full-v02.yml
+
+permissions:
+  contents: read
+
+jobs:
+  full-run:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout frozen branch
+        uses: actions/checkout@v4
+
+      - name: Install Python dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Reconstruct frozen data and runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          EXP="experiments/medieval_magic_formula_discriminator_v0_2_full"
+          mkdir -p "$EXP/data/a_sources"
+          cp experiments/medieval_magic_formula_discriminator_v0_1/data/lecouteux_formula_corpus_v02.part00 "$EXP/data/lecouteux_formula_corpus_v02.part00"
+          python - <<'PY'
+          import json, pathlib
+          exp=pathlib.Path('experiments/medieval_magic_formula_discriminator_v0_2_full')
+          d=json.loads((exp/'a_sources_bundle.json').read_text(encoding='utf-8'))
+          out=exp/'data'/'a_sources'; out.mkdir(parents=True,exist_ok=True)
+          for name,text in d.items():
+              (out/name).write_text(text,encoding='utf-8')
+          print('A_SOURCES', len(d))
+          PY
+          cd "$EXP"
+          cat data/lecouteux_formula_corpus_v02.part* | tr -d '\n\r' | base64 -d | gzip -d > data/lecouteux_formula_corpus_v02.csv
+          base64 -d run_full_v02.py.gz.b64 | gzip -d > run_full_v02.py
+          python -m py_compile run_full_v02.py
+          sha256sum run_full_v02.py run_full_v02.py.gz.b64 data/lecouteux_formula_corpus_v02.csv
+          wc -c data/lecouteux_formula_corpus_v02.csv
+
+      - name: Run full frozen programme
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd experiments/medieval_magic_formula_discriminator_v0_2_full
+          PYTHONUNBUFFERED=1 python run_full_v02.py --repo-root ../.. 2>&1 | tee full_run_v02.log
+
+      - name: Print decisive outputs
+        if: always()
+        shell: bash
+        run: |
+          EXP="experiments/medieval_magic_formula_discriminator_v0_2_full"
+          echo '=== RESULT FILES ==='
+          find "$EXP/results_v02" -maxdepth 1 -type f -printf '%f %s bytes\n' 2>/dev/null | sort || true
+          echo '=== FULL RESULT ==='
+          cat "$EXP/results_v02/full_result.json" 2>/dev/null || true
+          echo '=== EXTERNAL FREEZE ==='
+          cat "$EXP/results_v02/external_freeze.json" 2>/dev/null || true
+
+      - name: Upload complete audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: medieval-magic-full-v02-results
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            experiments/medieval_magic_formula_discriminator_v0_2_full/results_v02/
+            experiments/medieval_magic_formula_discriminator_v0_2_full/full_run_v02.log
+            experiments/medieval_magic_formula_discriminator_v0_2_full/PROTOCOL_V0_2_FULL.md
+            experiments/medieval_magic_formula_discriminator_v0_2_full/AMENDMENT_001_IMPLEMENTATION_BUGFIX.md
