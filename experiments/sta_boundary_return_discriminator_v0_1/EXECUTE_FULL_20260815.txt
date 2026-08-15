@@ -1,2 +1,2 @@
 Execute the frozen STA boundary-return discriminator v0.1 exactly as preregistered.
-Execution repeat: accelerated exact-equivalent likelihood evaluation; scientific protocol unchanged.
+Execution repeat: accelerated exact-equivalent likelihood and vectorized k-modes distance evaluation; scientific protocol unchanged.
