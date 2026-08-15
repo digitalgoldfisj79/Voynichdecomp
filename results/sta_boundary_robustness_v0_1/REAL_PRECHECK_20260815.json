@@ -1,0 +1,106 @@
+{
+  "metadata": {
+    "seed": 20260815,
+    "nperm": 1000,
+    "source_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "parser": {
+      "p0_loci": 3885,
+      "eligible_words": 32449,
+      "invalid_words_or_breaks": 553
+    }
+  },
+  "validation": {
+    "header_ok": true,
+    "folios": 203,
+    "segments": 4625,
+    "tokens": 32111,
+    "section_overlap": 1.0,
+    "pass": true
+  },
+  "real": {
+    "E2_N0": {
+      "observed": 393.0,
+      "null_mean": 333.127,
+      "null_sd": 15.798939125063983,
+      "ratio": 1.1797302530266234,
+      "z": 3.789684834282031
+    },
+    "E2_N1": {
+      "observed": 393.0,
+      "null_mean": 366.336,
+      "null_sd": 15.061472436383902,
+      "ratio": 1.0727856394129978,
+      "z": 1.7703448392992398
+    },
+    "E2_N3": {
+      "observed": 168.0,
+      "null_mean": 160.504,
+      "null_sd": 10.382571058354563,
+      "ratio": 1.0467028859093854,
+      "z": 0.7219791666119337
+    },
+    "ED1_N0": {
+      "observed": 2188.0,
+      "null_mean": 1985.222,
+      "null_sd": 35.56477990329154,
+      "ratio": 1.1021437400955663,
+      "z": 5.701652043156123
+    },
+    "ED1_N1": {
+      "observed": 2188.0,
+      "null_mean": 2028.618,
+      "null_sd": 30.889095360858537,
+      "ratio": 1.078566787832899,
+      "z": 5.159814430886919
+    },
+    "ED1_N3": {
+      "observed": 946.0,
+      "null_mean": 931.118,
+      "null_sd": 22.480690769134686,
+      "ratio": 1.0159829366417574,
+      "z": 0.6619903344087846
+    },
+    "LEN_short": {
+      "observed": 1488.0,
+      "null_mean": 1375.248,
+      "null_sd": 29.402261630510484,
+      "ratio": 1.0819866671320373,
+      "z": 3.8348070436526602
+    },
+    "LEN_mid": {
+      "observed": 663.0,
+      "null_mean": 580.236,
+      "null_sd": 19.96263536737599,
+      "ratio": 1.1426385126052159,
+      "z": 4.145945586686284
+    },
+    "LEN_long": {
+      "observed": 37.0,
+      "null_mean": 29.738,
+      "null_sd": 4.514170326176643,
+      "ratio": 1.2441993409106193,
+      "z": 1.608712005811859
+    },
+    "direction": {
+      "acc_red": {
+        "observed_ratio": 0.8703374777975134,
+        "null_ratio_mean": 1.00420670090743,
+        "null_ratio_sd": 0.06096342038810722,
+        "z": -2.1958942306332925
+      },
+      "subsite": {
+        "observed_ratio": 0.6740412979351033,
+        "null_ratio_mean": 0.8225488482241713,
+        "null_ratio_sd": 0.04179784339270192,
+        "z": -3.552995519261601
+      }
+    }
+  },
+  "representation_gates": {
+    "R1_E2": true,
+    "R2_ED1": true,
+    "R3_long": "UNDERPOWERED",
+    "R4_direction_absent": false
+  },
+  "stage1_decision": "REPRESENTATION_SENSITIVE_STOP"
+}
