@@ -1,0 +1,118 @@
+name: Frontier U6-v0.2 Stage-B manifest run
+
+on:
+  push:
+    branches:
+      - experiment/voynich-frontier-programme-v0.1-20260814
+    paths:
+      - '.github/workflows/frontier-u6-stageb-manifest.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  stageb-manifest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout exact Frontier branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/voynich-frontier-programme-v0.1-20260814
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen Stage-B dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu 'torch>=2.4,<2.9' 'torchvision>=0.19,<0.24'
+          pip install 'numpy<2' 'pandas>=2.1,<2.3' 'scipy>=1.11,<1.15' 'scikit-learn>=1.4,<1.6' 'Pillow>=10,<12' 'huggingface_hub>=0.30,<1.0' 'requests>=2.31,<3'
+
+      - name: Reconstruct frozen target-free pair skeleton
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, hashlib, pathlib, zlib
+          src = pathlib.Path('experiments/frontier_v0_1/_stageb_bridge/U6_STAGEB_EVENT_SKELETON.zlib.b64')
+          out = pathlib.Path('/tmp/U6_STAGEB_EVENT_SKELETON.csv')
+          out.write_bytes(zlib.decompress(base64.b64decode(src.read_text().strip())))
+          h = hashlib.sha256(out.read_bytes()).hexdigest()
+          expected = '7f29bb7fe782130ddffe3d7809ce024e04a7eb01fa5c4194440d3be18cea3ed4'
+          assert h == expected, (h, expected)
+          print('PAIR_SKELETON_OK', h)
+          PY
+
+      - name: Acquire exact frozen calibration crops from full corpus manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, pathlib
+          from huggingface_hub import hf_hub_download, snapshot_download
+
+          repo = 'Digitalgoldfish79/vdino3-crops'
+          manifest_cache = hf_hub_download(repo_id=repo, repo_type='dataset', filename='results/corpus_crop_manifest.jsonl')
+          folios = set(['f10r', 'f10v', 'f11r', 'f11v', 'f13r', 'f13v', 'f14r', 'f14v', 'f15r', 'f15v', 'f16r', 'f16v', 'f17r', 'f17v', 'f18r', 'f18v', 'f19r', 'f19v', 'f1v', 'f20r', 'f20v', 'f21r', 'f21v', 'f22r', 'f22v', 'f23r', 'f23v', 'f24r', 'f24v', 'f25r', 'f25v', 'f26r', 'f26v', 'f27r', 'f27v', 'f28r', 'f28v', 'f29r', 'f29v', 'f2r', 'f2v', 'f30r', 'f30v', 'f31r', 'f31v', 'f32r', 'f32v', 'f33r', 'f33v', 'f34r', 'f34v', 'f35r', 'f35v', 'f36r', 'f36v', 'f37r', 'f37v', 'f38r', 'f38v', 'f39r', 'f39v', 'f3r', 'f3v', 'f40r', 'f40v', 'f41r', 'f42r', 'f42v', 'f43r', 'f43v', 'f44r', 'f44v', 'f45r', 'f45v', 'f46r', 'f46v', 'f47r', 'f47v', 'f48r', 'f48v', 'f49r', 'f49v', 'f4r', 'f4v', 'f50r', 'f50v', 'f51r', 'f51v', 'f52r', 'f52v', 'f53r', 'f53v', 'f54r', 'f54v', 'f55r', 'f55v', 'f56r', 'f56v', 'f5r', 'f6r', 'f6v', 'f7r', 'f7v', 'f8r', 'f8v', 'f9r', 'f9v'])
+          rows = []
+          paths = []
+          with open(manifest_cache, 'r', encoding='utf-8') as f:
+              for line in f:
+                  r = json.loads(line)
+                  if r.get('kind') == 'word' and r.get('view') == 'norm' and str(r.get('folio')) in folios:
+                      rows.append((str(r['folio']), int(r['word_index'])))
+                      paths.append(str(r['path']))
+          unique_rows = sorted(set(rows))
+          keytext = ''.join(f'{fol}|{idx}\n' for fol, idx in unique_rows)
+          keyhash = hashlib.sha256(keytext.encode()).hexdigest()
+          expected = 'c494eb695691e899d6e1dc648f9f7d7ec4afe49141a8890f9c1c40638b6a3f84'
+          assert len(unique_rows) == 9620, len(unique_rows)
+          assert len(set(f for f,_ in unique_rows)) == 107
+          assert keyhash == expected, (keyhash, expected)
+          allow = ['results/corpus_crop_manifest.jsonl'] + sorted(set(paths))
+          print('FROZEN_WORD_POPULATION_OK', len(unique_rows), len(set(f for f,_ in unique_rows)), keyhash)
+          print('PREFETCH_PATHS', len(allow)-1)
+          root = snapshot_download(repo_id=repo, repo_type='dataset', local_dir='stageb_data', allow_patterns=allow, max_workers=32)
+          # Verify every exact path exists locally before scientific calibration.
+          missing = [p for p in allow if not pathlib.Path(root, p).is_file()]
+          assert not missing, f'missing exact crop assets: {len(missing)} {missing[:10]}'
+          print('CROP_ASSET_GATE_OK', len(allow)-1)
+          PY
+
+      - name: Run target-sealed Stage B
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p experiments/frontier_v0_1/runs/2026-08-15/u6_stageb
+          python experiments/frontier_v0_1/src/u6_stageb.py \
+            --data stageb_data \
+            --encoder experiments/frontier_v0_1/_stageb_bridge/U6_EXTERNAL_ENCODER.pt \
+            --pair-skeleton /tmp/U6_STAGEB_EVENT_SKELETON.csv \
+            --out experiments/frontier_v0_1/runs/2026-08-15/u6_stageb \
+            --dev-reps 60 \
+            --confirm-reps 100
+
+      - name: Archive complete Stage-B output
+        uses: actions/upload-artifact@v4
+        with:
+          name: u6-v02-stageb-manifest-output
+          path: experiments/frontier_v0_1/runs/2026-08-15/u6_stageb
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Persist scientific verdict
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'voynich-frontier-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git pull --rebase origin experiment/voynich-frontier-programme-v0.1-20260814
+          git add experiments/frontier_v0_1/runs/2026-08-15/u6_stageb/U6_STAGEB_RESULT.json
+          git add experiments/frontier_v0_1/runs/2026-08-15/u6_stageb/U6_STAGEB_RESULT.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'Record sealed U6-v0.2 Stage-B calibration verdict [skip ci]'
+          git push origin HEAD:experiment/voynich-frontier-programme-v0.1-20260814
