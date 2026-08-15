@@ -1,0 +1,37 @@
+name: ABC FW recovery P70 bridge v0.1
+on:
+  push:
+    branches:
+      - experiment/abc-fw-recovery-p70-bridge-v0.1-20260815
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install analysis dependencies
+        run: python -m pip install 'numpy<2' 'scipy<2'
+      - name: Run recovery and bridge
+        run: python experiments/abc_fw_recovery_p70_bridge_v0_1/run_recovery.py
+      - name: Commit deterministic results
+        run: |
+          git config user.name 'voynich-recovery-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add results/abc_fw_recovery_p70_bridge_v0_1/
+          if git diff --cached --quiet; then
+            echo 'No result changes.'
+          else
+            git commit -m 'Add ABC/FW recovery and P70 bridge results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: abc-fw-recovery-p70-bridge-v0.1-results
+          path: results/abc_fw_recovery_p70_bridge_v0_1/
