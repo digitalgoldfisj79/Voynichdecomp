@@ -1,0 +1,400 @@
+{
+  "metadata": {
+    "seed": 20260815,
+    "folds": 5,
+    "alpha_global": 5.0,
+    "alpha_local": 20.0,
+    "negative_n": 2000,
+    "positive_n": 30,
+    "plant_q": 0.2
+  },
+  "validation": {
+    "source_sha256": "81c331b7d8e76761e27d350c3b37ccfbe192848e6c8a227bcb5d40fb29259b17",
+    "header_ok": true,
+    "folios": 203,
+    "segments": 4625,
+    "tokens": 32111,
+    "eligible_clean_left_lines": 2802,
+    "parser": {
+      "p0_loci": 3885,
+      "eligible_words": 32449,
+      "invalid_words_or_breaks": 553
+    },
+    "anchors": {
+      "E2_N0": 1.1800904913758463,
+      "E2_N1": 1.0719739715651742,
+      "E2_N3": 1.0483566501764499
+    },
+    "pass": true
+  },
+  "calibration": {
+    "C0_toy_exactness": true,
+    "C1_negative": {
+      "n": 2000,
+      "passes": 9,
+      "fraction": 0.0045,
+      "pass": true
+    },
+    "C2_positive": {
+      "n": 30,
+      "q": 0.2,
+      "passes": 30,
+      "fraction": 1.0,
+      "median_swaps": 36.5,
+      "pass": true,
+      "replicates": [
+        {
+          "swaps": 37,
+          "z": 5.348128534468002,
+          "p": 2.039759461335344e-07,
+          "ratio": 1.5058196092512621,
+          "gate": true
+        },
+        {
+          "swaps": 34,
+          "z": 2.9528854174301866,
+          "p": 0.00241016955491813,
+          "ratio": 1.2792803760010723,
+          "gate": true
+        },
+        {
+          "swaps": 34,
+          "z": 5.770818496298205,
+          "p": 2.4444683798676322e-08,
+          "ratio": 1.5457971210012955,
+          "gate": true
+        },
+        {
+          "swaps": 43,
+          "z": 4.925438572637799,
+          "p": 1.4814077391497304e-06,
+          "ratio": 1.4658420975012285,
+          "gate": true
+        },
+        {
+          "swaps": 35,
+          "z": 4.925438572637799,
+          "p": 1.4814077391497304e-06,
+          "ratio": 1.4658420975012285,
+          "gate": true
+        },
+        {
+          "swaps": 35,
+          "z": 5.489025188411404,
+          "p": 1.0212441822843477e-07,
+          "ratio": 1.5191454465012733,
+          "gate": true
+        },
+        {
+          "swaps": 29,
+          "z": 3.9391619950339933,
+          "p": 8.778678311455617e-05,
+          "ratio": 1.3725612367511504,
+          "gate": true
+        },
+        {
+          "swaps": 35,
+          "z": 5.207231880524602,
+          "p": 4.0116999052259164e-07,
+          "ratio": 1.492493772001251,
+          "gate": true
+        },
+        {
+          "swaps": 28,
+          "z": 5.0663352265812005,
+          "p": 7.76899316562292e-07,
+          "ratio": 1.4791679347512396,
+          "gate": true
+        },
+        {
+          "swaps": 32,
+          "z": 5.0663352265812005,
+          "p": 7.76899316562292e-07,
+          "ratio": 1.4791679347512396,
+          "gate": true
+        },
+        {
+          "swaps": 38,
+          "z": 3.7982653410905924,
+          "p": 0.00014773303701829199,
+          "ratio": 1.3592353995011393,
+          "gate": true
+        },
+        {
+          "swaps": 29,
+          "z": 3.3755753792603893,
+          "p": 0.0006406170838048427,
+          "ratio": 1.3192578877511056,
+          "gate": true
+        },
+        {
+          "swaps": 39,
+          "z": 5.489025188411404,
+          "p": 1.0212441822843477e-07,
+          "ratio": 1.5191454465012733,
+          "gate": true
+        },
+        {
+          "swaps": 31,
+          "z": 5.0663352265812005,
+          "p": 7.76899316562292e-07,
+          "ratio": 1.4791679347512396,
+          "gate": true
+        },
+        {
+          "swaps": 38,
+          "z": 4.643645264750997,
+          "p": 5.141177906876655e-06,
+          "ratio": 1.4391904230012063,
+          "gate": true
+        },
+        {
+          "swaps": 34,
+          "z": 6.193508458128408,
+          "p": 2.5518094124404084e-09,
+          "ratio": 1.5857746327513291,
+          "gate": true
+        },
+        {
+          "swaps": 37,
+          "z": 3.7982653410905924,
+          "p": 0.00014773303701829199,
+          "ratio": 1.3592353995011393,
+          "gate": true
+        },
+        {
+          "swaps": 35,
+          "z": 4.925438572637799,
+          "p": 1.4814077391497304e-06,
+          "ratio": 1.4658420975012285,
+          "gate": true
+        },
+        {
+          "swaps": 38,
+          "z": 7.038888381788813,
+          "p": 1.843873180674523e-11,
+          "ratio": 1.6657296562513961,
+          "gate": true
+        },
+        {
+          "swaps": 39,
+          "z": 6.193508458128408,
+          "p": 2.5518094124404084e-09,
+          "ratio": 1.5857746327513291,
+          "gate": true
+        },
+        {
+          "swaps": 34,
+          "z": 4.220955302920795,
+          "p": 2.9571582134918803e-05,
+          "ratio": 1.3992129112511726,
+          "gate": true
+        },
+        {
+          "swaps": 45,
+          "z": 6.4753017660152095,
+          "p": 5.241987680489675e-10,
+          "ratio": 1.6124263072513514,
+          "gate": true
+        },
+        {
+          "swaps": 36,
+          "z": 6.052611804185007,
+          "p": 5.502989647663883e-09,
+          "ratio": 1.572448795501318,
+          "gate": true
+        },
+        {
+          "swaps": 37,
+          "z": 6.4753017660152095,
+          "p": 5.241987680489675e-10,
+          "ratio": 1.6124263072513514,
+          "gate": true
+        },
+        {
+          "swaps": 39,
+          "z": 4.502748610807597,
+          "p": 9.35653511415188e-06,
+          "ratio": 1.4258645857511951,
+          "gate": true
+        },
+        {
+          "swaps": 47,
+          "z": 5.629921842354804,
+          "p": 5.0349326086087235e-08,
+          "ratio": 1.5324712837512844,
+          "gate": true
+        },
+        {
+          "swaps": 34,
+          "z": 6.4753017660152095,
+          "p": 5.241987680489675e-10,
+          "ratio": 1.6124263072513514,
+          "gate": true
+        },
+        {
+          "swaps": 45,
+          "z": 8.729648229109625,
+          "p": 1.8980451941840465e-16,
+          "ratio": 1.8256397032515301,
+          "gate": true
+        },
+        {
+          "swaps": 38,
+          "z": 4.502748610807597,
+          "p": 9.35653511415188e-06,
+          "ratio": 1.4258645857511951,
+          "gate": true
+        },
+        {
+          "swaps": 43,
+          "z": 5.0663352265812005,
+          "p": 7.76899316562292e-07,
+          "ratio": 1.4791679347512396,
+          "gate": true
+        }
+      ]
+    },
+    "pass": true
+  },
+  "target": {
+    "observed_total": 92,
+    "expected_total": 75.04218918771215,
+    "null_sd": 7.097400626715425,
+    "ratio": 1.2259770270010275,
+    "z": 2.389298801656583,
+    "exact_one_sided_p": 0.01130598588791836,
+    "observed_L0_L2": 28,
+    "expected_L0_L2": 30.02986983137536,
+    "observed_L1_L3": 64,
+    "expected_L1_L3": 45.01231935633678,
+    "primary_gate": false
+  },
+  "diagnostics": {
+    "top_observed_match_tokens": [
+      {
+        "token": "DAQKA",
+        "observed_matches": 8
+      },
+      {
+        "token": "DAQAF",
+        "observed_matches": 7
+      },
+      {
+        "token": "LJBA",
+        "observed_matches": 6
+      },
+      {
+        "token": "AC",
+        "observed_matches": 5
+      },
+      {
+        "token": "KAB",
+        "observed_matches": 4
+      },
+      {
+        "token": "BAG",
+        "observed_matches": 4
+      },
+      {
+        "token": "DAQAB",
+        "observed_matches": 4
+      },
+      {
+        "token": "DAQJBA",
+        "observed_matches": 4
+      },
+      {
+        "token": "KA",
+        "observed_matches": 3
+      },
+      {
+        "token": "KJBA",
+        "observed_matches": 3
+      },
+      {
+        "token": "LJA",
+        "observed_matches": 3
+      },
+      {
+        "token": "A",
+        "observed_matches": 2
+      },
+      {
+        "token": "LAB",
+        "observed_matches": 2
+      },
+      {
+        "token": "KJAC",
+        "observed_matches": 2
+      },
+      {
+        "token": "AQAG",
+        "observed_matches": 2
+      },
+      {
+        "token": "DAQKBA",
+        "observed_matches": 2
+      },
+      {
+        "token": "DAB",
+        "observed_matches": 2
+      },
+      {
+        "token": "DAQAC",
+        "observed_matches": 2
+      },
+      {
+        "token": "AQJA",
+        "observed_matches": 2
+      },
+      {
+        "token": "KJA",
+        "observed_matches": 2
+      }
+    ],
+    "section_residuals": {
+      "Astronomical": {
+        "observed": 3,
+        "expected": 1.3343937891707887,
+        "residual": 1.6656062108292113
+      },
+      "Balneological": {
+        "observed": 27,
+        "expected": 20.93310658782341,
+        "residual": 6.06689341217659
+      },
+      "Cosmological": {
+        "observed": 0,
+        "expected": 0.3058179844209526,
+        "residual": -0.3058179844209526
+      },
+      "Herbal-A": {
+        "observed": 9,
+        "expected": 11.325481970012204,
+        "residual": -2.325481970012204
+      },
+      "Herbal-B": {
+        "observed": 13,
+        "expected": 14.299375454238426,
+        "residual": -1.299375454238426
+      },
+      "Pharmaceutical": {
+        "observed": 14,
+        "expected": 9.151937818709422,
+        "residual": 4.848062181290578
+      },
+      "Rosettes": {
+        "observed": 3,
+        "expected": 2.1226133529931044,
+        "residual": 0.8773866470068956
+      },
+      "Stars": {
+        "observed": 23,
+        "expected": 15.569462230343861,
+        "residual": 7.430537769656139
+      }
+    }
+  },
+  "verdict": "EXACT_LEFT_POSITION_PLUS_LINE_INVENTORY_SUFFICIENT"
+}
