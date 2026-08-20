@@ -15,21 +15,20 @@ permissions:
 jobs:
   cosine:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install cosine dependencies
-        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless torch transformers
-      - name: Run classical and DINOv3 cosine calibration
+      - name: Install classical cosine dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Run HOG and edge cosine calibration
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python research/cosine_calibration/cosine_pilot.py \
-            --classical-top 200 \
-            --dino-top 48 \
+            --top 200 \
             --out cosine_pilot.json
           cat cosine_pilot.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
