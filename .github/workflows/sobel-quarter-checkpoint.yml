@@ -1,0 +1,92 @@
+name: Sobel quarter checkpoint
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/sobel-quarter-checkpoint.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install report dependencies
+        run: python -m pip install --disable-pip-version-check requests pillow
+      - name: Merge completed quarter artifacts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import csv, io, json, os, re, zipfile
+          from pathlib import Path
+          import requests
+          from PIL import Image, ImageDraw
+          REPO='digitalgoldfisj79/Voynichdecomp'; RUN=32341056376
+          sess=requests.Session(); h={'Authorization':f"Bearer {os.environ['GITHUB_TOKEN']}",'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+          arts=[]; page=1
+          while True:
+              r=sess.get(f'https://api.github.com/repos/{REPO}/actions/runs/{RUN}/artifacts?per_page=100&page={page}',headers=h,timeout=30); r.raise_for_status(); b=r.json().get('artifacts',[]); arts.extend(b)
+              if len(b)<100: break
+              page+=1
+          pat=re.compile(r'^sobel-full-s(\d+)-c(\d+)$'); sel=[]
+          for a in arts:
+              m=pat.match(a.get('name',''))
+              if m and not a.get('expired'):
+                  s,c=map(int,m.groups())
+                  if s<=7 or (s==8 and c==0): sel.append((s,c,a))
+          sel.sort(); rows=[]; sums=[]; loaded=[]; failures=[]
+          for s,c,a in sel:
+              try:
+                  z=sess.get(a['archive_download_url'],headers=h,timeout=60); z.raise_for_status()
+                  with zipfile.ZipFile(io.BytesIO(z.content)) as zz:
+                      d=json.loads(zz.read(next(n for n in zz.namelist() if n.endswith('.json'))))
+                  sums.append(d.get('summary',{})); rows.extend(d.get('results',[])); loaded.append(f's{s}c{c}')
+              except Exception as e: failures.append({'shard':s,'chunk':c,'artifact_id':a['id'],'error':repr(e)})
+          rows.sort(key=lambda x:x.get('score',1e99)); seen=sum(int(x.get('seen',0) or 0) for x in sums); ok=sum(int(x.get('ok',0) or 0) for x in sums); errs=sum(int(x.get('errors',0) or 0) for x in sums)
+          out={'version':'sobel-quarter-checkpoint-v0.3','source_run':RUN,'scope':'shards 0-7 plus shard 8 chunk 0','artifacts_loaded':len(loaded),'loaded_chunks':loaded,'artifact_failures':failures,'pages_seen':seen,'pages_ok':ok,'page_errors':errs,'candidate_rows_merged':len(rows),'results':rows[:500]}
+          Path('sobel_quarter_checkpoint.json').write_text(json.dumps(out,indent=2))
+          with open('sobel_quarter_top100.csv','w',newline='') as f:
+              w=csv.writer(f); w.writerow(['rank','score','manuscript_id','folio_label','canvas_index','region_url','search_url','work_id','x','y','w','h','rotation_deg','base_width'])
+              for i,r in enumerate(rows[:100],1): w.writerow([i,r.get('score'),r.get('manuscript_id'),r.get('folio_label'),r.get('canvas_index'),r.get('region_url'),r.get('search_url'),r.get('work_id'),r.get('x'),r.get('y'),r.get('w'),r.get('h'),r.get('rotation_deg'),r.get('base_width')])
+          def img(r):
+              for u in [r.get('region_url'),r.get('search_url')]:
+                  if not u: continue
+                  try:
+                      q=sess.get(u,headers={'User-Agent':'ManuComp-quarter-checkpoint/0.3'},timeout=20); q.raise_for_status(); im=Image.open(io.BytesIO(q.content)).convert('RGB')
+                      if u==r.get('search_url'):
+                          pw=float(r.get('page_w') or im.width); sc=im.width/pw; x=int(float(r.get('x',0))*sc); y=int(float(r.get('y',0))*sc); ww=int(float(r.get('w',im.width))*sc); hh=int(float(r.get('h',im.height))*sc); im=im.crop((max(0,x),max(0,y),min(im.width,x+ww),min(im.height,y+hh)))
+                      return im
+                  except Exception: pass
+              return None
+          tw,th,cols=320,280,4; sheet=Image.new('RGB',(cols*tw,5*th),'white'); dr=ImageDraw.Draw(sheet)
+          for i,r in enumerate(rows[:20]):
+              ox=(i%cols)*tw; oy=(i//cols)*th; im=img(r)
+              if im: im.thumbnail((tw-20,th-65),Image.Resampling.LANCZOS); sheet.paste(im,(ox+(tw-im.width)//2,oy+5))
+              else: dr.rectangle((ox+10,oy+10,ox+tw-10,oy+th-70),outline='gray'); dr.text((ox+20,oy+40),'image unavailable',fill='black')
+              dr.text((ox+8,oy+th-58),f"#{i+1} score {float(r.get('score',0)):.4f}\n{r.get('manuscript_id','')}\n{r.get('folio_label') or r.get('canvas_index','')}",fill='black')
+          sheet.save('sobel_quarter_contact_sheet.jpg',quality=90)
+          with open('sobel_quarter_summary.md','w') as f:
+              f.write('# Sobel quarter checkpoint\n\n'); f.write(f'Loaded **{len(loaded)}** artifacts. Pages seen **{seen:,}**; successful **{ok:,}**; errors **{errs:,}**.\n\n'); f.write('| rank | score | manuscript | folio | region |\n|---:|---:|---|---|---|\n')
+              for i,r in enumerate(rows[:25],1): f.write(f"| {i} | {float(r.get('score',0)):.5f} | `{r.get('manuscript_id','')}` | {r.get('folio_label') or r.get('canvas_index','')} | {r.get('region_url') or ''} |\n")
+          print(json.dumps({'loaded':len(loaded),'failures':len(failures),'seen':seen,'ok':ok,'errors':errs,'candidates':len(rows),'best':rows[0].get('score') if rows else None}),flush=True)
+          PY
+          cat sobel_quarter_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sobel-quarter-checkpoint
+          path: |
+            sobel_quarter_checkpoint.json
+            sobel_quarter_top100.csv
+            sobel_quarter_summary.md
+            sobel_quarter_contact_sheet.jpg
+          retention-days: 14
