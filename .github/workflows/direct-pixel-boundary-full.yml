@@ -1,0 +1,156 @@
+name: Full blind direct-pixel boundary replication
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/direct-pixel-boundary-full.yml'
+      - 'experiments/direct_pixel_boundary/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: direct-pixel-boundary-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+env:
+  NSHARDS: '8'
+
+jobs:
+  build-blind:
+    name: build blind manifest (${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install registration dependencies
+        run: pip install --disable-pip-version-check numpy pillow opencv-python-headless
+      - name: Compile frozen scripts
+        run: python -m py_compile experiments/direct_pixel_boundary/*.py
+      - name: Build registered blind manifest and sealed key
+        run: |
+          python experiments/direct_pixel_boundary/build_manifest.py \
+            --shard '${{ matrix.shard }}' --nshards "$NSHARDS" \
+            --outdir out --cache cache
+      - name: Audit blind schema
+        run: |
+          python - <<'PY'
+          import pandas as pd, glob
+          p=glob.glob('out/blind_manifest_s*.csv')[0]
+          d=pd.read_csv(p)
+          forbidden={'label','certain','uncertain','left_token','right_token','group'}
+          bad=forbidden & {c.lower() for c in d.columns}
+          assert not bad, bad
+          print('blind rows',len(d),'columns',list(d.columns))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: direct-pixel-blind-s${{ matrix.shard }}
+          path: |
+            out/blind_manifest_s${{ matrix.shard }}.csv
+            out/registration_s${{ matrix.shard }}.csv
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        with:
+          name: direct-pixel-key-s${{ matrix.shard }}
+          path: |
+            out/sealed_key_s${{ matrix.shard }}.csv
+            out/freeze_s${{ matrix.shard }}.json
+          retention-days: 14
+
+  measure-blind:
+    name: measure blind pixels (${{ matrix.shard }})
+    needs: build-blind
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        shard: [0,1,2,3,4,5,6,7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pixel dependencies
+        run: pip install --disable-pip-version-check numpy pandas pillow opencv-python-headless
+      - name: Download ONLY blind input
+        uses: actions/download-artifact@v4
+        with:
+          name: direct-pixel-blind-s${{ matrix.shard }}
+          path: blind
+      - name: Prove no key or labels are present
+        run: |
+          test ! -e 'blind/sealed_key_s${{ matrix.shard }}.csv'
+          python - <<'PY'
+          from pathlib import Path
+          import pandas as pd
+          ps=list(Path('blind').glob('blind_manifest_s*.csv')); assert len(ps)==1
+          d=pd.read_csv(ps[0])
+          forbidden={'label','certain','uncertain','left_token','right_token','group'}
+          bad=forbidden & {c.lower() for c in d.columns}; assert not bad,bad
+          print('BLINDING_GATE_PASS rows=',len(d))
+          PY
+      - name: Measure exact 700px arm and frozen 2500px extension
+        run: |
+          python experiments/direct_pixel_boundary/measure_blind.py \
+            --manifest 'blind/blind_manifest_s${{ matrix.shard }}.csv' \
+            --shard '${{ matrix.shard }}' --outdir measured --cache scan_cache
+      - uses: actions/upload-artifact@v4
+        with:
+          name: direct-pixel-measure-s${{ matrix.shard }}
+          path: |
+            measured/measure_700_s${{ matrix.shard }}.csv
+            measured/measure_2500_s${{ matrix.shard }}.csv
+            measured/measurement_freeze_s${{ matrix.shard }}.json
+          retention-days: 14
+
+  unblind-analyze:
+    name: unblind and analyse
+    needs: measure-blind
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --disable-pip-version-check numpy pandas
+      - name: Download frozen measurements
+        uses: actions/download-artifact@v4
+        with:
+          pattern: direct-pixel-measure-s*
+          path: all
+          merge-multiple: true
+      - name: Only now download sealed labels
+        uses: actions/download-artifact@v4
+        with:
+          pattern: direct-pixel-key-s*
+          path: all
+          merge-multiple: true
+      - name: Verify measurement freezes precede label merge and analyse
+        run: |
+          ls -lh all/measurement_freeze_s*.json all/sealed_key_s*.csv
+          python experiments/direct_pixel_boundary/analyze_unblind.py \
+            --root all --outdir results --section-map voynich_section_map.json
+      - name: Print result report
+        run: cat results/DIRECT_PIXEL_FULL_REPORT.md
+      - uses: actions/upload-artifact@v4
+        with:
+          name: direct-pixel-full-results
+          path: |
+            results/DIRECT_PIXEL_FULL_RESULTS.json
+            results/DIRECT_PIXEL_FULL_REPORT.md
+            all/measurement_freeze_s*.json
+            all/freeze_s*.json
+          retention-days: 30
