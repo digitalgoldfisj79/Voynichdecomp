@@ -1,0 +1,97 @@
+name: Sobel manuscript shape search full r10
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/sobel_shape_search/**'
+      - '.github/workflows/sobel-shape-search-full.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_9MpT1VOi0nvF-2N1LIS4Ew_h5dQWcp2
+  RELEASE_ID: 2026-08-19-r10
+  CHUNK_SIZE: '3000'
+  TOP_K: '100'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+        chunk: [0,1,2,3,4,5,6]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install CPU vision dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Scan r10 chunk
+        run: |
+          START_OFFSET=$(( ${{ matrix.chunk }} * CHUNK_SIZE ))
+          python experiments/sobel_shape_search/sobel_scan_chunk.py \
+            --shard ${{ matrix.shard }} \
+            --start-offset "$START_OFFSET" \
+            --max-items "$CHUNK_SIZE" \
+            --top-k "$TOP_K" \
+            --out "sobel_full_s${{ matrix.shard }}_c${{ matrix.chunk }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sobel-full-s${{ matrix.shard }}-c${{ matrix.chunk }}
+          path: sobel_full_s${{ matrix.shard }}_c${{ matrix.chunk }}.json
+          if-no-files-found: warn
+          retention-days: 7
+
+  combine:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sobel-full-*
+          path: chunks
+          merge-multiple: true
+      - name: Combine full-corpus candidates
+        run: |
+          python - <<'PY'
+          import glob, json
+          rows=[]; summaries=[]
+          for fn in glob.glob('chunks/sobel_full_s*_c*.json'):
+              try:
+                  d=json.load(open(fn)); summaries.append(d['summary']); rows.extend(d['results'])
+              except Exception as e:
+                  print('skip',fn,e)
+          rows.sort(key=lambda r:r['score'])
+          seen=sum(s.get('seen',0) for s in summaries)
+          ok=sum(s.get('ok',0) for s in summaries)
+          errors=sum(s.get('errors',0) for s in summaries)
+          out={'version':'sobel-shape-search-v0.3-full','summaries':summaries,'seen':seen,'ok':ok,'errors':errors,'results':rows[:2000]}
+          open('sobel_full_combined.json','w').write(json.dumps(out,indent=2))
+          with open('sobel_full_summary.md','w') as f:
+              f.write('# Full r10 Sobel manuscript shape search\n\n')
+              f.write(f'Chunks returned: {len(summaries)} / 224. Pages seen: {seen:,}; successful: {ok:,}; page errors: {errors:,}.\n\n')
+              f.write('| rank | score | manuscript | folio | region |\n|---:|---:|---|---|---|\n')
+              for i,r in enumerate(rows[:100],1):
+                  region=r.get('region_url') or r.get('search_url') or ''
+                  f.write(f"| {i} | {r['score']:.5f} | `{r['manuscript_id']}` | {r.get('folio_label') or r.get('canvas_index')} | {region} |\n")
+          PY
+          cat sobel_full_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sobel-full-combined
+          path: |
+            sobel_full_combined.json
+            sobel_full_summary.md
+          retention-days: 14
