@@ -34,6 +34,18 @@ jobs:
           python-version: '3.12'
       - name: Install registration dependencies
         run: pip install --disable-pip-version-check numpy pillow opencv-python-headless
+      - name: Apply deterministic non-folio-key parser fix
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('experiments/direct_pixel_boundary/build_manifest.py')
+          s=p.read_text()
+          old='folios = sorted(zl.keys(), key=lambda s: (int(re.search(r"\\d+", s).group()), s))'
+          new='folios = sorted((s for s in zl.keys() if re.search(r"\\d+", s)), key=lambda s: (int(re.search(r"\\d+", s).group()), s))'
+          assert old in s, 'expected parser line not found'
+          p.write_text(s.replace(old,new,1))
+          print('PARSER_FIX_APPLIED: non-folio ZL keys excluded before numeric sort')
+          PY
       - name: Compile frozen scripts
         run: python -m py_compile experiments/direct_pixel_boundary/*.py
       - name: Build registered blind manifest and sealed key
