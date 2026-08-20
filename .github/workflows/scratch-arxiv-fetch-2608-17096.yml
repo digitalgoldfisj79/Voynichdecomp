@@ -1,0 +1,28 @@
+name: Scratch arXiv fetch 2608.17096
+
+on:
+  push:
+    branches:
+      - gpt56/arxiv-fetch-2608-17096-20260820
+
+permissions:
+  contents: read
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch arXiv HTML and PDF
+        run: |
+          set -euxo pipefail
+          mkdir -p paper
+          curl -L --fail --retry 4 --retry-delay 5 -A 'Mozilla/5.0' 'https://arxiv.org/html/2608.17096v1' -o paper/paper.html
+          curl -L --fail --retry 4 --retry-delay 5 -A 'Mozilla/5.0' 'https://arxiv.org/pdf/2608.17096v1' -o paper/paper.pdf
+          ls -lh paper
+      - name: Upload paper
+        uses: actions/upload-artifact@v4
+        with:
+          name: arxiv-2608-17096
+          path: paper/
+          retention-days: 1
