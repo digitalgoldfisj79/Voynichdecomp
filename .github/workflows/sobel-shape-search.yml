@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 env:
   SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
@@ -82,3 +83,34 @@ jobs:
             sobel_pilot_combined.json
             sobel_pilot_summary.md
           retention-days: 7
+
+  cosine:
+    needs: combine
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install cosine dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless torch transformers
+      - name: Run HOG, edge, and DINOv3 cosine calibration
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python research/cosine_calibration/cosine_pilot.py \
+            --classical-top 200 \
+            --dino-top 48 \
+            --out cosine_pilot.json
+          cat cosine_pilot.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sobel-cosine-calibration
+          path: |
+            cosine_pilot.json
+            cosine_pilot.md
+          if-no-files-found: warn
+          retention-days: 14
