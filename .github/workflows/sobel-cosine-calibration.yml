@@ -1,0 +1,43 @@
+name: Sobel cosine calibration
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'research/cosine_calibration/**'
+      - '.github/workflows/sobel-cosine-calibration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  cosine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install cosine dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless torch transformers
+      - name: Run classical and DINOv3 cosine calibration
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python research/cosine_calibration/cosine_pilot.py \
+            --classical-top 200 \
+            --dino-top 48 \
+            --out cosine_pilot.json
+          cat cosine_pilot.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sobel-cosine-calibration
+          path: |
+            cosine_pilot.json
+            cosine_pilot.md
+          if-no-files-found: warn
+          retention-days: 14
