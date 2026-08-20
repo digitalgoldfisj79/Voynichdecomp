@@ -82,20 +82,37 @@ def score_page(gray: np.ndarray, templates):
     return best
 
 
+def get_with_retry(session, url, *, params=None, headers=None, timeout=(10, 30), attempts=6, label='request'):
+    last=None
+    for attempt in range(1, attempts+1):
+        try:
+            r=session.get(url,params=params,headers=headers,timeout=timeout)
+            r.raise_for_status()
+            return r
+        except (requests.RequestException, TimeoutError) as e:
+            last=e
+            if attempt >= attempts:
+                break
+            delay=min(30.0, 1.5*(2**(attempt-1)))
+            print(json.dumps({'event':'http_retry','label':label,'attempt':attempt,'delay_sec':delay,'error':str(e)[:300]}),flush=True)
+            time.sleep(delay)
+    raise last
+
+
 def rest_rows(session, base, key, release, shard, offset, limit):
     params={
         'select':'work_id,manuscript_id,canvas_index,folio_label,canvas_id,search_url,thumbnail_url,source_image_url,image_service_id,width,height',
         'release_id':f'eq.{release}', 'shard_32':f'eq.{shard}',
         'order':'work_id.asc', 'offset':str(offset), 'limit':str(limit)
     }
-    r=session.get(base.rstrip('/')+'/rest/v1/manucomp_sobel_worklist_v01',params=params,
-                  headers={'apikey':key},timeout=60)
-    r.raise_for_status(); return r.json()
+    r=get_with_retry(session,base.rstrip('/')+'/rest/v1/manucomp_sobel_worklist_v01',params=params,
+                     headers={'apikey':key},timeout=(10,30),attempts=7,label=f'worklist shard={shard} offset={offset}')
+    return r.json()
 
 
 def fetch_gray(session,url):
-    r=session.get(url,timeout=35,headers={'User-Agent':'ManuComp-SobelSearch/0.1 (+research)'})
-    r.raise_for_status()
+    r=get_with_retry(session,url,timeout=(10,25),attempts=4,
+                     headers={'User-Agent':'ManuComp-SobelSearch/0.2 (+research)'},label='image')
     return np.array(Image.open(io.BytesIO(r.content)).convert('L'))
 
 
@@ -114,13 +131,25 @@ def region_url(row,best):
         return None
 
 
+def write_snapshot(out, args, heap, seen, ok, errors, err_examples, t0, templates, offset, complete=False):
+    top=sorted((x[2] for x in heap),key=lambda r:r['score'])
+    summary={'version':'sobel-shape-search-v0.2','release_id':args.release,'shard':args.shard,
+             'seen':seen,'ok':ok,'errors':errors,'elapsed_sec':time.time()-t0,
+             'templates':len(templates),'top_k':len(top),'error_examples':err_examples,
+             'best_score':top[0]['score'] if top else None,
+             'p10_top_score':top[min(len(top)-1,max(0,len(top)//10))]['score'] if top else None,
+             'checkpoint_offset':offset,'complete':complete}
+    Path(out).write_text(json.dumps({'summary':summary,'results':top},indent=2))
+    return summary
+
+
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument('--shard',type=int,required=True)
     ap.add_argument('--release',default=os.environ.get('RELEASE_ID','2026-08-19-r10'))
     ap.add_argument('--max-items',type=int,default=int(os.environ.get('MAX_ITEMS','750')))
     ap.add_argument('--top-k',type=int,default=int(os.environ.get('TOP_K','100')))
-    ap.add_argument('--page-size',type=int,default=500)
+    ap.add_argument('--page-size',type=int,default=250)
     ap.add_argument('--query',default='experiments/sobel_shape_search/query_mask.b64')
     ap.add_argument('--out',default=None)
     args=ap.parse_args()
@@ -131,10 +160,17 @@ def main():
     if not templates:
         raise RuntimeError('no query templates')
     sess=requests.Session()
+    out=args.out or f'sobel_results_shard_{args.shard:02d}.json'
     offset=0; seen=0; ok=0; errors=0; t0=time.time(); heap=[]; err_examples=[]
+
     while seen<args.max_items:
         want=min(args.page_size,args.max_items-seen)
-        rows=rest_rows(sess,base,key,args.release,args.shard,offset,want)
+        try:
+            rows=rest_rows(sess,base,key,args.release,args.shard,offset,want)
+        except Exception as e:
+            write_snapshot(out,args,heap,seen,ok,errors,err_examples,t0,templates,offset,complete=False)
+            print(json.dumps({'event':'fatal_worklist_error','shard':args.shard,'offset':offset,'seen':seen,'error':str(e)}),flush=True)
+            raise
         if not rows:
             break
         for row in rows:
@@ -164,14 +200,11 @@ def main():
                 elapsed=time.time()-t0
                 print(json.dumps({'shard':args.shard,'seen':seen,'ok':ok,'errors':errors,'sec':round(elapsed,1),'rate_per_s':round(seen/max(elapsed,1e-9),2)}),flush=True)
         offset+=len(rows)
+        write_snapshot(out,args,heap,seen,ok,errors,err_examples,t0,templates,offset,complete=False)
         if len(rows)<want:
             break
-    top=sorted((x[2] for x in heap),key=lambda r:r['score'])
-    summary={'version':'sobel-shape-search-v0.1','release_id':args.release,'shard':args.shard,'seen':seen,'ok':ok,'errors':errors,
-             'elapsed_sec':time.time()-t0,'templates':len(templates),'top_k':len(top),'error_examples':err_examples,
-             'best_score':top[0]['score'] if top else None,'p10_top_score':top[min(len(top)-1,max(0,len(top)//10))]['score'] if top else None}
-    out=args.out or f'sobel_results_shard_{args.shard:02d}.json'
-    Path(out).write_text(json.dumps({'summary':summary,'results':top},indent=2))
+
+    summary=write_snapshot(out,args,heap,seen,ok,errors,err_examples,t0,templates,offset,complete=True)
     print('SUMMARY',json.dumps(summary),flush=True)
 
 if __name__=='__main__':
