@@ -1,0 +1,117 @@
+name: Sobel visual validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/sobel-visual-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check requests pillow
+      - name: Fetch and save top reranked crops
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import io, json, os, time, zipfile
+          from pathlib import Path
+          import requests
+          from PIL import Image, ImageDraw
+
+          REPO='digitalgoldfisj79/Voynichdecomp'
+          ARTIFACT_ID=9403987158
+          sess=requests.Session()
+          gh={'Authorization':f"Bearer {os.environ['GITHUB_TOKEN']}",'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}
+
+          def get(url, headers=None, timeout=30, tries=5):
+              last=None
+              for i in range(tries):
+                  try:
+                      r=sess.get(url,headers=headers,timeout=timeout)
+                      r.raise_for_status(); return r
+                  except Exception as e:
+                      last=e; time.sleep(1.5*(2**i))
+              raise last
+
+          z=get(f'https://api.github.com/repos/{REPO}/actions/artifacts/{ARTIFACT_ID}/zip',headers=gh,timeout=90)
+          with zipfile.ZipFile(io.BytesIO(z.content)) as zz:
+              data=json.loads(zz.read('sobel_quarter_reranked.json'))
+          rows=data['results'][:20]
+          Path('crops').mkdir()
+          records=[]
+
+          def fetch_crop(r):
+              errs=[]
+              u=r.get('region_url')
+              if u:
+                  try:
+                      rr=get(u,headers={'User-Agent':'ManuComp-visual-validate/0.1'},timeout=30,tries=4)
+                      im=Image.open(io.BytesIO(rr.content)).convert('RGB')
+                      return im,'region_url'
+                  except Exception as e: errs.append('region:'+repr(e))
+              u=r.get('search_url')
+              if u:
+                  try:
+                      rr=get(u,headers={'User-Agent':'ManuComp-visual-validate/0.1'},timeout=30,tries=4)
+                      im=Image.open(io.BytesIO(rr.content)).convert('RGB')
+                      pw=float(r.get('page_w') or im.width); sc=im.width/pw if pw else 1.0
+                      x=int(float(r.get('x',0))*sc); y=int(float(r.get('y',0))*sc)
+                      w=max(1,int(float(r.get('w',im.width))*sc)); h=max(1,int(float(r.get('h',im.height))*sc))
+                      pad=max(12,int(0.25*max(w,h)))
+                      im=im.crop((max(0,x-pad),max(0,y-pad),min(im.width,x+w+pad),min(im.height,y+h+pad)))
+                      return im,'search_url_crop'
+                  except Exception as e: errs.append('search:'+repr(e))
+              raise RuntimeError('; '.join(errs))
+
+          for i,r in enumerate(rows,1):
+              rec={k:r.get(k) for k in ['manuscript_id','folio_label','canvas_index','fusion_score','raw_rank','symmetric_chamfer','classical_cosine','edge_density_ratio','work_id']}
+              try:
+                  im,source=fetch_crop(r)
+                  fn=f'crops/rank_{i:02d}.jpg'; im.save(fn,quality=94)
+                  rec.update(rank=i,status='ok',source=source,file=fn,width=im.width,height=im.height)
+              except Exception as e:
+                  rec.update(rank=i,status='error',error=repr(e))
+              records.append(rec)
+              print(json.dumps(rec),flush=True)
+
+          tw,th,cols=360,320,4; rowsn=5
+          sheet=Image.new('RGB',(cols*tw,rowsn*th),'white'); dr=ImageDraw.Draw(sheet)
+          for rec in records:
+              i=rec['rank']-1; ox=(i%cols)*tw; oy=(i//cols)*th
+              if rec['status']=='ok':
+                  im=Image.open(rec['file']).convert('RGB'); im.thumbnail((tw-20,th-100),Image.Resampling.LANCZOS)
+                  sheet.paste(im,(ox+(tw-im.width)//2,oy+5))
+              else:
+                  dr.rectangle((ox+10,oy+10,ox+tw-10,oy+th-105),outline='gray'); dr.text((ox+20,oy+50),'image unavailable',fill='black')
+              lab=f"#{rec['rank']} fused {float(rec.get('fusion_score') or 0):.3f}\n{rec.get('manuscript_id','')}\n{rec.get('folio_label') or rec.get('canvas_index','')}\ncos {float(rec.get('classical_cosine') or 0):.3f} ch {float(rec.get('symmetric_chamfer') or 0):.3f}"
+              dr.text((ox+8,oy+th-92),lab,fill='black')
+          sheet.save('sobel_visual_validation_top20.jpg',quality=94)
+          Path('sobel_visual_validation.json').write_text(json.dumps(records,indent=2))
+          ok=sum(r['status']=='ok' for r in records)
+          Path('sobel_visual_validation_summary.md').write_text(f'# Sobel visual validation\n\nSaved **{ok}/20** top reranked candidate crops for manual inspection. No learned model used.\n')
+          print(json.dumps({'event':'done','ok':ok,'errors':20-ok}),flush=True)
+          PY
+          cat sobel_visual_validation_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sobel-visual-validation
+          path: |
+            crops/
+            sobel_visual_validation_top20.jpg
+            sobel_visual_validation.json
+            sobel_visual_validation_summary.md
+          retention-days: 14
