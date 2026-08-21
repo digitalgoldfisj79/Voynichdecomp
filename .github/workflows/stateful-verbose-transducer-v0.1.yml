@@ -1,0 +1,76 @@
+name: Stateful verbose transducer v0.1
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: Synthetic stage
+        required: true
+        default: segmentation
+        type: choice
+        options: [segmentation, oracle_head, joint, locked]
+      split:
+        description: Data split
+        required: true
+        default: dev
+        type: choice
+        options: [dev, test]
+      iso:
+        description: Pinned language ISO
+        required: true
+        default: de
+        type: string
+      length:
+        description: Plaintext length
+        required: true
+        default: '384'
+        type: string
+      replicates:
+        description: Replicates per mode
+        required: true
+        default: '4'
+        type: string
+      iterations:
+        description: Annealing iterations
+        required: true
+        default: '80000'
+        type: string
+      restarts:
+        description: Annealing restarts
+        required: true
+        default: '8'
+        type: string
+
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install runtime
+        run: python -m pip install --upgrade pip numpy numba
+      - name: Syntax/import preflight
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
+            experiments/stateful_verbose_transducer_v0_1/run_voynich.py
+      - name: Run frozen synthetic stage
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
+            --repo . \
+            --output results/svt_v0_1_${{ inputs.stage }}_${{ inputs.split }}_${{ inputs.iso }}_${{ inputs.length }}.json \
+            --stage '${{ inputs.stage }}' \
+            --split '${{ inputs.split }}' \
+            --iso '${{ inputs.iso }}' \
+            --length '${{ inputs.length }}' \
+            --replicates '${{ inputs.replicates }}' \
+            --iterations '${{ inputs.iterations }}' \
+            --restarts '${{ inputs.restarts }}'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v0.1-${{ inputs.stage }}-${{ inputs.split }}-${{ inputs.iso }}-${{ inputs.length }}
+          path: results/*.json
