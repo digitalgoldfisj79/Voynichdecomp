@@ -1,0 +1,37 @@
+name: SVT v0.3 Gate A3
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V0_3_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v03_gate_a.py'
+      - '.github/workflows/svt-v03-gate-a.yml'
+  workflow_dispatch:
+
+jobs:
+  gate-a3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v03_gate_a.py
+      - name: Run binding fresh-synthetic Gate A3
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_v03_gate_a.py \
+            --repo . --output results/svt_v03_gate_a3_de_1536.json \
+            --iso de --replicates 4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: svt-v03-gate-a3
+          path: results/svt_v03_gate_a3_de_1536.json
+          if-no-files-found: ignore
