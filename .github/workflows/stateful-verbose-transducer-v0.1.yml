@@ -49,7 +49,7 @@ jobs:
   smoke:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -62,6 +62,7 @@ jobs:
             experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
             experiments/stateful_verbose_transducer_v0_1/svt_v011.py \
             experiments/stateful_verbose_transducer_v0_1/run_synthetic_v011.py \
+            experiments/stateful_verbose_transducer_v0_1/component_diagnostics_v011.py \
             experiments/stateful_verbose_transducer_v0_1/run_voynich.py
       - name: Segmentation smoke
         run: |
@@ -74,11 +75,16 @@ jobs:
             --repo . --output results/svt_oracle_head_smoke_v011.json \
             --stage oracle_head --split dev --iso de --length 192 --replicates 1 \
             --iterations 20000 --restarts 4
+      - name: Component oracle diagnostics
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/component_diagnostics_v011.py \
+            --repo . --output results/svt_component_diagnostics_v011.json \
+            --iso de --length 192 --replicates 2 --iterations 40000 --restarts 6
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: svt-v0.1.1-pr-smoke
-          path: results/svt_*_smoke_v011.json
+          path: results/svt_*_v011.json
           if-no-files-found: ignore
 
   synthetic:
@@ -98,6 +104,7 @@ jobs:
             experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
             experiments/stateful_verbose_transducer_v0_1/svt_v011.py \
             experiments/stateful_verbose_transducer_v0_1/run_synthetic_v011.py \
+            experiments/stateful_verbose_transducer_v0_1/component_diagnostics_v011.py \
             experiments/stateful_verbose_transducer_v0_1/run_voynich.py
       - name: Run frozen synthetic stage
         run: |
