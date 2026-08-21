@@ -1,0 +1,16 @@
+{
+  "name": "VBM-BRIDGE-FACTOR-v0.2",
+  "date": "2026-08-21",
+  "seed": 20260821,
+  "sealed_prior": "VBM-BRIDGE-LATENT-v0.1 remains binding; no old MHG/phonetic mappings are reopened.",
+  "step1": "Extend the unchanged unconstrained held-out K curve from K=10 to K=20. This is diagnostic only.",
+  "primary_P": "currier_linepos = independently assigned Currier A/B/U × boundary START/MID/END.",
+  "secondary_P": ["linepos", "currier", "hand", "section"],
+  "factor_model": "Global 5-state bridge-type assignment learned from production-residualised Hellinger context profiles; held-out context likelihood is conditioned on observed P. Compare K=5 with K=2..20 under the same P.",
+  "synthetic_positive_gate": "Known 5-state × 2-production data: K5 recovery >=0.90 of best P-conditioned latent gain; selected K<=6; event-weighted K5 NMI>=0.80; fold label stability>=0.70.",
+  "synthetic_hostile_gate": "Known 10-state data with irrelevant P must not falsely satisfy the five-state rescue: K5 recovery <0.90 OR selected K>6.",
+  "target_survival_gate": {"K5_recovery_min": 0.9, "selected_K_max": 6, "fold_label_NMI_min": 0.7, "production_shuffle_z_min": 2.0, "simple_arm_recovery_min": 0.8, "cross_currier_NMI_min": 0.5},
+  "null": "12 matched primary-P shuffles: Currier labels permuted across folios and START/MID/END labels permuted within each line; bridge types and contexts untouched.",
+  "execution_amendment": "Calibration K grid reduced to {4,5,6,10} and KMeans restarts 12→4 after pre-target timeout; target K=2..20, folds, statistics, data and all gates unchanged.",
+  "strict_exclusions": ["No Joachim phonetic values", "No EVA→German mapping", "No source-language classifier", "No parameter tuning after target opening", "Hand and section cannot rescue failure of primary gate"]
+}
