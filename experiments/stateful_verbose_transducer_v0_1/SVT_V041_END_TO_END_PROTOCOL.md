@@ -55,7 +55,7 @@ On the predicted head stream:
 2. retain the frozen top-6 screen shortlist;
 3. refine each shortlisted structure with the qualified 12-start shared-base + sparse-state key solver;
 4. select solely by penalised model score;
-5. for a selected periodic model, refit all proper divisors and choose the autonomous primitive period by the same penalised score.
+5. exactly as in v0.3.4, refit all proper divisors of the selected period under the selected mode and choose the autonomous primitive period by the same penalised score.
 
 No plaintext truth or true schedule information enters screening, refinement, multistart selection, or divisor canonicalisation.
 
