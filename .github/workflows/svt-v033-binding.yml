@@ -1,0 +1,67 @@
+name: SVT v0.3.3 Blind Structure Shortlist Gate
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V033_BLIND_STRUCTURE_SHORTLIST_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v033_trial.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v033_gate.py'
+      - '.github/workflows/svt-v033-binding.yml'
+  workflow_dispatch:
+
+jobs:
+  trial:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        true_mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v033_trial.py
+      - name: Run binding top6 blind trial
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_v033_trial.py \
+            --repo . \
+            --true-mode '${{ matrix.true_mode }}' \
+            --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v033_${{ matrix.true_mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v033-${{ matrix.true_mode }}-${{ matrix.replicate }}
+          path: results/svt_v033_*.json
+
+  aggregate:
+    needs: trial
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v033-*
+          path: gathered
+      - name: Aggregate binding A3.3 gate
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v033_gate.py \
+            --input-dir gathered --output results/svt_v033_gate_a33.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: svt-v033-gate-a33
+          path: results/svt_v033_gate_a33.json
+          if-no-files-found: ignore
