@@ -1,0 +1,81 @@
+name: SVT v0.4.1 End-to-End Gate
+
+on:
+  pull_request:
+    branches:
+      - experiment/svt-hidden-segmentation-v0.4-20260821
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V041_END_TO_END_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v041_end_to_end.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v041_gate.py'
+      - '.github/workflows/svt-v041-end-to-end.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0,1,2,3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/run_v041_end_to_end.py \
+            experiments/stateful_verbose_transducer_v0_1/aggregate_v041_gate.py
+      - name: Run fresh end-to-end trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v041_end_to_end.py \
+            --repo . --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v041_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v041-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  aggregate:
+    needs: [trial]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v041-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate binding gate
+        continue-on-error: true
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v041_gate.py \
+            --input-dir gathered --output results/svt_v041_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v041-gate
+          path: results/svt_v041_gate.json
+          if-no-files-found: error
+      - name: Enforce binding verdict
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v041_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit(2)
+          print('SVT v0.4.1 PASS')
+          PY
