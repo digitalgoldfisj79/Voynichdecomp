@@ -1,0 +1,49 @@
+name: SVT Actions Cleanup
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/svt-actions-cleanup.yml'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel redundant SVT runs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          # Historical/superseded calibration workflows plus the exhaustive
+          # v0.3.2 matrix. Scientific artefacts already produced remain intact;
+          # this only cancels queued/in-progress duplicate executions.
+          for wf in \
+            339167866 \
+            339180697 \
+            339182534 \
+            339184829 \
+            339189717 \
+            339195496 \
+            339212817 \
+            339215358
+          do
+            for status in queued in_progress
+            do
+              gh api "repos/$REPO/actions/workflows/$wf/runs?status=$status&per_page=100" \
+                --jq '.workflow_runs[].id' | while read -r id
+              do
+                [ -z "$id" ] && continue
+                gh api -X POST "repos/$REPO/actions/runs/$id/cancel" >/dev/null 2>&1 || true
+              done
+            done
+          done
+          # Cancel the pre-cleanup v0.3.3 binding copy. This commit creates a
+          # fresh copy with identical frozen protocol/code, which is preserved.
+          gh api -X POST "repos/$REPO/actions/runs/32463686892/cancel" >/dev/null 2>&1 || true
+          echo "redundant runs cancelled"
