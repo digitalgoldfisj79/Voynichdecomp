@@ -3,6 +3,7 @@
 Status: FROZEN BEFORE BINDING EXECUTION
 Date: 2026-08-21
 Binding execution: PR #21
+CI registration: base workflow registered before binding run; no protocol or parameter change.
 
 ## Motivation
 SVT v0.3.4 passed blind state/key recovery with autonomous primitive-period canonicalisation. The remaining unqualified layer is hidden 1–3-glyph unit segmentation. The original v0.1 local-transition-surprisal segmenter is CLOSED as inadequate (about 0.676 boundary F1 in smoke tests) and is not reused as the primary method.
