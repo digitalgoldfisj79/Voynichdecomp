@@ -1,0 +1,168 @@
+name: SVT v0.5.1 Final Lattice Coupling Gate
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/FROZEN_PROTOCOL_v0_5_1_LATTICE.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/lattice_coupling_v051.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v051_coupled.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v051_coupling.py'
+      - '.github/workflows/svt-v051-lattice-coupling.yml'
+  workflow_dispatch:
+
+jobs:
+  dev:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        iso: [de, la]
+        mode: [periodic, line_reset]
+        replicate: [0, 1]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py \
+            experiments/stateful_verbose_transducer_v0_1/v04_semimarkov_segmenter.py \
+            experiments/stateful_verbose_transducer_v0_1/latin_proiel_portability.py \
+            experiments/stateful_verbose_transducer_v0_1/lattice_coupling_v051.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v051_coupled.py
+      - name: Run spent-material development trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v051_coupled.py \
+            --repo . --stage dev --iso '${{ matrix.iso }}' \
+            --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v051_dev_${{ matrix.iso }}_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v051-dev-${{ matrix.iso }}-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  dev_aggregate:
+    if: always()
+    needs: [dev]
+    runs-on: ubuntu-24.04
+    outputs:
+      dev_pass: ${{ steps.verdict.outputs.dev_pass }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v051-dev-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate development gate
+        continue-on-error: true
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v051_coupling.py \
+            --input-dir gathered --stage dev --output results/svt_v051_dev_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v051-dev-gate
+          path: results/svt_v051_dev_gate.json
+          if-no-files-found: error
+      - name: Read development verdict
+        id: verdict
+        run: |
+          python - <<'PY'
+          import json, os
+          p=json.load(open('results/svt_v051_dev_gate.json'))
+          value='true' if p.get('gate_pass') else 'false'
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+              f.write('dev_pass='+value+'\n')
+          print('dev_pass='+value)
+          PY
+      - name: Enforce development stop rule
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v051_dev_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit('SVT v0.5.1 DEVELOPMENT FAIL — binding remains sealed by protocol')
+          print('SVT v0.5.1 DEVELOPMENT PASS — fresh bilingual binding may open')
+          PY
+
+  binding:
+    needs: [dev_aggregate]
+    if: needs.dev_aggregate.outputs.dev_pass == 'true'
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        iso: [de, la]
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/lattice_coupling_v051.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v051_coupled.py
+      - name: Run untouched bilingual binding trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v051_coupled.py \
+            --repo . --stage binding --iso '${{ matrix.iso }}' \
+            --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v051_binding_${{ matrix.iso }}_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v051-binding-${{ matrix.iso }}-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  binding_aggregate:
+    if: always() && needs.dev_aggregate.outputs.dev_pass == 'true'
+    needs: [dev_aggregate, binding]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v051-binding-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate final bilingual binding gate
+        continue-on-error: true
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v051_coupling.py \
+            --input-dir gathered --stage binding --output results/svt_v051_binding_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v051-binding-gate
+          path: results/svt_v051_binding_gate.json
+          if-no-files-found: error
+      - name: Enforce final binding verdict
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v051_binding_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit('SVT v0.5.1 FINAL BILINGUAL BINDING FAIL — close SVT programme')
+          print('SVT v0.5.1 FINAL BILINGUAL BINDING PASS')
+          PY
