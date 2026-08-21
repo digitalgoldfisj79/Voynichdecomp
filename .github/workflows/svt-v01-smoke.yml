@@ -7,6 +7,10 @@ on:
     paths:
       - 'experiments/stateful_verbose_transducer_v01/**'
       - '.github/workflows/svt-v01-smoke.yml'
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v01/**'
+      - '.github/workflows/svt-v01-smoke.yml'
   workflow_dispatch:
 
 jobs:
