@@ -8,6 +8,7 @@ on:
       - '.github/workflows/svt-v031-gate.yml'
   workflow_dispatch:
 
+# Fresh replicate namespace 7000; fixed 12-start best-penalised-score selection.
 jobs:
   trial:
     strategy:
