@@ -8,6 +8,10 @@ on:
       - '.github/workflows/sobel-shape-search-full.yml'
   workflow_dispatch:
 
+concurrency:
+  group: sobel-full-r10-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -20,6 +24,7 @@ env:
 
 jobs:
   scan:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 75
     strategy:
@@ -54,7 +59,7 @@ jobs:
 
   combine:
     needs: scan
-    if: always()
+    if: ${{ github.event_name == 'workflow_dispatch' && always() }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
