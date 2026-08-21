@@ -8,6 +8,13 @@ on:
       - 'experiments/laafu_ordinal_v01/**'
       - '.github/workflows/laafu_ordinal_v01.yml'
       - 'voynich_section_map.json'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'experiments/laafu_ordinal_v01/**'
+      - '.github/workflows/laafu_ordinal_v01.yml'
+      - 'voynich_section_map.json'
   workflow_dispatch:
 
 permissions:
