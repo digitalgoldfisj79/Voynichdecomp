@@ -9,6 +9,7 @@ on:
       - '.github/workflows/svt-v03-outlier-diagnostic.yml'
   workflow_dispatch:
 
+# Diagnostic is non-binding and uses the frozen 24-start classification rule.
 jobs:
   diagnose:
     runs-on: ubuntu-latest
