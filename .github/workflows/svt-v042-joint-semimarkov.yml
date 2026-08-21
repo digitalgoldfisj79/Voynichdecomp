@@ -1,0 +1,86 @@
+name: SVT v0.4.2 Joint Semi-Markov Gate
+
+on:
+  pull_request:
+    branches:
+      - experiment/svt-e2e-hidden-v0.4.1-20260821
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V042_JOINT_SEMIMARKOV_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/joint_semimarkov_v042.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v042_joint.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v042_gate.py'
+      - '.github/workflows/svt-v042-joint-semimarkov.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/v04_semimarkov_segmenter.py \
+            experiments/stateful_verbose_transducer_v0_1/joint_semimarkov_v042.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v042_joint.py
+      - name: Run fresh joint binding trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v042_joint.py \
+            --repo . --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v042_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v042-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  aggregate:
+    needs: [trial]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v042-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate binding gate
+        continue-on-error: true
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v042_gate.py \
+            --input-dir gathered --output results/svt_v042_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v042-gate
+          path: results/svt_v042_gate.json
+          if-no-files-found: error
+      - name: Enforce binding verdict
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v042_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit(2)
+          print('SVT v0.4.2 PASS')
+          PY
