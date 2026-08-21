@@ -1,0 +1,17 @@
+{
+  "programme": "SVT-v0.4.1",
+  "frozen_date": "2026-08-21",
+  "parent_head": "10134a56f8089bbcc4080756eaf6c73c809c2e5a",
+  "replicate_offset": 19000,
+  "latent_length": 1536,
+  "trials": 8,
+  "modes": ["periodic", "line_reset"],
+  "replicates_per_mode": 4,
+  "segmenter": "v04_semimarkov_segmenter unchanged",
+  "screen_shortlist_k": 6,
+  "key_multistarts": 12,
+  "primitive_period_rule": "refit all proper divisors under selected mode; choose maximum inherited penalised score",
+  "recovery_metric": "normalized Levenshtein recovery",
+  "voynich_sealed": true,
+  "protocol": "SVT_V041_END_TO_END_PROTOCOL.md"
+}
