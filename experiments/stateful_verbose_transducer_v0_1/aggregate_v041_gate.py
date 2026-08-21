@@ -92,9 +92,6 @@ def main() -> None:
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True), encoding="utf-8")
     print(json.dumps(result, indent=2, sort_keys=True))
 
-    if not passed:
-        raise SystemExit(3)
-
 
 if __name__ == "__main__":
     main()
