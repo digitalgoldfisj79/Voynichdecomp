@@ -7,6 +7,10 @@ on:
     paths:
       - 'experiments/stateful_verbose_transducer_v0_1/v03_outlier_diagnostic.py'
       - '.github/workflows/svt-v03-outlier-diagnostic.yml'
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/v03_outlier_diagnostic.py'
+      - '.github/workflows/svt-v03-outlier-diagnostic.yml'
   workflow_dispatch:
 
 # Diagnostic is non-binding and uses the frozen 24-start classification rule.
