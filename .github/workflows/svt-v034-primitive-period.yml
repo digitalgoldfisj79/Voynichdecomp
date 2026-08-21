@@ -1,0 +1,129 @@
+name: SVT v0.3.4 Primitive Period Gate
+
+on:
+  pull_request:
+    branches:
+      - experiment/stateful-verbose-transducer-v0.1-20260821
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V034_PRIMITIVE_PERIOD_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v034_gate.py'
+      - '.github/workflows/svt-v034-primitive-period.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ordinary:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py
+      - name: Run fresh blind ordinary trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py \
+            --repo . --arm ordinary \
+            --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v034_ordinary_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v034-ordinary-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  harmonic:
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        include:
+          - { idx: 0, mode: periodic,   primitive: 2, superperiod: 4 }
+          - { idx: 1, mode: line_reset, primitive: 2, superperiod: 6 }
+          - { idx: 2, mode: periodic,   primitive: 2, superperiod: 8 }
+          - { idx: 3, mode: line_reset, primitive: 2, superperiod: 10 }
+          - { idx: 4, mode: periodic,   primitive: 2, superperiod: 12 }
+          - { idx: 5, mode: line_reset, primitive: 3, superperiod: 6 }
+          - { idx: 6, mode: periodic,   primitive: 3, superperiod: 9 }
+          - { idx: 7, mode: line_reset, primitive: 3, superperiod: 12 }
+          - { idx: 8, mode: periodic,   primitive: 4, superperiod: 8 }
+          - { idx: 9, mode: line_reset, primitive: 4, superperiod: 12 }
+          - { idx: 10, mode: periodic,  primitive: 5, superperiod: 10 }
+          - { idx: 11, mode: line_reset, primitive: 6, superperiod: 12 }
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py
+      - name: Run harmonic primitive-period challenge
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py \
+            --repo . --arm harmonic \
+            --mode '${{ matrix.mode }}' \
+            --primitive '${{ matrix.primitive }}' \
+            --superperiod '${{ matrix.superperiod }}' \
+            --challenge-index '${{ matrix.idx }}' \
+            --output 'results/svt_v034_harmonic_${{ matrix.idx }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v034-harmonic-${{ matrix.idx }}
+          path: results/*.json
+
+  aggregate:
+    needs: [ordinary, harmonic]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v034-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate v0.3.4 binding gate
+        continue-on-error: true
+        id: gate
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v034_gate.py \
+            --input-dir gathered --output results/svt_v034_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v034-gate
+          path: results/svt_v034_gate.json
+          if-no-files-found: error
+      - name: Enforce binding verdict
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v034_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit(2)
+          print('SVT v0.3.4 PASS')
+          PY
