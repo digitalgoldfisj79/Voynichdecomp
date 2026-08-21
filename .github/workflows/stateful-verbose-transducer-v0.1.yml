@@ -49,26 +49,36 @@ jobs:
   smoke:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: python -m pip install --upgrade pip numpy numba rapidfuzz
-      - name: Compile and segmentation smoke
+      - name: Compile
         run: |
           python -m py_compile \
             experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
             experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
             experiments/stateful_verbose_transducer_v0_1/run_voynich.py
+      - name: Segmentation smoke
+        run: |
           python experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
-            --repo . --output results/svt_smoke.json \
+            --repo . --output results/svt_segmentation_smoke.json \
             --stage segmentation --split dev --iso de --length 192 --replicates 1
+      - name: Oracle-head smoke
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
+            --repo . --output results/svt_oracle_head_smoke.json \
+            --stage oracle_head --split dev --iso de --length 192 --replicates 1 \
+            --iterations 20000 --restarts 4
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: svt-v0.1-pr-smoke
-          path: results/svt_smoke.json
+          path: results/svt_*_smoke.json
+          if-no-files-found: ignore
 
   synthetic:
     if: github.event_name == 'workflow_dispatch'
