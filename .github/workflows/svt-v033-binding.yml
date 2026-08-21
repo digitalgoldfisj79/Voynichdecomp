@@ -1,5 +1,6 @@
 name: SVT v0.3.3 Blind Structure Shortlist Gate
 
+# Run-isolation marker: scientific protocol and commands unchanged.
 on:
   pull_request:
     paths:
