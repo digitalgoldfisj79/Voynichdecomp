@@ -1,6 +1,10 @@
 name: Stateful verbose transducer v0.1
 
 on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/**'
+      - '.github/workflows/stateful-verbose-transducer-v0.1.yml'
   workflow_dispatch:
     inputs:
       stage:
@@ -42,7 +46,32 @@ on:
         type: string
 
 jobs:
+  smoke:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba
+      - name: Compile and segmentation smoke
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
+            experiments/stateful_verbose_transducer_v0_1/run_voynich.py
+          python experiments/stateful_verbose_transducer_v0_1/run_synthetic.py \
+            --repo . --output results/svt_smoke.json \
+            --stage segmentation --split dev --iso de --length 192 --replicates 1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v0.1-pr-smoke
+          path: results/svt_smoke.json
+
   synthetic:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
