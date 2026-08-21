@@ -1,0 +1,65 @@
+name: SVT v0.3.1 Gate A3.1
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v031_trial.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v031_gate.py'
+      - '.github/workflows/svt-v031-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  trial:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v031_trial.py
+      - name: Run fresh 12-start trial
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_v031_trial.py \
+            --repo . \
+            --mode '${{ matrix.mode }}' \
+            --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v031_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v031-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/svt_v031_*.json
+
+  aggregate:
+    needs: trial
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v031-*
+          path: gathered
+      - name: Aggregate binding gate
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v031_gate.py \
+            --input-dir gathered --output results/svt_v031_gate_a31.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: svt-v031-gate-a31
+          path: results/svt_v031_gate_a31.json
+          if-no-files-found: ignore
