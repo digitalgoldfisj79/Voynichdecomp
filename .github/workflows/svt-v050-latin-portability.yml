@@ -1,0 +1,117 @@
+name: SVT v0.5.0 Latin Portability Gate
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/FROZEN_PROTOCOL_v0_5_0_LATIN.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/latin_proiel_portability.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v050_latin_fixed.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v050_latin_seg.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v050_latin_portability.py'
+      - '.github/workflows/svt-v050-latin-portability.yml'
+  workflow_dispatch:
+
+jobs:
+  fixed:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v034_primitive_period.py \
+            experiments/stateful_verbose_transducer_v0_1/latin_proiel_portability.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v050_latin_fixed.py
+      - name: Run fresh Latin fixed-boundary trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v050_latin_fixed.py \
+            --repo . --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v050_latin_fixed_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v050-latin-fixed-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  segmentation:
+    strategy:
+      fail-fast: false
+      max-parallel: 8
+      matrix:
+        mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/v04_semimarkov_segmenter.py \
+            experiments/stateful_verbose_transducer_v0_1/latin_proiel_portability.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v050_latin_seg.py
+      - name: Run fresh Latin segmentation trial
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/run_v050_latin_seg.py \
+            --repo . --mode '${{ matrix.mode }}' --replicate '${{ matrix.replicate }}' \
+            --output 'results/svt_v050_latin_seg_${{ matrix.mode }}_${{ matrix.replicate }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v050-latin-seg-${{ matrix.mode }}-${{ matrix.replicate }}
+          path: results/*.json
+
+  aggregate:
+    if: always()
+    needs: [fixed, segmentation]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v050-latin-*
+          path: gathered
+          merge-multiple: false
+      - name: Aggregate Latin portability gate
+        continue-on-error: true
+        run: |
+          mkdir -p results
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v050_latin_portability.py \
+            --input-dir gathered --output results/svt_v050_latin_portability_gate.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v050-latin-portability-gate
+          path: results/svt_v050_latin_portability_gate.json
+          if-no-files-found: error
+      - name: Enforce binding verdict
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('results/svt_v050_latin_portability_gate.json'))
+          if not p.get('gate_pass'):
+              raise SystemExit(2)
+          print('SVT v0.5.0 LATIN PORTABILITY PASS')
+          PY
