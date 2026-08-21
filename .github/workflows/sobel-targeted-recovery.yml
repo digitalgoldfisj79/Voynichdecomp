@@ -7,8 +7,13 @@ on:
       - '.github/workflows/sobel-targeted-recovery.yml'
   workflow_dispatch:
 
+concurrency:
+  group: sobel-r10-targeted-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
+  actions: write
 
 env:
   SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
@@ -19,7 +24,22 @@ env:
   BASE_COMBINED_ARTIFACT_ID: '9426251192'
 
 jobs:
+  cancel_superseded_full:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel accidental full 224-cell rerun
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          code=$(curl -sS -o /tmp/cancel.out -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/runs/32505352141/cancel" || true)
+          echo "cancel HTTP $code"
+          cat /tmp/cancel.out || true
+
   recover:
+    needs: cancel_superseded_full
     runs-on: ubuntu-latest
     timeout-minutes: 75
     strategy:
@@ -107,7 +127,7 @@ jobs:
       - name: Merge and enforce 224 of 224
         run: |
           python - <<'PY'
-          import glob, json, os, re
+          import glob, json, re
           base=json.load(open('base/sobel_full_combined.json'))
           rec=[]; rec_summaries=[]; cells=[]
           for fn in sorted(glob.glob('recovery/sobel_full_s*_c*.json')):
