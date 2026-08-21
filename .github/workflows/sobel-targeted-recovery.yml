@@ -1,0 +1,150 @@
+name: Sobel r10 targeted 30-cell recovery
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/sobel-targeted-recovery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_9MpT1VOi0nvF-2N1LIS4Ew_h5dQWcp2
+  RELEASE_ID: 2026-08-19-r10
+  CHUNK_SIZE: '3000'
+  TOP_K: '100'
+  BASE_COMBINED_ARTIFACT_ID: '9426251192'
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {shard: 6, chunk: 4}
+          - {shard: 8, chunk: 4}
+          - {shard: 12, chunk: 4}
+          - {shard: 13, chunk: 2}
+          - {shard: 22, chunk: 4}
+          - {shard: 23, chunk: 2}
+          - {shard: 24, chunk: 2}
+          - {shard: 25, chunk: 2}
+          - {shard: 25, chunk: 3}
+          - {shard: 26, chunk: 2}
+          - {shard: 26, chunk: 3}
+          - {shard: 27, chunk: 2}
+          - {shard: 27, chunk: 3}
+          - {shard: 27, chunk: 4}
+          - {shard: 28, chunk: 2}
+          - {shard: 28, chunk: 3}
+          - {shard: 28, chunk: 4}
+          - {shard: 28, chunk: 5}
+          - {shard: 29, chunk: 2}
+          - {shard: 29, chunk: 3}
+          - {shard: 29, chunk: 4}
+          - {shard: 29, chunk: 5}
+          - {shard: 30, chunk: 2}
+          - {shard: 30, chunk: 3}
+          - {shard: 30, chunk: 4}
+          - {shard: 30, chunk: 5}
+          - {shard: 31, chunk: 2}
+          - {shard: 31, chunk: 3}
+          - {shard: 31, chunk: 4}
+          - {shard: 31, chunk: 5}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install CPU vision dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Recover missing r10 cell
+        run: |
+          START_OFFSET=$(( ${{ matrix.chunk }} * CHUNK_SIZE ))
+          python experiments/sobel_shape_search/sobel_scan_chunk.py \
+            --shard ${{ matrix.shard }} \
+            --start-offset "$START_OFFSET" \
+            --max-items "$CHUNK_SIZE" \
+            --top-k "$TOP_K" \
+            --out "sobel_full_s${{ matrix.shard }}_c${{ matrix.chunk }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sobel-recovery-s${{ matrix.shard }}-c${{ matrix.chunk }}
+          path: sobel_full_s${{ matrix.shard }}_c${{ matrix.chunk }}.json
+          if-no-files-found: error
+          retention-days: 14
+
+  combine:
+    needs: recover
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: sobel-recovery-*
+          path: recovery
+          merge-multiple: true
+      - name: Download authoritative 194-cell base combine
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p base
+          curl -L --fail --retry 3 \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${BASE_COMBINED_ARTIFACT_ID}/zip" \
+            -o base.zip
+          unzip -q base.zip -d base
+      - name: Merge and enforce 224 of 224
+        run: |
+          python - <<'PY'
+          import glob, json, os, re
+          base=json.load(open('base/sobel_full_combined.json'))
+          rec=[]; rec_summaries=[]; cells=[]
+          for fn in sorted(glob.glob('recovery/sobel_full_s*_c*.json')):
+              m=re.search(r'_s(\d+)_c(\d+)\.json$',fn)
+              if not m: continue
+              d=json.load(open(fn))
+              cells.append((int(m.group(1)),int(m.group(2))))
+              rec_summaries.append(d['summary'])
+              rec.extend(d['results'])
+          expected={(6,4),(8,4),(12,4),(13,2),(22,4),(23,2),(24,2),(25,2),(25,3),(26,2),(26,3),(27,2),(27,3),(27,4),(28,2),(28,3),(28,4),(28,5),(29,2),(29,3),(29,4),(29,5),(30,2),(30,3),(30,4),(30,5),(31,2),(31,3),(31,4),(31,5)}
+          got=set(cells)
+          if got != expected:
+              raise SystemExit(f'RECOVERY_GATE_FAIL expected 30 cells, got {len(got)}; missing={sorted(expected-got)} extra={sorted(got-expected)}')
+          if len(base.get('summaries',[])) != 194:
+              raise SystemExit(f'BASE_GATE_FAIL expected 194 summaries, got {len(base.get("summaries",[]))}')
+          rows=list(base.get('results',[]))+rec
+          rows.sort(key=lambda r:r['score'])
+          summaries=list(base['summaries'])+rec_summaries
+          seen=sum(s.get('seen',0) for s in summaries)
+          ok=sum(s.get('ok',0) for s in summaries)
+          errors=sum(s.get('errors',0) for s in summaries)
+          out={'version':'sobel-shape-search-v0.3-full-recovered','summaries':summaries,'seen':seen,'ok':ok,'errors':errors,'results':rows[:2000], 'base_cells':194,'recovered_cells':30,'complete_cells':224}
+          json.dump(out,open('sobel_full_recovered_combined.json','w'),indent=2)
+          with open('sobel_full_recovered_summary.md','w') as f:
+              f.write('# Full r10 Sobel manuscript shape search — recovered complete corpus\n\n')
+              f.write(f'Cells: **224 / 224** (194 base + 30 targeted recovery). Pages seen: {seen:,}; successful: {ok:,}; page errors: {errors:,}.\n\n')
+              f.write('| rank | score | manuscript | folio | region |\n|---:|---:|---|---|---|\n')
+              for i,r in enumerate(rows[:100],1):
+                  region=r.get('region_url') or r.get('search_url') or ''
+                  f.write(f"| {i} | {r['score']:.5f} | `{r['manuscript_id']}` | {r.get('folio_label') or r.get('canvas_index')} | {region} |\n")
+          print(json.dumps({'complete_cells':224,'seen':seen,'ok':ok,'errors':errors,'top_score':rows[0]['score'] if rows else None},indent=2))
+          PY
+          cat sobel_full_recovered_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sobel-full-r10-recovered-224of224
+          path: |
+            sobel_full_recovered_combined.json
+            sobel_full_recovered_summary.md
+          retention-days: 14
