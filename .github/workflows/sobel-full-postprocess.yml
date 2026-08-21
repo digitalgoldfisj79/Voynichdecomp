@@ -1,4 +1,4 @@
-name: Sobel full r10 frozen rerank and visual validation
+name: Sobel available-corpus frozen rerank and visual validation
 
 on:
   pull_request:
@@ -25,19 +25,18 @@ jobs:
         run: python -m pip install --disable-pip-version-check requests pillow numpy opencv-python-headless
       - name: Compile postprocessor
         run: python -m py_compile experiments/sobel_shape_search/full_postprocess.py
-      - name: Require all 224 r10 cells, rerank global top 500, render global top 20
+      - name: Rerank all currently available r10 cells, global top 500 to top 100, render top 20
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python experiments/sobel_shape_search/full_postprocess.py \
             --run-id 32341056376 \
-            --require-complete \
             --outdir full_postprocess
           cat full_postprocess/SOBEL_FULL_POSTPROCESS_REPORT.md >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: sobel-full-r10-reranked-visual
+          name: sobel-r10-available-194of224-reranked-visual
           path: |
             full_postprocess/sobel_full_reranked.json
             full_postprocess/sobel_full_reranked_top100.csv
