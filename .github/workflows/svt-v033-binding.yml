@@ -1,6 +1,6 @@
 name: SVT v0.3.3 Blind Structure Shortlist Gate
 
-# Run-isolation marker: scientific protocol and commands unchanged.
+# Execution-pool isolation only; scientific protocol/code/data/seeds/gates unchanged.
 on:
   pull_request:
     paths:
@@ -18,7 +18,7 @@ jobs:
       matrix:
         true_mode: [periodic, line_reset]
         replicate: [0, 1, 2, 3]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
 
   aggregate:
     needs: trial
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
