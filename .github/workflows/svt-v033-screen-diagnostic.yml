@@ -1,0 +1,33 @@
+name: SVT v0.3.3 Schedule Screen Diagnostic
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/v033_schedule_screen_diagnostic.py'
+      - '.github/workflows/svt-v033-screen-diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/v033_schedule_screen_diagnostic.py
+      - name: Run schedule shortlist diagnostic
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/v033_schedule_screen_diagnostic.py \
+            --repo . --output results/svt_v033_schedule_screen_diagnostic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v033-schedule-screen-diagnostic
+          path: results/svt_v033_schedule_screen_diagnostic.json
