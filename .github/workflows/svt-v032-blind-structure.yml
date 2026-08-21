@@ -1,0 +1,71 @@
+name: SVT v0.3.2 Blind Structure Gate
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/SVT_V032_BLIND_STRUCTURE_PROTOCOL.md'
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v032_candidate.py'
+      - 'experiments/stateful_verbose_transducer_v0_1/aggregate_v032_gate.py'
+      - '.github/workflows/svt-v032-blind-structure.yml'
+  workflow_dispatch:
+
+jobs:
+  candidate:
+    strategy:
+      fail-fast: false
+      max-parallel: 24
+      matrix:
+        true_mode: [periodic, line_reset]
+        replicate: [0, 1, 2, 3]
+        candidate_mode: [periodic, line_reset]
+        candidate_period: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v032_candidate.py
+      - name: Run blind candidate with frozen 12-start key search
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_v032_candidate.py \
+            --repo . \
+            --true-mode '${{ matrix.true_mode }}' \
+            --replicate '${{ matrix.replicate }}' \
+            --candidate-mode '${{ matrix.candidate_mode }}' \
+            --candidate-period '${{ matrix.candidate_period }}' \
+            --output 'results/svt_v032_${{ matrix.true_mode }}_${{ matrix.replicate }}_${{ matrix.candidate_mode }}_${{ matrix.candidate_period }}.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v032-${{ matrix.true_mode }}-${{ matrix.replicate }}-${{ matrix.candidate_mode }}-${{ matrix.candidate_period }}
+          path: results/svt_v032_*.json
+
+  aggregate:
+    needs: candidate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: svt-v032-*
+          path: gathered
+      - name: Aggregate binding blind-structure gate
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/aggregate_v032_gate.py \
+            --input-dir gathered --output results/svt_v032_gate_a32.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: svt-v032-gate-a32
+          path: results/svt_v032_gate_a32.json
+          if-no-files-found: ignore
