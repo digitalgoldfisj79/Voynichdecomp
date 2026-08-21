@@ -94,9 +94,12 @@ def anneal_factorized(
         # Small fresh perturbations keep restarts distinct without destroying
         # the shared-base initialization.
         for _ in range(restart):
-            rs, s = v0._rng_int(rs, period)
-            rs, i = v0._rng_int(rs, a)
-            rs, j = v0._rng_int(rs, a)
+            rs, s_raw = v0._rng_int(rs, period)
+            rs, i_raw = v0._rng_int(rs, a)
+            rs, j_raw = v0._rng_int(rs, a)
+            s = np.int64(s_raw)
+            i = np.int64(i_raw)
+            j = np.int64(j_raw)
             if i != j:
                 tmp = inv[s, i]
                 inv[s, i] = inv[s, j]
@@ -113,12 +116,16 @@ def anneal_factorized(
         temp = 10.0
         cooling = math.exp(math.log(0.08 / 10.0) / max(1, iterations))
         for _ in range(iterations):
-            rs, move = v0._rng_int(rs, 10)
-            rs, i = v0._rng_int(rs, a)
-            rs, j = v0._rng_int(rs, a)
+            rs, move_raw = v0._rng_int(rs, 10)
+            rs, i_raw = v0._rng_int(rs, a)
+            rs, j_raw = v0._rng_int(rs, a)
+            move = np.int64(move_raw)
+            i = np.int64(i_raw)
+            j = np.int64(j_raw)
             if i == j:
                 continue
 
+            local_state = np.int64(-1)
             if move < GLOBAL_MOVE_RATE_TENTHS:
                 # Shared swap: changes the common key and every state together.
                 tmp = base[i]
@@ -128,13 +135,12 @@ def anneal_factorized(
                     tmp2 = inv[s, i]
                     inv[s, i] = inv[s, j]
                     inv[s, j] = tmp2
-                local_state = -1
             else:
-                rs, s = v0._rng_int(rs, period)
-                tmp = inv[s, i]
-                inv[s, i] = inv[s, j]
-                inv[s, j] = tmp
-                local_state = s
+                rs, s_raw = v0._rng_int(rs, period)
+                local_state = np.int64(s_raw)
+                tmp = inv[local_state, i]
+                inv[local_state, i] = inv[local_state, j]
+                inv[local_state, j] = tmp
 
             candidate, raw, swaps = _factor_score(
                 cipher, phase, base, inv, trigram, unigram, period
