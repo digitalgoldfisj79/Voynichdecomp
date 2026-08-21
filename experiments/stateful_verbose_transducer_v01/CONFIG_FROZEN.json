@@ -1,0 +1,21 @@
+{
+  "programme": "SVT-v0.1",
+  "frozen_date": "2026-08-21",
+  "max_code_length": 3,
+  "surface_alphabet_size": 12,
+  "development_periods": [2, 3, 4],
+  "locked_periods": [2, 3, 4, 5, 6],
+  "modes": ["periodic", "line_reset"],
+  "length_prior": {"1": 0.20, "2": 0.45, "3": 0.35},
+  "beam_width": 1800,
+  "new_mapping_penalty": 0.55,
+  "candidate_plain_symbols_per_new_codeword": 10,
+  "score_unigram_weight": 0.15,
+  "period_penalty": 0.50,
+  "max_trials_dev": 8,
+  "max_trials_locked": 16,
+  "lengths": [96, 192, 384],
+  "seed_namespace": "svt-v01-20260821",
+  "voynich_access": false,
+  "one_development_amendment": true
+}
