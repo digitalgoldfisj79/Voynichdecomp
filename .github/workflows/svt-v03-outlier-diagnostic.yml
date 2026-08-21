@@ -1,0 +1,35 @@
+name: SVT v0.3 Outlier Diagnostic
+
+on:
+  push:
+    branches:
+      - experiment/stateful-verbose-transducer-v0.1-20260821
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/v03_outlier_diagnostic.py'
+      - '.github/workflows/svt-v03-outlier-diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/v03_outlier_diagnostic.py
+      - name: Run fixed 24-start diagnostic
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/v03_outlier_diagnostic.py \
+            --repo . --output results/svt_v03_outlier_diagnostic.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: svt-v03-outlier-diagnostic
+          path: results/svt_v03_outlier_diagnostic.json
