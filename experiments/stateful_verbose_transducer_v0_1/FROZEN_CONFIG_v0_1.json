@@ -1,0 +1,21 @@
+{
+  "programme": "stateful_verbose_transducer_v0_1",
+  "frozen_date": "2026-08-21",
+  "parent_branch": "experiment/terminal-cipher-programme-v0.6-20260716",
+  "surface_family": "factorised_stateful_verbose_transducer",
+  "head_family": "order_free_state_specific_substitution",
+  "state_swap_fraction": 0.12,
+  "codeword_lengths": [1, 2, 3],
+  "length_prior": [0.30, 0.45, 0.25],
+  "segmentation_beam": 8,
+  "boundary_weight": 0.35,
+  "continuation_noise": 0.08,
+  "candidate_modes": ["periodic", "line_reset"],
+  "candidate_periods": [2,3,4,5,6,7,8,9,10,11,12],
+  "synthetic_lengths": [192, 384, 768, 1536],
+  "locked_trials": 20,
+  "max_development_amendments": 1,
+  "hostile_controls": ["NONFACT", "SHUFFLED_HEAD"],
+  "hostile_control_fpr_max": 0.05,
+  "voynich_sealed_until_locked_gate": true
+}
