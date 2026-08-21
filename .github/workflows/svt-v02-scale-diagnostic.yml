@@ -1,0 +1,36 @@
+name: SVT v0.2 Scale Diagnostic
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/stateful_verbose_transducer_v0_1/run_v02_scale_diagnostic.py'
+      - '.github/workflows/svt-v02-scale-diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  scale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --upgrade pip numpy numba rapidfuzz
+      - name: Compile
+        run: |
+          python -m py_compile \
+            experiments/stateful_verbose_transducer_v0_1/svt_v01.py \
+            experiments/stateful_verbose_transducer_v0_1/svt_v02.py \
+            experiments/stateful_verbose_transducer_v0_1/run_v02_scale_diagnostic.py
+      - name: Run fresh-key scale curve
+        run: |
+          python experiments/stateful_verbose_transducer_v0_1/run_v02_scale_diagnostic.py \
+            --repo . --output results/svt_v02_scale_diagnostic.json \
+            --iso de --replicates 2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: svt-v02-scale-diagnostic
+          path: results/svt_v02_scale_diagnostic.json
+          if-no-files-found: ignore
