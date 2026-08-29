@@ -20,8 +20,8 @@ env:
   RELEASE_ID: 2026-08-26-r15
   MIN_IMAGE_ID: '8575495'
   MAX_IMAGE_ID: '9159973'
-  MAX_ITEMS: '750'
-  TOP_K: '150'
+  MAX_ITEMS: '120'
+  TOP_K: '80'
 
 jobs:
   scan:
