@@ -1,0 +1,48 @@
+name: WLCP v0.1 Morphology Position Bound
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - experiment/wlcp-v01-20260829
+    paths:
+      - experiments/wlcp_v01/run_wlcp_morph_bound.py
+      - .github/workflows/wlcp_v01_morph_bound.yml
+permissions:
+  contents: read
+jobs:
+  morph-bound:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy
+      - name: Acquire frozen sources
+        run: |
+          mkdir -p experiments/wlcp_v01/_morph_source
+          curl --fail --location --retry 5 https://www.voynich.nu/data/ZL3b-n.txt -o experiments/wlcp_v01/_morph_source/ZL3b-n.txt
+          curl --fail --location --retry 5 https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/experiment/terminal-cipher-programme-v0.6-20260716/voynich_section_map.json -o experiments/wlcp_v01/_morph_source/voynich_section_map.json
+          sha256sum experiments/wlcp_v01/_morph_source/* | tee experiments/wlcp_v01/_morph_source/SHA256SUMS.txt
+      - name: Run morphology-position bound
+        run: |
+          mkdir -p experiments/wlcp_v01/morph_bound_output
+          python experiments/wlcp_v01/run_wlcp_morph_bound.py --source experiments/wlcp_v01/_morph_source/ZL3b-n.txt --section-map experiments/wlcp_v01/_morph_source/voynich_section_map.json --out experiments/wlcp_v01/morph_bound_output | tee experiments/wlcp_v01/morph_bound_console.txt
+      - name: Verify
+        run: |
+          test -s experiments/wlcp_v01/morph_bound_output/MORPH_BOUND_RESULTS.md
+          test -s experiments/wlcp_v01/morph_bound_output/MORPH_BOUND_RESULTS.json
+          cat experiments/wlcp_v01/morph_bound_output/MORPH_BOUND_RESULTS.md
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wlcp-v01-morph-bound-results
+          path: |
+            experiments/wlcp_v01/morph_bound_output/
+            experiments/wlcp_v01/morph_bound_console.txt
+            experiments/wlcp_v01/_morph_source/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
