@@ -1,0 +1,54 @@
+name: JLC v0.1 Joachim Length Cipher Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [experiment/joachim-length-v01-20260829]
+    paths:
+      - experiments/joachim_length_v01/**
+      - .github/workflows/jlc_v01.yml
+
+permissions:
+  contents: read
+
+jobs:
+  jlc:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy
+      - name: Acquire frozen sources
+        run: |
+          mkdir -p experiments/joachim_length_v01/_source
+          curl --fail --location --retry 5 https://www.voynich.nu/data/ZL3b-n.txt -o experiments/joachim_length_v01/_source/ZL3b-n.txt
+          curl --fail --location --retry 5 https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/experiment/terminal-cipher-programme-v0.6-20260716/voynich_section_map.json -o experiments/joachim_length_v01/_source/voynich_section_map.json
+          sha256sum experiments/joachim_length_v01/_source/* | tee experiments/joachim_length_v01/_source/SHA256SUMS.txt
+      - name: Run preregistered JLC v0.1
+        run: |
+          mkdir -p experiments/joachim_length_v01/output
+          python experiments/joachim_length_v01/run_jlc_v01.py \
+            --source experiments/joachim_length_v01/_source/ZL3b-n.txt \
+            --section-map experiments/joachim_length_v01/_source/voynich_section_map.json \
+            --out experiments/joachim_length_v01/output | tee experiments/joachim_length_v01/output_console.txt
+      - name: Verify outputs
+        run: |
+          test -s experiments/joachim_length_v01/output/RESULTS.md
+          test -s experiments/joachim_length_v01/output/results.json
+          test -s experiments/joachim_length_v01/output/phase0_audit.pkl
+          test -s experiments/joachim_length_v01/output/phase3_final.pkl
+          cat experiments/joachim_length_v01/output/RESULTS.md
+      - name: Upload complete artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jlc-v01-results
+          path: |
+            experiments/joachim_length_v01/output/
+            experiments/joachim_length_v01/output_console.txt
+            experiments/joachim_length_v01/_source/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
