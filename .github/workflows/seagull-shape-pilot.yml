@@ -8,6 +8,7 @@ on:
       - 'experiments/sobel_shape_search/prepare_seagull_queries.py'
       - 'experiments/sobel_shape_search/seagull_pilot_postprocess.py'
       - 'experiments/sobel_shape_search/sobel_scan.py'
+      - 'experiments/sobel_shape_search/sobel_scan_r15.py'
   workflow_dispatch:
 
 permissions:
@@ -16,7 +17,9 @@ permissions:
 env:
   SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
   SUPABASE_PUBLISHABLE_KEY: sb_publishable_9MpT1VOi0nvF-2N1LIS4Ew_h5dQWcp2
-  RELEASE_ID: 2026-08-19-r10
+  RELEASE_ID: 2026-08-26-r15
+  MIN_IMAGE_ID: '8575495'
+  MAX_IMAGE_ID: '9159973'
   MAX_ITEMS: '750'
   TOP_K: '150'
 
@@ -39,9 +42,9 @@ jobs:
         run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
       - name: Prepare authentic f1r query masks
         run: python experiments/sobel_shape_search/prepare_seagull_queries.py --outdir seagull_queries
-      - name: Scan paired pilot shard
+      - name: Scan paired r15 pilot shard
         run: |
-          python experiments/sobel_shape_search/sobel_scan.py \
+          python experiments/sobel_shape_search/sobel_scan_r15.py \
             --release "$RELEASE_ID" \
             --shard ${{ matrix.shard }} \
             --max-items "$MAX_ITEMS" \
@@ -74,7 +77,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check pillow requests
       - uses: actions/download-artifact@v4
         with:
-          pattern: seagull-seagull-*
+          pattern: seagull-seagull_*
           path: pilot_parts
       - name: Combine and render top candidates
         run: |
