@@ -1,0 +1,35 @@
+{
+  "version": "taccola-q13-v0.2-holdout-lock-20260830",
+  "frozen_before_visual_access": true,
+  "q13_sealed": true,
+  "development_data": "v0.1/v0.1b 37-manuscript calibration panel only",
+  "holdouts": {
+    "clm28800": {
+      "role": "unseen_taccola_autograph_validation",
+      "name": "BSB Clm 28800 — Mariano Taccola, De machinis",
+      "date": 1449,
+      "manifest": "https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00110814/manifest",
+      "visual_access_allowed_before_freeze": false
+    },
+    "bnf_lat7239": {
+      "role": "unseen_taccola_transmission_validation",
+      "name": "BnF Latin 7239 — Paulus Santinus / Taccola tradition",
+      "date": 1459,
+      "manifest": "https://gallica.bnf.fr/iiif/ark:/12148/btv1b100203224/manifest.json",
+      "visual_access_allowed_before_freeze": false
+    }
+  },
+  "pre_freeze_permitted_operations": [
+    "fetch manifest metadata",
+    "count canvases",
+    "verify HTTP accessibility",
+    "record catalogue metadata"
+  ],
+  "pre_freeze_forbidden_operations": [
+    "download holdout images",
+    "render holdout pages",
+    "extract holdout visual features",
+    "compute holdout similarity scores",
+    "inspect holdout illustrations manually"
+  ]
+}
