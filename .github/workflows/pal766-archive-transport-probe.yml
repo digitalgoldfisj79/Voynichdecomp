@@ -1,0 +1,41 @@
+name: Palatino 766 archive transport probe
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - '.github/workflows/pal766-archive-transport-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect Internet Archive item metadata
+        run: |
+          python - <<'PY'
+          import json,requests,time
+          u='https://archive.org/metadata/palatino-766-images'
+          t=time.time(); r=requests.get(u,timeout=15); r.raise_for_status(); j=r.json()
+          rows=[]
+          for f in j.get('files',[]):
+              name=f.get('name','')
+              if any(x in name.lower() for x in ['jp2','pdf','jpg','jpeg','scandata','text']):
+                  rows.append({'name':name,'size':f.get('size'),'source':f.get('source'),'format':f.get('format')})
+          print('metadata_seconds',round(time.time()-t,3))
+          print(json.dumps(rows,indent=2)[:50000])
+          open('pal766_archive_files.json','w').write(json.dumps(rows,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pal766-archive-files
+          path: pal766_archive_files.json
+          retention-days: 14
