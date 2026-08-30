@@ -1,0 +1,50 @@
+name: Taccola Q13 calibration v0.1b repair
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - 'research/taccola_q13/panel_v01b.json'
+      - 'research/taccola_q13/taccola_calibration_v01b.py'
+      - 'research/taccola_q13/verify_repair.py'
+      - '.github/workflows/taccola-q13-calibration-repair.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen classical-image dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Verify repaired scientific core and sealed panel
+        run: python research/taccola_q13/verify_repair.py
+      - name: Run transport-repaired calibration with Q13 sealed
+        run: python research/taccola_q13/taccola_calibration_v01b.py
+      - name: Publish calibration summary
+        if: always()
+        run: |
+          if [ -f taccola_calibration_output/calibration.md ]; then
+            cat taccola_calibration_output/calibration.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f taccola_calibration_output/repair_audit.json ]; then
+            echo '## Repair audit' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat taccola_calibration_output/repair_audit.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: taccola-q13-calibration-v01b-repair
+          path: taccola_calibration_output/**
+          if-no-files-found: warn
+          retention-days: 14
