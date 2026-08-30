@@ -1,0 +1,72 @@
+name: Taccola replacement transport probe
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - '.github/workflows/taccola-replacement-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check requests pillow
+      - name: Probe replacement manifests and first images
+        run: |
+          python - <<'PY'
+          import io,json,time,requests
+          from PIL import Image
+          manifests={
+            'pal_lat_1986':'https://digi.vatlib.it/iiif/MSS_Pal.lat.1986/manifest.json',
+            'valturio':'https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00065289/manifest',
+            'clm28531':'https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00107549/manifest',
+            'bnf_it1108':'https://gallica.bnf.fr/iiif/ark:/12148/btv1b10036422w/manifest.json'
+          }
+          s=requests.Session(); h={'User-Agent':'ManuComp-TaccolaCalibration/0.1b (+https://github.com/digitalgoldfisj79/Voynichdecomp)'}
+          def first_image(j):
+            if 'sequences' in j:
+              c=j['sequences'][0]['canvases'][0]
+              im=c['images'][0]['resource']
+              svc=im.get('service')
+              if isinstance(svc,list): svc=svc[0]
+              if isinstance(svc,dict):
+                sid=svc.get('@id') or svc.get('id')
+                if sid: return sid.rstrip('/')+'/full/900,/0/default.jpg'
+              return im.get('@id') or im.get('id')
+            items=j.get('items',[])
+            c=items[0]
+            ann=(c.get('items') or [])[0]
+            body=(ann.get('items') or [])[0].get('body',{})
+            svc=body.get('service')
+            if isinstance(svc,list): svc=svc[0]
+            if isinstance(svc,dict):
+              sid=svc.get('id') or svc.get('@id')
+              if sid: return sid.rstrip('/')+'/full/900,/0/default.jpg'
+            return body.get('id') or body.get('@id')
+          out={}
+          for k,u in manifests.items():
+            t=time.time()
+            try:
+              r=s.get(u,headers=h,timeout=12); r.raise_for_status(); j=r.json()
+              iu=first_image(j)
+              ri=s.get(iu,headers=h,timeout=12); ri.raise_for_status(); im=Image.open(io.BytesIO(ri.content))
+              out[k]={'ok':True,'manifest_status':r.status_code,'image_status':ri.status_code,'bytes':len(ri.content),'size':im.size,'seconds':round(time.time()-t,3),'image_url':iu}
+            except Exception as e:
+              out[k]={'ok':False,'error':repr(e),'seconds':round(time.time()-t,3)}
+            print(k,out[k],flush=True)
+          open('replacement_probe.json','w').write(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: taccola-replacement-probe
+          path: replacement_probe.json
+          retention-days: 14
