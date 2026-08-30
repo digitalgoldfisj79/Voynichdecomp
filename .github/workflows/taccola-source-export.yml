@@ -1,0 +1,44 @@
+name: Taccola calibration source export
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - '.github/workflows/taccola-source-export.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Decode checksum-protected frozen payload
+        run: |
+          python - <<'PY'
+          import ast, base64, hashlib, zlib
+          from pathlib import Path
+          p=Path('research/taccola_q13/taccola_calibration.py')
+          tree=ast.parse(p.read_text())
+          assign=next(n for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='PAYLOAD' for t in n.targets))
+          payload=ast.literal_eval(assign.value)
+          if isinstance(payload, tuple): payload=payload[0]
+          raw=zlib.decompress(base64.b64decode(payload))
+          sha=hashlib.sha256(raw).hexdigest()
+          assert sha=='59d4a2635b5a64de32a1fd69c577c123fab1fe81bb1739a632ec7035dc5b4f5b'
+          out=Path('taccola_source_export'); out.mkdir(exist_ok=True)
+          (out/'frozen_calibration_decoded.py').write_bytes(raw)
+          (out/'sha256.txt').write_text(sha+'\n')
+          print(sha)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: taccola-frozen-source
+          path: taccola_source_export/**
+          retention-days: 14
