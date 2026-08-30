@@ -1,9 +1,15 @@
 {
-  "version": "taccola-sienese-codicology-v0.1-20260830",
+  "version": "taccola-sienese-codicology-v0.1a-20260830",
   "status": "PRE_REGISTERED_BEFORE_SYSTEMATIC_SOURCE_CODING",
   "q13_visual_access": false,
   "purpose": "Test whether the fifteenth-century Sienese technical model-book group shows stronger evidence of composite/open-ended manuscript production than matched contemporary technical-manuscript controls.",
   "unit_of_analysis": "manuscript",
+  "protocol_repair": {
+    "timing": "before systematic outcome coding",
+    "error": "The initially listed Valturio control (BSB bsb00065289) is the 1472 printed incunable, not a manuscript.",
+    "repair": "Replace it with Heidelberg Cpg 787, a pre-1500 technical manuscript containing the Feuerwerkbuch and Kyeser/Bellifortis material. No target/control codicology outcomes had been systematically coded when replacement was made.",
+    "reason": "Printed-sheet production is not comparable to manuscript codicological assembly."
+  },
   "target_group": [
     "BNCF Palatino 767",
     "British Library Add MS 34113",
@@ -17,7 +23,7 @@
     "BSB Clm 30150 (Bellifortis)",
     "BSB Cod.icon.242 (Johannes de Fontana)",
     "BAV Pal.lat.1986 (Kyeser/Bellifortis)",
-    "Roberto Valturio, De re militari, BSB bsb00065289"
+    "Heidelberg Cpg 787 (Feuerwerkbuch / Kyeser-Bellifortis technical compilation)"
   ],
   "antecedent_context_not_in_primary_test": [
     "BSB Clm 197 II (Taccola autograph, De ingeneis I-II)",
