@@ -1,0 +1,91 @@
+name: Taccola Q13 complete independent calibration
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - '.github/workflows/taccola-q13-complete-independent.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONPATH: research/taccola_q13
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify frozen scientific core and locked panel
+        run: python research/taccola_q13/verify_repair.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: taccola-complete-repair-audit
+          path: taccola_calibration_output/repair_audit.json
+          retention-days: 14
+
+  features:
+    needs: verify
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        id: [clm197, pal766, dresden_mixed, basel_lII22, colmar491, clm30150, codicon242, pal_lat_1986, valturio, bnf_it81, ljs419, clm28531, bnf_it1108, bg01, bg02, bg03, bg04, bg05, bg06, bg07, bg08, bg09, bg10, bg11, bg12, bg13, bg14, bg15, bg16, bg17, bg18, bg19, bg20, bg21, bg22, bg23, bg24]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless pymupdf
+      - name: Extract one frozen witness block
+        run: |
+          if [ '${{ matrix.id }}' = 'pal766' ] || [ '${{ matrix.id }}' = 'ljs419' ]; then
+            python research/taccola_q13/extract_one_r15_transport.py --id '${{ matrix.id }}'
+          else
+            python research/taccola_q13/extract_one.py --id '${{ matrix.id }}'
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: taccola-complete-one-${{ matrix.id }}
+          path: taccola_one_output/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  aggregate:
+    needs: features
+    if: always() && needs.features.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless pymupdf
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: taccola-complete-one-*
+          path: one_inputs
+          merge-multiple: true
+      - name: Enforce completeness and frozen calibration gates
+        run: python research/taccola_q13/aggregate_one_bundles.py --input one_inputs
+      - name: Publish gate summary
+        if: always()
+        run: |
+          if [ -f taccola_complete_result/RUNNING_RESULTS_COMPLETE.md ]; then cat taccola_complete_result/RUNNING_RESULTS_COMPLETE.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: taccola-q13-complete-calibration-v01b
+          path: taccola_complete_result/**
+          if-no-files-found: warn
+          retention-days: 14
