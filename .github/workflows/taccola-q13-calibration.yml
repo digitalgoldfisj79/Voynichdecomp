@@ -1,0 +1,41 @@
+name: Taccola Q13 frozen calibration
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-20260830
+    paths:
+      - 'research/taccola_q13/**'
+      - '.github/workflows/taccola-q13-calibration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen classical-image dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Run calibration with Q13 sealed
+        run: |
+          python research/taccola_q13/taccola_calibration.py
+      - name: Publish calibration summary
+        if: always()
+        run: |
+          if [ -f taccola_calibration_output/calibration.md ]; then
+            cat taccola_calibration_output/calibration.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: taccola-q13-calibration-v01
+          path: taccola_calibration_output/**
+          if-no-files-found: warn
+          retention-days: 14
