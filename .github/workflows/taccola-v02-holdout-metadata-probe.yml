@@ -1,0 +1,45 @@
+name: Taccola v0.2 holdout metadata-only probe
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.2-motif-20260830
+    paths:
+      - '.github/workflows/taccola-v02-holdout-metadata-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  metadata_only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Count holdout canvases without accessing image bodies
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          manifests={
+            'clm28800':'https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb00110814/manifest',
+            'bnf_lat7239':'https://gallica.bnf.fr/iiif/ark:/12148/btv1b100203224/manifest.json'
+          }
+          out={}
+          for k,u in manifests.items():
+            req=urllib.request.Request(u,headers={'User-Agent':'Taccola-v02-metadata-probe/1.0'})
+            with urllib.request.urlopen(req,timeout=20) as r: j=json.load(r)
+            if isinstance(j.get('items'),list): n=len(j['items'])
+            else:
+              seq=j.get('sequences') or []
+              n=len(seq[0].get('canvases',[])) if seq else 0
+            out[k]={'manifest_accessible':True,'canvas_count':n,'manifest':u}
+            print(k,n)
+          open('holdout_metadata_probe.json','w').write(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: taccola-v02-holdout-metadata-probe
+          path: holdout_metadata_probe.json
+          retention-days: 30
