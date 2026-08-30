@@ -1,0 +1,68 @@
+{
+  "version": "taccola-sienese-codicology-v0.1-20260830",
+  "status": "PRE_REGISTERED_BEFORE_SYSTEMATIC_SOURCE_CODING",
+  "q13_visual_access": false,
+  "purpose": "Test whether the fifteenth-century Sienese technical model-book group shows stronger evidence of composite/open-ended manuscript production than matched contemporary technical-manuscript controls.",
+  "unit_of_analysis": "manuscript",
+  "target_group": [
+    "BNCF Palatino 767",
+    "British Library Add MS 34113",
+    "Dresden SLUB Mscr.Dresd.Ob.13",
+    "Siena Biblioteca Comunale S.IV.5",
+    "BAV Urb.lat.1757 (Francesco di Giorgio Codicetto)"
+  ],
+  "technical_controls": [
+    "Basel Cod. L II 22 (Bellifortis tradition)",
+    "Colmar Ms. 491 (Kyeser/Bellifortis tradition)",
+    "BSB Clm 30150 (Bellifortis)",
+    "BSB Cod.icon.242 (Johannes de Fontana)",
+    "BAV Pal.lat.1986 (Kyeser/Bellifortis)",
+    "Roberto Valturio, De re militari, BSB bsb00065289"
+  ],
+  "antecedent_context_not_in_primary_test": [
+    "BSB Clm 197 II (Taccola autograph, De ingeneis I-II)",
+    "BNCF Palatino 766 (Taccola autograph, De ingeneis III-IV)"
+  ],
+  "coding_variables": {
+    "V1_multiple_codicological_units": "1 if catalogue/codicological study explicitly identifies multiple independently formed units, fascicles, booklets, or materially distinct constituent parts; else 0; unknown if source insufficient.",
+    "V2_open_ended_addition_revision": "1 if source explicitly documents later additions, inserted leaves/fascicles, continuing annotation, rearrangement, or prolonged accretion during working life; else 0; unknown if source insufficient.",
+    "V3_multiple_hands_or_practitioner_layers": "1 if source explicitly documents multiple scribal/drawing hands or materially separable practitioner layers within the original/early production history; else 0; unknown if source insufficient.",
+    "V4_irregular_gathering_structure": "1 if source explicitly reports irregular, non-uniform, composite, singleton/singulion-rich, or otherwise exceptional gathering structure; else 0; unknown if source insufficient.",
+    "V5_copy_model_workbook_function": "1 if scholarship explicitly interprets manuscript as model book, copybook, workshop/practitioner reference volume, or evolving practical repertoire; else 0.",
+    "V6_independent_folio_stack_claim": "1 only if a scholarly source explicitly states or argues that the manuscript originated as unbound/independent folios or sheets before binding; inferred absence is 0; unknown if not addressed."
+  },
+  "primary_endpoint": {
+    "name": "open_composite_production",
+    "definition": "positive if at least two of V1,V2,V3,V4 are 1; V5 and V6 are reported separately and do not define the primary endpoint.",
+    "minimum_evaluable_variables": 3,
+    "test": "two-sided Fisher exact test comparing target vs technical-control manuscript counts",
+    "effect": "risk difference and odds ratio",
+    "small_n_warning": true
+  },
+  "secondary_endpoints": [
+    "sum of V1-V4 per manuscript (0-4), descriptive only",
+    "V5 target/control prevalence",
+    "V6 exact-source prevalence",
+    "leave-one-manuscript-out sensitivity of primary Fisher result"
+  ],
+  "source_hierarchy": [
+    "institutional manuscript catalogue / digitisation metadata",
+    "peer-reviewed codicological or history-of-technology study",
+    "scholarly monograph",
+    "other scholarly secondary source"
+  ],
+  "anti_circularity": [
+    "Do not code from Voynich literature or similarity claims.",
+    "Do not infer physical structure from visual resemblance.",
+    "Do not convert absence of discussion into a positive or negative physical claim unless the coding definition permits it.",
+    "Do not count multiple folios/pages as independent observations.",
+    "Palatino 766 is excluded from the primary target group because its disputed production history generated the hypothesis.",
+    "The Layfield-Davis Voynich singulion result is not used to define or classify the target/control manuscripts."
+  ],
+  "decision_rule": {
+    "strong_support": "target risk difference >=0.50 and Fisher p<=0.05, with direction preserved under every evaluable leave-one-out target deletion",
+    "moderate_support": "target risk difference >=0.40 but strong-support rule not met",
+    "weak_or_unresolved": "risk difference <0.40 or source incompleteness prevents >=4 evaluable manuscripts per group",
+    "negative": "target prevalence <= control prevalence"
+  }
+}
