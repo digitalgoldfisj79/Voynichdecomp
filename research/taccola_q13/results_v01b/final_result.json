@@ -1,0 +1,45 @@
+{
+  "version": "taccola-q13-calibration-v0.1b-transport-repair-20260830",
+  "status": "FAILED_CALIBRATION",
+  "q13_unseal_allowed": false,
+  "panel_sha256": "8226f0435ee07d8af1e4b0d8cb4a8f09af8f7a82b32bf04441f8dab7ae49c905",
+  "original_scientific_payload_sha256": "59d4a2635b5a64de32a1fd69c577c123fab1fe81bb1739a632ec7035dc5b4f5b",
+  "workflow_run_id": 33300853008,
+  "result_artifact": {
+    "id": 9728903636,
+    "name": "taccola-q13-complete-calibration-v01b",
+    "sha256": "6bfa0076d8f67a5080727a42c45b2cc05f9a2d2365c74a9754fc22f327d0a690"
+  },
+  "audit": {
+    "manuscript_blocks": 37,
+    "active_null_blocks": 34,
+    "required_missing": 0,
+    "image_errors": 0,
+    "manifest_errors": 0,
+    "transport_repairs": {
+      "pal766": "Internet Archive PDF derivative; same 102-page r15 order and frozen midpoint indices",
+      "ljs419": "OPenn direct r15 JPEGs; same 205-page r15 order and frozen midpoint indices"
+    }
+  },
+  "direction_clm197_to_pal766": {
+    "composite": {"effect": 0.5110837, "null_sd": 0.8416007, "z": 0.6072758, "empirical_block_p": 0.3142857, "technical_rank": 4, "bootstrap_fraction_z_ge_2": 0.0},
+    "hog": {"effect": 0.0018760, "z": 0.0233, "p": 0.4571},
+    "chamfer": {"effect": -0.042985, "z": -0.8899, "p": 0.8},
+    "geometry": {"effect": 0.1948664, "z": 2.3998, "p": 0.02857, "positive_rank_all": 1}
+  },
+  "direction_pal766_to_clm197": {
+    "composite": {"effect": 0.9743265, "null_sd": 0.8238347, "z": 1.1826723, "empirical_block_p": 0.142857, "technical_rank": 1, "bootstrap_fraction_z_ge_2": 0.0},
+    "hog": {"effect": 0.04458235, "z": 0.7001, "p": 0.3143},
+    "chamfer": {"effect": -0.00247365, "z": -0.07524, "p": 0.54286},
+    "geometry": {"effect": 0.1878929, "z": 2.2981, "p": 0.02857, "positive_rank_all": 1}
+  },
+  "gates": {
+    "passing_representations_both_directions": ["geometry"],
+    "nondegenerate_passing_pair": false,
+    "composite_gate": false,
+    "technical_rank_gate": false,
+    "decision_rule_fragility_gate": false,
+    "calibration_passed": false
+  },
+  "retracted_prior": "Raw Siena/Taccola concentration is not independent evidence; family-collapsed effect +5.63pp, exact conditional null SD 5.13pp, 1.10 null SD, Fisher p=0.318."
+}
