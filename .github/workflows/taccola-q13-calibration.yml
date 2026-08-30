@@ -25,7 +25,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
       - name: Run calibration with Q13 sealed
         run: |
-          python research/taccola_q13/taccola_calibration.py
+          python research/taccola_q13/run_calibration.py
       - name: Publish calibration summary
         if: always()
         run: |
