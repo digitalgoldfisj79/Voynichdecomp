@@ -1,0 +1,52 @@
+name: Taccola transport probe
+
+on:
+  push:
+    branches:
+      - gpt56/taccola-q13-calibration-v0.1-repair-20260830
+    paths:
+      - '.github/workflows/taccola-transport-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check requests pillow
+      - name: Probe direct r15 IIIF image URLs
+        run: |
+          python - <<'PY'
+          import io,json,time,requests
+          from PIL import Image
+          urls={
+            'cpg787':'https://digi.ub.uni-heidelberg.de/iiif/2/cpg787%3A000_A_Vorderdeckel.jpg/full/900,/0/default.jpg',
+            'cpg122':'https://digi.ub.uni-heidelberg.de/iiif/2/cpg122%3A000_A_ROEM_1.jpg/full/900,/0/default.jpg',
+            'cpg812':'https://digi.ub.uni-heidelberg.de/iiif/2/cpg812%3A000_A_Vorderdeckel.jpg/full/900,/0/default.jpg',
+            'bodl646':'https://iiif.bodleian.ox.ac.uk/iiif/image/032569c9-648d-4c71-93a5-7664e8334047/full/900,/0/default.jpg',
+            'canon408':'https://iiif.bodleian.ox.ac.uk/iiif/image/00e519e0-e661-44b3-85ce-714e39639ac4/full/900,/0/default.jpg'
+          }
+          out={}
+          s=requests.Session(); h={'User-Agent':'ManuComp-TaccolaCalibration/0.1 (+https://github.com/digitalgoldfisj79/Voynichdecomp)'}
+          for k,u in urls.items():
+            t=time.time()
+            try:
+              r=s.get(u,headers=h,timeout=12); r.raise_for_status()
+              im=Image.open(io.BytesIO(r.content))
+              out[k]={'ok':True,'status':r.status_code,'bytes':len(r.content),'size':im.size,'seconds':round(time.time()-t,3)}
+            except Exception as e:
+              out[k]={'ok':False,'error':repr(e),'seconds':round(time.time()-t,3)}
+            print(k,out[k],flush=True)
+          open('transport_probe.json','w').write(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: taccola-transport-probe
+          path: transport_probe.json
+          retention-days: 14
