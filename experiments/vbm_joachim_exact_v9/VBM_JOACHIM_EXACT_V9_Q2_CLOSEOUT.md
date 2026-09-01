@@ -3,8 +3,10 @@
 Date: 2026-09-01
 Branch: `experiment/vbm-joachim-exact-v9-20260901`
 Protocol: `VBM_JOACHIM_EXACT_V9_Q2_SYNTH_IDENT_PROTOCOL.md`
-Formal CAL Hugging Face job: `6a97355c21c5aa7c8364c4d8`
-Job status: COMPLETED
+Pre-output implementation patch: `vbm_joachim_exact_v9_q2_synth_ident_patch1.py` (STAB weighting corrected to frozen HOLDOUT definition before smoke output)
+Smoke Hugging Face job: `6a97354c0718b0f6d890e019`
+Formal CAL Hugging Face job: `6a9735850718b0f6d890e01f`
+Post-closeout oracle diagnostic job: `6a97379b21c5aa7c8364c530`
 
 ## Decision
 
@@ -20,17 +22,17 @@ The decisive failure is not merely weak discrimination against adversaries. The 
 
 | rep | LANG_OK | REC_B | REC_N | REC_CHAR | HOLD_ADV | STAB |
 |---:|:---:|---:|---:|---:|---:|---:|
-| 0 | true | 0.4521 | 0.0311 | 0.0875 | 1.5434 | 0.6538 |
-| 1 | true | 0.3973 | 0.0347 | 0.0715 | 1.4771 | 0.6743 |
-| 2 | true | 0.5674 | 0.0603 | 0.0835 | 1.4235 | 0.6222 |
+| 0 | true | 0.4521 | 0.0311 | 0.0875 | 1.5434 | 0.6484 |
+| 1 | true | 0.3973 | 0.0347 | 0.0715 | 1.4771 | 0.6598 |
+| 2 | true | 0.5674 | 0.0603 | 0.0835 | 1.4235 | 0.6245 |
 
 ### IT_GLOBAL
 
 | rep | LANG_OK | selected | REC_B | REC_N | REC_CHAR | HOLD_ADV | STAB |
 |---:|:---:|:---:|---:|---:|---:|---:|---:|
-| 0 | false | DE | 0.2558 | 0.0000 | 0.0438 | 1.5146 | 0.7318 |
-| 1 | false | DE | 0.2271 | 0.0000 | 0.0436 | 1.4562 | 0.6722 |
-| 2 | false | DE | 0.2561 | 0.0000 | 0.0550 | 1.4068 | 0.8020 |
+| 0 | false | DE | 0.2558 | 0.0000 | 0.0438 | 1.5146 | 0.7295 |
+| 1 | false | DE | 0.2271 | 0.0000 | 0.0436 | 1.4562 | 0.6863 |
+| 2 | false | DE | 0.2561 | 0.0000 | 0.0550 | 1.4068 | 0.7970 |
 
 Frozen positive gates required at least 5/6 global-positive replicates to satisfy each of:
 
@@ -47,33 +49,61 @@ Family median `HOLD_ADV`:
 - DE_GLOBAL: 1.477113
 - IT_GLOBAL: 1.456187
 - DE_FRESHLINE: 1.436660
-- IT_FRESHLINE: 1.516594
+- IT_FRESHLINE: **1.516594**
 - MARKOV1: 1.390864
-- SHUFFLED_GLOBAL: 1.483215
+- SHUFFLED_GLOBAL: **1.483215**
 
 The minimum positive family median is 1.456187 while the maximum negative/adversarial median is 1.516594. Therefore `sep_ADV=false`.
 
-Family median `STAB`:
+Family median `STAB` using the frozen HOLDOUT weighting:
 
-- DE_GLOBAL: 0.653802
-- IT_GLOBAL: 0.731762
-- DE_FRESHLINE: 0.487898
-- IT_FRESHLINE: 0.608541
-- MARKOV1: 0.696377
-- SHUFFLED_GLOBAL: 0.659520
+- DE_GLOBAL: 0.648432
+- IT_GLOBAL: 0.729462
+- DE_FRESHLINE: 0.481659
+- IT_FRESHLINE: 0.584940
+- MARKOV1: **0.657484**
+- SHUFFLED_GLOBAL: **0.674177**
 
-The minimum positive family median is 0.653802 while the maximum negative/adversarial median is 0.696377. Therefore `sep_STAB=false`.
+The minimum positive family median is 0.648432 while the maximum negative/adversarial median is 0.674177. Therefore `sep_STAB=false`.
 
 Thus the two statistics intended to distinguish a genuinely reusable global codebook from fresh-line and structured non-language controls are both nonseparable in formal CAL.
+
+## Q2D oracle diagnosis
+
+Q2D was frozen and run only after Q2 had already failed. It cannot promote the model or reopen target access. Its purpose was to distinguish a merely bad optimiser from a non-identifying objective.
+
+The known true synthetic key contains real signal:
+
+- in **6/6** global positives the true key scored above every one of 200 multiplicity-preserving random keys;
+- median `ORACLE_ADV` over the random-key median was **1.44678 nats/character**;
+- the generating-language LM beat the other LM on the known plaintext in **6/6** cases, so the Q2 Italian-to-German failure is not explained by a trivial raw-LM calibration reversal.
+
+However, the true key is not a coordinate optimum of the language objective in any replicate. Starting exactly at truth and changing only one dictionary entry at a time, the fraction of occurring entries with at least one wrong value that improves the FIT+SELECT LM objective was:
+
+- DE rep 0: 0.3000
+- DE rep 1: 0.3372
+- DE rep 2: 0.3293
+- IT rep 0: 0.2165
+- IT rep 1: 0.3263
+- IT rep 2: 0.2414
+
+Median: **0.31316**. The truth was a coordinate local optimum in **0/6** replicates.
+
+This is the key diagnostic result. The search problem does contain a truth signal relative to random mappings, but the finite-sample language-likelihood surface does not uniquely prefer the generating dictionary. It actively offers many locally improving moves away from truth. That makes 'best-looking language output' non-identifying: a wrong key can be rewarded even when a correct global key is known to exist.
 
 ## Relation to Q1
 
 Q1 had already shown that fresh one-line VBM fits are non-evidential: the fixture itself requires about 122.93 fresh key bits for 30 plaintext characters (4.10 key bits per plaintext character), and the real Voynich topology was not more selective than the structural-shuffle null (`z = -1.342`). Its frozen decision was `FRESH_FIT_NO_EVIDENTIAL_WEIGHT_REQUIRE_GLOBAL_CODEBOOK`.
 
-Q2 tests that required escape route. The current blind reusable-codebook solver does not recover its own synthetic source model and does not separate positives from binding adversaries. Consequently no claim about Voynich plaintext, language, or a VBM codebook is licensed by v9.
+Q2 tests that required escape route. The current blind reusable-codebook solver does not recover its own synthetic source model and does not separate positives from binding adversaries. Q2D further shows that this is not simply a matter of adding more random restarts: the scoring objective itself rewards many deviations from the true key.
 
 ## What this does and does not establish
 
-This is a failure of **identifiability under the frozen v9 representation, language models, codebook size, and solver**. It is not a mathematical proof that every possible vowel-bridge cipher is impossible. It does establish that Joachim's illustrative line-level feasibility demonstration cannot be upgraded into evidence by the current global-codebook route, because the proposed inference machinery cannot first recover known synthetic instances of that architecture.
+This is a failure of **identifiability under the frozen v9 representation, language models, codebook size, and inference objective**. It is not a mathematical proof that every possible vowel-bridge cipher is impossible.
 
-Any future VBM programme must begin with a new preregistered synthetic-identifiability protocol and demonstrate recovery there before touching Voynich data. It may not tune a solver on Voynich output and then cite that same fit as evidence.
+It does establish that Joachim's illustrative line-level feasibility demonstration cannot presently be upgraded into evidence by either of the tested routes:
+
+1. fresh line-specific readings have too much dictionary freedom and fail the Q1 specificity/MDL audit;
+2. a reusable global codebook cannot be identified by the Q2 language-optimisation route even on synthetic truth, and its observable fit/stability statistics overlap binding adversaries.
+
+No claim about Voynich plaintext, language, or a VBM codebook is licensed by v9. Any future VBM programme must begin with a genuinely new synthetic-identifiability instrument whose objective recovers known keys before touching Voynich data. It may not tune a decoder on Voynich output and then cite that same linguistic fit as evidence.
