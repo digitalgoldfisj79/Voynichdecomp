@@ -29,6 +29,7 @@ jobs:
         run: python -m pip install --upgrade pip numpy scikit-learn
       - name: Run locked synthetic gate
         run: |
+          set -o pipefail
           python experiments/fractionation_signature_gate_v0_1/fractionation_signature_gate_v01.py \
             --repo . \
             --output experiments/fractionation_signature_gate_v0_1/results_v010.json \
