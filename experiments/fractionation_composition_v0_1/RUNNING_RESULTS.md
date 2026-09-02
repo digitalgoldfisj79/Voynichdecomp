@@ -8,6 +8,14 @@
 
 These retractions concern detector interpretation, not the implementation fact that planted coordinate fractionation has phase and pair structure.
 
+## Audit correction: UD test access
+
+The protocols intended the UD `test` split to remain sealed during development. The implementation did **not** satisfy that strict operational seal: the shared corpus loader downloaded, hash-checked, parsed and encoded `train`, `dev` and `test` on each run before the experiment selected `dev_words` for all evaluated samples.
+
+No test sample entered either detector, no test statistic/gate was computed, and no test result was inspected or used for tuning. Therefore this is not evidence leakage into the reported development statistics, but it is an audit/sealing defect and the test split must not be described as literally unopened or untouched. Any future locked programme would need a split-scoped loader that cannot read test data during development.
+
+Voynich data were not loaded or evaluated by this branch.
+
 ## v0.1 — preregistered phase-only synthetic gate
 
 Status: **FAILED / STOP_NON_IDENTIFIABLE for this statistic**.
@@ -36,7 +44,7 @@ Result SHA-256: `6f545356eb698fada3270b78c1430d33e33758176594aec4cf144462c93b90a
 
 ## v0.1a — coordinate-structure development amendment
 
-Status: **FAILED / STOP_NON_IDENTIFIABLE. BRANCH CLOSED BEFORE UD TEST OR VOYNICH.**
+Status: **FAILED / STOP_NON_IDENTIFIABLE. BRANCH CLOSED BEFORE ANY UD-TEST EVALUATION OR VOYNICH RUN.**
 
 Development parameters:
 - same six pinned UD development corpora;
@@ -72,7 +80,7 @@ Result SHA-256: `815e36dc53256f6e8fdb535ad28d57d13c726c96ccaa115fb9526244c0bfabf
 
 ## Branch decision
 
-The branch is closed at the synthetic-development stage. The untouched UD test split was not opened and Voynich was not run.
+The branch is closed at the synthetic-development stage. No UD-test evaluation was performed and Voynich was not run.
 
 Reason: two successive development detectors were sensitive to planted fractionation but insufficiently specific against difficult verbose/shared-alphabet controls. Further tuning on the same development controls would materially increase circularity and decision-rule overfitting. A future revisit would require a genuinely new preregistered discriminator or independent theoretical invariant, not another threshold/statistic adjustment to these development results.
 
