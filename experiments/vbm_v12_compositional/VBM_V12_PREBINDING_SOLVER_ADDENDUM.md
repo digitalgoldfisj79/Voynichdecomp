@@ -76,6 +76,7 @@ Given aligned estimated nucleus-state labels for visible types `(s,m)`:
 - initialise `base[s]` from the aligned label of `(s,0)`;
 - construct a `KN x KN` count matrix of observed aligned transitions from label `(s,m)` to label `(s,m+1)` over every skeleton and adjacent e-level;
 - infer the global permutation `pi` by maximum-weight bipartite assignment (Hungarian algorithm);
+- with `pi` frozen, re-estimate each `base[s]` by exact maximisation of agreement across **all** visible e-levels of that skeleton, not only `m=0`;
 - induce the complete M12 nucleus map `pi^m(base[s])`.
 
 No direct e-count-to-length interpretation is introduced.
