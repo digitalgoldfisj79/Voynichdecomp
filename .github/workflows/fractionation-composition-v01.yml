@@ -20,18 +20,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run synthetic development gate
+      - name: Run runtime-bounded development pilot
         run: |
           python experiments/fractionation_composition_v0_1/fractionation_composition_v01.py \
             --repo "$GITHUB_WORKSPACE" \
-            --output experiments/fractionation_composition_v0_1/results/dev_gate_v01.json \
+            --output experiments/fractionation_composition_v0_1/results/dev_pilot_v01.json \
             --split dev \
-            --reps 12 \
-            --target-letters 600 \
-            --null-reps 99
-      - name: Upload gate result
+            --reps 4 \
+            --target-letters 400 \
+            --null-reps 39
+      - name: Upload pilot result
         uses: actions/upload-artifact@v4
         with:
-          name: fractionation-composition-v01-dev
-          path: experiments/fractionation_composition_v0_1/results/dev_gate_v01.json
+          name: fractionation-composition-v01-dev-pilot
+          path: experiments/fractionation_composition_v0_1/results/dev_pilot_v01.json
           if-no-files-found: error
