@@ -23,6 +23,8 @@ jobs:
           python-version: '3.12'
       - name: Install runtime dependency
         run: python -m pip install --quiet numpy
+      - name: Stage existing P70-C records at legacy generator path
+        run: cp enriched_records.pkl Paper/enriched_records.pkl
       - name: Run frozen gate
         run: python experiments/fractionation_composition_v01/run_fractionation_gate_v01.py
       - name: Upload results
