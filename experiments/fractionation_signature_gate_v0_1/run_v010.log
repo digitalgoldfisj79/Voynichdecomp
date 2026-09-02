@@ -1,0 +1,5 @@
+FRAC_GATE_EASY {"auc": 1.0, "effect_over_chance": 0.5, "effect_over_null_sd": 17.272712872430823, "null_sd": 0.02894739255453356}
+FRAC_GATE_TWIN {"auc": 0.5231119791666667, "effect_over_chance": 0.02311197916666674, "effect_over_null_sd": 0.8108105779872755, "null_sd": 0.0285047824906762}
+FRAC_GATE_PARAM_CLEAN {"exact_rate": 1.0, "mean_best_jsd": 1.0, "n": 192, "within_one_rate": 1.0}
+FRAC_GATE_PARAM_NOISY {"exact_rate": 0.5833333333333334, "mean_best_jsd": 0.04991506162851398, "n": 192, "within_one_rate": 0.6770833333333334}
+FRAC_GATE_DECISION STOP_NON_IDENTIFIABLE
