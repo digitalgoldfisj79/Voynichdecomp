@@ -1,0 +1,34 @@
+name: Fractionation composition gate v0.1
+
+on:
+  push:
+    branches:
+      - experiment/fractionation-composition-v01-20260902
+    paths:
+      - 'experiments/fractionation_composition_v01/**'
+      - '.github/workflows/fractionation-composition-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fractionation-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install runtime dependency
+        run: python -m pip install --quiet numpy
+      - name: Run frozen gate
+        run: python experiments/fractionation_composition_v01/run_fractionation_gate_v01.py
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fractionation-composition-v01-results
+          path: experiments/fractionation_composition_v01/results/
+          if-no-files-found: warn
