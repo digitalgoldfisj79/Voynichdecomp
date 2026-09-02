@@ -27,6 +27,8 @@ jobs:
         run: cp enriched_records.pkl Paper/enriched_records.pkl
       - name: Run frozen gate
         run: python experiments/fractionation_composition_v01/run_fractionation_gate_v01.py
+      - name: Run sealed null-calibration diagnostic
+        run: python experiments/fractionation_composition_v01/diagnose_null_calibration_v01.py
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
