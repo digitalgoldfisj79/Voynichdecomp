@@ -78,6 +78,10 @@ Positive threshold rates:
 
 Result SHA-256: `815e36dc53256f6e8fdb535ad28d57d13c726c96ccaa115fb9526244c0bfabf8`.
 
+### Determinism check
+
+A second CI execution on a different hosted runner/region reproduced the v0.1a output exactly, including result SHA-256 `815e36dc53256f6e8fdb535ad28d57d13c726c96ccaa115fb9526244c0bfabf8`. The failure is therefore deterministic under the pinned code/data/seeds rather than a runner fluctuation.
+
 ## Branch decision
 
 The branch is closed at the synthetic-development stage. No UD-test evaluation was performed and Voynich was not run.
