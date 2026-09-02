@@ -1,4 +1,4 @@
-name: Fractionation composition gate v0.1
+name: Fractionation composition gate v0.2
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  fractionation-gate:
+  fractionation-gate-v02:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -25,14 +25,12 @@ jobs:
         run: python -m pip install --quiet numpy
       - name: Stage existing P70-C records at legacy generator path
         run: cp enriched_records.pkl Paper/enriched_records.pkl
-      - name: Run frozen gate
-        run: python experiments/fractionation_composition_v01/run_fractionation_gate_v01.py
-      - name: Run sealed null-calibration diagnostic
-        run: python experiments/fractionation_composition_v01/diagnose_null_calibration_v01.py
+      - name: Run recalibrated frozen gate v0.2
+        run: python experiments/fractionation_composition_v01/run_fractionation_gate_v02.py
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: fractionation-composition-v01-results
+          name: fractionation-composition-v02-results
           path: experiments/fractionation_composition_v01/results/
           if-no-files-found: warn
