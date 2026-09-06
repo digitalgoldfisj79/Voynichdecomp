@@ -1,0 +1,707 @@
+{
+  "csv_files": [
+    {
+      "path": "external/ammerbach/md/train.csv",
+      "rows": 1000,
+      "split": "train"
+    },
+    {
+      "path": "external/ammerbach/md/val.csv",
+      "rows": 400,
+      "split": "val"
+    },
+    {
+      "path": "external/ammerbach/md/test.csv",
+      "rows": 1000,
+      "split": "test"
+    }
+  ],
+  "columns": {
+    "external/ammerbach/md/train.csv": [
+      "file",
+      "top",
+      "bot",
+      "combined"
+    ],
+    "external/ammerbach/md/val.csv": [
+      "file",
+      "top",
+      "bot",
+      "combined"
+    ],
+    "external/ammerbach/md/test.csv": [
+      "file",
+      "top",
+      "bot",
+      "combined"
+    ]
+  },
+  "source_counts": {
+    "ammerbach_bookA": 1200,
+    "ammerbach_bookB": 1200
+  },
+  "split_counts": {
+    "train": 1000,
+    "val": 400,
+    "test": 1000
+  },
+  "annotations_parsed": 2400,
+  "checkpoint_files_excluded": 12,
+  "representation_lengths": {
+    "pitch": {
+      "n": 2400,
+      "mean": 26.30291666666667,
+      "median": 26.0,
+      "min": 5,
+      "max": 59
+    },
+    "duration": {
+      "n": 2400,
+      "mean": 25.106666666666666,
+      "median": 24.0,
+      "min": 5,
+      "max": 58
+    },
+    "paired": {
+      "n": 2400,
+      "mean": 26.895,
+      "median": 26.0,
+      "min": 5,
+      "max": 69
+    },
+    "flattened": {
+      "n": 2400,
+      "mean": 51.40958333333333,
+      "median": 50.0,
+      "min": 10,
+      "max": 116
+    }
+  },
+  "samples": [
+    {
+      "id": "train:0000:train/000.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 23,
+        "duration": 22,
+        "paired": 23,
+        "flattened": 45
+      },
+      "top_head": [
+        "|",
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "2",
+        "|",
+        "4",
+        "4",
+        "2",
+        "|"
+      ],
+      "bot_head": [
+        "|",
+        "|",
+        "f'",
+        "a'",
+        "|",
+        "b'",
+        "c''",
+        "|",
+        "c''",
+        "c''",
+        "c''",
+        "|"
+      ],
+      "combined_head": [
+        "_|_",
+        "_|_",
+        "_f'_2_",
+        "_a'_2_",
+        "_|_",
+        "_b'_2_",
+        "_c''_2_",
+        "_|_",
+        "_c''_4_",
+        "_c''_4_",
+        "_c''_2_",
+        "_|_"
+      ]
+    },
+    {
+      "id": "train:0001:train/001.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 30,
+        "duration": 29,
+        "paired": 30,
+        "flattened": 59
+      },
+      "top_head": [
+        "|",
+        "|",
+        "2",
+        "2",
+        "|",
+        "4",
+        "4",
+        "4",
+        "4",
+        "|",
+        "8",
+        "8"
+      ],
+      "bot_head": [
+        "|",
+        "|",
+        "c'",
+        "f'",
+        "|",
+        "d'",
+        "g'",
+        "e'",
+        "a'",
+        "|",
+        "g'",
+        "a'"
+      ],
+      "combined_head": [
+        "_|_",
+        "_|_",
+        "_c'_2_",
+        "_f'_2_",
+        "_|_",
+        "_d'_4_",
+        "_g'_4_",
+        "_e'_4_",
+        "_a'_4_",
+        "_|_",
+        "_g'_8_",
+        "_a'_8_"
+      ]
+    },
+    {
+      "id": "train:0002:train/002.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 31,
+        "duration": 30,
+        "paired": 32,
+        "flattened": 61
+      },
+      "top_head": [
+        "|",
+        "|",
+        "4",
+        "4",
+        "4",
+        "|",
+        "4",
+        "4",
+        "4.",
+        "8",
+        "|",
+        "2"
+      ],
+      "bot_head": [
+        "|",
+        "|",
+        "r4",
+        "a",
+        "a",
+        "a",
+        "|",
+        "c'",
+        "a",
+        "a",
+        "g",
+        "|"
+      ],
+      "combined_head": [
+        "_|_",
+        "_|_",
+        "_r4_",
+        "_a_4_",
+        "_a_4_",
+        "_a_4_",
+        "_|_",
+        "_c'_4_",
+        "_a_4_",
+        "_a_4._",
+        "_g_8_",
+        "_|_"
+      ]
+    },
+    {
+      "id": "train:0003:train/003.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 35,
+        "duration": 33,
+        "paired": 47,
+        "flattened": 68
+      },
+      "top_head": [
+        "|",
+        "|",
+        "4",
+        "4",
+        "4",
+        "|",
+        "4",
+        "4",
+        "2",
+        "|",
+        "4",
+        "8"
+      ],
+      "bot_head": [
+        "|",
+        "|",
+        "r4",
+        "f",
+        "d",
+        "f",
+        "|",
+        "c",
+        "d",
+        "a",
+        "|",
+        "b"
+      ],
+      "combined_head": [
+        "_|_",
+        "_|_",
+        "_r4_",
+        "_f_4_",
+        "_d_4_",
+        "_f_4_",
+        "_|_",
+        "_c_4_",
+        "_d_4_",
+        "_a",
+        "_2_",
+        "_|_"
+      ]
+    },
+    {
+      "id": "train:0004:train/004.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 27,
+        "duration": 25,
+        "paired": 27,
+        "flattened": 52
+      },
+      "top_head": [
+        "|",
+        "2",
+        "|",
+        "1",
+        "|",
+        "2",
+        "2",
+        "|",
+        "4",
+        "4",
+        "4.",
+        "8"
+      ],
+      "bot_head": [
+        "|",
+        "a'",
+        "r2",
+        "|",
+        "a'",
+        "|",
+        "b'",
+        "c''",
+        "|",
+        "c''",
+        "c''",
+        "c''"
+      ],
+      "combined_head": [
+        "_|_",
+        "_a'_2_",
+        "_r2_",
+        "_|_",
+        "_a'_1_",
+        "_|_",
+        "_b'_2_",
+        "_c''_2_",
+        "_|_",
+        "_c''_4_",
+        "_c''_4_",
+        "_c''_4._"
+      ]
+    },
+    {
+      "id": "train:0005:train/005.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 26,
+        "duration": 24,
+        "paired": 26,
+        "flattened": 50
+      },
+      "top_head": [
+        "|",
+        "2",
+        "|",
+        "1",
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "4.",
+        "8",
+        "|"
+      ],
+      "bot_head": [
+        "|",
+        "f'",
+        "r2",
+        "|",
+        "f'",
+        "|",
+        "d'",
+        "a'",
+        "|",
+        "g'",
+        "a'",
+        "b'"
+      ],
+      "combined_head": [
+        "_|_",
+        "_f'_2_",
+        "_r2_",
+        "_|_",
+        "_f'_1_",
+        "_|_",
+        "_d'_2_",
+        "_a'_2_",
+        "_|_",
+        "_g'_2_",
+        "_a'_4._",
+        "_b'_8_"
+      ]
+    },
+    {
+      "id": "train:0006:train/006.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 36,
+        "duration": 34,
+        "paired": 36,
+        "flattened": 70
+      },
+      "top_head": [
+        "|",
+        "2",
+        "|",
+        "2",
+        "4.",
+        "8",
+        "|",
+        "8",
+        "8",
+        "8",
+        "8",
+        "4"
+      ],
+      "bot_head": [
+        "|",
+        "c'",
+        "r2",
+        "|",
+        "c'",
+        "d'",
+        "c'",
+        "|",
+        "b",
+        "c'",
+        "d'",
+        "e'"
+      ],
+      "combined_head": [
+        "_|_",
+        "_c'_2_",
+        "_r2_",
+        "_|_",
+        "_c'_2_",
+        "_d'_4._",
+        "_c'_8_",
+        "_|_",
+        "_b_8_",
+        "_c'_8_",
+        "_d'_8_",
+        "_e'_8_"
+      ]
+    },
+    {
+      "id": "train:0007:train/007.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 26,
+        "duration": 24,
+        "paired": 27,
+        "flattened": 50
+      },
+      "top_head": [
+        "|",
+        "2",
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "2",
+        "|"
+      ],
+      "bot_head": [
+        "|",
+        "f",
+        "r2",
+        "|",
+        "f",
+        "d",
+        "|",
+        "g",
+        "f",
+        "|",
+        "c",
+        "f"
+      ],
+      "combined_head": [
+        "_|_",
+        "_f_2_",
+        "_r2_",
+        "_|_",
+        "_f_2_",
+        "_d_2_",
+        "_|_",
+        "_g_2_",
+        "_f_2_",
+        "_|_",
+        "_c_2_",
+        "_f_2_"
+      ]
+    },
+    {
+      "id": "train:0008:train/008.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 22,
+        "duration": 22,
+        "paired": 22,
+        "flattened": 44
+      },
+      "top_head": [
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|"
+      ],
+      "bot_head": [
+        "|",
+        "f'",
+        "g'",
+        "|",
+        "a'",
+        "a'",
+        "g'",
+        "|",
+        "f'",
+        "g'",
+        "a'",
+        "|"
+      ],
+      "combined_head": [
+        "_|_",
+        "_f'_2_",
+        "_g'_2_",
+        "_|_",
+        "_a'_2_",
+        "_a'_4_",
+        "_g'_4_",
+        "_|_",
+        "_f'_2_",
+        "_g'_4_",
+        "_a'_4_",
+        "_|_"
+      ]
+    },
+    {
+      "id": "train:0009:train/009.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 25,
+        "duration": 25,
+        "paired": 25,
+        "flattened": 50
+      },
+      "top_head": [
+        "|",
+        "4.",
+        "8",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4"
+      ],
+      "bot_head": [
+        "|",
+        "d'",
+        "c'",
+        "d'",
+        "e'",
+        "|",
+        "f'",
+        "f'",
+        "d'",
+        "|",
+        "d'",
+        "e'"
+      ],
+      "combined_head": [
+        "_|_",
+        "_d'_4._",
+        "_c'_8_",
+        "_d'_4_",
+        "_e'_4_",
+        "_|_",
+        "_f'_2_",
+        "_f'_4_",
+        "_d'_4_",
+        "_|_",
+        "_d'_2_",
+        "_e'_4_"
+      ]
+    },
+    {
+      "id": "train:0010:train/010.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 25,
+        "duration": 25,
+        "paired": 25,
+        "flattened": 50
+      },
+      "top_head": [
+        "|",
+        "2",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4",
+        "4"
+      ],
+      "bot_head": [
+        "|",
+        "a",
+        "b'",
+        "c'",
+        "|",
+        "c'",
+        "c'",
+        "b",
+        "|",
+        "a",
+        "g",
+        "c'"
+      ],
+      "combined_head": [
+        "_|_",
+        "_a_2_",
+        "_b'_4_",
+        "_c'_4_",
+        "_|_",
+        "_c'_2_",
+        "_c'_4_",
+        "_b_4_",
+        "_|_",
+        "_a_2_",
+        "_g_4_",
+        "_c'_4_"
+      ]
+    },
+    {
+      "id": "train:0011:train/011.png",
+      "source": "ammerbach_bookA",
+      "lengths": {
+        "pitch": 20,
+        "duration": 20,
+        "paired": 21,
+        "flattened": 40
+      },
+      "top_head": [
+        "|",
+        "2",
+        "2",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|",
+        "2",
+        "4",
+        "4",
+        "|"
+      ],
+      "bot_head": [
+        "|",
+        "d",
+        "g",
+        "|",
+        "f",
+        "f",
+        "g",
+        "|",
+        "d",
+        "e",
+        "f",
+        "|"
+      ],
+      "combined_head": [
+        "_|_",
+        "_d_2_",
+        "_g_2_",
+        "_|_",
+        "_f_2_",
+        "_f_4_",
+        "_g_4_",
+        "_|_",
+        "_d_2_",
+        "_e_4_",
+        "_f_4_",
+        "_|_"
+      ]
+    }
+  ],
+  "book_identity_policy": "neutral bookA/bookB by documented balanced split halves; no chronology assigned"
+}
