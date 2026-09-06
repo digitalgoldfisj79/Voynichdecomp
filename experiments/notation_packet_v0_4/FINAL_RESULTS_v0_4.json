@@ -1,0 +1,83 @@
+{
+  "schema": "voynich-historical-notation-final-v0.4",
+  "formal_verdict": "ABSTAIN_OOD",
+  "selected_representation": "flattened",
+  "external_artifact": {
+    "workflow_run": 30128044665,
+    "artifact_id": 8610065046,
+    "digest": "sha256:f3e4476fbced682f337891c50b6227aa8fdacd40b85288d260d2d44f769cb9c6"
+  },
+  "corrected_intake": {
+    "ammerbach_annotations": 2400,
+    "bookA": 1200,
+    "bookB": 1200,
+    "checkpoint_duplicates_excluded": true,
+    "unclassified_gabc_excluded_from_preregistered_tasks": true
+  },
+  "external_calibration": {
+    "ensemble_roc_auc": 0.9997124011509525,
+    "logistic_roc_auc": 0.9997667176406031,
+    "forest_roc_auc": 0.9995647717175431,
+    "balanced_accuracy": 0.9579489397142673,
+    "recall": {
+      "organ_tablature": 1.0,
+      "neume_aquitanian": 0.92,
+      "neume_square": 0.9473684210526315
+    },
+    "family_macro_f1": 0.8728167967298401,
+    "balanced_sensitivity_auc": 0.9958946382322147,
+    "balanced_sensitivity_macro_f1": 0.8768688024408848,
+    "broad_gate": true,
+    "family_gate": true
+  },
+  "voynich": {
+    "windows": 346,
+    "folios": 226,
+    "target_features_sha256": "c94ad2c96e76ba89efe67f776cfc0b4d820b2b9c21824d44cfc43323a05bb1f1",
+    "mean_historical_probability": 0.24536962801868903,
+    "median_historical_probability": 0.19575833647553853,
+    "fraction_above_external_threshold": 0.7861271676300579,
+    "mean_family_probabilities": {
+      "language_or_substitution": 0.03703527857760171,
+      "neume_aquitanian": 0.0017747854850310475,
+      "neume_square": 0.03976817937628649,
+      "organ_tablature": 0.015666386164280715,
+      "procedural_synthetic": 0.8330600384811111,
+      "surface_null": 0.07269533191568905
+    },
+    "predicted_family_counts": {
+      "procedural_synthetic": 336,
+      "neume_square": 7,
+      "surface_null": 3
+    },
+    "cross_representation_family_agreement": 0.953757225433526,
+    "ood_fraction_above_nearest_family_p95": 0.9971098265895953,
+    "median_nearest_family_distance_percentile": 1.0
+  },
+  "posthoc_length_ablations": {
+    "no_length": {
+      "external_auc": 0.9996998665764177,
+      "family_macro_f1": 0.848793948531794,
+      "procedural_windows": 253,
+      "mean_historical_probability": 0.16094921785045185
+    },
+    "no_length_or_character_class": {
+      "external_auc": 0.9996775828883558,
+      "family_macro_f1": 0.8395022625046867,
+      "procedural_windows": 269,
+      "mean_historical_probability": 0.19048672458094656
+    },
+    "sequence_entropy_only": {
+      "external_auc": 0.9996949920196543,
+      "family_macro_f1": 0.8335090744846844,
+      "procedural_windows": 271,
+      "mean_historical_probability": 0.15495091510889883
+    }
+  },
+  "interpretation": {
+    "literal_musical_notation": "not supported",
+    "known_neume_or_organ_tablature_family": "not supported at this resolution",
+    "broad_procedural_or_operational_notation": "still viable but unidentified",
+    "procedural_synthetic_label": "directional resemblance only; abstain because target is out of distribution"
+  }
+}
