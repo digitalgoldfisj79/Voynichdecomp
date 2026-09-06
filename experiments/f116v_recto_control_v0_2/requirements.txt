@@ -1,0 +1,9 @@
+gdown>=5.2
+numpy>=2.0
+opencv-python-headless>=4.10
+Pillow>=10.0
+requests>=2.32
+scipy>=1.13
+scikit-learn>=1.5
+tifffile>=2024.8
+huggingface_hub>=1.0
