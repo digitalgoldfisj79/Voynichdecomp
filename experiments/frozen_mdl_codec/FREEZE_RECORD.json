@@ -1,0 +1,35 @@
+{
+  "freeze_name": "frozen-mdl-codec-v0.1",
+  "date": "2026-07-14",
+  "status": "INTERNALLY_VALIDATED_THIRD_PARTY_LLM_REPRODUCED",
+  "source_archive_sha256": "7dd12696bb6b6e550be325a373cf5c44d60b0ea2429b8e8e9fd5090a6f73999e",
+  "full_synthetic_result_sha256": "98e28540e86deae8c517eaa6250a8d9af7431ca939329198ab90a2e9f1598917",
+  "fuzz_aggregate_sha256": "fcba2b40abdd963b74492f030c5473b5a94c547e08b45accc0b67df69926acb1",
+  "unit_tests": {"passed": 18, "failed": 0},
+  "fuzz_models": {"passed": 300, "failed": 0},
+  "synthetic_gate": {
+    "verdict": "PASS_SELECTION_POLICY_ROBUSTNESS",
+    "positive_successes": 93,
+    "positive_trials": 96,
+    "false_positives": 0,
+    "control_trials": 320,
+    "policies": ["iid_uniform", "cyclic", "frequency_weighted", "sticky_line_reset"]
+  },
+  "third_party_model_audits": [
+    {
+      "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8",
+      "job_id": "6a56897bb1669a49bf072b87",
+      "verdict": "PASS_REPRODUCED",
+      "quality": "LOW_INTERNALLY_CONTRADICTORY"
+    },
+    {
+      "model": "mistralai/Devstral-Small-2507",
+      "job_id": "6a568ad4b1669a49bf072c04",
+      "verdict": "PASS_REPRODUCED",
+      "quality": "CLEAN_BUT_VERDICT_ONLY"
+    }
+  ],
+  "voynich_data_used": false,
+  "human_reviewed": false,
+  "change_control": "Any change to the source archive, accounting convention, schema or decision gate requires a new version and a complete rerun."
+}
