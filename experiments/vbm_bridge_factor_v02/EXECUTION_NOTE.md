@@ -1,0 +1,3 @@
+The predeclared K extension to 20 remained at the raw cap. Under the same frozen representation/statistic, a diagnostic-only continuation K=21..30 was run to locate the plateau. It did not alter any five-state factorisation threshold or target gate. The unconstrained raw minimum moved to K=27; one-SE K=19. The primary production-conditioned curve was correspondingly extended to K=30; raw best K=23, one-SE K=13.
+
+The full executable runner and machine-readable results are preserved in the companion reproducibility bundle `VBM_factorisation_v02_20260821.zip`; this branch records the frozen protocol, closeout, and complete diagnostic curves.
