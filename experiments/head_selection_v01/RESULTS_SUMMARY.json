@@ -1,0 +1,8 @@
+{
+  "corpus": {"events":28530,"folios":217,"lines":4056,"stems":4298,"eligible_heldout_events":18754},
+  "primary": {"baseline_bits":1.1550104457,"full_bits":1.1395399200,"gain_bits":0.0154705258,"fold_gains":[0.0129767021,0.0171055213,0.0090443677,0.0155680178,0.0215621208]},
+  "matched_within_line_null": {"n":25,"mean_gain":0.0033545169,"sd_gain":0.0013958237,"excess_gain":0.0121160089,"z":8.68018568},
+  "matched_lags": {"lag1_vs_lag2":{"n":15677,"lag1":0.0167652147,"lag2":0.0047584026,"excess":0.0120068121},"lag1_vs_lag3":{"n":12824,"lag1":0.0167541232,"lag3":0.0013789236,"excess":0.0153751996}},
+  "tau_sensitivity": [{"tau":5,"lag1":-0.0247908438,"lag2":-0.0401372869,"excess":0.0153464431},{"tau":10,"lag1":-0.0013717231,"lag2":-0.0142931596,"excess":0.0129214365},{"tau":20,"lag1":0.0154705258,"lag2":0.0032843637,"excess":0.0121861620},{"tau":50,"lag1":0.0312454627,"lag2":0.0180464628,"excess":0.0131989999}],
+  "verdict":"SUPPORTED: boundary-local contextual head selection as a surface-production effect; no semantic/cipher assignment"
+}

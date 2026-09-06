@@ -1,0 +1,25 @@
+{
+  "id": "HEAD-SELECTION-v0.1",
+  "seed": 20260821,
+  "primary_unit": "next token literal head = first EVA character; stem = token[1:]",
+  "primary_effect": "held-out bits saved by previous immediate final after stem + section/Currier/hand/line-position production context",
+  "folds": "5 complete-folio hash folds",
+  "eligibility": {
+    "train_stem_min": 20,
+    "train_folios_min": 3
+  },
+  "smoothing": "hierarchical Dirichlet shrinkage global→stem→stem×production; full adds stem×production×prev-final, tau=20",
+  "controls": [
+    "lag2 final",
+    "lag3 final",
+    "within-line previous-final shuffles"
+  ],
+  "sensitivities_tau": [5,10,20,50],
+  "synthetic": "real covariate skeleton; no-dependency null and planted 22% local selector positive arm",
+  "execution_amendment": {
+    "matched_within_line_permutations_planned": 100,
+    "completed": 25,
+    "reason": "runtime ceiling after repeated execution; model/statistic/folds/eligibility/thresholds unchanged",
+    "impact": "null SD estimated from 25 matched permutations; no scientific decision threshold changed"
+  }
+}
