@@ -1,0 +1,40 @@
+name: VMS seriation residual retention v01
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_seriation_residual_retention.py'
+      - 'protocols/vms_seriation_residual_retention_v01.md'
+      - '.github/workflows/vms-seriation-residual-retention.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_seriation_residual_retention.py'
+      - 'protocols/vms_seriation_residual_retention_v01.md'
+      - '.github/workflows/vms-seriation-residual-retention.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retention:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy requests
+      - name: Run residual retention audit
+        run: python scripts/vms_seriation_residual_retention.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-seriation-residual-retention-v01
+          path: artifacts/vms_seriation_residual_retention_v01/
+          if-no-files-found: error
+          retention-days: 30
