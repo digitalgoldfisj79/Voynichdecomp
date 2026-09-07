@@ -74,10 +74,15 @@ def qualify(manifest: Dict[str, Any], freeze_rec: Dict[str, Any], summary: Dict[
     rep_pass=all(bool(x.get('pass')) for x in rep) if rep else not rep_req
     leak=summary.get('leakage_checks',{}); lk=['target_inaccessible_during_fit','disjoint_seed_namespaces','training_only_model_selection','grouped_trial_splits']
     leak_pass=all(leak.get(k) is True for k in lk)
-    overall=bool(all_src and macro_pass and pair_pass and unknown_pass and rep_pass and leak_pass)
+    cal_req=('calibration' in manifest.get('splits',{})); cal=summary.get('calibration_checks',{})
+    cal_pass=(cal.get('complete') is True and cal.get('thresholds_changed') is False) if cal_req else True
+    power_req=bool(manifest.get('power_reporting',{}).get('required',False))
+    power=summary.get('power_reporting',{}); power_pass=(power.get('complete') is True) if power_req else True
+    overall=bool(all_src and macro_pass and pair_pass and unknown_pass and rep_pass and leak_pass and cal_pass and power_pass)
     out={'kind':'SOURCE_ID_QUALIFICATION','assay_id':manifest['assay_id'],'version':manifest['version'],'manifest_sha256':msha,
          'summary_sha256':base.sha256_obj(summary),'source_validation':src,'macro_recall':macro,'macro_recall_gate_pass':macro_pass,
          'pairwise_separations':pairs,'unknown_controls':unknown,'representation_gate_pass':rep_pass,'leakage_gate_pass':leak_pass,
+         'calibration_gate_pass':cal_pass,'power_gate_required':power_req,'power_gate_pass':power_pass,
          'overall_pass':overall,'target_open_permitted':overall,'lifecycle_stage':('ADVERSARIAL_POWERED' if overall else 'BLOCKED'),
          'licensed_inference':manifest['licensed_inference'] if overall else 'NO TARGET INFERENCE LICENSED',
          'prohibited_inference':manifest['prohibited_inference']}
