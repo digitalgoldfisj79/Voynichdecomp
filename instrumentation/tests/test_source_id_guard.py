@@ -25,4 +25,12 @@ class T(unittest.TestCase):
         m=copy.deepcopy(M);q=s.qualify(m,self.fr(m),S(b.sha256_obj(m),unknown=10));self.assertFalse(q['overall_pass'])
     def test_group_leakage_required(self):
         m=copy.deepcopy(M);x=S(b.sha256_obj(m));x['leakage_checks']['grouped_trial_splits']=False;q=s.qualify(m,self.fr(m),x);self.assertFalse(q['overall_pass'])
+    def test_required_power_blocks_target_until_complete(self):
+        m=copy.deepcopy(M);m['power_reporting']={'required':True};x=S(b.sha256_obj(m));x['power_reporting']={'complete':False}
+        q=s.qualify(m,self.fr(m),x);self.assertFalse(q['overall_pass']);self.assertFalse(q['power_gate_pass'])
+        x['power_reporting']={'complete':True};q=s.qualify(m,self.fr(m),x);self.assertTrue(q['overall_pass']);self.assertTrue(q['power_gate_pass'])
+    def test_required_calibration_blocks_if_split_declared(self):
+        m=copy.deepcopy(M);m['splits']={'calibration':'40/source'};x=S(b.sha256_obj(m));x['calibration_checks']={'complete':False,'thresholds_changed':False}
+        q=s.qualify(m,self.fr(m),x);self.assertFalse(q['overall_pass']);self.assertFalse(q['calibration_gate_pass'])
+        x['calibration_checks']={'complete':True,'thresholds_changed':False};q=s.qualify(m,self.fr(m),x);self.assertTrue(q['overall_pass'])
 if __name__=='__main__':unittest.main()
