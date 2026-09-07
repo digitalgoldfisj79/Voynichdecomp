@@ -1,6 +1,6 @@
-import subprocess,re,collections
-u='https://voynich.nu/data/previous/GC_ivtff_0c.txt'
-s=subprocess.check_output(['curl','-Ls','-A','Mozilla/5.0',u]).decode('utf-8','ignore')
+import urllib.request,re,collections
+u='https://raw.githubusercontent.com/CS-433/ml-project-2-scikit-learn2/e370e7f14f49c30026b572fa7bcd06b5fd1ec1c7/data/GC_ivtff_0c.txt'
+s=urllib.request.urlopen(u).read().decode('utf-8','ignore')
 print('raw8am',len(re.findall(r'8am',s)))
 for split_commas in (False,True):
     toks=[]
