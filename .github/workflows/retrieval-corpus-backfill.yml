@@ -1,0 +1,67 @@
+name: Retrieval corpus backfill
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: Rows upserted per Edge call
+        required: false
+        default: "400"
+      fetch_size:
+        description: Rows fetched for embedding per cycle
+        required: false
+        default: "128"
+      encode_size:
+        description: Embedding model batch size
+        required: false
+        default: "32"
+  push:
+    branches: [main]
+    paths:
+      - scripts/import_retrieval_stage.py
+      - .github/workflows/retrieval-corpus-backfill.yml
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: retrieval-corpus-backfill
+  cancel-in-progress: false
+
+env:
+  CLAUDE_RETRIEVAL_EDGE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co/functions/v1/claude-voynich-search-v01
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install import runtime
+        run: python -m pip install "requests>=2.32,<3" "cryptography>=43,<48"
+      - name: Import encrypted retrieval stage
+        run: python scripts/import_retrieval_stage.py --batch-size "${{ inputs.batch_size || '400' }}"
+
+  embed:
+    needs: ingest
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install embedding runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "torch>=2.4,<3" "transformers>=4.44,<5" "requests>=2.32,<3"
+      - name: Embed pending retrieval chunks
+        run: |
+          python scripts/embed_claude_retrieval.py \
+            --fetch-size "${{ inputs.fetch_size || '128' }}" \
+            --encode-size "${{ inputs.encode_size || '32' }}"
