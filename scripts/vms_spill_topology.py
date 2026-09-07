@@ -1,317 +1,267 @@
 #!/usr/bin/env python3
-"""Quantify upper-margin stain morphology across VMS ff.1-56.
+"""VMS upper-margin spill topology measurement v02.
 
-Stage S1 is deliberately image-only. It does not use Voynich transcription,
-Currier language, scribe labels, or downstream statistical outcomes.
+The v01 detector is RETRACTED: diagnostics showed scan-border/text/paint leakage.
+v02 aligns every page to the physical parchment top edge and measures only a
+narrow band *inside* the parchment. Dark ink and high-saturation pigment are
+excluded before aggregation. No Voynich textual metadata enters the score.
 
-Outputs compact CSV/JSON measurements plus diagnostic contact sheets.  Linear
-ordering conclusions are NOT licensed by this script; it supplies physical
-surface evidence and current-order/permutation diagnostics only.
+Outputs remain physical diagnostics only. Linear/original order inference is
+not licensed by this script.
 """
 from __future__ import annotations
 
-import csv
-import hashlib
-import io
-import json
-import math
-import os
-import random
-import time
+import csv, hashlib, io, json, math, os, random, time
 from pathlib import Path
 from typing import Dict, List, Tuple
 
 import numpy as np
 import requests
-from PIL import Image, ImageDraw, ImageFont
-from scipy.ndimage import gaussian_filter, binary_opening, binary_closing, binary_fill_holes
+from PIL import Image, ImageDraw
+from scipy.ndimage import gaussian_filter, median_filter
 
 OUT = Path(os.environ.get("SPILL_OUT", "artifacts/vms_spill_v01"))
 OUT.mkdir(parents=True, exist_ok=True)
-CACHE = Path(os.environ.get("SPILL_CACHE", ".cache/vms_spill_v01"))
+CACHE = Path(os.environ.get("SPILL_CACHE", ".cache/vms_spill_v02"))
 CACHE.mkdir(parents=True, exist_ok=True)
 
-# Beinecke IIIF ids are consecutive across these surviving sides.
-PAGES: List[Tuple[str, int]] = []
-_i = 1006076
-for f in range(1, 12):
-    for side in "rv":
-        PAGES.append((f"f{f}{side}", _i)); _i += 1
-for f in range(13, 57):
-    for side in "rv":
-        PAGES.append((f"f{f}{side}", _i)); _i += 1
-assert len(PAGES) == 110 and _i == 1006186
+PAGES: List[Tuple[str,int]]=[]
+i=1006076
+for f in range(1,12):
+    for s in "rv": PAGES.append((f"f{f}{s}",i)); i+=1
+for f in range(13,57):
+    for s in "rv": PAGES.append((f"f{f}{s}",i)); i+=1
+assert len(PAGES)==110 and i==1006186
 
-# Explicit conjoint mapping from Stolfi/Beinecke collation, not inferred by solver.
-BIFOLIA = {
-    "q01": [(1,8),(2,7),(3,6),(4,5)],
-    "q02": [(9,16),(10,15),(11,14),(12,13)],
-    "q03": [(17,24),(18,23),(19,22),(20,21)],
-    "q04": [(25,32),(26,31),(27,30),(28,29)],
-    "q05": [(33,40),(34,39),(35,38),(36,37)],
-    "q06": [(41,48),(42,47),(43,46),(44,45)],
-    "q07": [(49,56),(50,55),(51,54),(52,53)],
+BIFOLIA={
+ "q01":[(1,8),(2,7),(3,6),(4,5)],
+ "q02":[(9,16),(10,15),(11,14),(12,13)],
+ "q03":[(17,24),(18,23),(19,22),(20,21)],
+ "q04":[(25,32),(26,31),(27,30),(28,29)],
+ "q05":[(33,40),(34,39),(35,38),(36,37)],
+ "q06":[(41,48),(42,47),(43,46),(44,45)],
+ "q07":[(49,56),(50,55),(51,54),(52,53)],
 }
 
-SESSION = requests.Session()
-SESSION.headers.update({"User-Agent": "VoynichTopologyResearch/0.1 (+research; GitHub Actions)"})
+S=requests.Session(); S.headers.update({"User-Agent":"VoynichTopologyResearch/0.2"})
 
-def fetch_page(label: str, iid: int, width: int = 1200) -> Image.Image:
-    p = CACHE / f"{label}_{width}.jpg"
+def fetch(label,iid,width=900):
+    p=CACHE/f"{label}_{width}.jpg"
     if not p.exists():
-        url = f"https://collections.library.yale.edu/iiif/2/{iid}/full/{width},/0/default.jpg"
-        last = None
-        for attempt in range(5):
+        url=f"https://collections.library.yale.edu/iiif/2/{iid}/full/{width},/0/default.jpg"
+        err=None
+        for a in range(5):
             try:
-                r = SESSION.get(url, timeout=60)
-                r.raise_for_status()
-                p.write_bytes(r.content)
-                break
-            except Exception as exc:
-                last = exc
-                time.sleep(2 ** attempt)
+                r=S.get(url,timeout=60); r.raise_for_status(); p.write_bytes(r.content); break
+            except Exception as e:
+                err=e; time.sleep(2**a)
+        else: raise RuntimeError(f"fetch failed {label}: {err}")
+    b=p.read_bytes(); return Image.open(io.BytesIO(b)).convert("RGB"), hashlib.sha256(b).hexdigest()
+
+def top_edge(arr:np.ndarray)->np.ndarray:
+    """Estimate top parchment boundary y(x), excluding outer scan margins."""
+    g=.2126*arr[:,:,0]+.7152*arr[:,:,1]+.0722*arr[:,:,2]
+    h,w=g.shape
+    # smooth only enough to suppress hair/edge noise
+    gs=gaussian_filter(g,sigma=(2.0,1.5),mode="nearest")
+    sample=gs[:int(.32*h),int(.05*w):int(.95*w)]
+    lo=float(np.quantile(sample,.08)); hi=float(np.quantile(sample,.82))
+    thr=lo+.43*(hi-lo)
+    e=np.full(w,np.nan,dtype=np.float32)
+    maxy=int(.22*h)
+    for x in range(w):
+        col=gs[:maxy,x]
+        # sustained brightness crossing: at least 4/5 pixels above threshold
+        above=(col>thr).astype(np.int8)
+        hit=np.convolve(above,np.ones(5,dtype=np.int8),mode="same")>=4
+        ys=np.where(hit)[0]
+        if len(ys): e[x]=ys[0]
+    # fill from nearest valid central values; then robustly smooth physical edge
+    valid=np.where(np.isfinite(e))[0]
+    if len(valid)<.7*w: raise RuntimeError("parchment edge detection failed")
+    e=np.interp(np.arange(w),valid,e[valid])
+    e=median_filter(e,size=max(7,int(w/35))|1,mode="nearest")
+    return e
+
+def aligned_strip(arr:np.ndarray,e:np.ndarray,max_frac=.17):
+    h,w,_=arr.shape; dmax=max(40,int(max_frac*h)); out=np.full((dmax,w,3),np.nan,np.float32)
+    for x in range(w):
+        y0=int(round(float(e[x])))
+        n=min(dmax,h-y0)
+        if n>0: out[:n,x]=arr[y0:y0+n,x]
+    return out
+
+def features(im:Image.Image)->Dict[str,object]:
+    a=np.asarray(im).astype(np.float32)/255.
+    h,w,_=a.shape
+    # tiny horizontal trim only; top is deliberately not cropped
+    x0,x1=int(.02*w),int(.98*w); a=a[:,x0:x1]; w=a.shape[1]
+    e=top_edge(a)
+    st=aligned_strip(a,e,.17)
+    lum=.2126*st[:,:,0]+.7152*st[:,:,1]+.0722*st[:,:,2]
+    mx=np.nanmax(st,axis=2); mn=np.nanmin(st,axis=2)
+    sat=(mx-mn)/(mx+1e-6)
+    yellow=(st[:,:,0]+st[:,:,1])/2-st[:,:,2]
+
+    # Physical depths below parchment edge, expressed in page-height fractions.
+    d0,d1=int(.008*h),int(.105*h)
+    r0,r1=int(.115*h),min(st.shape[0],int(.165*h))
+    if r1-r0<8: r0=max(d1,int(.11*h)); r1=st.shape[0]
+
+    # Background is estimated columnwise from the deeper upper margin using only
+    # parchment-like pixels.  High quantile luminance suppresses text/illustration.
+    bgl=np.zeros(w,np.float32); bgy=np.zeros(w,np.float32)
+    for x in range(w):
+        lv=lum[r0:r1,x]; sv=sat[r0:r1,x]; yv=yellow[r0:r1,x]
+        ok=np.isfinite(lv)&(lv>.42)&(sv<.28)
+        if ok.sum()>=4:
+            bgl[x]=np.quantile(lv[ok],.80); bgy[x]=np.median(yv[ok])
         else:
-            raise RuntimeError(f"fetch failed {label} {url}: {last}")
-    data = p.read_bytes()
-    im = Image.open(io.BytesIO(data)).convert("RGB")
-    return im
+            allok=np.isfinite(lv)
+            bgl[x]=np.quantile(lv[allok],.80) if allok.any() else .75
+            bgy[x]=np.median(yv[allok]) if allok.any() else .08
+    bgl=gaussian_filter(bgl,sigma=max(2,w/100),mode="nearest")
+    bgy=gaussian_filter(bgy,sigma=max(2,w/100),mode="nearest")
 
+    L=lum[d0:d1]; Y=yellow[d0:d1]; SAT=sat[d0:d1]
+    dark=np.clip(bgl[None,:]-L,0,.18)
+    warm=np.clip(Y-bgy[None,:],0,.12)
+    score=.78*dark+.22*warm
 
-def robust_page_crop(im: Image.Image) -> Image.Image:
-    """Trim only tiny scan borders; avoid content-dependent manuscript cropping."""
-    w, h = im.size
-    x0, x1 = int(0.015*w), int(0.985*w)
-    y0, y1 = int(0.005*h), int(0.995*h)
-    return im.crop((x0,y0,x1,y1))
+    # Exclude obvious ink/pigment and edge failures *before* low-dimensional aggregation.
+    valid=np.isfinite(score)&np.isfinite(L)&(L>.38)&(SAT<.30)
+    # Local gradients catch residual glyph/pigment edges without removing broad stain.
+    lf=np.nan_to_num(L,nan=.8)
+    gy,gx=np.gradient(gaussian_filter(lf,sigma=1.0))
+    grad=np.hypot(gx,gy)
+    valid &= grad<.055
+    score=np.where(valid,score,np.nan)
 
+    # Broad low-frequency stain field; normalized convolution avoids NaN bleed.
+    num=gaussian_filter(np.nan_to_num(score,nan=0.),sigma=(2.2,4.0),mode="nearest")
+    den=gaussian_filter(np.isfinite(score).astype(np.float32),sigma=(2.2,4.0),mode="nearest")
+    smooth=np.where(den>.25,num/np.maximum(den,1e-6),np.nan)
 
-def feature_page(im: Image.Image) -> Dict[str, object]:
-    im = robust_page_crop(im)
-    a = np.asarray(im).astype(np.float32) / 255.0
-    h, w, _ = a.shape
-    # Upper 22%; diagnostics also retain a conservative upper-margin core (3-16%).
-    roi = a[: max(40, int(0.22*h)), :, :]
-    gray = 0.2126*roi[:,:,0] + 0.7152*roi[:,:,1] + 0.0722*roi[:,:,2]
-    # Broad stain survives; glyph strokes and most pigment edges are suppressed.
-    sigma = max(3.0, w/180.0)
-    low = gaussian_filter(gray, sigma=sigma, mode="nearest")
-
-    # Estimate parchment illumination as a smooth high quantile in x-bins, then a global
-    # robust ceiling. This removes page-to-page scanner exposure without using content labels.
-    nxb = 48
-    bgx = np.zeros(nxb, dtype=np.float32)
-    edges = np.linspace(0,w,nxb+1).astype(int)
-    for j in range(nxb):
-        sl = low[:, edges[j]:edges[j+1]]
-        bgx[j] = np.quantile(sl, 0.82)
-    bgx = gaussian_filter(bgx, sigma=2.0)
-    bgmap = np.zeros_like(low)
-    for j in range(nxb): bgmap[:, edges[j]:edges[j+1]] = bgx[j]
-    # Positive darkness residual. Cap to reduce ink/paint leverage.
-    resid = np.clip(bgmap - low, 0, 0.18)
-
-    y0, y1 = int(0.025*roi.shape[0]), int(0.78*roi.shape[0])
-    core = resid[y0:y1]
-    # Fixed physical-scale thresholds after exposure normalization.
-    t_lo, t_hi = 0.022, 0.038
-    mask = core > t_lo
-    # Morphology operates on low-frequency image, so it removes isolated drawing remnants.
-    rad = max(1, int(w/500))
-    st = np.ones((2*rad+1, 2*rad+1), dtype=bool)
-    mask = binary_opening(mask, structure=st)
-    mask = binary_closing(mask, structure=np.ones((3,3), dtype=bool), iterations=2)
-    mask = binary_fill_holes(mask)
-
-    # Profiles are intentionally low-dimensional: 32 x bins by 10 y bins.
-    ny, nx = 10, 32
-    grid = np.zeros((ny,nx), dtype=np.float32)
+    ny,nx=6,32; grid=np.zeros((ny,nx),np.float32); coverage=np.zeros((ny,nx),np.float32)
     for iy in range(ny):
-        ya, yb = int(iy*core.shape[0]/ny), int((iy+1)*core.shape[0]/ny)
+        ya,yb=int(iy*smooth.shape[0]/ny),int((iy+1)*smooth.shape[0]/ny)
         for ix in range(nx):
-            xa, xb = int(ix*core.shape[1]/nx), int((ix+1)*core.shape[1]/nx)
-            grid[iy,ix] = float(np.mean(core[ya:yb,xa:xb]))
-
-    # Deepest mask penetration per x bin (normalized y within upper ROI).
-    contour = np.zeros(nx, dtype=np.float32)
+            xa,xb=int(ix*w/nx),int((ix+1)*w/nx)
+            v=smooth[ya:yb,xa:xb]; good=np.isfinite(v)
+            coverage[iy,ix]=good.mean()
+            grid[iy,ix]=np.nanmedian(v) if good.any() else 0.
+    profile=np.nanmedian(np.where(np.isfinite(smooth),smooth,np.nan),axis=0)
+    pb=np.zeros(nx,np.float32)
     for ix in range(nx):
-        xa, xb = int(ix*mask.shape[1]/nx), int((ix+1)*mask.shape[1]/nx)
-        ys = np.where(mask[:,xa:xb].any(axis=1))[0]
-        contour[ix] = 0.0 if len(ys)==0 else (ys.max()+1)/mask.shape[0]
+        xa,xb=int(ix*w/nx),int((ix+1)*w/nx)
+        v=profile[xa:xb]; pb[ix]=np.nanmedian(v) if np.isfinite(v).any() else 0.
 
-    vals = core.flatten()
-    metrics = {
-        "stain_area_lo": float(np.mean(core > t_lo)),
-        "stain_area_hi": float(np.mean(core > t_hi)),
-        "stain_mean": float(np.mean(core)),
-        "stain_p90": float(np.quantile(vals, .90)),
-        "stain_p95": float(np.quantile(vals, .95)),
-        "contour_mean": float(np.mean(contour)),
-        "contour_max": float(np.max(contour)),
-        "background_mean": float(np.mean(bgx)),
-        "grid": grid,
-        "contour": contour,
-        "resid": resid,
-        "mask": mask,
-        "crop": im,
-        "roi_shape": tuple(roi.shape[:2]),
+    vals=smooth[np.isfinite(smooth)]
+    return {
+      "stain_mean":float(np.mean(vals)),"stain_p90":float(np.quantile(vals,.9)),
+      "stain_area_015":float(np.mean(vals>.015)),"stain_area_025":float(np.mean(vals>.025)),
+      "valid_fraction":float(np.mean(valid)),"edge_y_mean":float(np.mean(e)/h),
+      "edge_y_sd":float(np.std(e)/h),"grid":grid,"profile":pb,
+      "aligned":st,"score":smooth,"valid":valid,"height":h,"width":w,
     }
-    return metrics
 
+def standardize(X):
+    med=np.median(X,axis=0); mad=np.median(np.abs(X-med),axis=0)
+    sc=np.where(mad>1e-6,1.4826*mad,np.std(X,axis=0)+1e-6)
+    return (X-med)/np.where(sc>1e-6,sc,1.)
 
-def standardize(X: np.ndarray) -> np.ndarray:
-    med = np.median(X, axis=0)
-    mad = np.median(np.abs(X-med), axis=0)
-    scale = np.where(mad > 1e-6, 1.4826*mad, np.std(X,axis=0)+1e-6)
-    return (X-med)/np.where(scale>1e-6, scale, 1.0)
+def dmat(X):
+    Z=standardize(X); d=Z[:,None,:]-Z[None,:,:]; return np.sqrt(np.mean(d*d,axis=2))
 
-
-def dist_matrix(X: np.ndarray) -> np.ndarray:
-    Z = standardize(X)
-    # RMS robust-z distance: comparable across descriptor families.
-    d = Z[:,None,:] - Z[None,:,:]
-    return np.sqrt(np.mean(d*d, axis=2))
-
-
-def path_energy(order: List[int], D: np.ndarray) -> float:
-    if len(order)<2: return 0.0
-    return float(np.mean([D[order[i],order[i+1]] for i in range(len(order)-1)]))
-
-
-def permutation_test_current(order: List[int], D: np.ndarray, rng: random.Random, n=20000):
-    obs = path_energy(order,D)
-    vals=[]
-    base=order[:]
+def energy(order,D): return float(np.mean([D[order[i],order[i+1]] for i in range(len(order)-1)]))
+def ptest(order,D,rng,n):
+    obs=energy(order,D); vals=[]
     for _ in range(n):
-        p=base[:]; rng.shuffle(p); vals.append(path_energy(p,D))
-    ar=np.asarray(vals)
-    mean=float(ar.mean()); sd=float(ar.std(ddof=1))
-    z=(obs-mean)/sd if sd else None
-    # lower energy = smoother
-    p=(1+int(np.sum(ar<=obs)))/(n+1)
-    return {"observed":obs,"null_mean":mean,"null_sd":sd,"z":z,"p_lower":p,"n_perm":n}
+        p=order[:]; rng.shuffle(p); vals.append(energy(p,D))
+    a=np.asarray(vals); m=float(a.mean()); sd=float(a.std(ddof=1))
+    return {"observed":obs,"null_mean":m,"null_sd":sd,"z":float((obs-m)/sd) if sd else None,
+            "p_lower":float((1+(a<=obs).sum())/(n+1)),"n_perm":n}
 
+def side_vec(d): return np.concatenate([d["grid"].ravel(),d["profile"]])
 
-def make_contact(rows: Dict[str,Dict[str,object]], labels: List[str], path: Path):
-    thumb_w, thumb_h = 420, 220
-    panel_h = 2*thumb_h + 38
-    sheet=Image.new("RGB",(thumb_w*3,panel_h*math.ceil(len(labels)/3)),"white")
-    draw=ImageDraw.Draw(sheet)
-    for k,label in enumerate(labels):
-        r,c=divmod(k,3); x=c*thumb_w; y=r*panel_h
-        dat=rows[label]; crop=dat["crop"]
-        w,h=crop.size
-        roi=crop.crop((0,0,w,int(.22*h))).resize((thumb_w,thumb_h))
-        sheet.paste(roi,(x,y+20))
-        resid=dat["resid"]
-        rr=np.clip(resid/0.08,0,1)
-        heat=np.uint8(255*(1-rr))
-        heat_rgb=np.stack([np.full_like(heat,255),heat,np.full_like(heat,255)],axis=2)
-        him=Image.fromarray(heat_rgb).resize((thumb_w,thumb_h))
-        sheet.paste(him,(x,y+20+thumb_h))
-        txt=f"{label} area={dat['stain_area_lo']:.3f} mean={dat['stain_mean']:.4f}"
-        draw.text((x+4,y+2),txt,fill="black")
-    sheet.save(path,quality=90)
-
+def contact(rows,labels,path):
+    W=420; H=145; block=3*H+24; sh=Image.new("RGB",(2*W,math.ceil(len(labels)/2)*block),"white"); dr=ImageDraw.Draw(sh)
+    for k,l in enumerate(labels):
+        rr,cc=divmod(k,2); x=cc*W; y=rr*block; d=rows[l]
+        im=Image.fromarray(np.uint8(np.clip(d["aligned"][:int(.11*d["height"])],0,1)*255)).resize((W,H))
+        sh.paste(im,(x,y+20))
+        sc=d["score"]; q=np.nan_to_num(np.clip(sc/.045,0,1),nan=0.)
+        valid=np.isfinite(sc); heat=np.zeros((sc.shape[0],sc.shape[1],3),np.uint8)+220
+        heat[:,:,0]=255; heat[:,:,1]=np.uint8(255*(1-q)); heat[:,:,2]=np.uint8(255*(1-q)); heat[~valid]=180
+        sh.paste(Image.fromarray(heat).resize((W,H)),(x,y+20+H))
+        # binary-ish threshold view for contour plausibility
+        th=np.zeros_like(heat)+255; on=np.isfinite(sc)&(sc>.015); th[on]=[180,40,40]; th[~np.isfinite(sc)]=[190,190,190]
+        sh.paste(Image.fromarray(th).resize((W,H)),(x,y+20+2*H))
+        dr.text((x+4,y+2),f"{l} mean={d['stain_mean']:.4f} area={d['stain_area_015']:.3f} valid={d['valid_fraction']:.2f}",fill="black")
+    sh.save(path,quality=91)
 
 def main():
-    rows: Dict[str,Dict[str,object]]={}
-    image_hashes={}
+    rows={}; hashes={}
     for label,iid in PAGES:
-        im=fetch_page(label,iid)
-        p=CACHE/f"{label}_1200.jpg"
-        image_hashes[label]=hashlib.sha256(p.read_bytes()).hexdigest()
-        rows[label]=feature_page(im)
-        print(label, rows[label]["stain_area_lo"], rows[label]["stain_mean"], flush=True)
+        im,hh=fetch(label,iid); hashes[label]=hh; rows[label]=features(im)
+        print(label,rows[label]["stain_mean"],rows[label]["valid_fraction"],flush=True)
 
-    # page-side output
-    scalar_cols=["stain_area_lo","stain_area_hi","stain_mean","stain_p90","stain_p95","contour_mean","contour_max","background_mean"]
+    scal=["stain_mean","stain_p90","stain_area_015","stain_area_025","valid_fraction","edge_y_mean","edge_y_sd"]
     with (OUT/"spill_page_features.csv").open("w",newline="") as f:
-        wr=csv.writer(f); wr.writerow(["page_id","iiif_id","sha256",*scalar_cols,*[f"contour_{i:02d}" for i in range(32)]])
-        for label,iid in PAGES:
-            d=rows[label]
-            wr.writerow([label,iid,image_hashes[label],*[d[c] for c in scalar_cols],*d["contour"].tolist()])
+        wr=csv.writer(f); wr.writerow(["page_id","iiif_id","sha256",*scal,*[f"profile_{i:02d}" for i in range(32)]])
+        for l,iid in PAGES: wr.writerow([l,iid,hashes[l],*[rows[l][c] for c in scal],*rows[l]["profile"].tolist()])
 
-    # Folio descriptor = mean recto/verso when both survive. This reduces scan-side noise.
-    folios=[]; F=[]; folio_metrics={}
-    for fol in list(range(1,12))+list(range(13,57)):
-        a=rows[f"f{fol}r"]; b=rows[f"f{fol}v"]
-        vec=np.concatenate([(a["grid"]+b["grid"]).ravel()/2, (a["contour"]+b["contour"])/2])
-        folios.append(fol); F.append(vec)
-        folio_metrics[fol]={c:(a[c]+b[c])/2 for c in scalar_cols}
-    F=np.stack(F)
-    Df=dist_matrix(F)
-    fi={f:i for i,f in enumerate(folios)}
-
-    # Current numeric folio order, with missing f12 omitted.
-    current=list(range(len(folios)))
-    rng=random.Random(20260907)
-    current_test=permutation_test_current(current,Df,rng)
-
-    # Within each current quire: current folio sequence smoothness vs all permutations.
-    quire_tests={}
+    folios=list(range(1,12))+list(range(13,57)); F=[]; R=[]; V=[]; fm={}
+    for fol in folios:
+        r,v=rows[f"f{fol}r"],rows[f"f{fol}v"]
+        rv,vv=side_vec(r),side_vec(v); R.append(rv); V.append(vv); F.append((rv+vv)/2)
+        fm[fol]={c:(r[c]+v[c])/2 for c in scal}
+    F=np.stack(F); R=np.stack(R); V=np.stack(V); D=dmat(F); Dr=dmat(R); Dv=dmat(V); fi={f:i for i,f in enumerate(folios)}
+    rng=random.Random(20260907); cur=list(range(len(folios)))
+    tests={"folio_mean":ptest(cur,D,rng,20000),"recto_only":ptest(cur,Dr,rng,10000),"verso_only":ptest(cur,Dv,rng,10000)}
+    qt={}
     for q,pairs in BIFOLIA.items():
-        leaves=sorted({x for p in pairs for x in p if x in fi})
-        idx=[fi[x] for x in leaves]
-        quire_tests[q]=permutation_test_current(idx,Df,rng,n=10000)
-        quire_tests[q]["folios"]=leaves
+        leaves=sorted({z for p in pairs for z in p if z in fi}); idx=[fi[z] for z in leaves]
+        qt[q]=ptest(idx,D,rng,10000); qt[q]["folios"]=leaves
 
-    # Conjoint similarity: compare observed conjoint distances with all within-quire nonself pairs.
+    # Reliability: scalar and full-profile agreement between two sides of the same folio.
+    ra=np.array([rows[f"f{x}r"]["stain_mean"] for x in folios]); va=np.array([rows[f"f{x}v"]["stain_mean"] for x in folios])
+    rm=np.array([rows[f"f{x}r"]["stain_area_015"] for x in folios]); vm=np.array([rows[f"f{x}v"]["stain_area_015"] for x in folios])
+    profcorr=[]
+    for fol in folios:
+        a=rows[f"f{fol}r"]["profile"]; b=rows[f"f{fol}v"]["profile"]
+        profcorr.append(float(np.corrcoef(a,b)[0,1]) if np.std(a)>1e-8 and np.std(b)>1e-8 else 0.)
+
+    # Specific f32v/f33r discontinuity relative to consecutive-facing v->r pairs in ff1-56.
+    side_labels=[l for l,_ in PAGES]; SX=np.stack([side_vec(rows[l]) for l in side_labels]); SD=dmat(SX); si={l:i for i,l in enumerate(side_labels)}
+    face=[]
+    for a,b in zip(folios[:-1],folios[1:]):
+        if b==a+1: face.append(float(SD[si[f"f{a}v"],si[f"f{b}r"]]))
+    target=float(SD[si["f32v"],si["f33r"]]); fa=np.asarray(face); fz=float((target-fa.mean())/fa.std(ddof=1))
+
     conjoint=[]
     for q,pairs in BIFOLIA.items():
-        leaves=sorted({x for p in pairs for x in p if x in fi})
-        allpairs=[]
-        for ia in range(len(leaves)):
-            for ib in range(ia+1,len(leaves)):
-                allpairs.append(Df[fi[leaves[ia]],fi[leaves[ib]]])
-        obs=[]
-        for x,y in pairs:
-            if x in fi and y in fi: obs.append(Df[fi[x],fi[y]])
-        conjoint.append({"quire":q,"obs_mean":float(np.mean(obs)) if obs else None,
-                         "allpair_mean":float(np.mean(allpairs)),"allpair_sd":float(np.std(allpairs,ddof=1)),
-                         "effect":float(np.mean(obs)-np.mean(allpairs)) if obs else None,
-                         "z":float((np.mean(obs)-np.mean(allpairs))/np.std(allpairs,ddof=1)) if obs and np.std(allpairs,ddof=1)>0 else None,
-                         "n_obs":len(obs),"n_allpairs":len(allpairs)})
-
-    # Page-side recto-vs-verso agreement: a necessary reliability check.
-    side_scalar=[]
-    for fol in folios:
-        side_scalar.append([rows[f"f{fol}r"]["stain_area_lo"],rows[f"f{fol}v"]["stain_area_lo"]])
-    side_scalar=np.asarray(side_scalar)
-    side_corr=float(np.corrcoef(side_scalar[:,0],side_scalar[:,1])[0,1])
-
-    # Candidate scalar orderings only as diagnostics (not licensed reconstruction): ranks by stain area/contour.
-    ranks={}
-    for metric in ["stain_area_lo","stain_mean","contour_mean"]:
-        ranks[metric]=sorted(folios,key=lambda f:folio_metrics[f][metric],reverse=True)
+        leaves=sorted({z for p in pairs for z in p if z in fi}); allp=[D[fi[leaves[a]],fi[leaves[b]]] for a in range(len(leaves)) for b in range(a+1,len(leaves))]
+        obs=[D[fi[x],fi[y]] for x,y in pairs if x in fi and y in fi]; sd=float(np.std(allp,ddof=1))
+        conjoint.append({"quire":q,"obs_mean":float(np.mean(obs)),"allpair_mean":float(np.mean(allp)),"allpair_sd":sd,
+                         "effect":float(np.mean(obs)-np.mean(allp)),"z":float((np.mean(obs)-np.mean(allp))/sd) if sd else None,"n_obs":len(obs)})
 
     summary={
-        "protocol":"vms_spill_topology_s1_20260907",
-        "source":"Beinecke IIIF via collections.library.yale.edu",
-        "n_page_sides":len(PAGES),"n_folios":len(folios),"missing_folios":[12],
-        "recto_verso_area_corr":side_corr,
-        "current_order_test":current_test,
-        "quire_current_order_tests":quire_tests,
-        "conjoint_similarity":conjoint,
-        "diagnostic_scalar_rankings":ranks,
-        "license":"PHYSICAL_DIAGNOSTIC_ONLY__NO_LINEAR_ORDER_INFERENCE",
-        "notes":[
-            "Upper-margin descriptor uses only pixels; no VMS text metadata enters scoring.",
-            "Current-order permutation tests diagnose smoothness, not historical correctness.",
-            "Alternative topology inference requires mask validation and hard codicological constraints.",
-        ],
+      "protocol":"vms_spill_topology_s2_20260907","retracts":"vms_spill_topology_s1_20260907",
+      "source":"Beinecke IIIF","n_page_sides":110,"n_folios":55,"missing_folios":[12],
+      "reliability":{"recto_verso_stain_mean_r":float(np.corrcoef(ra,va)[0,1]),"recto_verso_area_r":float(np.corrcoef(rm,vm)[0,1]),
+                     "median_recto_verso_profile_r":float(np.median(profcorr)),"mean_recto_verso_profile_r":float(np.mean(profcorr)),
+                     "median_valid_fraction":float(np.median([rows[l]["valid_fraction"] for l in side_labels]))},
+      "current_order_tests":tests,"quire_current_order_tests":qt,"conjoint_similarity":conjoint,
+      "f32v_f33r":{"distance":target,"facing_pair_mean":float(fa.mean()),"facing_pair_sd":float(fa.std(ddof=1)),"z_vs_facing_pairs":fz,"n_reference_pairs":len(face)},
+      "license":"PHYSICAL_DIAGNOSTIC_ONLY__NO_LINEAR_ORDER_INFERENCE",
+      "decision_rule":"Reject detector if diagnostic sheet retains material scan-border/text/paint leakage OR recto/verso profile agreement is poor; do not optimize historical order unless detector passes.",
     }
     (OUT/"spill_summary.json").write_text(json.dumps(summary,indent=2))
-
-    # Distance matrix for downstream constrained solver.
     with (OUT/"spill_folio_distance.csv").open("w",newline="") as f:
-        wr=csv.writer(f); wr.writerow(["folio",*folios])
-        for i,fol in enumerate(folios): wr.writerow([fol,*Df[i].tolist()])
-
-    # Diagnostics deliberately include f32v/f33r and broad depth samples.
-    diag=["f1r","f8v","f9r","f16v","f17r","f24v","f25r","f32v","f33r","f40v","f41r","f48v","f49r","f56v"]
-    make_contact(rows,diag,OUT/"spill_diagnostic_contact.jpg")
-
+        wr=csv.writer(f); wr.writerow(["folio",*folios]); [wr.writerow([fol,*D[j].tolist()]) for j,fol in enumerate(folios)]
+    diag=["f1r","f8v","f9r","f16v","f17r","f24v","f25r","f31v","f32v","f33r","f34v","f40v","f41r","f48v","f49r","f56v"]
+    contact(rows,diag,OUT/"spill_diagnostic_contact.jpg")
     print(json.dumps(summary,indent=2))
 
-if __name__ == "__main__":
-    main()
+if __name__=="__main__": main()
