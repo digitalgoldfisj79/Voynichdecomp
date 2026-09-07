@@ -1,1 +1,8 @@
-{"assay_id":"memory_recurrence_source_id_v1","kind":"SOURCE_ID_FREEZE","lifecycle_stage":"FROZEN","manifest_sha256":"62655854117793168d46bfb05b548d5993f28dd613301d859fd666504a3b51c0","target_sealed":true,"version":1}
+{
+  "assay_id": "memory_recurrence_source_id_v1",
+  "kind": "SOURCE_ID_FREEZE",
+  "lifecycle_stage": "FROZEN",
+  "manifest_sha256": "62655854117793168d46bfb05b548d5993f28dd613301d859fd666504a3b51c0",
+  "target_sealed": true,
+  "version": 1
+}
