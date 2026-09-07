@@ -1,0 +1,24 @@
+{
+  "assay_id": "t0b_demo",
+  "version": 1,
+  "scientific_question": "Can the omnibus G0 envelope identify G0 against prespecified alternatives?",
+  "null_source": {"name":"G0"},
+  "alternatives": [
+    {"name":"gross_family_shuffle"},
+    {"name":"gross_page_shuffle"},
+    {"name":"near_refractory"}
+  ],
+  "target": {"name":"Voynich","sealed_before_qualification":true},
+  "sampling_unit": "manuscript-sized trial",
+  "representation": {"name":"frozen T0b 20-vector"},
+  "splits": {"development":"separate","calibration":50,"validation":50,"controls":40,"target":"sealed"},
+  "decision": {
+    "metric":"frozen T",
+    "max_null_rejection_rate":0.10,
+    "min_alternative_rejection_rate":0.95,
+    "min_effect_over_null_sd":2.0,
+    "require_representation_robustness":false
+  },
+  "licensed_inference":"G0 is distinguishable from the prespecified alternatives at the registered operating point",
+  "prohibited_inference":"semantics, asemicity, historical mechanism or untested alternatives"
+}
