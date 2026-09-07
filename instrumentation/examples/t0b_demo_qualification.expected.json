@@ -1,0 +1,12 @@
+{
+  "alternatives": [
+    {"effect":0.7736655809233475,"effect_gate_pass":false,"effect_over_null_sd":1.1710384521203396,"headline":"THE METRIC DOES NOT RESOLVE THIS DEPARTURE","n":40,"name":"gross_family_shuffle","null_sd":0.6606662484246445,"pass":false,"rate_gate_pass":false,"rejected":13,"rejection_rate":0.325,"wilson95":[0.200845022317827,0.47982253810122333]},
+    {"effect":1.795189270044954,"effect_gate_pass":true,"effect_over_null_sd":2.7172407767546387,"headline":"resolved at >=2 null SD","n":40,"name":"gross_page_shuffle","null_sd":0.6606662484246445,"pass":false,"rate_gate_pass":false,"rejected":35,"rejection_rate":0.875,"wilson95":[0.738878801611489,0.945404997490546]},
+    {"effect":0.9225316537894033,"effect_gate_pass":false,"effect_over_null_sd":1.3963656475401545,"headline":"THE METRIC DOES NOT RESOLVE THIS DEPARTURE","n":40,"name":"near_refractory","null_sd":0.6606662484246445,"pass":false,"rate_gate_pass":false,"rejected":17,"rejection_rate":0.425,"wilson95":[0.28509392559950375,0.5780493145800892]}
+  ],
+  "assay_id":"t0b_demo","kind":"ASSAY_QUALIFICATION",
+  "known_source":{"false_rejection_rate":0.06,"gate_pass":true,"n":50,"rejected":3,"wilson95":[0.02061497034897397,0.16217091688838173]},
+  "leakage_gate_pass":true,"licensed_inference":"NO TARGET INFERENCE LICENSED","lifecycle_stage":"BLOCKED",
+  "manifest_sha256":"0d4d6e125df90ee058f05cf6c2d4ba89d02cada7538264fbbdb49906e6271394","overall_pass":false,
+  "prohibited_inference":"semantics, asemicity, historical mechanism or untested alternatives","qualification_sha256":"95a2302f5b07b6a49bf05dcfd0712040294e70cccdb30c086a7e48d5dd700b70","representation_gate_pass":true,"summary_sha256":"0ff760e140e2917c49155fb2afb0616d35d80e4d3642f2443615a0f5cf2cf3b0","target_open_permitted":false,"version":1
+}
