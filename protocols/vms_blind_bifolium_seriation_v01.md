@@ -66,11 +66,19 @@ After edges are frozen:
 - compare candidate scores with all alternative pairs in the same revealed metadata-pair class;
 - no edge is promoted as a production-neighbour edge solely because it agrees with current adjacency or current quire.
 
+## Held-out promotion addendum — frozen before any target edge was inspected
+Discovery-family support is not permitted to validate itself. A stable consensus edge may only be promoted from `candidate` to `candidate production-neighbour edge` if, after the blind graph is frozen, it also satisfies at least one independent confirmation route:
+
+1. `RARE` or `LAYOUT` held-out support is >=2 matched-null SD within the same revealed metadata-pair class; or
+2. an independently recorded physical/codicological constraint is compatible with and specifically supports that neighbourhood.
+
+If the matched class is too small to estimate a null SD, the held-out metric does not resolve that edge. Agreement with present quire or present folio adjacency is never independent validation.
+
 ## Partial-order interpretation
 Connected components are reported as undirected neighbourhood components. A component may be rendered as a path only if every node degree <=2 and edge stability passes. Path reversal is equivalent. Branching components remain unordered graphs.
 
 ## Decision language
 - If known-answer calibration fails: `SERIAL NEIGHBOURHOOD INFERENCE NOT QUALIFIED`.
 - If candidate count is not above accidental-consensus null by >=2 SD: `the metric does not resolve a production-neighbour graph`.
-- If a stable edge survives reveal-stage matched-confound audit: `candidate production-neighbour edge`.
+- If a stable edge also passes the held-out promotion addendum: `candidate production-neighbour edge`.
 - Never call text-derived edges `original order` without independent physical orientation evidence.
