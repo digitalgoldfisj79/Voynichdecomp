@@ -1,5 +1,6 @@
 name: VMS seriation residual retention v01
 
+# Isolated branch-push rerun after closing the temporary draft PR.
 on:
   push:
     branches:
