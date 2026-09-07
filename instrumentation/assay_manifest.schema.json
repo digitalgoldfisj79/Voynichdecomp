@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voynich.local/schemas/assay_manifest_v1.json",
+  "title": "Voynich Assay Manifest v1",
+  "type": "object",
+  "required": ["assay_id","version","scientific_question","null_source","alternatives","target","sampling_unit","representation","splits","decision","licensed_inference","prohibited_inference"],
+  "properties": {
+    "assay_id": {"type":"string","minLength":1},
+    "version": {"type":"integer","minimum":1},
+    "scientific_question": {"type":"string","minLength":1},
+    "null_source": {"type":"object","required":["name"],"properties":{"name":{"type":"string"},"definition":{"type":"string"}}},
+    "alternatives": {"type":"array","minItems":1,"items":{"type":"object","required":["name"],"properties":{"name":{"type":"string"},"definition":{"type":"string"},"strength_grid":{"type":"array","items":{"type":"number"}}}}},
+    "target": {"type":"object","required":["name","sealed_before_qualification"],"properties":{"name":{"type":"string"},"sealed_before_qualification":{"const":true}}},
+    "sampling_unit": {"type":"string"},
+    "representation": {"type":"object"},
+    "nuisances": {"type":"array","items":{"type":"string"}},
+    "splits": {"type":"object","required":["development","calibration","validation","controls","target"]},
+    "seeds": {"type":"object"},
+    "decision": {
+      "type":"object",
+      "required":["metric","max_null_rejection_rate","min_alternative_rejection_rate","min_effect_over_null_sd"],
+      "properties": {
+        "metric":{"type":"string"},
+        "max_null_rejection_rate":{"type":"number","minimum":0,"maximum":1},
+        "min_alternative_rejection_rate":{"type":"number","minimum":0,"maximum":1},
+        "min_effect_over_null_sd":{"type":"number","minimum":0},
+        "require_representation_robustness":{"type":"boolean"}
+      }
+    },
+    "licensed_inference": {"type":"string"},
+    "prohibited_inference": {"type":"string"},
+    "code_sha256": {"type":"string"},
+    "data_sha256": {"type":"string"}
+  },
+  "additionalProperties": true
+}
