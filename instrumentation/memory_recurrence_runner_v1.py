@@ -28,7 +28,9 @@ def load_t0b():
 
 
 def verify_manifest(path):
-    b=Path(path).read_bytes(); h=hashlib.sha256(b).hexdigest()
+    obj=json.loads(Path(path).read_text(encoding='utf-8'))
+    b=json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode('utf-8')
+    h=hashlib.sha256(b).hexdigest()
     if h != EXPECTED_MANIFEST_SHA:
         raise SystemExit(f'MANIFEST_HASH_MISMATCH {h} != {EXPECTED_MANIFEST_SHA}')
     return h
