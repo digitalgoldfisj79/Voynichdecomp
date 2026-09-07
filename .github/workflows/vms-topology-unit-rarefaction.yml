@@ -1,0 +1,38 @@
+name: VMS topology unit rarefaction
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_topology_unit_rarefaction.py'
+      - '.github/workflows/vms-topology-unit-rarefaction.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_topology_unit_rarefaction.py'
+      - '.github/workflows/vms-topology-unit-rarefaction.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-rarefaction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy requests
+      - name: Run fixed-token rarefaction
+        run: python scripts/vms_topology_unit_rarefaction.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-topology-unit-rarefaction-v01
+          path: artifacts/vms_topology_unit_rarefaction_v01/
+          if-no-files-found: error
+          retention-days: 30
