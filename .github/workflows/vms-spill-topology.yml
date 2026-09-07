@@ -7,6 +7,10 @@ on:
     paths:
       - 'scripts/vms_spill_topology.py'
       - '.github/workflows/vms-spill-topology.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_spill_topology.py'
+      - '.github/workflows/vms-spill-topology.yml'
   workflow_dispatch:
 
 permissions:
