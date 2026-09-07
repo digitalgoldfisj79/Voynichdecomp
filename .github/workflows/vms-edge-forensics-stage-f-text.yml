@@ -1,0 +1,35 @@
+name: VMS edge forensics Stage-F text v01
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_edge_forensics_stage_f_text.py'
+      - 'protocols/vms_edge_forensics_and_orientation_v01.md'
+      - '.github/workflows/vms-edge-forensics-stage-f-text.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-f-text:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy requests
+      - name: Run F1/F2
+        run: python scripts/vms_edge_forensics_stage_f_text.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-edge-forensics-stage-f-text-v01
+          path: artifacts/vms_edge_forensics_stage_f_text_v01/
+          if-no-files-found: error
+          retention-days: 30
