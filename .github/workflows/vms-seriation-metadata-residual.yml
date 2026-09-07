@@ -1,0 +1,40 @@
+name: VMS seriation metadata residual v01
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_seriation_metadata_residual.py'
+      - 'protocols/vms_seriation_metadata_residual_v01.md'
+      - '.github/workflows/vms-seriation-metadata-residual.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_seriation_metadata_residual.py'
+      - 'protocols/vms_seriation_metadata_residual_v01.md'
+      - '.github/workflows/vms-seriation-metadata-residual.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  residual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy requests
+      - name: Run metadata residual falsification
+        run: python scripts/vms_seriation_metadata_residual.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-seriation-metadata-residual-v01
+          path: artifacts/vms_seriation_metadata_residual_v01/
+          if-no-files-found: error
+          retention-days: 30
