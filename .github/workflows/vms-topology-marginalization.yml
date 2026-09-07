@@ -1,0 +1,43 @@
+name: VMS topology marginalisation v01
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_topology_marginalization.py'
+      - '.github/workflows/vms-topology-marginalization.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_topology_marginalization.py'
+      - '.github/workflows/vms-topology-marginalization.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  topology-marginalisation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TOPO_N_ORDER: '512'
+      TOPO_N_PAIR: '5000'
+      TOPO_N_ADJ: '5000'
+      TOPO_RUN_ID: 'topomarg_v01_20260907'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy requests
+      - name: Run topology marginalisation
+        run: python scripts/vms_topology_marginalization.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-topology-marginal-v01
+          path: artifacts/vms_topology_marginal_v01/
+          if-no-files-found: error
+          retention-days: 30
