@@ -1,0 +1,38 @@
+name: VMS blind seriation heldout gate v01
+
+on:
+  push:
+    branches:
+      - 'gpt56/voynich-topology-v01'
+    paths:
+      - 'scripts/vms_seriation_heldout_gate.py'
+      - '.github/workflows/vms-seriation-heldout-gate.yml'
+  pull_request:
+    paths:
+      - 'scripts/vms_seriation_heldout_gate.py'
+      - '.github/workflows/vms-seriation-heldout-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heldout-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy requests
+      - name: Run held-out validation gate
+        run: python scripts/vms_seriation_heldout_gate.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-seriation-heldout-gate-v01
+          path: artifacts/vms_seriation_heldout_gate_v01/
+          if-no-files-found: error
+          retention-days: 30
