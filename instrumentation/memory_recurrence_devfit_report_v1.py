@@ -7,7 +7,7 @@ import numpy as np
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('job_ids',nargs='+'); a=ap.parse_args()
     here=Path(__file__).resolve().parent
-    spec=importlib.util.spec_from_file_location('sc',here/'memory_recurrence_score_v1.py')
+    spec=importlib.util.spec_from_file_location('sc',here/'memory_recurrence_score_v1_1.py')
     sc=importlib.util.module_from_spec(spec); spec.loader.exec_module(sc)
     paths=[]
     with tempfile.TemporaryDirectory() as td:
@@ -15,7 +15,7 @@ def main():
             text=subprocess.check_output(['hf','jobs','logs',jid],text=True,stderr=subprocess.STDOUT)
             p=Path(td)/(jid+'.log'); p.write_text(text); paths.append(str(p))
         objs=sc.load_jsonl(paths); dev=sc.index_trials(objs,'development',sc.CLASSES,80); fit=sc.fit_models(dev)
-        out={'n_development_manuscripts':len(dev),'classes':sc.CLASSES,'representations':{}}
+        out={'n_development_manuscripts':len(dev),'classes':sc.CLASSES,'scorer':'memory_recurrence_score_v1_1.py','representations':{}}
         for rep in sc.REPS:
             folds=[]
             for f,fm in enumerate(fit[rep]['foldmods']):
