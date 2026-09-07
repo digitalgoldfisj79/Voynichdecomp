@@ -1,0 +1,65 @@
+{
+  "assay_id": "memory_recurrence_source_id_v2",
+  "date_frozen": "2026-09-07",
+  "design_provenance": {
+    "target": "Voynich remains sealed and was never scored by v1.",
+    "v1_data_role": "The 400 development, 200 calibration, and 250 validation manuscripts from v1 have been inspected and may be used only for v2 design/training/calibration as explicitly declared below. They cannot count as v2 confirmation.",
+    "v1_key_findings": [
+      "broad four-class raw validation accuracy 99.6% R0 / 98.8% R1 after merging working_set_only and line_reset_r64",
+      "v1 OOD was calibrated in-sample and failed out of sample",
+      "working_set_only vs line_reset_r64 unresolved at 1.17/1.26 null SD"
+    ],
+    "v1_status": "BLOCKED"
+  },
+  "lifecycle": {
+    "current": "FROZEN_BEFORE_V2_PILOT",
+    "on_failed_confirmation": "BLOCKED; target sealed",
+    "on_failed_pilot": "BLOCKED_DEVELOPMENT; no confirmation or target"
+  },
+  "pinned_sources": {
+    "base_commit": "2ea089393f848329b0673cddf09833789643e779",
+    "event_count": 34087,
+    "generator_commit": "765a0de332c2d31b0e97738885c35b1e759e5233",
+    "lambda_grid": [0.0, 0.005, 0.01, 0.02, 0.03, 0.04, 0.06, 0.08],
+    "mu": 0.0009,
+    "source_lambdas": {"fold0": 0.03, "fold1": 0.03, "fold2": 0.03, "fold3": 0.02, "fold4": 0.03}
+  },
+  "representations": [{"name": "R0_canonical_tokens"}, {"name": "R1_repeated_glyph_collapse"}],
+  "scientific_question": "Can a hierarchical, mechanism-targeted assay identify the source architecture of a manuscript-scale surface process while controlling out-of-sample abstention and specifically separating working-set-only from physical-line-reset R64 memory?",
+  "stage_a": {
+    "classes": {
+      "base_local": ["working_set_only", "line_reset_r64"],
+      "family_persistence": ["family_persistence"],
+      "r64_exact": ["r64_exact"],
+      "refractory_exact": ["refractory_exact"]
+    },
+    "classifier": "Recompute corrected v1 five-way fold logistic models from v1 development only; aggregate fold log probabilities to manuscript posterior; collapse P(working_set_only)+P(line_reset_r64) into P(base_local); broad prediction is raw argmax with no posterior-confidence abstention.",
+    "features": "exact v1 20-feature directional recurrence vectors, five physical folds",
+    "fresh_validation": {"n_per_original_source": 50, "required": true},
+    "gates": {"max_abstain_each_broad_class": 0.1, "min_macro_recall": 0.95, "min_pairwise_effect_over_null_sd": 2.0, "min_recall_each_broad_class": 0.9, "require_both_representations": true, "require_positive_direction": true},
+    "name": "broad_source_gate",
+    "ood": "For each broad class and representation, concatenate five fold-standardised 20-vectors (100D). Fit LedoitWolf centre/covariance on v1 development broad-class manuscripts. Set broad-class distance threshold only from the separate v1 calibration manuscripts using the higher split-conformal 95% order statistic. No in-sample development quantile is permitted."
+  },
+  "stage_b": {
+    "classifier": "Per representation, fixed five-feature L2 logistic regression C=1 using [gain_line_reset_vs_zero, gain_page_r64_vs_zero, exact_same_minus_cross_lag2_5, exact_same_minus_cross_lag6_16, cachehit_same_minus_cross_lag2_64], manuscript features are means across five physical folds.",
+    "development": {"fresh_seed_namespace": 520, "full_n_per_source": 40, "pilot_n_per_source": 20, "role": "development only"},
+    "fresh_validation": {"fresh_seed_namespace": 522, "n_per_source": 50},
+    "gates": {"min_macro_recall": 0.85, "min_pairwise_effect_over_null_sd": 2.0, "min_recall_each_source": 0.8, "require_both_representations": true, "require_positive_true_class_margin": true},
+    "likelihood_definition": "zero/page/line models share identical RegionalModel probabilities and MU. Page model uses ordinary RegionalState. Line model uses a subclass that clears only page_seq whenever physical line changes. Both page and line lambda are selected on synthetic training only by four-way bifolium CV over the inherited lambda grid.",
+    "name": "working_vs_line_reset_gate",
+    "new_features": ["gain_line_reset_vs_zero_bits_per_token", "gain_page_r64_vs_zero_bits_per_token", "line_reset_advantage_vs_page_r64_bits_per_token", "exact_same_line_lag2_5_excess", "exact_cross_line_lag2_5_excess", "exact_same_minus_cross_lag2_5", "exact_same_line_lag6_16_excess", "exact_cross_line_lag6_16_excess", "exact_same_minus_cross_lag6_16", "exact_same_line_lag17_64_excess", "exact_cross_line_lag17_64_excess", "exact_same_minus_cross_lag17_64", "cachehit_same_line_lag2_64_excess", "cachehit_cross_line_lag2_64_excess", "cachehit_same_minus_cross_lag2_64"],
+    "pilot_go_gate": {"either_feature_effect_over_null_sd_each_representation": 3.0, "or_grouped_cv_accuracy_each_representation": 0.8},
+    "power_curve": {"line_reset_source_lambda": [0.005, 0.01, 0.02, 0.03, 0.04, 0.06, 0.08], "n_per_cell": 40, "report_min_strength_ge_80_and_90": true},
+    "recurrence_null": "64 deterministic within-page token-order permutations preserving page token multiset and line-position skeleton; Jeffreys smoothed rates; log2 observed/null excess.",
+    "sources": ["working_set_only", "line_reset_r64"]
+  },
+  "target": {
+    "name": "Voynich",
+    "open_rule": "Only after Stage A, Stage B, unknown-control, representation, leakage, and required power-report gates all pass on fresh v2 confirmation data.",
+    "permitted_outcomes": ["identified named source if Stage A and B agree in both representations and target is in-distribution", "base_local unresolved if Stage A selects base_local but Stage B representations/confidence do not agree", "none-of-the-above/abstain if OOD"],
+    "prohibited_claims": ["meaninglessness", "asemicity", "semantic absence", "historical authorship mechanism", "proof of cipher or non-cipher"],
+    "sealed_before_qualification": true
+  },
+  "unknown_controls": {"gate": {"min_ood_effect_over_null_sd": 2.0, "min_rejection_rate": 0.8, "require_both_representations": true, "require_positive_direction": true}, "n_each": 50, "sources": ["gross_page_shuffle", "gross_family_shuffle", "line_opener_unknown"]},
+  "version": 2
+}
