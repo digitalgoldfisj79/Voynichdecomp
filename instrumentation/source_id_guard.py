@@ -28,6 +28,39 @@ def freeze(manifest: Dict[str, Any], out: str) -> Dict[str, Any]:
     dump(out,rec); return rec
 
 
+def _close_float_set(values, expected, tol=1e-12):
+    vals=sorted(float(x) for x in values); exp=sorted(float(x) for x in expected)
+    return len(vals)==len(exp) and all(abs(a-b)<=tol for a,b in zip(vals,exp))
+
+
+def validate_power_report(manifest: Dict[str, Any], power: Dict[str, Any]) -> bool:
+    if power.get('complete') is not True: return False
+    report=power.get('report')
+    if not isinstance(report,dict): return False
+    if report.get('assay_id')!=manifest.get('assay_id') or int(report.get('n_per_cell',-1))!=40: return False
+    reps=[x['name'] for x in manifest.get('representations',[])]
+    br=report.get('by_representation',{})
+    if set(br)!=set(reps): return False
+    expected={
+      'refractory_exact':[.01,.02,.04,.06,.08],
+      'family_persistence':[.01,.02,.04,.06,.08],
+      'r64_exact':[.005,.01,.02,.03,.04,.06],
+    }
+    for rep in reps:
+        fams=br[rep].get('families',{}) if isinstance(br[rep],dict) else {}
+        if set(fams)!=set(expected): return False
+        for name,grid in expected.items():
+            cells=fams[name].get('cells',[]) if isinstance(fams[name],dict) else []
+            if not _close_float_set([c.get('strength') for c in cells],grid): return False
+            if any(int(c.get('n',-1))!=40 for c in cells): return False
+            if any(not (0<=int(c.get('correct',-1))<=40) for c in cells): return False
+            if any('wilson95' not in c or len(c['wilson95'])!=2 for c in cells): return False
+            for k in ('min_strength_ge_80','min_strength_ge_90'):
+                v=fams[name].get(k)
+                if v is not None and not any(abs(float(v)-float(g))<=1e-12 for g in grid): return False
+    return True
+
+
 def qualify(manifest: Dict[str, Any], freeze_rec: Dict[str, Any], summary: Dict[str, Any]) -> Dict[str, Any]:
     msha=base.sha256_obj(manifest)
     if freeze_rec.get('manifest_sha256')!=msha: raise ValueError('manifest hash does not match freeze record')
@@ -52,7 +85,7 @@ def qualify(manifest: Dict[str, Any], freeze_rec: Dict[str, Any], summary: Dict[
     pairs=[]; pair_pass=True
     for key in sorted(expected_pairs):
         x=got[key]; eff=float(x['effect']); nsd=float(x['null_sd']); z=base.effect_over_null_sd(eff,nsd)
-        p=z>=float(d['min_pairwise_effect_over_null_sd']); pair_pass &= p
+        p=(eff>0 and z>=float(d['min_pairwise_effect_over_null_sd'])); pair_pass &= p
         pairs.append({'a':key[0],'b':key[1],'effect':eff,'null_sd':nsd,'effect_over_null_sd':z,'pass':p,
                       'headline':('THE METRIC DOES NOT RESOLVE THIS SOURCE PAIR' if z<2 else 'source pair resolved at >=2 null SD')})
 
@@ -63,7 +96,7 @@ def qualify(manifest: Dict[str, Any], freeze_rec: Dict[str, Any], summary: Dict[
     for name in unames:
         x=urows[name]; n=int(x['n']); rejected=int(x['rejected_or_abstained']); rate=rejected/n
         eff=float(x['effect']); nsd=float(x['null_sd']); z=base.effect_over_null_sd(eff,nsd)
-        rp=rate>=float(d['min_unknown_rejection_rate']); ep=z>=float(d['min_pairwise_effect_over_null_sd']); p=rp and ep
+        rp=rate>=float(d['min_unknown_rejection_rate']); ep=(eff>0 and z>=float(d['min_pairwise_effect_over_null_sd'])); p=rp and ep
         unknown_pass &= p
         ci=base.wilson(rejected,n)
         unknown.append({'name':name,'n':n,'rejected_or_abstained':rejected,'rate':rate,'wilson95':[ci['lo'],ci['hi']],
@@ -71,13 +104,17 @@ def qualify(manifest: Dict[str, Any], freeze_rec: Dict[str, Any], summary: Dict[
                         'headline':('THE METRIC DOES NOT RESOLVE THIS UNKNOWN CONTROL' if z<2 else 'unknown control resolved at >=2 null SD')})
 
     rep=summary.get('representation_checks',[]); rep_req=bool(d.get('require_representation_robustness',False))
-    rep_pass=all(bool(x.get('pass')) for x in rep) if rep else not rep_req
+    expected_reps={x['name'] for x in manifest.get('representations',[])}
+    rep_rows={x.get('name'):x for x in rep}
+    rep_set_ok=(set(rep_rows)==expected_reps) if expected_reps else True
+    rep_pass=(rep_set_ok and all(bool(rep_rows[n].get('pass')) for n in expected_reps)) if rep_req else True
     leak=summary.get('leakage_checks',{}); lk=['target_inaccessible_during_fit','disjoint_seed_namespaces','training_only_model_selection','grouped_trial_splits']
     leak_pass=all(leak.get(k) is True for k in lk)
     cal_req=('calibration' in manifest.get('splits',{})); cal=summary.get('calibration_checks',{})
     cal_pass=(cal.get('complete') is True and cal.get('thresholds_changed') is False) if cal_req else True
     power_req=bool(manifest.get('power_reporting',{}).get('required',False))
-    power=summary.get('power_reporting',{}); power_pass=(power.get('complete') is True) if power_req else True
+    power=summary.get('power_reporting',{})
+    power_pass=validate_power_report(manifest,power) if power_req else True
     overall=bool(all_src and macro_pass and pair_pass and unknown_pass and rep_pass and leak_pass and cal_pass and power_pass)
     out={'kind':'SOURCE_ID_QUALIFICATION','assay_id':manifest['assay_id'],'version':manifest['version'],'manifest_sha256':msha,
          'summary_sha256':base.sha256_obj(summary),'source_validation':src,'macro_recall':macro,'macro_recall_gate_pass':macro_pass,
