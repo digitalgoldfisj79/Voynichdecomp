@@ -1,0 +1,14 @@
+{
+  "alternatives": [
+    {"effect": 0.7736655809233475, "n": 40, "name": "gross_family_shuffle", "null_sd": 0.6606662484246445, "rejected": 13},
+    {"effect": 1.795189270044954, "n": 40, "name": "gross_page_shuffle", "null_sd": 0.6606662484246445, "rejected": 35},
+    {"effect": 0.9225316537894033, "n": 40, "name": "near_refractory", "null_sd": 0.6606662484246445, "rejected": 17}
+  ],
+  "leakage_checks": {
+    "disjoint_seed_namespaces": true,
+    "target_inaccessible_during_fit": true,
+    "training_only_model_selection": true
+  },
+  "manifest_sha256": "0d4d6e125df90ee058f05cf6c2d4ba89d02cada7538264fbbdb49906e6271394",
+  "null_validation": {"n": 50, "rejected": 3}
+}
