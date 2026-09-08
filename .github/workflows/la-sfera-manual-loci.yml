@@ -17,9 +17,15 @@ jobs:
           python-version: '3.12'
       - run: pip install requests pillow
       - name: Prepare preregistered IIIF crops
-        run: python research/la_sfera_manual_loci_prepare.py la_sfera_manual_loci_out
+        run: |
+          # Gallica rejects GitHub runner requests (403). Do not replace Par4;
+          # simply omit it from this image packet and retain it in the frozen set.
+          sed -i "/'Par4':'https:\/\/gallica.bnf.fr/d" research/la_sfera_manual_loci_prepare.py
+          python research/la_sfera_manual_loci_prepare.py la_sfera_manual_loci_out
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: la-sfera-manual-loci-packet
           path: la_sfera_manual_loci_out
+          if-no-files-found: warn
           retention-days: 7
