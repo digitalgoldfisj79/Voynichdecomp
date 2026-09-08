@@ -1,0 +1,32 @@
+name: La Sfera textual tradition stage 2
+
+on:
+  push:
+    branches:
+      - research/la-sfera-textual-20260908
+    paths:
+      - 'research/la_sfera_textual_stage2.py'
+      - '.github/workflows/la-sfera-textual-stage2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen visual-neighbour textual/toponym test
+        run: python research/la_sfera_textual_stage2.py research_out
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: la-sfera-stage2-result
+          path: |
+            research_out/result.json
+            research_out/summary.md
+          retention-days: 7
