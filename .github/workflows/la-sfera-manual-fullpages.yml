@@ -1,0 +1,27 @@
+name: La Sfera frozen textual full pages
+on:
+  push:
+    branches: [research/la-sfera-textual-20260908]
+    paths:
+      - 'research/la_sfera_manual_fullpages.py'
+      - '.github/workflows/la-sfera-manual-fullpages.yml'
+  workflow_dispatch:
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - name: Build full-page packet
+        run: python research/la_sfera_manual_fullpages.py la_sfera_manual_fullpages_out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: la-sfera-manual-fullpages
+          path: la_sfera_manual_fullpages_out
+          if-no-files-found: warn
+          retention-days: 7
