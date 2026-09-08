@@ -1,0 +1,25 @@
+name: La Sfera frozen manual loci packet
+on:
+  push:
+    branches: [research/la-sfera-textual-20260908]
+    paths:
+      - 'research/la_sfera_manual_loci_prepare.py'
+      - '.github/workflows/la-sfera-manual-loci.yml'
+  workflow_dispatch:
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - name: Prepare preregistered IIIF crops
+        run: python research/la_sfera_manual_loci_prepare.py la_sfera_manual_loci_out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: la-sfera-manual-loci-packet
+          path: la_sfera_manual_loci_out
+          retention-days: 7
