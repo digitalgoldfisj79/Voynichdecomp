@@ -21,24 +21,25 @@ jobs:
         run: |
           set -euo pipefail
           BASE_COMMIT=2ea089393f848329b0673cddf09833789643e779
-          rm -rf /tmp/base /workspace/t0pkg /workspace/t0b
-          mkdir -p /tmp/base /workspace/t0pkg /workspace/t0b
+          WORK=/tmp/voynich-workspace
+          rm -rf /tmp/base "$WORK"
+          mkdir -p /tmp/base "$WORK/t0pkg" "$WORK/t0b"
           git -C /tmp/base init -q
           git -C /tmp/base remote add origin https://github.com/digitalgoldfisj79/Voynichdecomp.git
           git -C /tmp/base fetch -q --depth 1 origin "$BASE_COMMIT"
           git -C /tmp/base checkout -q FETCH_HEAD
           test "$(git -C /tmp/base rev-parse HEAD)" = "$BASE_COMMIT"
-          cat /tmp/base/experiments/t0_known_source_audit_20260907/chunks/chunk*.txt | base64 -d | tar -xz -C /workspace/t0pkg
-          cp /tmp/base/voynich_transcriptions_slim.json /workspace/t0pkg/
-          tar -xzf /tmp/base/experiments/t0b_e2e_adequacy_20260907/t0b_codebundle.tgz -C /workspace/t0b
+          cat /tmp/base/experiments/t0_known_source_audit_20260907/chunks/chunk*.txt | base64 -d | tar -xz -C "$WORK/t0pkg"
+          cp /tmp/base/voynich_transcriptions_slim.json "$WORK/t0pkg/"
+          tar -xzf /tmp/base/experiments/t0b_e2e_adequacy_20260907/t0b_codebundle.tgz -C "$WORK/t0b"
           mkdir -p /mnt/data/surface_payload_resolution_v01_stage2 /mnt/data/surface_payload_resolution_v01_run /mnt/data/surface_payload_resolution_v01_repair /mnt/data/voynich_workingset_v01 /mnt/data/voynich_regional_v01
-          cp /workspace/t0pkg/stage2/* /mnt/data/surface_payload_resolution_v01_stage2/
-          cp /workspace/t0pkg/repair/* /mnt/data/surface_payload_resolution_v01_repair/
-          cp /workspace/t0pkg/working/* /mnt/data/voynich_workingset_v01/
-          cp /workspace/t0pkg/regional/* /mnt/data/voynich_regional_v01/
-          cp /workspace/t0pkg/base/* /mnt/data/surface_payload_resolution_v01_run/
-          python /workspace/t0pkg/reconstruct_events.py /workspace/t0pkg >/dev/null
-          cp /workspace/t0pkg/base/events_raw.pkl /mnt/data/surface_payload_resolution_v01_run/events_raw.pkl
+          cp "$WORK"/t0pkg/stage2/* /mnt/data/surface_payload_resolution_v01_stage2/
+          cp "$WORK"/t0pkg/repair/* /mnt/data/surface_payload_resolution_v01_repair/
+          cp "$WORK"/t0pkg/working/* /mnt/data/voynich_workingset_v01/
+          cp "$WORK"/t0pkg/regional/* /mnt/data/voynich_regional_v01/
+          cp "$WORK"/t0pkg/base/* /mnt/data/surface_payload_resolution_v01_run/
+          python "$WORK/t0pkg/reconstruct_events.py" "$WORK/t0pkg" >/dev/null
+          cp "$WORK/t0pkg/base/events_raw.pkl" /mnt/data/surface_payload_resolution_v01_run/events_raw.pkl
           python - <<'PY'
           import pickle
           rows=pickle.load(open('/mnt/data/surface_payload_resolution_v01_run/events_raw.pkl','rb'))
@@ -48,7 +49,7 @@ jobs:
       - name: Run frozen Stage-B v2 development pilot
         shell: bash
         env:
-          T0B_RUNNER: /workspace/t0b/t0b_runner.py
+          T0B_RUNNER: /tmp/voynich-workspace/t0b/t0b_runner.py
         run: |
           set -euo pipefail
           mkdir -p closure_p1v2/logs
@@ -68,7 +69,7 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          import json,math,re
+          import json,math
           from pathlib import Path
           import numpy as np
           from sklearn.linear_model import LogisticRegression
@@ -82,8 +83,7 @@ jobs:
                   if line.startswith('P1V2TRIAL='):
                       out.append(json.loads(line.split('=',1)[1]))
               return out
-          def feat(o,rep):
-              return np.mean([np.asarray(f['features'][rep],float) for f in o['folds']],axis=0)
+          def feat(o,rep): return np.mean([np.asarray(f['features'][rep],float) for f in o['folds']],axis=0)
           def permz(A,B,seed):
               obs=A.mean(0)-B.mean(0);X=np.vstack([A,B]);lab=np.array([0]*len(A)+[1]*len(B));rng=np.random.default_rng(seed);nul=[]
               for _ in range(999):
@@ -102,24 +102,18 @@ jobs:
           objs=parse(Path('closure_p1v2/working.log').read_text())+parse(Path('closure_p1v2/line.log').read_text())
           d={(o['source'],int(o['trial'])):o for o in objs if o.get('split')=='development'}
           for s in SOURCES:
-              got=sorted(t for x,t in d if x==s)
-              assert got==list(range(20)),(s,got)
-          names=next(iter(d.values()))['feature_names']
-          result={'n_per_source':20,'target_accessed':False,'representations':{}}
+              got=sorted(t for x,t in d if x==s); assert got==list(range(20)),(s,got)
+          names=next(iter(d.values()))['feature_names'];result={'n_per_source':20,'target_accessed':False,'representations':{}}
           for ri,rep in enumerate(REPS):
-              A=np.asarray([feat(d[(SOURCES[0],t)],rep) for t in range(20)])
-              B=np.asarray([feat(d[(SOURCES[1],t)],rep) for t in range(20)])
-              obs,ns,z=permz(A,B,62000+ri);order=np.argsort(-z)
-              X=np.vstack([A[:,USE_IDX],B[:,USE_IDX]]);y=np.array([SOURCES[0]]*20+[SOURCES[1]]*20);groups=np.array(list(range(20))*2)
+              A=np.asarray([feat(d[(SOURCES[0],t)],rep) for t in range(20)]);B=np.asarray([feat(d[(SOURCES[1],t)],rep) for t in range(20)])
+              obs,ns,z=permz(A,B,62000+ri);order=np.argsort(-z);X=np.vstack([A[:,USE_IDX],B[:,USE_IDX]]);y=np.array([SOURCES[0]]*20+[SOURCES[1]]*20);groups=np.array(list(range(20))*2)
               acc,margin=cvacc(X,y,groups);maxz=float(np.max(z));passed=bool(maxz>=3.0 or acc>=.80)
               result['representations'][rep]={'fixed_classifier_feature_names':[names[i] for i in USE_IDX],'grouped_cv_accuracy':acc,'mean_true_class_log_margin':margin,'max_feature_effect_over_null_sd':maxz,'pilot_go_pass':passed,'features_ranked':[{'feature':names[i],'working_minus_line_mean':float(obs[i]),'null_sd':float(ns[i]),'effect_over_null_sd':float(z[i])} for i in order]}
           result['overall_go']=bool(all(result['representations'][r]['pilot_go_pass'] for r in REPS))
           Path('closure_p1v2/pilot_result.json').write_text(json.dumps(result,indent=2))
           lines=['# P1 v2 frozen Stage-B development pilot','',f"Overall go: **{result['overall_go']}**",'']
-          for rep,r in result['representations'].items():
-              lines += [f'## {rep}',f"- grouped-CV accuracy: {r['grouped_cv_accuracy']:.3f}",f"- max prespecified feature effect/null SD: {r['max_feature_effect_over_null_sd']:.3f}",f"- pilot gate: {r['pilot_go_pass']}",'']
-          Path('closure_p1v2/summary.md').write_text('\n'.join(lines))
-          print(json.dumps(result,indent=2))
+          for rep,r in result['representations'].items(): lines += [f'## {rep}',f"- grouped-CV accuracy: {r['grouped_cv_accuracy']:.3f}",f"- max prespecified feature effect/null SD: {r['max_feature_effect_over_null_sd']:.3f}",f"- pilot gate: {r['pilot_go_pass']}",'']
+          Path('closure_p1v2/summary.md').write_text('\n'.join(lines)); print(json.dumps(result,indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
