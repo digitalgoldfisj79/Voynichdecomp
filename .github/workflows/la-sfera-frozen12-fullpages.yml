@@ -1,0 +1,27 @@
+name: La Sfera frozen 12-locus full pages
+on:
+  push:
+    branches: [research/la-sfera-textual-20260908]
+    paths:
+      - 'research/la_sfera_frozen12_fullpages.py'
+      - '.github/workflows/la-sfera-frozen12-fullpages.yml'
+  workflow_dispatch:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - name: Fetch unchanged frozen full pages
+        run: python research/la_sfera_frozen12_fullpages.py la_sfera_frozen12_fullpages
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: la-sfera-frozen12-fullpages
+          path: la_sfera_frozen12_fullpages
+          if-no-files-found: warn
+          retention-days: 7
