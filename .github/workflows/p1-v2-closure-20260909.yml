@@ -32,6 +32,8 @@ jobs:
           cat /tmp/base/experiments/t0_known_source_audit_20260907/chunks/chunk*.txt | base64 -d | tar -xz -C "$WORK/t0pkg"
           cp /tmp/base/voynich_transcriptions_slim.json "$WORK/t0pkg/"
           tar -xzf /tmp/base/experiments/t0b_e2e_adequacy_20260907/t0b_codebundle.tgz -C "$WORK/t0b"
+          sudo mkdir -p /mnt/data
+          sudo chown "$(id -u):$(id -g)" /mnt/data
           mkdir -p /mnt/data/surface_payload_resolution_v01_stage2 /mnt/data/surface_payload_resolution_v01_run /mnt/data/surface_payload_resolution_v01_repair /mnt/data/voynich_workingset_v01 /mnt/data/voynich_regional_v01
           cp "$WORK"/t0pkg/stage2/* /mnt/data/surface_payload_resolution_v01_stage2/
           cp "$WORK"/t0pkg/repair/* /mnt/data/surface_payload_resolution_v01_repair/
