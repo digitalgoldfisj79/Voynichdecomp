@@ -1,0 +1,128 @@
+name: P1 v2 closure qualification
+on:
+  push:
+    branches: [research/closure-programme-20260909]
+    paths: [.github/workflows/p1-v2-closure-20260909.yml]
+  workflow_dispatch:
+
+jobs:
+  p1v2-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/closure-programme-20260909
+          fetch-depth: 1
+      - name: Install dependencies
+        run: python -m pip install -q numpy scipy scikit-learn
+      - name: Prepare pinned T0b environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_COMMIT=2ea089393f848329b0673cddf09833789643e779
+          rm -rf /tmp/base /workspace/t0pkg /workspace/t0b
+          mkdir -p /tmp/base /workspace/t0pkg /workspace/t0b
+          git -C /tmp/base init -q
+          git -C /tmp/base remote add origin https://github.com/digitalgoldfisj79/Voynichdecomp.git
+          git -C /tmp/base fetch -q --depth 1 origin "$BASE_COMMIT"
+          git -C /tmp/base checkout -q FETCH_HEAD
+          test "$(git -C /tmp/base rev-parse HEAD)" = "$BASE_COMMIT"
+          cat /tmp/base/experiments/t0_known_source_audit_20260907/chunks/chunk*.txt | base64 -d | tar -xz -C /workspace/t0pkg
+          cp /tmp/base/voynich_transcriptions_slim.json /workspace/t0pkg/
+          tar -xzf /tmp/base/experiments/t0b_e2e_adequacy_20260907/t0b_codebundle.tgz -C /workspace/t0b
+          mkdir -p /mnt/data/surface_payload_resolution_v01_stage2 /mnt/data/surface_payload_resolution_v01_run /mnt/data/surface_payload_resolution_v01_repair /mnt/data/voynich_workingset_v01 /mnt/data/voynich_regional_v01
+          cp /workspace/t0pkg/stage2/* /mnt/data/surface_payload_resolution_v01_stage2/
+          cp /workspace/t0pkg/repair/* /mnt/data/surface_payload_resolution_v01_repair/
+          cp /workspace/t0pkg/working/* /mnt/data/voynich_workingset_v01/
+          cp /workspace/t0pkg/regional/* /mnt/data/voynich_regional_v01/
+          cp /workspace/t0pkg/base/* /mnt/data/surface_payload_resolution_v01_run/
+          python /workspace/t0pkg/reconstruct_events.py /workspace/t0pkg >/dev/null
+          cp /workspace/t0pkg/base/events_raw.pkl /mnt/data/surface_payload_resolution_v01_run/events_raw.pkl
+          python - <<'PY'
+          import pickle
+          rows=pickle.load(open('/mnt/data/surface_payload_resolution_v01_run/events_raw.pkl','rb'))
+          assert len(rows)==34087, len(rows)
+          print('events',len(rows))
+          PY
+      - name: Run frozen Stage-B v2 development pilot
+        shell: bash
+        env:
+          T0B_RUNNER: /workspace/t0b/t0b_runner.py
+        run: |
+          set -euo pipefail
+          mkdir -p closure_p1v2/logs
+          MAN=instrumentation/manifests/memory_recurrence_source_id_v2.json
+          run_one() {
+            src="$1"; trial="$2"
+            python instrumentation/memory_recurrence_stageb_runner_v2.py development "$src" "$trial" "$((trial+1))" --manifest "$MAN" > "closure_p1v2/logs/${src}_${trial}.log" 2>&1
+          }
+          export -f run_one
+          export MAN T0B_RUNNER
+          for src in working_set_only line_reset_r64; do
+            seq 0 19 | xargs -P2 -I{} bash -lc 'run_one '"$src"' {}'
+          done
+          cat closure_p1v2/logs/working_set_only_*.log > closure_p1v2/working.log
+          cat closure_p1v2/logs/line_reset_r64_*.log > closure_p1v2/line.log
+      - name: Score frozen pilot gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json,math,re
+          from pathlib import Path
+          import numpy as np
+          from sklearn.linear_model import LogisticRegression
+          from sklearn.model_selection import GroupKFold
+          SOURCES=('working_set_only','line_reset_r64')
+          REPS=('R0_canonical_tokens','R1_repeated_glyph_collapse')
+          USE_IDX=(0,1,5,8,14)
+          def parse(text):
+              out=[]
+              for line in text.splitlines():
+                  if line.startswith('P1V2TRIAL='):
+                      out.append(json.loads(line.split('=',1)[1]))
+              return out
+          def feat(o,rep):
+              return np.mean([np.asarray(f['features'][rep],float) for f in o['folds']],axis=0)
+          def permz(A,B,seed):
+              obs=A.mean(0)-B.mean(0);X=np.vstack([A,B]);lab=np.array([0]*len(A)+[1]*len(B));rng=np.random.default_rng(seed);nul=[]
+              for _ in range(999):
+                  q=rng.permutation(lab);nul.append(X[q==0].mean(0)-X[q==1].mean(0))
+              nul=np.asarray(nul);ns=nul.std(0,ddof=1);z=np.divide(np.abs(obs-nul.mean(0)),ns,out=np.full_like(obs,np.inf),where=ns>0);return obs,ns,z
+          def cvacc(X,y,groups):
+              g=GroupKFold(5);acc=[];margins=[]
+              for tr,te in g.split(X,y,groups):
+                  mu=X[tr].mean(0);sd=X[tr].std(0,ddof=1);sd=np.where(sd>1e-12,sd,1)
+                  m=LogisticRegression(C=1.0,solver='lbfgs',max_iter=3000).fit((X[tr]-mu)/sd,y[tr])
+                  pr=m.predict_proba((X[te]-mu)/sd);pred=m.classes_[np.argmax(pr,axis=1)];acc.extend((pred==y[te]).tolist());ci={c:i for i,c in enumerate(m.classes_)}
+                  for row,true in zip(pr,y[te]):
+                      other=SOURCES[1] if true==SOURCES[0] else SOURCES[0]
+                      margins.append(math.log(max(row[ci[true]],1e-300))-math.log(max(row[ci[other]],1e-300)))
+              return float(np.mean(acc)),float(np.mean(margins))
+          objs=parse(Path('closure_p1v2/working.log').read_text())+parse(Path('closure_p1v2/line.log').read_text())
+          d={(o['source'],int(o['trial'])):o for o in objs if o.get('split')=='development'}
+          for s in SOURCES:
+              got=sorted(t for x,t in d if x==s)
+              assert got==list(range(20)),(s,got)
+          names=next(iter(d.values()))['feature_names']
+          result={'n_per_source':20,'target_accessed':False,'representations':{}}
+          for ri,rep in enumerate(REPS):
+              A=np.asarray([feat(d[(SOURCES[0],t)],rep) for t in range(20)])
+              B=np.asarray([feat(d[(SOURCES[1],t)],rep) for t in range(20)])
+              obs,ns,z=permz(A,B,62000+ri);order=np.argsort(-z)
+              X=np.vstack([A[:,USE_IDX],B[:,USE_IDX]]);y=np.array([SOURCES[0]]*20+[SOURCES[1]]*20);groups=np.array(list(range(20))*2)
+              acc,margin=cvacc(X,y,groups);maxz=float(np.max(z));passed=bool(maxz>=3.0 or acc>=.80)
+              result['representations'][rep]={'fixed_classifier_feature_names':[names[i] for i in USE_IDX],'grouped_cv_accuracy':acc,'mean_true_class_log_margin':margin,'max_feature_effect_over_null_sd':maxz,'pilot_go_pass':passed,'features_ranked':[{'feature':names[i],'working_minus_line_mean':float(obs[i]),'null_sd':float(ns[i]),'effect_over_null_sd':float(z[i])} for i in order]}
+          result['overall_go']=bool(all(result['representations'][r]['pilot_go_pass'] for r in REPS))
+          Path('closure_p1v2/pilot_result.json').write_text(json.dumps(result,indent=2))
+          lines=['# P1 v2 frozen Stage-B development pilot','',f"Overall go: **{result['overall_go']}**",'']
+          for rep,r in result['representations'].items():
+              lines += [f'## {rep}',f"- grouped-CV accuracy: {r['grouped_cv_accuracy']:.3f}",f"- max prespecified feature effect/null SD: {r['max_feature_effect_over_null_sd']:.3f}",f"- pilot gate: {r['pilot_go_pass']}",'']
+          Path('closure_p1v2/summary.md').write_text('\n'.join(lines))
+          print(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p1-v2-closure-pilot
+          path: closure_p1v2/
+          retention-days: 14
