@@ -1,0 +1,25 @@
+name: La Sfera Cap1 duplicate folio fix
+on:
+  push:
+    branches: [research/la-sfera-textual-20260908]
+    paths:
+      - 'research/la_sfera_cap1_duplicate_fix.py'
+      - '.github/workflows/la-sfera-cap1-duplicate-fix.yml'
+  workflow_dispatch:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - run: python research/la_sfera_cap1_duplicate_fix.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: la-sfera-cap1-duplicate-fix
+          path: la_sfera_cap1_fix
+          retention-days: 7
