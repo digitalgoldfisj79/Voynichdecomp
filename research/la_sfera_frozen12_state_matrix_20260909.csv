@@ -1,0 +1,13 @@
+VariantID,line_code,Laur2,Yale4,Barb4,Urb2,informative,normalization_note
+T00031,01.01.02,SAME,SAME,SAME,SAME,0,"orthographic secol/secolo/secul normalized"
+T00251,01.04.07,SAME,SAME,SAME,SAME,0,"creator/creatore normalized"
+T00416,01.06.07,A,A,B,C,1,"A=no di + poter/potere; B=di present + power verb absent; C=di present + power verb present"
+T00722,01.11.01,A,B,A,B,1,"A=no conjunction before Leo; B=conjunction before Leo; Son/Sono normalized"
+T00842,01.12.05,A,B,A,A,1,"A=possessive loro/lor present; B=possessive omitted"
+T01033,01.14.07,SAME,SAME,SAME,SAME,0,"no substantive difference after normalization"
+T01384,01.19.03,A,A,B,B,1,"A=conjunction absent; B=et/e present"
+T01541,01.21.08,A,A,B,B,1,"A=ci absent; B=ci present"
+T01729,01.23.08,SAME,SAME,SAME,SAME,0,"ragion/ragione and comparable inflection normalized"
+T02062,01.28.05,SAME,SAME,SAME,SAME,0,"no substantive difference after normalization"
+T02232,01.31.02,SAME,SAME,SAME,SAME,0,"ciel/cielo normalized"
+T02554,01.36.08,SAME,SAME,SAME,SAME,0,"ringraziera/ringratiera spelling normalized"
