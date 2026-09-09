@@ -7,6 +7,7 @@ from sklearn.model_selection import GroupKFold
 SOURCES=('working_set_only','line_reset_r64')
 REPS=('R0_canonical_tokens','R1_repeated_glyph_collapse')
 USE_IDX=(0,1,5,8,14)
+ZERO_TOL=1e-12
 
 def parse(text):
     dec=json.JSONDecoder(); out=[]; pos=0
@@ -25,7 +26,11 @@ def permz(A,B,seed):
     obs=A.mean(0)-B.mean(0);X=np.vstack([A,B]);lab=np.array([0]*len(A)+[1]*len(B));rng=np.random.default_rng(seed);nul=[]
     for _ in range(999):
         q=rng.permutation(lab);nul.append(X[q==0].mean(0)-X[q==1].mean(0))
-    nul=np.asarray(nul);ns=nul.std(0,ddof=1);z=np.divide(np.abs(obs-nul.mean(0)),ns,out=np.full_like(obs,np.inf),where=ns>0);return obs,ns,z
+    nul=np.asarray(nul);nm=nul.mean(0);ns=nul.std(0,ddof=1);delta=np.abs(obs-nm);z=np.empty_like(obs)
+    pos=ns>ZERO_TOL
+    z[pos]=delta[pos]/ns[pos]
+    z[~pos]=np.where(delta[~pos]<=ZERO_TOL,0.0,np.inf)
+    return obs,ns,z
 
 def cvacc(X,y,groups):
     g=GroupKFold(5);acc=[];margins=[]
@@ -42,7 +47,7 @@ def main():
     d={(o['source'],int(o['trial'])):o for o in objs if o.get('split')=='development'}
     for s in SOURCES:
         if sorted(t for x,t in d if x==s)!=list(range(20)):raise SystemExit(f'incomplete {s}')
-    out={'n_per_source':20,'target_accessed':False,'representations':{}};names=next(iter(d.values()))['feature_names']
+    out={'n_per_source':20,'target_accessed':False,'representations':{},'bugfix':'zero-null-SD gives z=0 only when observed-minus-null-mean is also zero within 1e-12; otherwise z=inf'};names=next(iter(d.values()))['feature_names']
     for ri,rep in enumerate(REPS):
         A=np.asarray([feat(d[(SOURCES[0],t)],rep) for t in range(20)]);B=np.asarray([feat(d[(SOURCES[1],t)],rep) for t in range(20)]);obs,ns,z=permz(A,B,62000+ri);order=np.argsort(-z);X=np.vstack([A[:,USE_IDX],B[:,USE_IDX]]);y=np.array([SOURCES[0]]*20+[SOURCES[1]]*20);groups=np.array(list(range(20))*2);acc,margin=cvacc(X,y,groups);maxz=float(np.max(z));passed=bool(maxz>=3.0 or acc>=.80)
         out['representations'][rep]={'fixed_classifier_feature_names':[names[i] for i in USE_IDX],'grouped_cv_accuracy':acc,'mean_true_class_log_margin':margin,'max_feature_effect_over_null_sd':maxz,'pilot_go_pass':passed,'features_ranked':[{'feature':names[i],'working_minus_line_mean':float(obs[i]),'null_sd':float(ns[i]),'effect_over_null_sd':float(z[i])} for i in order]}
