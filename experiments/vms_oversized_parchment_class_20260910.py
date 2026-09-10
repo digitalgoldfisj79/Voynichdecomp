@@ -21,11 +21,12 @@ import pandas as pd
 import requests
 from scipy.ndimage import gaussian_filter1d
 
-PROTOCOL = "vms_oversized_parchment_class_20260910_v02"
-OUT = Path("artifacts/vms_oversized_parchment_class_20260910_v02")
+PROTOCOL = "vms_oversized_parchment_class_20260910_v03"
+OUT = Path("artifacts/vms_oversized_parchment_class_20260910_v03")
 OUT.mkdir(parents=True, exist_ok=True)
 HEADERS={"User-Agent":"Voynich-research/1.0"}
-RESOLUTIONS=(1800,2400,3000)
+# All are true downsampled widths below every source image's native width.
+RESOLUTIONS=(1200,1800,2400)
 
 RETRACTED_FINDINGS=[{
  "finding":"Initial candidate-frame definition treated 1006235 and 1006251 as single oversized physical sheets.",
@@ -34,12 +35,6 @@ RETRACTED_FINDINGS=[{
  "replacement":"Physical bifolium units and terminal free edges only."
 }]
 
-# Edge specs are frozen before scoring.
-# kind='spread': use the left and right terminal edges of one full physical-sheet view.
-# kind='pair': use a predetermined free edge from each component view.
-# For ordinary recto/verso page scans: recto free edge=right, verso free edge=left.
-# For b87_90 and b99_102, the second terminal edge is the far-right edge of a
-# current-opening scan solely because that view exposes the outer edge of f90/f102.
 CANDIDATES=[
  {"unit":"q14_b85_86","quire":"Q14","kind":"spread","sid":"1006231"},
  {"unit":"q15_b87_90","quire":"Q15","kind":"pair","a_sid":"1006232","a_side":"right","b_sid":"1006235","b_side":"right"},
@@ -80,7 +75,6 @@ def download(sid,width):
 
 
 def page_mask(img):
-    # Yale uses a dark board. Largest light connected component, with holes filled.
     L=cv2.cvtColor(img,cv2.COLOR_BGR2LAB)[:,:,0]
     blur=cv2.GaussianBlur(L,(0,0),2.0)
     _,m=cv2.threshold(blur,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -113,7 +107,6 @@ def interp(v):
 
 def edge_features(v,height):
     v=interp(v); n=len(v); trim=max(4,int(.04*n)); v=v[trim:n-trim]
-    # Suppress pixel chatter but retain macroscopic parchment contour.
     v=gaussian_filter1d(v,max(1.0,n/900.0))
     x=np.linspace(-1,1,len(v)); fit=np.polyval(np.polyfit(x,v,2),x); r=v-fit
     rms=float(np.sqrt(np.mean(r*r))/height)
@@ -125,8 +118,7 @@ def edge_features(v,height):
 def get_edge(sid,side,width):
     img=cv2.imread(str(download(sid,width)),cv2.IMREAD_COLOR)
     if img is None: raise RuntimeError(f"failed scan {sid}")
-    m=page_mask(img); v,h=side_profile(m,side); f=edge_features(v,h)
-    return f
+    m=page_mask(img); v,h=side_profile(m,side); return edge_features(v,h)
 
 
 def measure_unit(spec,width):
@@ -143,8 +135,7 @@ def measure_unit(spec,width):
 
 def exact_test(df,metric):
     vals=df[metric].to_numpy(float); lab=df.candidate.to_numpy(int); n1=int(lab.sum()); idx=np.arange(len(df))
-    obs=float(vals[lab==1].mean()-vals[lab==0].mean())
-    null=[]
+    obs=float(vals[lab==1].mean()-vals[lab==0].mean()); null=[]
     for comb in itertools.combinations(idx,n1):
         g=np.zeros(len(df),bool); g[list(comb)]=True
         null.append(float(vals[g].mean()-vals[~g].mean()))
@@ -170,25 +161,21 @@ def run_resolution(width):
             r=measure_unit(spec,width); r["candidate"]=c; r["resolution"]=width; rows.append(r)
     df=pd.DataFrame(rows); df.to_csv(OUT/f"features_{width}.csv",index=False)
     metrics=["max_rms","mean_rms","max_qrange","mean_qrange","max_diffmad","mean_diffmad"]
-    tests=[exact_test(df,m) for m in metrics]
-    return df,tests,loo(df,"max_rms")
+    return df,[exact_test(df,m) for m in metrics],loo(df,"max_rms")
 
 checkpoint("frozen_protocol",{"candidates":[x["unit"] for x in CANDIDATES],"controls":[x["unit"] for x in CONTROLS],
                                "primary":"max_rms","resolutions":RESOLUTIONS})
-all_tests={}; all_loo={}; all_dfs=[]
+all_tests={}; all_loo={}
 for w in RESOLUTIONS:
-    df,tests,los=run_resolution(w); all_dfs.append(df); all_tests[str(w)]=tests; all_loo[str(w)]=los
+    df,tests,los=run_resolution(w); all_tests[str(w)]=tests; all_loo[str(w)]=los
     checkpoint(f"completed_{w}",{"tests":tests,"loo":los})
 
-# Stability audit: primary direction/threshold across resolution; secondary directional consistency.
 primary=[]
 for w in RESOLUTIONS:
     r=next(x for x in all_tests[str(w)] if x["metric"]=="max_rms"); primary.append({"resolution":w,**r})
 sec_dir={}
 for metric in ["mean_rms","max_qrange","mean_qrange","max_diffmad","mean_diffmad"]:
     sec_dir[metric]=[next(x for x in all_tests[str(w)] if x["metric"]==metric)["effect"] for w in RESOLUTIONS]
-
-# f102 damage sensitivity is q19_b99_102 leave-out; all candidate leave-outs also mandatory.
 f102_loo=[x for x in all_loo["2400"] if x["left_out_candidate"]=="q19_b99_102"][0]
 summary={
  "protocol":PROTOCOL,
