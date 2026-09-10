@@ -17,11 +17,11 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install --disable-pip-version-check numpy pandas scipy opencv-python-headless requests
-      - name: Run corrected physical-unit assay
-        run: python experiments/vms_oversized_parchment_class_20260910.py
+      - name: Run corrected physical-unit assay and confound audit
+        run: python experiments/vms_oversized_parchment_class_audit_20260910.py
       - name: Upload corrected artifact
         uses: actions/upload-artifact@v4
         with:
-          name: vms-oversized-parchment-class-20260910-v02
-          path: artifacts/vms_oversized_parchment_class_20260910_v02
+          name: vms-oversized-parchment-class-20260910-v03
+          path: artifacts/vms_oversized_parchment_class_20260910_v03
           if-no-files-found: error
