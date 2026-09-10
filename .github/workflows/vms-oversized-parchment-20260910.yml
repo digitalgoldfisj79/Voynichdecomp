@@ -1,0 +1,27 @@
+name: VMS oversized parchment class assay
+
+on:
+  push:
+    branches:
+      - gpt56/vms-oversized-parchment-20260910
+  workflow_dispatch:
+
+jobs:
+  assay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check numpy pandas scipy pillow opencv-python-headless requests
+      - name: Run assay
+        run: python experiments/vms_oversized_parchment_class_20260910.py
+      - name: Upload assay artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vms-oversized-parchment-class-20260910
+          path: artifacts/vms_oversized_parchment_class_20260910
+          if-no-files-found: error
