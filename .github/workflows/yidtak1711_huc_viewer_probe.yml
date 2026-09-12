@@ -1,0 +1,50 @@
+name: YidTak1711 HUC viewer probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/primary_bridge/TRIGGER_HUC_PROBE'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe HUC viewer transport
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/huc_probe
+          mkdir -p "$OUT"
+          URL='https://mss.huc.edu/phpviewer/index.php?path=printed_material/RBR_O_128'
+          curl -L --fail --retry 3 -D "$OUT/headers.txt" "$URL" -o "$OUT/viewer.html"
+          grep -Eo 'https?://[^"'"'"' <>]+' "$OUT/viewer.html" | sort -u > "$OUT/absolute_urls.txt" || true
+          grep -Eo '(src|href)=["'"'"'][^"'"'"']+["'"'"']' "$OUT/viewer.html" > "$OUT/src_href.txt" || true
+          grep -Ein 'RBR_O_128|printed_material|image|jpg|jpeg|png|tif|tile|viewer|manifest|json|ajax|zoom' "$OUT/viewer.html" > "$OUT/relevant_lines.txt" || true
+          # Fetch referenced local JS because viewer image-path construction may live there.
+          python3 - <<'PY'
+          import re, pathlib, urllib.parse, urllib.request
+          out=pathlib.Path('/tmp/huc_probe')
+          html=(out/'viewer.html').read_text(errors='replace')
+          base='https://mss.huc.edu/phpviewer/'
+          refs=[]
+          for m in re.finditer(r'<script[^>]+src=["\']([^"\']+)',html,re.I):
+              refs.append(urllib.parse.urljoin(base,m.group(1)))
+          (out/'script_urls.txt').write_text('\n'.join(refs)+'\n')
+          for i,u in enumerate(refs):
+              try:
+                  urllib.request.urlretrieve(u,out/f'script_{i:02d}.js')
+              except Exception as e:
+                  (out/f'script_{i:02d}.error.txt').write_text(repr(e))
+          PY
+          grep -Ein 'RBR_O_128|printed_material|image|jpg|jpeg|png|tif|tile|path|ajax|json' "$OUT"/script_*.js > "$OUT/js_relevant_lines.txt" || true
+          wc -c "$OUT"/* > "$OUT/sizes.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yidtak1711-huc-viewer-probe
+          path: /tmp/huc_probe
+          retention-days: 30
