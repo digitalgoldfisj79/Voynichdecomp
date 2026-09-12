@@ -1,0 +1,60 @@
+name: Yiddish cipher instrument control v1
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - '.github/workflows/yiddish_cipher_control_v1.yml'
+      - 'experiments/yiddish_cipher_control_v1/**'
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'smoke or full'
+        required: true
+        default: 'smoke'
+        type: choice
+        options: [smoke, full]
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install runtime
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Acquire official ReF 1.0.2 comparator corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref
+          curl -L --fail --retry 3 \
+            https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz \
+            -o /tmp/ref/ReF-v1.0.2.tar.gz
+          sha256sum /tmp/ref/ReF-v1.0.2.tar.gz | tee /tmp/ref_sha256.txt
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/ref
+
+      - name: Run control
+        shell: bash
+        env:
+          PROFILE: ${{ github.event.inputs.profile || 'smoke' }}
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_cipher_control_v1/run_m0_control.py \
+            --profile "$PROFILE" \
+            --ref-root /tmp/ref \
+            --out experiments/yiddish_cipher_control_v1/control_output
+          cp /tmp/ref_sha256.txt experiments/yiddish_cipher_control_v1/control_output/ref_archive_sha256.txt
+
+      - name: Upload evidence bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-cipher-control-v1-${{ github.event.inputs.profile || 'smoke' }}
+          path: experiments/yiddish_cipher_control_v1/control_output
+          retention-days: 30
