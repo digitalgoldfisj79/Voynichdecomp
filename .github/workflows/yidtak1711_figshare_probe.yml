@@ -11,34 +11,47 @@ on:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Inventory Figshare record and linked public share metadata
+      - name: Inventory linked public share via metadata-only WebDAV
         shell: bash
         run: |
           set -euo pipefail
           OUT=/tmp/figshare_probe
           mkdir -p "$OUT"
-          curl -L --fail --retry 3 'https://api.figshare.com/v2/articles/25422844' -o "$OUT/article.json"
-          python3 - <<'PY'
-          import json, pathlib
-          p=pathlib.Path('/tmp/figshare_probe')
-          x=json.loads((p/'article.json').read_text())
-          rows=[]
-          for f in x.get('files',[]):
-              rows.append({k:f.get(k) for k in ('id','name','size','is_link_only','download_url','supplied_md5','computed_md5')})
-          (p/'files.json').write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
-          (p/'files.tsv').write_text('\n'.join(f"{r['id']}\t{r['size']}\t{r['name']}\t{r['download_url']}" for r in rows)+'\n')
-          print(json.dumps({'title':x.get('title'),'doi':x.get('doi'),'license':x.get('license'),'n_files':len(rows)},indent=2,default=str))
-          for r in rows: print(r['id'],r['size'],r['name'],r.get('is_link_only'),r['download_url'])
-          PY
+          curl --connect-timeout 10 --max-time 30 -L --fail --retry 1 'https://api.figshare.com/v2/articles/25422844' -o "$OUT/article.json"
           LINK=$(python3 -c "import json; x=json.load(open('$OUT/article.json')); print(x['files'][0]['download_url'])")
-          curl -L --fail --retry 3 -D "$OUT/share_headers.txt" "$LINK" -o "$OUT/share.html"
-          grep -Ein 'file|folder|name|href|download|dav|initial|state|directory|dir' "$OUT/share.html" > "$OUT/share_relevant_lines.txt" || true
-          grep -Eo '(src|href)=["'"'"'][^"'"'"']+["'"'"']' "$OUT/share.html" > "$OUT/share_src_href.txt" || true
-          wc -c "$OUT"/* > "$OUT/sizes.txt"
+          TOKEN=${LINK##*/}
+          printf 'link=%s\ntoken=%s\n' "$LINK" "$TOKEN" > "$OUT/share_pointer.txt"
+          URL="https://surfdrive.surf.nl/public.php/dav/files/$TOKEN"
+          BODY='<?xml version="1.0" encoding="UTF-8"?><d:propfind xmlns:d="DAV:"><d:prop><d:displayname/><d:getcontentlength/><d:getcontenttype/><d:getetag/><d:resourcetype/></d:prop></d:propfind>'
+          set +e
+          HTTP=$(curl --connect-timeout 10 --max-time 45 -sS -X PROPFIND -H 'Depth: 1' -H 'X-Requested-With: XMLHttpRequest' -H 'Content-Type: application/xml' --data "$BODY" -o "$OUT/propfind_depth1.xml" -w '%{http_code}' "$URL")
+          RC=$?
+          set -e
+          printf 'curl_rc=%s\nhttp_status=%s\nurl=%s\n' "$RC" "$HTTP" "$URL" | tee "$OUT/status.txt"
+          if [ "$RC" -eq 0 ] && [ "$HTTP" = '207' ]; then
+            python3 - <<'PY'
+          import pathlib, urllib.parse, xml.etree.ElementTree as ET
+          p=pathlib.Path('/tmp/figshare_probe')
+          root=ET.parse(p/'propfind_depth1.xml').getroot(); ns={'d':'DAV:'}; rows=[]
+          for resp in root.findall('d:response',ns):
+              href=urllib.parse.unquote(resp.findtext('d:href',default='',namespaces=ns) or '')
+              prop=resp.find('.//d:prop',ns)
+              if prop is None: continue
+              name=prop.findtext('d:displayname',default='',namespaces=ns) or ''
+              size=prop.findtext('d:getcontentlength',default='',namespaces=ns) or ''
+              ctype=prop.findtext('d:getcontenttype',default='',namespaces=ns) or ''
+              etag=prop.findtext('d:getetag',default='',namespaces=ns) or ''
+              rt=prop.find('d:resourcetype',ns); is_dir=rt is not None and rt.find('d:collection',ns) is not None
+              rows.append((href,name,size,ctype,etag,'DIR' if is_dir else 'FILE'))
+          text='href\tdisplayname\tsize\tcontent_type\tetag\ttype\n'+'\n'.join('\t'.join(r) for r in rows)+'\n'
+          (p/'inventory_depth1.tsv').write_text(text); print(text)
+          PY
+          fi
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: yidtak1711-figshare-probe
           path: /tmp/figshare_probe
