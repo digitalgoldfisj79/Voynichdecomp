@@ -1,0 +1,66 @@
+{
+  "all_gates_pass": true,
+  "extraction_code_sha256": "d33be97e3d5f0bbc149fbe454283f2db21587a88dbce55d641bf783b12b901e4",
+  "gates": {
+    "all_german_dev_at_least_512": true,
+    "all_registered_german_ids_metadata_verified": true,
+    "german_build_at_least_10000": true,
+    "german_exact_8word_overlap_zero": true
+  },
+  "german_overlap_audit": [
+    {"build":"F014","development":"F016","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F014","development":"F018","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F014","development":"F034","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F014","development":"F037","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F014","development":"F148","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F015","development":"F016","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F015","development":"F018","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F015","development":"F034","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F015","development":"F037","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"F015","development":"F148","shared_5word_types":0,"shared_8word_types":0}
+  ],
+  "german_representation": "ReF CorA-XML tok_dipl utf, diplomatic/source layer; diplomatic fragments concatenated per virtual token; literal a-z filter applied only after extraction; no Unicode transliteration; no tok_anno/lemma/POS",
+  "mode": "PRE_SCORING_GATE_ONLY",
+  "source_hashes": {
+    "german": {
+      "F014": "059211745db8c12b96d9ac4538cd94201c758f47cbc756b5fca70eeb59872f76",
+      "F015": "29b07d566cc8f3ceedbac16a5a0f98a9a4d8059b748c53d336d97aaffcd250f9",
+      "F016": "b898a98189fe8b3d20867dd347f71639643ee609513b76d5d85f19048bf80284",
+      "F018": "c694913a336563a5526b5447279359ac822da86e9ecf9ea50d1b30857de8368b",
+      "F034": "9d4e2da5fe4ac5f0438fd7599234749f4b3fe02333f60f19fed1e27215829135",
+      "F037": "8f7e855a96c3a6fcf03c4d91102197ddbd9b93fc79ab94393854f35385825f7d",
+      "F148": "4ca05d5794994980356dd3f9c932f8403a42d964745950dd1966d121d36c2802"
+    },
+    "yiddish": {
+      "bovo_1507": {"1507w-bovo.psd": "dcf560f75d38672482a3ea0c8b1f690cea8b31b1b6e3bf9fcc75690b195cb220"},
+      "cracow_letters_1588": {"1588e-letters-cracow.psd": "e0080deb4c40828732b7da62d503f7f3a94d51eac3326a0a7ebcf348f5b81811"},
+      "ester_1589": {"1589e-ester-preface.psd": "1a4d0bde424daa8d0519ca756a7d8376a1d3c1b3c9c0c5c4fd83270cf7cef0a0", "1589e-ester.psd": "e8a88bfeff5e50e92f1d88050aba9492abfc13a07121093c07d5b7dd49cbd114"},
+      "kine_1648": {"1648w-kine.psd": "fc17b25bd3e9612d0654b9f8d932c659d372908f9412e4d84ca21acb4545d32a"},
+      "lev_tov_1620": {"1620e-lev-tov-1-preface.psd": "19eadfaaec42218bcfb38ab4c821a9efbf0bf8b8c4f3a2bb342bfd5162932fee", "1620e-lev-tov-1.psd": "9b8e0bc873b4a4550224b038a754480a54761618e6a4f04b0b067fcf8af412a9"},
+      "sam_hayyim_1590": {"1590e-sam-hayyim.psd": "ed607f2a134c95b0216ab494a6129392cbe43c7feb38d795813d260baa8d9d70"},
+      "shir_1579": {"1579e-shir-preface.psd": "1e4cd69062c47ea0753e7e1185d58c1bcd9bbcf71e1b3534564c159def1161bd", "1579e-shir.psd": "f3f9e2a5625d35ef1efa2d552986b771ff4cadacd95f17857b557cc02119bf17"}
+    }
+  },
+  "target_loaded": false,
+  "train_allocations": {"german":{"F014":5000,"F015":5000},"yiddish":{"ester_1589":3747,"shir_1579":6253}},
+  "version": "yiddish_l_evaluator_candidate2_v01_20260912",
+  "word_counts": {
+    "german_build": {"F014":19097,"F015":18162},
+    "german_dev": {"F016":8124,"F018":6270,"F034":5663,"F037":15327,"F148":20282},
+    "yiddish_build": {"ester_1589":3747,"shir_1579":6357},
+    "yiddish_dev": {"bovo_1507":6035,"cracow_letters_1588":1813,"kine_1648":2729,"lev_tov_1620":4928,"sam_hayyim_1590":1552}
+  },
+  "yiddish_overlap_audit": [
+    {"build":"shir_1579","development":"bovo_1507","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"shir_1579","development":"cracow_letters_1588","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"shir_1579","development":"sam_hayyim_1590","shared_5word_types":1,"shared_8word_types":0},
+    {"build":"shir_1579","development":"lev_tov_1620","shared_5word_types":2,"shared_8word_types":0},
+    {"build":"shir_1579","development":"kine_1648","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"ester_1589","development":"bovo_1507","shared_5word_types":2,"shared_8word_types":0},
+    {"build":"ester_1589","development":"cracow_letters_1588","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"ester_1589","development":"sam_hayyim_1590","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"ester_1589","development":"lev_tov_1620","shared_5word_types":0,"shared_8word_types":0},
+    {"build":"ester_1589","development":"kine_1648","shared_5word_types":0,"shared_8word_types":0}
+  ],
+  "yiddish_representation": "PPCHY frozen a-z atomizer"
+}
