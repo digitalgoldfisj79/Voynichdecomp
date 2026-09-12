@@ -1,0 +1,33 @@
+name: YidTak1711 frozen DOCX fetch
+on:
+  push:
+    branches: [gpt56/yiddish-control-v1-20260912]
+    paths: ['experiments/yiddish_cipher_control_v1/primary_bridge/TRIGGER_DOCX_FETCH']
+  workflow_dispatch:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch exact frozen Zenodo DOCX and hash
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/yidtak1711_docx; mkdir -p "$OUT"
+          curl -L --fail --retry 2 'https://zenodo.org/api/records/10017358' -o "$OUT/record.json"
+          python3 - <<'PY'
+          import json,pathlib,urllib.request
+          p=pathlib.Path('/tmp/yidtak1711_docx'); rec=json.loads((p/'record.json').read_text())
+          f=next(x for x in rec['files'] if x['key']=='Takanot 1711 - YidTakNL.docx')
+          url=f['links'].get('content') or f['links']['self']
+          urllib.request.urlretrieve(url,p/'Takanot 1711 - YidTakNL.docx')
+          (p/'meta.json').write_text(json.dumps(f,indent=2,ensure_ascii=False)+'\n')
+          PY
+          sha256sum "$OUT/Takanot 1711 - YidTakNL.docx" | tee "$OUT/SHA256SUMS.txt"
+          file "$OUT/Takanot 1711 - YidTakNL.docx" | tee "$OUT/FILE_TYPE.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yidtak1711-frozen-docx
+          path: /tmp/yidtak1711_docx
+          retention-days: 30
