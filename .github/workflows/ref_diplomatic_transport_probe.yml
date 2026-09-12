@@ -1,0 +1,33 @@
+name: ReF diplomatic transport probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/ref_diplomatic_transport_probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch CorpusExplorer ReF addon descriptor
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/refprobe
+          curl --max-time 60 -L --fail --retry 2 \
+            'https://www.bitcutstudios.com/products/CorpusExplorer/corpora/ref/ref.ceAddon' \
+            -o /tmp/refprobe/ref.ceAddon
+          file /tmp/refprobe/ref.ceAddon
+          stat -c '%s bytes' /tmp/refprobe/ref.ceAddon
+          sha256sum /tmp/refprobe/ref.ceAddon
+          strings /tmp/refprobe/ref.ceAddon | head -200 | tee /tmp/refprobe/strings.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-diplomatic-transport-probe
+          path: /tmp/refprobe
+          retention-days: 7
