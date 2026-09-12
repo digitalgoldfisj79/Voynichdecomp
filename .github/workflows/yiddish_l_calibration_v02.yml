@@ -1,0 +1,126 @@
+name: Yiddish-German L calibration transfer v02
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-calibration-v02-20260912
+    paths:
+      - 'experiments/yiddish_l_calibration_v02/TRIGGER_RUN'
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire pinned PPCHY
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/ppchy
+          git -C /tmp/ppchy fetch --depth=1 origin b5864bd02a315c1d436a82553667bbf81eab6537
+          git -C /tmp/ppchy checkout --detach b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/ppchy rev-parse HEAD)" = 'b5864bd02a315c1d436a82553667bbf81eab6537'
+      - name: Acquire official ReF 1.0.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref
+          curl -L --fail --retry 3 https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz -o /tmp/ref/ReF-v1.0.2.tar.gz
+          echo '288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e  /tmp/ref/ReF-v1.0.2.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/ref
+      - name: Freeze fresh v0.2 aliases, keys and cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_l_calibration_v02/run_l_calibration_v02.py preflight \
+            --penn-data /tmp/ppchy/data --ref-root /tmp/ref --out /tmp/lv02
+      - name: Independent public admissibility assertion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('/tmp/lv02/public/preflight_manifest.json')
+          m=json.loads(p.read_text())
+          assert m['status']=='V02_PREFLIGHT_FROZEN_BEFORE_SOLVER_OUTCOMES'
+          assert m['target_loaded'] is False and m['voynich_access_allowed'] is False
+          assert m['prior_solver_outputs_reused'] is False
+          assert len(m['development_counts']['yiddish'])==8
+          assert len(m['development_counts']['german'])==8
+          assert all(r['shared_8gram_types']==0 for r in m['overlap_yiddish'])
+          assert all(r['shared_8gram_types']==0 for r in m['overlap_german'])
+          assert m['transfer_statistic']=='Z_ind=((sY-muY)-(sG-muG))/sqrt(sdY^2+sdG^2)'
+          assert m['family_call_abs_z_ind']==1.0
+          print('V02_PUBLIC_ADMISSIBILITY_OK')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-calibration-v02-public-preflight
+          path: /tmp/lv02/public
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-calibration-v02-private-truth
+          path: /tmp/lv02/private
+          retention-days: 30
+
+  solve:
+    needs: preflight
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        group: [G00,G01,G02,G03,G04,G05,G06,G07,G08,G09,G10,G11,G12,G13,G14,G15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-calibration-v02-public-preflight
+          path: /tmp/lv02/public
+      - name: Fresh blind transfer recovery — ${{ matrix.group }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/solve/${{ matrix.group }}
+          python experiments/yiddish_l_calibration_v02/run_l_calibration_v02.py solve \
+            --public /tmp/lv02/public --group ${{ matrix.group }} --out /tmp/solve/${{ matrix.group }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-calibration-v02-solve-${{ matrix.group }}
+          path: /tmp/solve
+          retention-days: 30
+
+  aggregate:
+    needs: [preflight, solve]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-calibration-v02-public-preflight
+          path: /tmp/lv02/public
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-calibration-v02-private-truth
+          path: /tmp/lv02/private
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: l-calibration-v02-solve-*
+          path: /tmp/solutions
+          merge-multiple: true
+      - name: Reveal fresh v0.2 truth only after all blind outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_l_calibration_v02/run_l_calibration_v02.py aggregate \
+            --public /tmp/lv02/public --private /tmp/lv02/private --solutions /tmp/solutions --out /tmp/final
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-german-l-calibration-v02-result
+          path: /tmp/final
+          retention-days: 30
