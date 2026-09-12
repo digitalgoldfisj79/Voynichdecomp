@@ -1,0 +1,116 @@
+name: Yiddish L ReF extraction equivalence probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-recovery-v01-20260912
+    paths:
+      - 'experiments/yiddish_l_recovery_v01/TRIGGER_REF_EQUIVALENCE_PROBE'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Recover exact Candidate-2 packaged official ReF XML
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 0f9e30ee32185cc65591b2da4867fa3bb8b23574
+          mkdir -p /tmp/refprobe/pkg /tmp/refprobe/xml
+          git show 0f9e30ee32185cc65591b2da4867fa3bb8b23574:experiments/yiddish_l_development_20260912/ref_xml_full.tar.gz > /tmp/refprobe/ref_xml_full.tar.gz
+          sha256sum /tmp/refprobe/ref_xml_full.tar.gz | tee /tmp/refprobe/package_sha256.txt
+          tar -tzf /tmp/refprobe/ref_xml_full.tar.gz > /tmp/refprobe/tar_listing.txt
+          tar -xzf /tmp/refprobe/ref_xml_full.tar.gz -C /tmp/refprobe/xml
+          find /tmp/refprobe/xml -type f -name '*.xml' -print | sort > /tmp/refprobe/xml_paths.txt
+          printf 'xml_count='; wc -l < /tmp/refprobe/xml_paths.txt
+      - name: Compare element-wise vs virtual-token diplomatic extraction
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections, hashlib, json, pathlib, re, xml.etree.ElementTree as ET
+          root=pathlib.Path('/tmp/refprobe/xml')
+          out=pathlib.Path('/tmp/refprobe')
+          expected={
+           'F014':('059211745db8c12b96d9ac4538cd94201c758f47cbc756b5fca70eeb59872f76',19097),
+           'F015':('29b07d566cc8f3ceedbac16a5a0f98a9a4d8059b748c53d336d97aaffcd250f9',18162),
+           'F016':('b898a98189fe8b3d20867dd347f71639643ee609513b76d5d85f19048bf80284',8124),
+           'F018':('c694913a336563a5526b5447279359ac822da86e9ecf9ea50d1b30857de8368b',6270),
+           'F034':('9d4e2da5fe4ac5f0438fd7599234749f4b3fe02333f60f19fed1e27215829135',5663),
+           'F037':('8f7e855a96c3a6fcf03c4d91102197ddbd9b93fc79ab94393854f35385825f7d',15327),
+           'F148':('4ca05d5794994980356dd3f9c932f8403a42d964745950dd1966d121d36c2802',20282),
+          }
+          def sha(p):
+           h=hashlib.sha256(); h.update(p.read_bytes()); return h.hexdigest()
+          bysha={sha(p):p for p in root.rglob('*.xml')}
+          def local(tag): return tag.rsplit('}',1)[-1]
+          def norm(s):
+           w=''.join(c for c in (s or '').lower() if 'a'<=c<='z'); return w or None
+          results={}; sequences={}
+          for wid,(want_sha,want_n) in expected.items():
+           p=bysha.get(want_sha)
+           if p is None: raise SystemExit(f'{wid}: expected SHA not found')
+           tree=ET.parse(p); rt=tree.getroot()
+           elems=[]
+           for e in rt.iter():
+            if local(e.tag)=='tok_dipl':
+             w=norm(e.attrib.get('utf') or (e.text or ''))
+             if w: elems.append(w)
+           parent_rows=[]; parent_tags=collections.Counter(); multi=[]
+           for par in rt.iter():
+            kids=[c for c in list(par) if local(c.tag)=='tok_dipl']
+            if kids:
+             parent_tags[local(par.tag)]+=1
+             raw=''.join((c.attrib.get('utf') or (c.text or '')) for c in kids)
+             w=norm(raw)
+             if w: parent_rows.append(w)
+             if len(kids)>1:
+              multi.append({'parent_tag':local(par.tag),'n_fragments':len(kids),'fragments':[c.attrib.get('utf') or (c.text or '') for c in kids],'joined_raw':raw,'joined_norm':w})
+           token_rows=[]; token_mult=[]
+           for par in rt.iter():
+            if local(par.tag)!='token': continue
+            kids=[c for c in list(par) if local(c.tag)=='tok_dipl']
+            if not kids: kids=[c for c in par.iter() if c is not par and local(c.tag)=='tok_dipl']
+            if kids:
+             raw=''.join((c.attrib.get('utf') or (c.text or '')) for c in kids); w=norm(raw)
+             if w: token_rows.append(w)
+             if len(kids)>1: token_mult.append((len(kids),[c.attrib.get('utf') or (c.text or '') for c in kids],w))
+           result={
+            'path':str(p.relative_to(root)),'sha256':want_sha,'expected_candidate2_count':want_n,
+            'tok_dipl_element_count_normalized':len(elems),
+            'direct_parent_join_count_normalized':len(parent_rows),
+            'token_parent_join_count_normalized':len(token_rows),
+            'direct_parent_tag_counts':dict(parent_tags),
+            'multi_fragment_direct_parents':len(multi),
+            'multi_fragment_examples':multi[:8],
+            'expected_matches_elementwise':len(elems)==want_n,
+            'expected_matches_direct_parent_join':len(parent_rows)==want_n,
+            'expected_matches_token_parent_join':len(token_rows)==want_n,
+            'element_vs_parent_sequence_identical':elems==parent_rows,
+            'element_vs_token_sequence_identical':elems==token_rows,
+            'parent_vs_token_sequence_identical':parent_rows==token_rows,
+           }
+           results[wid]=result
+           sequences[wid]={'elementwise':elems,'direct_parent_join':parent_rows,'token_parent_join':token_rows}
+          (out/'equivalence_results.json').write_text(json.dumps(results,indent=2,ensure_ascii=False)+'\n')
+          # Compact TSV and sequence hashes make exact equality auditable without huge payloads.
+          lines=['work\texpected\telementwise\tparent_join\ttoken_join\tmultifrag\texp_eq_element\texp_eq_parent\texp_eq_token\telem_eq_parent']
+          seqhash={}
+          for wid,r in results.items():
+           lines.append('\t'.join(map(str,[wid,r['expected_candidate2_count'],r['tok_dipl_element_count_normalized'],r['direct_parent_join_count_normalized'],r['token_parent_join_count_normalized'],r['multi_fragment_direct_parents'],r['expected_matches_elementwise'],r['expected_matches_direct_parent_join'],r['expected_matches_token_parent_join'],r['element_vs_parent_sequence_identical']])))
+           seqhash[wid]={k:hashlib.sha256(('\n'.join(v)+'\n').encode()).hexdigest() for k,v in sequences[wid].items()}
+          (out/'equivalence_summary.tsv').write_text('\n'.join(lines)+'\n')
+          (out/'sequence_sha256.json').write_text(json.dumps(seqhash,indent=2)+'\n')
+          print('\n'.join(lines))
+          print(json.dumps(seqhash,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-l-ref-extraction-equivalence-probe
+          path: /tmp/refprobe
+          retention-days: 30
