@@ -1,0 +1,77 @@
+name: Yiddish L corpus acquisition probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/yiddish_l_corpus_acquire.yml'
+      - 'experiments/yiddish_l_development_20260912/**'
+  workflow_dispatch:
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire and inventory public corpora
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=experiments/yiddish_l_development_20260912/acquisition_output
+          mkdir -p "$OUT"
+
+          # Canonical ReF v1.0.2 acquisition recipe used by acoli-repo/germhist.
+          curl -L --fail --retry 3 \
+            https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz \
+            -o "$OUT/ReF-v1.0.2.tar.gz"
+          sha256sum "$OUT/ReF-v1.0.2.tar.gz" > "$OUT/ref_sha256.txt"
+          tar -tzf "$OUT/ReF-v1.0.2.tar.gz" > "$OUT/ref_file_inventory.txt"
+          mkdir "$OUT/ref_extract"
+          tar -xzf "$OUT/ReF-v1.0.2.tar.gz" -C "$OUT/ref_extract"
+          find "$OUT/ref_extract" -type f -printf '%P\t%s\n' | sort > "$OUT/ref_extracted_inventory.tsv"
+
+          # LAUDATIO current public API census, plus the historical HSJ PID.
+          API=https://www.laudatio-repository.org/api/elasticapi/v1
+          curl -L --fail --retry 3 -H 'Api-Version: v1' \
+            "$API/corpora/latest/0/100" -o "$OUT/laudatio_corpora_latest.json" || true
+          curl -L -sS -D "$OUT/hsj_handle_headers.txt" \
+            -o "$OUT/hsj_handle_body.html" \
+            -w '%{url_effective}\n' \
+            'http://hdl.handle.net/11022/0000-0000-24F9-F' > "$OUT/hsj_handle_effective_url.txt" || true
+
+          python3 - <<'PY'
+          import json, pathlib, re
+          out=pathlib.Path('experiments/yiddish_l_development_20260912/acquisition_output')
+          p=out/'laudatio_corpora_latest.json'
+          report=[]
+          if p.exists() and p.stat().st_size:
+              try:
+                  top=json.loads(p.read_text(errors='replace'))
+                  payload=top.get('data', top) if isinstance(top,dict) else top
+                  if isinstance(payload,str):
+                      try: payload=json.loads(payload)
+                      except Exception: pass
+                  def walk(x,path='root'):
+                      if isinstance(x,dict):
+                          blob=' '.join(str(v) for v in x.values() if isinstance(v,(str,int,float)))
+                          if re.search(r'jidd|yidd|historische syntax', blob, re.I):
+                              report.append({'path':path,'record':x})
+                          for k,v in x.items(): walk(v,f'{path}.{k}')
+                      elif isinstance(x,list):
+                          for i,v in enumerate(x): walk(v,f'{path}[{i}]')
+                  walk(payload)
+              except Exception as e:
+                  report=[{'parse_error':repr(e),'prefix':p.read_text(errors='replace')[:2000]}]
+          (out/'hsj_api_matches.json').write_text(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+
+          # Keep acquisition outputs immutable as a single artifact; do not score anything here.
+          du -sh "$OUT" > "$OUT/size.txt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-l-corpus-acquisition
+          path: experiments/yiddish_l_development_20260912/acquisition_output
+          retention-days: 30
