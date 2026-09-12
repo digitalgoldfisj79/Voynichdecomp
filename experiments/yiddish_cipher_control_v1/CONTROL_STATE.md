@@ -4,110 +4,72 @@ Date: 2026-09-12
 
 ## Controlling status
 
-**`C0_C5_M0_MECHANISM_PASS__LANGUAGE_L_REQUIRED__C6_NOT_RUN__C7_SEALED`**
+**`C0_C5_M0_PASS__C6_LATE_NORMALIZED_PASS__EARLY_PRIMARY_TRANSFER_OPEN__LANGUAGE_L_OPEN__C7_SEALED`**
 
-This file is the restart point for future sessions. Read it together with Supabase handoff `voynich_cipher_instrument_recovery_standard_20260912_v01` before doing new cipher work. Do not redesign or rerun C0–C5 unless the instrument or representation changes.
+This is the restart point for future sessions. Read it with Supabase handoff `voynich_cipher_instrument_recovery_standard_20260912_v01`. Do not redesign or rerun C0–C5 unless the instrument or representation changes.
 
-## Development history
+## Qualified M0 mechanism instrument
 
-1. Initial smoke harness run `34708340714` exposed a real MR1 failure: arbitrary global ciphertext-symbol relabelling changed recovery because the search path depended on raw symbol IDs.
-2. v0.2 repaired only that defect by canonicalising ciphertext symbols by first occurrence before search and conjugating the returned mapping back. Objective, search budget and thresholds were unchanged.
-3. Smoke rerun `34708602061` passed C5 with zero metamorphic violations.
-4. The full control was then executed under a blinded architecture: `prepare_full.py` emitted separate public ciphertext/training and private truth/root bundles; 12 solver shards received only the public bundle; truth was joined only after all solver outputs were committed.
+Development history:
+- smoke run `34708340714` exposed an MR1 failure: arbitrary ciphertext-symbol names affected the search path;
+- v0.2 repaired only that defect by canonicalising cipher symbols by first occurrence before the frozen search and conjugating the mapping back;
+- smoke rerun `34708602061` passed metamorphic checks;
+- full blinded run `34709034207` used separate public ciphertext/training and private truth artifacts, 12 solver shards with no truth access, and truth-side adjudication only after mapping commitments.
 
-## Full blinded qualification result
+Full final artifact: `yiddish-m0-full-final-certificate`  
+Digest: `sha256:0f2cb389fcec7f02a62072facee10ee182babe0b5cb2ad5413cbafdccf7165e8`
 
-GitHub Actions run: `34709034207`  
-Final artifact: `yiddish-m0-full-final-certificate`  
-Artifact digest: `sha256:0f2cb389fcec7f02a62072facee10ee182babe0b5cb2ad5413cbafdccf7165e8`  
-Cases/results: `3796 / 3796`  
-Plant-root commitment: verified.
+Full status: **`C0_C5_M0_MECHANISM_PASS`**.
 
-Final status:
+Evidence:
+- C0 provenance/freeze PASS.
+- C1 PASS for the **secondary Penn historical-Yiddish Romanisation reduced to literal a-z atoms** only.
+- C2 KAT PASS.
+- C3 primary envelope `>=512 words`, `<=1% erasure`: 22/22 work×length×damage cells passed, every cell 32/32. One-sided 95% lower bound for each 32/32 cell = `0.9106318010137353`.
+- Below 512 words the instrument is not universally reliable; short failures were mostly objective misalignment. Short target results are `OUT_OF_DOMAIN`, not rejection.
+- C4a mechanism negatives: per-word key, key-drift-4, key-drift-16, key-drift-64 each 0/94 false calls. Bonferroni one-sided family upper bound = `0.04965553295561137`.
+- C4b diagnostic only: ReF German F016/F018/F034/F037/F148 each 0/32 Yiddish-recovery successes; unigram-null and within-word-shuffle each 0/94. This does **not** constitute a Yiddish language certificate.
+- C5 metamorphic PASS: MR1 32/32, MR2 32/32, MR3/MR4 exact, MR5 32/32, MR6 32/32; zero paired failures.
 
-**`C0_C5_M0_MECHANISM_PASS__LANGUAGE_L_REQUIRED__C6_NOT_RUN__C7_SEALED`**
+## C6a — fresh late historical source-family transfer
 
-### C0 — provenance / executable freeze
-PASS.
+Frozen protocol: `c6/C6_LATE_NORMALIZED_PROTOCOL.md`.
 
-### C1 — representation verification
-PASS for the declared **secondary Penn historical-Yiddish Romanisation reduced to literal a–z atoms**. This is not a primary Hebrew-script certificate.
+Fresh witness: `1783e-ukraine-1.psd`.
 
-### C2 — known-answer tests
-PASS.
+Freshness/preflight before outcome:
+- no occurrence in canonical Supabase Yiddish/cipher handoff;
+- no occurrence in Voynichdecomp code search;
+- source not used in prior registered control source lists;
+- extracted words = `1702`, sufficient for 512 + 32 + 512;
+- exact BUILD/source shared 8-word types = `0`;
+- exact BUILD/source shared 5-word types = `0`.
 
-### C3 — blinded positive recovery / power surface
-PASS in the preregistered primary operating envelope.
+GitHub Actions run: `34709502376`  
+Final artifact: `yiddish-c6-late-final-certificate`  
+Digest: `sha256:6f3a9f995e792e9dd76f8cb6758afd4fa92f89e64c8f790f4d7f39ea3413d2f0`
 
-Primary envelope = windows `>=512` words and erasure `<=1%`.
-- 22 work × length × damage cells were eligible.
-- **22/22 cells passed.**
-- Every primary cell was **32/32 successful**.
-- Cell-wise one-sided 95% lower bound for 32/32 = `0.9106318010`.
+Verdict: **`C6_LATE_NORMALIZED_PASS`**.
 
-Outside the primary envelope the instrument is not universal and must not be extrapolated:
-- 14 shorter/harder cells failed.
-- Cracow 1588 at 128 and 256 words failed through **objective misalignment** (oracle objective did not support the true key strongly enough), not search failure.
-- Several 128-word Kine/Sam-Hayyim cells also failed, mostly objective misalignment.
-- Bovo 128/3% had 27/32 through search misses.
-- At 512 words, all six available work families passed at all registered 0/1/3/5% erasure levels, although the formal qualified envelope remains the prospectively declared <=1% damage range.
+Registered cells:
+- 512 words, 0% erasure: **32/32**, mean atom recovery 1.000, mean word recovery 1.000, no search misses, no objective-misalignment failures;
+- 512 words, 1% erasure: **32/32**, mean atom recovery 1.000, mean word recovery 1.000, no search misses, no objective-misalignment failures.
 
-Interpretation: a negative target result below 512 words is `OUT_OF_DOMAIN`, not cipher rejection.
+Root commitment verified; all results complete.
 
-### C4a — matched non-global substitution negatives
-PASS.
+Claim boundary: this proves independent source-family transfer to one previously untouched **1783** Yiddish work in the **same Penn-normalized representation**. It does not establish 15th/16th-century transfer and does not establish primary Hebrew-script/diplomatic transfer.
 
-Each family produced 0/94 false-positive calls:
-- per-word key: 0/94
-- key drift every 4 words: 0/94
-- key drift every 16 words: 0/94
-- key drift every 64 words: 0/94
+## What remains open
 
-Bonferroni one-sided upper bound per family = `0.04965553295561137` under the frozen alpha `0.05/6` rule.
+### Early / primary-script transfer
+**OPEN.** There is no untouched pre-1601 Penn work long enough for the qualified 512+32+512 design. Goetz 1518 (~626 words) and Anshel 1534 (~857) are individually too short; concatenating unrelated works is prohibited. A primary Hebrew-script route therefore needs its own representation qualification and cannot silently inherit C1.
 
-### C4b — language/nuisance diagnostics
-Diagnostic only; this is **not** a language certificate.
+### Yiddish language certificate L
+**OPEN / UNRESOLVED.** Earlier language-evaluator candidates were stopped after two registered candidates because unigram/length/within-word-shuffle nuisance arms performed as well as the primary classifier. M0 recovery and language identity are separate claims. Any renewed L programme must be a newly registered instrument, not Candidate 3 of the failed evaluator.
 
-- ReF historical German F016, F018, F034, F037, F148: each 0/32 Yiddish-solver recovery successes.
-- unigram-matched null: 0/94.
-- within-word-shuffled Yiddish: 0/94.
+### Voynich C7
+**SEALED.** No target inference is permitted yet.
 
-These diagnostics are encouraging but cannot overturn the earlier L result: the registered Yiddish-vs-German language evaluator remained unresolved because nuisance arms performed equally well. M0 mechanism recovery and Yiddish language identification remain separate claims.
+## Next scientific action
 
-### C5 — metamorphic relations
-PASS.
-
-- MR1 global ciphertext-symbol relabelling: 32/32 paired passes.
-- MR2 consistent plaintext+language-model relabelling: 32/32 paired passes.
-- MR3 duplicate normalized counts: exact pass.
-- MR4 chunk recombination: exact pass.
-- MR5 independent decoder: 32/32.
-- MR6 boundary-destructive controls: 32/32 changed the expected boundary-dependent statistics.
-- Pair failures: 0.
-
-### C6 — independent transfer validation
-**NOT RUN.**
-
-This is now the next scientific step. It must use an untouched historical/source representation and no retuning. The certificate above does not establish primary Hebrew-script transfer.
-
-### C7 — Voynich target admission
-**SEALED.**
-
-No Voynich inference is permitted yet.
-
-## Claim boundary
-
-What is now qualified:
-
-> The current v0.2 instrument can recover a globally fixed monoalphabetic substitution on the declared secondary normalized historical-Yiddish representation in the tested primary envelope (>=512 words, <=1% erasure), with the measured sensitivity and bounded false-positive behavior above.
-
-What is not qualified:
-- Yiddish language identity (`L` unresolved).
-- primary Hebrew-script / diplomatic representation transfer (`C6` not run).
-- arbitrary short-text behavior below 512 words.
-- any other cipher family.
-- any Voynich conclusion.
-
-## Next action
-
-Proceed to **C6 independent historical transfer** without changing the qualified M0 instrument. In parallel, any renewed Yiddish-language (`L`) work must be a new registered language-identification instrument rather than reusing the previously failed nuisance-dominated evaluator. Voynich stays sealed until both relevant language and representation/transfer certificates are qualified.
+Build a new language-identification control whose observable is **blinded cipher recovery under competing, equally budgeted historical language models**, rather than the previously nuisance-dominated direct corpus classifier. It must distinguish Yiddish from historical German and, if an adequate comparable Hebrew source can be constructed, Hebrew, with BUILD/DEVELOPMENT/CONFIRMATION separation and nuisance/metamorphic controls. In parallel, primary-script transfer remains a separate representation problem.
