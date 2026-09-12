@@ -1,0 +1,58 @@
+{
+  "version": "yiddish_l_evaluator_candidate2_v01_20260912",
+  "frozen_before_outcomes": true,
+  "candidate_number": 2,
+  "candidate_limit": 2,
+  "status": "FROZEN_NOT_YET_SCORED",
+  "scope": "DEVELOPMENT_ONLY_NOT_L_QUALIFICATION",
+  "target_admission": "FORBIDDEN",
+  "repair_rationale": "Candidate 1 separated all 10 development families 10/10, but character unigram, word-length-only, and within-word-shuffled nuisance arms also separated 10/10. The German transport used ReF Modernisierter Lesetext. Candidate 2 minimally repairs this known representation confound by replacing only the German text representation with ReF's historical Wort layer. No scoring-rule tuning is allowed.",
+  "fixed_from_candidate1": {
+    "ppchy_commit": "b5864bd02a315c1d436a82553667bbf81eab6537",
+    "yiddish_representation": "PPCHY Romanisation reduced by the frozen v02/v03 a-z atomizer",
+    "yiddish_build_relationship_groups": {
+      "shir_1579": ["1579e-shir-preface.psd", "1579e-shir.psd"],
+      "ester_1589": ["1589e-ester-preface.psd", "1589e-ester.psd"]
+    },
+    "yiddish_development_relationship_groups": {
+      "bovo_1507": ["1507w-bovo.psd"],
+      "cracow_letters_1588": ["1588e-letters-cracow.psd"],
+      "sam_hayyim_1590": ["1590e-sam-hayyim.psd"],
+      "lev_tov_1620": ["1620e-lev-tov-1-preface.psd", "1620e-lev-tov-1.psd"],
+      "kine_1648": ["1648w-kine.psd"]
+    },
+    "german_build_relationship_groups": ["F014", "F015"],
+    "german_development_relationship_groups": ["F016", "F018", "F034", "F037", "F148"],
+    "equal_training_budget_words_per_language": 10000,
+    "budget_rule": "deterministic work-family round-robin with residual redistribution",
+    "development_score_words_per_work": 512,
+    "segment_selection": "SHA256 public-seed deterministic contiguous 512-word segment; same public seed as candidate 1",
+    "inferential_unit": "whole relationship group",
+    "primary_evaluator": "character trigram additive-smoothed held-out bits per alphabetic source atom",
+    "alpha": 0.25,
+    "preflight_call": "positive (German BPA - Yiddish BPA) calls Yiddish",
+    "nuisance_arms": ["character unigram", "word-length-only multinomial", "within-word deterministic letter shuffle scored by trigram models"],
+    "null": "exact enumeration of all 252 balanced 5-Yiddish/5-German work-family label assignments"
+  },
+  "only_change_from_candidate1": {
+    "german_representation": "ReF historical Wort layer from a reproducibly acquired official/official-derived ReF corpus payload, reduced to a-z after source extraction",
+    "prohibited_substitute": "Modernisierter Lesetext"
+  },
+  "pre_scoring_gates": [
+    "The extracted ReF corpus must expose a layer explicitly identified as Wort or an equivalent original/diplomatic token layer.",
+    "F014/F015/F016/F018/F034/F037/F148 must be identified from document metadata, not guessed by position.",
+    "At least 10000 build words must be available under the fixed work-balanced rule per language and at least 512 words in every development family.",
+    "Exact/near passage overlap audit between German BUILD and DEVELOPMENT must show zero exact 8-word overlaps; any non-zero 5-word overlaps are reported.",
+    "The source payload and extraction code hashes are committed before scores are interpreted."
+  ],
+  "decision_rule": {
+    "development_evaluator_feasible_requires": [
+      "primary balanced work-family accuracy >= 0.8",
+      "primary effect over exact balanced-label null >= 2 null SD",
+      "primary must materially outperform each shallow nuisance arm: at least one development-family error more than the primary for unigram, length-only, and within-word-shuffle arms",
+      "primary signs must not be explained by a single corpus/editor/source-family artifact visible in metadata"
+    ],
+    "otherwise": "DEVELOPMENT_EVALUATOR_NOT_RESOLVED__STOP_AFTER_TWO_CANDIDATES"
+  },
+  "qualification_guardrail": "Even a candidate-2 development pass cannot issue L. Historical Hebrew, fresh Yiddish confirmation, frozen candidate-specific acceptance/margin/abstention calibration, and joint recovery+language confirmation remain required."
+}
