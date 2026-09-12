@@ -1,0 +1,23 @@
+name: Yiddish Bibliotheca 16c source-script census v01
+on:
+  push:
+    branches: [gpt56/yiddish-m0-invariants-v01-20260912]
+    paths:
+      - 'experiments/yiddish_m0_invariants_v01/census_bibliotheca_16c_source_script.py'
+      - '.github/workflows/yiddish_bibliotheca16_census_v01.yml'
+  workflow_dispatch:
+jobs:
+  census:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Census Hebrew/Yiddish source-script pages
+        run: python experiments/yiddish_m0_invariants_v01/census_bibliotheca_16c_source_script.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-bibliotheca16-source-census-v01
+          path: experiments/yiddish_m0_invariants_v01/bibliotheca16_census_output/
+          if-no-files-found: error
