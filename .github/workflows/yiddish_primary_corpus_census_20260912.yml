@@ -1,0 +1,21 @@
+name: Yiddish primary corpus census 20260912
+on:
+  push:
+    branches: [gpt56/yiddish-primary-corpus-census-20260912]
+    paths:
+      - 'experiments/yiddish_primary_corpus_census_20260912/**'
+      - '.github/workflows/yiddish_primary_corpus_census_20260912.yml'
+  workflow_dispatch:
+jobs:
+  census-ms262:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python experiments/yiddish_primary_corpus_census_20260912/ms262_census.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-ms262-census
+          path: experiments/yiddish_primary_corpus_census_20260912/ms262_census.json
