@@ -1,0 +1,30 @@
+{
+  "status": "FROZEN_BEFORE_SCORING",
+  "scope": "L_CALIBRATION_TRANSFER_ONLY__NO_TARGET",
+  "parent_census_run": 34717339316,
+  "census_artifact_sha256": "5b2737dd288c99cd45e24c8f3d1f26ca93398fccfe9a3df9bef01648ff1ddf4b",
+  "selection_rule": "all eligible L-unseen Yiddish families meeting frozen length rule, each paired deterministically to nearest-word-count unused ReF work; no score-based selection",
+  "pairs": [
+    {"yiddish":"1600e-magid","yiddish_words":1208,"german":"F166","german_words":1231,"abs_difference":23},
+    {"yiddish":"1624e-magen","yiddish_words":1904,"german":"F300","german_words":2018,"abs_difference":114},
+    {"yiddish":"1692e-vilna","yiddish_words":2207,"german":"F028","german_words":2047,"abs_difference":160},
+    {"yiddish":"1750w-moses","yiddish_words":2416,"german":"F249","german_words":2452,"abs_difference":36},
+    {"yiddish":"1705w-glikl","yiddish_words":2713,"german":"F057","german_words":2875,"abs_difference":162},
+    {"yiddish":"1666w-messiah","yiddish_words":2821,"german":"F004","german_words":2950,"abs_difference":129},
+    {"yiddish":"1675e-ashkenaz-un-polak","yiddish_words":3052,"german":"F313","german_words":3325,"abs_difference":273},
+    {"yiddish":"1697e-purim","yiddish_words":5859,"german":"F128","german_words":5865,"abs_difference":6}
+  ],
+  "source_gates": {
+    "build_transfer_8word_overlap_yiddish": 0,
+    "build_transfer_5word_overlap_yiddish": 0,
+    "build_transfer_8word_overlap_german": 0,
+    "build_transfer_5word_overlap_german": 0,
+    "cross_candidate_8word_duplication_yiddish": 0,
+    "cross_candidate_8word_duplication_german": 0
+  },
+  "primary_calibration_statistic": "D / sqrt(sdY^2 + sdG^2)",
+  "call_threshold": 1.0,
+  "note": "This is a calibration-transfer panel, not final independent confirmation. Several PPCHY families were used elsewhere in the broader R programme but were not used in L v0.1b BUILD or development. Wagenseil 1699 is excluded from this primary panel and retained as a separate hostile external transfer because its transliteration convention differs materially from PPCHY.",
+  "voynich_loaded": false,
+  "target_access": "FORBIDDEN"
+}
