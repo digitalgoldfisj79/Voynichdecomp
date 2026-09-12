@@ -1,0 +1,52 @@
+name: ReF CEC6 conversion probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/ref_cec6_convert_probe.yml'
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mono and acquire converter plus ReF MLU
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mono-runtime unzip >/dev/null
+          mkdir -p /tmp/refconv/app
+          curl --max-time 180 -L --fail --retry 2 \
+            'http://www.bitcutstudios.com/products/corpusexplorer/App.zip' \
+            -o /tmp/refconv/App.zip
+          unzip -q /tmp/refconv/App.zip -d /tmp/refconv/app
+          curl --max-time 180 -L --fail --retry 2 \
+            'http://www.bitcutstudios.com/products/CorpusExplorer/corpora/ref/ReF_MLU.cec6.gz' \
+            -o /tmp/refconv/ReF_MLU.cec6.gz
+          gzip -dc /tmp/refconv/ReF_MLU.cec6.gz > /tmp/refconv/ReF_MLU.cec6
+          find /tmp/refconv/app -iname 'cec.exe' -o -iname 'CorpusExplorer.Terminal.Console*.exe' | tee /tmp/refconv/exes.txt
+          CEC=$(find /tmp/refconv/app -iname 'cec.exe' | head -1)
+          test -n "$CEC"
+          cd "$(dirname "$CEC")"
+          mono "$CEC" "import#Cec6#/tmp/refconv/ReF_MLU.cec6" convert "Xml#/tmp/refconv/ReF_MLU.xml" > /tmp/refconv/cec_stdout.txt 2> /tmp/refconv/cec_stderr.txt || {
+            echo 'CEC conversion failed'; cat /tmp/refconv/cec_stdout.txt; cat /tmp/refconv/cec_stderr.txt; exit 1;
+          }
+          file /tmp/refconv/ReF_MLU.xml
+          stat -c '%s bytes' /tmp/refconv/ReF_MLU.xml
+          head -c 4000 /tmp/refconv/ReF_MLU.xml > /tmp/refconv/xml_head.txt
+          sha256sum /tmp/refconv/ReF_MLU.cec6.gz /tmp/refconv/ReF_MLU.xml > /tmp/refconv/sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-cec6-conversion-probe
+          path: |
+            /tmp/refconv/exes.txt
+            /tmp/refconv/cec_stdout.txt
+            /tmp/refconv/cec_stderr.txt
+            /tmp/refconv/xml_head.txt
+            /tmp/refconv/sha256.txt
+          retention-days: 7
