@@ -1,0 +1,38 @@
+name: ReF CEC6 payload probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/ref_cec6_probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch small ReF corpus payload and inspect format
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/refcec
+          for part in MLU RUB; do
+            url="http://www.bitcutstudios.com/products/CorpusExplorer/corpora/ref/ReF_${part}.cec6.gz"
+            curl --max-time 120 -L --fail --retry 2 "$url" -o "/tmp/refcec/${part}.cec6.gz"
+            sha256sum "/tmp/refcec/${part}.cec6.gz"
+            file "/tmp/refcec/${part}.cec6.gz"
+            gzip -dc "/tmp/refcec/${part}.cec6.gz" > "/tmp/refcec/${part}.cec6"
+            file "/tmp/refcec/${part}.cec6"
+            stat -c '%n %s bytes' "/tmp/refcec/${part}.cec6" "/tmp/refcec/${part}.cec6.gz"
+            strings "/tmp/refcec/${part}.cec6" | head -100 > "/tmp/refcec/${part}_strings.txt" || true
+            echo "=== $part first strings ==="
+            cat "/tmp/refcec/${part}_strings.txt"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-cec6-probe
+          path: /tmp/refcec/*_strings.txt
+          retention-days: 7
