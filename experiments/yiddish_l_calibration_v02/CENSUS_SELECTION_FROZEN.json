@@ -1,0 +1,44 @@
+{
+  "mode": "SOURCE_ONLY_CENSUS_SELECTION_FROZEN_BEFORE_SCORING",
+  "census_workflow_run": 34717339316,
+  "census_artifact_id": 10305995314,
+  "census_artifact_digest": "sha256:5b2737dd288c99cd45e24c8f3d1f26ca93398fccfe9a3df9bef01648ff1ddf4b",
+  "census_selection_json_sha256": "e74e0296446f01124c4ee339f58053b8902927725484046a37b6f3a6aa16fc3a",
+  "ref_archive_sha256": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e",
+  "selection_gate": "PASS",
+  "target_loaded": false,
+  "voynich_loaded": false,
+  "zero_build_transfer_8word_overlap_both_languages": true,
+  "zero_build_transfer_5word_overlap_both_languages": true,
+  "zero_cross_candidate_8word_overlap_both_languages": true,
+  "yiddish": [
+    {"family":"1600e-magid","year":1600,"words":1208,"files":{"1600e-magid-preface.psd":"a2a616f82b267bfec0de2fb487a576071fce1bbc8d4d1e04b413c06f2f2dd1dd","1600e-magid.psd":"e0df6d1421bee337bf142b3e8c46c3eea7e8454c21b057d55fe724580e7a819b"}},
+    {"family":"1624e-magen","year":1624,"words":1904,"files":{"1624e-magen.psd":"fdd2360685bbb387faec51ad3a297d7736a70d62410923f5e4c49dfe4124dae7"}},
+    {"family":"1666w-messiah","year":1666,"words":2821,"files":{"1666w-messiah.psd":"676bcb99e5247c1a992bfc815d42c11ad5554539a785656e63f1b9cae364a2de"}},
+    {"family":"1675e-ashkenaz-un-polak","year":1675,"words":3052,"files":{"1675e-ashkenaz-un-polak.psd":"6f69a7ce05b121d0b573fe94397e74da217ce6d92b594c01a846f19a8d6d29e9"}},
+    {"family":"1692e-vilna","year":1692,"words":2207,"files":{"1692e-vilna.psd":"a6cf77dee968028746bbb474893fdff08f9e4de24500a485a7f91c1c89594919"}},
+    {"family":"1697e-purim","year":1697,"words":5859,"files":{"1697e-purim.psd":"5b9a61cd91bd5d19666429cc9860373d048268759b8bd0055d475538ff3c3e98"}},
+    {"family":"1705w-glikl","year":1705,"words":2713,"files":{"1705w-glikl.psd":"478aca9fdc19edb06839abda3a774bb9e8e76fec4895fb4602040f770798313d"}},
+    {"family":"1750w-moses","year":1750,"words":2416,"files":{"1750w-moses.psd":"82c232d550f55a1875b2fe3687d0fd3b4532226eadb30ca22e6cabf75c345a62"}}
+  ],
+  "german": [
+    {"work":"F004","words":2950,"sha256":"1ef0d95e2af0d6825bdcf38bfaeca5a4b7731d544a8de08f1465106e0ed026b7"},
+    {"work":"F028","words":2047,"sha256":"a9954ad2f7e2f6310663856c0b6f9b9bf1713ba072a6edcb181773c62153bfa2"},
+    {"work":"F057","words":2875,"sha256":"88240f0bf2e4d632f5aefcca82ff75ef0917be8cb0f2c93d2be6a0ad76660d95"},
+    {"work":"F128","words":5865,"sha256":"00bbbce794c0d4c2aad43cc6e8dab5acccb57d9ce0c973526a38eec1e664d060"},
+    {"work":"F166","words":1231,"sha256":"57c819335d820a0d8af14f50363ca4b9de8c90bf38a58f9736a1d0506fefe5c9"},
+    {"work":"F249","words":2452,"sha256":"b7d70581a93096ca21c41818f94983e9e5ff4ba8c54f5055cdcbfd91b2e89392"},
+    {"work":"F300","words":2018,"sha256":"30af3d1d375f73bb5385490faf5ca2cad6ee658d6c77e094ecf691cc55535d71"},
+    {"work":"F313","words":3325,"sha256":"a51c23e24af368b7f39246c82e50b18c0d098649051bf731405d87bf68d51576"}
+  ],
+  "deterministic_length_pairs": [
+    ["1600e-magid","F166"],
+    ["1624e-magen","F300"],
+    ["1692e-vilna","F028"],
+    ["1750w-moses","F249"],
+    ["1705w-glikl","F057"],
+    ["1666w-messiah","F004"],
+    ["1675e-ashkenaz-un-polak","F313"],
+    ["1697e-purim","F128"]
+  ]
+}
