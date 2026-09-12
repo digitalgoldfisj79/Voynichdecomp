@@ -1,0 +1,33 @@
+name: ReF manifest probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/ref_manifest_probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and inspect ReF manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/refmanifest
+          curl --max-time 60 -L --fail --retry 2 \
+            'http://www.bitcutstudios.com/products/CorpusExplorer/corpora/ref/ref.manifest' \
+            -o /tmp/refmanifest/ref.manifest
+          file /tmp/refmanifest/ref.manifest
+          stat -c '%s bytes' /tmp/refmanifest/ref.manifest
+          sha256sum /tmp/refmanifest/ref.manifest
+          cat /tmp/refmanifest/ref.manifest | tee /tmp/refmanifest/manifest.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-manifest-probe
+          path: /tmp/refmanifest
+          retention-days: 7
