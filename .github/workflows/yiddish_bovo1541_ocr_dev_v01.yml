@@ -1,0 +1,26 @@
+name: Yiddish Bovo1541 OCR development v01
+on:
+  push:
+    branches: [gpt56/yiddish-m0-invariants-v01-20260912]
+    paths:
+      - experiments/yiddish_m0_invariants_v01/acquire_bovo1541_dev_pages.py
+      - experiments/yiddish_m0_invariants_v01/bovo1541_ocr_dev_v01_spec.md
+      - .github/workflows/yiddish_bovo1541_ocr_dev_v01.yml
+  workflow_dispatch:
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install requests
+        run: pip install requests
+      - name: Acquire frozen Bovo pages
+        run: python experiments/yiddish_m0_invariants_v01/acquire_bovo1541_dev_pages.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bovo1541-ocr-dev-v01-pages
+          path: experiments/yiddish_m0_invariants_v01/bovo1541_dev_pages/
+          if-no-files-found: error
