@@ -1,0 +1,27 @@
+name: Yiddish qualification v03 search repair
+on:
+  push:
+    branches: [gpt56/yiddish-qualification-v03-20260912]
+    paths:
+      - 'experiments/yiddish_qualification_v03/**'
+      - 'experiments/yiddish_qualification_v1b/v03_search_repair_spec.md'
+      - '.github/workflows/yiddish_qualification_v03.yml'
+  workflow_dispatch:
+jobs:
+  run-v03:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded development and fresh confirmation
+        run: python experiments/yiddish_qualification_v03/run_v03_search_repair.py
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-qualification-v03
+          path: experiments/yiddish_qualification_v03/run_output_v03/
+          if-no-files-found: error
