@@ -18,9 +18,7 @@ jobs:
           python-version: '3.12'
       - run: pip install requests pillow numpy opencv-python-headless scikit-image scikit-learn
       - name: Run frozen machine-only census
-        run: |
-          cd experiments/yiddish_m0_anon_word_v02
-          python acquire_shmuel1544_v02.py
+        run: python experiments/yiddish_m0_anon_word_v02/acquire_shmuel1544_v02.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
