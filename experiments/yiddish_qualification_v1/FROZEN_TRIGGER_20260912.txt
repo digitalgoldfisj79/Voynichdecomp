@@ -1,0 +1,1 @@
+Frozen trigger only. No scientific parameter changed after finite_panel_r_v01.py commit 633213377ab1c9ac7d694d19a39de4d13385ca83.
