@@ -1,0 +1,28 @@
+name: Yiddish M0 invariant control stage
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-m0-invariants-v01-20260912
+    paths:
+      - 'experiments/yiddish_m0_invariants_v01/**'
+      - '.github/workflows/yiddish_m0_invariants_v01.yml'
+  workflow_dispatch:
+
+jobs:
+  control-stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run target-sealed invariant controls
+        run: python experiments/yiddish_m0_invariants_v01/run_control_stage.py
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-m0-invariants-v01-control
+          path: experiments/yiddish_m0_invariants_v01/run_output_control/
+          if-no-files-found: error
