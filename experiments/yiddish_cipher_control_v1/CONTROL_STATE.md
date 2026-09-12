@@ -4,58 +4,110 @@ Date: 2026-09-12
 
 ## Controlling status
 
-**`V02_SMOKE_PASS__FULL_BLINDED_CONTROL_READY_NOT_RUN__C6_NOT_RUN__VOYNICH_SEALED`**
+**`C0_C5_M0_MECHANISM_PASS__LANGUAGE_L_REQUIRED__C6_NOT_RUN__C7_SEALED`**
 
-This file is the restart point for future sessions. Read it together with Supabase handoff `voynich_cipher_instrument_recovery_standard_20260912_v01` before doing new cipher work.
+This file is the restart point for future sessions. Read it together with Supabase handoff `voynich_cipher_instrument_recovery_standard_20260912_v01` before doing new cipher work. Do not redesign or rerun C0–C5 unless the instrument or representation changes.
 
-## What happened
+## Development history
 
-1. The first non-qualifying smoke harness (`run_m0_control.py`) executed end-to-end in GitHub Actions run `34708340714`.
-2. C0/C1/C2 executed successfully, official ReF 1.0.2 diplomatic German material was acquired and parsed, and all target-access flags remained false.
-3. The smoke metamorphic check MR1 **failed**: arbitrary global renaming of ciphertext symbols changed recovery from atom 0.7422 / non-pass to atom 1.000 / pass. This exposed a real search implementation dependency on raw cipher-symbol IDs (frequency-tie ordering and RNG index swaps).
-4. No full qualification and no Voynich target outcome had been exposed. The failure was therefore legitimate DEVELOPMENT evidence.
-5. Candidate v0.2 (`run_m0_control_v02.py`) adds one repair only: before search, ciphertext symbols are canonicalised by order of first occurrence in the fit ciphertext. The frozen S1 objective/search is then run on that canonical representation and the returned mapping is conjugated back to the external labels.
-6. GitHub Actions run `34708602061` reran the smoke control under v0.2. It completed successfully and C5 reported **zero violations**. MR1 therefore passed under the repaired representation.
+1. Initial smoke harness run `34708340714` exposed a real MR1 failure: arbitrary global ciphertext-symbol relabelling changed recovery because the search path depended on raw symbol IDs.
+2. v0.2 repaired only that defect by canonicalising ciphertext symbols by first occurrence before search and conjugating the returned mapping back. Objective, search budget and thresholds were unchanged.
+3. Smoke rerun `34708602061` passed C5 with zero metamorphic violations.
+4. The full control was then executed under a blinded architecture: `prepare_full.py` emitted separate public ciphertext/training and private truth/root bundles; 12 solver shards received only the public bundle; truth was joined only after all solver outputs were committed.
 
-## v0.2 smoke evidence
+## Full blinded qualification result
 
-- C0 provenance boundary: PASS (smoke semantics only).
-- C1 secondary Penn representation path: PASS.
-- C2 known-answer encoder/decoder checks: PASS.
-- C3 smoke positive trials: non-qualifying by design; Bovo 512 0%=1/2, 1%=2/2; Cracow 512 0%=2/2, 1%=2/2 under reduced smoke search budget.
-- C4a smoke structural negatives: 0 false calls in each tiny n=2 family, explicitly UNBOUNDED / non-qualifying.
-- C4b German comparator: ReF F016 yielded 8,385 diplomatic normalized words; 0/1 recovery under reduced smoke budget; diagnostic only.
-- C5 smoke metamorphic checks: 7 checks, **0 violations**.
-- C6 independent historical/source transfer: NOT RUN.
-- C7 Voynich: SEALED.
+GitHub Actions run: `34709034207`  
+Final artifact: `yiddish-m0-full-final-certificate`  
+Artifact digest: `sha256:0f2cb389fcec7f02a62072facee10ee182babe0b5cb2ad5413cbafdccf7165e8`  
+Cases/results: `3796 / 3796`  
+Plant-root commitment: verified.
 
-Artifact v0.2 smoke digest: `sha256:337e2832c442be663f753503e6811cc3ef0de6160b052e0f87f000df9f4dbb55`.
+Final status:
 
-## Statistical correction frozen before full run
+**`C0_C5_M0_MECHANISM_PASS__LANGUAGE_L_REQUIRED__C6_NOT_RUN__C7_SEALED`**
 
-`STATISTICAL_BOUND_ADDENDUM_V01.md` controls full-profile false-positive bounding:
-- family-wise Bonferroni alpha = 0.05/6;
-- at least 94 negative trials per gated family; 0/94 gives one-sided upper bound ≈0.0496555;
-- stochastic metamorphic relations use at least 32 planted instances;
-- smoke evidence can never issue a scientific PASS.
+### C0 — provenance / executable freeze
+PASS.
 
-## Full blinded architecture now built
+### C1 — representation verification
+PASS for the declared **secondary Penn historical-Yiddish Romanisation reduced to literal a–z atoms**. This is not a primary Hebrew-script certificate.
 
-Directory `full/` contains:
-- `prepare_full.py` — generates a public ciphertext/training bundle and a separate private truth/root bundle; commits the plant-root hash before solver outcomes.
-- `solve_full.py` — shardable label-equivariant frozen S1E solver; sees only public ciphertext and BUILD training words.
-- `score_full.py` — joins private truth only after solver mappings are committed; reports key/plaintext recovery, oracle-vs-returned objective, search misses vs objective misalignment, exact bounds, and metamorphic paired results.
+### C2 — known-answer tests
+PASS.
 
-Workflow `.github/workflows/yiddish_cipher_control_full.yml` is **manual dispatch only** and uses 12 parallel blind solver shards. Solver jobs never download the private truth artifact. The score job runs only after all shards complete.
+### C3 — blinded positive recovery / power surface
+PASS in the preregistered primary operating envelope.
 
-The full case generator covers:
-- C3 positive power surface: 128/256/512/1024/2048 words where source quantity permits; 0/1/3/5% erasure; 32 keys/cell across consumed development works.
-- C4a non-global substitution negatives: per-word and registered key-drift regimes, 94 trials/family.
-- C4b language/nuisance diagnostics: within-word shuffled Yiddish, unigram-matched nulls, and official ReF historical German under genuine global M0.
-- C5: MR1 global ciphertext relabelling, MR2 consistent plaintext+LM relabelling, exact duplication/chunk identities, independent decoder checks, and boundary-destructive controls.
+Primary envelope = windows `>=512` words and erasure `<=1%`.
+- 22 work × length × damage cells were eligible.
+- **22/22 cells passed.**
+- Every primary cell was **32/32 successful**.
+- Cell-wise one-sided 95% lower bound for 32/32 = `0.9106318010`.
 
-## Important claim boundary
+Outside the primary envelope the instrument is not universal and must not be extrapolated:
+- 14 shorter/harder cells failed.
+- Cracow 1588 at 128 and 256 words failed through **objective misalignment** (oracle objective did not support the true key strongly enough), not search failure.
+- Several 128-word Kine/Sam-Hayyim cells also failed, mostly objective misalignment.
+- Bovo 128/3% had 27/32 through search misses.
+- At 512 words, all six available work families passed at all registered 0/1/3/5% erasure levels, although the formal qualified envelope remains the prospectively declared <=1% damage range.
 
-A future C0-C5 PASS would qualify only the **M0 mechanism instrument** in the declared secondary normalized representation and operating envelope. It would still not establish Yiddish identity because historical language discrimination L remains unresolved, and it would not establish primary-script transfer because C6 remains outstanding.
+Interpretation: a negative target result below 512 words is `OUT_OF_DOMAIN`, not cipher rejection.
 
-No Voynich target may be loaded until the relevant instrument, language, representation, and transfer certificates are all prospectively qualified.
+### C4a — matched non-global substitution negatives
+PASS.
+
+Each family produced 0/94 false-positive calls:
+- per-word key: 0/94
+- key drift every 4 words: 0/94
+- key drift every 16 words: 0/94
+- key drift every 64 words: 0/94
+
+Bonferroni one-sided upper bound per family = `0.04965553295561137` under the frozen alpha `0.05/6` rule.
+
+### C4b — language/nuisance diagnostics
+Diagnostic only; this is **not** a language certificate.
+
+- ReF historical German F016, F018, F034, F037, F148: each 0/32 Yiddish-solver recovery successes.
+- unigram-matched null: 0/94.
+- within-word-shuffled Yiddish: 0/94.
+
+These diagnostics are encouraging but cannot overturn the earlier L result: the registered Yiddish-vs-German language evaluator remained unresolved because nuisance arms performed equally well. M0 mechanism recovery and Yiddish language identification remain separate claims.
+
+### C5 — metamorphic relations
+PASS.
+
+- MR1 global ciphertext-symbol relabelling: 32/32 paired passes.
+- MR2 consistent plaintext+language-model relabelling: 32/32 paired passes.
+- MR3 duplicate normalized counts: exact pass.
+- MR4 chunk recombination: exact pass.
+- MR5 independent decoder: 32/32.
+- MR6 boundary-destructive controls: 32/32 changed the expected boundary-dependent statistics.
+- Pair failures: 0.
+
+### C6 — independent transfer validation
+**NOT RUN.**
+
+This is now the next scientific step. It must use an untouched historical/source representation and no retuning. The certificate above does not establish primary Hebrew-script transfer.
+
+### C7 — Voynich target admission
+**SEALED.**
+
+No Voynich inference is permitted yet.
+
+## Claim boundary
+
+What is now qualified:
+
+> The current v0.2 instrument can recover a globally fixed monoalphabetic substitution on the declared secondary normalized historical-Yiddish representation in the tested primary envelope (>=512 words, <=1% erasure), with the measured sensitivity and bounded false-positive behavior above.
+
+What is not qualified:
+- Yiddish language identity (`L` unresolved).
+- primary Hebrew-script / diplomatic representation transfer (`C6` not run).
+- arbitrary short-text behavior below 512 words.
+- any other cipher family.
+- any Voynich conclusion.
+
+## Next action
+
+Proceed to **C6 independent historical transfer** without changing the qualified M0 instrument. In parallel, any renewed Yiddish-language (`L`) work must be a new registered language-identification instrument rather than reusing the previously failed nuisance-dominated evaluator. Voynich stays sealed until both relevant language and representation/transfer certificates are qualified.
