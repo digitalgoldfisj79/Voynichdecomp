@@ -1,0 +1,1 @@
+Scientific v03 specification frozen. Confirmation source IDs are fixed in v03_search_repair_spec.md. Next action is child-branch execution only.
