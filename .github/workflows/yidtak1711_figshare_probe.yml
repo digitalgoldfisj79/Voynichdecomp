@@ -1,0 +1,40 @@
+name: YidTak1711 Figshare dataset probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/primary_bridge/TRIGGER_FIGSHARE_PROBE'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inventory Figshare YidTakNL dataset
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/figshare_probe
+          mkdir -p "$OUT"
+          curl -L --fail --retry 3 'https://api.figshare.com/v2/articles/25422844' -o "$OUT/article.json"
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('/tmp/figshare_probe')
+          x=json.loads((p/'article.json').read_text())
+          rows=[]
+          for f in x.get('files',[]):
+              rows.append({k:f.get(k) for k in ('id','name','size','download_url','supplied_md5','computed_md5')})
+          (p/'files.json').write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
+          (p/'files.tsv').write_text('\n'.join(f"{r['id']}\t{r['size']}\t{r['name']}\t{r['download_url']}" for r in rows)+'\n')
+          print(json.dumps({'title':x.get('title'),'doi':x.get('doi'),'license':x.get('license'),'n_files':len(rows),'total_bytes':sum((r['size'] or 0) for r in rows)},indent=2,default=str))
+          for r in rows: print(r['id'],r['size'],r['name'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yidtak1711-figshare-probe
+          path: /tmp/figshare_probe
+          retention-days: 30
