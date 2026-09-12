@@ -1,0 +1,21 @@
+name: Yiddish L feasibility census 20260912
+on:
+  push:
+    branches: [gpt56/yiddish-l-feasibility-20260912]
+    paths:
+      - 'experiments/yiddish_l_feasibility_20260912/**'
+      - '.github/workflows/yiddish_l_feasibility_20260912.yml'
+  workflow_dispatch:
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python experiments/yiddish_l_feasibility_20260912/penn_fresh_l_census.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-l-feasibility-census
+          path: experiments/yiddish_l_feasibility_20260912/penn_fresh_l_census.json
