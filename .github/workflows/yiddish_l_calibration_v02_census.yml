@@ -1,0 +1,45 @@
+name: Yiddish-German L calibration v02 source census
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-calibration-v02-20260912
+    paths:
+      - 'experiments/yiddish_l_calibration_v02/TRIGGER_CENSUS'
+  workflow_dispatch:
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire pinned PPCHY
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/ppchy
+          git -C /tmp/ppchy fetch --depth=1 origin b5864bd02a315c1d436a82553667bbf81eab6537
+          git -C /tmp/ppchy checkout --detach b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/ppchy rev-parse HEAD)" = 'b5864bd02a315c1d436a82553667bbf81eab6537'
+      - name: Acquire official ReF 1.0.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref
+          curl -L --fail --retry 3 https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz -o /tmp/ref/ReF-v1.0.2.tar.gz
+          sha256sum /tmp/ref/ReF-v1.0.2.tar.gz > /tmp/ref_archive_sha256.txt
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/ref
+      - name: Source-only census and deterministic selection
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/census
+          python experiments/yiddish_l_calibration_v02/census_select_v02.py \
+            --penn-data /tmp/ppchy/data --ref-root /tmp/ref --out /tmp/census
+          cp /tmp/ref_archive_sha256.txt /tmp/census/ref_archive_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-l-calibration-v02-census
+          path: /tmp/census
+          retention-days: 30
