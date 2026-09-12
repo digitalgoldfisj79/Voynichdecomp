@@ -1,0 +1,51 @@
+name: YidTak1711 frozen audit input fetch
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/primary_bridge/TRIGGER_AUDIT_FETCH'
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch only precommitted six scans and exact published DOCX
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/yidtak1711_audit
+          mkdir -p "$OUT/images"
+
+          # Exact published comparator frozen by YIDTAK1711_IMAGE_AUDIT_SAMPLE.md
+          curl -L --fail --retry 3 'https://zenodo.org/api/records/10017358' -o "$OUT/zenodo_record.json"
+          python3 - <<'PY'
+          import json, pathlib, urllib.request
+          p=pathlib.Path('/tmp/yidtak1711_audit')
+          rec=json.loads((p/'zenodo_record.json').read_text())
+          target=next((f for f in rec.get('files',[]) if f.get('key')=='Takanot 1711 - YidTakNL.docx'),None)
+          if not target: raise SystemExit('frozen DOCX not found')
+          url=(target.get('links') or {}).get('content') or (target.get('links') or {}).get('self')
+          if not url: raise SystemExit('DOCX content URL absent')
+          urllib.request.urlretrieve(url,p/'Takanot 1711 - YidTakNL.docx')
+          (p/'docx_meta.json').write_text(json.dumps(target,indent=2,ensure_ascii=False)+'\n')
+          PY
+
+          TOKEN='mov7H4wDaog4zkF'
+          BASE='https://surfdrive.surf.nl/public.php/dav/files/'"$TOKEN"'/RBR_O_128_PDF%20%D7%AA%D7%A7%D7%A0%D7%95%D7%AA%201711'
+          for F in 0006_p006.jpg 0009_p009.jpg 0010_p010.jpg 0016_p016.jpg 0017_p017.jpg 0019_p019.jpg; do
+            curl --connect-timeout 10 --max-time 90 -L --fail --retry 3 \
+              -H 'X-Requested-With: XMLHttpRequest' \
+              "$BASE/$F" -o "$OUT/images/$F"
+          done
+          sha256sum "$OUT/Takanot 1711 - YidTakNL.docx" "$OUT"/images/*.jpg | tee "$OUT/SHA256SUMS.txt"
+          file "$OUT/Takanot 1711 - YidTakNL.docx" "$OUT"/images/*.jpg | tee "$OUT/FILE_TYPES.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yidtak1711-frozen-audit-inputs
+          path: /tmp/yidtak1711_audit
+          retention-days: 30
