@@ -1,0 +1,23 @@
+name: Yiddish Cambridge 1382 source census v01
+on:
+  push:
+    branches: [gpt56/yiddish-m0-invariants-v01-20260912]
+    paths:
+      - 'experiments/yiddish_m0_invariants_v01/census_cambridge1382_open_text.py'
+      - '.github/workflows/yiddish_cambridge1382_census_v01.yml'
+  workflow_dispatch:
+jobs:
+  census:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Crawl open Cambridge 1382 edition pages
+        run: python experiments/yiddish_m0_invariants_v01/census_cambridge1382_open_text.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-cambridge1382-census-v01
+          path: experiments/yiddish_m0_invariants_v01/cambridge1382_census_output/
+          if-no-files-found: error
