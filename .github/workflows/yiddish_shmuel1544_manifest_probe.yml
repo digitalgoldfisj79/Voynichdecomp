@@ -1,0 +1,24 @@
+name: Yiddish Shmuel1544 manifest probe
+on:
+  push:
+    branches: [gpt56/yiddish-m0-invariants-v01-20260912]
+    paths: ['.github/workflows/yiddish_shmuel1544_manifest_probe.yml']
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install requests
+      - name: Manifest metadata only
+        run: |
+          python - <<'PY'
+          import requests,json,hashlib,math
+          u='https://api.digitale-sammlungen.de/iiif/presentation/v2/bsb10170884/manifest'
+          b=requests.get(u,timeout=60).content
+          m=json.loads(b); n=len(m['sequences'][0]['canvases'])
+          print('SHA256',hashlib.sha256(b).hexdigest())
+          print('CANVASES',n)
+          print('ELIGIBLE',math.ceil(.15*n),math.floor(.85*n))
+          PY
