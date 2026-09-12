@@ -1,0 +1,108 @@
+name: Yiddish cipher full blinded control
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire official ReF 1.0.2 comparator corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref
+          curl -L --fail --retry 3 \
+            https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz \
+            -o /tmp/ref/ReF-v1.0.2.tar.gz
+          sha256sum /tmp/ref/ReF-v1.0.2.tar.gz > /tmp/ref_sha256.txt
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/ref
+      - name: Prepare blinded cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_cipher_control_v1/full/prepare_full.py \
+            --ref-root /tmp/ref \
+            --out /tmp/yiddish_full
+          cp /tmp/ref_sha256.txt /tmp/yiddish_full/public/ref_archive_sha256.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-m0-full-public
+          path: /tmp/yiddish_full/public
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-m0-full-private-truth
+          path: /tmp/yiddish_full/private
+          retention-days: 30
+
+  solve:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-m0-full-public
+          path: /tmp/public
+      - name: Blind solve shard ${{ matrix.shard }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/results
+          python experiments/yiddish_cipher_control_v1/full/solve_full.py \
+            --public-dir /tmp/public \
+            --shard-index ${{ matrix.shard }} \
+            --shard-count 12 \
+            --out /tmp/results/solver_${{ matrix.shard }}.jsonl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-m0-solver-${{ matrix.shard }}
+          path: /tmp/results/solver_${{ matrix.shard }}.jsonl
+          retention-days: 30
+
+  score:
+    needs: [prepare, solve]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-m0-full-public
+          path: /tmp/public
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-m0-full-private-truth
+          path: /tmp/private
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: yiddish-m0-solver-*
+          path: /tmp/results
+          merge-multiple: true
+      - name: Adjudicate only after solver commitments
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/final
+          python experiments/yiddish_cipher_control_v1/full/score_full.py \
+            --public-dir /tmp/public \
+            --private-dir /tmp/private \
+            --results-dir /tmp/results \
+            --out /tmp/final
+          cp /tmp/public/pre_manifest.json /tmp/final/
+          cp /tmp/private/bundle_hashes.json /tmp/final/
+          cp /tmp/private/plant_root_reveal.hex /tmp/final/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-m0-full-final-certificate
+          path: /tmp/final
+          retention-days: 30
