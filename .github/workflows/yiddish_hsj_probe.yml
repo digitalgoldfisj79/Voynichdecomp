@@ -1,0 +1,53 @@
+name: Yiddish HSJ direct probe
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/yiddish_hsj_probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query current LAUDATIO API and HSJ page
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/hsj
+          mkdir -p "$OUT"
+          API=https://www.laudatio-repository.org/api/elasticapi/v1
+          curl --max-time 60 -L --fail --retry 2 -H 'Api-Version: v1' "$API/corpora/latest/0/100" -o "$OUT/corpora.json"
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('/tmp/hsj/corpora.json')
+          top=json.loads(p.read_text())
+          data=top.get('data',top)
+          if isinstance(data,str): data=json.loads(data)
+          hits=[]
+          def walk(x):
+              if isinstance(x,dict):
+                  s=json.dumps(x,ensure_ascii=False)
+                  if '8CRGCnMB7CArCQ9CUXL0' in s or 'Historische Syntax des Jiddischen' in s:
+                      hits.append(x)
+                  for v in x.values(): walk(v)
+              elif isinstance(x,list):
+                  for v in x: walk(v)
+          walk(data)
+          pathlib.Path('/tmp/hsj/matches.json').write_text(json.dumps(hits,ensure_ascii=False,indent=2))
+          print('MATCHES',len(hits))
+          for i,h in enumerate(hits[:5]): print('MATCH',i,json.dumps(h,ensure_ascii=False)[:4000])
+          PY
+          curl --max-time 60 -L -sS -D "$OUT/page_headers.txt" \
+            'https://www.laudatio-repository.org/browse/corpus/8CRGCnMB7CArCQ9CUXL0/corpora' \
+            -o "$OUT/page.html" || true
+          sha256sum "$OUT"/* > "$OUT/sha256.txt"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-hsj-probe
+          path: /tmp/hsj
+          retention-days: 30
