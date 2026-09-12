@@ -1,4 +1,4 @@
-name: YidTak1711 Figshare dataset probe
+name: YidTak1711 Figshare/SURFdrive metadata probe
 
 on:
   push:
@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Inventory Figshare YidTakNL dataset
+      - name: Inventory Figshare record and linked public share metadata
         shell: bash
         run: |
           set -euo pipefail
@@ -27,12 +27,17 @@ jobs:
           x=json.loads((p/'article.json').read_text())
           rows=[]
           for f in x.get('files',[]):
-              rows.append({k:f.get(k) for k in ('id','name','size','download_url','supplied_md5','computed_md5')})
+              rows.append({k:f.get(k) for k in ('id','name','size','is_link_only','download_url','supplied_md5','computed_md5')})
           (p/'files.json').write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
           (p/'files.tsv').write_text('\n'.join(f"{r['id']}\t{r['size']}\t{r['name']}\t{r['download_url']}" for r in rows)+'\n')
-          print(json.dumps({'title':x.get('title'),'doi':x.get('doi'),'license':x.get('license'),'n_files':len(rows),'total_bytes':sum((r['size'] or 0) for r in rows)},indent=2,default=str))
-          for r in rows: print(r['id'],r['size'],r['name'])
+          print(json.dumps({'title':x.get('title'),'doi':x.get('doi'),'license':x.get('license'),'n_files':len(rows)},indent=2,default=str))
+          for r in rows: print(r['id'],r['size'],r['name'],r.get('is_link_only'),r['download_url'])
           PY
+          LINK=$(python3 -c "import json; x=json.load(open('$OUT/article.json')); print(x['files'][0]['download_url'])")
+          curl -L --fail --retry 3 -D "$OUT/share_headers.txt" "$LINK" -o "$OUT/share.html"
+          grep -Ein 'file|folder|name|href|download|dav|initial|state|directory|dir' "$OUT/share.html" > "$OUT/share_relevant_lines.txt" || true
+          grep -Eo '(src|href)=["'"'"'][^"'"'"']+["'"'"']' "$OUT/share.html" > "$OUT/share_src_href.txt" || true
+          wc -c "$OUT"/* > "$OUT/sizes.txt"
       - uses: actions/upload-artifact@v4
         with:
           name: yidtak1711-figshare-probe
