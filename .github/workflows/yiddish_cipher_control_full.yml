@@ -2,6 +2,11 @@ name: Yiddish cipher full blinded control
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/FULL_RUN_TRIGGER'
 
 jobs:
   prepare:
