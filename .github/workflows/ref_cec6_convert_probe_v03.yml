@@ -1,0 +1,53 @@
+name: ReF CEC6 conversion probe v03
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/ref_cec6_convert_probe_v03.yml'
+  workflow_dispatch:
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Export ReF MLU CEC6 to XML directory tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mono-complete unzip >/dev/null
+          mkdir -p /tmp/refconv/app
+          curl --max-time 180 -L --fail --retry 2 \
+            'http://www.bitcutstudios.com/products/corpusexplorer/App.zip' \
+            -o /tmp/refconv/App.zip
+          unzip -q /tmp/refconv/App.zip -d /tmp/refconv/app
+          curl --max-time 180 -L --fail --retry 2 \
+            'http://www.bitcutstudios.com/products/CorpusExplorer/corpora/ref/ReF_MLU.cec6.gz' \
+            -o /tmp/refconv/ReF_MLU.cec6.gz
+          gzip -dc /tmp/refconv/ReF_MLU.cec6.gz > /tmp/refconv/ReF_MLU.cec6
+          CEC=$(find /tmp/refconv/app -iname 'cec.exe' | head -1)
+          cd "$(dirname "$CEC")"
+          mono "$CEC" "import#Cec6#/tmp/refconv/ReF_MLU.cec6" convert "Xml#/tmp/refconv/ReF_MLU.xml" > /tmp/refconv/cec_stdout.txt 2> /tmp/refconv/cec_stderr.txt
+          test -d /tmp/refconv/ReF_MLU
+          find /tmp/refconv/ReF_MLU -type f -printf '%P\t%s\n' | sort > /tmp/refconv/export_inventory.tsv
+          find /tmp/refconv/ReF_MLU -name 'layer.index.xml' -print -quit | xargs -r cat > /tmp/refconv/layer_index_sample.xml
+          find /tmp/refconv/ReF_MLU -name 'doc.meta.xml' -print | head -3 | while read f; do echo "===== $f"; cat "$f"; done > /tmp/refconv/doc_meta_samples.xml
+          tar -czf /tmp/refconv/ReF_MLU_xml_export.tar.gz -C /tmp/refconv ReF_MLU
+          sha256sum /tmp/refconv/ReF_MLU.cec6.gz /tmp/refconv/ReF_MLU_xml_export.tar.gz > /tmp/refconv/sha256.txt
+          du -sh /tmp/refconv/ReF_MLU /tmp/refconv/ReF_MLU_xml_export.tar.gz
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ref-mlu-xml-export-v03
+          path: |
+            /tmp/refconv/ReF_MLU_xml_export.tar.gz
+            /tmp/refconv/export_inventory.tsv
+            /tmp/refconv/layer_index_sample.xml
+            /tmp/refconv/doc_meta_samples.xml
+            /tmp/refconv/cec_stdout.txt
+            /tmp/refconv/cec_stderr.txt
+            /tmp/refconv/sha256.txt
+          retention-days: 7
