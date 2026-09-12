@@ -1,0 +1,127 @@
+name: Yiddish-German L recovery competition v01b
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-recovery-v01b-20260912
+    paths:
+      - 'experiments/yiddish_l_recovery_v01b/TRIGGER_RUN'
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire pinned Penn historical Yiddish corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/ppchy
+          git -C /tmp/ppchy fetch --depth=1 origin b5864bd02a315c1d436a82553667bbf81eab6537
+          git -C /tmp/ppchy checkout --detach b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/ppchy rev-parse HEAD)" = 'b5864bd02a315c1d436a82553667bbf81eab6537'
+      - name: Acquire official ReF 1.0.2 comparator corpus
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref
+          curl -L --fail --retry 3 https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz -o /tmp/ref/ReF-v1.0.2.tar.gz
+          sha256sum /tmp/ref/ReF-v1.0.2.tar.gz | tee /tmp/ref_archive_sha256.txt
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/ref
+      - name: Freeze fresh aliases, keys and cases under corrected ReF unit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_l_recovery_v01b/run_l_recovery_v01b.py preflight \
+            --penn-data /tmp/ppchy/data --ref-root /tmp/ref --out /tmp/lrec
+          cp /tmp/ref_archive_sha256.txt /tmp/lrec/public/ref_archive_sha256.txt
+      - name: Independent public gate check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          p='/tmp/lrec/public/preflight_manifest.json'
+          x=json.load(open(p))
+          assert x['repair_version']=='yiddish_german_l_recovery_v01b_20260912'
+          assert x['parent_v01_quarantined_run_id']==34714545374
+          assert x['parent_v01_solver_outputs_reused'] is False
+          assert x['ref_source_equivalence_all_seven'] is True
+          assert x['target_loaded'] is False and x['voynich_access_allowed'] is False
+          assert all(r['shared_8gram_types']==0 for r in x['overlap_yiddish']+x['overlap_german'])
+          expected={k:v['words'] for k,v in x['ref_expected'].items()}
+          observed={k:v['words'] for k,v in x['source_hashes']['ref'].items()}
+          assert observed==expected,(observed,expected)
+          print('V01B_PUBLIC_GATE_OK')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-recovery-v01b-public-preflight
+          path: /tmp/lrec/public
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-recovery-v01b-private-truth
+          path: /tmp/lrec/private
+          retention-days: 30
+
+  solve:
+    needs: preflight
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        group: [G00,G01,G02,G03,G04,G05,G06,G07,G08,G09]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-recovery-v01b-public-preflight
+          path: /tmp/lrec/public
+      - name: Fresh blind paired recovery — ${{ matrix.group }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/solve/${{ matrix.group }}
+          python experiments/yiddish_l_recovery_v01b/run_l_recovery_v01b.py solve \
+            --public /tmp/lrec/public --group ${{ matrix.group }} --out /tmp/solve/${{ matrix.group }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: l-recovery-v01b-solve-${{ matrix.group }}
+          path: /tmp/solve
+          retention-days: 30
+
+  aggregate:
+    needs: [preflight, solve]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-recovery-v01b-public-preflight
+          path: /tmp/lrec/public
+      - uses: actions/download-artifact@v4
+        with:
+          name: l-recovery-v01b-private-truth
+          path: /tmp/lrec/private
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: l-recovery-v01b-solve-*
+          path: /tmp/solutions
+          merge-multiple: true
+      - name: Reveal fresh truth only after all fresh solver outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_l_recovery_v01b/run_l_recovery_v01b.py aggregate \
+            --public /tmp/lrec/public --private /tmp/lrec/private --solutions /tmp/solutions --out /tmp/final
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-german-l-recovery-v01b-result
+          path: /tmp/final
+          retention-days: 30
