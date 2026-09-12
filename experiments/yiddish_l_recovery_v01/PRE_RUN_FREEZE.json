@@ -1,0 +1,25 @@
+{
+  "version": "yiddish_german_l_recovery_v01_20260912",
+  "status": "FROZEN_BEFORE_ANY_SOLVER_OUTCOME",
+  "scope": "DEVELOPMENT_ONLY_SECONDARY_NORMALIZED_REPRESENTATION",
+  "target_access": "FORBIDDEN",
+  "voynich_loaded": false,
+  "parent_controlling_state": "C0_C5_M0_PASS__C6_LATE_NORMALIZED_PASS__PRIMARY_BRIDGE_FAIL__LANGUAGE_L_OPEN__C7_SEALED",
+  "direct_classifier_candidate_family": "RETIRED_AFTER_CANDIDATE_2__THIS_IS_NOT_CANDIDATE_3",
+  "protocol_commit": "ae187d5b288758b9ba38df43e4b1a442e05ae141",
+  "runner_commit": "fcf814e2d127c02b281633c8f981bc4381caea07",
+  "workflow_commit": "2b427bf13659ed33da15da6165f7277bb54941a8",
+  "primary_bridge_result_commit": "7741e8d71f3f4010f5c6fa17a3dc200b139ff91f",
+  "solver_budget": {"restarts": 8, "annealing_steps": 5000, "greedy_passes": 60},
+  "fit_words": 512,
+  "buffer_words": 32,
+  "audit_words": 512,
+  "keys_per_relationship_group": 32,
+  "random_mapping_nulls_per_model_case": 64,
+  "family_call_abs_z_margin": 1.0,
+  "development_groups_per_language": 5,
+  "notes": [
+    "Truth language, family identities, planted keys and A/B model identities are separated from solver-job inputs until aggregate scoring.",
+    "No post-outcome threshold, corpus, representation, model class or search-budget change is permitted in v0.1."
+  ]
+}
