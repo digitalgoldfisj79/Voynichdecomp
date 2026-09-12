@@ -1,0 +1,82 @@
+name: Yiddish primary-script bridge census
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/primary_bridge/TRIGGER_CENSUS'
+  workflow_dispatch:
+
+jobs:
+  census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire published YidTakNL 1711 edition and census source script
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=/tmp/yidtak1711
+          mkdir -p "$OUT"
+          curl -L --fail --retry 3 'https://zenodo.org/api/records/10017358' -o "$OUT/record.json"
+          python3 - <<'PY'
+          import json, pathlib, urllib.request
+          p=pathlib.Path('/tmp/yidtak1711')
+          rec=json.loads((p/'record.json').read_text())
+          target=None
+          for f in rec.get('files',[]):
+              if f.get('key') == 'Takanot 1711 - YidTakNL.docx':
+                  target=f; break
+          if not target:
+              raise SystemExit('1711 DOCX not found in Zenodo record')
+          url=(target.get('links') or {}).get('content') or (target.get('links') or {}).get('self')
+          if not url: raise SystemExit('no file content URL')
+          urllib.request.urlretrieve(url,p/'takanot1711.docx')
+          (p/'file_meta.json').write_text(json.dumps(target,indent=2,ensure_ascii=False))
+          PY
+          sha256sum "$OUT/takanot1711.docx" > "$OUT/docx_sha256.txt"
+          python3 - <<'PY'
+          import collections, hashlib, json, pathlib, re, unicodedata, zipfile, xml.etree.ElementTree as ET
+          p=pathlib.Path('/tmp/yidtak1711')
+          with zipfile.ZipFile(p/'takanot1711.docx') as z:
+              xml=z.read('word/document.xml')
+          root=ET.fromstring(xml)
+          ns='{http://schemas.openxmlformats.org/wordprocessingml/2006/main}'
+          paras=[]
+          for para in root.iter(ns+'p'):
+              s=''.join((t.text or '') for t in para.iter(ns+'t'))
+              if s.strip(): paras.append(s)
+          raw='\n'.join(paras)
+          (p/'extracted_raw.txt').write_text(raw,encoding='utf-8')
+          # census only: preserve word boundaries, retain Hebrew letters U+05D0..05EA;
+          # remove combining marks/niqqud and punctuation. Final letters remain distinct here.
+          toks=[]
+          for chunk in re.split(r'\s+',raw):
+              w=''.join(ch for ch in chunk if '\u05d0' <= ch <= '\u05ea')
+              if w: toks.append(w)
+          alphabet=collections.Counter(ch for w in toks for ch in w)
+          summary={
+            'status':'PRIMARY_BRIDGE_CENSUS_ONLY_NO_SCORING',
+            'source':'Takanot 1711 - YidTakNL',
+            'zenodo_record':10017358,
+            'paragraphs_nonempty':len(paras),
+            'hebrew_letter_tokens':len(toks),
+            'hebrew_letter_atoms':sum(map(len,toks)),
+            'alphabet_size_raw_hebrew_letters':len(alphabet),
+            'alphabet_counts':dict(sorted(alphabet.items())),
+            'eligible_1056':len(toks)>=1056,
+            'eligible_4128':len(toks)>=4128,
+            'normalization':'census only; retain U+05D0..U+05EA; final forms distinct; no scoring',
+            'claim_boundary':'Published 1711 primary-script bridge only; not 15th/16th-century transfer and not a Voynich result.'
+          }
+          (p/'tokens_hebrew_only.txt').write_text('\n'.join(toks)+'\n',encoding='utf-8')
+          (p/'summary.json').write_text(json.dumps(summary,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+          print(json.dumps(summary,indent=2,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-primary-bridge-1711-census
+          path: /tmp/yidtak1711
+          retention-days: 30
