@@ -1,0 +1,47 @@
+name: Yiddish L evaluator separability preflight
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-l-development-20260912
+    paths:
+      - '.github/workflows/yiddish_l_evaluator_preflight.yml'
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Acquire pinned source corpora from GitHub
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/corpora
+          git clone --quiet https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/corpora/ppchy
+          git -C /tmp/corpora/ppchy checkout --quiet b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/corpora/ppchy rev-parse HEAD)" = "b5864bd02a315c1d436a82553667bbf81eab6537"
+          git clone --quiet https://github.com/alexanderboxer/voynich-attack.git /tmp/corpora/voynich-attack
+          git -C /tmp/corpora/voynich-attack checkout --quiet 255bd632e45459230eaf2a994e0557ed6c682869
+          test "$(git -C /tmp/corpora/voynich-attack rev-parse HEAD)" = "255bd632e45459230eaf2a994e0557ed6c682869"
+      - name: Run development-only preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT=experiments/yiddish_l_development_20260912/evaluator_preflight_output
+          rm -rf "$OUT"
+          python3 experiments/yiddish_l_development_20260912/evaluator_separability_preflight.py \
+            /tmp/corpora/ppchy/data \
+            /tmp/corpora/voynich-attack/corpora/german/legacy/refFNHD/texts \
+            "$OUT"
+          sha256sum \
+            experiments/yiddish_l_development_20260912/evaluator_separability_preflight.py \
+            experiments/yiddish_l_development_20260912/evaluator_preflight_manifest.json \
+            "$OUT"/* > "$OUT/audit_sha256.txt"
+          cat "$OUT/REPORT.md"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-l-evaluator-preflight-v01
+          path: experiments/yiddish_l_development_20260912/evaluator_preflight_output
+          retention-days: 30
