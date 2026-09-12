@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Inventory exact 1711 directory via metadata-only WebDAV
+      - name: Inventory 1711 txt directory via metadata-only WebDAV
         shell: bash
         run: |
           set -euo pipefail
@@ -23,12 +23,12 @@ jobs:
           curl --connect-timeout 10 --max-time 30 -L --fail --retry 1 'https://api.figshare.com/v2/articles/25422844' -o "$OUT/article.json"
           LINK=$(python3 -c "import json; x=json.load(open('$OUT/article.json')); print(x['files'][0]['download_url'])")
           TOKEN=${LINK##*/}
-          TARGET=$(python3 -c "import urllib.parse; print(urllib.parse.quote('RBR_O_128_PDF תקנות 1711'))")
+          TARGET=$(python3 -c "import urllib.parse; print(urllib.parse.quote('RBR_O_128_PDF תקנות 1711/txt'))")
           URL="https://surfdrive.surf.nl/public.php/dav/files/$TOKEN/$TARGET"
-          printf 'link=%s\ntoken=%s\ntarget=%s\nurl=%s\n' "$LINK" "$TOKEN" 'RBR_O_128_PDF תקנות 1711' "$URL" > "$OUT/share_pointer.txt"
+          printf 'link=%s\ntoken=%s\ntarget=%s\nurl=%s\n' "$LINK" "$TOKEN" 'RBR_O_128_PDF תקנות 1711/txt' "$URL" > "$OUT/share_pointer.txt"
           BODY='<?xml version="1.0" encoding="UTF-8"?><d:propfind xmlns:d="DAV:"><d:prop><d:displayname/><d:getcontentlength/><d:getcontenttype/><d:getetag/><d:resourcetype/></d:prop></d:propfind>'
           set +e
-          HTTP=$(curl --connect-timeout 10 --max-time 45 -sS -X PROPFIND -H 'Depth: 1' -H 'X-Requested-With: XMLHttpRequest' -H 'Content-Type: application/xml' --data "$BODY" -o "$OUT/propfind_1711_depth1.xml" -w '%{http_code}' "$URL")
+          HTTP=$(curl --connect-timeout 10 --max-time 45 -sS -X PROPFIND -H 'Depth: 1' -H 'X-Requested-With: XMLHttpRequest' -H 'Content-Type: application/xml' --data "$BODY" -o "$OUT/propfind_txt_depth1.xml" -w '%{http_code}' "$URL")
           RC=$?
           set -e
           printf 'curl_rc=%s\nhttp_status=%s\nurl=%s\n' "$RC" "$HTTP" "$URL" | tee "$OUT/status.txt"
@@ -36,7 +36,7 @@ jobs:
             python3 - <<'PY'
           import pathlib, urllib.parse, xml.etree.ElementTree as ET
           p=pathlib.Path('/tmp/figshare_probe')
-          root=ET.parse(p/'propfind_1711_depth1.xml').getroot(); ns={'d':'DAV:'}; rows=[]
+          root=ET.parse(p/'propfind_txt_depth1.xml').getroot(); ns={'d':'DAV:'}; rows=[]
           for resp in root.findall('d:response',ns):
               href=urllib.parse.unquote(resp.findtext('d:href',default='',namespaces=ns) or '')
               prop=resp.find('.//d:prop',ns)
@@ -48,7 +48,7 @@ jobs:
               rt=prop.find('d:resourcetype',ns); is_dir=rt is not None and rt.find('d:collection',ns) is not None
               rows.append((href,name,size,ctype,etag,'DIR' if is_dir else 'FILE'))
           text='href\tdisplayname\tsize\tcontent_type\tetag\ttype\n'+'\n'.join('\t'.join(r) for r in rows)+'\n'
-          (p/'inventory_1711_depth1.tsv').write_text(text); print(text)
+          (p/'inventory_txt_depth1.tsv').write_text(text); print(text)
           PY
           fi
       - uses: actions/upload-artifact@v4
