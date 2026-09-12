@@ -1,0 +1,25 @@
+name: Yiddish Basel1599 acquisition v01
+on:
+  push:
+    branches: [gpt56/yiddish-m0-invariants-v01-20260912]
+    paths:
+      - experiments/yiddish_m0_invariants_v01/acquire_basel1599_v01.py
+      - .github/workflows/yiddish_basel1599_acquire_v01.yml
+  workflow_dispatch:
+jobs:
+  acquire:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - name: Acquire fresh Basel 1599 canvases under frozen protocol
+        run: python experiments/yiddish_m0_invariants_v01/acquire_basel1599_v01.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: basel1599-acquisition-v01
+          path: experiments/yiddish_m0_invariants_v01/basel1599_acquisition/
+          if-no-files-found: error
+          compression-level: 6
