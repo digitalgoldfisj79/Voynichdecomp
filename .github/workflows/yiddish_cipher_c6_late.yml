@@ -1,0 +1,95 @@
+name: Yiddish C6 late normalized transfer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gpt56/yiddish-control-v1-20260912
+    paths:
+      - 'experiments/yiddish_cipher_control_v1/c6/TRIGGER_FULL_C6'
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare frozen late-transfer cases
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_cipher_control_v1/c6/prepare_c6_late.py --out /tmp/c6late
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-c6-late-public
+          path: /tmp/c6late/public
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-c6-late-private
+          path: /tmp/c6late/private
+          retention-days: 30
+
+  solve:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0,1,2,3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-c6-late-public
+          path: /tmp/public
+      - name: Blind solve C6 shard
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/results
+          python experiments/yiddish_cipher_control_v1/full/solve_full.py \
+            --public-dir /tmp/public \
+            --shard-index ${{ matrix.shard }} \
+            --shard-count 4 \
+            --out /tmp/results/solver_${{ matrix.shard }}.jsonl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-c6-late-solver-${{ matrix.shard }}
+          path: /tmp/results/solver_${{ matrix.shard }}.jsonl
+          retention-days: 30
+
+  score:
+    needs: [prepare, solve]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-c6-late-public
+          path: /tmp/public
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-c6-late-private
+          path: /tmp/private
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: yiddish-c6-late-solver-*
+          path: /tmp/results
+          merge-multiple: true
+      - name: Adjudicate C6 only after solver commitments
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/final
+          python experiments/yiddish_cipher_control_v1/c6/score_c6_late.py \
+            --public-dir /tmp/public \
+            --private-dir /tmp/private \
+            --results-dir /tmp/results \
+            --out /tmp/final
+          cp /tmp/public/pre_manifest.json /tmp/final/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-c6-late-final-certificate
+          path: /tmp/final
+          retention-days: 30
