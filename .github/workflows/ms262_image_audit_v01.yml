@@ -1,0 +1,66 @@
+name: MS262 score-independent image audit acquisition
+
+on:
+  push:
+    branches:
+      - gpt56/yiddish-m0-invariants-v01-20260912
+    paths:
+      - '.github/workflows/ms262_image_audit_v01.yml'
+  workflow_dispatch:
+
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image decoder
+        run: python -m pip install --quiet pillow
+      - name: Acquire frozen sample images and XML
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet https://github.com/cu-mkp/ms-262-data.git /tmp/ms262
+          git -C /tmp/ms262 checkout --quiet 1e7b9f78ae1b4d2bc3d6c2c593d0d14855bc664f
+          mkdir -p experiments/yiddish_m0_invariants_v01/ms262_image_audit_v01/xml
+          mkdir -p experiments/yiddish_m0_invariants_v01/ms262_image_audit_v01/images
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, json, subprocess, xml.etree.ElementTree as ET
+          from PIL import Image
+
+          sample = ['002r','003r','004r','013v','014v','018r']
+          root = Path('/tmp/ms262/xml/transcription')
+          out = Path('experiments/yiddish_m0_invariants_v01/ms262_image_audit_v01')
+          rows=[]
+          for page in sample:
+              src = root / f'tc_p{page}.xml'
+              tree = ET.parse(src)
+              image_url = tree.getroot().attrib['image']
+              xml_dst = out/'xml'/src.name
+              xml_dst.write_bytes(src.read_bytes())
+              tif = out/'images'/f'{page}.tif'
+              subprocess.run(['curl','-L','--fail','--retry','3','-o',str(tif),image_url],check=True)
+              png = out/'images'/f'{page}.png'
+              with Image.open(tif) as im:
+                  im.load()
+                  w,h=im.size
+                  maxw=2400
+                  if w>maxw:
+                      nh=round(h*maxw/w)
+                      im=im.resize((maxw,nh))
+                  im.convert('RGB').save(png,optimize=True)
+              def sha(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+              rows.append({'page':page,'image_url':image_url,'xml_sha256':sha(xml_dst),'tif_sha256':sha(tif),'png_sha256':sha(png)})
+              tif.unlink()
+          (out/'acquisition_manifest.json').write_text(json.dumps({'source_commit':'1e7b9f78ae1b4d2bc3d6c2c593d0d14855bc664f','frozen_sample':sample,'rows':rows},indent=2,sort_keys=True)+'\n')
+          PY
+      - name: Upload audit bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: ms262-image-audit-v01
+          path: experiments/yiddish_m0_invariants_v01/ms262_image_audit_v01/
+          if-no-files-found: error
