@@ -1,0 +1,1 @@
+This note and `v03_search_repair_spec.md` were added **after** v02 workflow run 34687914241 completed. They do not alter the archived v02 executable or artifact. The controlling v02 code hashes and artifact digest remain those recorded in its run manifest and Supabase handoff. All v03 execution occurs on a new child branch.
