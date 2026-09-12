@@ -1,0 +1,53 @@
+{
+  "version": "yiddish_l_evaluator_preflight_v01_20260912",
+  "status": "FROZEN_BEFORE_OUTCOMES",
+  "scope": "DEVELOPMENT_ONLY_NOT_L_QUALIFICATION",
+  "target_admission": "FORBIDDEN",
+  "ppchy_commit": "b5864bd02a315c1d436a82553667bbf81eab6537",
+  "ref_transport_repo": "alexanderboxer/voynich-attack",
+  "ref_transport_commit": "255bd632e45459230eaf2a994e0557ed6c682869",
+  "representation": {
+    "yiddish": "PPCHY lossy Romanisation reduced with frozen v02/v03 a-z atomizer",
+    "german": "ReF 1.0.1 Modernisierter Lesetext transport mirror reduced to a-z; historical text but NOT diplomatic representation"
+  },
+  "build_evaluator": {
+    "yiddish_relationship_groups": {
+      "shir_1579": ["1579e-shir-preface.psd", "1579e-shir.psd"],
+      "ester_1589": ["1589e-ester-preface.psd", "1589e-ester.psd"]
+    },
+    "german_relationship_groups": {
+      "F014_1501_1524_north_bavarian": "f014.txt",
+      "F015_early16_regensburg_north_bavarian": "f015.txt"
+    },
+    "equal_training_budget_words_per_language": 10000,
+    "budget_rule": "deterministic work-family round-robin with residual redistribution"
+  },
+  "development": {
+    "yiddish_relationship_groups": {
+      "bovo_1507": ["1507w-bovo.psd"],
+      "cracow_letters_1588": ["1588e-letters-cracow.psd"],
+      "sam_hayyim_1590": ["1590e-sam-hayyim.psd"],
+      "lev_tov_1620": ["1620e-lev-tov-1-preface.psd", "1620e-lev-tov-1.psd"],
+      "kine_1648": ["1648w-kine.psd"]
+    },
+    "german_relationship_groups": {
+      "F016_1530_regensburg_north_bavarian": "f016.txt",
+      "F018_1550_regensburg_north_bavarian": "f018.txt",
+      "F034_1524_munich_middle_bavarian": "f034.txt",
+      "F037_1583_munich_east_bavarian": "f037.txt",
+      "F148_1557_augsburg_swabian": "f148.txt"
+    },
+    "score_words_per_work": 512,
+    "segment_selection": "SHA256 public-seed deterministic contiguous 512-word segment",
+    "inferential_unit": "whole relationship group"
+  },
+  "evaluator": {
+    "primary": "character trigram additive-smoothed held-out bits per alphabetic source atom",
+    "alpha": 0.25,
+    "call_for_preflight_only": "lower raw bits-per-atom; positive (German BPA - Yiddish BPA) calls Yiddish",
+    "nuisance_arms": ["character unigram", "word-length-only multinomial", "within-word deterministic letter shuffle scored by trigram models"]
+  },
+  "null": "exact enumeration of all 252 balanced 5-Yiddish/5-German work-family label assignments; one-sided accuracy >= observed",
+  "decision": "This run may report DEVELOPMENT_EVALUATOR_FEASIBLE or DEVELOPMENT_EVALUATOR_NOT_RESOLVED only. It cannot freeze the final L acceptance/margin/abstention rule and cannot issue an L certificate.",
+  "consumption": "All Yiddish groups listed here were already consumed by prior R work; no fresh confirmation source is consumed by this preflight."
+}
