@@ -50,7 +50,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/ref /tmp/data/ref_extract
-          curl -L --fail --retry 3 https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz -o /tmp/ref/ReF-v1.0.2.tar.gz
+          curl -L --fail --retry 3 --retry-all-errors --connect-timeout 20 --max-time 600 'https://zenodo.org/records/5793616/files/ReF-v1.0.2.tar.gz?download=1' -o /tmp/ref/ReF-v1.0.2.tar.gz
           echo '288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e  /tmp/ref/ReF-v1.0.2.tar.gz' | sha256sum -c -
           tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/data/ref_extract
 
