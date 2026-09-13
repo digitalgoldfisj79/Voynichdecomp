@@ -1,0 +1,108 @@
+name: Yiddish v03 model reproducibility diagnostic
+
+on:
+  push:
+    branches:
+      - codex/yiddish-edition-challenge-v04-20260913
+    paths:
+      - '.github/workflows/yiddish_model_repro_diag.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+
+      - name: Pin original analysis NumPy
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check 'numpy==2.3.5'
+          python - <<'PY'
+          import sys,numpy,pickle
+          print('python',sys.version)
+          print('numpy',numpy.__version__)
+          print('pickle_highest_protocol',pickle.HIGHEST_PROTOCOL)
+          PY
+
+      - name: Recover frozen v0.2 checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: yiddish-german-l-calibration-v02-result
+          path: /tmp/data/result
+          github-token: ${{ github.token }}
+          repository: digitalgoldfisj79/Voynichdecomp
+          run-id: 34717632413
+
+      - name: Acquire pinned PPCHY
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/ppchy
+          git -C /tmp/ppchy fetch --depth=1 origin b5864bd02a315c1d436a82553667bbf81eab6537
+          git -C /tmp/ppchy checkout --detach b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/ppchy rev-parse HEAD)" = 'b5864bd02a315c1d436a82553667bbf81eab6537'
+
+      - name: Acquire exact ReF archive
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref /tmp/data/ref_extract
+          curl -L --fail --retry 5 --retry-all-errors --connect-timeout 20 --max-time 600 'https://zenodo.org/records/5793616/files/ReF-v1.0.2.tar.gz?download=1' -o /tmp/ref/ReF-v1.0.2.tar.gz
+          echo '288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e  /tmp/ref/ReF-v1.0.2.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/data/ref_extract
+
+      - name: Rebuild and canonical-audit models
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/coverage
+          python experiments/yiddish_repair_v03/coverage.py --data /tmp/data --penn /tmp/ppchy/data --out /tmp/coverage
+          python - <<'PY'
+          import hashlib,json,pickle,sys,numpy as np
+          from pathlib import Path
+          p=Path('/tmp/coverage/models.pkl')
+          raw=p.read_bytes(); models=pickle.loads(raw)
+          h=hashlib.sha256()
+          semantic={}
+          for mid in sorted(models):
+              m=models[mid]
+              lp=np.asarray(m['lp'],dtype='<f8',order='C')
+              uni=list(map(int,m['train_uni']))
+              h.update(mid.encode()+b'\0')
+              h.update(str(lp.shape).encode()+b'\0')
+              h.update(lp.tobytes(order='C'))
+              h.update(json.dumps(uni,separators=(',',':')).encode())
+              semantic[mid]={
+                'shape':list(lp.shape),'dtype':str(lp.dtype),
+                'lp_sha256_le_f8':hashlib.sha256(lp.tobytes(order='C')).hexdigest(),
+                'lp_sum':float(lp.sum()),'lp_min':float(lp.min()),'lp_max':float(lp.max()),
+                'train_uni':uni,'train_uni_sum':sum(uni)}
+          report={
+            'python':sys.version,'numpy':np.__version__,
+            'pickle_sha256':hashlib.sha256(raw).hexdigest(),
+            'expected_historical_pickle_sha256':'1bf2db4056028510a8b7f9a7eb7b168eeda20ea93f9cc090c7973091bbc87463',
+            'pickle_sha_matches':hashlib.sha256(raw).hexdigest()=='1bf2db4056028510a8b7f9a7eb7b168eeda20ea93f9cc090c7973091bbc87463',
+            'canonical_semantic_sha256':h.hexdigest(),
+            'models':semantic,
+            'target_loaded':False}
+          Path('/tmp/coverage/RUNTIME_REPRO.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(report,indent=2,sort_keys=True))
+          PY
+
+      - name: Preserve diagnostic regardless of historical byte match
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-v03-model-runtime-repro
+          path: |
+            /tmp/coverage/models.pkl
+            /tmp/coverage/model_manifest.json
+            /tmp/coverage/source_manifest.json
+            /tmp/coverage/RUNTIME_REPRO.json
+          retention-days: 30
