@@ -1,0 +1,9 @@
+# Balanced coverage repair: source selection before model outcomes
+
+The two-work Witten–Bell repair remains a failed DEVELOPMENT test. Its errors are not erased. This second candidate changes only BUILD coverage; the trigram model, solver budget, statistic, nulls, and thresholds are unchanged. No target access.
+
+Yiddish BUILD: all pinned PPCHY works dated <=1750 not in either L development/transfer panel, grouping prefaces with their parent work. Each included work is balanced by the existing round-robin word allocator to a total of 10,000 words. Exclude any BUILD work sharing an exact 8-word sequence with any evaluation family before fitting.
+
+German BUILD: official hash-verified ReF XML, corrected virtual-token extractor; exclude every previous L BUILD or evaluation ID. Include candidates with at least 5,000 normalized words and zero exact 8-word overlap with any v0.2 German evaluation family. Group by the source's declared language-area. Traverse sorted language-area groups round-robin, taking the lowest unused work ID from each until the number of German BUILD works equals the number of eligible Yiddish BUILD works. Allocate exactly the sorted Yiddish per-work word budgets to the selected German works in selection order. Thus total words, work count, and per-work contributions match exactly. Do not select on model scores, word entropy, recovery or names that appear in failures.
+
+Source census, hashes, allocation and overlap exclusions must be written before any model fitting. The model test remains DEVELOPMENT on exposed v0.2 families; even a full pass requires untouched external qualification and source-representation qualification. This does not add source-specific decoding rules, normalize spelling, lower recovery thresholds or remove difficult evaluation families.
