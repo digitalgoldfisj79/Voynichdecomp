@@ -3,6 +3,7 @@ import argparse,collections,ctypes,hashlib,json,math,pickle,statistics,sys,time
 from pathlib import Path
 import numpy as np
 from diagnose import c,v,read_pickle,HERE
+SEARCH_RESTARTS=8
 
 def counts(words):
     out=collections.Counter()
@@ -49,7 +50,7 @@ def lib():
 def solve(words,model,seed):
     events=counts(words);ids,w=events
     _,uni=c.base.cipher_counts(words);initial=np.array(c.base.frequency_initial(uni,model['train_uni']),dtype=np.int32);out=np.empty(26,dtype=np.int32)
-    obj=lib().trigram_solve(len(w),ids,w,model['lp'],initial,seed,8,5000,60,out)
+    obj=lib().trigram_solve(len(w),ids,w,model['lp'],initial,seed,SEARCH_RESTARTS,5000,60,out)
     assert abs(obj-score(events,model['lp'],out))<1e-10
     assert sorted(out.tolist())==list(range(26))
     return out.tolist(),obj
@@ -89,11 +90,15 @@ def prepare(data,penn,out):
 def run_group(data,modeldir,out,group):
     # This function deliberately has no PRIVATE/truth path access.
     with (modeldir/'models.pkl').open('rb') as f:models=pickle.load(f)
-    old=read_pickle(data/'public/models.pkl')
+    # Match the unigram control to THIS candidate's exact BUILD character counts.
+    n1_models={mid:{'train_uni':model['train_uni'],'unigram':(model['train_uni'],sum(model['train_uni']))} for mid,model in models.items()}
     cases=json.loads((data/f'public/{group}.json').read_text())['cases'];rows=[]
     dest=out/group;dest.mkdir(parents=True,exist_ok=True)
     done=dest/'checkpoint.pkl'
-    if done.exists():rows=read_pickle(done)['rows']
+    if done.exists():
+        previous=read_pickle(done)
+        assert previous.get('restarts',8)==SEARCH_RESTARTS
+        rows=previous['rows']
     for pc in cases[len(rows):]:
         ki=pc['key_index'];row={'group':group,'key_index':ki,'primary':{},'n1':{},'n2':{}}
         for arm,fc,ac in [('primary',pc['fit_cipher'],pc['audit_cipher']),('n2',pc['n2_fit_cipher'],pc['n2_audit_cipher'])]:
@@ -105,12 +110,12 @@ def run_group(data,modeldir,out,group):
         # Unigram nuisance is unchanged, including deterministic mapping/nulls.
         _,uni=c.base.cipher_counts(pc['fit_cipher'])
         for mid in ('A','B'):
-            m=c.base.frequency_initial(uni,old[mid]['train_uni']);row['n1'][mid]=c.z_unigram(pc['audit_cipher'],m,old[mid]['unigram'],c.random_maps('n1',group,ki));row['n1'][mid]['mapping']=m
-        rows.append(row);c.atomic_pickle({'group':group,'rows':rows,'target_loaded':False},done)
+            m=c.base.frequency_initial(uni,n1_models[mid]['train_uni']);row['n1'][mid]=c.z_unigram(pc['audit_cipher'],m,n1_models[mid]['unigram'],c.random_maps('n1',group,ki));row['n1'][mid]['mapping']=m
+        rows.append(row);c.atomic_pickle({'group':group,'rows':rows,'target_loaded':False,'restarts':SEARCH_RESTARTS},done)
     (dest/'rows.jsonl').write_text(''.join(json.dumps(r,sort_keys=True)+'\n' for r in rows))
     print(json.dumps({'group':group,'rows':len(rows),'status':'BLIND_DEVELOPMENT_COMPLETE'}),flush=True)
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['prepare','solve']);ap.add_argument('--data',type=Path,required=True);ap.add_argument('--penn',type=Path);ap.add_argument('--models',type=Path);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--group');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['prepare','solve']);ap.add_argument('--data',type=Path,required=True);ap.add_argument('--penn',type=Path);ap.add_argument('--models',type=Path);ap.add_argument('--out',type=Path,required=True);ap.add_argument('--group');ap.add_argument('--restarts',type=int,default=8);a=ap.parse_args();SEARCH_RESTARTS=a.restarts
     if a.mode=='prepare':prepare(a.data,a.penn,a.out)
     else:run_group(a.data,a.models,a.out,a.group)
