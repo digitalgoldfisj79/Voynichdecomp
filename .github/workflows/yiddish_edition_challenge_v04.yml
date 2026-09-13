@@ -1,0 +1,302 @@
+name: Yiddish Jona Hiob external challenge v04
+
+on:
+  push:
+    branches:
+      - codex/yiddish-edition-challenge-v04-20260913
+    paths:
+      - '.github/workflows/yiddish_edition_challenge_v04.yml'
+      - 'experiments/yiddish_repair_v03/V04_EXECUTION_FREEZE.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install fixed runtime dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check numpy PyMuPDF
+
+      - name: Recover frozen v0.2 result checkpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: yiddish-german-l-calibration-v02-result
+          path: /tmp/data/result
+          github-token: ${{ github.token }}
+          repository: digitalgoldfisj79/Voynichdecomp
+          run-id: 34717632413
+
+      - name: Acquire pinned PPCHY
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/beatrice57/penn-parsed-corpus-of-historical-yiddish.git /tmp/ppchy
+          git -C /tmp/ppchy fetch --depth=1 origin b5864bd02a315c1d436a82553667bbf81eab6537
+          git -C /tmp/ppchy checkout --detach b5864bd02a315c1d436a82553667bbf81eab6537
+          test "$(git -C /tmp/ppchy rev-parse HEAD)" = 'b5864bd02a315c1d436a82553667bbf81eab6537'
+
+      - name: Acquire official hash-pinned ReF 1.0.2
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ref /tmp/data/ref_extract
+          curl -L --fail --retry 3 https://zenodo.org/record/5793616/files/ReF-v1.0.2.tar.gz -o /tmp/ref/ReF-v1.0.2.tar.gz
+          echo '288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e  /tmp/ref/ReF-v1.0.2.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/ref/ReF-v1.0.2.tar.gz -C /tmp/data/ref_extract
+
+      - name: Reconstruct the frozen coverage-repair language models
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/coverage /tmp/data/coverage_models
+          python experiments/yiddish_repair_v03/coverage.py \
+            --data /tmp/data --penn /tmp/ppchy/data --out /tmp/coverage
+          echo '1bf2db4056028510a8b7f9a7eb7b168eeda20ea93f9cc090c7973091bbc87463  /tmp/coverage/models.pkl' | sha256sum -c -
+          cp /tmp/coverage/models.pkl /tmp/data/coverage_models/models.pkl
+
+      - name: Acquire exact Jona and Hiob scholarly editions
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/edition
+          curl -L --fail --retry 3 'https://www.uni-trier.de/fileadmin/fb2/prof/GER/JID/JM_Artikel_Allgemein/Batsch_Neuberg_Ein_Jona_Lied.pdf' -o /tmp/edition/jona.pdf
+          curl -L --fail --retry 3 'https://www.uni-trier.de/fileadmin/fb2/prof/GER/JID/JM_Artikel_Allgemein/Guirsch_Neuberg_Schumacher_Ein_Hiob-Lied.pdf' -o /tmp/edition/hiob.pdf
+          echo '0d38b1cafa59fcdc1f5328cc954b679c87429852bf56df61ff16dfcfe4a7f607  /tmp/edition/jona.pdf' | sha256sum -c -
+          echo 'fb5eaee50a7e53795856019e25b9dcdc38282b96bb0a7ce60c09fd78cbaeeb79  /tmp/edition/hiob.pdf' | sha256sum -c -
+
+      - name: Reproduce source extraction and overlap firewall
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_repair_v03/edition_preflight.py --root /tmp/edition
+          python experiments/yiddish_repair_v03/edition_overlap.py --root /tmp/edition --penn /tmp/ppchy/data
+          python - <<'PY'
+          import gzip, hashlib, json, pickle
+          from pathlib import Path
+          root=Path('/tmp/edition')
+          state=pickle.loads(gzip.decompress((root/'edition_preflight.pkl.gz').read_bytes()))
+          expected={
+            'jona': (4119,'2ded421bee57e69a6d470af2c58e1078aed7397e968e3a66f61670b9f18dd437'),
+            'hiob': (2791,'2ad25c9c40a23955ea00e21c81b6419ff3bee957efa5144b3de41685318383f9'),
+          }
+          for name,(n,sha) in expected.items():
+              words=state['sources'][name]['variants']['0.31']['words']
+              got=hashlib.sha256('\n'.join(words).encode()).hexdigest()
+              assert len(words)==n,(name,len(words),n)
+              assert got==sha,(name,got,sha)
+          ov=json.loads((root/'edition_overlap.json').read_text())
+          assert all(not rows for fam in ov['hits'].values() for rows in fam.values()),ov['hits']
+          print('V04_SOURCE_REPRODUCTION_AND_LEAKAGE_GATE_OK')
+          PY
+
+      - name: Build inherited native trigram solver
+        run: |
+          set -euo pipefail
+          g++ -O3 -std=c++17 -shared -fPIC \
+            experiments/yiddish_repair_v03/trigram.cpp \
+            -o experiments/yiddish_repair_v03/native_trigram.so
+          sha256sum experiments/yiddish_repair_v03/trigram.py experiments/yiddish_repair_v03/trigram.cpp experiments/yiddish_repair_v03/native_trigram.so
+
+      - name: Fresh v0.4 pre-score freeze
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/challenge/audit
+          python experiments/yiddish_repair_v03/edition_challenge.py prepare \
+            --root /tmp/edition --data /tmp/data --out /tmp/challenge
+          cp /tmp/coverage/source_manifest.json /tmp/challenge/audit/coverage_source_manifest.json
+          cp /tmp/coverage/model_manifest.json /tmp/challenge/audit/coverage_model_manifest.json
+          cp /tmp/edition/edition_preflight_summary.json /tmp/challenge/audit/edition_preflight_summary.json
+          cp /tmp/edition/edition_overlap.json /tmp/challenge/audit/edition_overlap.json
+          cp experiments/yiddish_repair_v03/V04_EXECUTION_FREEZE.md /tmp/challenge/audit/V04_EXECUTION_FREEZE.md
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('/tmp/challenge')
+          freeze=json.loads((root/'FREEZE.json').read_text())
+          expected={
+            'jona':(4119,'2ded421bee57e69a6d470af2c58e1078aed7397e968e3a66f61670b9f18dd437'),
+            'hiob':(2791,'2ad25c9c40a23955ea00e21c81b6419ff3bee957efa5144b3de41685318383f9')}
+          for name,(n,sha) in expected.items():
+              row=freeze['sources'][name]
+              assert row['words']==n,(name,row['words'],n)
+              assert row['word_stream_sha256']==sha,(name,row['word_stream_sha256'],sha)
+          assert freeze['target_loaded'] is False
+          doc=Path('experiments/yiddish_repair_v03/V04_EXECUTION_FREEZE.md').read_bytes()
+          manifest={
+            'status':'V04_EXECUTION_FROZEN_BEFORE_SOLVER_OUTCOMES',
+            'parent_v03_status':'EXECUTION_ARTIFACT_LOST_UNSCORED',
+            'parent_v03_truth_commitment_sha256':'4dc0b6dae3c810fa121dc0c0fd169de259aca8a244a8e08911c399d59d0788bf',
+            'execution_freeze_sha256':hashlib.sha256(doc).hexdigest(),
+            'challenge_freeze_sha256':hashlib.sha256((root/'FREEZE.json').read_bytes()).hexdigest(),
+            'inherited_scientific_protocol_sha256':freeze['protocol_sha256'],
+            'solver_sha256':freeze['solver_sha256'],
+            'native_sha256':freeze['native_sha256'],
+            'model_sha256':freeze['model_sha256'],
+            'truth_commitment_sha256':freeze['truth_commitment_sha256'],
+            'ciphertext_sha256':freeze['ciphertext_sha256'],
+            'target_loaded':False,
+            'voynich_access_allowed':False,
+            'restarts':32,
+            'keys_per_group':32,
+          }
+          (root/'V04_EXECUTION_MANIFEST.json').write_text(json.dumps(manifest,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(manifest,indent=2,sort_keys=True))
+          PY
+
+      - name: Upload v0.4 public frozen cases
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-edition-v04-public
+          path: |
+            /tmp/challenge/public
+            /tmp/challenge/FREEZE.json
+            /tmp/challenge/V04_EXECUTION_MANIFEST.json
+            /tmp/challenge/audit
+          retention-days: 30
+
+      - name: Upload v0.4 private truth separately
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-edition-v04-private
+          path: /tmp/challenge/private
+          retention-days: 30
+
+  solve:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [X0300, X0301]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install solver dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Build inherited native trigram solver
+        run: |
+          set -euo pipefail
+          g++ -O3 -std=c++17 -shared -fPIC \
+            experiments/yiddish_repair_v03/trigram.cpp \
+            -o experiments/yiddish_repair_v03/native_trigram.so
+
+      - name: Download public cases only
+        uses: actions/download-artifact@v4
+        with:
+          name: yiddish-edition-v04-public
+          path: /tmp/challenge
+
+      - name: Blind solve ${{ matrix.group }} with frozen 32-restart budget
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/solutions
+          test ! -e /tmp/challenge/private/truth.pkl
+          python experiments/yiddish_repair_v03/trigram.py solve \
+            --data /tmp/challenge \
+            --models /tmp/challenge/public \
+            --out /tmp/solutions \
+            --group '${{ matrix.group }}' \
+            --restarts 32
+          test "$(wc -l < /tmp/solutions/${{ matrix.group }}/rows.jsonl)" -eq 32
+
+      - name: Upload blind solution shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-edition-v04-solve-${{ matrix.group }}
+          path: /tmp/solutions/${{ matrix.group }}
+          retention-days: 30
+
+  evaluate:
+    needs: [prepare, solve]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install evaluator dependency
+        run: python -m pip install --disable-pip-version-check numpy
+
+      - name: Rebuild inherited native library for import/hash audit
+        run: |
+          set -euo pipefail
+          g++ -O3 -std=c++17 -shared -fPIC \
+            experiments/yiddish_repair_v03/trigram.cpp \
+            -o experiments/yiddish_repair_v03/native_trigram.so
+
+      - name: Download frozen public and private artifacts only after blind solves exist
+        uses: actions/download-artifact@v4
+        with:
+          name: yiddish-edition-v04-public
+          path: /tmp/challenge
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-edition-v04-private
+          path: /tmp/challenge/private
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-edition-v04-solve-X0300
+          path: /tmp/challenge/solutions/X0300
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: yiddish-edition-v04-solve-X0301
+          path: /tmp/challenge/solutions/X0301
+
+      - name: Reveal truth and run frozen evaluation plus oracle bounding
+        run: |
+          set -euo pipefail
+          python experiments/yiddish_repair_v03/edition_challenge.py evaluate --out /tmp/challenge
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('/tmp/challenge')
+          result=json.loads((root/'RESULT.json').read_text())
+          freeze=json.loads((root/'V04_EXECUTION_MANIFEST.json').read_text())
+          assert result['target_loaded'] is False
+          assert result['c7_state']=='SEALED'
+          wrapper={
+            'status':result['status'],
+            'version':'YIDDISH_EDITION_EXTERNAL_CHALLENGE_V04_20260913',
+            'parent_v03_status':'EXECUTION_ARTIFACT_LOST_UNSCORED',
+            'target_loaded':False,
+            'c7_state':'SEALED',
+            'freeze':freeze,
+            'result_sha256':hashlib.sha256((root/'RESULT.json').read_bytes()).hexdigest(),
+            'result':result,
+          }
+          (root/'V04_RESULT_AUDIT.json').write_text(json.dumps(wrapper,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(wrapper,indent=2,sort_keys=True))
+          PY
+
+      - name: Upload final bounded result
+        uses: actions/upload-artifact@v4
+        with:
+          name: yiddish-edition-v04-result
+          path: |
+            /tmp/challenge/RESULT.json
+            /tmp/challenge/V04_RESULT_AUDIT.json
+            /tmp/challenge/result_checkpoint.pkl
+            /tmp/challenge/FREEZE.json
+            /tmp/challenge/V04_EXECUTION_MANIFEST.json
+            /tmp/challenge/audit
+            /tmp/challenge/solutions
+          retention-days: 30
