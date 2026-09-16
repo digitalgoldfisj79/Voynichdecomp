@@ -1,0 +1,46 @@
+name: f115r gallows boundary v0.2a
+
+on:
+  push:
+    branches:
+      - experiment/f115r-v02a-exec-20260916
+    paths:
+      - 'experiments/f115r_gallows_boundary_v02/run_gallows_v02a.py'
+      - 'experiments/f115r_gallows_boundary_v02/AMENDMENT_001_COMPONENT_FILTER.md'
+      - '.github/workflows/f115r-gallows-boundary-v02a.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  validator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen execution branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/f115r-v02a-exec-20260916
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install transparent dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy scipy scikit-learn opencv-python-headless requests
+      - name: Run sealed held-out validator
+        run: python experiments/f115r_gallows_boundary_v02/run_gallows_v02a.py
+      - name: Remove source scan
+        run: rm -f experiments/f115r_gallows_boundary_v02/results_v02a/1006274_f115r.jpg
+      - name: Persist validation result
+        run: |
+          git config user.name 'voynich-assay-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/f115r_gallows_boundary_v02/results_v02a
+          if git diff --cached --quiet; then
+            echo 'No result changes to commit'
+          else
+            git commit -m 'Record f115r gallows v0.2a held-out validation'
+            git push origin HEAD:experiment/f115r-v02a-exec-20260916
+          fi
