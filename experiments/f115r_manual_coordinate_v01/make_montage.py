@@ -10,7 +10,7 @@ import run_assay as v1
 OUT=Path(__file__).resolve().parent/'results'
 OUT.mkdir(parents=True,exist_ok=True)
 imgp=OUT/'source.jpg'
-MANIFEST='https://collections.library.yale.edu/manifests/oid/2002046'
+MANIFEST='https://collections.library.yale.edu/manifests/2002046'
 
 
 def label_text(obj):
@@ -48,7 +48,6 @@ def yale_image_url():
         raise RuntimeError('Could not locate f115r in Yale IIIF manifest')
     body=body_from_canvas(chosen)
     if not body:
-        # IIIF v2 fallback
         try: body=chosen['images'][0]['resource']
         except Exception: raise RuntimeError('Could not resolve image body for f115r')
     url=body.get('id') or body.get('@id')
