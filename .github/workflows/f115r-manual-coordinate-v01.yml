@@ -1,0 +1,40 @@
+name: f115r manual-coordinate montage v0.1
+
+on:
+  push:
+    branches:
+      - experiment/f115r-v02a-exec-20260916
+    paths:
+      - 'experiments/f115r_manual_coordinate_v01/**'
+      - '.github/workflows/f115r-manual-coordinate-v01.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  montage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: experiment/f115r-v02a-exec-20260916
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: |
+          python -m pip install --upgrade pip
+          pip install numpy scipy scikit-learn opencv-python-headless requests
+      - name: Build labelled line montage
+        run: python experiments/f115r_manual_coordinate_v01/make_montage.py
+      - name: Persist montage and geometry
+        run: |
+          git config user.name 'voynich-assay-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add experiments/f115r_manual_coordinate_v01/results
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'Record f115r line montage for manual-coordinate assay'
+            git push origin HEAD:experiment/f115r-v02a-exec-20260916
+          fi
