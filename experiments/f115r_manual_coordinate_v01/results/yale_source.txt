@@ -1,0 +1,3 @@
+canvas=https://collections.library.yale.edu/manifests/oid/2002046/canvas/1006274
+label=115r
+image=https://collections.library.yale.edu/iiif/2/1006274/full/full/0/default.jpg
