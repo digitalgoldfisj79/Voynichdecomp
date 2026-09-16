@@ -30,6 +30,8 @@ jobs:
           pip install numpy scipy scikit-learn opencv-python-headless requests
       - name: Run blinded same-page assay
         run: python experiments/f115r_local_hand_boundary_v01/run_assay.py
+      - name: Write label-blind ASCII extraction QC
+        run: python experiments/f115r_local_hand_boundary_v01/ascii_qc.py
       - name: Remove source scan before persistence
         run: rm -f experiments/f115r_local_hand_boundary_v01/results/1006274_f115r.jpg
       - name: Persist result and QC overlay
@@ -40,6 +42,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No result changes to commit'
           else
-            git commit -m 'Record f115r local hand-boundary v0.1 result'
+            git commit -m 'Record f115r local hand-boundary v0.1 QC result'
             git push origin HEAD:experiment/f115r-local-hand-boundary-v01-20260916
           fi
