@@ -1,0 +1,130 @@
+name: Voynich crown corpus
+
+on:
+  push:
+    branches:
+      - voynich-crown-corpus
+    paths:
+      - '.github/workflows/voynich-crowns.yml'
+      - 'crown_corpus/**'
+  workflow_dispatch:
+    inputs:
+      query:
+        description: Warburg general-search term
+        required: false
+        default: crown
+      earliest:
+        description: Earliest year
+        required: false
+        default: '1390'
+      latest:
+        description: Latest year
+        required: false
+        default: '1440'
+      max_results:
+        description: 0 = all results; use a small number for debugging
+        required: false
+        default: '0'
+
+permissions:
+  contents: read
+
+jobs:
+  build-corpus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      HF_HOME: ${{ github.workspace }}/.hf-cache
+      TOKENIZERS_PARALLELISM: 'false'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: crown_corpus/requirements.txt
+
+      - name: Cache Hugging Face model
+        uses: actions/cache@v4
+        with:
+          path: .hf-cache
+          key: crown-grounding-dino-tiny-v1
+
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r crown_corpus/requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Resolve inputs
+        id: vars
+        shell: bash
+        run: |
+          echo "query=${{ github.event.inputs.query || 'crown' }}" >> "$GITHUB_OUTPUT"
+          echo "earliest=${{ github.event.inputs.earliest || '1390' }}" >> "$GITHUB_OUTPUT"
+          echo "latest=${{ github.event.inputs.latest || '1440' }}" >> "$GITHUB_OUTPUT"
+          echo "max_results=${{ github.event.inputs.max_results || '0' }}" >> "$GITHUB_OUTPUT"
+
+      - name: Harvest Warburg and IIIF images
+        run: |
+          python crown_corpus/harvest_warburg.py \
+            --query "${{ steps.vars.outputs.query }}" \
+            --earliest "${{ steps.vars.outputs.earliest }}" \
+            --latest "${{ steps.vars.outputs.latest }}" \
+            --max-results "${{ steps.vars.outputs.max_results }}" \
+            --out crown_corpus/output
+
+      - name: Detect crown candidates on CPU
+        run: |
+          python crown_corpus/detect_crowns.py \
+            --input crown_corpus/output/manifest.json \
+            --out crown_corpus/output \
+            --box-threshold 0.18 \
+            --text-threshold 0.18
+
+      - name: Build blind A0 audit sheets
+        run: |
+          python crown_corpus/make_contact_sheets.py \
+            --detections crown_corpus/output/detections.json \
+            --out crown_corpus/output/a0
+
+      - name: Write machine summary
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          o=Path('crown_corpus/output')
+          summary={}
+          for f in ['harvest_state.json','manifest.json','detection_state.json','detections.json']:
+              p=o/f
+              summary[f]={'exists':p.exists(),'bytes':p.stat().st_size if p.exists() else 0}
+          if (o/'manifest.json').exists():
+              m=json.loads((o/'manifest.json').read_text())
+              summary['warburg_objects']=len(m)
+              summary['downloaded_images']=sum(x.get('status')=='downloaded' for x in m)
+          if (o/'detections.json').exists():
+              d=json.loads((o/'detections.json').read_text())
+              summary['candidate_crops']=len(d)
+          summary['a0_sheets']=len(list((o/'a0').glob('*.jpg'))) if (o/'a0').exists() else 0
+          (o/'RUN_SUMMARY.json').write_text(json.dumps(summary,indent=2))
+          print(json.dumps(summary,indent=2))
+          PY
+
+      - name: Upload corpus artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voynich-crown-corpus-${{ github.run_number }}
+          path: |
+            crown_corpus/output/**
+            crown_corpus/RUNNING_RESULTS.md
+            crown_corpus/README.md
+          if-no-files-found: warn
+          retention-days: 14
