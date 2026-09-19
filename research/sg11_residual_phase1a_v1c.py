@@ -138,14 +138,20 @@ def test_effects(P,Y,rows,kind,ratios):
     for sig,idxs in groups.items():
         ix=np.asarray(idxs,int); Psub=P[ix].astype(float); Ysub=Y[ix]
         R=np.ones((reps,F),float)
+        n_seen_components=0
         for comp,level,w in sig:
             key=(comp,level)
             if key in ratios:
+                n_seen_components += 1
                 R *= np.power(np.maximum(ratios[key],1e-300),w)
             else:
                 unseen_components.add(key)
                 unseen_event_count += len(ix)
                 # explicit hierarchical backoff: unseen component contributes neutral ratio 1
+        if n_seen_components==0:
+            # exact neutral backoff: wholly unseen carrier state contributes exactly zero gain.
+            # This implements the frozen ratio=1 rule without floating-point renormalisation noise.
+            continue
         Z=Psub @ R.T
         rows_ix=np.arange(len(ix))[:,None]; rr_ix=np.arange(reps)[None,:]
         py=Psub[rows_ix,Ysub]; ry=R[rr_ix,Ysub]
