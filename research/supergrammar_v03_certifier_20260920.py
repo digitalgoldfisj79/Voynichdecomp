@@ -133,8 +133,12 @@ def build_lines(obj,layer):
             txt=rec.get("t",{}).get(layer,"")
             toks=[t.lower() for t in txt.split() if re.fullmatch(r"[a-z]+",t.lower())]
             if not toks:continue
-            out.append(dict(folio=fol,line=int(ls),tokens=toks,bifolium=BIF_BY_NUM[n],
-                            section=section(fol),hand=davis_hand(fol,int(ls))))
+            line_label=str(ls)
+            mm=re.match(r"(\\d+)",line_label)
+            line_no=int(mm.group(1)) if mm else 0
+            out.append(dict(folio=fol,line=line_no,line_label=line_label,line_order=(line_no,line_label),
+                            tokens=toks,bifolium=BIF_BY_NUM[n],section=section(fol),
+                            hand=davis_hand(fol,line_no)))
     return out
 
 def signflip_stats(per_bif):
@@ -208,7 +212,7 @@ def build_junction_pairs(lines):
     bypage=collections.defaultdict(list)
     for r in lines:bypage[r["folio"]].append(r)
     for fol,ls in bypage.items():
-        ls=sorted(ls,key=lambda x:x["line"])
+        ls=sorted(ls,key=lambda x:x.get("line_order",(x["line"],str(x["line"]))))
         for r in ls:
             toks=r["tokens"]
             for i in range(len(toks)-1):
