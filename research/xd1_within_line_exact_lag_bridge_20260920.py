@@ -17,7 +17,7 @@ Secondary:
 
 No page, paragraph, section, hand, Currier or document conditioning.
 """
-import json, hashlib, sys
+import json, hashlib, sys, re
 from pathlib import Path
 import numpy as np
 
@@ -59,6 +59,21 @@ def pooled_test(lines,lag,seed,nperm=NPERM):
         role=("PRIMARY" if lag in PRIMARY else "DESCRIPTIVE")
     )
 
+def vms_local(repo_root):
+    p=Path(repo_root)/"voynich_transcriptions_slim.json"
+    got=hashlib.sha256(p.read_bytes()).hexdigest()
+    if got!=adapters.VMS_SHA: raise RuntimeError(f"VMS local SHA mismatch {got}")
+    obj=json.load(open(p,encoding="utf-8")); lines=[]
+    for fol,ld in obj["pages"].items():
+        mfol=re.match(r"f(\\d+)",str(fol))
+        if not mfol or int(mfol.group(1)) not in adapters.CANON_FOLIO_NUMS: continue
+        for ls,rec in ld.items():
+            if "P" not in str(rec.get("u","")): continue
+            txt=rec.get("t",{}).get("ZLZI","")
+            toks=[t.lower() for t in txt.split() if re.fullmatch(r"[a-z]+",t.lower())]
+            if toks: lines.append(toks)
+    return got,lines
+
 def token_lines(obj):
     return [r["tokens"] for r in obj["lines"] if r.get("tokens")]
 
@@ -78,15 +93,16 @@ def run_corpus(label,lines,seed_offset=0):
     return out
 
 def main():
-    v=adapters.vms()
+    repo_root=Path(__file__).resolve().parents[1]
+    vsha,vl=vms_local(repo_root)
     nu,ne=adapters.nuremberg()
-    vl=token_lines(v); nul=token_lines(nu); nel=token_lines(ne)
+    nul=token_lines(nu); nel=token_lines(ne)
     result={
       "analysis":"XD1_WITHIN_LINE_EXACT_LAG_BRIDGE_20260920",
       "definition":"pooled opportunity exact repeats; within-line multiset-preserving permutation null",
       "nperm":NPERM,"seed":SEED,"primary_lags":[1,2],"descriptive_lags":[3,4,5],
       "bins":[x[0] for x in BINS],"min_lines":MIN_LINES,
-      "vms_source_sha256":v["source_sha256"],"nuremberg_source_sha256":nu["source_sha256"],
+      "vms_source_sha256":vsha,"nuremberg_source_sha256":nu["source_sha256"],
       "vms":run_corpus("VMS_CANONICAL_ZLZI",vl,0),
       "nuremberg_unexpanded":run_corpus("NUREMBERG_UNEXPANDED",nul,10000),
       "nuremberg_expanded":run_corpus("NUREMBERG_EXPANDED",nel,20000)
