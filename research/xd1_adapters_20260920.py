@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, collections, hashlib, json, os, re, unicodedata, urllib.request, zipfile
+import argparse, collections, hashlib, json, os, re, unicodedata, urllib.request, urllib.parse, zipfile
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
