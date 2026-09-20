@@ -207,3 +207,15 @@ A control that reproduces a Voynich feature demonstrates that the feature is **n
 A mechanism class becomes interesting only if it reproduces multiple frozen profile components without target-directed tuning. Even then, historical use requires independent historical evidence.
 
 A failure of a control corpus does not prove that its language, genre or culture is absent from Voynich; it only rejects the tested representation/mechanism as an explanation for the measured surface property.
+
+
+## Minimum-data gate (frozen before CREMMA outcomes)
+
+To prevent small manuscript witnesses becoming apparent matches through noise:
+
+- P1–P4 require at least 5 physical blocks and at least 1,000 tokens for formal inference.
+- P5 requires at least 5 physical blocks and at least 2,000 tokens.
+- P6 inherits the relevant metric gate on both paired representations.
+- Below-gate outputs may be retained for descriptive audit only and cannot support a comparative conclusion.
+
+This gate was added after CREMMA source ingestion/count inspection but before any CREMMA XD1 scientific outcomes were computed.
