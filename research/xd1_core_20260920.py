@@ -8,7 +8,7 @@ Input schema: JSON object {"label":..., "lines":[{"block":str,"unit":str,"line_o
 import argparse, collections, hashlib, json, math, unicodedata
 import numpy as np
 
-VERSION="XD1-core-20260920-v1"
+VERSION="XD1-core-20260920-v2-orderfix"
 ALPHAS=(4.0,16.0,64.0,256.0)
 LAMBDAS=(16.0,64.0,256.0,1024.0,4096.0,16384.0,1e9)
 PARENT_ALPHA=64.0
@@ -29,15 +29,22 @@ def posclass(i,n):
     if i==n-1:return "LAST"
     return "MID"
 
+def order_key(v):
+    if isinstance(v,(int,float)): return (0,float(v),"")
+    s=str(v)
+    try: return (0,float(s),"")
+    except: return (1,0.0,s)
+
 def normalize_input(obj):
     out=[]
     for r in obj["lines"]:
         toks=[nfc(x) for x in r.get("tokens",[]) if nfc(x)]
         if not toks: continue
         out.append(dict(block=str(r["block"]),unit=str(r.get("unit",r["block"])),
+                        segment=str(r.get("segment",r.get("unit",r["block"]))),
                         line_order=r.get("line_order",0),tokens=toks,
                         writer=None if r.get("writer") is None else str(r.get("writer"))))
-    out.sort(key=lambda r:(r["block"],str(r["line_order"])))
+    out.sort(key=lambda r:(r["block"],order_key(r["line_order"]),r["segment"]))
     return out
 
 def block_weights(lines):
@@ -129,13 +136,14 @@ def junction_pairs(lines):
     for r in lines:by[r["block"]].append(r)
     out=[]
     for b,ls in by.items():
-        ls=sorted(ls,key=lambda r:str(r["line_order"]))
+        ls=sorted(ls,key=lambda r:order_key(r["line_order"]))
         for r in ls:
             toks=r["tokens"]
             for i in range(len(toks)-1):
                 out.append(dict(block=b,boundary="SPACE",right_pos=posclass(i+1,len(toks)),
                                 right_len=lenbin(toks[i+1]),left_last=toks[i][-1],target=toks[i+1][0]))
         for a,c in zip(ls,ls[1:]):
+            if a["segment"]!=c["segment"]: continue
             if a["tokens"] and c["tokens"]:
                 out.append(dict(block=b,boundary="LINE_BREAK",right_pos="FIRST",right_len=lenbin(c["tokens"][0]),
                                 left_last=a["tokens"][-1][-1],target=c["tokens"][0][0]))
@@ -183,12 +191,14 @@ def transitions(lines):
     for r in lines:by[r["block"]].append(r)
     out=[]
     for b,ls in by.items():
-        ls=sorted(ls,key=lambda r:str(r["line_order"]));prev=None
+        ls=sorted(ls,key=lambda r:order_key(r["line_order"]));prev=None;prev_segment=None
         for r in ls:
+            if prev_segment is not None and r["segment"]!=prev_segment: prev=None
             for j,t in enumerate(r["tokens"]):
                 boundary="PAGE_START" if prev is None else ("LINE_BREAK" if j==0 else "SPACE")
                 out.append(dict(block=b,boundary=boundary,prev=prev,target=t))
                 prev=t
+            prev_segment=r["segment"]
     return out
 
 def morph(prev):
@@ -276,7 +286,7 @@ def page_sequences(lines):
     out={}
     for b,ls in by.items():
         seq=[]
-        for r in sorted(ls,key=lambda x:str(x["line_order"])):seq.extend(r["tokens"])
+        for r in sorted(ls,key=lambda x:order_key(x["line_order"])):seq.extend(r["tokens"])
         if seq:out[b]=seq
     return out
 
