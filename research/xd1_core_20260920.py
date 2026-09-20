@@ -293,11 +293,14 @@ def page_sequences(lines):
 def band_rate(ids,lo,hi):
     n=len(ids);eligible=max(0,n-lo)
     if eligible==0:return None
-    hits=0
-    for i in range(lo,n):
-        a=max(0,i-hi);z=i-lo+1
-        if a<z and np.any(ids[a:z]==ids[i]):hits+=1
-    return hits/eligible
+    # Exact vectorized equivalent of: any(ids[max(0,i-hi):i-lo+1] == ids[i])
+    # for target positions i=lo..n-1. Sentinel is outside encoded token IDs.
+    w=hi-lo+1
+    padded=np.concatenate((np.full(hi,-1,dtype=ids.dtype),ids))
+    windows=np.lib.stride_tricks.sliding_window_view(padded,w)
+    prev=windows[lo:n]
+    target=ids[lo:n]
+    return float(np.any(prev==target[:,None],axis=1).mean())
 
 def p5_recurrence(lines,nperm=P5_NPERM,seed=20260920):
     seqs=page_sequences(lines);rng=np.random.default_rng(seed);out=[]
