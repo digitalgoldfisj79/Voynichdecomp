@@ -6,6 +6,7 @@ on:
       - supergrammar-v03-crossdomain-controls-20260920
     paths:
       - .github/workflows/xd1-within-line-exact-lag-bridge.yml
+      - research/xd1_within_line_exact_lag_bridge_20260920.py
   workflow_dispatch:
 
 permissions:
