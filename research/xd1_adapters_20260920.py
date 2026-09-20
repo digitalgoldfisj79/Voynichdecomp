@@ -105,30 +105,33 @@ def nuremberg():
 
 def cremmas():
     import csv, io
-    p=Path("/tmp/cremma.zip");urllib.request.urlretrieve(CREMMA_ARCHIVE,p)
-    sha=hashlib.sha256(p.read_bytes()).hexdigest()
+    api=f"https://api.github.com/repos/HTR-United/CREMMA-Medieval-LAT/git/trees/{CREMMA_COMMIT}?recursive=1"
+    req=urllib.request.Request(api,headers={"User-Agent":"XD1-control-audit"})
+    tree=json.load(urllib.request.urlopen(req))["tree"]
+    paths=[x["path"] for x in tree if x.get("type")=="blob"]
+    rawbase=f"https://raw.githubusercontent.com/HTR-United/CREMMA-Medieval-LAT/{CREMMA_COMMIT}/"
+    regtxt=urllib.request.urlopen(rawbase+"data-registry.csv").read().decode("utf-8-sig")
+    metas=list(csv.DictReader(io.StringIO(regtxt)))
+    source_manifest={"commit":CREMMA_COMMIT,"registry_sha256":hashlib.sha256(regtxt.encode()).hexdigest(),
+                     "txt_paths":sorted(p for p in paths if p.startswith("data/") and p.endswith(".txt"))}
+    source_sha=hashlib.sha256(json.dumps(source_manifest,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     out=[]
-    with zipfile.ZipFile(p) as z:
-        pref=f"CREMMA-Medieval-LAT-{CREMMA_COMMIT}/"
-        reg=next(n for n in z.namelist() if n==pref+"data-registry.csv")
-        rows=list(csv.DictReader(io.StringIO(z.read(reg).decode("utf-8-sig"))))
-        for meta in rows:
-            folder=meta["Folder"].strip().rstrip("/")
-            d=pref+folder+"/"
-            txts=sorted(n for n in z.namelist() if n.startswith(d) and n.endswith(".txt"))
-            lines=[]
-            for fn in txts:
-                page=fn.rsplit("/",1)[-1].rsplit(".",1)[0]
-                raw=z.read(fn).decode("utf-8","replace")
-                for i,line in enumerate(raw.splitlines()):
-                    toks=tokenize(line)
-                    if toks:
-                        lines.append(dict(block=page,unit=meta["Shelfmark ID"],line_order=i,tokens=toks,
-                                          writer=(meta.get("Scribe") or None)))
-            if lines:
-                out.append(dict(label="CREMMA_"+meta["Shelfmark ID"],source_sha256=sha,
-                                source_commit=CREMMA_COMMIT,representation="GRAPHEMATIC_TXT",
-                                metadata=dict(meta),lines=lines))
+    for meta in metas:
+        folder=meta["Folder"].strip().rstrip("/")+"/"
+        txts=sorted(p for p in source_manifest["txt_paths"] if p.startswith(folder))
+        lines=[]
+        for path in txts:
+            page=path.rsplit("/",1)[-1].rsplit(".",1)[0]
+            raw=urllib.request.urlopen(rawbase+urllib.parse.quote(path,safe="/")).read().decode("utf-8","replace")
+            for i,line in enumerate(raw.splitlines()):
+                toks=tokenize(line)
+                if toks:
+                    lines.append(dict(block=page,unit=meta["Shelfmark ID"],line_order=i,tokens=toks,
+                                      writer=(meta.get("Scribe") or None)))
+        if lines:
+            out.append(dict(label="CREMMA_"+meta["Shelfmark ID"],source_sha256=source_sha,
+                            source_commit=CREMMA_COMMIT,representation="GRAPHEMATIC_TXT",
+                            metadata=dict(meta),lines=lines))
     return out
 
 def main():
