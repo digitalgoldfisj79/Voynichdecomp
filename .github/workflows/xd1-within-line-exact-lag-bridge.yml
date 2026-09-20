@@ -1,0 +1,25 @@
+name: XD1 within-line exact-lag bridge
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - .github/workflows/xd1-within-line-exact-lag-bridge.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  within-line:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Run frozen within-line exact-lag bridge
+        run: python research/xd1_within_line_exact_lag_bridge_20260920.py
