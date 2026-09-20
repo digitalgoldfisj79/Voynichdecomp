@@ -1,0 +1,274 @@
+name: Sozzini HLS MS 222 audit
+
+on:
+  push:
+    branches:
+      - sozzini-audit-20260920
+    paths:
+      - ".github/workflows/sozzini_hls222_audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install --quiet requests pillow numpy pandas scipy scikit-image scikit-learn
+      - name: Download and audit
+        shell: bash
+        run: |
+          cat > /tmp/audit.py <<'PY'
+          import os,re,json,math,time
+          from pathlib import Path
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          import requests
+          import numpy as np
+          import pandas as pd
+          from PIL import Image,ImageOps,ImageDraw,ImageFont,ImageEnhance
+          from scipy import ndimage
+          from scipy.stats import mannwhitneyu
+          from skimage.feature import local_binary_pattern
+          from skimage.filters import threshold_sauvola
+          from skimage.measure import label, regionprops
+          from sklearn.preprocessing import RobustScaler
+
+          OUT=Path("sozzini_audit")
+          IMG=OUT/"pages"
+          CAND=OUT/"candidate_details"
+          OUT.mkdir(exist_ok=True); IMG.mkdir(exist_ok=True); CAND.mkdir(exist_ok=True)
+
+          manifest_url="https://nrs.lib.harvard.edu/URN-3:HLS.LIBR:16089360:MANIFEST:3"
+          m=requests.get(manifest_url,timeout=60).json()
+          with open(OUT/"manifest.json","w") as f: json.dump(m,f)
+
+          pages=[]
+          pat=re.compile(r"\(f\.\s*(\d+)([rv])\)")
+          for item in m["items"]:
+              lab=item["label"]["none"][0]
+              mm=pat.search(lab)
+              if not mm: continue
+              fol=int(mm.group(1)); side=mm.group(2)
+              svc=item["items"][0]["items"][0]["body"]["service"][0]["id"]
+              drs=re.search(r"drs:(\d+)",svc).group(1)
+              url=f"https://ids.lib.harvard.edu/ids/iiif/{drs}/full/700,/0/default.jpg"
+              pages.append((fol,side,drs,url))
+          assert len(pages)==984, len(pages)
+
+          def dl(rec):
+              fol,side,drs,url=rec
+              p=IMG/f"f{fol:03d}{side}.jpg"
+              if p.exists() and p.stat().st_size>10000: return str(p)
+              for attempt in range(4):
+                  try:
+                      r=requests.get(url,timeout=45)
+                      if r.status_code==200 and len(r.content)>10000:
+                          p.write_bytes(r.content); return str(p)
+                  except Exception: pass
+                  time.sleep(1+attempt)
+              raise RuntimeError(f"download failed {fol}{side} {url}")
+          with ThreadPoolExecutor(max_workers=12) as ex:
+              fut=[ex.submit(dl,x) for x in pages]
+              for i,f in enumerate(as_completed(fut),1):
+                  f.result()
+                  if i%100==0: print("downloaded",i,flush=True)
+
+          counts=[16,10,9,9,16,10,10,10,11,12,16,12,10,6,10,12,10,10,4,19,8,8,10,10,10,10,10,12,11,10,10,12,12,12,12,12,12,10,10,10,10,10,10,7,12,10]
+          assert len(counts)==46 and sum(counts)==492
+          quire=np.empty(493,dtype=int)
+          spans=[]
+          s=1
+          for qi,n in enumerate(counts,1):
+              e=s+n-1; quire[s:e+1]=qi; spans.append((qi,s,e,n)); s=e+1
+          pd.DataFrame(spans,columns=["quire","start_folio","end_folio","leaves"]).to_csv(OUT/"quire_spans.csv",index=False)
+
+          def preprocess(path):
+              im=Image.open(path).convert("L")
+              a=np.array(im,dtype=np.float32)/255.
+              h,w=a.shape
+              # crop broad central writing area, preserving text but suppressing edge furniture
+              y0,y1=int(.05*h),int(.94*h); x0,x1=int(.12*w),int(.88*w)
+              a=a[y0:y1,x0:x1]
+              # resize to fixed width preserving ratio
+              im2=Image.fromarray(np.uint8(np.clip(a*255,0,255))).resize((320,420))
+              g=np.array(im2,dtype=np.float32)/255.
+              # flatten illumination
+              bg=ndimage.gaussian_filter(g, sigma=18)
+              z=np.clip((g-bg)+0.82,0,1)
+              th=threshold_sauvola(z,window_size=31,k=0.18)
+              ink=z < th
+              # remove very sparse outer rows/cols after normalization
+              return z,ink
+
+          def feats(path):
+              z,ink=preprocess(path)
+              # LBP texture, calculated on enhanced darkness image
+              u=np.uint8(np.clip((1-z)*255*2.0,0,255))
+              lbp=local_binary_pattern(u,24,3,method="uniform")
+              hist=np.histogram(lbp,bins=np.arange(28),range=(0,27))[0].astype(float)
+              hist/=hist.sum()+1e-9
+
+              gy,gx=np.gradient(z)
+              mag=np.hypot(gx,gy)
+              ang=(np.arctan2(gy,gx)+np.pi)%(np.pi)
+              mask=ink & (mag>np.percentile(mag,60))
+              gh=np.histogram(ang[mask],bins=18,range=(0,np.pi),weights=mag[mask])[0].astype(float)
+              gh/=gh.sum()+1e-9
+
+              # connected-component morphology after removing tiny noise and giant layout objects
+              bw=ndimage.binary_opening(ink,structure=np.ones((2,2)))
+              lab=label(bw,connectivity=2)
+              vals=[]
+              for rp in regionprops(lab):
+                  if 6 <= rp.area <= 1200 and rp.bbox_area <= 2000:
+                      hh=rp.bbox[2]-rp.bbox[0]; ww=rp.bbox[3]-rp.bbox[1]
+                      vals.append((rp.area,hh,ww,ww/(hh+1e-6),rp.extent))
+              if vals:
+                  v=np.array(vals,float)
+                  qs=np.quantile(v,[.1,.25,.5,.75,.9],axis=0).ravel()
+                  means=np.r_[v.mean(0),v.std(0)]
+              else:
+                  qs=np.zeros(25); means=np.zeros(10)
+              # projection/ink summary (kept separately but useful for audit)
+              row=ink.mean(1); col=ink.mean(0)
+              layout=np.array([
+                  ink.mean(), np.quantile(row,.5),np.quantile(row,.75),np.quantile(row,.9),
+                  np.quantile(col,.5),np.quantile(col,.75),np.quantile(col,.9),
+                  len(vals)/1000.
+              ])
+              return np.r_[hist,gh,qs,means],layout
+
+          page_feat={}
+          page_layout={}
+          for i,(fol,side,drs,url) in enumerate(pages,1):
+              p=IMG/f"f{fol:03d}{side}.jpg"
+              f,l=feats(p)
+              page_feat[(fol,side)]=f
+              page_layout[(fol,side)]=l
+              if i%100==0: print("features",i,flush=True)
+
+          # Average recto/verso to leaf level, reducing side-specific capture effects.
+          F=np.vstack([(page_feat[(f,"r")]+page_feat[(f,"v")])/2 for f in range(1,493)])
+          L=np.vstack([(page_layout[(f,"r")]+page_layout[(f,"v")])/2 for f in range(1,493)])
+          Fs=RobustScaler().fit_transform(F)
+          Ls=RobustScaler().fit_transform(L)
+          # downweight layout strongly; primary is texture/morphology
+          def ed(A):
+              d=np.sqrt(((A[1:]-A[:-1])**2).mean(axis=1))
+              return d
+          dstyle=ed(Fs); dlayout=ed(Ls)
+          internal=np.array([quire[i]==quire[i+1] for i in range(1,492)])
+          boundary=~internal
+          # robust z against internal transitions
+          med=np.median(dstyle[internal]); mad=np.median(np.abs(dstyle[internal]-med))*1.4826+1e-9
+          zstyle=(dstyle-med)/mad
+          medl=np.median(dlayout[internal]); madl=np.median(np.abs(dlayout[internal]-medl))*1.4826+1e-9
+          zlayout=(dlayout-medl)/madl
+          composite=zstyle+0.15*zlayout
+          rows=[]
+          for i in range(1,492):
+              rows.append(dict(left_folio=i,right_folio=i+1,quire_left=int(quire[i]),quire_right=int(quire[i+1]),
+                               is_boundary=bool(boundary[i-1]),style_dist=float(dstyle[i-1]),layout_dist=float(dlayout[i-1]),
+                               z_style=float(zstyle[i-1]),z_layout=float(zlayout[i-1]),composite=float(composite[i-1])))
+          df=pd.DataFrame(rows)
+          df.to_csv(OUT/"adjacent_transition_scores.csv",index=False)
+          np.savez_compressed(OUT/"leaf_features.npz",F=F,Fs=Fs,L=L,Ls=Ls,quire=quire[1:],dstyle=dstyle,dlayout=dlayout,composite=composite)
+
+          # preliminary boundary-v-internal audit
+          b=dstyle[boundary]; inn=dstyle[internal]
+          mu_b,mu_i=float(np.mean(b)),float(np.mean(inn))
+          sd_i=float(np.std(inn,ddof=1)); pooled=math.sqrt(((len(b)-1)*np.var(b,ddof=1)+(len(inn)-1)*np.var(inn,ddof=1))/(len(b)+len(inn)-2))
+          effect=mu_b-mu_i
+          ratio=effect/(sd_i+1e-12)
+          u,p=mannwhitneyu(b,inn,alternative="greater")
+
+          def tile(page_path,labeltxt,width=260):
+              im=Image.open(page_path).convert("RGB")
+              ratio=width/im.width
+              im=im.resize((width,int(im.height*ratio)))
+              canvas=Image.new("RGB",(width,im.height+28),"white")
+              canvas.paste(im,(0,28))
+              d=ImageDraw.Draw(canvas); d.text((5,5),labeltxt,fill="black")
+              return canvas
+
+          # 8 overview sheets, rectos, 64 leaves each
+          for block,start in enumerate(range(1,493,64),1):
+              fs=list(range(start,min(start+64,493)))
+              tiles=[tile(IMG/f"f{f:03d}r.jpg",f"f{f}r  q{quire[f]}",220) for f in fs]
+              tw=max(t.width for t in tiles); th=max(t.height for t in tiles)
+              sheet=Image.new("RGB",(tw*8,th*8),"white")
+              for j,t in enumerate(tiles): sheet.paste(t,((j%8)*tw,(j//8)*th))
+              sheet.save(OUT/f"overview_{block:02d}_f{fs[0]:03d}-{fs[-1]:03d}.jpg",quality=86,optimize=True)
+
+          # top 30 INTERNAL style-change candidates, with both sides of both leaves
+          top=df[~df.is_boundary].sort_values("composite",ascending=False).head(30)
+          for rank,row in enumerate(top.itertuples(index=False),1):
+              a,bf=int(row.left_folio),int(row.right_folio)
+              ims=[tile(IMG/f"f{a:03d}r.jpg",f"rank {rank} f{a}r q{quire[a]}",520),
+                   tile(IMG/f"f{a:03d}v.jpg",f"f{a}v",520),
+                   tile(IMG/f"f{bf:03d}r.jpg",f"f{bf}r q{quire[bf]} z={row.z_style:.2f}",520),
+                   tile(IMG/f"f{bf:03d}v.jpg",f"f{bf}v",520)]
+              tw=max(x.width for x in ims); th=max(x.height for x in ims)
+              sheet=Image.new("RGB",(tw*2,th*2),"white")
+              for j,x in enumerate(ims): sheet.paste(x,((j%2)*tw,(j//2)*th))
+              sheet.save(CAND/f"{rank:02d}_f{a:03d}-f{bf:03d}_q{quire[a]}_z{row.z_style:.2f}.jpg",quality=90,optimize=True)
+
+          # boundary overviews, before/after rectos
+          bd=df[df.is_boundary].copy()
+          for block in range(3):
+              sub=bd.iloc[block*15:(block+1)*15]
+              panels=[]
+              for row in sub.itertuples(index=False):
+                  a,bf=int(row.left_folio),int(row.right_folio)
+                  l=tile(IMG/f"f{a:03d}r.jpg",f"f{a}r q{quire[a]}",250)
+                  r=tile(IMG/f"f{bf:03d}r.jpg",f"f{bf}r q{quire[bf]} z={row.z_style:.2f}",250)
+                  ph=max(l.height,r.height)
+                  panel=Image.new("RGB",(500,ph),"white"); panel.paste(l,(0,0)); panel.paste(r,(250,0))
+                  panels.append(panel)
+              pw=500; ph=max(x.height for x in panels)
+              sheet=Image.new("RGB",(pw*3,ph*5),"white")
+              for j,x in enumerate(panels): sheet.paste(x,((j%3)*pw,(j//3)*ph))
+              sheet.save(OUT/f"boundaries_{block+1}.jpg",quality=88,optimize=True)
+
+          # representative first/mid/last rectos for each quire
+          panels=[]
+          for qi,s,e,n in spans:
+              fs=[s,(s+e)//2,e]
+              ims=[tile(IMG/f"f{f:03d}r.jpg",f"q{qi} f{f}r",180) for f in fs]
+              ph=max(x.height for x in ims)
+              panel=Image.new("RGB",(540,ph),"white")
+              for j,x in enumerate(ims): panel.paste(x,(j*180,0))
+              panels.append(panel)
+          for block in range(4):
+              sub=panels[block*12:(block+1)*12]
+              if not sub: continue
+              pw=540; ph=max(x.height for x in sub)
+              sheet=Image.new("RGB",(pw*2,ph*6),"white")
+              for j,x in enumerate(sub): sheet.paste(x,((j%2)*pw,(j//2)*ph))
+              sheet.save(OUT/f"quire_representatives_{block+1}.jpg",quality=88,optimize=True)
+
+          # report
+          with open(OUT/"REPORT.md","w") as f:
+              f.write("# HLS MS 222 preliminary image audit\n\n")
+              f.write(f"Manifest canvases: {len(m['items'])}; folio-side images: {len(pages)}; leaves: 492; reconstructed gatherings: 46.\n\n")
+              f.write("This is a screening audit, not a hand attribution. Features are page-texture/morphology descriptors used only to find possible intra-quire changes for visual review.\n\n")
+              f.write(f"Boundary mean style distance = {mu_b:.6f}; internal mean = {mu_i:.6f}; difference = {effect:.6f}; internal SD = {sd_i:.6f}; difference/internal-SD = {ratio:.3f}; pooled Cohen d = {effect/(pooled+1e-12):.3f}; one-sided Mann-Whitney p = {p:.6g}.\n\n")
+              f.write("## Top internal candidates\n\n")
+              f.write(top[["left_folio","right_folio","quire_left","style_dist","z_style","z_layout","composite"]].to_markdown(index=False))
+              f.write("\n")
+          print((OUT/"REPORT.md").read_text())
+          PY
+          python /tmp/audit.py
+          rm -rf sozzini_audit/pages
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sozzini-hls222-audit
+          path: sozzini_audit
+          retention-days: 7
