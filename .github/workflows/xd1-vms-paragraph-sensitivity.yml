@@ -1,0 +1,33 @@
+name: XD1 VMS paragraph sensitivity
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - .github/workflows/xd1-vms-paragraph-sensitivity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  vms-paragraph:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Run VMS paragraph P5 sensitivity
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import research.xd1_recurrence_sensitivity_20260920 as m
+          meta,seqs,bad=m.vms_paragraphs(Path("."))
+          out={"analysis":"VMS_PARAGRAPH_P5_SENSITIVITY","bad_tokens":bad,"lengths":m.summarize_lengths(seqs),"P5":m.p5_sequences(seqs)}
+          print("VMS_PARAGRAPH_SENSITIVITY="+json.dumps(out,sort_keys=True))
+          PY
