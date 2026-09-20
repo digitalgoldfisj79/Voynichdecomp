@@ -286,3 +286,80 @@ The surviving candidate signature is narrower:
 This remains a structural discriminator against the tested near-period scribal control, **not a mechanism identification**.
 
 A remaining fairness issue is block length: VMS paragraphs have median length 9 tokens while Nuremberg correspondence records have median length 121. A length-stratified test was frozen before interpreting the recurrence contrast mechanistically.
+
+
+## Within-line exact-lag bridge: August object replicated
+
+This test was run specifically to avoid conflating the paragraph/correspondence sensitivity with the June–August 2026 tight-null programme.
+
+### Frozen definition
+
+- Unit: physical transcription line.
+- Statistic: pooled exact-token recurrence at distance d.
+- Primary distances: d=1 and d=2.
+- Null: independently permute tokens **within each physical line**, preserving every line's exact token multiset and length.
+- Primary representation: canonical ZLZI Voynich line stream versus Nuremberg unexpanded diplomatic line stream.
+- 200 deterministic permutations.
+- Fixed line-length strata: ALL, 2–5, 6–10, 11–20, 21+.
+- Source hashes:
+  - VMS `26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f`
+  - Nuremberg `59e5264acb4546477567e78c8b3d444c472f1a0a5256ee0ee7d0407a70904652`
+- Successful primary workflow: GitHub Actions run `35508171615`.
+- Successful implementation commit: `465142ccca456689160f1ffe5126c8e8d90fe239`.
+- Result SHA256: `85e07a0ec7afff05cd6c68dce2c0545ffe699ebb733f49be52e5f7cbe2d3674a`.
+
+### Primary results
+
+| Corpus / stratum | lag 1 observed/null | lag 1 effect / null SD | lag 2 observed/null | lag 2 effect / null SD |
+|---|---:|---:|---:|---:|
+| VMS ALL | 0.009703 / 0.009492 = 1.022 | +0.000211 / 0.000433 = **0.49 unresolved** | 0.011689 / 0.009583 = **1.220** | +0.002106 / 0.000516 = **4.09** |
+| Nuremberg ALL | 0.000589 / 0.006310 = **0.093** | -0.005721 / 0.000116 = **49.45** | 0.004165 / 0.006407 = **0.650** | -0.002242 / 0.000135 = **16.62** |
+| VMS 6–10 tokens | — | +0.000938 / 0.000613 = 1.53 | 0.011774 / 0.009876 = **1.192** | +0.001898 / 0.000687 = **2.76** |
+| Nuremberg 6–10 | — | -0.004984 / 0.000176 = **28.37** | 0.003774 / 0.005533 = **0.682** | -0.001759 / 0.000196 = **8.99** |
+| VMS 11–20 | — | -0.000611 / 0.000775 = 0.79 | 0.011302 / 0.009360 = **1.207** | +0.001942 / 0.000881 = **2.20** |
+| Nuremberg 11–20 | — | -0.006374 / 0.000155 = **41.03** | 0.004436 / 0.007012 = **0.633** | -0.002576 / 0.000184 = **14.03** |
+
+Direct VMS-minus-Nuremberg effect differences relative to combined null SD:
+
+- lag 1 ALL: **13.24**
+- lag 2 ALL: **8.16**
+- lag 1, 6–10: **9.28**
+- lag 2, 6–10: **5.12**
+- lag 1, 11–20: **7.29**
+- lag 2, 11–20: **5.02**
+
+The 2–5-token lag-2 bin is unresolved for both corpora and is not used as evidence.
+
+### Analytic null cross-check
+
+For exact recurrence under a random permutation of a fixed line multiset, the expected pair-match probability is available analytically:
+`sum_i n_i(n_i-1) / [n(n-1)]`.
+
+Independent analytic run `35508645114` reproduced the Monte Carlo baseline closely:
+
+- VMS lag 1 analytic null 0.009486; observed/null **1.02288**.
+- VMS lag 2 analytic null 0.009548; observed/null **1.22423**.
+- Nuremberg lag 1 analytic null 0.006304; observed/null **0.09347**.
+- Nuremberg lag 2 analytic null 0.006397; observed/null **0.65112**.
+
+A VMS-only analytic rerun `35508711341` independently reproduced 291 lag-1 hits and 303 lag-2 hits on 34,087 canonical tokens.
+
+### Interpretation
+
+The old August tight-null object is **replicated, not rediscovered**:
+
+- exact lag 1 in Voynich is at within-line chance;
+- exact lag 2 is enriched by approximately 22% and resolves at ~4 null SD;
+- the lag-2 enrichment survives the adequately powered 6–10 and 11–20 token line strata;
+- Nuremberg strongly suppresses exact repetition at both lag 1 and lag 2 in those same strata.
+
+This therefore restores the old selective-placement object after the page/paragraph cross-domain detour. It does **not** identify a cipher, language, or generative mechanism.
+
+The earlier page-level 17–64 contrast is not promoted: length stratification showed that long-range deficit is not diagnostic.
+
+### Failed pre-outcome attempts retained
+
+- Run `35508053219`: failed before scientific output because a remote canonical-VMS download reset.
+- Run `35508094559`: after replacing the VMS remote fetch with the local SHA-verified source, the descriptive five-lag implementation hit a zero-opportunity cell in a short-line bin. It failed before printing scientific output.
+- Neither failure changed the primary d=1/d=2 definitions, null, source hashes, seeds, length strata, or acceptance logic.
+- The successful primary-only implementation removed only the non-primary descriptive d=3..5 work and reused line permutations efficiently.
