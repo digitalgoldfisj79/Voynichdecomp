@@ -6,6 +6,8 @@ from pathlib import Path
 VMS_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5/voynich_transcriptions_slim.json"
 VMS_SHA="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
 NUR_RECORD="https://zenodo.org/api/records/13881575"
+PAIRS=[(1,8),(2,7),(3,6),(4,5),(9,16),(10,15),(11,14),(17,24),(18,23),(19,22),(20,21),(25,32),(26,31),(27,30),(28,29),(33,40),(34,39),(35,38),(36,37),(41,48),(42,47),(43,46),(44,45),(49,56),(50,55),(51,54),(52,53),(57,66),(58,65),(67,68),(69,70),(71,72),(75,84),(76,83),(77,82),(78,81),(79,80),(85,86),(87,90),(88,89),(93,96),(94,95),(99,102),(100,101),(103,116),(104,115),(105,114),(106,113),(107,112),(108,111)]
+CANON_FOLIO_NUMS={n for a,b in PAIRS for n in (a,b)}
 
 def local(tag): return tag.split("}")[-1]
 def nfc(s): return unicodedata.normalize("NFC",s)
@@ -28,10 +30,12 @@ def vms():
     if got!=VMS_SHA:raise RuntimeError(f"VMS source SHA mismatch {got}")
     obj=json.load(open(p));lines=[]
     for fol,ld in obj["pages"].items():
+        mfol=re.match(r"f(\d+)",str(fol))
+        if not mfol or int(mfol.group(1)) not in CANON_FOLIO_NUMS:continue
         for ls,rec in ld.items():
             if "P" not in str(rec.get("u","")):continue
             txt=rec.get("t",{}).get("ZLZI","")
-            toks=tokenize(txt)
+            toks=[t.lower() for t in txt.split() if re.fullmatch(r"[a-z]+",t.lower())]
             if not toks:continue
             m=re.match(r"(\d+)",str(ls));order=int(m.group(1)) if m else len(lines)
             lines.append(dict(block=fol,unit=fol,line_order=order,tokens=toks,writer=None))
