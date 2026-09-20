@@ -5,9 +5,10 @@ Frozen before outcomes. Uses the same P5 band statistic and within-block token-m
 Length bins are fixed from observed block-length ranges, not recurrence outcomes.
 Formal bin comparison requires >=50 eligible blocks in BOTH corpora for the given lag band.
 """
-import json, hashlib
+import json, hashlib, sys
 from pathlib import Path
-import research.xd1_recurrence_sensitivity_fast_20260920 as m
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+import xd1_recurrence_sensitivity_fast_20260920 as m
 
 BINS=((2,5),(6,10),(11,20),(21,40),(41,80),(81,160),(161,10**9))
 MIN_BLOCKS=50
