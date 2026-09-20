@@ -42,7 +42,7 @@ def vms():
             toks=[t.lower() for t in txt.split() if re.fullmatch(r"[a-z]+",t.lower())]
             if not toks:continue
             m=re.match(r"(\d+)",str(ls));order=int(m.group(1)) if m else len(lines)
-            lines.append(dict(block=fol,unit=fol,line_order=order,tokens=toks,writer=None))
+            lines.append(dict(block=fol,unit=fol,segment=fol,line_order=order,tokens=toks,writer=None))
     return dict(label="VMS_ZLZI_XD1_GENERIC",source_sha256=got,representation="ZLZI_RUNNING_TEXT",lines=lines)
 
 def render_unicode(el,drop_ex=False):
@@ -101,7 +101,7 @@ def nuremberg():
     common=[r for r in rows if r["tokens_expanded"] and r["tokens_unexpanded"]]
     def pack(rep,key):
         return dict(label=f"NUREMBERG_2_5_{rep}",source_sha256=sha,representation=rep,
-                    lines=[dict(block=r["block"],unit=r["unit"],line_order=r["line_order"],
+                    lines=[dict(block=r["block"],unit=r["unit"],segment=r["source_file"],line_order=r["line_order"],
                                 tokens=r[key],writer=r["writer"]) for r in common])
     return pack("DIPLOMATIC_UNEXPANDED_DROP_EX","tokens_unexpanded"),pack("DIPLOMATIC_EXPANDED","tokens_expanded")
 
@@ -128,7 +128,7 @@ def cremmas():
             for i,line in enumerate(raw.splitlines()):
                 toks=tokenize(line)
                 if toks:
-                    lines.append(dict(block=page,unit=meta["Shelfmark ID"],line_order=i,tokens=toks,
+                    lines.append(dict(block=page,unit=meta["Shelfmark ID"],segment=page,line_order=i,tokens=toks,
                                       writer=(meta.get("Scribe") or None)))
         if lines:
             out.append(dict(label="CREMMA_"+meta["Shelfmark ID"],source_sha256=source_sha,
@@ -159,7 +159,7 @@ def gaskell_gibberish():
                 if not line:continue
                 toks=tokenize(line)
                 if not toks:continue
-                groups[grp].append(dict(block=f"{stem}_p{page}",unit=stem,line_order=line_no,
+                groups[grp].append(dict(block=f"{stem}_p{page}",unit=stem,segment=f"{stem}_p{page}",line_order=line_no,
                                         tokens=toks,writer=stem))
                 line_no+=1
     out={}
