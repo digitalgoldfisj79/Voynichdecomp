@@ -1,0 +1,25 @@
+name: XD1 length-stratified recurrence
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - .github/workflows/xd1-length-stratified-recurrence.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  length-stratified:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Run length-stratified XD1 P5
+        run: python research/xd1_recurrence_length_stratified_20260920.py
