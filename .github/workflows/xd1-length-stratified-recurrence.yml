@@ -6,6 +6,8 @@ on:
       - supergrammar-v03-crossdomain-controls-20260920
     paths:
       - .github/workflows/xd1-length-stratified-recurrence.yml
+      - research/xd1_recurrence_length_stratified_20260920.py
+      - research/xd1_recurrence_sensitivity_fast_20260920.py
   workflow_dispatch:
 
 permissions:
