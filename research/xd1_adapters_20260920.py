@@ -8,6 +8,8 @@ VMS_SHA="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
 NUR_RECORD="https://zenodo.org/api/records/13881575"
 CREMMA_COMMIT="292525969ad98380b398e6606a9c2a36d51913ae"
 CREMMA_ARCHIVE=f"https://github.com/HTR-United/CREMMA-Medieval-LAT/archive/{CREMMA_COMMIT}.zip"
+GASKELL_COMMIT="d076a7d081f35098fa405928239595afd2e75927"
+GASKELL_BASE=f"https://raw.githubusercontent.com/danielgaskell/voynich/{GASKELL_COMMIT}/"
 PAIRS=[(1,8),(2,7),(3,6),(4,5),(9,16),(10,15),(11,14),(17,24),(18,23),(19,22),(20,21),(25,32),(26,31),(27,30),(28,29),(33,40),(34,39),(35,38),(36,37),(41,48),(42,47),(43,46),(44,45),(49,56),(50,55),(51,54),(52,53),(57,66),(58,65),(67,68),(69,70),(71,72),(75,84),(76,83),(77,82),(78,81),(79,80),(85,86),(87,90),(88,89),(93,96),(94,95),(99,102),(100,101),(103,116),(104,115),(105,114),(106,113),(107,112),(108,111)]
 CANON_FOLIO_NUMS={n for a,b in PAIRS for n in (a,b)}
 
@@ -134,8 +136,41 @@ def cremmas():
                             metadata=dict(meta),lines=lines))
     return out
 
+def gaskell_gibberish():
+    import csv, io
+    meta_txt=urllib.request.urlopen(GASKELL_BASE+"results/metadata.csv").read().decode("utf-8-sig")
+    meta={r["text"].replace("Gibberish - ",""):r for r in csv.DictReader(io.StringIO(meta_txt))}
+    p=Path("/tmp/gaskell_gibberish.zip")
+    urllib.request.urlretrieve(GASKELL_BASE+"data/gibberish_transcriptions.zip",p)
+    source_sha=hashlib.sha256(p.read_bytes()).hexdigest()
+    groups={"NONSPECIALIST":[],"SPECIALIST":[],"UNKNOWN":[]}
+    with zipfile.ZipFile(p) as z:
+        for fn in sorted(n for n in z.namelist() if n.lower().endswith(".txt")):
+            stem=Path(fn).stem.replace("Gibberish - ","")
+            m=meta.get(stem,{})
+            specialist=(m.get("specialist") or "NA").strip()
+            grp="NONSPECIALIST" if specialist=="0" else ("SPECIALIST" if specialist=="1" else "UNKNOWN")
+            raw=z.read(fn).decode("utf-8","replace").replace("\r\n","\n").replace("\r","\n")
+            page=0;line_no=0
+            for rawline in raw.split("\n"):
+                line=rawline.strip()
+                if line=="__________":
+                    page+=1;line_no=0;continue
+                if not line:continue
+                toks=tokenize(line)
+                if not toks:continue
+                groups[grp].append(dict(block=f"{stem}_p{page}",unit=stem,line_order=line_no,
+                                        tokens=toks,writer=stem))
+                line_no+=1
+    out={}
+    for grp,lines in groups.items():
+        out[grp]=dict(label=f"GASKELL_GIBBERISH_{grp}",source_sha256=source_sha,
+                      source_commit=GASKELL_COMMIT,representation="ANONYMIZED_UNICODE_TRANSCRIPTION",
+                      lines=lines)
+    return out
+
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument("source",choices=["vms","nuremberg","cremma"]);ap.add_argument("--out-prefix",required=True)
+    ap=argparse.ArgumentParser();ap.add_argument("source",choices=["vms","nuremberg","cremma","gaskell"]);ap.add_argument("--out-prefix",required=True)
     a=ap.parse_args()
     if a.source=="vms":
         x=vms();open(a.out_prefix+".json","w",encoding="utf-8").write(json.dumps(x,ensure_ascii=False))
@@ -146,7 +181,7 @@ def main():
         open(a.out_prefix+"_expanded.json","w",encoding="utf-8").write(json.dumps(e,ensure_ascii=False))
         print("ADAPTER",u["label"],len(u["lines"]),sum(len(r["tokens"]) for r in u["lines"]),u["source_sha256"])
         print("ADAPTER",e["label"],len(e["lines"]),sum(len(r["tokens"]) for r in e["lines"]),e["source_sha256"])
-    else:
+    elif a.source=="cremma":
         xs=cremmas()
         manifest=[]
         for i,x in enumerate(xs):
@@ -156,5 +191,12 @@ def main():
             row=dict(path=path,label=x["label"],lines=len(x["lines"]),tokens=sum(len(r["tokens"]) for r in x["lines"]),metadata=x["metadata"])
             manifest.append(row);print("ADAPTER",json.dumps(row,ensure_ascii=False))
         open(a.out_prefix+"_manifest.json","w",encoding="utf-8").write(json.dumps(manifest,ensure_ascii=False))
+    else:
+        xs=gaskell_gibberish()
+        for grp,x in xs.items():
+            path=a.out_prefix+"_"+grp.lower()+".json"
+            open(path,"w",encoding="utf-8").write(json.dumps(x,ensure_ascii=False))
+            print("ADAPTER",x["label"],len(x["lines"]),sum(len(r["tokens"]) for r in x["lines"]),
+                  len({r["block"] for r in x["lines"]}),x["source_sha256"])
 
 if __name__=="__main__":main()
