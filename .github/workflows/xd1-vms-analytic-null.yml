@@ -1,0 +1,57 @@
+name: XD1 VMS analytic null check
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - .github/workflows/xd1-vms-analytic-null.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  vms-analytic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Analytic VMS expectation
+        run: |
+          python - <<'PY'
+          import json,re,hashlib
+          from collections import Counter
+          from pathlib import Path
+          p=Path("voynich_transcriptions_slim.json")
+          sha=hashlib.sha256(p.read_bytes()).hexdigest()
+          expected="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
+          assert sha==expected,(sha,expected)
+          CANON={1,8,2,7,3,6,4,5,9,16,10,15,11,14,17,24,18,23,19,22,20,21,25,32,26,31,27,30,28,29,33,40,34,39,35,38,36,37,41,48,42,47,43,46,44,45,49,56,50,55,51,54,52,53,57,66,58,65,67,68,69,70,71,72,75,84,76,83,77,82,78,81,79,80,85,86,87,90,88,89,93,96,94,95,99,102,100,101,103,116,104,115,105,114,106,113,107,112,108,111}
+          obj=json.load(open(p,encoding="utf-8"));lines=[]
+          for fol,ld in obj["pages"].items():
+              m=re.match(r"f(\d+)",fol)
+              if not m or int(m.group(1)) not in CANON: continue
+              for rec in ld.values():
+                  if "P" not in str(rec.get("u","")): continue
+                  toks=[t.lower() for t in rec.get("t",{}).get("ZLZI","").split() if re.fullmatch(r"[a-z]+",t.lower())]
+                  if toks: lines.append(toks)
+          out=[]
+          for d in (1,2):
+              hits=opp=0; exp=0.0
+              for toks in lines:
+                  n=len(toks)
+                  if n<=d: continue
+                  o=n-d;opp+=o
+                  hits += sum(toks[i]==toks[i-d] for i in range(d,n))
+                  c=Counter(toks)
+                  p0=sum(v*(v-1) for v in c.values())/(n*(n-1))
+                  exp += o*p0
+              obs=hits/opp; null=exp/opp
+              out.append({"lag":d,"hits":hits,"opportunities":opp,"observed":obs,"analytic_null_mean":null,
+                          "effect":obs-null,"ratio":obs/null})
+          print("VMS_ANALYTIC="+json.dumps({"sha":sha,"n_lines":len(lines),"n_tokens":sum(map(len,lines)),"rows":out},sort_keys=True))
+          PY
