@@ -1,0 +1,34 @@
+name: XD1 recurrence sensitivity
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - research/xd1_recurrence_sensitivity_20260920.py
+      - research/xd1_vms_paragraphs_20260920.json
+      - .github/workflows/xd1-recurrence-sensitivity.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recurrence-sensitivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install NumPy
+        run: pip install numpy
+      - name: Run frozen XD1 sensitivity
+        run: python research/xd1_recurrence_sensitivity_20260920.py | tee xd1_sensitivity.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-recurrence-sensitivity
+          path: |
+            research/RESULTS_xd1_recurrence_sensitivity_20260920.json
+            xd1_sensitivity.log
