@@ -1,0 +1,24 @@
+name: XD1 within-line analytic cross-check
+
+on:
+  push:
+    branches:
+      - supergrammar-v03-crossdomain-controls-20260920
+    paths:
+      - .github/workflows/xd1-within-line-analytic-crosscheck.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analytic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run analytic null cross-check
+        run: python research/xd1_within_line_analytic_crosscheck_20260920.py
