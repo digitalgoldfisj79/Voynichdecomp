@@ -3,7 +3,7 @@ import argparse, collections, hashlib, json, math, os, re, urllib.request
 from pathlib import Path
 import numpy as np
 
-VERSION="supergrammar-v03-closure-certifier-20260920-v1b"
+VERSION="supergrammar-v03-closure-certifier-20260920-v1c"
 CORPUS_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5/voynich_transcriptions_slim.json"
 CORPUS_SHA="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
 ROWS_CANON_SHA="74f7310ea35922dc5ed71012f0825ef9480d051a1fa516c79fc5ca53f88a925f"
@@ -191,8 +191,7 @@ def evaluate_layer(rows,folds):
         p=Parent(tr)
         lm=tune_morph(tr,outer)
         m=Child(tr,morph,p,lm)
-        def exactkey(prev):return prev if prev is not None else "<START>"
-        le=tune_child(tr,exactkey,lambda x,_,__:parent_builder(x,"MORPH",outer),outer,"MORPH")
+        le=tune_exact(tr,outer,lm)
         e=Child(tr,exactkey,m,le)
         by=collections.defaultdict(lambda:[0.0,0.0,0])
         for r in te:
