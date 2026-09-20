@@ -188,3 +188,57 @@ The strongest path forward is therefore **salvage without inheritance**:
 - recover high-value manuscript transcriptions;
 - discard old target-tuned rankings as authority;
 - rerun only the portable, prospectively frozen XD1 measurements.
+
+
+## Corrected Nuremberg Letterbooks 2–5 XD1 result
+
+**Implementation:** XD1 v2 orderfix, commit `f20a03f3d559bf723e11a25be800cd613a22993e`  
+**Source:** Zenodo record 13881575, labels.zip SHA256 `59e5264acb4546477567e78c8b3d444c472f1a0a5256ee0ee7d0407a70904652`  
+**Ingest check:** 48,322 diplomatic physical lines reproduced exactly; 1,637 physical page images; 436,950 unexpanded and 436,958 expanded tokens.  
+**P2 verifier:** HF `6aafb6be51992417dfccca90`  
+**P5 verifier:** HF `6aafb6c252d0dbd7f1d73a5d`
+
+The earlier XD1 v1 sequence outputs remain invalidated by XD1_CORR_001/002 and are not used.
+
+### P2 — SPACE versus physical LINE_BREAK
+
+Primary unexpanded representation, alpha=64:
+
+- Voynich: effect +0.1321147960 bits, null SD 0.0133708000, ratio 9.88.
+- Nuremberg: effect +0.0979685056 bits, null SD 0.0042264973, ratio 23.18.
+- VMS minus Nuremberg: +0.0341462905; combined null SD 0.0140228946; ratio 2.44.
+
+Nuremberg therefore exhibits the same strong qualitative attenuation of local edge dependence across physical line breaks. Presence of SPACE>LINE_BREAK is **not** Voynich-diagnostic by itself. The magnitude is larger in Voynich under this frozen model.
+
+The paired expanded Nuremberg representation remains strongly positive at alpha=64: +0.0926513669, null SD 0.0043577654, ratio 21.26. Abbreviation expansion therefore does not remove the effect.
+
+Cross-correspondence physical adjacencies were excluded from Nuremberg P2 via the v2 segment reset.
+
+### P5 — page-level exact recurrence profile
+
+Primary unexpanded representation:
+
+| Band | Voynich effect / null SD | Nuremberg effect / null SD | Direction |
+|---|---|---|---|
+| lag 1 | +0.0007182 / 0.0006011 = 1.19, unresolved | -0.0074993 / 0.0001444 = 51.92 | divergent |
+| lags 2–5 | +0.0076466 / 0.0010183 = 7.51 | -0.0023876 / 0.0002846 = 8.39 | opposite |
+| lags 6–16 | +0.0042893 / 0.0014352 = 2.99 | +0.0113518 / 0.0003563 = 31.86 | same sign, different magnitude |
+| lags 17–64 | -0.0045004 / 0.0018541 = 2.43 | +0.0116285 / 0.0005116 = 22.73 | opposite |
+
+Independent-difference ratios using sqrt(sd_VMS² + sd_Nuremberg²) are approximately 13.29, 9.49, 4.78 and 8.39 for the four bands respectively.
+
+The expanded representation preserves the same Nuremberg sign profile:
+lag1 negative; lags2–5 negative; lags6–16 positive; lags17–64 positive.
+
+This is currently the clearest XD1 distinction between Voynich and the near-period professional scribal control.
+
+### Required caution
+
+P5 is deliberately page-level under the frozen XD1 definition. Nuremberg physical pages may contain multiple correspondence segments. Therefore the long-range Nuremberg recurrence profile can partly reflect page composition across letters. This does **not** invalidate the registered page-level result, but a segment-aware recurrence sensitivity is required before the P5 difference is interpreted as a production mechanism.
+
+Accordingly:
+
+- P2 presence is downgraded as a diagnostic feature.
+- Generic short-range recurrence is already known from CREMMA and remains non-diagnostic in isolation.
+- The **joint recurrence geometry** remains a candidate discriminator, not a mechanism identification.
+- No historical/cipher/generative mechanism is promoted from the Nuremberg result.
