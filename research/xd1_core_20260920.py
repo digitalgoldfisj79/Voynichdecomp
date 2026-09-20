@@ -213,9 +213,9 @@ class TokenChild:
     def __init__(self,rows,keyfun,parent,lam):
         self.keyfun=keyfun;self.parent=parent;self.lam=lam
         self.c=collections.defaultdict(collections.Counter)
-        for r in rows:self.c[(r["boundary"],keyfun(r["prev"]))][parent.y(r["target"])]+=1
+        for r in rows:self.c[(r["boundary"],keyfun(r["prev"]))][self.y(r["target"])]+=1
     def prob(self,r,y):
-        yy=self.parent.y(y);c=self.c[(r["boundary"],self.keyfun(r["prev"]))];n=sum(c.values())
+        yy=self.y(y);c=self.c[(r["boundary"],self.keyfun(r["prev"]))];n=sum(c.values())
         return (c.get(yy,0)+self.lam*self.parent.prob(r,y))/(n+self.lam)
 
 def loss(model,rows):
