@@ -242,3 +242,47 @@ Accordingly:
 - Generic short-range recurrence is already known from CREMMA and remains non-diagnostic in isolation.
 - The **joint recurrence geometry** remains a candidate discriminator, not a mechanism identification.
 - No historical/cipher/generative mechanism is promoted from the Nuremberg result.
+
+
+## Recurrence segmentation falsifier
+
+The page-level P5 contrast was challenged for two obvious unit-composition confounds:
+
+1. Nuremberg physical pages can contain multiple independent correspondence records.
+2. Voynich pages contain multiple natural paragraphs.
+
+The registered P5 statistic and 200-permutation within-block token-multiset null were therefore rerun with only the **block unit** changed.
+
+### Frozen sensitivity sources
+
+- VMS paragraphs: `research/xd1_vms_paragraphs_20260920.json`, commit `91198829b83e2941f78eff62b20e91cc9618e7ee`; 1,694 paragraph units, 29,886 words, source SHA `bf5b6d4ac1e3a51b1847a9c388318d609020441ccd56984c901c32b09beccafc`. This is a sensitivity subset, not a canonical replacement for the 34,087-event v03 corpus.
+- Nuremberg correspondence units: 3,176 diplomatic XML records, source SHA `59e5264acb4546477567e78c8b3d444c472f1a0a5256ee0ee7d0407a70904652`.
+- Exact sensitivity workflow: GitHub Actions run `35507147040`, result SHA `60f249eba0593671de2d5d1f8fe7f545627aac513c6313b1a96858a2ca00a3f7`.
+- Independent vectorized implementation: run `35507469254`, result SHA `849bddc1d6ac968b1ff7f43714aeda848672aebd596346a1c5dd189d07a23f06`; it reproduces all signs and closely matching Monte Carlo null estimates.
+
+### Results
+
+| Band | VMS paragraph effect / null SD | Nuremberg correspondence effect / null SD | Interpretation |
+|---|---|---|---|
+| lag 1 | +0.000540 / 0.000674 = 0.80 | -0.007647 / 0.000185 = 41.27 | VMS unresolved; Nuremberg strong deficit |
+| lags 2–5 | +0.002308 / 0.000907 = 2.54 | -0.001837 / 0.000286 = 6.43 | opposite signs |
+| lags 6–16 | -0.003916 / 0.001780 = 2.20 | +0.010426 / 0.000422 = 24.68 | opposite signs; VMS page-level positive does not survive paragraph restriction |
+| lags 17–64 | -0.010754 / 0.002499 = 4.30 | +0.010147 / 0.000555 = 18.27 | opposite signs |
+
+The VMS-minus-Nuremberg differences relative to combined null SD are approximately 11.71, 4.36, 7.84 and 8.17 respectively.
+
+### Consequence
+
+The multi-correspondence-page confound does **not** explain the Nuremberg/Voynich recurrence contrast.
+
+However, the VMS lag-6–16 page-level excess is not segmentation-robust and is removed from the robust candidate signature.
+
+The surviving candidate signature is narrower:
+
+- lag 1: no resolved VMS excess;
+- lag 2–5: VMS excess versus Nuremberg deficit;
+- lag 17–64: VMS deficit versus Nuremberg excess.
+
+This remains a structural discriminator against the tested near-period scribal control, **not a mechanism identification**.
+
+A remaining fairness issue is block length: VMS paragraphs have median length 9 tokens while Nuremberg correspondence records have median length 121. A length-stratified test was frozen before interpreting the recurrence contrast mechanistically.
