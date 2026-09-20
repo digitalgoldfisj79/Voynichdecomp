@@ -3,7 +3,7 @@ import argparse, collections, hashlib, json, math, os, re, urllib.request
 from pathlib import Path
 import numpy as np
 
-VERSION="supergrammar-v03-closure-certifier-20260920-v1"
+VERSION="supergrammar-v03-closure-certifier-20260920-v1b"
 CORPUS_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5/voynich_transcriptions_slim.json"
 CORPUS_SHA="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
 ROWS_CANON_SHA="74f7310ea35922dc5ed71012f0825ef9480d051a1fa516c79fc5ca53f88a925f"
@@ -149,26 +149,35 @@ def mean_loss(model,rows):
     s=0.0
     for r in rows:s-=math.log2(max(model.prob(r,r["target"]),1e-300))
     return s/len(rows)
-def tune_child(train,keyfun,parent_builder,outer,base_mode):
+def tune_morph(train,outer):
     best=None
     for lam in LAMBDAS:
         losses=[]
         for inf in range(4):
             tr=[r for r in train if inner_fold(r["bifolium"],outer)!=inf]
             va=[r for r in train if inner_fold(r["bifolium"],outer)==inf]
-            p=parent_builder(tr,base_mode,outer)
-            c=Child(tr,keyfun,p,lam)
-            losses.append(mean_loss(c,va))
+            if not va:continue
+            p=Parent(tr);m=Child(tr,morph,p,lam);losses.append(mean_loss(m,va))
         x=float(np.mean(losses))
         if best is None or (x,lam)<(best[0],best[1]):best=(x,lam)
     return best[1]
-def parent_builder(train,mode,outer):
-    p=Parent(train)
-    if mode=="PARENT":return p
-    if mode=="MORPH":
-        lam=tune_child(train,morph,lambda tr,_,__:Parent(tr),outer,"PARENT")
-        return Child(train,morph,p,lam)
-    raise ValueError(mode)
+def exactkey(prev):return prev if prev is not None else "<START>"
+def tune_exact(train,outer,lambda_morph):
+    # Sequential training-only tuning: morphology lambda is frozen from outer-training CV;
+    # exact lambda is then selected on the same outer-training inner folds. No outer-test event
+    # is used in either selection, and the exact child always shrinks to the same morphology parent.
+    best=None
+    for lam in LAMBDAS:
+        losses=[]
+        for inf in range(4):
+            tr=[r for r in train if inner_fold(r["bifolium"],outer)!=inf]
+            va=[r for r in train if inner_fold(r["bifolium"],outer)==inf]
+            if not va:continue
+            p=Parent(tr);m=Child(tr,morph,p,lambda_morph);e=Child(tr,exactkey,m,lam)
+            losses.append(mean_loss(e,va))
+        x=float(np.mean(losses))
+        if best is None or (x,lam)<(best[0],best[1]):best=(x,lam)
+    return best[1]
 def signflip(vals):
     a=np.asarray(vals,float)
     eff=float(a.mean());sd=float(np.sqrt(np.sum(a*a))/len(a));ratio=float(abs(eff)/sd) if sd else None
@@ -180,7 +189,7 @@ def evaluate_layer(rows,folds):
         tr=[r for r in rows if folds[r["bifolium"]]!=outer]
         te=[r for r in rows if folds[r["bifolium"]]==outer]
         p=Parent(tr)
-        lm=tune_child(tr,morph,lambda x,_,__:Parent(x),outer,"PARENT")
+        lm=tune_morph(tr,outer)
         m=Child(tr,morph,p,lm)
         def exactkey(prev):return prev if prev is not None else "<START>"
         le=tune_child(tr,exactkey,lambda x,_,__:parent_builder(x,"MORPH",outer),outer,"MORPH")
