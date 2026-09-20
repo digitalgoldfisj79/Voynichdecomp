@@ -219,3 +219,27 @@ To prevent small manuscript witnesses becoming apparent matches through noise:
 - Below-gate outputs may be retained for descriptive audit only and cannot support a comparative conclusion.
 
 This gate was added after CREMMA source ingestion/count inspection but before any CREMMA XD1 scientific outcomes were computed.
+
+
+## Critical implementation correction — XD1 v1 sequence ordering
+
+Detected during the Nuremberg fairness audit on 2026-09-20, after a preliminary P2 output but before that output was accepted as scientific evidence.
+
+XD1 v1 converted numeric `line_order` values to strings when re-sorting reconstructed sequences. This can order lines as `1, 10, 11, 2, ...` instead of physical numeric order. Consequently all v1 outputs for the sequence-dependent metrics P2, P3, P4 and P5 are invalidated for every corpus. P1 is unaffected because it is computed wholly within individual tokens.
+
+A second Nuremberg-specific fairness issue was identified at the same audit step: the diplomatic XML is correspondence-sliced, and transitions between adjacent physical lines from different correspondence records must not be classified as ordinary LINE_BREAK transitions.
+
+Implementation v2 therefore:
+- uses a numeric-aware `order_key` for all sequence reconstruction;
+- carries an explicit continuous-text `segment`;
+- excludes cross-segment pairs from P2;
+- resets previous-token context at segment changes for P3/P4;
+- retains physical page membership for P5, per the original frozen recurrence definition.
+
+The scientific definitions of P1–P6 are unchanged. This is an implementation correction, not a metric change.
+
+Fix/regression commit: `fa67ee6ddb3bc64f11408d83b2fc14042868ae56`  
+Regression execution: `6aafb5b752d0dbd7f1d73a44`  
+Fixture result: numeric order `[1,2,10,11]`, two valid within-segment line-break pairs, two segment starts — PASS.
+
+No XD1 v1 P2–P5 result may be used in a comparative conclusion.
