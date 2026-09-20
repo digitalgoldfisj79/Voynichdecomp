@@ -1,0 +1,21 @@
+name: Sozzini Harvard endpoint debug
+on:
+  push:
+    branches: [sozzini-audit-20260920]
+    paths: [".github/workflows/sozzini_debug.yml"]
+permissions:
+  contents: read
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe Harvard image endpoints
+        shell: bash
+        run: |
+          set -x
+          for u in             "https://ids.lib.harvard.edu/ids/iiif/51131072/full/700,/0/default.jpg"             "https://mps.lib.harvard.edu/assets/images/drs:51131072/full/700,/0/default.jpg"             "https://mps.lib.harvard.edu/assets/images/drs:51131072/full/300,/0/default.jpg"; do
+            echo "URL=$u"
+            curl -L --max-time 20 -A "Mozilla/5.0 manuscript-research" -sS -o /tmp/x -w "code=%{http_code} size=%{size_download} type=%{content_type} final=%{url_effective}\n" "$u" || true
+            file /tmp/x || true
+            head -c 16 /tmp/x | xxd || true
+          done
