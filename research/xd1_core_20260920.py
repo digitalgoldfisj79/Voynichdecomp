@@ -210,6 +210,8 @@ class TokenParent:
         return (c.get(y,0)+PARENT_ALPHA*self.gp(y))/(n+PARENT_ALPHA)
 
 class TokenChild:
+    def y(self,y):
+        return self.parent.y(y)
     def __init__(self,rows,keyfun,parent,lam):
         self.keyfun=keyfun;self.parent=parent;self.lam=lam
         self.c=collections.defaultdict(collections.Counter)
