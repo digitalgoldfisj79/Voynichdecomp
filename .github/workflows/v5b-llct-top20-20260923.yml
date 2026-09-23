@@ -1,0 +1,36 @@
+name: V5B LLCT top20 recurrence
+
+on:
+  push:
+    branches:
+      - programme-v5-frequency-20260923
+    paths:
+      - research/v5b_llct_top20_20260923.py
+      - .github/workflows/v5b-llct-top20-20260923.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  v5b:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch frozen LLCT1 v1.2
+        run: |
+          curl -L --fail --retry 3 'https://zenodo.org/records/3633607/files/LLCT1%2C%20version%201.2.xml?download=1' -o LLCT1_v1_2.xml
+          echo 'ec45ae3a6844fad40a00d2e8050cfc74  LLCT1_v1_2.xml' | md5sum -c -
+      - name: Run preregistered LLCT top20 test
+        run: python research/v5b_llct_top20_20260923.py LLCT1_v1_2.xml | tee v5b_llct.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v5b-llct-top20-20260923
+          path: |
+            research/RESULTS_v5b_llct_top20_20260923.json
+            research/v5b_llct_checkpoints/
+            v5b_llct.log
