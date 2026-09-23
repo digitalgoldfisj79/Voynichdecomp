@@ -1,3 +1,4 @@
+# trigger: workflow-installed
 #!/usr/bin/env python3
 import collections, json, math, os, pickle, random
 from pathlib import Path
