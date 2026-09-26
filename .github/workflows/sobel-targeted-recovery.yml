@@ -1,0 +1,18 @@
+name: Sobel r10 targeted recovery — closed
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/sobel-targeted-recovery.yml'
+
+concurrency:
+  group: sobel-r10-targeted-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  closed:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Recovery intentionally closed: corpus frozen at 194/224 cells (~485k successfully scored pages).'
