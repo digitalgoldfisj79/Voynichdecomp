@@ -1,0 +1,91 @@
+{
+  "schema": "voynichdecomp.corema_recoverability.result_manifest.v0.6",
+  "created_utc": "2026-07-25",
+  "repository": "digitalgoldfisj79/Voynichdecomp",
+  "branch": "experiment/voynich-corema-recoverability-v0.6-20260725",
+  "scientific_output_commit": "ee0c1ad88a3fa2b8606fa1f073e338df30eff12f",
+  "workflow": {
+    "run_id": 30151412100,
+    "job_id": 89662302370,
+    "artifact_id": 8617952558,
+    "artifact_name": "corema-v0.6-corrected",
+    "artifact_zip_sha256": "581035a1628a4f5072ca3ebae1eee9472550908f01474584a5db68f8682ae7c0",
+    "artifact_size_bytes": 23785460,
+    "artifact_expires": "2026-10-23"
+  },
+  "runner": {
+    "frozen_reconstructed_sha256": "213603fd38d99725cc99cb640bccb428eea0480de48298630dd3834426a49616",
+    "xml_recovery_patched_sha256": "dd13e2bfecf0d46d297c09d4c7254c47ea7a7fa46dc2fcd0530800f2e26a6d4b",
+    "patch_scope": "XML recovery only; no changes to ontology, folds, features, estimators, thresholds or gates"
+  },
+  "formal_result": {
+    "verdict": "CALIBRATION_FAILURE",
+    "voynich_transfer_opened": false,
+    "corpus": {
+      "manuscripts": 29,
+      "procedural_units": 4636,
+      "labelled_tokens": 370980
+    },
+    "gates": {
+      "lexical_role": false,
+      "identity_neutral_role": false,
+      "role_order": true,
+      "downstream_admissible": false
+    },
+    "metrics": {
+      "majority_macro_f1": 0.07802325705081874,
+      "lexical_macro_f1": 0.5721235541687163,
+      "rank_macro_f1": 0.22192150426620458,
+      "pattern_macro_f1": 0.25470371363073563,
+      "structural_macro_f1": 0.3688778988718507,
+      "structural_hmm_macro_f1": 0.3270062091555994,
+      "mean_markov_gain_bits_per_token": 0.7571781699585924,
+      "mean_real_vs_shuffle_bits_per_token": 0.9267673408765557
+    }
+  },
+  "acquisition": {
+    "attempted_manuscript_ids": 66,
+    "downloaded_manuscripts": 29,
+    "failed_endpoints": 37,
+    "parse_failures": 0,
+    "xml_recovery_files": [
+      "gr1.recipes.xml",
+      "wo10.recipes.xml"
+    ]
+  },
+  "files": {
+    "COREMA_RECOVERABILITY_REPORT_v0_6.md": {
+      "size_bytes": 1431,
+      "sha256": "7b91f51bc56f6d5ad11134dda85b033acc84ccacd2294f2b9df6cd91e663eab2"
+    },
+    "corema_recipe_rows_v0_6.csv.gz": {
+      "size_bytes": 694179,
+      "sha256": "d8220040d6a68f7fb17cee16432d6fc9191f6524559ca3c9b9ec8cd974fdfea4"
+    },
+    "corema_recoverability_results_v0_6.json": {
+      "size_bytes": 40092936,
+      "sha256": "4b0491bcf670bab8fb20f4526b1bfd19d7e7bbb1eb6aa1f80b3f27e53227851f"
+    },
+    "corema_role_predictions_v0_6.csv.gz": {
+      "size_bytes": 3012483,
+      "sha256": "1aa0d3a8af10f46db96c83c7bf0c5f81ddad13b000539608b27b053a1207ca0b"
+    },
+    "corema_token_rows_v0_6.csv.gz": {
+      "size_bytes": 19082872,
+      "sha256": "154230ae20a379be94c8c7800f7be75b02cd223ccc97f1b6a85a2f6a01f6c695"
+    },
+    "prefetch_audit_v0_6.json": {
+      "size_bytes": 11289,
+      "sha256": "a3b54c6b77f87a2bd530c8a22b08f008ec2519e77fa887a4b7afeb54905cba88"
+    },
+    "run.log": {
+      "size_bytes": 786,
+      "sha256": "27c83a69ad467661050fdd92d45d30c487b53dc73382005be71dc933119e9b43"
+    }
+  },
+  "notes": [
+    "Hashes are over the files contained in GitHub Actions artifact 8617952558.",
+    "The artifact files are the corrected run outputs subsequently committed by github-actions[bot].",
+    "The two XML recoveries concern duplicate ID declarations accepted with lxml recovery mode and audited in the scientific payload."
+  ]
+}

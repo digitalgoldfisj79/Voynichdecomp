@@ -1,0 +1,40 @@
+{
+  "schema": "external-recoverability-v0.5",
+  "seed": 20260725,
+  "ammerbach_audit": {
+    "csv": [
+      {"path": "/tmp/external/ammerbach/md/train.csv", "rows": 1000},
+      {"path": "/tmp/external/ammerbach/md/val.csv", "rows": 400},
+      {"path": "/tmp/external/ammerbach/md/test.csv", "rows": 1000}
+    ],
+    "counts": {"bookA": 1200, "bookB": 1200}
+  },
+  "gabc_audit": {
+    "files_by_family": {"aquitanian": 49, "square": 53},
+    "groups": 71
+  },
+  "representation_audit": [
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9997013987112997,"auc_logit":0.9997825973073499,"auc_forest":0.9994080360416994,"map":"rank","feature_set":"all"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9997275918067996,"auc_logit":0.9997825973073499,"auc_forest":0.9994158939703495,"map":"rank","feature_set":"no_length"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.996057939127246,"auc_logit":0.9946238671486196,"auc_forest":0.9956257530514956,"map":"equality","feature_set":"all"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9959426895070459,"auc_logit":0.9948923463774948,"auc_forest":0.9946422023154697,"map":"equality","feature_set":"no_length"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9943868196343444,"auc_logit":0.9883335952642883,"auc_forest":0.9939369532191313,"map":"run","feature_set":"all"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9934170202734559,"auc_logit":0.9899569123579024,"auc_forest":0.9928080308030803,"map":"run","feature_set":"no_length"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9977997799779978,"auc_logit":0.9983079260306984,"auc_forest":0.9949290167111948,"map":"event_rank","feature_set":"all"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9978063282518728,"auc_logit":0.9983079260306984,"auc_forest":0.9946107706008697,"map":"event_rank","feature_set":"no_length"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9914525381109539,"auc_logit":0.9883931845565511,"auc_forest":0.9903072450102154,"map":"length","feature_set":"all"},
+    {"n":3282,"groups":27,"positive":3030,"auc_ensemble":0.9896144376342396,"auc_logit":0.9873408769448372,"auc_forest":0.9886204096600135,"map":"length","feature_set":"no_length"}
+  ],
+  "ammerbach_alignment": [
+    {"train":"bookA","test":"bookB","mode":"literal","staves":1200,"top1":0.4891666666666667,"mrr":0.6398024591149591,"mean_margin":-0.060969349074550636,"median_margin":-0.011747735512551927},
+    {"train":"bookA","test":"bookB","mode":"rank","staves":1200,"top1":0.4475,"mrr":0.5948626188626188,"mean_margin":-0.131814761459122,"median_margin":-0.07961565095329415},
+    {"train":"bookB","test":"bookA","mode":"literal","staves":1200,"top1":0.5491666666666667,"mrr":0.6738758695008695,"mean_margin":0.035025363068673626,"median_margin":0.0},
+    {"train":"bookB","test":"bookA","mode":"rank","staves":1200,"top1":0.5325,"mrr":0.65369792013542,"mean_margin":0.0013133461083071859,"median_margin":0.0}
+  ],
+  "neume_boundary": [
+    {"family":"aquitanian","status":"ok","groups":26,"chars":2770,"boundaries":1359,"precision":0.7169334456613311,"recall":0.6261957321559971,"f1":0.6684996072270227,"baseline_f1":0.658270767740373,"exact_event_fraction":0.41206769683590877},
+    {"family":"square","status":"ok","groups":32,"chars":4084,"boundaries":1736,"precision":0.7771672771672772,"recall":0.7332949308755761,"f1":0.7545939537640782,"baseline_f1":0.5965635738831615,"exact_event_fraction":0.5771889400921659}
+  ],
+  "gates": {"A":true,"B1":false,"B2":false,"downstream_admissible":false},
+  "execution": {"provider":"Hugging Face Jobs","job_id":"6a6458dcdb23d7a7ec1cbab8","result_sha256":"83299da49877ce6183b2d895dc3533f82083da0c815a33121c9a907004ca9ad1"}
+}

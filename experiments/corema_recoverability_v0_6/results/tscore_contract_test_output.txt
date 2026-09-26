@@ -1,0 +1,10 @@
+test_aligned_ingestion_and_onsets (__main__.TScoreDocumentedContractTests.test_aligned_ingestion_and_onsets) ... ok
+test_carry_semantics (__main__.TScoreDocumentedContractTests.test_carry_semantics) ... ok
+test_duration_and_beam_semantics (__main__.TScoreDocumentedContractTests.test_duration_and_beam_semantics) ... ok
+test_misaligned_voice_rejected (__main__.TScoreDocumentedContractTests.test_misaligned_voice_rejected) ... ok
+test_symbol_mapping_coordinates (__main__.TScoreDocumentedContractTests.test_symbol_mapping_coordinates) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

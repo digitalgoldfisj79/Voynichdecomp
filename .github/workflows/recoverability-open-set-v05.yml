@@ -1,0 +1,70 @@
+name: Recoverability-first open-set programme v0.5
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  external-recoverability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip numpy pandas scipy scikit-learn
+
+      - name: Reconstruct and verify v0.5 runner
+        run: |
+          python experiments/recoverability_open_set_v0_5/scripts/reconstruct_external_runner_v05.py
+          python -m py_compile experiments/recoverability_open_set_v0_5/scripts/run_external_recoverability_v05.py
+
+      - name: Download corrected Ammerbach calibration corpus
+        run: |
+          mkdir -p external/ammerbach
+          wget --retry-connrefused --waitretry=5 --read-timeout=60 --timeout=60 \
+            -O external/Ammerbach.tar \
+            'https://open.uni-marburg.de/server/api/core/bitstreams/36a19f39-4439-412e-8181-dedd8a710bc4/content'
+          test "$(stat -c%s external/Ammerbach.tar)" -gt 700000000
+          tar -xf external/Ammerbach.tar -C external/ammerbach
+
+      - name: Download complete GABC corpus
+        run: git clone --depth 1 https://github.com/ECHOES-from-the-Past/GABCtoMEI.git external/GABCtoMEI
+
+      - name: Run external representation and recoverability gates
+        run: |
+          rm -rf experiments/recoverability_open_set_v0_5/results_external_rerun
+          mkdir -p experiments/recoverability_open_set_v0_5/results_external_rerun
+          python experiments/recoverability_open_set_v0_5/scripts/run_external_recoverability_v05.py \
+            --ammerbach-dir external/ammerbach \
+            --gabc-dir external/GABCtoMEI \
+            --out experiments/recoverability_open_set_v0_5/results_external_rerun \
+            | tee experiments/recoverability_open_set_v0_5/results_external_rerun/run.log
+
+      - name: Validate and compare outputs
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib
+          rerun = pathlib.Path('experiments/recoverability_open_set_v0_5/results_external_rerun/external_recoverability_results_v0_5.json')
+          r = json.loads(rerun.read_text())
+          assert r['ammerbach_audit']['counts'] == {'bookA': 1200, 'bookB': 1200}
+          assert r['gates'] == {'A': True, 'B1': False, 'B2': False, 'downstream_admissible': False}
+          print(json.dumps(r['gates'], indent=2))
+          print('rerun sha256', hashlib.sha256(rerun.read_bytes()).hexdigest())
+          PY
+          cd experiments/recoverability_open_set_v0_5/results_external_rerun
+          sha256sum * > SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recoverability-open-set-v0.5-external-rerun
+          path: experiments/recoverability_open_set_v0_5/results_external_rerun
+          if-no-files-found: error
+          retention-days: 90
