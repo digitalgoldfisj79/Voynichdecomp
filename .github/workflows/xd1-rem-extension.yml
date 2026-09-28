@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install numpy
-      - name: ReM source-only preflight
+      - run: echo rem-parser-crossline-token-fix\n      - name: ReM source-only preflight
         run: python research/xd1_rem_repetition_20260928.py --preflight
       - name: Frozen ReM metric run
         run: python research/xd1_rem_repetition_20260928.py --run
