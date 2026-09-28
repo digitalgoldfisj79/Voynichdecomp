@@ -40,7 +40,7 @@ def parse_doc(data:bytes):
     # Canonical layer exactly matching the previously verified ReM builder.
     groups=collections.defaultdict(str); order=[]
     for w in root.iter(NS+"w"):
-        b=base_id(w); txt=re.sub(r"\\s+","","".join(w.itertext()))
+        b=base_id(w); txt=re.sub(r"\s+","","".join(w.itertext()))
         if b not in groups: order.append(b)
         groups[b]+=txt
     flat=[clean(groups[b]) for b in order if groups[b]]
