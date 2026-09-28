@@ -10,7 +10,7 @@ This report is deliberately narrow. It is not a decipherment, language identific
 2. SPACE > LINE_BREAK attenuation is not VMS-specific. Nuremberg reproduces it strongly. Earlier mechanistic interpretation from attenuation alone is withdrawn.
 3. Lag-2 exact-word enrichment alone is not VMS-specific. A 12-document ReM panel reproduces aggregate lag-2 enrichment. The surviving result is narrower.
 4. RF1b/STA is a representation sensitivity, not an independent palaeographic transcription.
-5. A large diplomatic charm control with preserved physical lines has not been executed. An earlier internal claim that a charm lag-2 result already existed was audited and retracted.
+5. No charm recurrence metric has yet been executed. An earlier internal claim that a charm lag-2 result already existed was audited and remains retracted. However, the stronger statement that no corpus route was known is corrected: the archive contains Koen Gheuens’ 2025 charm-source thread and f116v expert follow-up, while Cambridge’s Curious Cures project and Heather A. Taylor’s independent 48-manuscript / ≥250-item charm survey provide an externally defined corpus route. Physical-line preservation must be verified before these sources can enter SGT12.
 
 ## SGT12 — within-line exact-token recurrence geometry
 
@@ -118,3 +118,9 @@ Hashes:
 Within the tested physical-line controls, Voynich running text shows a robust exact-repetition geometry in which immediate identical-token repetition is not detectably suppressed while identical-token recurrence at distance two is enriched. The tested chancery and recipe controls strongly suppress immediate identical-token repetition; some recipe text can nevertheless show lag-2 enrichment, so lag 2 alone is not diagnostic. The pattern survives a materially different STA representation.
 
 That is the claim. Nothing semantic is being inferred from it.
+
+## Charm follow-up corpus route
+
+The charm arm is now a recoverable external follow-up, not an undefined literature gap. Prior art recovered from the Voynich Archive includes Voynich Ninja thread 4885 (“Charms etc. with crosses”, Koen Gheuens, 2025), the subsequent f116v/Katherine Hindley discussion (thread 5162), Cambridge’s Curious Cures digitisation/transcription project, Aine Widdicombe’s manuscript-level charm survey, and Heather A. Taylor’s independent survey of 48 English-provenance medical manuscripts with at least 250 non-medical charms/experimenta. A German-language sensitivity manifest also exists in Ninja thread 6047, but because it was assembled explicitly for Voynich comparison it should not define the primary control cohort.
+
+The primary admissibility gate is technical: SGT12 needs diplomatic physical lines. Before any recurrence outcome is opened, the selected Curious Cures/Taylor witnesses must demonstrate explicit original line segmentation in TEI/PAGE/Transkribus export and independently defined charm boundaries. If available, the strongest design is within-manuscript charm-versus-recipe comparison, with bootstrap clustering by charm/manuscript. This is a post-closeout follow-up and cannot retroactively strengthen the five original promotion gates; it can downgrade SGT12 if it reproduces the VMS joint geometry.
