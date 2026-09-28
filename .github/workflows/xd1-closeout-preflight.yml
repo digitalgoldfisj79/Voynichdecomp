@@ -1,0 +1,28 @@
+name: XD1 closeout preflight
+
+on:
+  push:
+    branches:
+      - supergrammar-xd1-closeout-20260928
+    paths:
+      - .github/workflows/xd1-closeout-preflight.yml
+      - research/xd1_closeout_preflight_20260928.py
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run existing XD1 ordering regression
+        run: |
+          pip install numpy
+          python research/test_xd1_ordering_20260920.py
+      - name: Probe CoReMA primary sources
+        run: python research/xd1_closeout_preflight_20260928.py
