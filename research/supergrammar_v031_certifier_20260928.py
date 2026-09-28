@@ -2,6 +2,7 @@
 import argparse, collections, hashlib, json, math, os, pickle, re, urllib.request
 from pathlib import Path
 import numpy as np
+from sequence_ordering_20260928 import numeric_line_no, order_key as shared_order_key
 
 VERSION="supergrammar-v031-certifier-20260928-orderfix"
 CORPUS_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5/voynich_transcriptions_slim.json"
