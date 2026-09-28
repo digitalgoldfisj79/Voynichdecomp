@@ -1,16 +1,8 @@
-name: XD1 ordering propagation test
-
+name: XD1 ordering propagation test (manual legacy)
 on:
-  push:
-    branches:
-      - supergrammar-xd1-closeout-20260928
-    paths:
-      - ".github/workflows/xd1-ordering-propagation-test.yml"
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,4 +12,4 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install numpy
-      - run: python research/test_sequence_ordering_propagation_20260928.py\n      - run: echo propagation-fixture-v2
+      - run: python research/test_sequence_ordering_propagation_20260928.py
