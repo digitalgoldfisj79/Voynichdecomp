@@ -1,0 +1,37 @@
+name: XD1 charm outcome
+on:
+  push:
+    branches: [supergrammar-xd1-charm-20260928]
+    paths:
+      - 'research/xd1_charm_run.py'
+      - 'research/XD1_CHARM_MANIFEST_20260928.json'
+      - 'research/PROTOCOL_XD1_CHARM_v11_ADDENDUM_20260928.md'
+      - '.github/workflows/xd1-charm-outcome.yml'
+  workflow_dispatch:
+jobs:
+  outcome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/xd1_charm_run.py
+      - name: Analytic-null cross-check
+        run: |
+          python - <<'PY'
+          import json,math
+          p=json.load(open('xd1_charm_outcome/xd1_charm_result.json'))
+          for cohort in ['primary','strict_explicit','secondary_medical_background']:
+              for lag in ['lag1','lag2']:
+                  z=p[cohort][lag]
+                  # MC mean must be close to exact expectation; 6 MC standard errors is conservative.
+                  tol=max(1e-12,6*z['mc_mean_se'])
+                  assert abs(z['mc_mean_minus_analytic']) <= tol, (cohort,lag,z)
+          print('ANALYTIC_NULL_CROSSCHECK=PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-charm-outcome
+          path: xd1_charm_outcome/
