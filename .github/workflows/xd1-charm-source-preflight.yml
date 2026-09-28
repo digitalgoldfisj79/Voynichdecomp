@@ -1,0 +1,39 @@
+name: XD1 charm source preflight
+
+on:
+  push:
+    branches:
+      - supergrammar-xd1-charm-20260928
+    paths:
+      - 'research/xd1_charm_source_preflight.py'
+      - 'research/PROTOCOL_XD1_CHARM_20260928.md'
+      - '.github/workflows/xd1-charm-source-preflight.yml'
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run source-only preflight
+        run: python research/xd1_charm_source_preflight.py
+      - name: Assert no outcome fields
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('xd1_charm_preflight/source_preflight.json'))
+          assert p.get('outcomes_computed') is False
+          s=json.dumps(p).lower()
+          for forbidden in ['observed_rate','null_mean','effect_null_sd','obs_null_ratio']:
+              assert forbidden not in s, forbidden
+          print('SOURCE_ONLY_GUARD=PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-charm-source-preflight
+          path: xd1_charm_preflight/
+          if-no-files-found: error
