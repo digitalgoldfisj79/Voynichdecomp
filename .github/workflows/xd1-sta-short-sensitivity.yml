@@ -1,0 +1,21 @@
+name: XD1 STA short-word sensitivity
+on:
+  push:
+    branches: [supergrammar-xd1-finalize-20260928]
+    paths:
+      - ".github/workflows/xd1-sta-short-sensitivity.yml"
+permissions: {contents: read}
+jobs:
+  short:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install numpy
+      - run: python research/xd1_sta_short_sensitivity_20260928.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-sta-short-sensitivity
+          path: research/xd1_sta_short_sens_result_20260928.json
