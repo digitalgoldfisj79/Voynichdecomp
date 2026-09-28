@@ -22,3 +22,4 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install numpy
       - run: python research/test_sequence_ordering_propagation_20260928.py
+# trigger
