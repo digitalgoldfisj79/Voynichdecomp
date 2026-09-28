@@ -17,10 +17,11 @@ def numeric_line_no(v):
     return int(m.group(1))
 
 def order_key(v):
+    # Exact compatibility with the already-regression-tested XD1 v2 key.
     if isinstance(v,(int,float)) and not isinstance(v,bool):
         return (0,float(v),"")
     s=str(v)
-    m=_NUM_PREFIX.match(s)
-    if m:
-        return (0,float(m.group(1)),s)
-    return (1,0.0,s)
+    try:
+        return (0,float(s),"")
+    except ValueError:
+        return (1,0.0,s)
