@@ -4,6 +4,10 @@
 **Frozen:** 2026-09-28 before computing the STA/RF repetition outcome.
 **Parent:** XD1-CLOSEOUT-20260928.
 
+## Pre-outcome source-count correction
+
+The first source preflight stopped before any repetition statistic because the code compared the long-word parser against an expected count of 37,848. A separate source-only diagnostic then reproduced the invariant published/source counts exactly: 5,385 loci and 157,254 STA codes, and established that RF1b contains 37,848 words under the short-word convention but 37,087 under this protocol's long-word convention. The difference is exactly 761 <-> uncertain-space markers. Therefore the 37,848 constant belonged to the other word-boundary convention. The long-word source gate is corrected to 37,087; the short-word count 37,848 and uncertain-marker count 761 are retained as independent parser checks. No lag-1/lag-2 outcome existed when this correction was frozen.
+
 ## Purpose and limitation
 
 Test whether the surviving Voynich within-line exact-repetition geometry depends on the EVA-family representation used in ZLZI.
