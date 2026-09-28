@@ -165,3 +165,12 @@ Atomic frame A1 (declared, not reverse-engineered from v01): ch sh cth ckh cph c
 - R4 CONFIRMED for all 19 (atomic frame A1, same null): all zero in all 6 layers; min ratio 2.70 (lh). ci 32.23→2.91, dh 41.59→3.95, lh 27.11→2.70 (×0.09–0.10). Remaining 16 change by ×0.81–1.14. My 35% prediction that one of ci/dh/lh would drop below 2 did not happen.
 - R5 CONFIRMED bound: ED1 hostile −0.001822/0.001704 = −1.069 (movable 98.46%); identical to v03 (JSON order was already physical).
 - Side finding (was already in v03, not disclosed in v03 doc): SGK04 SPACE edge gain is RESOLVED NEGATIVE in JSLI α=4: −0.03594/0.01665 = −2.16. ZLZI worst 0.03810/0.01543 = 2.469 (v03 stored 2.4386; change from the f115r hand fix).
+
+## v03.1 APPLIED — 2026-09-28 (state at end of session)
+- Repo: branch `supergrammar-v031-candidate`, commit 630c17a (+ brief commit), DRAFT PR #32 — NOT merged. Registered v03 scripts untouched.
+- Supabase (insert-only, run `supergrammar_v031_20260928`): 33 claims; 55 evidence rows (47 v031 + 8 carried); 594 obligations (33×18); 330 obligation→evidence links; 33 certificates (32 OPEN on EXTERNAL_ADVERSARIAL_REVIEW, 1 FAILED); 9 theorems (OPEN; SGT07 target CERTIFIED_BOUNDED); 33 dependencies; retractions −9..−3; verifier sgv031_certifier_local_v1; validation checks 7–10 all PASS (no leak into v03 export view; open obligation blocks certification; EFFECT_BOUND linked; frozen v03 counts and manifest sha unchanged). New obligation type EXTERNAL_ADVERSARIAL_REVIEW (audit_order 18).
+- handoff_docs key `voynich_supergrammar_v031_candidate_20260928`, content sha256 ab3cf6a0... == repo release doc.
+- One failed attempt, rolled back cleanly: first evidence insert wrote the generated column effect_over_null_sd (transaction aborted, 0 rows).
+- Correction to my change-set estimate: evidence rows 55, not ~62.
+- A6 finding softened: run_id-keyed sharing of the v03 tables is by design; the actual risk is that vms_supergrammar_certified_theorems_v03 filters by status only, so a future CERTIFIED v031 row would merge into the v03 export surface. Must be scoped before freeze.
+- NEXT (rule 20): research/DEMOLITION_BRIEF_supergrammar_v031_20260928.md → fresh chat, no context. Record per-claim outcome as EXTERNAL_ADVERSARIAL_REVIEW.
