@@ -1,4 +1,4 @@
-name: XD1 charm secondary bootstrap\n# rerun after import-path repair
+name: XD1 charm secondary bootstrap
 on:
   push:
     branches: [supergrammar-xd1-charm-20260928]
