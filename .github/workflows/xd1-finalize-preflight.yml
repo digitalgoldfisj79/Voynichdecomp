@@ -1,0 +1,24 @@
+name: XD1 STA source diagnostic and propagation audit
+on:
+  push:
+    branches: [supergrammar-xd1-finalize-20260928]
+    paths:
+      - "research/xd1_sta_rf_source_diagnostic_20260928.py"
+      - ".github/workflows/xd1-finalize-preflight.yml"
+permissions: {contents: read}
+jobs:
+  source-diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python research/xd1_sta_rf_source_diagnostic_20260928.py
+  propagation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install numpy
+      - run: python research/test_sequence_ordering_propagation_20260928.py
