@@ -1,0 +1,70 @@
+name: XD1 closeout 2026-09-28
+
+on:
+  push:
+    branches:
+      - supergrammar-xd1-closeout-20260928
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recipe-repetition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Source-only preflight (no repetition statistic)
+        run: python research/xd1_recipe_repetition_closeout_20260928.py --preflight
+      - name: Frozen metric run
+        run: python research/xd1_recipe_repetition_closeout_20260928.py --run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xd1-recipe-repetition-closeout
+          path: research/xd1_closeout_results_20260928/
+          if-no-files-found: warn
+
+  small-xd1-completion:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - name: Ordering and vectorisation regression
+        run: python research/test_xd1_ordering_20260920.py
+      - name: Prepare inputs
+        run: |
+          mkdir -p research/xd1_closeout_small
+          python research/xd1_adapters_20260920.py vms --out-prefix research/xd1_closeout_small/vms
+          python research/xd1_adapters_20260920.py gaskell --out-prefix research/xd1_closeout_small/gaskell
+      - name: Corrected VMS P1-P5
+        run: python research/xd1_core_20260920.py research/xd1_closeout_small/vms.json --output research/xd1_closeout_small/vms_result.json
+      - name: Corrected gibberish nonspecialist P1-P5
+        run: python research/xd1_core_20260920.py research/xd1_closeout_small/gaskell_nonspecialist.json --output research/xd1_closeout_small/gaskell_nonspecialist_result.json
+      - name: Corrected gibberish specialist P1-P5
+        run: python research/xd1_core_20260920.py research/xd1_closeout_small/gaskell_specialist.json --output research/xd1_closeout_small/gaskell_specialist_result.json
+      - name: Atomic pickle checkpoint
+        run: |
+          python - <<'PY'
+          import json,pickle,hashlib,pathlib
+          p=pathlib.Path("research/xd1_closeout_small")
+          d={x.stem:json.load(open(x)) for x in p.glob("*_result.json")}
+          out=p/"checkpoint_small_xd1.pkl"
+          pickle.dump(d,open(out,"wb"),protocol=5)
+          print("CHECKPOINT_SHA256",hashlib.sha256(out.read_bytes()).hexdigest())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xd1-small-completion
+          path: research/xd1_closeout_small/
+          if-no-files-found: warn
