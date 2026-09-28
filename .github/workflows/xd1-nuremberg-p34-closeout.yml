@@ -1,0 +1,56 @@
+name: XD1 Nuremberg P3-P4 closeout
+
+on:
+  push:
+    branches:
+      - supergrammar-xd1-closeout-20260928
+    paths:
+      - ".github/workflows/xd1-nuremberg-p34-closeout.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fold:
+    strategy:
+      fail-fast: false
+      matrix:
+        outer: [0,1,2,3,4]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - run: mkdir -p research/xd1_nuremberg_p34
+      - name: Run frozen outer fold
+        run: python research/xd1_nuremberg_p34_fold_20260928.py --outer ${{ matrix.outer }} --output research/xd1_nuremberg_p34/fold_${{ matrix.outer }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuremberg-p34-fold-${{ matrix.outer }}
+          path: research/xd1_nuremberg_p34/fold_${{ matrix.outer }}.json
+
+  aggregate:
+    needs: fold
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install numpy
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: nuremberg-p34-fold-*
+          path: research/xd1_nuremberg_p34_download
+      - name: Aggregate
+        run: python research/xd1_nuremberg_p34_aggregate_20260928.py research/xd1_nuremberg_p34_download --output research/xd1_nuremberg_p34_result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuremberg-p34-closeout
+          path: |
+            research/xd1_nuremberg_p34_result.json
+            research/xd1_nuremberg_p34_result.pkl
