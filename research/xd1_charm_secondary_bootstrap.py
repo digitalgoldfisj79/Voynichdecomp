@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Post-outcome completion of preregistered descriptive charm-vs-background bootstrap.
 No selection, boundary, tokenizer, null or gate changes."""
-import json,re,random,hashlib,statistics,math
+import json,re,random,hashlib,statistics,math,sys
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from research.xd1_charm_run import BASE,ITEM,get,parse_lines,tokenize,ranges_to_lines,observed,analytic_null
 
 NBOOT=2000
