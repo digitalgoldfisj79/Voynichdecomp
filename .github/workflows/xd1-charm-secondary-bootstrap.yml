@@ -1,0 +1,22 @@
+name: XD1 charm secondary bootstrap
+on:
+  push:
+    branches: [supergrammar-xd1-charm-20260928]
+    paths:
+      - 'research/xd1_charm_secondary_bootstrap.py'
+      - '.github/workflows/xd1-charm-secondary-bootstrap.yml'
+  workflow_dispatch:
+jobs:
+  secondary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/xd1_charm_secondary_bootstrap.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-charm-secondary-bootstrap
+          path: xd1_charm_secondary/
