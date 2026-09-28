@@ -1,0 +1,33 @@
+name: XD1 charm focused source
+on:
+  push:
+    branches: [supergrammar-xd1-charm-20260928]
+    paths:
+      - 'research/xd1_charm_focused_source.py'
+      - '.github/workflows/xd1-charm-focused-source.yml'
+  workflow_dispatch:
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python research/xd1_charm_focused_source.py
+      - name: Source-only guard
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('xd1_charm_focused_source/focused_lines.json'))
+          assert p['outcomes_computed'] is False
+          s=json.dumps(p).lower()
+          for x in ['observed_rate','null_mean','obs_null_ratio','effect_null_sd','lag1','lag2']:
+              assert x not in s
+          print('FOCUSED_SOURCE_GUARD=PASS')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: xd1-charm-focused-source
+          path: xd1_charm_focused_source/
