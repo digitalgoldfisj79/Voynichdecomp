@@ -16,7 +16,9 @@ CODE_RE=re.compile(r"[A-Z][0-9a-z]")
 LOCUS_RE=re.compile(r"^<(?P<loc>f[^,>]+),(?P<mode>[^>]+)>\s*(?P<body>.*)$")
 FOLIO_RE=re.compile(r"^(f\d+[rv]\d*)")
 EXPECTED_LOCI=5385
-EXPECTED_LONG_WORDS=37848
+EXPECTED_LONG_WORDS=37087
+EXPECTED_SHORT_WORDS=37848
+EXPECTED_UNCERTAIN_MARKERS=761
 EXPECTED_STA_CODES=157254
 BASE_SEED=20260928
 
@@ -67,14 +69,21 @@ def preflight():
     if not text.startswith("#=IVTFF STA1 2.0"):
         raise SystemExit("unexpected RF/STA header")
     allrows,stats=parse(text,False,False)
-    expected=(EXPECTED_LOCI,EXPECTED_LONG_WORDS,EXPECTED_STA_CODES)
-    got=(stats["n_loci"],stats["n_long_words"],stats["n_sta_codes"])
+    short_words=0; uncertain_markers=0
+    for raw in text.splitlines():
+        m=LOCUS_RE.match(raw.strip())
+        if not m: continue
+        body=m.group("body"); uncertain_markers += body.count("<->")
+        for chunk in re.split(r"\\.|<->",body):
+            if CODE_RE.findall(chunk): short_words += 1
+    expected=(EXPECTED_LOCI,EXPECTED_LONG_WORDS,EXPECTED_SHORT_WORDS,EXPECTED_UNCERTAIN_MARKERS,EXPECTED_STA_CODES)
+    got=(stats["n_loci"],stats["n_long_words"],short_words,uncertain_markers,stats["n_sta_codes"])
     if got!=expected:
-        raise SystemExit(f"RF published-count gate mismatch got={got} expected={expected}")
+        raise SystemExit(f"RF source-count gate mismatch got={got} expected={expected}")
     p,_=parse(text,False,True)
     q,_=parse(text,True,True)
     bundle={"protocol_id":"XD1-STA-RF-20260928","url":URL,"source_sha256":sha(data),
-            "published_count_gate":stats,
+            "published_count_gate":dict(stats,n_short_words=short_words,n_uncertain_markers=uncertain_markers),
             "primary":{"n_lines":len(p),"n_tokens":sum(len(r["tokens"]) for r in p),"lines":p},
             "uncertainty_excluded":{"n_lines":len(q),"n_tokens":sum(len(r["tokens"]) for r in q),"lines":q}}
     atomic(bundle,A)
