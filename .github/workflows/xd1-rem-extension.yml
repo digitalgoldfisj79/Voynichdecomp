@@ -1,16 +1,8 @@
-name: XD1 ReM extension
-
+name: XD1 ReM extension (manual legacy)
 on:
-  push:
-    branches:
-      - supergrammar-xd1-closeout-20260928
-    paths:
-      - ".github/workflows/xd1-rem-extension.yml"
   workflow_dispatch:
-
 permissions:
   contents: read
-
 jobs:
   rem:
     runs-on: ubuntu-latest
@@ -21,13 +13,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install numpy
-      - run: echo rem-parser-crossline-token-fix\n      - name: ReM source-only preflight
+      - name: ReM source-only preflight
         run: python research/xd1_rem_repetition_20260928.py --preflight
       - name: Frozen ReM metric run
         run: python research/xd1_rem_repetition_20260928.py --run
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: xd1-rem-extension
-          path: research/xd1_rem_results_20260928/
-          if-no-files-found: warn
