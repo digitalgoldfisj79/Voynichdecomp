@@ -124,3 +124,15 @@ That is the claim. Nothing semantic is being inferred from it.
 The charm arm is now a recoverable external follow-up, not an undefined literature gap. Prior art recovered from the Voynich Archive includes Voynich Ninja thread 4885 (“Charms etc. with crosses”, Koen Gheuens, 2025), the subsequent f116v/Katherine Hindley discussion (thread 5162), Cambridge’s Curious Cures digitisation/transcription project, Aine Widdicombe’s manuscript-level charm survey, and Heather A. Taylor’s independent survey of 48 English-provenance medical manuscripts with at least 250 non-medical charms/experimenta. A German-language sensitivity manifest also exists in Ninja thread 6047, but because it was assembled explicitly for Voynich comparison it should not define the primary control cohort.
 
 The primary admissibility gate is technical: SGT12 needs diplomatic physical lines. Before any recurrence outcome is opened, the selected Curious Cures/Taylor witnesses must demonstrate explicit original line segmentation in TEI/PAGE/Transkribus export and independently defined charm boundaries. If available, the strongest design is within-manuscript charm-versus-recipe comparison, with bootstrap clustering by charm/manuscript. This is a post-closeout follow-up and cannot retroactively strengthen the five original promotion gates; it can downgrade SGT12 if it reproduces the VMS joint geometry.
+
+## 2026-09-28 XD1-CHARM follow-up result
+
+The previously open charm-control follow-up has now been executed on Cambridge UL MS Add. 9308 under a frozen downgrade-only protocol. Fourteen independently source-defined charm units (215 physical lines; 1,050 lag-2 opportunities) were read from CUDL diplomatic line geometry.
+
+Primary lag1 observed/null = 0.1591, effect/null SD = -5.13. Primary lag2 observed/null = 1.0521, effect/null SD = +0.29: **the metric does not resolve this**.
+
+A stricter ten-charm subset gives lag1 0.1204 / -4.61 SD and lag2 1.3154 / +1.44 SD: again **the metric does not resolve lag2**. All fourteen leave-one-charm-out populations fail the frozen downgrade gate.
+
+SGT12 therefore remains CANDIDATE_BOUNDED_PROMOTED; this result does not constitute independent replication or broaden the claim beyond tested controls.
+
+The German sensitivity (Amberg Ms. 77, from Ninja thread 6047) remains BLOCKED_PHYSICAL_LINEATION because the available route supplies images/OCR rather than an independently supplied diplomatic physical-line transcription. See research/XD1_CHARM_ADJUDICATION_20260928.md.
