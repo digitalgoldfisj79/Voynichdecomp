@@ -23,3 +23,19 @@ jobs:
       - run: pip install numpy
       - run: python research/test_sequence_ordering_propagation_20260928.py
 # trigger
+  sta-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install numpy
+      - run: python research/xd1_sta_rf_repetition_20260928.py --preflight
+      - run: python research/xd1_sta_rf_repetition_20260928.py --run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xd1-sta-rf-final
+          path: research/xd1_sta_rf_results_20260928/
+          if-no-files-found: warn
