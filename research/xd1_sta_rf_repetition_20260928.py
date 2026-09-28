@@ -74,7 +74,7 @@ def preflight():
         m=LOCUS_RE.match(raw.strip())
         if not m: continue
         body=m.group("body"); uncertain_markers += body.count("<->")
-        for chunk in re.split(r"\\.|<->",body):
+        for chunk in re.split(r"\.|<->",body):
             if CODE_RE.findall(chunk): short_words += 1
     expected=(EXPECTED_LOCI,EXPECTED_LONG_WORDS,EXPECTED_SHORT_WORDS,EXPECTED_UNCERTAIN_MARKERS,EXPECTED_STA_CODES)
     got=(stats["n_loci"],stats["n_long_words"],short_words,uncertain_markers,stats["n_sta_codes"])
