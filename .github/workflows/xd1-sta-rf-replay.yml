@@ -1,8 +1,11 @@
 name: XD1 STA RF representation replay
 on:
   push:
-    branches: [supergrammar-xd1-closeout-20260928]
-    paths: [".github/workflows/xd1-sta-rf-replay.yml"]
+    branches: [supergrammar-xd1-finalize-20260928]
+    paths:
+      - ".github/workflows/xd1-sta-rf-replay.yml"
+      - "research/xd1_sta_rf_repetition_20260928.py"
+      - "research/PROTOCOL_XD1_STA_RF_20260928.md"
 permissions:
   contents: read
 jobs:
