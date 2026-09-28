@@ -36,40 +36,36 @@ def base_id(w):
 
 def parse_doc(data:bytes):
     root=ET.fromstring(data)
-    # Canonical flat layer, following the already-verified ReM builder exactly.
+
+    # Canonical layer exactly matching the previously verified ReM builder.
     groups=collections.defaultdict(str); order=[]
     for w in root.iter(NS+"w"):
-        b=base_id(w); txt=re.sub(r"\s+","","".join(w.itertext()))
+        b=base_id(w); txt=re.sub(r"\\s+","","".join(w.itertext()))
         if b not in groups: order.append(b)
         groups[b]+=txt
     flat=[clean(groups[b]) for b in order if groups[b]]
     flat=[w for w in flat if w]
 
-    # Physical line layer. Iterate TEI elements in document order; lb is a hard boundary.
-    lines=[]; cur=[]; cur_base=None; cur_txt=""
-    def finish_token():
-        nonlocal cur_base,cur_txt
-        if cur_base is not None:
-            z=clean(cur_txt)
-            if z: cur.append(z)
-        cur_base=None;cur_txt=""
-    def finish_line():
-        finish_token()
-        if cur:
-            lines.append(list(cur));cur.clear()
+    # Physical-line assignment without breaking an original token.
+    # ReM may split one original token across an <lb>. All base-id segments
+    # are reconstructed first; the token is assigned to the line on which
+    # its FIRST segment begins.
+    line_idx=0
+    first_line={}
     for el in root.iter():
-        tag=el.tag
-        if tag==NS+"lb":
-            finish_line()
-        elif tag==NS+"w":
-            b=base_id(el); txt=re.sub(r"\s+","","".join(el.itertext()))
-            if cur_base is None:
-                cur_base=b;cur_txt=txt
-            elif b==cur_base:
-                cur_txt+=txt
-            else:
-                finish_token();cur_base=b;cur_txt=txt
-    finish_line()
+        if el.tag==NS+"lb":
+            line_idx+=1
+        elif el.tag==NS+"w":
+            b=base_id(el)
+            if b not in first_line:
+                first_line[b]=line_idx
+    line_map=collections.defaultdict(list)
+    for b in order:
+        if not groups[b]: continue
+        z=clean(groups[b])
+        if z:
+            line_map[first_line.get(b,0)].append(z)
+    lines=[line_map[k] for k in sorted(line_map) if line_map[k]]
     lined=[t for line in lines for t in line]
     return flat,lines,lined
 
