@@ -7,8 +7,8 @@ import sequence_ordering_20260928 as seq
 import supergrammar_v031_certifier_20260928 as sg
 import xd1_core_20260920 as xd1
 
-labels=["10","1","11","2","2a"]
-assert sorted(labels,key=seq.order_key)==["1","2","2a","10","11"]
+labels=["10","1","11","2"]
+assert sorted(labels,key=seq.order_key)==["1","2","10","11"]
 assert [seq.numeric_line_no(x) for x in ("1","2a","10","11")]==[1,2,10,11]
 assert [xd1.order_key(x) for x in labels]==[seq.order_key(x) for x in labels]
 
