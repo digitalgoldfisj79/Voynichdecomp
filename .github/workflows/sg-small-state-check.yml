@@ -68,8 +68,15 @@ jobs:
               d=produce_manuscript_detailed(spec,n_tokens=37465,seed=seed,tokens_per_line=10)
               m=compute_metrics(d['tokens'],lines=[d['tokens'][i:i+10] for i in range(0,len(d['tokens']),10)],seed=seed)
               s=score_84(m,baseline,TOLERANCES)
+              req=d['opener_requests']
+              fallback_rate=sum(x['fallback'] for x in req)/len(req)
+              mismatch_rate=sum(x['desired']!=x['realized'] for x in req)/len(req)
+              missing=sorted(set(x['desired'] for x in req if x['fallback']))
               runs.append({'seed':seed,'score84':s['n_pass'],'n84':s['n_total'],
                            'vertical':vertical(d['paragraphs']),
+                           'fallback_rate':fallback_rate,'mismatch_rate':mismatch_rate,
+                           'missing_requested_openers':missing,
+                           'available_start_openers':sorted(spec['_line_start_entries']),
                            'failed':s['fails']})
               print('RUN',json.dumps(runs[-1],sort_keys=True))
 
@@ -85,6 +92,10 @@ jobs:
             'paired_mean_difference':statistics.mean(paired),
             'score_median':statistics.median(scores),
             'score_range':[min(scores),max(scores)],
+            'fallback_rate_median':statistics.median([x['fallback_rate'] for x in runs]),
+            'mismatch_rate_median':statistics.median([x['mismatch_rate'] for x in runs]),
+            'missing_requested_openers':sorted(set(y for x in runs for y in x['missing_requested_openers'])),
+            'available_start_openers':sorted(spec['_line_start_entries']),
             'vertical_median':{
               k:statistics.median([x['vertical'][k] for x in runs if x['vertical'][k] is not None])
               for k in ('mi','same_rate','forward_share','n_pairs')
