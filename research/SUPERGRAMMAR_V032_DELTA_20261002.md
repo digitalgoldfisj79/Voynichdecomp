@@ -292,3 +292,20 @@ Adjudication:
 - the next falsification target is out-of-family structural prediction, not further fitting of the same opener transition matrix.
 
 Canonical handoff: `voynich_sgt13_wheel_residual_recovery_20261002_v01`.
+
+
+## Cross-Super-Grammar simple-state generalisation — 2026-10-02
+
+A frozen five-arm programme tested whether SGT13's compact-state principle generalises beyond the left margin.
+
+Results:
+- within-token order-2 grammar compresses to **current glyph + ~4–6 classes of the one-step-further-back context**. Across five EVA-family layers, K4 recovers 92.3–94.3% and K6 94.9–97.4% of the unrestricted order-2 incremental held-out gain. A fixed 19-hard-zero mask closes structural-zero leakage; repertoire/attestation remains unresolved.
+- token junctions compress to **previous tail2 + coarse length**. In ZLZI this beats exact previous-token identity by 0.05718 bits/opener; feature-permutation excess is +0.209889 bits with null SD 0.002791 = 75.20 SD. The advantage reproduces in all five layers.
+- recurrence compresses to coarse lag bands **1 / 2–5 / 6–12 / 13–32 / 33–64**. Banded gain over constant has effect +0.000030061 bits/opportunity relative to permuted lag labels, null SD 0.000001974 = 15.23 SD. A 64-lag lookup overfits.
+- section and Currier require **routing-weight modulation**, not a new topology in this test. Section excess over folio-label permutation = 10.84 SD; Currier = 9.88 SD.
+- adjacent ED1–3 is real (+1.7545 pp, null SD 0.1785 pp = 9.83 SD), but an edge-only explanation is rejected (-2.50 SD), and the frozen ten-operator Currier library does not resolve the adjacency effect (+0.3133 pp, null SD 0.2054 pp = 1.53 SD). Dedicated sequential ED1 mutation remains rejected by SGK14.
+
+Architectural synthesis: **a stack of small local finite-state controllers**, not one universal wheel. The remaining principal missing module is repertoire/token-popularity/reuse: after local legality is compactly generated, attested-token rate still misses by 5.7–13.5 simulation SD.
+
+Canonical handoff: `voynich_simple_state_generalisation_20261002_v01`.
+Research note: `research/SGT_SIMPLE_STATE_GENERALISATION_20261002.md` (commit `3da88302685a3b2e710f63735d4cd50550dc6ce8`).
