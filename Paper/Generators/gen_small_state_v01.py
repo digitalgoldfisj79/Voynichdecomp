@@ -100,13 +100,14 @@ class SmallStateScribe(P70CScribe):
 
     def forced_line_start(self,desired):
         cand=self.start_entries.get(desired,[])
-        if not cand:
+        fallback=not bool(cand)
+        if fallback:
             # fallback only if the exact opener is absent from valid FIRST quints
             cand=self.all_start_entries
         weights=[max(float(e.get('count',1)),1.0) for e in cand]
         e=self.rng.choices(cand,weights=weights,k=1)[0]
         tok,slots=self._entry_token(e)
-        return tok,slots,atom_start(tok)
+        return tok,slots,atom_start(tok),fallback
 
     def sample_paragraph_length(self):
         return int(weighted_choice(self.rng,self.wheel['paragraph_length']))
@@ -136,7 +137,7 @@ class SmallStateScribe(P70CScribe):
         return weighted_choice(self.rng,R['bg'])
 
     def write_section_detailed(self,n_tokens,tokens_per_line=10):
-        corpus=[]; lines=[]; paragraphs=[]; current_para=[]
+        corpus=[]; lines=[]; paragraphs=[]; current_para=[]; opener_requests=[]
         slots_history=[]; prev_sfx='LINE_START'
         para_left=0; para_index=0; prev_opener=None
 
@@ -154,7 +155,8 @@ class SmallStateScribe(P70CScribe):
                 desired=self.next_opener(prev_opener,para_index-1)
 
             line=[]; line_slots=[]
-            tok,slots,realized=self.forced_line_start(desired)
+            tok,slots,realized,fallback=self.forced_line_start(desired)
+            opener_requests.append({'desired':desired,'realized':realized,'fallback':fallback})
             line.append(tok); line_slots.append(slots)
             slots_history.append(slots)
             prev_sfx=slots[3]
@@ -180,12 +182,12 @@ class SmallStateScribe(P70CScribe):
 
         if current_para:
             paragraphs.append(current_para)
-        return {'tokens':corpus,'lines':lines,'paragraphs':paragraphs}
+        return {'tokens':corpus,'lines':lines,'paragraphs':paragraphs,'opener_requests':opener_requests}
 
 def produce_manuscript_detailed(spec,n_tokens=37465,seed=42,tokens_per_line=10):
     total_vms=sum(spec['section_counts'].values())
     sections=spec['sections']
-    out_tokens=[];out_lines=[];out_paras=[];remaining=n_tokens
+    out_tokens=[];out_lines=[];out_paras=[];out_requests=[];remaining=n_tokens
     for idx,section in enumerate(sections):
         if idx==len(sections)-1:
             n_sec=remaining
@@ -195,8 +197,8 @@ def produce_manuscript_detailed(spec,n_tokens=37465,seed=42,tokens_per_line=10):
         remaining-=n_sec
         s=SmallStateScribe(spec,section=section,seed=seed+idx*1000)
         d=s.write_section_detailed(n_sec,tokens_per_line=tokens_per_line)
-        out_tokens.extend(d['tokens']);out_lines.extend(d['lines']);out_paras.extend(d['paragraphs'])
-    return {'tokens':out_tokens[:n_tokens],'lines':out_lines,'paragraphs':out_paras}
+        out_tokens.extend(d['tokens']);out_lines.extend(d['lines']);out_paras.extend(d['paragraphs']);out_requests.extend(d['opener_requests'])
+    return {'tokens':out_tokens[:n_tokens],'lines':out_lines,'paragraphs':out_paras,'opener_requests':out_requests}
 
 def produce_manuscript(spec,n_tokens=37465,seed=42):
     return produce_manuscript_detailed(spec,n_tokens=n_tokens,seed=seed)['tokens']
