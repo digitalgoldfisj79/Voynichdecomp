@@ -268,3 +268,27 @@ The correct next mechanism class is a constrained multi-state / multi-ring cycli
 
 Code: `research/sgt13_literal_wheel_sim_20261002.py` (commit `10f186ca8f858d974c299182050cb60b9804d2d5`).
 Canonical result handoff: `voynich_sgt13_literal_wheel_simulation_20261002_v01`.
+
+
+## Wheel residual recovery — 2026-10-02
+
+The +17.90-SD full-transition-MI deficit of the literal three-anchor wheel was decomposed rather than treated as a generic failure.
+
+Progressive architecture:
+- paragraph-entry/continuation split: simulated MI deficit **+12.08 SD**; held-out model captures 93.3% of full-Markov gain.
+- anchor-specific off-wheel exit destinations: deficit **+5.05 SD**; captures 97.7% of full-Markov gain.
+- anchor-specific exits + off-wheel source-specific re-entry routing: simulated MI mean .168168 vs observed .184656, SD .010168; effect **+.016489 = +1.62 SD**. **The metric does not resolve a difference.** Held-out model captures 98.4% of full-Markov predictive gain.
+
+The successful architecture is therefore a **d/q/y core wheel plus exit/re-entry spokes**, not a second independent wheel. A forced second ring over common off-wheel states was rejected because its direction reversed in 2/5 held-out folio blocks.
+
+Compression checks:
+- K=5 spoke-routing classes was initially a near-pass, but a 3,000-simulation replay moved the MI residual to **+2.054 SD**; RETRACT any earlier K=5 closure language.
+- K=12 classes closes aggregate MI at **+1.594 SD** and retains ~99.0% of full-Markov held-out gain with ~216 vs ~360 approximate free parameters.
+- A 150-parameter continuation-spoke model slightly beats full Markov on held-out cross entropy but still misses MI by **+3.08 SD**, showing that predictive closure alone is insufficient.
+
+Adjudication:
+- the original 17.90-SD residual is **recovered** by a wheel+spokes first-order opener mechanism;
+- no literal physical device is inferred;
+- the next falsification target is out-of-family structural prediction, not further fitting of the same opener transition matrix.
+
+Canonical handoff: `voynich_sgt13_wheel_residual_recovery_20261002_v01`.
