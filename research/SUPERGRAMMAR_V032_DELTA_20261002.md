@@ -241,3 +241,30 @@ Key bounds:
 This refinement does **not** add a new mechanism claim. It narrows the licensed SGT13 architecture. The frozen Nuremberg Letterbooks 2–5 control remains the decisive external control still to replay; the public Zenodo dataset is 262 MB and could not be re-fetched in the current runtime.
 
 Canonical deep-dive handoff: `voynich_vertical_opener_architecture_deepdive_20261002_v01`.
+
+
+## Literal d/q/y wheel simulation — 2026-10-02
+
+A deliberately literal visible-state wheel was built and tested on true ZL3b paragraph sequences. From d/q/y, the process can stay, rotate clockwise d→q→y→d, rotate anticlockwise, or exit to a background opener state X; X can re-enter d/q/y or remain background. Paragraphs are independently seeded.
+
+Five-fold held-out by folio number mod 5:
+- IID: 3.348850 bits/opener
+- literal wheel: 3.009618 bits/opener
+- unrestricted 19-state first-order Markov: 2.962800 bits/opener
+
+The literal wheel captures **87.87%** of the unrestricted Markov gain over IID while using ~39 vs ~360 free parameters (~10.8%). Fitted all-data moves: stay .09337, clockwise .22963, anticlockwise .13735, exit .53965. Clockwise > anticlockwise in every held-out training fold.
+
+In 1,000 generated corpora preserving paragraph lengths:
+- observed d/q/y directional difference +128; simulated mean +129.226, SD 21.510; effect -1.226 = **-0.057 SD, unresolved**.
+- observed forward share .625984; simulated .627588, SD .020437; effect = **-0.078 SD, unresolved**.
+- observed same-opener rate .072159; simulated .079957, SD .004683; effect = **-1.67 SD, unresolved**.
+- observed full opener-transition MI .184656 bits; simulated .074655, SD .006147; excess **+0.110001 bits = +17.90 SD**.
+
+Adjudication:
+- **Literal d/q/y wheel as a compact component: strongly supported.**
+- **Three-anchor wheel as the complete SGT13 mechanism: falsified.**
+
+The correct next mechanism class is a constrained multi-state / multi-ring cyclic opener machine, because the d/q/y wheel captures most held-out predictive gain but cannot reproduce the full directed transition matrix.
+
+Code: `research/sgt13_literal_wheel_sim_20261002.py` (commit `10f186ca8f858d974c299182050cb60b9804d2d5`).
+Canonical result handoff: `voynich_sgt13_literal_wheel_simulation_20261002_v01`.
