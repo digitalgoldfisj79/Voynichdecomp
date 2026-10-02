@@ -1,4 +1,4 @@
-name: SG small-state harness check
+name: SG small-state forward test
 on:
   push:
     branches:
@@ -6,24 +6,83 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  score-ss1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Inspect required data
+      - name: Install scoring dependencies
+        run: pip install numpy scipy
+      - name: Score SS1 on frozen 84-metric harness
         run: |
           python - <<'PY'
+          import json, math, pickle, statistics, sys
           from pathlib import Path
-          for p in [
-              Path('Paper/enriched_records.pkl'),
-              Path('Paper/data/enriched_records.pkl'),
-              Path('Paper/p70c_full_spec_v1.json'),
-              Path('Paper/data/p70c_full_spec_v1.json'),
-              Path('Paper/score_85_metrics.py'),
-              Path('Paper/reproduce_s3.py'),
-          ]:
-              print(p, p.exists(), p.stat().st_size if p.exists() else None)
+          sys.path.insert(0,'Paper')
+          sys.path.insert(0,'Paper/Generators')
+          from gen_small_state_v01 import build_spec, produce_manuscript_detailed, atom_start
+          from score_85_metrics import compute_metrics, TOLERANCES
+          from reproduce_s3 import score_84
+
+          spec=build_spec(
+              p70c_path='Paper/p70c_full_spec_v1.json',
+              records_path='enriched_records.pkl',
+              wheel_path='research/sgt13_wheel_spokes_params_20261002.json')
+          with open('Paper/s3_vms_baseline.pkl','rb') as f:
+              baseline=pickle.load(f)
+
+          def vertical(paragraphs):
+              pairs=[]
+              for para in paragraphs:
+                  ops=[atom_start(line[0]) for line in para if line]
+                  ops=[x for x in ops if x]
+                  pairs.extend(zip(ops,ops[1:]))
+              n=len(pairs)
+              joint={}; row={}; col={}; same=0; F=B=0
+              for a,b in pairs:
+                  joint[a,b]=joint.get((a,b),0)+1
+                  row[a]=row.get(a,0)+1; col[b]=col.get(b,0)+1
+                  same += a==b
+                  F += (a,b) in (('d','q'),('q','y'),('y','d'))
+                  B += (a,b) in (('q','d'),('y','q'),('d','y'))
+              mi=0.0
+              for (a,b),c in joint.items():
+                  mi+=(c/n)*math.log2((c*n)/(row[a]*col[b]))
+              return {'n_pairs':n,'mi':mi,'same_rate':same/n,
+                      'F':F,'B':B,'forward_share':F/(F+B) if F+B else None}
+
+          runs=[]
+          for seed in range(42,47):
+              d=produce_manuscript_detailed(spec,n_tokens=37465,seed=seed,tokens_per_line=10)
+              m=compute_metrics(d['tokens'],lines=d['lines'],seed=seed)
+              s=score_84(m,baseline,TOLERANCES)
+              runs.append({'seed':seed,'score84':s['n_pass'],'n84':s['n_total'],
+                           'vertical':vertical(d['paragraphs']),
+                           'failed':s['fails']})
+              print('RUN',json.dumps(runs[-1],sort_keys=True))
+
+          scores=[x['score84'] for x in runs]
+          summary={
+            'model':'SS1_GENSP_PLUS_FROZEN_WHEEL_LINE_START_ONLY',
+            'historical_GenSP_baseline':'59/84 [56-61]',
+            'score_median':statistics.median(scores),
+            'score_range':[min(scores),max(scores)],
+            'vertical_median':{
+              k:statistics.median([x['vertical'][k] for x in runs if x['vertical'][k] is not None])
+              for k in ('mi','same_rate','forward_share','n_pairs')
+            },
+            'vertical_targets':{
+              'mi':0.18465625645001546,
+              'same_rate':0.07215874924834637,
+              'forward_share':0.6259842519685039
+            }
+          }
+          print('FINAL_JSON',json.dumps(summary,sort_keys=True))
+          Path('ss1_result.json').write_text(json.dumps({'summary':summary,'runs':runs},indent=2))
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ss1-result
+          path: ss1_result.json
