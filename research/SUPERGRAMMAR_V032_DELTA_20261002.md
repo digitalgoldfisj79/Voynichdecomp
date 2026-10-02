@@ -219,3 +219,25 @@ The following stronger models are not supported by the present tests:
 - a unique three-state d/q/y wheel.
 
 The d/q/y cycle remains a real, dominant directed substructure inside a broader opener-state transition network.
+
+
+## SGT13 architecture refinement — 2026-10-02
+
+Subsequent independent VoynichStats and paragraph-aware ZL3b tests sharpen SGT13 from a generic vertical dependency to a bounded architectural statement:
+
+> **SGT13 is best modelled as a paragraph-local, first-order, left-margin opener state process.** The previous physical line's opener predicts the next line's opener after the previous line ending and line length are known; the reverse conditional contribution of the previous line ending does not resolve. The state resets at paragraph boundaries, does not require order-2 memory, and does not propagate as a direct vertical dependence through token positions 2–5 or into the remainder of the next first word once the current opener is known.
+
+Key bounds:
+- True-paragraph opener unique contribution after previous ending + line length: +0.033347 bits / null SD 0.008373 = **+3.98 SD**.
+- Previous ending after previous opener + length: -0.006207 / 0.007975 = **-0.78 SD; metric does not resolve**.
+- Across paragraph boundaries: opener MI effect -0.004769 / 0.018583 = **-0.26 SD; metric does not resolve**; d/q/y direction = **+1.78 SD**, unresolved.
+- True-paragraph order-2 residual I(O_i;O_{i+2}|O_{i+1},section): +0.015763 bits / 0.012044 = **+1.31 SD; metric does not resolve**.
+- Same-column positions 2–5 after conditioning horizontal-left neighbours: ZLZI **-0.41, +0.90, -0.06, -0.14 SD**, all unresolved; replicated as unresolved across ZLZB/TTLI/VDRB/TTIA.
+- Previous opener -> next first-word remainder after current opener/previous ending/length: ZLZI **+0.16 SD**, unresolved; first-word final **-0.43 SD**, unresolved; alternate transcriptions likewise unresolved.
+- d/q/y under a fixed-diagonal degree-preserving null (all self-transitions fixed; off-diagonal source/target marginals preserved within Currier×hand×paragraph-position): effect +109.571 transitions / null SD 21.0859 = **+5.20 SD**.
+- Frequent-opener Hodge decomposition: total directed energy excess **+11.58 SD**; global-order/gradient component excess **+20.91 SD**, but it explains only 12.64% of observed energy; non-gradient/cyclic residual excess **+9.86 SD**. Thus a monotone opener hierarchy exists but does not explain most directed structure.
+- Historical physical-line control Enikel Weltchronik ONB Cod. 2921 (1397), N=3231 adjacent lines: opener-after-ending/length effect -0.000554 bits / null SD 0.011258 = **-0.05 SD; metric does not resolve**.
+
+This refinement does **not** add a new mechanism claim. It narrows the licensed SGT13 architecture. The frozen Nuremberg Letterbooks 2–5 control remains the decisive external control still to replay; the public Zenodo dataset is 262 MB and could not be re-fetched in the current runtime.
+
+Canonical deep-dive handoff: `voynich_vertical_opener_architecture_deepdive_20261002_v01`.
