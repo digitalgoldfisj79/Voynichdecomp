@@ -23,6 +23,7 @@ jobs:
           sys.path.insert(0,'Paper')
           sys.path.insert(0,'Paper/Generators')
           from gen_small_state_v01 import build_spec, produce_manuscript_detailed, atom_start
+          import gen_scribal_p70c as baseline_gen
           from score_85_metrics import compute_metrics, TOLERANCES
           from reproduce_s3 import score_84
 
@@ -30,6 +31,9 @@ jobs:
               p70c_path='Paper/p70c_full_spec_v1.json',
               records_path='enriched_records.pkl',
               wheel_path='research/sgt13_wheel_spokes_params_20261002.json')
+          base_spec=baseline_gen.build_p70c_spec(
+              p70c_path='Paper/p70c_full_spec_v1.json',
+              records_path='enriched_records.pkl')
           with open('Paper/s3_vms_baseline.pkl','rb') as f:
               baseline=pickle.load(f)['metrics']
 
@@ -54,7 +58,13 @@ jobs:
                       'F':F,'B':B,'forward_share':F/(F+B) if F+B else None}
 
           runs=[]
+          base_runs=[]
           for seed in range(42,47):
+              bt=baseline_gen.produce_manuscript(base_spec,n_tokens=37465,seed=seed)
+              bm=compute_metrics(bt,lines=[bt[i:i+10] for i in range(0,len(bt),10)],seed=seed)
+              bs=score_84(bm,baseline,TOLERANCES)
+              base_runs.append({'seed':seed,'score84':bs['n_pass'],'n84':bs['n_total'],'failed':bs['fails']})
+              print('BASE_RUN',json.dumps(base_runs[-1],sort_keys=True))
               d=produce_manuscript_detailed(spec,n_tokens=37465,seed=seed,tokens_per_line=10)
               m=compute_metrics(d['tokens'],lines=[d['tokens'][i:i+10] for i in range(0,len(d['tokens']),10)],seed=seed)
               s=score_84(m,baseline,TOLERANCES)
@@ -64,9 +74,15 @@ jobs:
               print('RUN',json.dumps(runs[-1],sort_keys=True))
 
           scores=[x['score84'] for x in runs]
+          base_scores=[x['score84'] for x in base_runs]
+          paired=[a-b for a,b in zip(scores,base_scores)]
           summary={
             'model':'SS1_GENSP_PLUS_FROZEN_WHEEL_LINE_START_ONLY',
             'historical_GenSP_baseline':'59/84 [56-61]',
+            'matched_GenSP_median':statistics.median(base_scores),
+            'matched_GenSP_range':[min(base_scores),max(base_scores)],
+            'paired_score_differences_SS1_minus_GenSP':paired,
+            'paired_mean_difference':statistics.mean(paired),
             'score_median':statistics.median(scores),
             'score_range':[min(scores),max(scores)],
             'vertical_median':{
@@ -80,7 +96,7 @@ jobs:
             }
           }
           print('FINAL_JSON',json.dumps(summary,sort_keys=True))
-          Path('ss1_result.json').write_text(json.dumps({'summary':summary,'runs':runs},indent=2))
+          Path('ss1_result.json').write_text(json.dumps({'summary':summary,'runs':runs,'baseline_runs':base_runs},indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
