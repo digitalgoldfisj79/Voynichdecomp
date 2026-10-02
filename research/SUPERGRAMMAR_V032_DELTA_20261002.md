@@ -117,3 +117,105 @@ SGT13 licenses a vertical adjacent-line opener state. It does **not** license a 
 4. No change to the frozen v03 release until a new release manifest is built.
 
 Canonical analytical handoff: `voynich_vertical_opener_transition_program_20261002_v01`.
+
+
+## SGT13 architecture decomposition — independent VoynichStats replay (2026-10-02)
+
+This follow-up asks what SGT13 actually represents rather than merely whether the opener correlation exists. It uses VoynichStats full physical-line dumps as an implementation-separate corpus route, with ZL3b metadata joined only for paragraph/Currier/hand controls.
+
+### Corrections / discarded analysis
+
+- An initial folio-held-out categorical likelihood comparison was discarded because adding high-cardinality opener/end states with naive Laplace smoothing caused systematic sparse-cell overfitting. Its negative held-out gains are not evidence against SGT13 and are not used below.
+- The independent alignment yields 4,117 mapped paragraph lines and 3,343 adjacent within-paragraph pairs rather than the primary parser's 4,130 loci / 3,326 eligible pairs. Thirteen ZL3b paragraph lines did not map to the VoynichStats line dump and the independent opener eligibility/order implementation differs slightly. All architecture conclusions below are therefore treated as an independent sensitivity layer, not a replacement of the frozen primary counts.
+
+### SG13-A — the information channel is opener→opener, not ordinary line-end continuity
+
+Condition on section × Currier × hand × exact paragraph-line position, previous line ending, and previous line-length bin:
+
+- previous opener → next opener: effect **+0.0238688 bits**, null SD **0.0064337**, **+3.71 SD**, empirical upper p=.001.
+- previous ending → next opener after previous opener is known: **the metric does not resolve this**; effect **+0.0013833 bits**, null SD **0.0061667**, **+0.22 SD**.
+
+Removing all paragraph line1→line2 transitions still leaves previous opener → next opener at effect **+0.0249125 bits**, null SD **0.0082133**, **+3.03 SD**.
+
+Interpretation licensed: the adjacent vertical information is not explained by the physically preceding line ending and is not a paragraph-top artefact.
+
+### SG13-B — the channel is mostly first-order in vertical distance
+
+Given the immediately previous opener plus section/Currier/hand/position:
+
+- opener two lines back → current opener: **the metric does not resolve this**. Exact-position effect **+0.0132953 bits**, null SD **0.0078209**, **+1.70 SD**; capped-position sensitivity **+0.0123757 bits**, null SD **0.0093033**, **+1.33 SD**.
+
+This bounds SGT13 to a mostly first-order vertical process at current resolution; it does not prove all longer-range opener dependence is zero.
+
+### SG13-C — the previous opener does not control the next line body once the new opener is known
+
+Condition on section/Currier/hand/position, previous line ending, previous line length, and the current line opener.
+
+Residual previous-opener effects:
+- next-line length: **the metric does not resolve this**; +0.0031335 bits / null SD 0.0039328 = **+0.80 SD**.
+- second-token opener: **the metric does not resolve this**; +0.0014404 / 0.0039957 = **+0.36 SD**.
+- first-token ending: **the metric does not resolve this**; +0.0000417 / 0.0041366 = **+0.01 SD**.
+- line ending: no positive residual; observed CMI is below its matched-null mean by -0.0105542 bits / null SD 0.0041655 = **-2.53 SD**.
+
+Likewise, once the previous opener is known, extra features of the previous first word do not predict the next opener:
+- previous first-word second atom: **the metric does not resolve this**, +0.0016866 / 0.0040262 = **+0.42 SD**.
+- previous first-word ending: **the metric does not resolve this**, -0.0047399 / 0.0045662 = **-1.04 SD**.
+- previous first-word length: **the metric does not resolve this**, -0.0051303 / 0.0046549 = **-1.10 SD**.
+
+And once the current opener is known, the previous opener does not resolve details of the current first word:
+- current first-word second atom: **the metric does not resolve this**, +0.0020968 / 0.0036691 = **+0.57 SD**.
+- current first-word ending: **the metric does not resolve this**, -0.0002337 / 0.0041259 = **-0.06 SD**.
+- current first-word length: **the metric does not resolve this**, +0.0031650 / 0.0042599 = **+0.74 SD**.
+
+Licensed interpretation: the cross-line state is astonishingly narrow — opener atom → next opener atom — rather than first-word→first-word or previous line-state→next line-body.
+
+### SG13-D — simple anti-repetition is insufficient
+
+Independent VoynichStats representation, with every observed same-opener transition frozen exactly and section/Currier/hand/position opener marginals preserved:
+
+- d/q/y directional excess: effect **+106.522 transitions**, null SD **19.4847**, **+5.47 SD**.
+- total antisymmetric directional-flow Frobenius norm: effect **+17.2182**, null SD **2.42755**, **+7.09 SD**.
+
+Therefore the d/q/y direction and broader directional flow cannot be generated merely by avoiding identical consecutive initials.
+
+### SG13-E — d/q/y is a dominant subcycle, not the whole directed system
+
+After matched-stratum marginal removal, the antisymmetric residual transition matrix across 11 common opener states has:
+
+- total directional residual norm: effect **+37.194**, null SD **4.1148**, **+9.04 SD**.
+- leading rank-2 antisymmetric concentration: **the metric does not resolve a single low-rank wheel**; effect **+0.1388**, null SD **0.08743**, **+1.59 SD**.
+- d/q/y share of directional residual energy: observed **45.46%** vs null mean **14.45%**; effect **+31.01 percentage points**, null SD **9.98 pp**, **+3.11 SD**.
+
+After removing all paragraph line1→line2 transitions:
+- total directional residual: **+8.57 SD**.
+- leading-mode concentration: **the metric does not resolve this**, **+1.53 SD**.
+- d/q/y residual-energy share observed **52.70%** vs null **16.12%**; effect **+36.58 pp**, null SD **10.44 pp**, **+3.50 SD**.
+
+Thus a literal three-state wheel is not identified. The data support a broader directed opener-transition network in which d/q/y is an unusually strong subcycle.
+
+### Pre-fixed medieval prose controls
+
+Two multi-page witnesses from the pre-existing CREMMA prose control set were run with the same start→start versus end→start decomposition:
+
+- BnF fr. 1728: **the metric does not resolve vertical opener dependence**; effect **-0.007113 bits**, null SD **0.010792**, **-0.66 SD**.
+- KBR 9232 Examens Moraux: **the metric does not resolve vertical opener dependence**; effect **+0.004198 bits**, null SD **0.010637**, **+0.39 SD**.
+
+This is preliminary external bounding only: two controls do not establish Voynich-specificity.
+
+### Architecture verdict
+
+The strongest currently licensed model is:
+
+`previous physical-line opener atom → next physical-line opener atom`
+
+with a mostly first-order transition law.
+
+The following stronger models are not supported by the present tests:
+
+- normal sequential end-of-line carryover as the source of SGT13;
+- whole previous first-word morphology as the transmitted state;
+- a previous-opener state that directly governs the rest of the next line after its opener is chosen;
+- simple same-initial avoidance;
+- a unique three-state d/q/y wheel.
+
+The d/q/y cycle remains a real, dominant directed substructure inside a broader opener-state transition network.
