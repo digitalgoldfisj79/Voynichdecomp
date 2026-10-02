@@ -27,13 +27,15 @@ These global coordinates may shift root/edge/operator frequencies, but do not ge
 - Off-wheel source-specific re-entry routing.
 - At line break: horizontal junction channel attenuates/resets while vertical opener state carries.
 
-### 3. Within-line position
-Exactly three states:
+### 3. Within-line position — corrected two-coordinate module
+Root/repertoire selection uses five relative-position bins across the physical line. A decile refinement after these five bins leaves only +0.002186 bits / null SD 0.002354 = +0.93 SD; the metric does not resolve it.
+
+Conditional on the selected root, surface morphology uses three states:
 - INITIAL
 - MEDIAL
 - FINAL
 
-Finer relative position is not resolved after this state for token initial/final atoms.
+Thus fine position selects **what root/repertoire item is used**, while I/M/F controls **how that selected root is surfaced**. Do not collapse these two coordinates.
 
 ### 4. Within-token graphotactics
 - Order-2 atom memory.
