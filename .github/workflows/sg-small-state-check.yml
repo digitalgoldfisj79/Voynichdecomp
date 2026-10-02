@@ -31,7 +31,7 @@ jobs:
               records_path='enriched_records.pkl',
               wheel_path='research/sgt13_wheel_spokes_params_20261002.json')
           with open('Paper/s3_vms_baseline.pkl','rb') as f:
-              baseline=pickle.load(f)
+              baseline=pickle.load(f)['metrics']
 
           def vertical(paragraphs):
               pairs=[]
@@ -56,7 +56,7 @@ jobs:
           runs=[]
           for seed in range(42,47):
               d=produce_manuscript_detailed(spec,n_tokens=37465,seed=seed,tokens_per_line=10)
-              m=compute_metrics(d['tokens'],lines=d['lines'],seed=seed)
+              m=compute_metrics(d['tokens'],lines=[d['tokens'][i:i+10] for i in range(0,len(d['tokens']),10)],seed=seed)
               s=score_84(m,baseline,TOLERANCES)
               runs.append({'seed':seed,'score84':s['n_pass'],'n84':s['n_total'],
                            'vertical':vertical(d['paragraphs']),
