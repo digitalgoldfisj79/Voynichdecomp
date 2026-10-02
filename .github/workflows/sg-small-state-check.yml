@@ -1,0 +1,29 @@
+name: SG small-state harness check
+on:
+  push:
+    branches:
+      - supergrammar-v032-vertical-opener-20261002
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Inspect required data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in [
+              Path('Paper/enriched_records.pkl'),
+              Path('Paper/data/enriched_records.pkl'),
+              Path('Paper/p70c_full_spec_v1.json'),
+              Path('Paper/data/p70c_full_spec_v1.json'),
+              Path('Paper/score_85_metrics.py'),
+              Path('Paper/reproduce_s3.py'),
+          ]:
+              print(p, p.exists(), p.stat().st_size if p.exists() else None)
+          PY
