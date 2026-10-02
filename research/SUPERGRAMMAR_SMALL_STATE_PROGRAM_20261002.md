@@ -1,3 +1,7 @@
+# RETRACTION / CORRECTION — POSITION STATE — 2026-10-02
+
+RETRACT any unqualified wording that line position is fully reducible to INITIAL/MEDIAL/FINAL. The earlier closure was conditional on current root. Independent five-transcription replay shows strong fine-position effects on raw token edge distributions after I/M/F alone (ZLZI opener effect +0.013695 bits / null SD 0.0003063 = +44.71 SD; final +0.002327 / 0.0003223 = +7.22 SD; all alternate transcriptions replicate). Correct architecture: **fine line position controls root/repertoire selection; conditional on the chosen root, surface morphology is adequately represented by I/M/F at current resolution.**
+
 # Super-Grammar small-state architecture programme — 2026-10-02
 
 Status: exploratory architecture freeze; not a certified theorem.
