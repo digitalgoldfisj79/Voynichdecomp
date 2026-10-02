@@ -1,0 +1,115 @@
+name: SG small-state forward test
+on:
+  push:
+    branches:
+      - supergrammar-v032-vertical-opener-20261002
+  workflow_dispatch:
+
+jobs:
+  score-ss1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scoring dependencies
+        run: pip install numpy scipy
+      - name: Score SS1 on frozen 84-metric harness
+        run: |
+          python - <<'PY'
+          import json, math, pickle, statistics, sys
+          from pathlib import Path
+          sys.path.insert(0,'Paper')
+          sys.path.insert(0,'Paper/Generators')
+          from gen_small_state_v01 import build_spec, produce_manuscript_detailed, atom_start
+          import gen_scribal_p70c as baseline_gen
+          from score_85_metrics import compute_metrics, TOLERANCES
+          from reproduce_s3 import score_84
+
+          spec=build_spec(
+              p70c_path='Paper/p70c_full_spec_v1.json',
+              records_path='enriched_records.pkl',
+              wheel_path='research/sgt13_wheel_spokes_params_20261002.json')
+          base_spec=baseline_gen.build_p70c_spec(
+              p70c_path='Paper/p70c_full_spec_v1.json',
+              records_path='enriched_records.pkl')
+          with open('Paper/s3_vms_baseline.pkl','rb') as f:
+              baseline=pickle.load(f)['metrics']
+
+          def vertical(paragraphs):
+              pairs=[]
+              for para in paragraphs:
+                  ops=[atom_start(line[0]) for line in para if line]
+                  ops=[x for x in ops if x]
+                  pairs.extend(zip(ops,ops[1:]))
+              n=len(pairs)
+              joint={}; row={}; col={}; same=0; F=B=0
+              for a,b in pairs:
+                  joint[a,b]=joint.get((a,b),0)+1
+                  row[a]=row.get(a,0)+1; col[b]=col.get(b,0)+1
+                  same += a==b
+                  F += (a,b) in (('d','q'),('q','y'),('y','d'))
+                  B += (a,b) in (('q','d'),('y','q'),('d','y'))
+              mi=0.0
+              for (a,b),c in joint.items():
+                  mi+=(c/n)*math.log2((c*n)/(row[a]*col[b]))
+              return {'n_pairs':n,'mi':mi,'same_rate':same/n,
+                      'F':F,'B':B,'forward_share':F/(F+B) if F+B else None}
+
+          runs=[]
+          base_runs=[]
+          for seed in range(42,47):
+              bt=baseline_gen.produce_manuscript(base_spec,n_tokens=37465,seed=seed)
+              bm=compute_metrics(bt,lines=[bt[i:i+10] for i in range(0,len(bt),10)],seed=seed)
+              bs=score_84(bm,baseline,TOLERANCES)
+              base_runs.append({'seed':seed,'score84':bs['n_pass'],'n84':bs['n_total'],'failed':bs['fails']})
+              print('BASE_RUN',json.dumps(base_runs[-1],sort_keys=True))
+              d=produce_manuscript_detailed(spec,n_tokens=37465,seed=seed,tokens_per_line=10)
+              m=compute_metrics(d['tokens'],lines=[d['tokens'][i:i+10] for i in range(0,len(d['tokens']),10)],seed=seed)
+              s=score_84(m,baseline,TOLERANCES)
+              req=d['opener_requests']
+              fallback_rate=sum(x['fallback'] for x in req)/len(req)
+              mismatch_rate=sum(x['desired']!=x['realized'] for x in req)/len(req)
+              missing=sorted(set(x['desired'] for x in req if x['fallback']))
+              runs.append({'seed':seed,'score84':s['n_pass'],'n84':s['n_total'],
+                           'vertical':vertical(d['paragraphs']),
+                           'fallback_rate':fallback_rate,'mismatch_rate':mismatch_rate,
+                           'missing_requested_openers':missing,
+                           'available_start_openers':sorted(spec['_line_start_entries']),
+                           'failed':s['fails']})
+              print('RUN',json.dumps(runs[-1],sort_keys=True))
+
+          scores=[x['score84'] for x in runs]
+          base_scores=[x['score84'] for x in base_runs]
+          paired=[a-b for a,b in zip(scores,base_scores)]
+          summary={
+            'model':'SS1_GENSP_PLUS_FROZEN_WHEEL_LINE_START_ONLY',
+            'historical_GenSP_baseline':'59/84 [56-61]',
+            'matched_GenSP_median':statistics.median(base_scores),
+            'matched_GenSP_range':[min(base_scores),max(base_scores)],
+            'paired_score_differences_SS1_minus_GenSP':paired,
+            'paired_mean_difference':statistics.mean(paired),
+            'score_median':statistics.median(scores),
+            'score_range':[min(scores),max(scores)],
+            'fallback_rate_median':statistics.median([x['fallback_rate'] for x in runs]),
+            'mismatch_rate_median':statistics.median([x['mismatch_rate'] for x in runs]),
+            'missing_requested_openers':sorted(set(y for x in runs for y in x['missing_requested_openers'])),
+            'available_start_openers':sorted(spec['_line_start_entries']),
+            'vertical_median':{
+              k:statistics.median([x['vertical'][k] for x in runs if x['vertical'][k] is not None])
+              for k in ('mi','same_rate','forward_share','n_pairs')
+            },
+            'vertical_targets':{
+              'mi':0.18465625645001546,
+              'same_rate':0.07215874924834637,
+              'forward_share':0.6259842519685039
+            }
+          }
+          print('FINAL_JSON',json.dumps(summary,sort_keys=True))
+          Path('ss1_result.json').write_text(json.dumps({'summary':summary,'runs':runs,'baseline_runs':base_runs},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ss1-result
+          path: ss1_result.json
