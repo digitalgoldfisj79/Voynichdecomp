@@ -30,7 +30,7 @@ def fit_split(Q):
     for s in range(m["NSIG"]):
         ix=np.where((cur[:TRAIN]==s))[0]
         if len(ix)<20:continue
-        km=KMeans(n_clusters=2,n_init=20,random_state=20261004+s,max_iter=300).fit(F[ix])
+        km=KMeans(n_clusters=2,n_init=5,random_state=20261004+s,max_iter=300).fit(F[ix])
         models[s]=km
     return models,F,cur
 
@@ -100,9 +100,9 @@ def one(fam,seed):
       "sections":secs}
 
 if __name__=="__main__":
-    specs=[(f,s) for f in ("LANG","NOTATION","TABLE") for s in (20262401,20262402,20262403,20262404,20262405)]
+    specs=[(f,s) for f in ("LANG","NOTATION","TABLE") for s in (20262401,20262402,20262403)]
     out=[]
-    with ProcessPoolExecutor(max_workers=15) as ex:
+    with ProcessPoolExecutor(max_workers=9) as ex:
         fut={ex.submit(one,*x):x for x in specs}
         for q in as_completed(fut):
             r=q.result();out.append(r);print("L2B_REP_JSON="+json.dumps(r,separators=(",",":")),flush=True)
