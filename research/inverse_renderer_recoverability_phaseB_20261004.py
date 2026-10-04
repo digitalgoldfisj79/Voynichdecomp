@@ -13,7 +13,8 @@ exec(compile(urllib.request.urlopen(BASE_URL,timeout=60).read().decode(),BASE_UR
 
 P0=m["P0"]; SUPPORT=m["SUPPORT"]; LOGP0=m["LOGP0"]; NCTX=m["NCTX"]; NOPT=m["NOPT"]; END=m["END"]
 KFORM=m["KFORM"]; rows=m["rows"]
-FLOOR_MIX=0.0  # retained only for result-schema compatibility; END is now exactly frozen
+FLOOR_MIX=0.25  # frozen renderer share in every legal continuation
+BIAS_BOUND=2.0   # maximum absolute source logit perturbation before renderer mixing
 
 def q_state_numpy(Urow,V,ctx):
     # Source cannot alter termination. q(END|ctx) is exactly frozen P0 END hazard.
@@ -32,9 +33,11 @@ def q_state_numpy(Urow,V,ctx):
         mx=logits[non].max();z=np.exp(logits[non]-mx);z/=z.sum()
         q[non]=(1.0-pend)*z
     q/=q.sum()
+    q=FLOOR_MIX*P0[ctx]+(1-FLOOR_MIX)*q
+    q[~SUPPORT[ctx]]=0;q/=q.sum()
     return q
 
-def sample_route_safe(z,U,V,rng,maxlen=256):
+def sample_route_safe(z,U,V,rng,maxlen=2048):
     route=[];ctx=0
     for _ in range(maxlen):
         q=q_state_numpy(U[z],V,ctx)
@@ -55,7 +58,8 @@ def generate_corpus(K,d,rank,strength,N,seed):
 
 def emission_loglik_mix(X,U,V,device):
     # Exact same family as generator: frozen END hazard, source biases non-END choices only.
-    bias=torch.einsum("kr,rco->kco",U,V)
+    raw=torch.einsum("kr,rco->kco",U,V)
+    bias=BIAS_BOUND*torch.tanh(raw/BIAS_BOUND)
     p0=torch.tensor(P0,dtype=torch.float32,device=device)
     mask=torch.tensor(SUPPORT,dtype=torch.bool,device=device)
     K=U.shape[0]
@@ -76,6 +80,10 @@ def emission_loglik_mix(X,U,V,device):
                 q[:,END]=pend
             qs.append(q)
     q=torch.stack(qs,dim=1)
+    p0all=torch.tensor(P0,dtype=torch.float32,device=device).unsqueeze(0)
+    q=FLOOR_MIX*p0all+(1-FLOOR_MIX)*q
+    q=torch.where(torch.tensor(SUPPORT,dtype=torch.bool,device=device).unsqueeze(0),q,torch.tensor(0.,device=device))
+    q=q/torch.clamp(q.sum(dim=2,keepdim=True),min=1e-30)
     logq=torch.log(torch.clamp(q,min=1e-30))
     Xt=torch.tensor(X,dtype=torch.float32,device=device)
     return torch.einsum("nco,kco->nk",Xt,logq)
@@ -229,7 +237,7 @@ def run(args):
              "train_ari":m["ari"](ztr,p),"test_ari":m["ari"](zte,pt),
              "seconds":fit["seconds"],"row_entropy":fit["row_entropy"]}
         print("PHASEB_RESTART_JSON="+json.dumps(rec,separators=(",",":")),flush=True);recs.append(rec)
-    out={"phase":"B_solver_recovery","floor_mix":FLOOR_MIX,"device":str(device),
+    out={"phase":"B_solver_recovery","floor_mix":FLOOR_MIX,"bias_bound":BIAS_BOUND,"device":str(device),
          "gpu":torch.cuda.get_device_name(0) if device.type=="cuda" else None,
          "N":args.N,"K":args.K,"d":args.d,"rank":args.rank,"strength":args.strength,
          "oracle":orc,"restarts":recs,
