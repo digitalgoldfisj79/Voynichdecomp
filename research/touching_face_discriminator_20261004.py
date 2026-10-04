@@ -1,3 +1,7 @@
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["numpy", "scipy", "scikit-learn"]
+# ///
 #!/usr/bin/env python3
 import collections,itertools,json,math,re,urllib.request
 import numpy as np
