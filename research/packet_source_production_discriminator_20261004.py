@@ -46,7 +46,7 @@ for n,rr in raw.items():
 # independent true-mate map from bifolio id
 bg=collections.defaultdict(set)
 for n,m in META.items():
-    if m["bifolio"]!="NA":bg[m["bifolio"]].add(n)
+    if m["bifolio"]!="NA":bg[(m["quire"],m["bifolio"])].add(n)
 MATE={}
 for b,ss in bg.items():
     zz=sorted(ss)
@@ -120,7 +120,7 @@ for t in sorted(F):
     ln=loss_rate(F[t],nearest) if nearest is not None else None
     rank=1+sum(l<lm-1e-15 for c,l in allq_losses)
     rows.append({
-      "target":t,"mate":m,"bifolio":F[t]["meta"]["bifolio"],"tier":tier,
+      "target":t,"mate":m,"bifolio":F[t]["meta"]["quire"]+":"+F[t]["meta"]["bifolio"],"tier":tier,
       "chosen":chosen,"mate_loss":lm,"control_loss":float(np.mean(lc)),
       "advantage":float(np.mean(lc)-lm),
       "nearest":nearest,"nearest_loss":ln,
@@ -161,7 +161,7 @@ for t in sorted(F):
     target_mass=float(np.median([F[c]["nscore"] for c in sameq]))
     cross=sorted(cross,key=lambda c:(abs(math.log(max(F[c]["nscore"],1)/max(target_mass,1))),abs(c-t),c))[:3]
     cr=float(np.mean([loss_rate(F[t],c) for c in cross]))
-    qrows.append({"target":t,"bifolio":F[t]["meta"]["bifolio"],"sameq_loss":sq,"cross_loss":cr,
+    qrows.append({"target":t,"bifolio":F[t]["meta"]["quire"]+":"+F[t]["meta"]["bifolio"],"sameq_loss":sq,"cross_loss":cr,
                   "sameq_advantage":cr-sq,"cross":cross})
 qd=collections.defaultdict(list)
 for r in qrows:qd[r["bifolio"]].append(r["sameq_advantage"])
