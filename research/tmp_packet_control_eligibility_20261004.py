@@ -5,7 +5,10 @@ mu="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/80d5c9778c
 meta={}
 for i,ln in enumerate(urllib.request.urlopen(mu).read().decode().splitlines()):
     if i==0:continue
-    f,q,b,c,h,w,l=ln.split("\t"); n=int(re.search(r"\d+",f).group()); meta.setdefault(n,[]).append((f,q,c,h))
+    f,q,b,c,h,w,l=ln.split("\t")
+    mm=re.search(r"\\d+",f)
+    if not mm: continue
+    n=int(mm.group()); meta.setdefault(n,[]).append((f,q,c,h))
 def mode(n,idx):
     z=[x[idx] for x in meta.get(n,[])]; return collections.Counter(z).most_common(1)[0][0] if z else "NA"
 leaves=sorted({int(re.search(r"\d+",l["folio"]).group()) for l in ns["LINES"] if l["fold"] in (0,1)})
