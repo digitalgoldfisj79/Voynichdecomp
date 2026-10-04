@@ -83,7 +83,7 @@ def init_model(seed):
     rng=np.random.default_rng(seed)
     m=CategoricalHMM(n_components=V,n_iter=120,tol=1e-4,algorithm="viterbi",
                      random_state=seed,init_params="",params="ste",
-                     implementation="scaling")
+                     implementation="log")
     # two hidden source states per observed SELECT signature.
     start=rng.dirichlet(np.ones(V))
     T=rng.gamma(1.,1.,(V,V));T[np.arange(V),np.arange(V)]+=1.5;T/=T.sum(1,keepdims=True)
