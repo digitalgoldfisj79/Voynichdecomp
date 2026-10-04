@@ -20,7 +20,7 @@ def route_of_token(tok):
     return [ST[p] for p in pcs]
 
 def build_route_baseline():
-    counts=np.full((NCTX,NOPT),0.25,dtype=np.float64)
+    counts=np.zeros((NCTX,NOPT),dtype=np.float64)
     # START -> first class; current class -> next class or END.
     for r in rows:
         route=route_of_token(r["token"])
@@ -30,13 +30,14 @@ def build_route_baseline():
             ctx=1+c
             nxt=END if i==len(route)-1 else route[i+1]
             counts[ctx,nxt]+=1
-    # START cannot emit END.
-    counts[0,END]=0.0
-    probs=counts/counts.sum(1,keepdims=True)
-    return probs
+    support=counts>0
+    # Smooth only genuinely observed legal transitions; do not invent edges.
+    probs=(counts+0.25*support)
+    probs=np.divide(probs,probs.sum(1,keepdims=True),out=np.zeros_like(probs),where=probs.sum(1,keepdims=True)>0)
+    return probs,support
 
-P0=build_route_baseline()
-LOGP0=np.log(np.maximum(P0,1e-30))
+P0,SUPPORT=build_route_baseline()
+LOGP0=np.where(SUPPORT,np.log(np.maximum(P0,1e-30)),-1e30)
 
 def source_graph(K,d,rng):
     A=np.zeros((K,K),float)
@@ -70,20 +71,20 @@ def make_coupling(K,rank,strength,rng):
     V/=np.maximum(V.std(),1e-9)
     return U,V*strength
 
-def sample_route(z,U,V,rng,maxlen=8):
-    route=[];ctx=0
-    for step in range(maxlen):
-        logits=LOGP0[ctx].copy()+U[z]@V[:,ctx,:]
-        if ctx==0: logits[END]=-1e30
-        # hard mask impossible baseline choices
-        logits[P0[ctx]<=0]=-1e30
-        m=np.max(logits);q=np.exp(logits-m);q/=q.sum()
-        opt=int(rng.choice(NOPT,p=q))
-        if opt==END:
-            if route:return route
-            continue
-        route.append(opt);ctx=1+opt
-    return route
+def sample_route(z,U,V,rng,maxlen=16,max_attempts=100):
+    for attempt in range(max_attempts):
+        route=[];ctx=0
+        for step in range(maxlen):
+            logits=LOGP0[ctx].copy()+U[z]@V[:,ctx,:]
+            logits[~SUPPORT[ctx]]=-1e30
+            m=np.max(logits);q=np.exp(logits-m);q/=q.sum()
+            opt=int(rng.choice(NOPT,p=q))
+            if opt==END:
+                if route:return route
+                continue
+            route.append(opt);ctx=1+opt
+        # Do not forge a termination event: discard this attempt and resample.
+    raise RuntimeError(("synthetic_route_failed_to_terminate",z,maxlen,max_attempts))
 
 def generate_corpus(K,d,rank,strength,N,seed):
     rng=np.random.default_rng(seed)
@@ -110,8 +111,8 @@ def emission_loglik(X,U,V,device):
     bias=torch.einsum("kr,rco->kco",U,V)
     lp0=torch.tensor(LOGP0,dtype=torch.float32,device=device)
     logits=lp0.unsqueeze(0)+bias
-    logits[:,:,END]=torch.where(torch.arange(NCTX,device=device).unsqueeze(0)==0,
-                                torch.tensor(-1e30,device=device),logits[:,:,END])
+    mask=torch.tensor(SUPPORT,dtype=torch.bool,device=device).unsqueeze(0)
+    logits=torch.where(mask,logits,torch.tensor(-1e30,device=device))
     logq=torch.log_softmax(logits,dim=2)
     Xt=torch.tensor(X,dtype=torch.float32,device=device)
     # N,K
@@ -251,7 +252,7 @@ def run(args):
       "median_test_ari":float(np.median([x["test_ari"] for x in results])),
       "stable_fraction_nmi70":float(np.mean([x["test_nmi"]>=.70 for x in results])),
       "benchmark":{"loops":loops,"seconds":dt,"approx_state_decision_evals":evals,"evals_per_sec":evals/dt},
-      "route_baseline_sha_like":float(P0.sum()),
+      "route_legal_edges":int(SUPPORT.sum()),"route_baseline_sha_like":float(P0.sum()),
       "corpus_rows":len(rows)
     }
     print("INVERSE_RECOVERABILITY_JSON="+json.dumps(out,separators=(",",":")),flush=True)
