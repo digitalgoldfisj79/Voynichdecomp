@@ -68,7 +68,7 @@ def corrupt(frac,seed):
 def run_one(frac,rep):
     L=corrupt(frac,SEED+10000+rep*991+int(frac*10000))
     init_nmi=d["nmi"](zfit,L)
-    U=V=None;hist=[]
+    U=V=None;hist=[];best_model=None;best_val=-1e300
     for cyc in range(5):
         A,pi,U,V=fit_exact(L,U,V,180 if cyc==0 else 90)
         llfit,pfit,Efit=score_block(Xfit,A,pi,U,V)
@@ -78,16 +78,18 @@ def run_one(frac,rep):
              "label_nmi":d["nmi"](zfit,L),
              "post_fit_nmi":d["nmi"](zfit,pfit),
              "val_nmi":d["nmi"](zval,pval)}
-        hist.append(rec);L=Lnew
-    # blind-like selection point: cycle with best validation exact marginal likelihood.
-    best=max(hist,key=lambda r:r["val_ll"])
-    # reconstruct each cycle models is expensive; final model retained. For diagnostic test NMI report final only.
-    llt,pt,_=score_block(Xtest,A,pi,U,V)
+        hist.append(rec)
+        if llval>best_val:
+            best_val=llval
+            best_model=(cyc,A.copy(),pi.copy(),U.copy(),V.copy(),rec.copy())
+        L=Lnew
+    # blind selection: open outer test only for frozen best-validation cycle.
+    cyc_b,A_b,pi_b,U_b,V_b,best=best_model
+    llt,pt,_=score_block(Xtest,A_b,pi_b,U_b,V_b)
     return {"corruption":frac,"rep":rep,"init_nmi":init_nmi,
-            "best_val_cycle":best["cycle"],"best_val_ll":best["val_ll"],"best_val_nmi_diag":best["val_nmi"],
-            "final_train_label_nmi":d["nmi"](zfit,L),"final_test_ll":llt,
-            "final_test_nmi":d["nmi"](ztest,pt),"final_test_ari":d["ari"](ztest,pt),
-            "history":hist}
+            "best_val_cycle":cyc_b,"best_val_ll":best["val_ll"],"best_val_nmi_diag":best["val_nmi"],
+            "selected_test_ll":llt,"selected_test_nmi":d["nmi"](ztest,pt),
+            "selected_test_ari":d["ari"](ztest,pt),"history":hist}
 
 if __name__=="__main__":
     fracs=[0.0,.20,.40,.60,.80,1.0]
@@ -99,8 +101,8 @@ if __name__=="__main__":
             print("BASIN_RUN_JSON="+json.dumps(rec,separators=(",",":")),flush=True)
         s={"corruption":frac,
            "median_init_nmi":float(np.median([r["init_nmi"] for r in reps])),
-           "median_final_test_nmi":float(np.median([r["final_test_nmi"] for r in reps])),
-           "min_final_test_nmi":float(min(r["final_test_nmi"] for r in reps)),
+           "median_selected_test_nmi":float(np.median([r["selected_test_nmi"] for r in reps])),
+           "min_selected_test_nmi":float(min(r["selected_test_nmi"] for r in reps)),
            "reps":reps}
         print("BASIN_SUMMARY_JSON="+json.dumps(s,separators=(",",":")),flush=True);outs.append(s)
     # exact oracle on test
