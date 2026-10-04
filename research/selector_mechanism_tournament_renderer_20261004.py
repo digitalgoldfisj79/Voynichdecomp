@@ -5,7 +5,12 @@ from concurrent.futures import ProcessPoolExecutor
 
 K=12
 LAGS=[1,2,3,5,10,20]
-TARGET=json.loads(gzip.decompress(base64.b64decode(os.environ["TARGET_B64"])))\nCAUSAL=json.loads(lzma.decompress(base64.b64decode(os.environ["CAUSAL_B64"])))
+def load_b64_url(env_name,codec):
+    with urllib.request.urlopen(os.environ[env_name],timeout=60) as r:
+        raw=base64.b64decode(r.read())
+    return json.loads(codec(raw))
+TARGET=load_b64_url("TARGET_URL",gzip.decompress)
+CAUSAL=load_b64_url("CAUSAL_URL",lzma.decompress)
 HALVES={k:[[int(x) for x in s] for s in v] for k,v in TARGET["halves"].items()}
 SEGS=HALVES["0"]+HALVES["1"]
 P=np.array(TARGET["marginal"],float)
