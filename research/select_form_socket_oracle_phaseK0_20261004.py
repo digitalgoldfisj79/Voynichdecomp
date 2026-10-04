@@ -4,7 +4,7 @@
 import collections,json,math,urllib.request
 import numpy as np
 
-LAT_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/0517c0c9776013b6906def1bf9118762ba39e872/research/latent_line_state_test_20261004.py"
+LAT_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/74ae7aa0088dc07436000f777d9c5d7d705730c2/research/latent_line_state_test_20261004.py"
 m={"__name__":"latent"}
 exec(compile(urllib.request.urlopen(LAT_URL,timeout=60).read().decode(),LAT_URL,"exec"),m)
 rows=m["rows"]; segment=m["segment"]; ST=m["ST"]; CLASSES=m["CLASSES"]
