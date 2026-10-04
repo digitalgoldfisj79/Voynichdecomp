@@ -125,7 +125,7 @@ if __name__=="__main__":
                 "max_route_len":int(max(map(len,routes)))}
             reps.append(rr)
         r={"strength":strength,"median_nmi":float(np.median([x["nmi"] for x in reps])),
-           "min_nmi":float(min(x["nmi"] for x in reps])),"reps":reps}
+           "min_nmi":float(min(x["nmi"] for x in reps)),"reps":reps}
         print("PIECE_ORACLE_STRENGTH_JSON="+json.dumps(r,separators=(",",":")),flush=True);out.append(r)
     final={"piece_count":NP,"legal_edges":int(SUPPORT.sum()),"base_mix":BASE_MIX,"bias_bound":BIAS_BOUND,
            "strengths":out}
