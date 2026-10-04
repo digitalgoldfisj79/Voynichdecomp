@@ -14,30 +14,13 @@ TARGET_VEC=np.array([TARGET["target"][k] for k in METS],float)
 SEG_LENS=[len(s) for s in SEGS]
 
 def fetch_source():
-    base=os.environ["SB_URL"].rstrip("/")+"/rest/v1/vms_sg111_source_tokens_v01"
-    key=os.environ["SB_KEY"]
-    rows=[]
-    off=0
-    while True:
-        params={
-            "select":"witness_id,recipe_id,token_index,token",
-            "witness_id":"in.(BS1,SO1,W1)",
-            "order":"witness_id.asc,recipe_id.asc,token_index.asc",
-            "limit":"1000","offset":str(off)
-        }
-        url=base+"?"+urllib.parse.urlencode(params,safe="().,")
-        req=urllib.request.Request(url,headers={"apikey":key,"Authorization":"Bearer "+key})
-        with urllib.request.urlopen(req,timeout=60) as r:
-            batch=json.loads(r.read().decode())
-        rows.extend(batch)
-        if len(batch)<1000: break
-        off+=1000
+    url=os.environ["SOURCE_URL"]
+    with urllib.request.urlopen(url,timeout=60) as r:
+        rows=json.loads(r.read().decode())
     out={}
-    for w in ("BS1","SO1","W1"):
-        wr=[x for x in rows if x["witness_id"]==w]
-        tokmap={t:i for i,t in enumerate(sorted({x["token"] for x in wr}))}
-        rec=collections.defaultdict(list)
-        for x in wr: rec[int(x["recipe_id"])].append(tokmap[x["token"]])
+    for row in rows:
+        w=row["witness_id"];rec=collections.defaultdict(list)
+        for x,rid in zip(row["ids"],row["recipes"]):rec[int(rid)].append(int(x))
         out[w]=list(rec.values())
     return out
 
