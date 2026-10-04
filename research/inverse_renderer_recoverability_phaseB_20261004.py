@@ -17,24 +17,26 @@ FLOOR_MIX=0.25  # frozen renderer share in every legal continuation
 BIAS_BOUND=2.0   # maximum absolute source logit perturbation before renderer mixing
 
 def q_state_numpy(Urow,V,ctx):
-    # Source cannot alter termination. q(END|ctx) is exactly frozen P0 END hazard.
+    # Exact generator family: bounded source bias + frozen renderer mixture.
+    b=BIAS_BOUND*np.tanh((Urow@V[:,ctx,:])/BIAS_BOUND)
     ok=SUPPORT[ctx].copy()
     if ctx==0:
-        logits=LOGP0[ctx].copy()+Urow@V[:,ctx,:]
+        logits=LOGP0[ctx].copy()+b
         logits[~ok]=-1e30
-        mx=logits.max();q=np.exp(logits-mx);q/=q.sum()
+        mx=logits.max();qb=np.exp(logits-mx);qb/=qb.sum()
+        q=FLOOR_MIX*P0[ctx]+(1-FLOOR_MIX)*qb
+        q[~ok]=0;q/=q.sum()
         return q
     pend=float(P0[ctx,END]) if SUPPORT[ctx,END] else 0.0
     non=ok.copy();non[END]=False
-    q=np.zeros(NOPT,float);q[END]=pend
+    qb=np.zeros(NOPT,float);qb[END]=pend
     if non.any():
-        logits=LOGP0[ctx].copy()+Urow@V[:,ctx,:]
+        logits=LOGP0[ctx].copy()+b
         logits[~non]=-1e30
         mx=logits[non].max();z=np.exp(logits[non]-mx);z/=z.sum()
-        q[non]=(1.0-pend)*z
-    q/=q.sum()
-    q=FLOOR_MIX*P0[ctx]+(1-FLOOR_MIX)*q
-    q[~SUPPORT[ctx]]=0;q/=q.sum()
+        qb[non]=(1.0-pend)*z
+    q=FLOOR_MIX*P0[ctx]+(1-FLOOR_MIX)*qb
+    q[~ok]=0;q/=q.sum()
     return q
 
 def sample_route_safe(z,U,V,rng,maxlen=2048):
