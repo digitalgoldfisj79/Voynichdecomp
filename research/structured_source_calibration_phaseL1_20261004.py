@@ -46,20 +46,20 @@ def A_family(fam,sec):
     for i in range(V):
         s=i%NSIG;h=i//NSIG
         if fam=="LANG":
-            q=.35*ps
+            q=.55*ps
             if h==0:
-                prefs=[((s+1+sec)%8,.26),((s+3)%8,.18),((s+6)%8,.12), (s,.09)]
+                prefs=[((s+1+sec)%8,.20),((s+3)%8,.12),((s+6)%8,.08), (s,.05)]
             else:
-                prefs=[((s+2+sec)%8,.26),((s+5)%8,.18),((s+7)%8,.12), (s,.09)]
+                prefs=[((s+2+sec)%8,.20),((s+5)%8,.12),((s+7)%8,.08), (s,.05)]
             for j,w in prefs:q[j]+=w
             q/=q.sum()
             A[i]=distribute_sig(q,h,sec,.68)
         elif fam=="NOTATION":
-            q=.08*ps
+            q=.50*ps
             if h==0:
-                prefs=[((s+1)%8,.60),((s+3+sec)%8,.20),(s,.12)]
+                prefs=[((s+1)%8,.335),((s+3+sec)%8,.10),(s,.065)]
             else:
-                prefs=[((s+2)%8,.60),((s+6+sec)%8,.20),(s,.12)]
+                prefs=[((s+2)%8,.335),((s+6+sec)%8,.10),(s,.065)]
             for j,w in prefs:q[j]+=w
             q/=q.sum()
             A[i]=distribute_sig(q,h,sec,.84)
