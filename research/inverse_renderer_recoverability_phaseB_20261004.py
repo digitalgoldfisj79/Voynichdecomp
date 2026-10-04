@@ -13,19 +13,28 @@ exec(compile(urllib.request.urlopen(BASE_URL,timeout=60).read().decode(),BASE_UR
 
 P0=m["P0"]; SUPPORT=m["SUPPORT"]; LOGP0=m["LOGP0"]; NCTX=m["NCTX"]; NOPT=m["NOPT"]; END=m["END"]
 KFORM=m["KFORM"]; rows=m["rows"]
-FLOOR_MIX=0.20
+FLOOR_MIX=0.0  # retained only for result-schema compatibility; END is now exactly frozen
 
 def q_state_numpy(Urow,V,ctx):
-    b=Urow@V[:,ctx,:]
-    logits=LOGP0[ctx]+b
-    logits[~SUPPORT[ctx]]=-1e30
-    mx=logits.max();qb=np.exp(logits-mx);qb/=qb.sum()
-    q=FLOOR_MIX*P0[ctx]+(1-FLOOR_MIX)*qb
-    q[~SUPPORT[ctx]]=0
+    # Source cannot alter termination. q(END|ctx) is exactly frozen P0 END hazard.
+    ok=SUPPORT[ctx].copy()
+    if ctx==0:
+        logits=LOGP0[ctx].copy()+Urow@V[:,ctx,:]
+        logits[~ok]=-1e30
+        mx=logits.max();q=np.exp(logits-mx);q/=q.sum()
+        return q
+    pend=float(P0[ctx,END]) if SUPPORT[ctx,END] else 0.0
+    non=ok.copy();non[END]=False
+    q=np.zeros(NOPT,float);q[END]=pend
+    if non.any():
+        logits=LOGP0[ctx].copy()+Urow@V[:,ctx,:]
+        logits[~non]=-1e30
+        mx=logits[non].max();z=np.exp(logits[non]-mx);z/=z.sum()
+        q[non]=(1.0-pend)*z
     q/=q.sum()
     return q
 
-def sample_route_safe(z,U,V,rng,maxlen=64):
+def sample_route_safe(z,U,V,rng,maxlen=256):
     route=[];ctx=0
     for _ in range(maxlen):
         q=q_state_numpy(U[z],V,ctx)
@@ -45,16 +54,28 @@ def generate_corpus(K,d,rank,strength,N,seed):
     return {"A":A,"pi":pi,"edges":edges,"U":U,"V":V,"z":z,"routes":routes}
 
 def emission_loglik_mix(X,U,V,device):
-    # Exact same termination-safe mixture used by generator.
+    # Exact same family as generator: frozen END hazard, source biases non-END choices only.
     bias=torch.einsum("kr,rco->kco",U,V)
-    lp0=torch.tensor(LOGP0,dtype=torch.float32,device=device)
-    logits=lp0.unsqueeze(0)+bias
-    mask=torch.tensor(SUPPORT,dtype=torch.bool,device=device).unsqueeze(0)
-    logits=torch.where(mask,logits,torch.tensor(-1e30,device=device))
-    qb=torch.softmax(logits,dim=2)
-    p0=torch.tensor(P0,dtype=torch.float32,device=device).unsqueeze(0)
-    q=FLOOR_MIX*p0+(1-FLOOR_MIX)*qb
-    q=torch.where(mask,q,torch.tensor(0.,device=device))
+    p0=torch.tensor(P0,dtype=torch.float32,device=device)
+    mask=torch.tensor(SUPPORT,dtype=torch.bool,device=device)
+    K=U.shape[0]
+    qs=[]
+    for ctx in range(NCTX):
+        if ctx==0:
+            logits=torch.tensor(LOGP0[ctx],dtype=torch.float32,device=device).unsqueeze(0)+bias[:,ctx,:]
+            logits=torch.where(mask[ctx].unsqueeze(0),logits,torch.tensor(-1e30,device=device))
+            qs.append(torch.softmax(logits,dim=1))
+        else:
+            pend=p0[ctx,END] if SUPPORT[ctx,END] else torch.tensor(0.,device=device)
+            non=mask[ctx].clone();non[END]=False
+            logits=torch.tensor(LOGP0[ctx],dtype=torch.float32,device=device).unsqueeze(0)+bias[:,ctx,:]
+            logits=torch.where(non.unsqueeze(0),logits,torch.tensor(-1e30,device=device))
+            qn=torch.softmax(logits,dim=1)
+            q=(1-pend)*qn
+            if SUPPORT[ctx,END]:
+                q[:,END]=pend
+            qs.append(q)
+    q=torch.stack(qs,dim=1)
     logq=torch.log(torch.clamp(q,min=1e-30))
     Xt=torch.tensor(X,dtype=torch.float32,device=device)
     return torch.einsum("nco,kco->nk",Xt,logq)
