@@ -1,7 +1,7 @@
 # Voynich inverse-renderer recoverability contract v1.0
 Date: 2026-10-04
 Status: FROZEN SPECIFICATION
-Scope: synthetic calibration, cipher calibration, and any later Voynich inverse search
+Scope: renderer-native planted-source calibration and any later Voynich inverse search
 Firewall: NO P70
 
 ## 1. Principle
@@ -61,61 +61,45 @@ PASS for a regime:
 
 A single lucky restart does not pass.
 
-### 3.2 Known cipher calibration
-No arbitrary relabelling of decoded plaintext is allowed.
+### 3.2 Renderer-native planted-source recovery
 
-Required outputs:
-- plaintext character/token accuracy;
-- exact key/transform recovery where the key is identifiable;
-- word-level accuracy where tokenization is defined;
-- heldout log probability/perplexity;
-- edit distance to plaintext.
+No external cipher calibration programme is part of this contract.
 
-Only mathematically unavoidable cipher symmetries are allowed and must be declared per cipher family.
+The calibration object is exactly the one relevant to Voynich:
 
-PASS:
-- >=95% median plaintext symbol accuracy on tractable deterministic cipher families;
-- >=90% median on declared noisy/homophonic families;
-- >=90% of seeds exceed the family-specific threshold;
-- no access to plaintext during model/restart selection.
+    known hidden source sequence X
+      -> exact current Voynich renderer family F(theta)
+      -> synthetic Voynich-like observation Y
+      -> blind inverse pipeline
+      -> recovered hidden source X_hat
 
-If a method supplied with the correct cipher family cannot recover known generated plaintext under manuscript-like lengths, it is not licensed for that family on Voynich.
+Recovery is judged only after model/restart selection has been completed without access to X.
+
+PASS for a regime:
+- median heldout NMI >= 0.70;
+- 10th-percentile heldout NMI >= 0.60;
+- >=90% of calibration replicates have heldout NMI >= 0.60;
+- transition-edge F1 >= 0.70 after optimal latent-label alignment;
+- independent top solutions converge: median pairwise aligned NMI >= 0.60 among top-decile validation-selected solutions.
+
+A single lucky restart does not pass.
 
 ## 4. Calibration ladder
 
 Run in this order. Failure blocks later interpretation.
 
-### C0 Identity / plumbing
-Plaintext -> identity renderer.
-Must recover exactly (100% except explicitly injected noise).
-Purpose: indexing, segmentation, fold and evaluation sanity.
+### C0 Plumbing sanity
+Known latent sequence -> trivial identity observation.
+Purpose only: indexing, masking, split and evaluation sanity.
 
-### C1 Monoalphabetic substitution
-Random substitution alphabets; multiple plaintext sources and lengths.
-Unknown key, known cipher family.
-Must recover plaintext and key up to declared alphabet conventions.
-
-### C2 Polyalphabetic / periodic substitution
-Known family, unknown period/key within preregistered bounds.
-Tests ability to recover stateful mappings rather than static substitution.
-
-### C3 Homophonic substitution
-Known family and homophone-budget range.
-Tests many-to-one / one-to-many ambiguity and posterior calibration.
-
-### C4 Nomenclator / codebook-like synthetic system
-Mixture of ordinary substitution and reusable codebook entries.
-Known model family but hidden table.
-Tests token/codebook recovery.
-
-### C5 Renderer-native planted source
+### C1 Renderer-native planted source
 One hidden source item per Voynich token.
 Sparse source dynamics.
 Source biases exact 57-piece FORM route decisions through the frozen renderer.
 The generator and inverse likelihood are identical.
 This is the direct calibration family for the proposed Voynich search.
 
-### C6 Misspecification controls
+### C2 Misspecification controls
 Generate under each family but fit neighboring WRONG families.
 Purpose: prove that the pipeline can reject a wrong family instead of hallucinating a confident decoding.
 
@@ -131,9 +115,7 @@ Every family is tested at:
 Difficulty ladders are preregistered before results:
 - source inventory K;
 - graph sparsity/out-degree;
-- renderer/cipher noise;
-- homophony;
-- key period;
+- renderer noise / base mixing;
 - low-rank coupling strength.
 
 The searchable region is the set of regimes where the full blind inverse pipeline passes recoverability.
@@ -256,13 +238,32 @@ Do not run Voynich and do not benchmark large GPUs until C5 passes this contract
 ## 12. Promotion to Voynich
 
 A real Voynich inverse search is licensed only after:
-- C0-C1 pass exactly;
-- every cipher/source family claimed relevant has passed its own calibration;
-- C5 passes at manuscript-like length and complexity;
-- C6 demonstrates rejection of neighboring wrong families;
+- plumbing sanity passes;
+- renderer-native planted-source recovery passes at manuscript-like length and target complexity;
+- neighboring wrong-family controls demonstrate that the pipeline can reject misspecified source shapes;
 - best-of-search null calibration is operational.
 
 A successful Voynich latent solution then means only:
 "the observations support a stable abstract upstream representation under this calibrated family."
 
-It is NOT a plaintext decoding until independent lexical/label/generalization tests pass.
+No semantic decoding claim follows automatically.
+
+## 13. Current immediate task
+
+Continue from the Phase-G lineage.
+
+Build one self-consistent blind calibration harness using the exact piece-channel generator and the exact same likelihood family already used by the strong oracle/supervised diagnostics.
+
+The harness must:
+1. generate X and synthetic observations under one declared parameter regime;
+2. seal X;
+3. run the candidate search that would later be used on Voynich;
+4. allow surrogate methods only to propose candidate initializations;
+5. choose restart/architecture only by inner validation exact marginal likelihood;
+6. freeze the chosen candidate;
+7. score outer heldout observations;
+8. only then reveal X and compute NMI/ARI/transition recovery;
+9. repeat across >=20 seeds before any claim of recovery.
+
+Do not return to external cipher calibration.
+Do not run real Voynich and do not benchmark large GPUs until renderer-native planted recovery passes this contract.
