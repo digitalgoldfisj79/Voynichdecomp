@@ -2,6 +2,7 @@
 # Phase L0: Q13/Mauro-informed structured-source calibration through frozen FORM.
 # Synthetic-only. NO P70. No real Voynich inversion.
 import json,math,urllib.request,warnings
+from concurrent.futures import ProcessPoolExecutor,as_completed
 import numpy as np
 from sklearn.metrics import normalized_mutual_info_score, roc_auc_score
 from hmmlearn.hmm import CategoricalHMM
@@ -176,10 +177,12 @@ def one_dataset(fam,seed):
     return result
 
 if __name__=="__main__":
+    specs=[(fam,seed) for fam in ("LANG","NOTATION","TABLE") for seed in (20262001,20262002,20262003)]
     allr=[]
-    for fam in ("LANG","NOTATION","TABLE"):
-        for seed in (20262001,20262002,20262003):
-            r=one_dataset(fam,seed);allr.append(r)
+    with ProcessPoolExecutor(max_workers=9) as ex:
+        futs={ex.submit(one_dataset,fam,seed):(fam,seed) for fam,seed in specs}
+        for fut in as_completed(futs):
+            r=fut.result();allr.append(r)
             print("STRUCTURED_SOURCE_REP_JSON="+json.dumps(r,separators=(",",":")),flush=True)
     summary={}
     for fam in ("LANG","NOTATION","TABLE"):
