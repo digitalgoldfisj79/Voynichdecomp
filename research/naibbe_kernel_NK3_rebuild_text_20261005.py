@@ -109,24 +109,29 @@ ARM_FILTER=set(x.strip() for x in os.getenv("NK3_ARMS","").split(",") if x.strip
 for tid in TIDS:
     rows=build_rows(tid)
     print("NK3R_POP",tid,len(rows),collections.Counter(r["fold"] for r in rows),flush=True)
-    ed,edi=ed_seed_map(rows)
-    legacy,legi=fit_form_kmeans(rows,12,False)
-    learned,learni=fit_form_kmeans(rows,"auto",True)
-    hybrid,hybi=fit_form_kmeans(rows,"auto",True,append_ed=ed)
-    exact,exi=exact_control(rows)
-    sec,seci=section_control(rows)
-    rnd,rndi=random_shape_hash(rows,12)
-    arms={
-      "FORM_LEGACY_K12":(legacy,legi,"candidate_legacy"),
-      "FORM_LEARNED":(learned,learni,"candidate_primary"),
-      "FORM_ED_HYBRID":(hybrid,hybi,"candidate_primary"),
-      "PURE_ED2":(ed,edi,"hostile_control"),
-      "EXACT_TOKEN_TOP24":(exact,exi,"positive_control"),
-      "SECTION_ONLY":(sec,seci,"hostile_control"),
-      "RANDOM_SHAPE_HASH12":(rnd,rndi,"hostile_control")
-    }
+    want=ARM_FILTER or {"FORM_LEGACY_K12","FORM_LEARNED","FORM_ED_HYBRID","PURE_ED2","EXACT_TOKEN_TOP24","SECTION_ONLY","RANDOM_SHAPE_HASH12"}
+    arms={}
+    ed=edi=None
+    if "PURE_ED2" in want or "FORM_ED_HYBRID" in want:
+        ed,edi=ed_seed_map(rows)
+    if "FORM_LEGACY_K12" in want:
+        legacy,legi=fit_form_kmeans(rows,12,False)
+        arms["FORM_LEGACY_K12"]=(legacy,legi,"candidate_legacy")
+    if "FORM_LEARNED" in want:
+        learned,learni=fit_form_kmeans(rows,"auto",True)
+        arms["FORM_LEARNED"]=(learned,learni,"candidate_primary")
+    if "FORM_ED_HYBRID" in want:
+        hybrid,hybi=fit_form_kmeans(rows,"auto",True,append_ed=ed)
+        arms["FORM_ED_HYBRID"]=(hybrid,hybi,"candidate_primary")
+    if "PURE_ED2" in want:
+        arms["PURE_ED2"]=(ed,edi,"hostile_control")
+    if "EXACT_TOKEN_TOP24" in want:
+        exact,exi=exact_control(rows);arms["EXACT_TOKEN_TOP24"]=(exact,exi,"positive_control")
+    if "SECTION_ONLY" in want:
+        sec,seci=section_control(rows);arms["SECTION_ONLY"]=(sec,seci,"hostile_control")
+    if "RANDOM_SHAPE_HASH12" in want:
+        rnd,rndi=random_shape_hash(rows,12);arms["RANDOM_SHAPE_HASH12"]=(rnd,rndi,"hostile_control")
     rr={}
-    if ARM_FILTER: arms={k:v for k,v in arms.items() if k in ARM_FILTER}
     for j,(name,(fm,info,role)) in enumerate(arms.items()):
         ev=evaluate_family(rows,fm,nshuffle=NSHUFF,nlabel=NLABEL,seed=SEED+1000*j+sum(map(ord,tid)))
         rr[name]={"role":role,"construction":info,"evaluation":ev}
