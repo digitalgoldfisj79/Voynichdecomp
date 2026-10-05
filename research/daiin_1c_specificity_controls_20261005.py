@@ -103,25 +103,30 @@ for name in [n for n in z.namelist() if n.endswith(".json")]:
     d=json.loads(z.read(name));md=d.get("metadata",{})
     if str(md.get("language","")).lower()!="mhd" or "handschrift" not in str(md.get("medium","")).lower():continue
     reg=str(md.get("language-region","")).lower();area=str(md.get("language-area","")).lower()
-    bav=(reg=="ostoberdeutsch" and ("bair" in area or "bayr" in area) and "alemann" not in area)
-    alem=(reg=="westoberdeutsch" and ("alemann" in area or "schwäb" in area or "elsäss" in area) and "bair" not in area)
+    bav=(("bair" in area or "bayr" in area or "österreich" in area or "oesterreich" in area) and "alemann" not in area)
+    alem=(("alemann" in area or "schwäb" in area or "elsäss" in area) and "bair" not in area and "bayr" not in area)
     if not (bav or alem):continue
-    starts=set();ends=set()
-    for L in d.get("line",[]):
-        try:starts.add(int(L["begin"]));ends.add(int(L["end"]))
-        except:pass
-    toks=[]
-    for x in d.get("token",[]):
-        le=str(x.get("lemma_gen","--"));po=str(x.get("pos_hits","--"));inf=str(x.get("infl","--"));norm=str(x.get("norm","--")).lower()
-        if le in ("--","[!]","") or po in ("--","$_","FM") or norm in ("--","[!]","") or x.get("pos_upos")=="PUNCT":continue
+    rawt=[]
+    for order,x in enumerate(d.get("token",[])):
         m=re.match(r"t(\d+)",str(x.get("virttok","")));vi=int(m.group(1)) if m else None
-        toks.append({"cell":(le,po,inf),"norm":norm,"start":vi in starts if vi else False,"end":vi in ends if vi else False})
-    lines=[];cur=[]
-    for x in toks:
-        if x["start"] and cur:lines.append(cur);cur=[]
-        cur.append(x)
-        if x["end"]:lines.append(cur);cur=[]
-    if cur:lines.append(cur)
+        le=str(x.get("lemma_gen","--"));po=str(x.get("pos_hits","--"));inf=str(x.get("infl","--"));norm=str(x.get("norm","--")).lower()
+        valid=not (le in ("--","[!]","") or po in ("--","$_","FM") or norm in ("--","[!]","") or x.get("pos_upos")=="PUNCT")
+        rawt.append((order,vi,{"cell":(le,po,inf),"norm":norm} if valid else None))
+    byvi=collections.defaultdict(list)
+    for order,vi,x in rawt:
+        if vi is not None and x is not None:byvi[vi].append((order,x))
+    lines=[]
+    for L in d.get("line",[]):
+        try:a0=int(L["begin"]);b0=int(L["end"])
+        except Exception:continue
+        line=[]
+        for vi in range(a0,b0+1):
+            for order,x in byvi.get(vi,[]):line.append((order,x))
+        line=[x for _,x in sorted(line,key=lambda q:q[0])]
+        if line:lines.append(line)
+    if not lines:
+        line=[x for _,_,x in rawt if x is not None]
+        if line:lines=[line]
     docs.append((bav,alem,str(md.get("id",name)),lines))
 
 def german_features(which):
@@ -153,8 +158,8 @@ def german_features(which):
                      "within":n/lemmacnt[le],"profile":prof[le],"sep":sep[le],"cells":len(a),"forms":forms[c].most_common(4)})
     return N,rows
 
-MET=["df","ds","de","dself","dsp","dc1","dc2","dp1","dp2","dx1","dx2"]
-W={"df":2.,"ds":.5,"de":.5,"dself":1.,"dsp":1.,"dc1":.75,"dc2":.75,"dp1":1.25,"dp2":1.25,"dx1":1.,"dx2":1.}
+MET=["df","ds","de","dself","dsp","dc1","dp1","dx1"]
+W={"df":2.,"ds":.5,"de":.5,"dself":1.,"dsp":1.,"dc1":1.,"dp1":2.,"dx1":2.}
 def score(rows,v):
     rr=[]
     for g in rows:
