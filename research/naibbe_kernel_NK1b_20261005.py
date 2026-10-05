@@ -58,11 +58,16 @@ def lb(t):return min(len(t),7)-1 # 1..6 exact, 7+
 NB=7
 
 # Baseline conditional family probabilities p(f | source,length-bucket).
-rng=np.random.default_rng(SEED+100);cnt=np.ones((KSRC,NB,KFAM),float)*.5
+rng=np.random.default_rng(SEED+100);raw=np.zeros((KSRC,NB,KFAM),float)
 for x in range(KSRC):
  for _ in range(MC_PER_SOURCE):
-  t=sample(x,rng);cnt[x,lb(t),fam(t)]+=1
-PB=cnt/cnt.sum(2,keepdims=True)
+  t=sample(x,rng);raw[x,lb(t),fam(t)]+=1
+SUP=raw>0
+cnt=raw+0.5*SUP
+PB=np.zeros_like(cnt)
+for x in range(KSRC):
+ for b in range(NB):
+  if cnt[x,b].sum()>0: PB[x,b]=cnt[x,b]/cnt[x,b].sum()
 
 # Same rank-2 source family preference as NK1a; normalization is now inside frozen length bucket.
 rp=np.random.default_rng(SEED+200);Us=rp.normal(size=(KSRC,2));Us=(Us-Us.mean(0))/np.maximum(Us.std(0),1e-9)
@@ -70,7 +75,9 @@ Vf=rp.normal(size=(2,KFAM));Vf-=Vf.mean(1,keepdims=True);Vf/=np.maximum(Vf.std()
 QT=np.empty_like(PB)
 for x in range(KSRC):
  for b in range(NB):
-  z=np.log(np.maximum(PB[x,b],1e-12))+ALPHA*S[x];z-=z.max();q=np.exp(z);QT[x,b]=q/q.sum()
+  ok=SUP[x,b]
+  if not ok.any(): continue
+  z=np.log(np.maximum(PB[x,b,ok],1e-12))+ALPHA*S[x,ok];z-=z.max();q=np.exp(z);QT[x,b,ok]=q/q.sum()
 
 def target(x,rng):
  seed=sample(x,rng);b=lb(seed);ff=int(rng.choice(KFAM,p=QT[x,b]))
