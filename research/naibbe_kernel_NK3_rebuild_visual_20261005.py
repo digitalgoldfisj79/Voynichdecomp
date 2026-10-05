@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """NK3 rebuild — DINOv3 visual-family arm, using SHA-frozen Nomic projection of private HF canonical store."""
-import collections, hashlib, io, json, re, urllib.request
+import collections, hashlib, io, json, re, urllib.request, os
 import numpy as np
 import pandas as pd
 import pyarrow.feather as feather
@@ -11,7 +11,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.linear_model import Ridge
 
-CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/74179a8f390f3cf796923607d37c466d1ae70560/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
+CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/b9795285e87c9d7332c29abe5123237100bce143/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
 c={"__name__":"nk3r_core"};exec(compile(urllib.request.urlopen(CORE_URL,timeout=120).read().decode(),CORE_URL,"exec"),c)
 build_rows=c["build_rows"];internal_feature=c["internal_feature"];evaluate_family=c["evaluate_family"]
 fnum=c["fnum"];folds=c["folds"];BIF=c["BIF"];SEED=c["SEED"]
@@ -99,8 +99,11 @@ K2,grid2=choose_k(Rtr)
 km2=KMeans(n_clusters=K2,random_state=SEED+1,n_init=30,max_iter=500).fit(Rtr,sample_weight=trw)
 lab2=km2.predict(Rall);resmap={t:int(lab2[i]) for i,t in enumerate(allt)}
 
-raw_ev=evaluate_family(rows,rawmap,nshuffle=300,nlabel=300,seed=SEED+6100)
-res_ev=evaluate_family(rows,resmap,nshuffle=300,nlabel=300,seed=SEED+6200)
+FAST=os.getenv("NK3_FAST","0")=="1"
+NPERM=5 if FAST else 300
+print("NK3R_VIS_POP",len(rows),collections.Counter(r["fold"] for r in rows),"visual_overlap",len(md),"types",len(allt),flush=True)
+raw_ev=evaluate_family(rows,rawmap,nshuffle=NPERM,nlabel=NPERM,seed=SEED+6100)
+res_ev=evaluate_family(rows,resmap,nshuffle=NPERM,nlabel=NPERM,seed=SEED+6200)
 
 out={
  "phase":"NK3_REBUILD_VISUAL","status":"complete","population":"TTLI strict +P0",
