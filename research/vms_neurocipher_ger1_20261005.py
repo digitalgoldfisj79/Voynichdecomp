@@ -30,7 +30,7 @@ Firewall:
 - no Voynich decoded-word inspection is emitted in this screen.
 """
 from __future__ import annotations
-import argparse, collections, hashlib, io, json, math, random, re, tarfile, urllib.request
+import argparse, collections, hashlib, io, itertools, json, math, random, re, tarfile, urllib.request
 import xml.etree.ElementTree as ET
 import numpy as np, torch
 import neurodecipher_acl2019_refactor as nd
@@ -199,29 +199,44 @@ def load_ref_ranked(dialect):
     ranked=[w for w,n in freq.most_common()]
     return ranked,freq,docs
 
-def scramble_word(w,seed):
-    if len(w)<2 or len(set(w))<2:return w
-    h=int(hashlib.sha256((str(seed)+"|"+w).encode()).hexdigest()[:16],16)
-    rng=random.Random(h);a=list(w)
-    for _ in range(32):
-        rng.shuffle(a);s="".join(a)
-        if s!=w:return s
-    return w[::-1]
+def scrambled_unique_vocab(forms,seed):
+    """One-to-one within-word anagram control; preserves each word's exact char multiset and length."""
+    out=[];seen=set();unchanged=0;random_tries=0;enumerated=0
+    for w in forms:
+        if len(w)<2 or len(set(w))<2:
+            cand=w
+        else:
+            h=int(hashlib.sha256((str(seed)+"|"+w).encode()).hexdigest()[:16],16)
+            rng=random.Random(h);a=list(w);cand=None
+            for _ in range(512):
+                rng.shuffle(a);q="".join(a);random_tries+=1
+                if q!=w and q not in seen:
+                    cand=q;break
+            if cand is None and len(w)<=8:
+                perms=sorted(set("".join(p) for p in itertools.permutations(w)))
+                off=h%max(1,len(perms))
+                for j in range(len(perms)):
+                    q=perms[(off+j)%len(perms)];enumerated+=1
+                    if q!=w and q not in seen:
+                        cand=q;break
+            if cand is None:
+                # This can occur only for a word whose multiset has no unused alternative.
+                # Retain the original rather than altering length or character inventory.
+                cand=w
+        if cand in seen:
+            raise RuntimeError(("scramble uniqueness impossible",w,cand))
+        if cand==w:unchanged+=1
+        seen.add(cand);out.append(cand)
+    return out,{"unchanged":unchanged,"random_tries":random_tries,"enumerated":enumerated,
+                "unique":len(seen),"n":len(forms)}
 
 def make_target(ranked,mode,sseed):
+    base=ranked[:FULL_K]
+    if len(base)<FULL_K:raise RuntimeError(("target vocab too small",len(base)))
     if mode=="real":
-        full=ranked[:FULL_K]
-        return full[:TRAIN_K],full,{"collisions":0,"unchanged":0}
-    out=[];seen=set();unchanged=0;collisions=0
-    for w in ranked:
-        s=scramble_word(w,sseed)
-        if s==w:unchanged+=1
-        if s in seen:
-            collisions+=1;continue
-        seen.add(s);out.append(s)
-        if len(out)>=FULL_K:break
-    if len(out)<FULL_K:raise RuntimeError(("not enough scrambled unique",len(out)))
-    return out[:TRAIN_K],out,{"collisions":collisions,"unchanged":unchanged}
+        return base[:TRAIN_K],base,{"unchanged":0,"unique":len(base),"n":len(base)}
+    out,audit=scrambled_unique_vocab(base,sseed)
+    return out[:TRAIN_K],out,audit
 
 DISC,VAL,FIN_UNSEEN,FIN_STRICT,VCHARS,V_AUDIT=load_vms()
 
