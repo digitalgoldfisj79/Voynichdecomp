@@ -63,7 +63,7 @@ def eval_one(shuffle=False):
               "truth_fraction_candidate":float(np.mean([x[2] for x in cand])) if cand else None,
               "positive_val_n":sum(g>0 for g,x in gains),
               "top20_truth_fraction":float(np.mean([x[1][2] for x in top])) if top else None,
-              "top10":[{"a":x[1][0],"b":x[1][1],"truth":bool(x[1][2]),"disc":x[1][idx],"valg":g} for g,x in top[:10]]
+              "top10":[{"a":x[1][0],"b":x[1][1],"truth":bool(x[1][2]),"disc":x[idx],"valg":g} for g,x in top[:10]]
             }
     return scores
 out={"ordered":eval_one(False),"shuffled":eval_one(True)}
