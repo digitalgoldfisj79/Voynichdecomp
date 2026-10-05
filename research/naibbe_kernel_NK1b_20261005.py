@@ -75,7 +75,7 @@ for x in range(KSRC):
 def target(x,rng):
  seed=sample(x,rng);b=lb(seed);ff=int(rng.choice(KFAM,p=QT[x,b]))
  if fam(seed)==ff:return seed
- for _ in range(800):
+ for _ in range(10000):
   t=sample(x,rng)
   if lb(t)==b and fam(t)==ff:return t
  raise RuntimeError(("conditional rejection",int(x),b,ff,PB[int(x),b].tolist()))
@@ -139,7 +139,7 @@ for rr in range(NGENREP):
  for x in XTE:
   seed=sample(int(x),rg);b=lb(seed);ff=int(rg.choice(KFAM,p=QH[int(x),b]))
   if fam(seed)==ff:gg.append(seed);continue
-  for _ in range(800):
+  for _ in range(10000):
    t=sample(int(x),rg)
    if lb(t)==b and fam(t)==ff:gg.append(t);break
   else:raise RuntimeError("rep reject")
