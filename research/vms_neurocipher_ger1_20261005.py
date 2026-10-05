@@ -355,5 +355,9 @@ def main():
     p.add_argument("--warm-up-steps",type=int,default=5)
     p.add_argument("--reg-hyper",type=float,default=.5)
     p.add_argument("--eval-batch",type=int,default=48)
-    VMSRunner(p.parse_args()).run()
+    args=p.parse_args()
+    if args.audit_only:
+        print("VGER_VMS_AUDIT_ONLY="+json.dumps(V_AUDIT,ensure_ascii=False,separators=(",",":")),flush=True)
+        return
+    VMSRunner(args).run()
 if __name__=="__main__":main()
