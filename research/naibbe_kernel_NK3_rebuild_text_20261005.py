@@ -7,7 +7,7 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
-CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/1344836d97c3fd1a78ebca6ab4e6d994d829be6b/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
+CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/526749ea9e73a7ba4d67c50d68dac170367123e9/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
 c={"__name__":"nk3r_core"};exec(compile(urllib.request.urlopen(CORE_URL,timeout=120).read().decode(),CORE_URL,"exec"),c)
 build_rows=c["build_rows"];internal_feature=c["internal_feature"];evaluate_family=c["evaluate_family"]
 safe_form=c["safe_form"];rlenbin=c["rlenbin"];freqbin=c["freqbin"];SEED=c["SEED"]
