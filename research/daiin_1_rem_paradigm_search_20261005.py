@@ -168,7 +168,7 @@ def dialect_flags(md):
 
 # occurrence tuple: cell, norm, lemma, line_start, line_end, docid
 docs=[]
-meta_counts=collections.Counter()
+meta_counts=collections.Counter(); line_span_fallback_docs=0
 for n in names:
     d=json.loads(z.read(n))
     md=d.get("metadata",{})
@@ -176,41 +176,37 @@ for n in names:
     ms,east,west,north,bair,alem=dialect_flags(md)
     docid=str(md.get("id") or d.get("id") or n)
     meta_counts[(str(md.get("language-region","")),str(md.get("language-area","")),str(md.get("medium","")))] += 1
-    # virtual-token -> line begin/end
-    starts=set();ends=set()
-    for L in d.get("line",[]):
-        try:starts.add(int(L["begin"]));ends.add(int(L["end"]))
-        except Exception:pass
-    toks=[]
-    for tok in d.get("token",[]):
+    # Build physical lines from ReM's explicit virtual-token begin/end spans.
+    # Filtering punctuation/foreign material happens inside each raw line so
+    # invalid material at a line edge cannot accidentally merge adjacent lines.
+    rawt=[]
+    for order,tok in enumerate(d.get("token",[])):
+        vm=str(tok.get("virttok",""))
+        mm=re.match(r"t(\\d+)",vm)
+        vi=int(mm.group(1)) if mm else None
         lemma=str(tok.get("lemma_gen","--"))
         pos=str(tok.get("pos_hits","--"))
         infl=str(tok.get("infl","--"))
         norm=str(tok.get("norm","--")).lower()
-        if lemma in ("--","[!]","") or pos in ("--","$_","FM") or norm in ("--","[!]",""):
-            continue
-        if tok.get("pos_upos")=="PUNCT":continue
-        vm=str(tok.get("virttok",""))
-        mm=re.match(r"t(\d+)",vm)
-        vi=int(mm.group(1)) if mm else None
-        cell=(lemma,pos,infl)
-        toks.append({"cell":cell,"norm":norm,"start":vi in starts if vi else False,"end":vi in ends if vi else False})
-    if not toks:continue
-    # neighbours among valid German tokens, but never cross physical line boundaries
-    # use start/end flags to reset.
-    lines=[];cur=[]
-    for x in toks:
-        if x["start"] and cur:
-            lines.append(cur);cur=[]
-        cur.append(x)
-        if x["end"]:
-            lines.append(cur);cur=[]
-    if cur:lines.append(cur)
+        valid=not (lemma in ("--","[!]","") or pos in ("--","$_","FM") or norm in ("--","[!]","") or tok.get("pos_upos")=="PUNCT")
+        rawt.append((order,vi,{"cell":(lemma,pos,infl),"norm":norm} if valid else None))
+    lines=[]
+    for L in d.get("line",[]):
+        try:a0=int(L["begin"]);b0=int(L["end"])
+        except Exception:continue
+        line=[x for _,vi,x in rawt if vi is not None and a0<=vi<=b0 and x is not None]
+        if line:lines.append(line)
+    # Rare files without usable line spans: one-document sequence fallback.
+    if not lines:
+        line_span_fallback_docs+=1
+        line=[x for _,_,x in rawt if x is not None]
+        if line:lines=[line]
+    if not lines:continue
     docs.append({"id":docid,"ms":ms,"east":east,"west":west,"north":north,"bair":bair,"alem":alem,
                  "region":str(md.get("language-region","")),"area":str(md.get("language-area","")),
                  "topic":str(md.get("topic","")),"lines":lines})
 
-print("REM_DOCS",len(docs),"META_TOP",json.dumps(meta_counts.most_common(20),ensure_ascii=False),flush=True)
+print("REM_DOCS",len(docs),"LINE_SPAN_FALLBACK_DOCS",line_span_fallback_docs,"META_TOP",json.dumps(meta_counts.most_common(20),ensure_ascii=False),flush=True)
 
 PANELS={
  "ALL_MHG":lambda d:True,
