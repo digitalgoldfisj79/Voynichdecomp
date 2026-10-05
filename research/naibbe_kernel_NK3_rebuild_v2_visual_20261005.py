@@ -102,8 +102,8 @@ lab2=km2.predict(Rall);resmap={t:int(lab2[i]) for i,t in enumerate(allt)}
 FAST=os.getenv("NK3_FAST","0")=="1"
 NPERM=5 if FAST else 300
 print("NK3R_VIS_POP",len(rows),collections.Counter(r["fold"] for r in rows),"visual_overlap",len(md),"types",len(allt),flush=True)
-raw_ev=evaluate_family(rows,rawmap,nshuffle=NPERM,nlabel=NPERM,seed=SEED+6100)
-res_ev=evaluate_family(rows,resmap,nshuffle=NPERM,nlabel=NPERM,seed=SEED+6200)
+raw_ev=evaluate_family(rows,rawmap,nshuffle=NPERM,seed=SEED+6100)
+res_ev=evaluate_family(rows,resmap,nshuffle=NPERM,seed=SEED+6200)
 
 out={
  "phase":"NK3_REBUILD_V2_VISUAL","status":"complete","population":"TTLI strict +P0; corrected v2 context assay",
