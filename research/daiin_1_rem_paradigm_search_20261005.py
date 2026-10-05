@@ -292,9 +292,12 @@ def panel_analysis(label,pred):
         cand.append(f)
     if not cand:return {"status":"no_candidates","N":N,"docs":ndocs}
 
-    metrics=["d_logfreq","d_start","d_end","d_self","d_simpson","d_cellshare1","d_cellshare2","d_profile1","d_profile2","d_sep1","d_sep2"]
+    # PRIMARY ranking uses only the ED1 Voynich neighbourhood.
+    # ED2 is deliberately excluded from the score and retained solely as a
+    # post-ranking robustness diagnostic because ED2 is much broader.
+    metrics=["d_logfreq","d_start","d_end","d_self","d_simpson","d_cellshare1","d_profile1","d_sep1"]
     weights={"d_logfreq":2.0,"d_start":0.5,"d_end":0.5,"d_self":1.0,"d_simpson":1.0,
-             "d_cellshare1":0.75,"d_cellshare2":0.75,"d_profile1":1.25,"d_profile2":1.25,"d_sep1":1.0,"d_sep2":1.0}
+             "d_cellshare1":1.0,"d_profile1":2.0,"d_sep1":2.0}
     for m in metrics:
         pr=percentile_ranks(np.array([x[m] for x in cand],float))
         for x,p in zip(cand,pr):x["pct_"+m]=float(p)
@@ -341,6 +344,6 @@ stab=[{"lemma":k[0],"pos":k[1],"panels_top20":n,"detail":stable_detail[k]} for k
 res={"phase":"DAIIN_1_REM","status":"complete","design":"blind grammatical-cell ranking",
      "voynich":vprint,"panels":OUT,"stability":stab[:100],
      "notes":["Candidate cell=(lemma_gen,pos_hits,inflection).","No German lemma is privileged in scoring.",
-              "ED1 and ED2 Voynich spelling neighbourhoods are both used in paradigm-shape scoring.",
+              "ED1 is the sole paradigm neighbourhood used in primary ranking; ED2 is reported only as secondary robustness.",
               "ReM is discovery; ReF 1350-1650 is intended as temporal replication, not for retuning."]}
 print("DAIIN1_RESULT_JSON="+json.dumps(res,ensure_ascii=False,separators=(",",":")),flush=True)
