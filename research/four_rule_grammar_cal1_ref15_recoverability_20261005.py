@@ -278,5 +278,6 @@ summary={"phase":"4R_GRAMMAR_CAL1","status":"complete","reps":len(results),
          "accuracy_beats_majority":med("test_acc")>med("majority"),
          "positive_80pct":np.mean([x["network_advantage_z"]>0 for x in results])>=.8},
  "results":results}
-summary["gate"]["pass"]=all(summary["gate"].values())
+summary["gate"]={k:bool(v) for k,v in summary["gate"].items()}
+summary["gate"]["pass"]=bool(all(summary["gate"].values()))
 print("CAL1_RESULT_JSON="+json.dumps(summary,separators=(",",":")),flush=True)
