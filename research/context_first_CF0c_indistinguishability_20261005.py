@@ -30,7 +30,7 @@ def eval_pair(rows,a,b,C):
     tr=[r for r in rows if r["fold"] in (2,3) and r["token"] in (a,b)]
     va=[r for r in rows if r["fold"]==4 and r["token"] in (a,b)]
     if min(sum(r["token"]==a for r in tr),sum(r["token"]==b for r in tr),
-           sum(r["token"]==a for r in va),sum(r["token"]==b for r in va))<3:return None
+           sum(r["token"]==a for r in va),sum(r["token"]==b for r in va))<2:return None
     v=DictVectorizer();X=v.fit_transform([feats(r) for r in tr]);V=v.transform([feats(r) for r in va])
     yt=np.array([r["token"]==b for r in tr],int);yv=np.array([r["token"]==b for r in va],int)
     prior=(yt.sum()+.5)/(len(yt)+1.)
