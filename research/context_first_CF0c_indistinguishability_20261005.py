@@ -74,6 +74,10 @@ def one(shuffle=False):
         for a,b,t,cross in cand:
             e=eval_pair(rows,a,b,C)
             if e is not None:rr.append((a,b,t,cross,e))
+        print("ARM",shuffle,"C",C,"candidate",len(cand),"evaluated",len(rr),flush=True)
+        if not rr:
+            result[str(C)]={"n":0,"status":"no_evaluable_pairs"}
+            continue
         y=np.array([x[2] for x in rr],int)
         gain=np.array([x[4]["gain"] for x in rr],float)
         auc=float(roc_auc_score(y,-gain)) if len(set(y))>1 else None
@@ -93,5 +97,7 @@ def one(shuffle=False):
                         "lowest20":[{"a":x[0],"b":x[1],"truth":bool(x[2]),"cross":x[3],"gain":x[4]["gain"],"auc":x[4]["auc"]} for x in sorted(rr,key=lambda z:z[4]["gain"])[:20]]}
     return result
 
-out={"ordered":one(False),"shuffled":one(True)}
+ordered=one(False); print("CF0C_ORDERED="+json.dumps(ordered,separators=(",",":")),flush=True)
+shuffled=one(True); print("CF0C_SHUFFLED="+json.dumps(shuffled,separators=(",",":")),flush=True)
+out={"ordered":ordered,"shuffled":shuffled}
 print("CF0C="+json.dumps(out,separators=(",",":")),flush=True)
