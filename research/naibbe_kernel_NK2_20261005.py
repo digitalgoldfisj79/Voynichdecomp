@@ -227,7 +227,7 @@ def run_arm(z,block,arm):
         nv=np.array([n[k] for n in null],float);sd=float(np.nanstd(nv,ddof=1));mu=float(np.nanmean(nv))
         zsc[k]={"effect":float(v-mu),"null_mean":mu,"null_sd":sd,"z":float((v-mu)/sd) if sd>0 else None}
     trains=set(surf(t) for t in toks[:NTRAIN+NVAL]);testsurf=[surf(t) for t in tt]
-    out.update({"order_vs_shuffle":zsc,"test_unique_types":len(set(testsurf)),
+    out.update({"order_vs_shuffle":zsc,"order_null":null,"test_unique_types":len(set(testsurf)),
                 "test_unseen_share":float(np.mean([s not in trains for s in testsurf])),
                 "test_family":famobs.tolist(),"test_source":zt.tolist()})
     return out
@@ -252,13 +252,18 @@ for arm in "ABC":
         fg=np.array([r["arms"][arm]["family_gain"][k] for r in records],float)
         og=np.array([r["arms"][arm]["order_gain"][k] for r in records],float)
         null_mu=np.array([r["arms"][arm]["order_vs_shuffle"][k]["null_mean"] for r in records],float)
-        # pooled per-block null SD isn't a panel null; headline uses observed block excess / block SD plus per-block shuffle z median.
         exc=og-null_mu
+        nv=np.array([[r["arms"][arm]["order_null"][j][k] for r in records] for j in range(NNULL)],float)
+        panel_null=np.nanmean(nv,axis=1)
+        pnm=float(np.nanmean(panel_null));pns=float(np.nanstd(panel_null,ddof=1))
+        pe=float(np.nanmean(og)-pnm)
         summary[arm][k]={"family_gain_mean":float(np.nanmean(fg)),
                          "order_gain_mean":float(np.nanmean(og)),
                          "order_excess_over_shuffle_mean":float(np.nanmean(exc)),
                          "block_sd_excess":float(np.nanstd(exc,ddof=1)),
                          "block_z":float(np.nanmean(exc)/np.nanstd(exc,ddof=1)) if np.nanstd(exc,ddof=1)>0 else None,
+                         "panel_null_mean":pnm,"panel_null_sd":pns,"panel_effect":pe,
+                         "panel_z":float(pe/pns) if pns>0 else None,
                          "median_within_block_shuffle_z":float(np.nanmedian([r["arms"][arm]["order_vs_shuffle"][k]["z"] for r in records]))}
     summary[arm]["diversity"]={"mean_unique_types":float(np.mean([r["arms"][arm]["test_unique_types"] for r in records])),
                                "mean_unseen_share":float(np.mean([r["arms"][arm]["test_unseen_share"] for r in records]))}
