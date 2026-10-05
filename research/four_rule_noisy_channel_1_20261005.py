@@ -99,7 +99,7 @@ def bits_for_lines(lines,T):
 ns={"__name__":"nc1_latent"}
 exec(compile(urllib.request.urlopen(LAT_URL,timeout=120).read().decode(),LAT_URL,"exec"),ns)
 vrows=ns["rows"];vfolds=ns["folds"]
-FOLD_SHA=ns["canon_sha"](vfolds)
+FOLD_SHA=hashlib.sha256(json.dumps(vfolds,sort_keys=True,separators=(",",":")).encode()).hexdigest()
 
 # Strict frozen ordinary rows from canonical programme. Exclude first two physical-line tokens.
 vg=collections.OrderedDict()
