@@ -92,7 +92,7 @@ def build_rows(tid):
         if n not in BIF:continue
         bif=BIF[n]
         if bif not in folds:continue
-        for ls,rec in ld.items():
+        for line_ord,(ls,rec) in enumerate(ld.items()):
             # strict programme population; prior NK3 used a broader contains-"P" check.
             if str(rec.get("u","")) != "+P0":continue
             txt=rec.get("t",{}).get(tid,"")
@@ -102,7 +102,7 @@ def build_rows(tid):
             for pos,t in enumerate(toks):
                 ps,cs=forms[pos]
                 rows.append(dict(eid=eid,folio=fol,line=str(ls),pos=pos,line_len=len(toks),
-                                 bif=bif,fold=int(folds[bif]),section=section(fol),token=t,
+                                 bif=bif,fold=int(folds[bif]),section=section(fol),token=t,line_ord=line_ord,
                                  ps=ps,cs=cs,first=cs[0],final=cs[-1],plen=plenbin(len(ps)),
                                  rlen=rlenbin(len(t)),gall=min(sum(ch in "fkpt" for ch in t),3)))
                 eid+=1
@@ -145,7 +145,7 @@ def _shape_key_token(t,count,domsec):
     sf=safe_form(t)
     if sf is None:return None
     ps,cs=sf
-    return (cs[0],cs[-1],plenbin(len(ps)),rlenbin(len(t)),freqbin(count),domsec)
+    return (cs[0],cs[-1],plenbin(len(ps)),rlenbin(len(t)),freqbin(count.get(t,0)),domsec)
 
 def build_feature_dicts(rows,fam_map,counts_all):
     """
@@ -160,7 +160,7 @@ def build_feature_dicts(rows,fam_map,counts_all):
         f=int(fam_map[r["token"]]);page[r["folio"]][f]+=1;bif[r["bif"]][f]+=1
     # recurrence gaps of same family within folio text order
     byg=collections.defaultdict(list)
-    for i,r in enumerate(usable):byg[r["folio"]].append((r["line"],r["pos"],i))
+    for i,r in enumerate(usable):byg[r["folio"]].append((r["line_ord"],r["pos"],i))
     prevgap={};nextgap={}
     for fol,ls in byg.items():
         ls.sort(key=lambda z:(z[0],z[1]))
@@ -247,7 +247,7 @@ def _cluster_se(gains,blocks):
     return se,(mu/se if se>0 else None)
 
 def evaluate_family(rows,fam_map,nshuffle=250,nlabel=250,seed=SEED):
-    counts=type_counts(rows)
+    counts=type_counts([r for r in rows if r["fold"] in (2,3)])
     tr=build_feature_dicts([r for r in rows if r["fold"] in (2,3)],fam_map,counts)
     va=build_feature_dicts([r for r in rows if r["fold"]==4],fam_map,counts)
     te=build_feature_dicts([r for r in rows if r["fold"] in (0,1)],fam_map,counts)
