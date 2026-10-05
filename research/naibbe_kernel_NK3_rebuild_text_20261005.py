@@ -104,7 +104,9 @@ FAST=os.getenv("NK3_FAST","0")=="1"
 NSHUFF=5 if FAST else 250
 NLABEL=5 if FAST else 250
 OUT={}
-for tid in ("ZLZI","ZLZB","TTLI"):
+TIDS=tuple(x.strip() for x in os.getenv("NK3_TIDS","ZLZI,ZLZB,TTLI").split(",") if x.strip())
+ARM_FILTER=set(x.strip() for x in os.getenv("NK3_ARMS","").split(",") if x.strip())
+for tid in TIDS:
     rows=build_rows(tid)
     print("NK3R_POP",tid,len(rows),collections.Counter(r["fold"] for r in rows),flush=True)
     ed,edi=ed_seed_map(rows)
@@ -124,6 +126,7 @@ for tid in ("ZLZI","ZLZB","TTLI"):
       "RANDOM_SHAPE_HASH12":(rnd,rndi,"hostile_control")
     }
     rr={}
+    if ARM_FILTER: arms={k:v for k,v in arms.items() if k in ARM_FILTER}
     for j,(name,(fm,info,role)) in enumerate(arms.items()):
         ev=evaluate_family(rows,fm,nshuffle=NSHUFF,nlabel=NLABEL,seed=SEED+1000*j+sum(map(ord,tid)))
         rr[name]={"role":role,"construction":info,"evaluation":ev}
@@ -137,10 +140,11 @@ def across(name):
         z[t]=None if e.get("status")!="ok" else {"gate":e["gate"],"gain":e["observed_context_gain_bits"],
           "context_z":e["context_shuffle"]["z"],"label_z":e["type_label_perm"]["z"],"folds":e["fold_gain_bits"]}
     vals=[z[t] for t in z if z[t] is not None]
-    gate=bool(len(vals)==3 and z["ZLZI"]["gate"] and all(v["gain"]>0 for v in vals))
+    gate=(bool(len(vals)==3 and all(t in z for t in ("ZLZI","ZLZB","TTLI")) and z["ZLZI"]["gate"] and all(v["gain"]>0 for v in vals))
+          if all(t in z for t in ("ZLZI","ZLZB","TTLI")) else None)
     return {"by_transcription":z,"cross_transcription_gate":gate}
 
-summary={n:across(n) for n in ("FORM_LEGACY_K12","FORM_LEARNED","FORM_ED_HYBRID","PURE_ED2")}
+summary={n:across(n) for n in ("FORM_LEGACY_K12","FORM_LEARNED","FORM_ED_HYBRID","PURE_ED2") if all(n in OUT[t]["arms"] for t in OUT)}
 out={"phase":"NK3_REBUILD_TEXT","status":"complete","population":"strict +P0",
      "discovery_folds":[2,3],"validation_fold":4,"final_folds":[0,1],
      "primary_metric":"heldout family codelength gain from external context above current-shape/section/frequency nuisance",
