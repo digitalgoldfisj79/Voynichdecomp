@@ -39,6 +39,7 @@ REF_URL="https://zenodo.org/api/records/5793616/files/ReF-v1.0.2.tar.gz/content"
 V_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/main/voynich_transcriptions_slim.json"
 V_SHA="26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
 FOLD_SHA="e774001ca046d88f24f56bf70f29213007d9cac3500d50f414e1782688d74888"
+FOLD_BASE="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/420d4363973174760a78000f1049339dbd26fa46/research/hf_emergent_occupancy_fold.py"
 PAIRS=[(1,8),(2,7),(3,6),(4,5),(9,16),(10,15),(11,14),(17,24),(18,23),(19,22),(20,21),(25,32),(26,31),(27,30),(28,29),(33,40),(34,39),(35,38),(36,37),(41,48),(42,47),(43,46),(44,45),(49,56),(50,55),(51,54),(52,53),(57,66),(58,65),(67,68),(69,70),(71,72),(75,84),(76,83),(77,82),(78,81),(79,80),(85,86),(87,90),(88,89),(93,96),(94,95),(99,102),(100,101),(103,116),(104,115),(105,114),(106,113),(107,112)]
 BIF_BY_NUM={n:f'B{a:03d}_{b:03d}' for a,b in PAIRS for n in (a,b)}
 DISC_N=735; TRAIN_K=4103; FULL_K=10000; MAX_HELDOUT=735; DISC_DEMAND=221
@@ -116,8 +117,12 @@ def load_vms():
     raw=urllib.request.urlopen(V_URL,timeout=120).read()
     if hashlib.sha256(raw).hexdigest()!=V_SHA:raise RuntimeError("V corpus SHA mismatch")
     obj=json.loads(raw)
-    allrows=build_all_rows(obj); folds=fold_assignment(allrows)
-    if canon_sha(folds)!=FOLD_SHA:raise RuntimeError(("fold sha",canon_sha(folds)))
+    # Do not reconstruct the physical split here: import the exact frozen loader.
+    ns={"__name__":"vger_frozen_fold"}
+    src=urllib.request.urlopen(FOLD_BASE,timeout=120).read().decode()
+    exec(compile(src,FOLD_BASE,"exec"),ns)
+    _,folds=ns["load_rows"]()
+    if ns["canon_sha"](folds)!=FOLD_SHA:raise RuntimeError(("fold sha",ns["canon_sha"](folds)))
     # strict +P0 and LINE_ENTRY firewall
     byfold={i:collections.Counter() for i in range(5)}
     bif_by_type={i:collections.defaultdict(collections.Counter) for i in range(5)}
