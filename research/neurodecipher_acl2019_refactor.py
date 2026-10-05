@@ -40,6 +40,7 @@ from rapidfuzz.distance import Levenshtein
 
 UPSTREAM = "480bad2487820e3737fecfdd108214efa769e34b"
 DATA_URL = f"https://raw.githubusercontent.com/j-luo93/NeuroDecipher/{UPSTREAM}/data/uga-heb.small.no_spe.cog"
+FULL_DATA_URL = f"https://raw.githubusercontent.com/j-luo93/NeuroDecipher/{UPSTREAM}/data/uga-heb.no_spe.cog"
 
 PAD_ID, SOW_ID, EOW_ID, UNK_ID = 0, 1, 2, 3
 START = ["<PAD>", "<SOW>", "<EOW>", "<UNK>"]
@@ -68,8 +69,8 @@ class Charset:
             out.append(c)
         return "".join(out)
 
-def load_corpus() -> Corpus:
-    raw=urllib.request.urlopen(DATA_URL,timeout=120).read().decode("utf-8")
+def load_corpus(url=DATA_URL) -> Corpus:
+    raw=urllib.request.urlopen(url,timeout=120).read().decode("utf-8")
     lines=[x for x in raw.splitlines() if x.strip()]
     assert lines[0].split("\t")==["uga-no_spe","heb-no_spe"]
     lv,kv=set(),set()
@@ -359,6 +360,37 @@ class Runner:
         print("REFAC_EVAL="+json.dumps(out),flush=True)
         return out
 
+    def full_eval(self):
+        """Paper-faithful test: train on the 10% subset, test on the full Ugaritic corpus."""
+        fc=load_corpus(FULL_DATA_URL)
+        lost=sorted([w for w in fc.lost if fc.cognates.get(w)],
+                    key=lambda w:len(self.lcs.ids(w)),reverse=True)
+        known=list(fc.known)
+        kid,klen=pad_words(known,self.kcs,self.dev)
+        n,k=len(lost),len(known)
+        costs=np.empty((n,k),dtype=np.float32)
+        mle=np.empty(n,dtype=np.int64)
+        self.model.eval()
+        bs=self.a.full_eval_batch
+        for st in range(0,n,bs):
+            en=min(st+bs,n)
+            lid,llen=pad_words(lost[st:en],self.lcs,self.dev)
+            with torch.no_grad():
+                lp,sc,_=self.model(lid,llen,kid,klen)
+            mle[st:en]=sc.argmax(1).cpu().numpy()
+            costs[st:en]=expected_edits(lp,sc,known,self.kcs,True)
+            print("REFAC_FULL_PROGRESS="+json.dumps({"done":en,"total":n}),flush=True)
+        ma,mh=evaluate_preds(mle,lost,known,fc.cognates)
+        print("REFAC_FULL_MLE="+json.dumps({"accuracy":ma,"hits":mh,"n":n}),flush=True)
+        flow,cost=mincost(costs,2214,5,3)
+        pred=flow.argmax(1)
+        fa,fh=evaluate_preds(pred,lost,known,fc.cognates)
+        out={"lost_with_cognate":n,"known_vocab":k,"paper_cognate_rows":2214,
+             "mle":ma,"mle_hits":mh,"flow_edit":fa,"flow_edit_hits":fh,
+             "mcf_cost":cost,"paper_target":0.659}
+        print("REFAC_FULL_EVAL="+json.dumps(out),flush=True)
+        return out
+
     def self_test(self):
         # Exercises neural forward/backward, expected edits and current OR-Tools flow.
         li=self.lost_ids[:20];ll=self.lost_len[:20]
@@ -399,9 +431,10 @@ class Runner:
                 if ep%self.a.eval_every==0:
                     final=self.eval(min(rnd*50,221),with_edit=True)
         if final is None: final=self.eval(221,with_edit=True)
+        full=self.full_eval() if self.a.full_eval else None
         out={"status":"complete","algorithm":"NeuroCipher ACL2019 refactor",
              "upstream_commit":UPSTREAM,"paper_noisy_target":0.659,
-             "final":final,"settings":{"rounds":self.a.rounds,"epochs_per_round":self.a.epochs,
+             "small_subset_diagnostic":final,"full_paper_eval":full,"settings":{"rounds":self.a.rounds,"epochs_per_round":self.a.epochs,
              "batch_size":500,"capacity":3,"n_similar":5,"momentum":0.25,
              "warm_up_steps":self.a.warm_up_steps,"reg_hyper":self.a.reg_hyper,
              "seed":self.a.seed}}
@@ -419,5 +452,7 @@ def main():
     p.add_argument("--reg-hyper",type=float,default=0.5,
                    help="paper §5: alignment regularization hyperparameter 0.5")
     p.add_argument("--seed",type=int,default=1234)
+    p.add_argument("--full-eval",action=argparse.BooleanOptionalAction,default=True)
+    p.add_argument("--full-eval-batch",type=int,default=32)
     Runner(p.parse_args()).run()
 if __name__=="__main__": main()
