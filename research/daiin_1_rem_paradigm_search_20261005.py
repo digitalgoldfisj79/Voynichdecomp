@@ -26,7 +26,7 @@ Outputs:
 - multi-feature blind ranking per panel
 - named-probe ranks only after blind ranking
 """
-import collections, hashlib, io, json, math, re, statistics, urllib.request, zipfile
+import collections, hashlib, io, json, math, re, statistics, urllib.request, zipfile, os
 from itertools import combinations
 
 import numpy as np
@@ -322,8 +322,10 @@ def panel_analysis(label,pred):
             "top_ranked":[pack(x) for x in top],"frequency_only":[pack(x) for x in fq],
             "named_probe_ranks":{k:{"rank":v["rank"],"candidate":pack(v["candidate"])} for k,v in named.items()}}
 
+PANEL_ENV=os.getenv("DAIIN_PANEL")
+SELECTED={PANEL_ENV:PANELS[PANEL_ENV]} if PANEL_ENV else PANELS
 OUT={}
-for label,pred in PANELS.items():
+for label,pred in SELECTED.items():
     print("DAIIN1_PANEL_BEGIN",label,flush=True)
     OUT[label]=panel_analysis(label,pred)
     if OUT[label].get("status")=="ok":
