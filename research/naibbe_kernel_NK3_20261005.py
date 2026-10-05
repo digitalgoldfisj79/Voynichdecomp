@@ -128,7 +128,7 @@ def build_rows(tid):
                 ps,cs=forms[pos]
                 pr=forms[pos-1][1] if pos>0 else None
                 nx=forms[pos+1][1] if pos+1<len(toks) else None
-                rows.append(dict(eid=eid,folio=fol,line=int(ls),pos=pos,line_len=len(toks),bif=bif,fold=int(folds[bif]),
+                rows.append(dict(eid=eid,folio=fol,line=str(ls),pos=pos,line_len=len(toks),bif=bif,fold=int(folds[bif]),
                                  section=section(fol),token=t,ps=ps,cs=cs,
                                  prev_start=(pr[0] if pr else 8),prev_final=(pr[-1] if pr else 8),
                                  next_start=(nx[0] if nx else 8),next_final=(nx[-1] if nx else 8),
