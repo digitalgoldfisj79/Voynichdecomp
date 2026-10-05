@@ -26,7 +26,7 @@ setting.  This script must reproduce that benchmark approximately before it is
 adapted to any Voynich or historical-German task.
 """
 from __future__ import annotations
-import argparse, json, math, random, urllib.request
+import argparse, json, math, random, urllib.request, copy
 from dataclasses import dataclass
 from typing import Dict, List, Set, Tuple
 
@@ -412,6 +412,9 @@ class Runner:
             if not self.self_test(): raise SystemExit(2)
             return
         final=None
+        best_small=-1.0
+        best_meta=None
+        best_state=None
         for rnd in range(1,self.a.rounds+1):
             # Published E step schedule.
             if rnd==1:
@@ -430,11 +433,22 @@ class Runner:
                           "loss":loss,"nll":nll,"reg":reg}),flush=True)
                 if ep%self.a.eval_every==0:
                     final=self.eval(min(rnd*50,221),with_edit=True)
+                    score=float(final["flow_edit"]) if final["flow_edit"] is not None else -1.0
+                    if score>best_small:
+                        best_small=score
+                        best_meta={"round":rnd,"epoch":ep,"global_epoch":global_ep,"small_flow_edit":score,
+                                   "small_mle":float(final["mle"])}
+                        best_state={k:v.detach().cpu().clone() for k,v in self.model.state_dict().items()}
+                        print("REFAC_BEST_CHECKPOINT="+json.dumps(best_meta),flush=True)
         if final is None: final=self.eval(221,with_edit=True)
+        if best_state is not None:
+            self.model.load_state_dict(best_state)
+            self.model.to(self.dev)
+        print("REFAC_SELECTED_CHECKPOINT="+json.dumps(best_meta),flush=True)
         full=self.full_eval() if self.a.full_eval else None
         out={"status":"complete","algorithm":"NeuroCipher ACL2019 refactor",
              "upstream_commit":UPSTREAM,"paper_noisy_target":0.659,
-             "small_subset_diagnostic":final,"full_paper_eval":full,"settings":{"rounds":self.a.rounds,"epochs_per_round":self.a.epochs,
+             "small_subset_final":final,"selected_checkpoint":best_meta,"full_paper_eval":full,"settings":{"rounds":self.a.rounds,"epochs_per_round":self.a.epochs,
              "batch_size":500,"capacity":3,"n_similar":5,"momentum":0.25,
              "warm_up_steps":self.a.warm_up_steps,"reg_hyper":self.a.reg_hyper,
              "seed":self.a.seed}}
