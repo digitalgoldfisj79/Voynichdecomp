@@ -131,7 +131,6 @@ def load_vms():
             for pos,t in enumerate(toks):
                 if pos<2:continue
                 byfold[f][t]+=1;bif_by_type[f][t][bif]+=1
-    disc=[w for w,n in byfold[2]+byfold[3].most_common()] if False else None
     dc=byfold[2]+byfold[3]
     discovery=[w for w,n in dc.most_common(DISC_N)]
     dset=set(discovery)
@@ -293,6 +292,9 @@ class VMSRunner:
         return out
 
     def run(self):
+        if self.a.audit_only:
+            print("VGER_AUDIT_ONLY="+json.dumps(self.audit,ensure_ascii=False,separators=(",",":")),flush=True)
+            return
         best=None;best_state=None
         for rnd in range(1,self.a.rounds+1):
             if rnd==1:
@@ -329,6 +331,7 @@ def main():
     p.add_argument("--seed",type=int,default=1234)
     p.add_argument("--scramble-seed",type=int,default=9001)
     p.add_argument("--cpu",action="store_true")
+    p.add_argument("--audit-only",action="store_true")
     p.add_argument("--rounds",type=int,default=10)
     p.add_argument("--epochs",type=int,default=150)
     p.add_argument("--eval-every",type=int,default=10)
