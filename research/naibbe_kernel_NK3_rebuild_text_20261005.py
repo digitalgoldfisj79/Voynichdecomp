@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """NK3 rebuild — text/internal family arms."""
-import collections, hashlib, json, urllib.request
+import collections, hashlib, json, urllib.request, os
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
-CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/74179a8f390f3cf796923607d37c466d1ae70560/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
+CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/b9795285e87c9d7332c29abe5123237100bce143/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
 c={"__name__":"nk3r_core"};exec(compile(urllib.request.urlopen(CORE_URL,timeout=120).read().decode(),CORE_URL,"exec"),c)
 build_rows=c["build_rows"];internal_feature=c["internal_feature"];evaluate_family=c["evaluate_family"]
 safe_form=c["safe_form"];rlenbin=c["rlenbin"];freqbin=c["freqbin"];SEED=c["SEED"]
@@ -82,10 +82,15 @@ def exact_control(rows,n=24):
     return {t:mp.get(t,other) for t in all_types(rows)},{"top":top,"k":other+1}
 
 def section_control(rows):
+    # hostile control only, but keep the same discovery-only firewall as candidate arms.
     by=collections.defaultdict(collections.Counter)
-    for r in rows:by[r["token"]][r["section"]]+=1
-    sec=sorted(set(r["section"] for r in rows));sm={s:i for i,s in enumerate(sec)}
-    return {t:sm[co.most_common(1)[0][0]] for t,co in by.items()},{"sections":sec}
+    for r in rows:
+        if r["fold"] in (2,3): by[r["token"]][r["section"]]+=1
+    sec=sorted(set(r["section"] for r in rows if r["fold"] in (2,3)));sm={s:i for i,s in enumerate(sec)}
+    other=len(sec);fmap={}
+    for t in all_types(rows):
+        fmap[t]=sm[by[t].most_common(1)[0][0]] if by.get(t) else other
+    return fmap,{"sections":sec,"other":other}
 
 def random_shape_hash(rows,k=12):
     cnt=collections.Counter(r["token"] for r in rows);f={}
@@ -95,9 +100,13 @@ def random_shape_hash(rows,k=12):
         h=hashlib.sha256(("NK3RAND|"+key).encode()).digest();f[t]=int.from_bytes(h[:8],"big")%k
     return f,{"k":k}
 
+FAST=os.getenv("NK3_FAST","0")=="1"
+NSHUFF=5 if FAST else 250
+NLABEL=5 if FAST else 250
 OUT={}
 for tid in ("ZLZI","ZLZB","TTLI"):
     rows=build_rows(tid)
+    print("NK3R_POP",tid,len(rows),collections.Counter(r["fold"] for r in rows),flush=True)
     ed,edi=ed_seed_map(rows)
     legacy,legi=fit_form_kmeans(rows,12,False)
     learned,learni=fit_form_kmeans(rows,"auto",True)
@@ -116,7 +125,7 @@ for tid in ("ZLZI","ZLZB","TTLI"):
     }
     rr={}
     for j,(name,(fm,info,role)) in enumerate(arms.items()):
-        ev=evaluate_family(rows,fm,nshuffle=250,nlabel=250,seed=SEED+1000*j+sum(map(ord,tid)))
+        ev=evaluate_family(rows,fm,nshuffle=NSHUFF,nlabel=NLABEL,seed=SEED+1000*j+sum(map(ord,tid)))
         rr[name]={"role":role,"construction":info,"evaluation":ev}
         print("NK3R_TEXT_ARM",tid,name,json.dumps(ev,separators=(",",":")),flush=True)
     OUT[tid]={"n_rows":len(rows),"arms":rr}
