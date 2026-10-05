@@ -39,7 +39,9 @@ def eval_pair(rows,a,b,C):
         md=LogisticRegression(C=C,max_iter=500,solver="liblinear").fit(X,yt)
         p=md.predict_proba(V)[:,1]; ll=float(np.mean(log2p(p,yv)))
         auc=float(roc_auc_score(yv,p)) if len(set(yv))>1 else None
-    except Exception:return None
+    except Exception as e:
+        print("PAIR_FAIL",a,b,C,repr(e),flush=True)
+        return None
     return {"gain":ll-base,"auc":auc,"na":sum(yv==0),"nb":sum(yv==1),"ntrain":len(yt)}
 
 def split_cross(rows,types):
