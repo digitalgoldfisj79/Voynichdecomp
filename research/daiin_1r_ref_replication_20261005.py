@@ -107,8 +107,8 @@ for fi,name in enumerate(names):
     lines=[];cur=[]
     for tok in root.iter():
         if tok.tag.split("}")[-1]!="token":continue
-        dipls=[x for x in tok if x.tag.split("}")[-1]=="dipl"]
-        mods=[x for x in tok if x.tag.split("}")[-1]=="mod"]
+        dipls=[x for x in tok if x.tag.split("}")[-1] in ("dipl","tok_dipl")]
+        mods=[x for x in tok if x.tag.split("}")[-1] in ("mod","tok_anno")]
         if not mods:continue
         first_d=dipls[0].attrib.get("id") if dipls else None
         last_d=dipls[-1].attrib.get("id") if dipls else None
