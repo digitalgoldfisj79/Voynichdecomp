@@ -126,10 +126,19 @@ def load_vms():
     # strict +P0 and LINE_ENTRY firewall
     byfold={i:collections.Counter() for i in range(5)}
     bif_by_type={i:collections.defaultdict(collections.Counter) for i in range(5)}
+    excluded_missing_fold=collections.Counter()
     for fol,ld in obj["pages"].items():
         n=parse_num(fol)
         if n not in BIF_BY_NUM:continue
-        bif=BIF_BY_NUM[n];f=folds[bif]
+        bif=BIF_BY_NUM[n]
+        if bif not in folds:
+            for ls,rec in ld.items():
+                if str(rec.get("u",""))!="+P0":continue
+                toks=[t.lower() for t in rec.get("t",{}).get("ZLZI","").split() if re.fullmatch(r"[a-z]+",t.lower())]
+                for pos,t in enumerate(toks):
+                    if pos>=2:excluded_missing_fold[bif]+=1
+            continue
+        f=folds[bif]
         for ls,rec in ld.items():
             if str(rec.get("u",""))!="+P0":continue
             toks=[t.lower() for t in rec.get("t",{}).get("ZLZI","").split() if re.fullmatch(r"[a-z]+",t.lower())]
@@ -152,7 +161,9 @@ def load_vms():
       "final_unseen_discovery_types":len(final_unseen_disc),"final_strict_novel_types":len(final_strict),
       "validation_min_count":int(byfold[4][validation[-1]]) if validation else None,
       "final_strict_min_count":int((byfold[0]+byfold[1])[final_strict[-1]]) if final_strict else None,
-      "chars":allchars}
+      "chars":allchars,
+      "excluded_unmapped_bifolia":dict(excluded_missing_fold),
+      "excluded_unmapped_tokens":int(sum(excluded_missing_fold.values()))}
     return discovery,validation,final_unseen_disc,final_strict,allchars,audit
 
 def child(el,name):
