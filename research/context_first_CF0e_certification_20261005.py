@@ -62,14 +62,28 @@ def one(seed,shuffle=False):
  for a,b,truth,cross,g in sel:
   if a in used or b in used:continue
   pairs.append((a,b,g,truth));used|={a,b}
- # heldout pooling test using original machinery
- base,glob=m["fit_baseline"](rows,vmap,(2,3));obs,exp=m["profiles"](rows,vmap,(2,3),set(types),base,glob)
- D=dict(types=types,dc=dc,tc=tc,vmap=vmap,base=base,glob=glob,obs=obs,exp=exp,q99=None,
-        random_val_gain=np.array([]),pairs=[(a,b,g) for a,b,g,t in pairs],n_candidates=len(cand),n_accepted_raw=len(sel))
- out=m["evaluate_real"](rows,"SYN",D)
- out.update({"seed":seed,"shuffle":shuffle,"candidate_n":len(cand),"selected_n":len(sel),
-             "selected_precision":float(np.mean([x[2] for x in sel])) if sel else None,
-             "pair_n_nonoverlap":len(pairs),"pair_precision_nonoverlap":float(np.mean([x[3] for x in pairs])) if pairs else None})
+ # heldout pooling test computed directly; no sklearn wrapper
+ base,glob=m["fit_baseline"](rows,vmap,(2,3,4));obs,exp=m["profiles"](rows,vmap,(2,3,4),set(types),base,glob)
+ pm={}
+ for a,b,g,t in pairs:pm[a]=(a,b);pm[b]=(a,b)
+ test=[r for r in rows if r["fold"] in (0,1)]
+ merged=sorted(pm)
+ if merged:
+  ss=m["score_rows"](test,vmap,merged,obs,exp,base,glob)
+  pp=m["score_rows"](test,vmap,merged,obs,exp,base,glob,pm)
+  dd=np.array([y[1]-x[1] for x,y in zip(ss,pp)],float)
+  blocks=[x[0]["bif"] for x in ss]
+  bs=m["block_stats"](dd,blocks)
+  folds={}
+  for ff in (0,1):
+   ix=[i for i,x in enumerate(ss) if x[0]["fold"]==ff];folds[str(ff)]=float(np.mean(dd[ix])) if ix else None
+ else:
+  bs={"mean":None,"se":None,"z":None};folds={"0":None,"1":None}
+ out={"seed":seed,"shuffle":shuffle,"candidate_n":len(cand),"selected_n":len(sel),
+      "selected_precision":float(np.mean([x[2] for x in sel])) if sel else None,
+      "pair_n_nonoverlap":len(pairs),"pair_precision_nonoverlap":float(np.mean([x[3] for x in pairs])) if pairs else None,
+      "pooled_vs_exact":bs,"fold_gain":folds,
+      "gate":bool(bs.get("z") is not None and bs["z"]>2 and folds["0"] is not None and folds["0"]>0 and folds["1"] is not None and folds["1"]>0)}
  return out
 records=[]
 for k in range(12):
