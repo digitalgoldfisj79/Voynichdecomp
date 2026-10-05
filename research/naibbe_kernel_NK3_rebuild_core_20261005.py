@@ -203,7 +203,7 @@ def build_feature_dicts(rows,fam_map,counts_all):
     return out
 
 def _fit_logreg(X,y,C):
-    return LogisticRegression(C=C,max_iter=400,solver="lbfgs",multi_class="auto",n_jobs=1).fit(X,y)
+    return LogisticRegression(C=C,max_iter=400,solver="lbfgs").fit(X,y)
 
 def _true_logp(model,X,y):
     p=model.predict_proba(X);classes=model.classes_;mp={int(c):i for i,c in enumerate(classes)}
@@ -226,12 +226,14 @@ def _choose_C(train,val):
     out={}
     for kind,X,V in (("base",X0,V0),("ctx",sparse.hstack([X0,Xc],format="csr"),sparse.hstack([V0,Vc],format="csr"))):
         best=None
+        errors=[]
         for C in Cs:
             try:
                 md=_fit_logreg(X,yt,C); lp=_true_logp(md,V,yv);loss=-float(np.mean(lp))
-            except Exception:continue
+            except Exception as e:
+                errors.append((C,repr(e))); continue
             if best is None or loss<best[0]:best=(loss,C)
-        if best is None:raise RuntimeError(("no_C",kind))
+        if best is None:raise RuntimeError(("no_C",kind,errors[:3]))
         out[kind]={"C":best[1],"val_bits":best[0]}
     return out
 
