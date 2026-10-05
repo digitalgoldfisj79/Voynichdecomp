@@ -11,7 +11,7 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.linear_model import Ridge
 
-CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/b9795285e87c9d7332c29abe5123237100bce143/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
+CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/1344836d97c3fd1a78ebca6ab4e6d994d829be6b/research/naibbe_kernel_NK3_rebuild_core_20261005.py"
 c={"__name__":"nk3r_core"};exec(compile(urllib.request.urlopen(CORE_URL,timeout=120).read().decode(),CORE_URL,"exec"),c)
 build_rows=c["build_rows"];internal_feature=c["internal_feature"];evaluate_family=c["evaluate_family"]
 fnum=c["fnum"];folds=c["folds"];BIF=c["BIF"];SEED=c["SEED"]
