@@ -53,6 +53,6 @@ def select(rows):
  return D,{"cross_cut":th,"gain_cut":cut,"raw_selected":len(sel),"disjoint_selected":len(pairs),"pairs":[{"a":a,"b":b,"gain":g} for a,b,g in pairs]}
 out={}
 for tid in ("ZLZI","ZLZB","TTLI"):
- rows=m["build_rows"](tid);D,meta=select(rows);ev=m["evaluate_real"](rows,tid,D,nshuffle=1000,seed=20267000+sum(map(ord,tid)))
+ rows=m["build_rows"](tid);D,meta=select(rows);ev=m["evaluate_real"](rows,tid,D)
  out[tid]={"selection":meta,"evaluation":ev};print("CF3N_"+tid+"="+json.dumps(out[tid],separators=(",",":")),flush=True)
 print("FINAL="+json.dumps({"phase":"CF3_NOTATION_STRENGTH_BOUNDED","status":"complete","results":out},separators=(",",":")),flush=True)
