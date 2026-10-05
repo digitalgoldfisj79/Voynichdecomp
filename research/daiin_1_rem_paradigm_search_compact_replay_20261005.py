@@ -327,6 +327,7 @@ for label,pred in PANELS.items():
     print("DAIIN1_PANEL_BEGIN",label,flush=True)
     OUT[label]=panel_analysis(label,pred)
     if OUT[label].get("status")=="ok":
+        pass
 
 # stability: which lemma+POS families recur in top20 across manuscript dialect panels?
 stable=collections.Counter()
