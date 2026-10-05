@@ -44,7 +44,9 @@ def discrim_gain(rows,a,b):
     na=sum(r["token"]==a for r in tr);nb=sum(r["token"]==b for r in tr)
     vaa=sum(r["token"]==a for r in va);vbb=sum(r["token"]==b for r in va)
     if min(na,nb,vaa,vbb)<2:return None
-    v=DictVectorizer();X=v.fit_transform([feats(r) for r in tr]);V=v.transform([feats(r) for r in va])
+    v=DictVectorizer();X=v.fit_transform([feats(r) for r in tr]).tocsr();V=v.transform([feats(r) for r in va]).tocsr()
+    X.indices=X.indices.astype(np.int32);X.indptr=X.indptr.astype(np.int32)
+    V.indices=V.indices.astype(np.int32);V.indptr=V.indptr.astype(np.int32)
     y=np.array([r["token"]==b for r in tr],int);z=np.array([r["token"]==b for r in va],int)
     prior=(y.sum()+.5)/(len(y)+1)
     base=np.mean(np.log2(np.maximum(np.where(z==1,prior,1-prior),1e-12)))
