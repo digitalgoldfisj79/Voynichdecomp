@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """NK3 rebuild v2 — text/internal family arms."""
-import collections, hashlib, json, urllib.request
+import collections, hashlib, json, urllib.request, os
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
@@ -83,8 +83,10 @@ def exact_top(rows,n=24):
     cnt=disc_counts(rows);top=[t for t,_ in cnt.most_common(n)];mp={t:i for i,t in enumerate(top)};other=len(top)
     return {t:mp.get(t,other) for t in all_types(rows)},{"top":top,"k":other+1}
 
+TID_ENV=os.getenv("NK3_TID")
+TIDS=(TID_ENV,) if TID_ENV else ("ZLZI","ZLZB","TTLI")
 OUT={}
-for tid in ("ZLZI","ZLZB","TTLI"):
+for tid in TIDS:
     rows=build_rows(tid);print("NK3RV2_POP",tid,len(rows),collections.Counter(r["fold"] for r in rows),flush=True)
     ed,edi=ed_seed_map(rows);legacy,legi=fit_form(rows,12,False);learned,learni=fit_form(rows,"auto",True);hyb,hybi=fit_form(rows,"auto",True,ed)
     sec,seci=section_only(rows);rnd,rndi=random_shape(rows);exact,exi=exact_top(rows)
@@ -110,8 +112,9 @@ for name in ("FORM_LEGACY_K12","FORM_LEARNED","FORM_ED_HYBRID","PURE_ED2"):
     for tid in OUT:
         e=OUT[tid]["arms"][name]["evaluation"];by[tid]={"gate":e.get("gate"),"gain":e.get("observed_context_gain_bits"),"block_z":e.get("physical_block_z0"),"folds":e.get("fold_gain_bits"),"shuffle_z":e.get("context_shuffle",{}).get("z")}
     vals=[by[t] for t in by]
-    summary[name]={"by_transcription":by,"same_direction_all_three":all(v["gain"] is not None and v["gain"]>0 for v in vals),
-                   "primary_gate_ZLZI":bool(by["ZLZI"]["gate"] and OUT["ZLZI"]["hostile_controls_ok"])}
+    summary[name]={"by_transcription":by,
+                   "same_direction_all_available":all(v["gain"] is not None and v["gain"]>0 for v in vals),
+                   "primary_gate_ZLZI":(bool(by["ZLZI"]["gate"] and OUT["ZLZI"]["hostile_controls_ok"]) if "ZLZI" in by else None)}
 
 out={"phase":"NK3_REBUILD_V2_TEXT","status":"complete","population":"strict +P0","discovery_folds":[2,3],"validation_fold":4,"final_folds":[0,1],
      "primary_context":"neighbor lags -2,-1,+1,+2 FORM/family + line position only",
