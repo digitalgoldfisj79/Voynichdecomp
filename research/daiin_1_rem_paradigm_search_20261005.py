@@ -190,11 +190,17 @@ for n in names:
         norm=str(tok.get("norm","--")).lower()
         valid=not (lemma in ("--","[!]","") or pos in ("--","$_","FM") or norm in ("--","[!]","") or tok.get("pos_upos")=="PUNCT")
         rawt.append((order,vi,{"cell":(lemma,pos,infl),"norm":norm} if valid else None))
+    byvi=collections.defaultdict(list)
+    for order,vi,x in rawt:
+        if vi is not None and x is not None:byvi[vi].append((order,x))
     lines=[]
     for L in d.get("line",[]):
         try:a0=int(L["begin"]);b0=int(L["end"])
         except Exception:continue
-        line=[x for _,vi,x in rawt if vi is not None and a0<=vi<=b0 and x is not None]
+        line=[]
+        for vi in range(a0,b0+1):
+            for order,x in byvi.get(vi,[]):line.append((order,x))
+        line=[x for _,x in sorted(line,key=lambda q:q[0])]
         if line:lines.append(line)
     # Rare files without usable line spans: one-document sequence fallback.
     if not lines:
