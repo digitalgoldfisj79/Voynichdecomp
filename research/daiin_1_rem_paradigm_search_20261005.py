@@ -182,7 +182,7 @@ for n in names:
     rawt=[]
     for order,tok in enumerate(d.get("token",[])):
         vm=str(tok.get("virttok",""))
-        mm=re.match(r"t(\\d+)",vm)
+        mm=re.match(r"t(\d+)",vm)
         vi=int(mm.group(1)) if mm else None
         lemma=str(tok.get("lemma_gen","--"))
         pos=str(tok.get("pos_hits","--"))
