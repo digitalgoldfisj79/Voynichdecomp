@@ -310,5 +310,5 @@ def evaluate_family(rows,fam_map,nshuffle=250,nlabel=250,seed=SEED):
       "physical_block_se":bse,"physical_block_z0":bz,"fold_gain_bits":foldgain,
       "context_shuffle":{"mean":sm,"sd":ssd,"effect":obs-sm,"z":sz,"n":len(sn)},
       "type_label_perm":{"mean":pm,"sd":psd,"effect":(obs-pm if pm is not None else None),"z":pz,"n":len(pn)},
-      "gate":bool(sz is not None and sz>2 and pz is not None and pz>2 and foldgain["0"] is not None and foldgain["1"] is not None and foldgain["0"]>0 and foldgain["1"]>0)
+      "gate":bool(obs>0 and bz is not None and bz>2 and sz is not None and sz>2 and pz is not None and pz>2 and foldgain["0"] is not None and foldgain["1"] is not None and foldgain["0"]>0 and foldgain["1"]>0)
     }
