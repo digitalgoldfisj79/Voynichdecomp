@@ -1,0 +1,45 @@
+{
+  "baseline": {
+    "binary_n": 70,
+    "dot_n": 60,
+    "loop_n": 10,
+    "runs": ["DOTx21","LOOPx10","DOTx39"],
+    "best_cast_hamming_any_mapping": 10,
+    "natural_mapping_dot_single_loop_double_hamming": 14
+  },
+  "natural_gap_unit_sensitivity": {
+    "n_settings": 81,
+    "median_component_fraction_in_units_size_1_or_2": 0.2833333333333333,
+    "range_component_fraction_in_units_size_1_or_2": [0.0,0.5192307692307693],
+    "settings_ge_0_9_fraction": 0,
+    "median_max_unit_size": 36.0,
+    "range_max_unit_size": [15,52]
+  },
+  "four_row_spacing_periodicity": {
+    "effect_deg": 0.2034660813553706,
+    "null_mean": 0.3332300626993242,
+    "null_sd": 0.1537273904073169,
+    "z_vs_optimized_null": -0.8441175056711123,
+    "p_upper": 0.7894221057789422
+  },
+  "shield_algebra_sensitivity": {
+    "settings_with_at_least_60_binary_objects": 15,
+    "best_mapping_scores": [9,10],
+    "natural_mapping_scores": [13,14]
+  },
+  "natural_mapping_count_preserving_null": {
+    "mc": 300,
+    "null_mean_hamming": 12.966666666666667,
+    "null_sd_hamming": 0.9636654290187242,
+    "observed_hamming": 14,
+    "z_observed_minus_null": 1.0722947012694541,
+    "fraction_null_as_good_or_better": 0.9568106312292359
+  },
+  "decision": {
+    "literal_one_or_two_mark_rows": "rejected: objective gap units do not reduce to singles/pairs",
+    "four_row_geomantic_spacing": "not resolved; optimized period-4 spacing is no better than local-shuffle null",
+    "shield_chart_algebra": "rejected under tested object-as-row mapping; best score is trivial/majority-state and natural mapping is worse than random count-matched sequences",
+    "broader_operational_register": "remains open",
+    "geomancy_as_specific_explanation": "downgraded / rejected for f70r1 micro-register under this encoding"
+  }
+}
