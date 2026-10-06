@@ -202,6 +202,12 @@ def recurrence_scores(rows,paras,comps,folds_fit=(2,3,4),folds_eval=(0,1)):
             last[ci]=r
     return vals
 
+def bif_mean_only(vals):
+    if not vals:return None
+    by=collections.defaultdict(list)
+    for g,r in vals:by[r["bif"]].append(float(g))
+    return float(np.mean([np.mean(v) for v in by.values()]))
+
 def topology_maps(edges,rows,types,tid,n=NNULL):
     rng=np.random.default_rng(SEED+sum(map(ord,tid))+771)
     out=[]
@@ -229,8 +235,12 @@ def run(tid):
         try:
             cv=context_scores(rows,cp,V,(2,3,4),(0,1),alpha)
             rv=recurrence_scores(rows,paras,cp)
-            if cv:nc.append(block_stat(cv,SEED+31+len(nc))["bif_mean"])
-            if rv:nr.append(block_stat(rv,SEED+41+len(nr))["bif_mean"])
+            if cv:
+                z=bif_mean_only(cv)
+                if z is not None:nc.append(z)
+            if rv:
+                z=bif_mean_only(rv)
+                if z is not None:nr.append(z)
         except Exception:
             failed+=1
     out={"tid":tid,"components":[list(x) for x in real_comps],"alpha":alpha,"validation":agrid,
