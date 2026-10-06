@@ -92,9 +92,13 @@ def compact(out):
     return d
 
 def run_seed(args):
-    raw=urllib.request.urlopen(CORPUS_URL,timeout=120).read()
-    if hashlib.sha256(raw).hexdigest()!=CORPUS_SHA: raise RuntimeError("corpus SHA mismatch")
-    pathlib.Path(args.corpus).write_bytes(raw)
+    cp=pathlib.Path(args.corpus)
+    if cp.exists() and hashlib.sha256(cp.read_bytes()).hexdigest()==CORPUS_SHA:
+        raw=cp.read_bytes()
+    else:
+        raw=urllib.request.urlopen(CORPUS_URL,timeout=120).read()
+        if hashlib.sha256(raw).hexdigest()!=CORPUS_SHA: raise RuntimeError("corpus SHA mismatch")
+        tmp=cp.with_suffix(".tmp"); tmp.write_bytes(raw); os.replace(tmp,cp)
     meta=load_json_b64(args.meta)
     h=load_harness(args.harness)
     rows,aud=recover_from_public(args.corpus,meta)
