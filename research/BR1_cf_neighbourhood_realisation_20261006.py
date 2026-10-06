@@ -78,7 +78,7 @@ def k12_final(t):
 def enrich(rows):
     by=collections.defaultdict(list)
     for r in rows:
-        r["hand"]=davis_hand(r["folio"],int(r["line"]))
+        r["hand"]=davis_hand(r["folio"],int("".join(ch for ch in str(r["line"]) if ch.isdigit()) or 0))
         r["kstart"]=k12_start(r["token"]);r["kfinal"]=k12_final(r["token"])
         by[(r["folio"],r["line"])].append(r)
     for rs in by.values():
