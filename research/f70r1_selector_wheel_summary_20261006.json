@@ -1,0 +1,48 @@
+{
+  "baseline": {"outer_components": 74, "active_arc_deg": [228,339]},
+  "candidate_state_counts": [22,28,30,32],
+  "headline": {
+    "22_max_coherence_z_across_null_bandwidths": 0.693,
+    "28_max_coherence_z_across_null_bandwidths": 0.936,
+    "30_max_coherence_z_across_null_bandwidths": 1.205,
+    "32_max_coherence_z_across_null_bandwidths": 0.698
+  },
+  "cross_validation": {
+    "22_best_z": -1.003,
+    "28_best_z": -1.111,
+    "30_best_z": -0.594,
+    "32_best_z": -0.918,
+    "note": "lower RMS is better; values shown are the most favorable z over 4/6/8/10/12-degree local-bin nulls"
+  },
+  "model_free_scan_k8_64": {
+    "observed_best_k": 11,
+    "observed_max_coherence": 0.309865,
+    "bin4": {"effect_vs_null": -0.003079, "null_sd": 0.012512, "z": -0.246, "p": 0.587},
+    "bin6": {"effect_vs_null": -0.010684, "null_sd": 0.016722, "z": -0.639, "p": 0.732},
+    "bin8": {"effect_vs_null": 0.018929, "null_sd": 0.021779, "z": 0.869, "p": 0.185},
+    "bin10":{"effect_vs_null": 0.006406, "null_sd": 0.026217, "z": 0.244, "p": 0.385},
+    "bin12":{"effect_vs_null": 0.002164, "null_sd": 0.028899, "z": 0.075, "p": 0.444}
+  },
+  "natural_gap_units": {
+    "median_units": 18,
+    "range_units": [2,29],
+    "target_hits_81": {"22":0,"28":3,"30":0,"32":0},
+    "target_hits_27_unique_center_threshold_settings": {"22":0,"28":1,"30":0,"32":0},
+    "only_28_hit": "cx=900, cy=382, threshold=160; repeated only because outer-depth parameter had no effect"
+  },
+  "secondary_92_component_representation": {
+    "22_max_z": 1.553,
+    "28_max_z": -0.720,
+    "30_max_z": 1.625,
+    "32_max_z": -0.982,
+    "note": "No historical candidate reaches 2 SD under local-density-preserving nulls."
+  },
+  "decision": {
+    "regular_losbuch_selector_wheel": "REJECTED",
+    "22_28_30_32_slot_counts": "not resolved; all <2 SD and null-sensitive",
+    "any_regular_slot_count_8_64": "not resolved after max-stat correction",
+    "28_state_segmentation": "representation-fragile: one of 27 unique settings",
+    "broader_nonmetric_operational_register": "remains open",
+    "next_test": "whether the stable ~277-degree state transition aligns with adjacent textual/structural boundaries; do not fit more global slot counts"
+  }
+}
