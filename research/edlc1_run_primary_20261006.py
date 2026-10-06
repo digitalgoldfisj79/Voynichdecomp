@@ -96,7 +96,11 @@ def region_flags(md):
     }
 
 def load_ref():
-    raw=urlread_retry(REF_URL,300,6)
+    local_archive=os.environ.get("EDLC1_REF_ARCHIVE")
+    if local_archive:
+        raw=pathlib.Path(local_archive).read_bytes()
+    else:
+        raw=urlread_retry(os.environ.get("EDLC1_REF_URL",REF_URL),300,6)
     sha=hashlib.sha256(raw).hexdigest()
     tf=tarfile.open(fileobj=io.BytesIO(raw),mode="r:gz")
     allr=[];normr=[];docs=[];excluded=0;ambig=0;verified_n=0;lemma_n=0
