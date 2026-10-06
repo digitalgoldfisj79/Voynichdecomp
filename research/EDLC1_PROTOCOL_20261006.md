@@ -41,7 +41,7 @@ Q5. In document-blocked held-out evaluation, how often can a genuinely unseen to
 
 3. **Latin: DEEDS HTR Dataset, BL Cotton MS Nero E VI.**
    - Dataset commit pinned in source manifest.
-   - Manuscript begun 1442; primary control uses hand-corrected/ground-truth plain ALTO XML only, never .chocomufin.xml model output.
+   - DEEDS sample is from ff. 200–221 of the Prima Camera. Gervers (1974) records that the cartulary was begun in 1442 and that the Prima Camera (ff. 3–288v) was completed by 1447; therefore this sampled Latin surface is securely 1442–1447. Primary control uses hand-corrected/ground-truth plain ALTO XML only, never .chocomufin.xml model output.
    - Only MainZone text blocks.
    - Physical page is the resampling/OOV block.
    - This is a diplomatic surface control and preserves abbreviation signs.
@@ -83,7 +83,7 @@ For ReF only, where an unambiguous tok_anno alignment exists:
 
 ## Core metrics
 
-All ED metrics are repeated at minimum token-frequency thresholds **1, 2, 3, and 5**.
+All ED metrics are repeated at minimum token-frequency thresholds **1, 2, 3, and 5**. The **predeclared primary ED threshold is frequency >=3**; thresholds 1, 2, and 5 are sensitivity panels. This choice is frozen before the primary run to reduce singleton/transcription-error leverage without discarding genuinely recurrent vocabulary.
 
 ### Length metrics
 
@@ -212,10 +212,12 @@ For every headline matched statistic report:
 If |z| < 2, reporting MUST begin: **“the metric does not resolve this”.**
 
 No multiplicity-corrected “significance” claim will be made from an exploratory family of correlated ED metrics. The predeclared primary endpoints are:
-1. token-length CV;
-2. ED1 pair density;
-3. ED<=2 pair density;
-4. OOV ED<=2 repairability.
+1. token-weighted token-length CV (all accepted tokens);
+2. ED1 pair density at minimum corpus frequency 3;
+3. ED<=2 pair density at minimum corpus frequency 3;
+4. event-weighted OOV ED<=2 repairability.
+
+Type-weighted length CV and ED thresholds 1/2/5 are predeclared sensitivities.
 
 ## Comparability and exclusions
 
