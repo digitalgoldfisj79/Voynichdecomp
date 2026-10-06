@@ -19,7 +19,7 @@ compared to topology + frequency-bin + dominant-section matched Voynich
 networks. No current-token morphology, FORM, ED, DINO, or NeuroDecipher
 representation enters either endpoint.
 """
-import collections, json, math, re, urllib.request
+import collections, json, math, re, urllib.request, os, multiprocessing as mp
 import numpy as np
 
 SEED=20261006
@@ -216,6 +216,14 @@ def topology_maps(edges,rows,types,tid,n=NNULL):
         if e is not None:out.append(e)
     return out
 
+_G={}
+
+def _null_worker(e):
+    cp=components(e)
+    cv=context_scores(_G["rows"],cp,_G["V"],(2,3,4),(0,1),_G["alpha"])
+    rv=recurrence_scores(_G["rows"],_G["paras"],cp)
+    return bif_mean_only(cv),bif_mean_only(rv)
+
 def topo_stat(obs,arr):
     a=np.asarray(arr,float);sd=float(a.std(ddof=1));nm=float(a.mean())
     return {"obs":float(obs),"null_mean":nm,"null_sd":sd,"z":float((obs-nm)/sd) if sd>0 else None,"n":len(a)}
@@ -230,19 +238,13 @@ def run(tid):
     R=block_stat(rvals,SEED+22+sum(map(ord,tid)))
     maps=topology_maps(real_edges,rows,types,tid)
     nc=[];nr=[];failed=0
-    for e in maps:
-        cp=components(e)
-        try:
-            cv=context_scores(rows,cp,V,(2,3,4),(0,1),alpha)
-            rv=recurrence_scores(rows,paras,cp)
-            if cv:
-                z=bif_mean_only(cv)
-                if z is not None:nc.append(z)
-            if rv:
-                z=bif_mean_only(rv)
-                if z is not None:nr.append(z)
-        except Exception:
-            failed+=1
+    _G.clear();_G.update({"rows":rows,"paras":paras,"V":V,"alpha":alpha})
+    ctx=mp.get_context("fork")
+    with ctx.Pool(processes=min(16,os.cpu_count() or 4)) as pool:
+        for a,b in pool.imap_unordered(_null_worker,maps,chunksize=4):
+            if a is not None:nc.append(a)
+            else:failed+=1
+            if b is not None:nr.append(b)
     out={"tid":tid,"components":[list(x) for x in real_comps],"alpha":alpha,"validation":agrid,
          "distant_context":{"stat":C,"topology_matched":topo_stat(C["bif_mean"],nc) if nc else None},
          "recurrence_identity":{"stat":R,"topology_matched":topo_stat(R["bif_mean"],nr) if nr else None},
