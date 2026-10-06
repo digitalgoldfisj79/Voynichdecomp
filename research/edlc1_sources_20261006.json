@@ -34,7 +34,9 @@
       "official_access": "https://www.linguistics.rub.de/ref/access/index.en.html",
       "official_doi": "10.5281/zenodo.5704572",
       "license": "CC-BY-SA-4.0",
-      "citation": "Wegera, Solms, Demske & Dipper (2021), Referenzkorpus Frühneuhochdeutsch (1350–1650), Version 1.0"
+      "citation": "Wegera, Solms, Demske & Dipper (2021), Referenzkorpus Frühneuhochdeutsch (1350–1650), Version 1.0",
+      "sha256": "288a478d02de5796d14faa0b669879dc6bf67c47e2d7ee261815e15120b99f0e",
+      "archive_bytes": 143463482
     },
     {
       "id": "deeds_cotton_nero_evi",
