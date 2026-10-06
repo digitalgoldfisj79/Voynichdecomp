@@ -28,6 +28,18 @@ PAIRS=[(1,8),(2,7),(3,6),(4,5),(9,16),(10,15),(11,14),(17,24),(18,23),(19,22),(2
 (94,95),(99,102),(100,101),(103,116),(104,115),(105,114),(106,113),(107,112),(108,111)]
 BIF={n:f"B{a:03d}_{b:03d}" for a,b in PAIRS for n in (a,b)}
 
+def urlread_retry(url,timeout=300,attempts=6):
+    last=None
+    for i in range(attempts):
+        try:
+            req=urllib.request.Request(url,headers={"User-Agent":"EDLC1/1.0 reproducibility runner"})
+            return urllib.request.urlopen(req,timeout=timeout).read()
+        except Exception as e:
+            last=e
+            if i+1<attempts:
+                time.sleep(min(30,2**i))
+    raise last
+
 def fnum(f):
     z=re.match(r"f(\d+)",str(f));return int(z.group(1)) if z else None
 
