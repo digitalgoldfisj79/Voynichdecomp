@@ -39,6 +39,7 @@ pool=[w for w,n in disc.most_common(1800)]
 # prospective family exclusion: all exact terminal "aiin"; keep aiiin distinct.
 train=[w for w in pool if not w.endswith("aiin")][:735]
 train_set=set(train)
+validation=[w for w,n in val.most_common() if w not in train_set and not w.endswith("aiin")][:735]
 # held-out final tokens absent from all discovery types and validation, as in GER2 strict final.
 disc_all=set(disc); val_all=set(val)
 strict=[w for w,n in final.most_common() if w not in disc_all and w not in val_all]
@@ -56,6 +57,7 @@ for suf,ws in fam.items():
 out={
  "schema":"VMS_AIIN_COMP1_V1","fold_sha":FOLD_SHA,
  "train":train,"train_n":len(train),"discovery_pool_n":len(pool),
+ "validation":validation,"validation_n":len(validation),
  "strict_final":strict,"strict_final_n":len(strict),
  "aiin":aiin,"aiin_n":aiin_n,
  "suffix_controls":controls,
@@ -67,6 +69,6 @@ ap=argparse.ArgumentParser(); ap.add_argument("--out"); args=ap.parse_args()
 if args.out:
     open(args.out,"w").write(raw)
 print("AIIN_COMP1_CACHE_SHA="+hashlib.sha256(raw.encode()).hexdigest())
-print("AIIN_COMP1_AUDIT="+json.dumps({k:out[k] for k in ["train_n","discovery_pool_n","strict_final_n","aiin_n","counts"]},separators=(",",":")))
+print("AIIN_COMP1_AUDIT="+json.dumps({k:out[k] for k in ["train_n","discovery_pool_n","validation_n","strict_final_n","aiin_n","counts"]},separators=(",",":")))
 if not args.out:
     print("AIIN_COMP1_CACHE="+raw)
