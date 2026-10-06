@@ -1,6 +1,6 @@
 # EDLC1 — Edit-Distance and Length Comparanda Benchmark
 
-**Version:** 1.0 preregistration  
+**Version:** 1.1 preregistration + audit amendment  
 **Date:** 2026-10-06  
 **Status:** frozen before primary results
 
@@ -190,6 +190,21 @@ For each fold:
 
 This is the direct historical comparator for prior Voynich “repairability” results.
 
+### OOV capacity-matched audit amendment (v1.1)
+
+Added after observing the first **raw** Voynich/Latin OOV rates, but before any OOV mechanism inference or publication adjudication. Rationale: nearest-neighbour repairability is mechanically increased by a larger/denser training vocabulary and by shorter/easier heldout strings.
+
+For each stable block fold and each target/control pair:
+- match training types exactly by grapheme length x training-frequency bin;
+- match genuinely unseen query types exactly by grapheme length x heldout-frequency bin;
+- sample equal counts without replacement in every supported stratum;
+- compute nearest-training-type ED on the matched training vocabularies;
+- repeat 1,000 times for publication (200 development);
+- report common training/query support and both type- and event-weighted ED<=2 rates.
+
+The **capacity-matched event-weighted ED<=2 difference** supersedes the raw OOV difference as the inferential OOV endpoint. The raw OOV endpoint remains reported descriptively. This amendment is explicitly logged as audit-driven and cannot be used to erase the raw result.
+
+
 ## Statistical uncertainty
 
 ### Historical corpora
@@ -215,7 +230,7 @@ No multiplicity-corrected “significance” claim will be made from an explorat
 1. token-weighted token-length CV (all accepted tokens);
 2. ED1 pair density at minimum corpus frequency 3;
 3. ED<=2 pair density at minimum corpus frequency 3;
-4. event-weighted OOV ED<=2 repairability.
+4. capacity-matched event-weighted OOV ED<=2 repairability (v1.1 audit amendment; raw event-weighted OOV ED<=2 remains descriptive).
 
 Type-weighted length CV and ED thresholds 1/2/5 are predeclared sensitivities.
 
