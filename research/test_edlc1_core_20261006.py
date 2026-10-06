@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """Deterministic smoke/unit tests for EDLC1 core invariants."""
 import urllib.request, collections
-URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/2c9c1a848f1987d7b2dc8634449cfa5b010be9fe/research/edlc1_core_20261006.py"
+URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/174c23f394414495ea24eee114565eb23d934ad2/research/edlc1_core_20261006.py"
 m={"__name__":"edlc1_core"};exec(compile(urllib.request.urlopen(URL).read().decode(),URL,"exec"),m)
 
 assert m["glen"]("c̃")==1, m["graphemes"]("c̃")
-assert m["clean_surface"]("(Abc,)")=="abc"
-
+assert m["clean_surface"]("(Abc,)")=="abc"\nassert m["glen"](m["eva_compound_surface"]("cthedy"))==4\n
 fc=collections.Counter({"cat":5,"bat":4,"cats":3,"dog":2})
 g=m["ed_graph_from_counter"](fc,3,3)
 assert g["V"]==3
