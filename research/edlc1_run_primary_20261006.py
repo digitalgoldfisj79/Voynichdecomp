@@ -10,7 +10,7 @@ from __future__ import annotations
 import argparse, collections, hashlib, io, json, os, pathlib, re, subprocess, sys, tarfile, tempfile, urllib.request, time
 import xml.etree.ElementTree as ET
 
-CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/1f6cda14ca4ba8277812a1391ba16af616bc18ef/research/edlc1_core_20261006.py"
+CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/2c9c1a848f1987d7b2dc8634449cfa5b010be9fe/research/edlc1_core_20261006.py"
 m={"__name__":"edlc1_core"}
 exec(compile(urllib.request.urlopen(CORE_URL,timeout=120).read().decode(),CORE_URL,"exec"),m)
 
