@@ -1,0 +1,140 @@
+{
+  "audit": {
+    "dropped": 0,
+    "fold_tokens": {
+      "0": 6794,
+      "1": 6374,
+      "2": 8253,
+      "3": 6434,
+      "4": 6374
+    },
+    "layer": "ZLZI",
+    "n_lines": 4117,
+    "n_tokens": 34229,
+    "n_within": 30112
+  },
+  "calibration": {
+    "maxabs_threshold": 3.0044094891036517,
+    "mu": {
+      "first_novel_slope": 0.007473207776427702,
+      "hapax_type_fraction": -0.02278618660152514,
+      "joint_novel": -0.06646213850918886,
+      "lag1_repeat": 0.014874708775563034,
+      "lag2_repeat": 0.011683160415003991,
+      "length_mean": -0.11016023693803163,
+      "length_sd": 0.16434866020119884,
+      "mauro_novel": -0.020445432479622508,
+      "opener_MI": 0.002577286955856154,
+      "page_repeat_fraction": 0.0406962332928311,
+      "relative_position_head_MI": -0.003213046428580171,
+      "space_edge_MI": -0.00007233050790752579,
+      "stolfi_novel": -0.06661131796558023,
+      "type_rate": -0.0038841889428918586
+    },
+    "sd": {
+      "first_novel_slope": 0.008443369039105614,
+      "hapax_type_fraction": 0.008707981110557152,
+      "joint_novel": 0.013349331893179162,
+      "lag1_repeat": 0.002130164350982004,
+      "lag2_repeat": 0.00192462646003738,
+      "length_mean": 0.0286747117018329,
+      "length_sd": 0.036826093929490315,
+      "mauro_novel": 0.00827376631395167,
+      "opener_MI": 0.012419368236655244,
+      "page_repeat_fraction": 0.004928586194461099,
+      "relative_position_head_MI": 0.001915514499691016,
+      "space_edge_MI": 0.002615302126960894,
+      "stolfi_novel": 0.01331352267714193,
+      "type_rate": 0.004865997492055621
+    }
+  },
+  "delta": {
+    "first_novel_slope": 0.029170716889428915,
+    "hapax_type_fraction": -0.07838947746950709,
+    "joint_novel": -0.15694612917516748,
+    "lag1_repeat": 0.027724566399171625,
+    "lag2_repeat": 0.016669992019154024,
+    "length_mean": -0.0950182260024306,
+    "length_sd": 0.4459314601039024,
+    "mauro_novel": -0.042895959333630995,
+    "opener_MI": -0.07123774098849026,
+    "page_repeat_fraction": 0.02768074119076558,
+    "relative_position_head_MI": -0.04995059567910323,
+    "space_edge_MI": -0.1751914665955866,
+    "stolfi_novel": -0.15938163426593377,
+    "type_rate": -0.012659477521263673
+  },
+  "generated_mean": {
+    "first_novel_slope": -0.000993317132442287,
+    "hapax_type_fraction": 0.6077792246037675,
+    "joint_novel": 0.5601625551722064,
+    "lag1_repeat": 0.03773405815859867,
+    "lag2_repeat": 0.028840782122905022,
+    "length_mean": 4.9089307411907654,
+    "length_sd": 2.2197654502677473,
+    "mauro_novel": 0.8905413781598688,
+    "opener_MI": 0.09675991837488021,
+    "page_repeat_fraction": 0.3444334750911301,
+    "relative_position_head_MI": 0.011226784171533433,
+    "space_edge_MI": 0.023168608757578632,
+    "stolfi_novel": 0.5618872164880964,
+    "type_rate": 0.2547311664641555
+  },
+  "guard": "Joint generation adequacy only for this frozen battery/model/representation; no semantics/language/cipher/historical mechanism claim.",
+  "maxabs": {
+    "passes_adequacy": false,
+    "stat": 66.9594286191232,
+    "threshold": 3.0044094891036517,
+    "winning_metric": "space_edge_MI"
+  },
+  "model": {
+    "alpha": 80,
+    "beta": 80,
+    "fit_folds": [
+      2,
+      3,
+      4
+    ],
+    "horizon": 16,
+    "k": 16,
+    "kind": "C",
+    "test_folds": [
+      0,
+      1
+    ]
+  },
+  "n_replicates": 10,
+  "stage": "voynich_free_generation_target_zlzi",
+  "standardized": {
+    "first_novel_slope": 2.569769130368318,
+    "hapax_type_fraction": -6.38532515884435,
+    "joint_novel": -6.7781662325896175,
+    "lag1_repeat": 6.0323315511710724,
+    "lag2_repeat": 2.5910646599201272,
+    "length_mean": 0.5280614882218033,
+    "length_sd": 7.646284736085251,
+    "mauro_novel": -2.7134591432865585,
+    "opener_MI": -5.943541292743415,
+    "page_repeat_fraction": -2.640816572649727,
+    "relative_position_head_MI": -24.399475575915563,
+    "space_edge_MI": -66.9594286191232,
+    "stolfi_novel": -6.968126960089344,
+    "type_rate": -1.8033894577008363
+  },
+  "truth_diag": {
+    "first_novel_slope": -0.030164034021871202,
+    "hapax_type_fraction": 0.6861687020732746,
+    "joint_novel": 0.7171086843473738,
+    "lag1_repeat": 0.010009491759427043,
+    "lag2_repeat": 0.012170790103750998,
+    "length_mean": 5.003948967193196,
+    "length_sd": 1.773833990163845,
+    "mauro_novel": 0.9334373374934998,
+    "opener_MI": 0.16799765936337047,
+    "page_repeat_fraction": 0.3167527339003645,
+    "relative_position_head_MI": 0.06117737985063667,
+    "space_edge_MI": 0.19836007535316522,
+    "stolfi_novel": 0.7212688507540301,
+    "type_rate": 0.2673906439854192
+  }
+}
