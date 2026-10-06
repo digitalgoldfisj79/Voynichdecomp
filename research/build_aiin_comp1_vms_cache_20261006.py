@@ -4,7 +4,7 @@ Build VMS-only cache for AIIN-COMP1.
 No German/ReF parsing. Uses exact frozen physical fold loader and strict +P0,
 excluding first two tokens per physical line.
 """
-import collections,hashlib,json,re,urllib.request
+import argparse,collections,hashlib,json,re,urllib.request
 V_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/main/voynich_transcriptions_slim.json"
 FOLD_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/420d4363973174760a78000f1049339dbd26fa46/research/hf_emergent_occupancy_fold.py"
 FOLD_SHA="e774001ca046d88f24f56bf70f29213007d9cac3500d50f414e1782688d74888"
@@ -63,6 +63,10 @@ out={
            "disc_types":len(disc),"val_types":len(val),"final_types":len(final)}
 }
 raw=json.dumps(out,separators=(",",":"))
+ap=argparse.ArgumentParser(); ap.add_argument("--out"); args=ap.parse_args()
+if args.out:
+    open(args.out,"w").write(raw)
 print("AIIN_COMP1_CACHE_SHA="+hashlib.sha256(raw.encode()).hexdigest())
 print("AIIN_COMP1_AUDIT="+json.dumps({k:out[k] for k in ["train_n","discovery_pool_n","strict_final_n","aiin_n","counts"]},separators=(",",":")))
-print("AIIN_COMP1_CACHE="+raw)
+if not args.out:
+    print("AIIN_COMP1_CACHE="+raw)
