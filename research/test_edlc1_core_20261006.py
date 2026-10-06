@@ -30,10 +30,11 @@ morph=[
 z=m["morphology_decomposition"](morph,1)
 assert z["all_lemmas"]["2"]["edge_counts"].get("SAME_LEMMA",0)>=1
 
-print("EDLC1_TESTS_OK")
 
 # Capacity-matched OOV routine should execute and retain finite common support.
 A=[{"form":x,"block":b} for b,xs in {"A":["cat","bat","cats"],"B":["cat","rat","dog"],"C":["bat","dogs","fog"],"D":["cat","bog","rats"],"E":["bat","logs","cat"]}.items() for x in xs]
 B=[{"form":x,"block":b} for b,xs in {"A":["sun","son","sons"],"B":["sun","run","day"],"C":["son","days","ray"],"D":["sun","say","runs"],"E":["son","rays","sun"]}.items() for x in xs]
 mo=m["matched_oov_repair"](A,B,nrep=3,seed=17)
 assert mo["nrep"]==3
+
+print("EDLC1_TESTS_OK")
