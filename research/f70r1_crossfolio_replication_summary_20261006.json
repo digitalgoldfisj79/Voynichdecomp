@@ -1,0 +1,67 @@
+{
+  "screen": {
+    "circles": 14,
+    "folios": ["f57v","f67r","f67v","f68r","f68v","f69r","f70r","f70v"],
+    "annulus_scan": "0.35 to 1.05 of each predefined circle radius, 8-pixel steps",
+    "fixed_threshold": 165,
+    "null": "exact conditional longest circular LOOP-run probability, preserving n and LOOP count",
+    "multiple_testing": "Bonferroni within-circle annulus scan; 14-circle correction also reported"
+  },
+  "headline": {
+    "f70r1": {
+      "best_radius_px": 251.0,
+      "n_binary": 104,
+      "loops": 10,
+      "max_loop_run": 6,
+      "p_raw": 0.000013805737267835738,
+      "p_annulus_bonf": 0.0003313376944280577,
+      "p_global_14circles_bonf": 0.004638727721992808
+    },
+    "only_f70like_signature": true,
+    "f70like_gate": ">=8 LOOP objects and contiguous LOOP run >=5",
+    "other_circles_passing_gate": 0
+  },
+  "best_non_f70_candidates": {
+    "f67r_R": {
+      "loops": 8,
+      "max_loop_run": 3,
+      "p_annulus_bonf": 0.0726655100340956,
+      "interpretation": "closest ordinary control, but does not survive annulus correction and run is only 3"
+    },
+    "f68r": {
+      "loops": 2,
+      "max_loop_run": 2,
+      "p_annulus_bonf": 0.17391304347826086,
+      "interpretation": "low raw p reflects two adjacent loop-like letter shapes in a text-bearing annulus; not f70-like"
+    },
+    "f70v_partA": {
+      "loops": 3,
+      "max_loop_run": 3,
+      "p_annulus_bonf": 0.002816627816628392,
+      "p_global_14circles_bonf": 0.03943278943279749,
+      "sensitivity": {
+        "median_p": 1.0,
+        "raw_p_lt_0_05_fraction": 0.08,
+        "annulus_corrected_p_lt_0_05_fraction": 0.04,
+        "median_loops": 4,
+        "median_max_run": 1
+      },
+      "interpretation": "single-setting three-object cluster; collapses under threshold/centre sensitivity and is embedded in illustrated/text material, not a replicated micro-register"
+    }
+  },
+  "f70r1_sensitivity_at_best_annulus": {
+    "settings": 25,
+    "median_loops": 10,
+    "median_max_loop_run": 5,
+    "median_raw_p": 0.000056899004267418896,
+    "raw_p_lt_0_05_fraction": 0.76,
+    "annulus_corrected_p_lt_0_05_fraction": 0.64
+  },
+  "decision": {
+    "cross_folio_recurrence_of_full_dot_loop_grammar": "NOT FOUND",
+    "f70r1_status": "unique among screened circular structures under the frozen morphology detector",
+    "broad_circular_loop_motifs": "occur elsewhere, but at different scale/context and do not reproduce the f70r1 categorical island",
+    "functional_inference": "weakened: no internal replication means the register should not yet be treated as a general Voynich notation system",
+    "next": "treat f70r1 as a one-off local construction unless a new folio or external exact structural match reproduces the full signature"
+  }
+}
