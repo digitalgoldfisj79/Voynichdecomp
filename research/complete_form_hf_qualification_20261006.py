@@ -18,13 +18,17 @@ def folio_number(f):
     return int(m.group(1)) if m else None
 
 def build_folio_fold(meta):
+    # Reproduce the archived harness exactly, including its numeric-key overwrite
+    # for UNPAIRED_f13r/f13v and f73r/f73v. This is a frozen replay quirk, not a
+    # new physical-fold interpretation.
     by={}
     for k,v in meta["folds"].items():
-        if k.startswith("UNPAIRED_"):
-            by[k[len("UNPAIRED_"):]]=(k,int(v)); continue
         if k.startswith("B"):
             a,b=map(int,k[1:].split("_"))
             by[a]=(k,int(v)); by[b]=(k,int(v))
+        elif k.startswith("UNPAIRED_f"):
+            m=re.match(r"UNPAIRED_f(\\d+)",k)
+            if m: by[int(m.group(1))]=(k,int(v))
     return by
 
 def section(f):
@@ -39,14 +43,10 @@ def section(f):
 
 def recover_from_public(corpus_path,meta):
     obj=json.load(open(corpus_path))
-    exact_unpaired={x for x in ("f13r","f13v","f73r","f73v")}
     fold_by=build_folio_fold(meta); starts={(f,int(n)) for f,n in meta["paragraph_starts"]}
     para_ctr=collections.Counter(); prevline={}; rows=[]; dropped=0; order=0
     for f,ld in obj["pages"].items():
-        if f in exact_unpaired:
-            ff=fold_by.get(f)
-        else:
-            n=folio_number(f); ff=fold_by.get(n)
+        n=folio_number(f); ff=fold_by.get(n)
         if ff is None: continue
         bif,fold=ff
         for ls,rec in ld.items():
