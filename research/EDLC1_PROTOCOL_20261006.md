@@ -1,6 +1,6 @@
 # EDLC1 — Edit-Distance and Length Comparanda Benchmark
 
-**Version:** 1.1 preregistration + audit amendment  
+**Version:** 1.2 preregistration + audit amendments  
 **Date:** 2026-10-06  
 **Status:** frozen before primary results
 
@@ -66,6 +66,16 @@ Tier B failures of access MUST be reported as missing replications, never silent
 - Token length measured in Unicode grapheme clusters, not Unicode code points.
 - Tokens must contain at least one letter.
 - Voynich tokens use their frozen transliteration strings; no FORM decomposition, ED normalization, or glyph-family folding.
+
+### Voynich representation sensitivity (v1.2 audit amendment)
+
+Raw lower-case EVA strings remain the **primary Voynich representation**, because this is the representation used by the preceding Voynich ED programme and therefore prevents a post-hoc metric change.
+
+A second, explicitly sensitivity-only channel greedily collapses the canonical connected/compound sequences `cth`, `ckh`, `cph`, `cfh`, `ch`, and `sh` to one analysis unit before length and Levenshtein calculation.
+
+Rationale: EVA documentation permits connected ligature forms and notes that forms such as `Sh`, `cTh`, `cKh`, `cPh`, and `cFh` are often represented in convenient lower-case sequences. The frozen slim corpus is lowercased, so it cannot reliably reconstruct capitalization-based ligature marking. Therefore this channel is **not claimed to be exact palaeographic glyph segmentation**; it is a conservative representation-sensitivity bound.
+
+A conclusion about unusual low-ED density should not depend on whether the raw-EVA or compound-folded sensitivity is used.
 
 ### Sensitivity: conservative folded channel
 
@@ -281,3 +291,8 @@ It may **not** by itself support:
 - decipherment.
 
 Those require independent evidence.
+
+### Amendment log
+
+- **v1.1:** added capacity-matched OOV audit after raw OOV rates revealed an obvious training-vocabulary-size confound; before OOV inference.
+- **v1.2:** added canonical EVA compound sensitivity after representation audit identified the lowercased-EVA ligature ambiguity; raw EVA remains primary and no primary result is redefined.
