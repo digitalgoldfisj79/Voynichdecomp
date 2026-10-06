@@ -8,7 +8,7 @@ Performance-only changes:
 - suitable for multiple independent replicas sharing one GPU.
 """
 from __future__ import annotations
-import argparse,hashlib,itertools,json,os,random,urllib.request
+import argparse,base64,gzip,hashlib,itertools,json,os,random,urllib.request
 import numpy as np, torch
 import neurodecipher_acl2019_refactor as nd
 
@@ -24,8 +24,12 @@ nd.process.cdist=_cdist_limited
 
 def load_json(src):
     if src.startswith("http://") or src.startswith("https://"):
-        return json.loads(urllib.request.urlopen(src,timeout=120).read().decode())
-    return json.load(open(src))
+        raw=urllib.request.urlopen(src,timeout=120).read()
+    else:
+        raw=open(src,"rb").read()
+    if src.endswith(".gz.b64"):
+        raw=gzip.decompress(base64.b64decode(raw.strip()))
+    return json.loads(raw.decode())
 
 def scrambled_unique_vocab(forms,seed):
     out=[];seen=set();unchanged=0;random_tries=0;enumerated=0
@@ -149,6 +153,11 @@ class CachedRunner:
         return out
 
     def run(self):
+        if self.a.smoke:
+            lp,sc,reg=self.model_disc()
+            print("VGER2_SMOKE="+json.dumps({"pass":bool(torch.isfinite(sc).all()),"scores_shape":list(sc.shape),
+                  "device":str(self.dev),"audit":self.audit},ensure_ascii=False,separators=(",",":")),flush=True)
+            return
         best=None;best_state=None
         for rnd in range(1,self.a.rounds+1):
             if rnd==1:
@@ -184,6 +193,7 @@ def main():
     p.add_argument("--seed",type=int,required=True)
     p.add_argument("--scramble-seed",type=int,default=9001)
     p.add_argument("--cpu",action="store_true")
+    p.add_argument("--smoke",action="store_true")
     p.add_argument("--rounds",type=int,default=10);p.add_argument("--epochs",type=int,default=150)
     p.add_argument("--eval-every",type=int,default=10);p.add_argument("--log-every",type=int,default=10)
     p.add_argument("--warm-up-steps",type=int,default=5);p.add_argument("--reg-hyper",type=float,default=.5)
