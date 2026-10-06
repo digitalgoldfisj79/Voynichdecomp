@@ -7,7 +7,7 @@ Modes:
   publication  1000 matched draws, 1000 shuffle draws, 2000 cluster bootstraps
 """
 from __future__ import annotations
-import argparse, collections, hashlib, io, json, os, pathlib, re, subprocess, sys, tarfile, tempfile, urllib.request
+import argparse, collections, hashlib, io, json, os, pathlib, re, subprocess, sys, tarfile, tempfile, urllib.request, time
 import xml.etree.ElementTree as ET
 
 CORE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/1f6cda14ca4ba8277812a1391ba16af616bc18ef/research/edlc1_core_20261006.py"
@@ -40,7 +40,7 @@ def child_tag(el,name):
     return ""
 
 def load_voynich():
-    raw=urllib.request.urlopen(V_URL,timeout=120).read()
+    raw=urlread_retry(V_URL,120,4)
     got=hashlib.sha256(raw).hexdigest()
     if got!=V_SHA:raise RuntimeError(("Voynich SHA mismatch",got))
     obj=json.loads(raw)
@@ -84,7 +84,7 @@ def region_flags(md):
     }
 
 def load_ref():
-    raw=urllib.request.urlopen(REF_URL,timeout=300).read()
+    raw=urlread_retry(REF_URL,300,6)
     sha=hashlib.sha256(raw).hexdigest()
     tf=tarfile.open(fileobj=io.BytesIO(raw),mode="r:gz")
     allr=[];normr=[];docs=[];excluded=0;ambig=0;verified_n=0;lemma_n=0
