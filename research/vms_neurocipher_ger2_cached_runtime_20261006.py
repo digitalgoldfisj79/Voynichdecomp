@@ -8,7 +8,7 @@ Performance-only changes:
 - suitable for multiple independent replicas sharing one GPU.
 """
 from __future__ import annotations
-import argparse,json,os,random,urllib.request
+import argparse,hashlib,itertools,json,os,random,urllib.request
 import numpy as np, torch
 import neurodecipher_acl2019_refactor as nd
 
@@ -27,6 +27,32 @@ def load_json(src):
         return json.loads(urllib.request.urlopen(src,timeout=120).read().decode())
     return json.load(open(src))
 
+def scrambled_unique_vocab(forms,seed):
+    out=[];seen=set();unchanged=0;random_tries=0;enumerated=0
+    for w in forms:
+        if len(w)<2 or len(set(w))<2:
+            cand=w
+        else:
+            h=int(hashlib.sha256((str(seed)+"|"+w).encode()).hexdigest()[:16],16)
+            rng=random.Random(h);a=list(w);cand=None
+            for _ in range(512):
+                rng.shuffle(a);q="".join(a);random_tries+=1
+                if q!=w and q not in seen:
+                    cand=q;break
+            if cand is None and len(w)<=8:
+                perms=sorted(set("".join(p) for p in itertools.permutations(w)))
+                off=h%max(1,len(perms))
+                for j in range(len(perms)):
+                    q=perms[(off+j)%len(perms)];enumerated+=1
+                    if q!=w and q not in seen:
+                        cand=q;break
+            if cand is None:cand=w
+        if cand in seen:raise RuntimeError(("scramble uniqueness impossible",w,cand))
+        if cand==w:unchanged+=1
+        seen.add(cand);out.append(cand)
+    return out,{"unchanged":unchanged,"random_tries":random_tries,"enumerated":enumerated,
+                "unique":len(seen),"n":len(forms)}
+
 class CachedRunner:
     def __init__(self,args):
         self.a=args
@@ -34,16 +60,17 @@ class CachedRunner:
         if torch.cuda.is_available():torch.cuda.manual_seed_all(args.seed)
         self.dev=torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
         c=load_json(args.cache)
-        if c.get("schema")!="VMS_NEUROCIPHER_GER2_CACHE_V1":raise RuntimeError("cache schema")
+        if c.get("schema")!="VMS_NEUROCIPHER_GER2_CACHE_V2":raise RuntimeError("cache schema")
         v=c["vms"];d=c["dialects"][args.dialect]
         self.disc=v["discovery"];self.val=v["validation"]
         self.fin_unseen=v["final_unseen_discovery"];self.fin_strict=v["final_strict_novel"]
         self.vchars=v["chars"];self.v_audit=v["audit"]
+        base=d["real"]
         if args.mode=="real":
-            full=d["real"];ctrl={"mode":"real","n":len(full)}
+            full=base;ctrl={"mode":"real","n":len(full)}
         else:
-            full=d["scramble"][str(args.scramble_seed)]
-            ctrl={"mode":"scramble","seed":args.scramble_seed,**d["scramble_audit"][str(args.scramble_seed)]}
+            full,a=scrambled_unique_vocab(base,args.scramble_seed)
+            ctrl={"mode":"scramble","seed":args.scramble_seed,**a}
         if len(full)!=FULL_K:raise RuntimeError(("target full",len(full)))
         self.train_known=full[:TRAIN_K];self.full_known=full
         self.lcs=nd.Charset(self.vchars);self.kcs=nd.Charset(sorted(set("".join(full))))
