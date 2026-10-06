@@ -27,7 +27,7 @@ def build_folio_fold(meta):
             a,b=map(int,k[1:].split("_"))
             by[a]=(k,int(v)); by[b]=(k,int(v))
         elif k.startswith("UNPAIRED_f"):
-            m=re.match(r"UNPAIRED_f(\\d+)",k)
+            m=re.match(r"UNPAIRED_f(\d+)",k)
             if m: by[int(m.group(1))]=(k,int(v))
     return by
 
