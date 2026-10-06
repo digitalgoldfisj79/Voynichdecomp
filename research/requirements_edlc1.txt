@@ -1,0 +1,3 @@
+numpy>=2.0,<3
+regex>=2024.0
+rapidfuzz>=3.0,<4
