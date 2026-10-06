@@ -1,0 +1,63 @@
+{
+  "source": {
+    "pdf": "/mnt/data/2002046.pdf",
+    "pdf_page": 127,
+    "embedded_image_shape": [872, 2000, 3]
+  },
+  "recovered_baseline": {
+    "n": 92,
+    "best_180_count": 86,
+    "best_start_deg": 131.95000000000002,
+    "null_mean": 54.97515,
+    "null_sd": 2.7758994503381995,
+    "z": 11.176503527971848,
+    "p_upper": 4.999750012499375e-05
+  },
+  "categorical_counts": {
+    "DOT": 60,
+    "LOOP": 10,
+    "AMBIG": 2,
+    "GLYPH": 2
+  },
+  "regions": {
+    "228_240": {"DOT": 20, "AMBIG": 1, "GLYPH": 1},
+    "240_264": {"LOOP": 10, "DOT": 2, "GLYPH": 1},
+    "264_278": {"DOT": 12, "AMBIG": 1},
+    "278_339": {"DOT": 26},
+    "339_342": {}
+  },
+  "exploratory_tests": {
+    "loop_island_240_264_vs_rest_228_339": {
+      "effect": 0.7692307692307693,
+      "null_sd": 0.10536609386829243,
+      "z": 7.300553156998563,
+      "p_upper": 4.9999750001249995e-06
+    },
+    "late_dot_278_339_vs_240_278": {
+      "effect": 0.46153846153846156,
+      "null_sd": 0.1181387042438845,
+      "z": 3.9067506664510696,
+      "p_upper": 4.4999775001124996e-05
+    },
+    "warning": "Post-hoc categorical thresholds and region boundaries; exploratory, not confirmatory."
+  },
+  "change_point_sensitivity": {
+    "n_settings": 81,
+    "cut1_mean_deg": 247.9814814814815,
+    "cut1_sd_deg": 14.411897091562158,
+    "cut1_min_deg": 234.5,
+    "cut1_max_deg": 269.5,
+    "cut2_mean_deg": 277.27777777777777,
+    "cut2_sd_deg": 0.8366600265340756,
+    "cut2_min_deg": 275.5,
+    "cut2_max_deg": 279.5
+  },
+  "decision": {
+    "clean_metric_graduation": "rejected",
+    "robust_categorical_change": "supported near 277 degrees",
+    "loop_island": "visually and morphologically supported around 245-262 degrees but start boundary is representation-sensitive",
+    "separate_glyph_state": "not resolved by automated morphology; retain as visual interruption, not a stable state",
+    "licensed_sequence": "DOT-dominant -> LOOP island -> DOT-dominant -> GAP/sparsity",
+    "geographic_localisation": "not licensed"
+  }
+}
