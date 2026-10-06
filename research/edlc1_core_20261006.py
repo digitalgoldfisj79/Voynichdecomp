@@ -44,6 +44,25 @@ def clean_surface(s):
     if not s or not regex.search(r"\p{L}",s):return None
     return s
 
+EVA_COMPOUNDS=("cth","ckh","cph","cfh","ch","sh")
+EVA_PUA={"cth":"\ue100","ckh":"\ue101","cph":"\ue102","cfh":"\ue103","ch":"\ue104","sh":"\ue105"}
+
+def eva_compound_surface(s):
+    """Sensitivity-only greedy collapse of canonical EVA compound sequences."""
+    s=clean_surface(s)
+    if not s:return None
+    out=[];i=0
+    while i<len(s):
+        hit=None
+        for q in EVA_COMPOUNDS:
+            if s.startswith(q,i):
+                hit=q;break
+        if hit is not None:
+            out.append(EVA_PUA[hit]);i+=len(hit)
+        else:
+            out.append(s[i]);i+=1
+    return "".join(out)
+
 def folded_surface(s,lang):
     s=clean_surface(s)
     if not s:return None
