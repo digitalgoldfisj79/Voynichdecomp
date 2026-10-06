@@ -293,6 +293,83 @@ def oov_repair(records,nfold=5):
           "counts":dict(c)}
     return {"folds":allout,"type_weighted":rates(T),"event_weighted":rates(E)}
 
+
+def _split_train_oov(records,fold,nfold=5):
+    train=collections.Counter();test=collections.Counter()
+    for r in records:
+        t=r.get("form");b=r.get("block")
+        if not t or b is None:continue
+        if stable_int(b)%nfold==fold:test[t]+=1
+        else:train[t]+=1
+    return train,{t:n for t,n in test.items() if t not in train}
+
+def _sample_common_strata(A,B,keyfn,rng):
+    aa=collections.defaultdict(list);bb=collections.defaultdict(list)
+    for x,n in A.items():aa[keyfn(x,n)].append(x)
+    for x,n in B.items():bb[keyfn(x,n)].append(x)
+    outA=[];outB=[];support=0
+    for k in sorted(set(aa)&set(bb),key=str):
+        q=min(len(aa[k]),len(bb[k]))
+        if q<=0:continue
+        support+=q
+        outA.extend(rng.choice(aa[k],size=q,replace=False).tolist())
+        outB.extend(rng.choice(bb[k],size=q,replace=False).tolist())
+    return outA,outB,support
+
+def matched_oov_repair(target_records,control_records,nrep=200,seed=20261006,nfold=5):
+    """Capacity-matched OOV repairability.
+
+    Within each stable block fold, training vocabularies are exactly matched
+    on (grapheme length, training-frequency bin), and OOV query types are
+    exactly matched on (grapheme length, heldout-frequency bin). This prevents
+    nearest-neighbour repairability from being driven merely by a larger
+    training lexicon or easier/shorter heldout words.
+    """
+    rng=np.random.default_rng(seed);reps=[]
+    base_t_oov=0;base_c_oov=0
+    for f in range(nfold):
+        _,to=_split_train_oov(target_records,f,nfold)
+        _,co=_split_train_oov(control_records,f,nfold)
+        base_t_oov+=len(to);base_c_oov+=len(co)
+    for rep in range(nrep):
+        T=collections.Counter();C=collections.Counter()
+        ET=collections.Counter();EC=collections.Counter()
+        train_common=0;query_common=0
+        for f in range(nfold):
+            tt,to=_split_train_oov(target_records,f,nfold)
+            ct,co=_split_train_oov(control_records,f,nfold)
+            ta,ca,qtr=_sample_common_strata(tt,ct,lambda x,n:(glen(x),freq_bin(n)),rng)
+            tq,cq,qq=_sample_common_strata(to,co,lambda x,n:(glen(x),freq_bin(n)),rng)
+            train_common+=qtr;query_common+=qq
+            if not ta or not ca or not tq or not cq:continue
+            trT=BKTree(ta);trC=BKTree(ca)
+            for x in tq:
+                d=_nearest_cat(x,trT);T[str(d)]+=1;ET[str(d)]+=to[x]
+            for x in cq:
+                d=_nearest_cat(x,trC);C[str(d)]+=1;EC[str(d)]+=co[x]
+        def r2(c):
+            n=sum(c.values())
+            return (c["1"]+c["2"])/n if n else float("nan")
+        reps.append({
+          "target_type_ed2":r2(T),"control_type_ed2":r2(C),
+          "target_event_ed2":r2(ET),"control_event_ed2":r2(EC),
+          "delta_type_ed2":r2(T)-r2(C),"delta_event_ed2":r2(ET)-r2(EC),
+          "train_common":train_common,"query_common":query_common
+        })
+    def stat(k):
+        a=np.asarray([x[k] for x in reps],float);a=a[np.isfinite(a)]
+        return {"mean":float(a.mean()),"sd":float(a.std(ddof=1)) if len(a)>1 else None,
+                "q025":float(np.quantile(a,.025)),"q975":float(np.quantile(a,.975)),
+                "fraction_positive":float(np.mean(a>0)) if k.startswith("delta") else None}
+    return {"nrep":nrep,"nfold":nfold,"target_oov_types_unmatched":base_t_oov,
+            "control_oov_types_unmatched":base_c_oov,
+            "mean_common_train_types":float(np.mean([x["train_common"] for x in reps])),
+            "mean_common_query_types":float(np.mean([x["query_common"] for x in reps])),
+            "target_type_ed2":stat("target_type_ed2"),"control_type_ed2":stat("control_type_ed2"),
+            "delta_type_ed2":stat("delta_type_ed2"),
+            "target_event_ed2":stat("target_event_ed2"),"control_event_ed2":stat("control_event_ed2"),
+            "delta_event_ed2":stat("delta_event_ed2")}
+
 def _stratum(t,n):
     return (glen(t),freq_bin(n))
 
