@@ -42,7 +42,7 @@ for name in [n for n in tar.getnames() if n.endswith(".xml")]:
 print("GER2_PRECOMPUTE=parsed",flush=True)
 
 out={
- "schema":"VMS_NEUROCIPHER_GER2_CACHE_V1",
+ "schema":"VMS_NEUROCIPHER_GER2_CACHE_V2",
  "screen_commit":"a6516bb5733fc82bf77da383800dcacbf28cac5e",
  "solver_commit":"e36031a9a6b8b67fcebb4d6f4af1c3753fad4287",
  "vms":{"discovery":v.DISC,"validation":v.VAL,"final_unseen_discovery":v.FIN_UNSEEN,
@@ -53,11 +53,13 @@ for d in ("BAV","ALEM"):
     ranked=[w for w,n in freq[d].most_common()]
     base=ranked[:v.FULL_K]
     if len(base)!=v.FULL_K:raise RuntimeError((d,len(base)))
-    scr={};audits={}
-    for ss in SCRAMBLE_SEEDS:
-        z,a=v.scrambled_unique_vocab(base,ss);scr[str(ss)]=z;audits[str(ss)]=a
-    out["dialects"][d]={"docs":docs[d],"ref_types":len(ranked),"real":base,
-                        "scramble":scr,"scramble_audit":audits}
+    out["dialects"][d]={"docs":docs[d],"ref_types":len(ranked),"real":base}
 raw=json.dumps(out,ensure_ascii=False,separators=(",",":"))
 print("GER2_CACHE_SHA="+hashlib.sha256(raw.encode()).hexdigest(),flush=True)
-print("GER2_CACHE_JSON="+raw,flush=True)
+import base64,gzip
+packed=base64.b64encode(gzip.compress(raw.encode(),compresslevel=9)).decode()
+chunk=12000
+parts=[packed[i:i+chunk] for i in range(0,len(packed),chunk)]
+print("GER2_CACHE_PACKED_META="+json.dumps({"parts":len(parts),"raw_bytes":len(raw),"packed_chars":len(packed)}),flush=True)
+for i,p in enumerate(parts):
+    print(f"GER2_CACHE_CHUNK_{i+1:03d}_OF_{len(parts):03d}="+p,flush=True)
