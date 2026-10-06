@@ -1,0 +1,40 @@
+{
+  "primary_outer_ring": {
+    "representative_setting": {
+      "outer_text_radius_px": [200,222],
+      "gray_threshold": 160,
+      "min_ink_pixels_per_angle": 1,
+      "morphological_close_deg": 0.75,
+      "detected_edges": 26,
+      "observed_median_distance_deg": 0.1375,
+      "null_mean_deg": 2.0462,
+      "null_sd_deg": 2.0240,
+      "z": -0.943,
+      "p_lower": 0.0164
+    },
+    "sensitivity_n": 300,
+    "median_observed_distance_deg": 0.8125,
+    "median_null_mean_deg": 2.0432,
+    "median_null_sd_deg": 1.9798,
+    "median_z": -0.4334,
+    "median_p": 0.4279,
+    "fraction_settings_p_lt_0_05": 0.1167,
+    "fraction_settings_distance_lt_0_5deg": 0.4667
+  },
+  "three_micro_boundaries_to_two_adjacent_text_rings": {
+    "micro_boundaries_deg": [243.0766,262.9285,277.2778],
+    "sensitivity_n": 300,
+    "median_observed_mean_distance_deg": 1.0557,
+    "median_null_mean_deg": 1.4622,
+    "median_null_sd_deg": 0.6538,
+    "median_z": -0.3561,
+    "median_p": 0.4163,
+    "fraction_settings_p_lt_0_05": 0.0167
+  },
+  "decision": {
+    "local_text_alignment": "NOT RESOLVED",
+    "reason": "The visually attractive 277-degree coincidence is representation-dependent on the original Yale image; the full sensitivity ensemble is null-like.",
+    "structural_spoke_alignment": "NOT ROBUST; Hough result changes qualitatively with detector settings.",
+    "next": "Require independent replication: search other Voynich circular micro-registers for the same asymmetric DOT/LOOP transition grammar before assigning function."
+  }
+}
