@@ -1,0 +1,82 @@
+{
+  "study": "EDLC1",
+  "version": "1.0",
+  "frozen_date": "2026-10-06",
+  "sources": [
+    {
+      "id": "voynich_slim",
+      "role": "primary_target",
+      "language": "Voynich",
+      "url": "https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5/voynich_transcriptions_slim.json",
+      "sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+      "channels": [
+        "ZLZI",
+        "ZLZB",
+        "TTLI"
+      ],
+      "filter": "strict +P0 running text"
+    },
+    {
+      "id": "ref_v1_0_2",
+      "role": "tier_A_german",
+      "language": "German",
+      "url": "https://zenodo.org/api/records/5793616/files/ReF-v1.0.2.tar.gz/content",
+      "version": "ReF-v1.0.2",
+      "filters": [
+        "medium contains Handschrift",
+        "time starts 15,"
+      ],
+      "channels": [
+        "tok_dipl:utf",
+        "tok_anno/lemma"
+      ],
+      "notes": "Document metadata and diplomatic tokens; document-level blocks."
+    },
+    {
+      "id": "deeds_cotton_nero_evi",
+      "role": "tier_A_latin",
+      "language": "Latin",
+      "repository": "DEEDS-Project/htr-dataset",
+      "commit": "6a148076247c6c666c1051141f6e80286d4a3b6d",
+      "path": "data/bl-cotton-nero-e-vi",
+      "license": "CC-BY-4.0",
+      "filters": [
+        "plain .xml only",
+        "MainZone only",
+        "exclude *.chocomufin.xml"
+      ],
+      "notes": "BL Cotton MS Nero E VI; dataset ground-truth ALTO transcription; manuscript begun 1442."
+    },
+    {
+      "id": "ridges_1487",
+      "role": "tier_B_replication",
+      "language": "German",
+      "title": "Gart der Gesunthait / RIDGES Herbology",
+      "date": 1487,
+      "status": "predeclared_not_yet_reproducibly_materialized_in_HF",
+      "notes": "Diplomatic layer required; do not substitute OCR."
+    },
+    {
+      "id": "fnhdc_1450_1500",
+      "role": "tier_B_replication",
+      "language": "German",
+      "title": "Bonner Frühneuhochdeutschkorpus",
+      "period": "1450-1500",
+      "status": "predeclared_not_yet_reproducibly_materialized_in_HF"
+    },
+    {
+      "id": "john_of_burgundy_latin",
+      "role": "tier_B_replication",
+      "language": "Latin",
+      "period": "1450s-1490s",
+      "status": "source_XML_not_present_in_public_code_repository",
+      "notes": "Ideal medical-manuscript replication if author data can be obtained."
+    },
+    {
+      "id": "efontes_1400_1500",
+      "role": "tier_B_replication",
+      "language": "Latin",
+      "status": "predeclared_pending_stable_export"
+    }
+  ]
+}
