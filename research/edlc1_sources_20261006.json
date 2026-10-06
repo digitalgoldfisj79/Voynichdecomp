@@ -30,7 +30,11 @@
         "tok_dipl:utf",
         "tok_anno/lemma"
       ],
-      "notes": "Document metadata and diplomatic tokens; document-level blocks."
+      "notes": "Document metadata and diplomatic tokens; document-level blocks.",
+      "official_access": "https://www.linguistics.rub.de/ref/access/index.en.html",
+      "official_doi": "10.5281/zenodo.5704572",
+      "license": "CC-BY-SA-4.0",
+      "citation": "Wegera, Solms, Demske & Dipper (2021), Referenzkorpus Frühneuhochdeutsch (1350–1650), Version 1.0"
     },
     {
       "id": "deeds_cotton_nero_evi",
@@ -45,7 +49,10 @@
         "MainZone only",
         "exclude *.chocomufin.xml"
       ],
-      "notes": "BL Cotton MS Nero E VI; dataset ground-truth ALTO transcription; manuscript begun 1442."
+      "notes": "BL Cotton MS Nero E VI; dataset ground-truth ALTO transcription; manuscript begun 1442.",
+      "period": "1442-1447",
+      "folios": "200-221",
+      "date_basis": "Gervers (1974): manuscript begun 1442; Prima Camera ff.3-288v completed by 1447; sampled ff.200-221 lie within Prima Camera"
     },
     {
       "id": "ridges_1487",
@@ -78,5 +85,7 @@
       "language": "Latin",
       "status": "predeclared_pending_stable_export"
     }
-  ]
+  ],
+  "protocol_version": "1.1",
+  "audit_amendment": "capacity-matched OOV endpoint added after raw OOV pilot, before OOV inference"
 }
