@@ -137,7 +137,8 @@ def null_lines(seed):
 ap=argparse.ArgumentParser()
 ap.add_argument("--mode",choices=["real","null"],required=True)
 ap.add_argument("--start",type=int,default=0)
-ap.add_argument("--stop",type=int,default=0)\nap.add_argument("--workers",type=int,default=1)
+ap.add_argument("--stop",type=int,default=0)
+ap.add_argument("--workers",type=int,default=1)
 args=ap.parse_args()
 
 if args.mode=="real":
