@@ -1,0 +1,127 @@
+name: RESIDREC4B Recipes qualification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/residrec4b-recipes-qualification.yml'
+
+jobs:
+  nulls:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {start: 0, stop: 12}
+          - {start: 12, stop: 24}
+          - {start: 24, stop: 36}
+          - {start: 36, stop: 48}
+          - {start: 48, stop: 60}
+          - {start: 60, stop: 72}
+          - {start: 72, stop: 84}
+          - {start: 84, stop: 96}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install
+        run: pip install numpy scipy scikit-learn torch
+      - name: Run frozen null shard
+        env:
+          START: ${{ matrix.start }}
+          STOP: ${{ matrix.stop }}
+        run: |
+          export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=1
+          python -u research/vms_residrec4b_recipes_qualification_20261008.py \
+            --mode null --start "$START" --stop "$STOP" --workers 2 \
+            | tee "r4b_null_${START}_${STOP}.log"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r4b-null-${{ matrix.start }}-${{ matrix.stop }}
+          path: r4b_null_*.log
+          retention-days: 7
+
+  aggregate:
+    needs: nulls
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r4b-null-*
+          path: nulls
+          merge-multiple: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy
+      - name: Frozen adjudication
+        run: |
+          cat > /tmp/aggregate.py <<'PY'
+          import glob,json,numpy as np
+          rows=[]
+          for fn in glob.glob('nulls/*.log'):
+              for line in open(fn):
+                  if line.startswith('R4B_NULLS='):
+                      rows.extend(json.loads(line.split('=',1)[1]))
+          rows=sorted(rows,key=lambda z:z['idx'])
+          assert [x['idx'] for x in rows]==list(range(96)), ([x['idx'] for x in rows],len(rows))
+          gains=np.array([x['gain'] for x in rows],float)
+          V=np.array([x['vector'] for x in rows],float)
+          real_gain=0.007747716111533935
+          real_vec=np.array([0.0009273491902030755,0.012093402668407933,-0.0020263402597942414,-0.005293095912972932,-0.0239749213820017,0.01180236574746354,0.012059607901695973,0.030979392639476678,0.021530937793341066,-0.013145753626300067,0.07371429467465881,0.5737699693152142,0.8102605779571137,0.007775155514617652,1.237602384330918],float)
+
+          ref=gains[:48]
+          mu=float(ref.mean()); sd=max(float(ref.std(ddof=1)),1e-15)
+          z_real=(real_gain-mu)/sd
+          z_cal=(gains[48:72]-mu)/sd
+          z_blind=(gains[72:96]-mu)/sd
+          q99_gain=float(np.quantile(z_cal,.99))
+          blind_gain=float(np.mean(z_blind<=q99_gain))
+          p_gain=float((1+np.sum(np.r_[z_cal,z_blind]>=z_real))/(49))
+          gain_pass=bool(z_real>q99_gain and blind_gain>=.90 and p_gain<=.05)
+
+          F=V[:36]; m=F.mean(0); S=np.cov(F,rowvar=False)
+          C=.75*S+.25*np.diag(np.diag(S))+np.eye(15)*1e-9
+          iv=np.linalg.pinv(C)
+          def d2(x):
+              z=x-m
+              return float(z@iv@z)
+          scale=np.array([d2(x) for x in V[36:56]])
+          sm=float(scale.mean()); ss=max(float(scale.std(ddof=1)),1e-15)
+          d_real=d2(real_vec); z_d=(d_real-sm)/ss
+          cal_d=np.array([(d2(x)-sm)/ss for x in V[56:76]])
+          blind_d=np.array([(d2(x)-sm)/ss for x in V[76:96]])
+          q99_d=float(np.quantile(cal_d,.99))
+          blind_abs=float(np.mean(blind_d<=q99_d))
+          absorbed=bool(z_d<=q99_d and blind_abs>=.90)
+          if gain_pass and absorbed:
+              decision='RECURRENT_PREDICTIVE_STATE_QUALIFIED'
+          elif gain_pass:
+              decision='PREDICTIVE_RECURRENCE_REAL_BUT_MECHANISM_INCOMPLETE'
+          else:
+              decision='RECURRENT_GAIN_NOT_QUALIFIED'
+          out={
+            'programme':'VMS-RESIDREC4B','n_null':96,
+            'gain':{
+              'real':real_gain,'null_ref_mean':mu,'null_ref_sd':sd,'real_Z':z_real,
+              'cal_q99_Z':q99_gain,'blind_acceptance':blind_gain,'add_one_p':p_gain,
+              'qualified':gain_pass
+            },
+            'residual15':{
+              'real_D2':d_real,'real_Z':z_d,'cal_q99_Z':q99_d,
+              'blind_acceptance':blind_abs,'absorbed':absorbed
+            },
+            'decision':decision
+          }
+          open('residrec4b_aggregate.json','w').write(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          PY
+          python /tmp/aggregate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: residrec4b-aggregate
+          path: residrec4b_aggregate.json
+          retention-days: 30
