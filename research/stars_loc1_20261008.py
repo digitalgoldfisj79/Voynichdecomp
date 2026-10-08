@@ -47,14 +47,29 @@ def generate(observed=False,seed=None):
 
 def fit_tilt(donor):
     P=np.stack([e["p"] for e in donor]);Y=np.array([e["y"] for e in donor],int)
-    def fg(b):
-        bb=b-b.mean();sc=np.log(np.maximum(P,1e-15))+bb[None,:];mx=sc.max(1,keepdims=True)
+    b=np.zeros(K,float)
+    eye=np.eye(K)
+    def obj(bb):
+        sc=np.log(np.maximum(P,1e-15))+bb[None,:];mx=sc.max(1,keepdims=True)
+        z=mx[:,0]+np.log(np.exp(sc-mx).sum(1))
+        return -float(np.sum(sc[np.arange(len(Y)),Y]-z))+.5*L2*float(np.dot(bb,bb))
+    old=obj(b)
+    for _ in range(20):
+        sc=np.log(np.maximum(P,1e-15))+b[None,:];mx=sc.max(1,keepdims=True)
         Q=np.exp(sc-mx);Q/=Q.sum(1,keepdims=True)
-        loss=-float(np.sum(np.log(np.maximum(Q[np.arange(len(Y)),Y],1e-300))))+.5*L2*float(np.dot(bb,bb))
-        D=Q.copy();D[np.arange(len(Y)),Y]-=1.;g=D.sum(0)+L2*bb;g-=g.mean()
-        return loss,g
-    z=minimize(lambda b:fg(b),np.zeros(K),jac=True,method="L-BFGS-B",options={"maxiter":80,"ftol":1e-10})
-    return z.x-z.x.mean()
+        D=Q.copy();D[np.arange(len(Y)),Y]-=1.
+        g=D.sum(0)+L2*b;g-=g.mean()
+        if float(np.max(np.abs(g)))<1e-9:break
+        H=L2*eye
+        for q in Q:H += np.diag(q)-np.outer(q,q)
+        step=np.linalg.solve(H+eye*1e-10,g);step-=step.mean()
+        t=1.0
+        while t>1e-6:
+            cand=b-t*step;cand-=cand.mean();nv=obj(cand)
+            if nv<=old+1e-12:b,old=cand,nv;break
+            t*=.5
+        if t<=1e-6:break
+    return b
 
 def score_target(target,b):
     base=tilt=0.
