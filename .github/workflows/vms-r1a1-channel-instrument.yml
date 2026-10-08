@@ -1,0 +1,105 @@
+name: VMS R1A observable-channel qualification
+
+on:
+  push:
+    paths:
+      - '.github/workflows/vms-r1a1-channel-instrument.yml'
+
+jobs:
+  alignment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Syntax check
+        run: |
+          python -m py_compile research/vms_r1a0_channel_alignment_20261008.py
+          python -m py_compile research/vms_r1_channel_core_20261008.py
+          python -m py_compile research/vms_r1a1_channel_instrument_20261008.py
+      - name: Install
+        run: |
+          pip install numpy scipy scikit-learn
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Run structural alignment gate
+        run: |
+          set -o pipefail
+          export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=1
+          python -u research/vms_r1a0_channel_alignment_20261008.py | tee r1a0_alignment.log
+          grep '^R1A0_ALIGNMENT=' r1a0_alignment.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1a0-alignment
+          path: r1a0_alignment.log
+          retention-days: 30
+
+  instrument:
+    needs: alignment
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [1, 2, 3, 4, 5]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install
+        run: |
+          pip install numpy scipy scikit-learn
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: Run frozen channel instrument
+        env:
+          CHANNEL: ${{ matrix.channel }}
+        run: |
+          set -o pipefail
+          export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=1
+          python -u research/vms_r1a1_channel_instrument_20261008.py --channel "${CHANNEL}" \
+            | tee "r1a1_c${CHANNEL}.log"
+          grep '^R1A_RESULT=' "r1a1_c${CHANNEL}.log"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1a1-c${{ matrix.channel }}
+          path: r1a1_c*.log
+          retention-days: 30
+
+  aggregate:
+    needs: instrument
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: r1a1-c*
+          path: results
+          merge-multiple: true
+      - name: Aggregate frozen decisions
+        run: |
+          python - <<'PY'
+          import glob,json
+          rows=[]
+          for fn in glob.glob('results/*.log'):
+              for line in open(fn):
+                  if line.startswith('R1A_RESULT='):
+                      rows.append(json.loads(line.split('=',1)[1]))
+          rows=sorted(rows,key=lambda x:x['channel'])
+          assert [x['channel'] for x in rows]==[1,2,3,4,5], rows
+          out={
+            'programme':'VMS-R1A1',
+            'channels':rows,
+            'qualified':[x['channel'] for x in rows if x['decision']=='INSTRUMENT_QUALIFIED'],
+            'all_qualified':all(x['decision']=='INSTRUMENT_QUALIFIED' for x in rows)
+          }
+          open('r1a1_aggregate.json','w').write(json.dumps(out,indent=2))
+          print(json.dumps(out,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: r1a1-aggregate
+          path: r1a1_aggregate.json
+          retention-days: 30
