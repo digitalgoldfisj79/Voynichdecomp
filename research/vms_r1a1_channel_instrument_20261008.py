@@ -184,7 +184,16 @@ def planted_probs(channel):
 
 def sample_labels(P,seed):
     rng=np.random.default_rng(seed)
-    return np.array([rng.choice(K,p=p) for p in P],int)
+    out=[]
+    for p in P:
+        q=np.asarray(p,float).copy()
+        q=np.maximum(q,0.0)
+        s=float(q.sum())
+        if not np.isfinite(s) or s<=0:
+            raise RuntimeError(("invalid_sampling_probability_row",s,q.tolist()))
+        q/=s
+        out.append(rng.choice(K,p=q))
+    return np.array(out,int)
 
 PPLANT,plant_scale,plant_kl=planted_probs(CH)
 null=[]
