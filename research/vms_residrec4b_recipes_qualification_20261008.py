@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # VMS-RESIDREC4B — preregistered 2026-10-08.
 import argparse,copy,json,math,os,random,urllib.request
+from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 import torch
 
@@ -136,18 +137,30 @@ def null_lines(seed):
 ap=argparse.ArgumentParser()
 ap.add_argument("--mode",choices=["real","null"],required=True)
 ap.add_argument("--start",type=int,default=0)
-ap.add_argument("--stop",type=int,default=0)
+ap.add_argument("--stop",type=int,default=0)\nap.add_argument("--workers",type=int,default=1)
 args=ap.parse_args()
 
 if args.mode=="real":
     r=analyze_lines(real_lines(),True)
     print("R4B_REAL="+json.dumps(r,separators=(",",":")),flush=True)
 else:
-    out=[]
-    for idx in range(args.start,args.stop):
+    def null_task(idx):
+        torch.set_num_threads(max(1,8//max(1,args.workers)))
         seed=202610098000+idx
-        print("NULL_START",idx,seed,flush=True)
         r=analyze_lines(null_lines(seed),False)
-        out.append({"idx":idx,"seed":seed,"gain":r["gain"],"vector":r["vector"],"n":r["n"]})
-        print("NULL_DONE",idx,json.dumps({"gain":r["gain"]},separators=(",",":")),flush=True)
+        return {"idx":idx,"seed":seed,"gain":r["gain"],"vector":r["vector"],"n":r["n"]}
+    indices=list(range(args.start,args.stop))
+    if args.workers<=1:
+        out=[]
+        for idx in indices:
+            print("NULL_START",idx,202610098000+idx,flush=True)
+            z=null_task(idx); out.append(z)
+            print("NULL_DONE",idx,json.dumps({"gain":z["gain"]},separators=(",",":")),flush=True)
+    else:
+        with ProcessPoolExecutor(max_workers=args.workers) as ex:
+            out=[]
+            for z in ex.map(null_task,indices,chunksize=1):
+                out.append(z)
+                print("NULL_DONE",z["idx"],json.dumps({"gain":z["gain"]},separators=(",",":")),flush=True)
+    out=sorted(out,key=lambda z:z["idx"])
     print("R4B_NULLS="+json.dumps(out,separators=(",",":")),flush=True)
