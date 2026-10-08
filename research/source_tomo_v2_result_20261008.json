@@ -1,0 +1,44 @@
+{
+  "programme": "SOURCE-TOMO-v2",
+  "date": "2026-10-08",
+  "preregister": "voynich_source_tomo_v2_preregister_20261008",
+  "runner_commit": "22c67212acd5155f0f40e44b8c63ed7bfe25af3d",
+  "hf_job": "6ac72b86e7a0dae8a2780cff",
+  "conclusion": "No source coordinate is generator-robustly identified under the preregistered v2 gates; clock remains unidentifiable.",
+  "qualification": {
+    "Herbal-A": {
+      "H1": false,
+      "Hcond1": false,
+      "Hcond2": false,
+      "repeat1": false,
+      "repeat2": false,
+      "clock": false,
+      "ood_pass": true,
+      "nearest_distance": 1.5540593744692124,
+      "q99": 3.867611311213705
+    },
+    "Q13": {
+      "H1": false,
+      "Hcond1": false,
+      "Hcond2": false,
+      "repeat1": false,
+      "repeat2": false,
+      "clock": false,
+      "ood_pass": true,
+      "nearest_distance": 3.5573406718072262,
+      "q99": 3.714331032422559
+    }
+  },
+  "contrast_z": {
+    "H1": -1.5386883086567777,
+    "Hcond1": -0.02951448458909838,
+    "Hcond2": -1.3096316313332246,
+    "repeat1": -1.885268126376381,
+    "repeat2": -0.053029468448457115
+  },
+  "circa_control": {
+    "all_source_truths_inside_pooled_intervals": true,
+    "true_clock": "C1_1to1",
+    "predicted_clock": "C3_delete"
+  }
+}
