@@ -1,4 +1,5 @@
 name: VMS R1A observable-channel qualification
+# engineering rerun after probability-row renormalization; scientific spec unchanged
 
 on:
   push:
