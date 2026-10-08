@@ -219,14 +219,18 @@ FAM={}
 for fam in GENS:
     rr=[r for r in SIM if r["fam"]==fam]
     def stats(side,key):
-        a=np.array([r[side][key] for r in rr if r[side][key] is not None and np.isfinite(r[side][key])],float)
-        return {"median":float(np.median(a)),"q10":float(np.quantile(a,.1)),"q90":float(np.quantile(a,.9))}
+        raw=[r[side][key] for r in rr]
+        a=np.array([v for v in raw if v is not None and np.isfinite(v)],float)
+        if len(a)==0:
+            return {"median":None,"q10":None,"q90":None,"n_reached":0,"n_total":len(raw),"frac_gt8":1.0}
+        return {"median":float(np.median(a)),"q10":float(np.quantile(a,.1)),"q90":float(np.quantile(a,.9)),
+                "n_reached":int(len(a)),"n_total":len(raw),"frac_gt8":float((len(raw)-len(a))/len(raw))}
     FAM[fam]={"surface_I_inf":stats("surface","I_inf"),"surface_R80":stats("surface","R80"),
               "source_I_inf":stats("source","I_inf"),"source_R80":stats("source","R80")}
 xs=np.array([r["source"]["I_inf"] for r in SIM],float);ys=np.array([r["surface"]["I_inf"] for r in SIM],float)
 sp=float(spearmanr(xs,ys).statistic)
 STAGED={"families":FAM,"spearman_source_surface_I_inf":sp,
         "real_vs_envelopes":{fam:{"I_inf_inside_q10_q90":bool(FAM[fam]["surface_I_inf"]["q10"]<=REALPRD["I_inf"]<=FAM[fam]["surface_I_inf"]["q90"]),
-                                         "R80_inside_q10_q90":(False if REALPRD["R80"] is None else bool(FAM[fam]["surface_R80"]["q10"]<=REALPRD["R80"]<=FAM[fam]["surface_R80"]["q90"]))} for fam in GENS}}
+                                         "R80_inside_q10_q90":(None if REALPRD["R80"] is None or FAM[fam]["surface_R80"]["q10"] is None else bool(FAM[fam]["surface_R80"]["q10"]<=REALPRD["R80"]<=FAM[fam]["surface_R80"]["q90"]))} for fam in GENS}}
 OUT={"programme":"STARS-PRD1","status":"complete","seed":SEED,"primary":PRIMARY,"horizon":HORIZ,"stageD":STAGED}
 print("STARS_PRD1_JSON="+json.dumps(OUT,separators=(",",":")),flush=True)
