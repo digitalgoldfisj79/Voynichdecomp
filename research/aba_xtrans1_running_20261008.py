@@ -57,7 +57,7 @@ def build_rows_tid(tid):
                 except Exception:continue
                 toks.append((t,ps))
             for pos,(t,ps) in enumerate(toks):
-                rr.append({"folio":fol,"line":int(ls),"pos":pos,"line_len":len(toks),"bif":bif,"fold":int(folds[bif]),
+                rr.append({"folio":fol,"line":line_raw,"line_num":line_num,"pos":pos,"line_len":len(toks),"bif":bif,"fold":int(folds[bif]),
                            "section":section(fol),"token":t,"start":int(ST[ps[0]]),"final_piece":ps[-1]})
     return rr
 
@@ -65,7 +65,7 @@ def make_lines(rr):
     page=collections.defaultdict(lambda:np.zeros(K,float)); para=collections.defaultdict(lambda:np.zeros(K,float)); hist=collections.defaultdict(list)
     by=collections.OrderedDict()
     for r in rr:
-        fol=r["folio"];ln=r["line"];lk=(fol,ln);pk=fol;pq=(pk,para_id(pk,ln));y=r["start"]
+        fol=r["folio"];ln=r["line"];lk=(fol,ln);pk=fol;pq=(pk,para_id(pk,r["line_num"]));y=r["start"]
         rec=by.setdefault(lk,{"folio":fol,"line":ln,"bif":r["bif"],"fold":r["fold"],"events":[]})
         if r["pos"]>0:
             prev=hist[lk][-1][1];rc=np.zeros(K,float)
@@ -93,7 +93,7 @@ def generate_tid(tid,observed=False,seed=None):
     page=collections.defaultdict(lambda:np.zeros(K,float));para=collections.defaultdict(lambda:np.zeros(K,float));hist=collections.defaultdict(list)
     by={c:collections.OrderedDict() for c in COHORTS}
     for r in ROWS[tid]:
-        fol=r["folio"];ln=r["line"];lk=(fol,ln);pk=fol;pq=(pk,para_id(pk,ln));yobs=r["start"];co=cohort(fol)
+        fol=r["folio"];ln=r["line"];lk=(fol,ln);pk=fol;pq=(pk,para_id(pk,r["line_num"]));yobs=r["start"];co=cohort(fol)
         if r["pos"]==0:y=yobs
         else:
             prevpiece=hist[lk][-1][1];rc=np.zeros(K,float)
