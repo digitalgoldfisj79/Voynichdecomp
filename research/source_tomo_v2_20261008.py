@@ -92,29 +92,40 @@ def surface_panels(lines):
 REAL={}
 for s,L in REALLINES.items():
     sp,cp,au=surface_panels(L);REAL[s]={"source":sp,"clock":cp,"audit":au,"line_lengths":[len(x) for x in L],"N":sum(map(len,L))}
-def make_source(fam,K,level,n,struct_seed,seq_seed):
-    rs=np.random.default_rng(struct_seed);rq=np.random.default_rng(seq_seed)
+def make_params(fam,K,level,struct_seed):
+    rs=np.random.default_rng(struct_seed)
     if fam=="M1":
-        A=source_graph(K,2 if level==0 else min(8,K),rs)[0];z=np.empty(n,np.int16);z[0]=rq.integers(K)
-        for t in range(1,n):z[t]=rq.choice(K,p=A[z[t-1]])
-        return z
+        return {"fam":fam,"K":K,"A":source_graph(K,2 if level==0 else min(8,K),rs)[0]}
     if fam=="VAR2":
-        A=source_graph(K,min(4,K),rs)[0];eta=(.25,.55)[level];z=np.empty(n,np.int16);z[0]=rq.integers(K);z[1]=rq.choice(K,p=A[z[0]])
-        for t in range(2,n):z[t]=z[t-2] if rq.random()<eta else rq.choice(K,p=A[z[t-1]])
-        return z
+        return {"fam":fam,"K":K,"A":source_graph(K,min(4,K),rs)[0],"eta":(.25,.55)[level]}
     if fam=="RENEW":
         A=source_graph(K,min(4,K),rs)[0].copy();np.fill_diagonal(A,0.)
         for i in range(K):
             if A[i].sum()==0:A[i]=1.;A[i,i]=0.
             A[i]/=A[i].sum()
-        mean=(2.,5.)[level];out=[];x=int(rq.integers(K))
+        return {"fam":fam,"K":K,"A":A,"mean":(2.,5.)[level]}
+    if fam=="MOTIF":
+        motifs=[]
+        for _ in range(4):motifs.append(rs.integers(0,K,size=int(rs.integers(3,7)),dtype=np.int16))
+        return {"fam":fam,"K":K,"noise":(.25,.10)[level],"persist":(8.,20.)[level],"motifs":motifs}
+    raise ValueError(fam)
+def generate_source(par,n,seq_seed):
+    rq=np.random.default_rng(seq_seed);fam=par["fam"];K=par["K"]
+    if fam=="M1":
+        A=par["A"];z=np.empty(n,np.int16);z[0]=rq.integers(K)
+        for t in range(1,n):z[t]=rq.choice(K,p=A[z[t-1]])
+        return z
+    if fam=="VAR2":
+        A=par["A"];eta=par["eta"];z=np.empty(n,np.int16);z[0]=rq.integers(K);z[1]=rq.choice(K,p=A[z[0]])
+        for t in range(2,n):z[t]=z[t-2] if rq.random()<eta else rq.choice(K,p=A[z[t-1]])
+        return z
+    if fam=="RENEW":
+        A=par["A"];mean=par["mean"];out=[];x=int(rq.integers(K))
         while len(out)<n:
             dur=1+int(rq.poisson(max(.01,mean-1.)));out.extend([x]*dur);x=int(rq.choice(K,p=A[x]))
         return np.array(out[:n],np.int16)
     if fam=="MOTIF":
-        noise=(.25,.10)[level];persist=(8.,20.)[level];motifs=[]
-        for _ in range(4):motifs.append(rs.integers(0,K,size=int(rs.integers(3,7)),dtype=np.int16))
-        out=np.empty(n,np.int16);m=int(rq.integers(4));phase=0
+        noise=par["noise"];persist=par["persist"];motifs=par["motifs"];out=np.empty(n,np.int16);m=int(rq.integers(4));phase=0
         for t in range(n):
             if t>0 and rq.random()<1/persist:m=int(rq.integers(4));phase=0
             out[t]=int(rq.integers(K)) if rq.random()<noise else int(motifs[m][phase%len(motifs[m])]);phase+=1
@@ -146,9 +157,9 @@ def apply_clock(source_seq,L,strength,clock,seed):
             pool=POOLS[strength][x];line.append(pool[int(rng.integers(len(pool)))])
     return line
 def render_config(fam,K,level,strength,clock,line_lengths,rep,section_code):
-    struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam];lines=[]
+    struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam];par=make_params(fam,K,level,struct_seed);lines=[]
     for j,L in enumerate(line_lengths):
-        z=make_source(fam,K,level,max(24,int(L*2.5)+12),struct_seed,SEED+rep*2000000+section_code*500000+j*97+K*13+level)
+        z=generate_source(par,max(24,int(L*2.5)+12),SEED+rep*2000000+section_code*500000+j*97+K*13+level)
         lines.append(apply_clock(z,L,strength,clock,SEED+rep*3000000+section_code*700000+j*131+int(strength*100)+list(CLOCKS).index(clock)))
     return lines
 GENS=("M1","VAR2","RENEW","MOTIF");PROPS=("H1","Hcond1","Hcond2","repeat1","repeat2");SIM={s:[] for s in REAL}
@@ -157,7 +168,7 @@ for rep in range(4):
    for fam in GENS:
     for level in (0,1):
      struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam]
-     truth=source_truth(make_source(fam,K,level,50000,struct_seed,struct_seed+777))
+     truth=source_truth(generate_source(make_params(fam,K,level,struct_seed),50000,struct_seed+777))
      for strength in STRENGTHS:
       for clock in CLOCKS:
        cid=f"r{rep}|K{K}|{fam}|L{level}|S{strength}|{clock}"
