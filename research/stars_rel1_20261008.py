@@ -40,11 +40,9 @@ def nll_grad_hess(beta,P,Y,F):
     Ef=np.einsum("nk,nkj->nj",Q,F)
     Fy=F[np.arange(len(Y)),Y,:]
     grad=(Ef-Fy).sum(0)+L2*beta
-    J=len(beta);H=np.eye(J)*L2
-    for n in range(len(Y)):
-        fn=F[n];qn=Q[n]
-        e2=np.einsum("k,kj,kl->jl",qn,fn,fn)
-        H += e2-np.outer(Ef[n],Ef[n])
+    J=len(beta)
+    E2=np.einsum("nk,nkj,nkl->jl",Q,F,F)
+    H=np.eye(J)*L2 + E2 - Ef.T@Ef
     return loss,grad,H
 
 def fit_beta(P,Y,F):
