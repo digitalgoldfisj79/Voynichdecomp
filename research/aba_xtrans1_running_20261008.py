@@ -49,6 +49,10 @@ def build_rows_tid(tid):
         if bif not in folds:continue
         for ls,rec in ld.items():
             if str(rec.get("u",""))!="+P0":continue
+            line_raw=str(ls)
+            mm=re.match(r"(\\d+)",line_raw)
+            if mm is None:continue
+            line_num=int(mm.group(1))
             toks=[]
             for t in rec.get("t",{}).get(tid,"").split():
                 t=t.lower()
