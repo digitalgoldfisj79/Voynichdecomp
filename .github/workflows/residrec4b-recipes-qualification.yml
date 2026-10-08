@@ -27,13 +27,18 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+      - name: Syntax check
+        run: python -m py_compile research/vms_residrec4b_recipes_qualification_20261008.py
       - name: Install
-        run: pip install numpy scipy scikit-learn torch
+        run: |
+          pip install numpy scipy scikit-learn
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
       - name: Run frozen null shard
         env:
           START: ${{ matrix.start }}
           STOP: ${{ matrix.stop }}
         run: |
+          set -o pipefail
           export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=2 MKL_NUM_THREADS=1
           python -u research/vms_residrec4b_recipes_qualification_20261008.py \
             --mode null --start "$START" --stop "$STOP" --workers 2 \
