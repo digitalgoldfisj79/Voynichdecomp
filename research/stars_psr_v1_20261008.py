@@ -134,8 +134,8 @@ for strength in STRENGTHS:
     POOLS[strength]=pp
 print("POOLS_READY",flush=True)
 
-def render_line(A,L,strength,clock,seed):
-    rng=np.random.default_rng(seed);pi=stationary(A);x=int(rng.choice(len(A),p=pi))
+def render_line(A,L,strength,clock,seed,pi=None):
+    rng=np.random.default_rng(seed);pi=stationary(A) if pi is None else pi;x=int(rng.choice(len(A),p=pi))
     p0,p2=CLOCKS[clock];surf=[];src=[]
     guard=0
     while len(surf)<L:
@@ -195,10 +195,10 @@ def rank_summary_general_only(feature_lines):
 
 def simulate_case(rep,R,geom,strength,clock):
     base=SEED+rep*10_000_000+R*100_000+GEOMS.index(geom)*10_000+int(strength*1000)*10+list(CLOCKS).index(clock)
-    A=make_A(R,geom,base)
+    A=make_A(R,geom,base);pi=stationary(A)
     surfrec=[];srcrec=[]
     for j,(fol,L) in enumerate(LINE_META):
-        surf,src=render_line(A,L,strength,clock,base+1000+j*173)
+        surf,src=render_line(A,L,strength,clock,base+1000+j*173,pi)
         surfrec.append((fol,surf));srcrec.append((fol,src))
     fl=surface_feature_lines(surfrec,False);vec,spec=rank_summary_only(fl)
     sf=source_feature_lines(srcrec,R);svec,sspec=rank_summary_general_only(sf)
@@ -293,9 +293,9 @@ STAGEB={"opened":GLOBAL_POWER,"results":{},"resolved_any":False}
 def case_subspaces(key):
     rep,R,geom,strength,clock=key
     base=SEED+rep*10_000_000+R*100_000+GEOMS.index(geom)*10_000+int(strength*1000)*10+list(CLOCKS).index(clock)
-    A=make_A(R,geom,base);surfrec=[]
+    A=make_A(R,geom,base);pi=stationary(A);surfrec=[]
     for j,(fol,L) in enumerate(LINE_META):
-        surf,src=render_line(A,L,strength,clock,base+1000+j*173);surfrec.append((fol,surf))
+        surf,src=render_line(A,L,strength,clock,base+1000+j*173,pi);surfrec.append((fol,surf))
     fl=surface_feature_lines(surfrec,False);odd=[x for x in fl if fnum(x[0])%2==1];even=[x for x in fl if fnum(x[0])%2==0]
     os=rank_summary(odd)[1];es=rank_summary(even)[1]
     return key,{"Uo":os["U"],"Vo":os["V"],"Ue":es["U"],"Ve":es["V"]}
