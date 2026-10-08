@@ -3,6 +3,7 @@
 import collections,json,math,re,urllib.request
 import numpy as np
 from scipy.special import logsumexp
+from concurrent.futures import ProcessPoolExecutor
 
 BASE_URL="https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/0677011497ff31d84ebb93c2c65a67be57ae39af/research/vms_ecology1_running_residual_20261008.py"
 ns={"__name__":"eco1_import"}
@@ -170,41 +171,46 @@ def eval_hmm(lines,model):
             else: post/=z
     return ll,n
 
+def outer_fold_task(args):
+    lines,j,seedbase=args
+    folds={k:[s for s in lines if seq_fold(s)==k] for k in range(5)}
+    v=(j+1)%5
+    tr=[s for k in range(5) if k not in (j,v) for s in folds[k]]
+    va=folds[v]; te=folds[j]
+    cm=fit_ctx(tr,5); best1=None
+    for L in DEPTH_GRID:
+        for a in ALPHA_GRID:
+            for lam in LAMBDA_GRID:
+                bl,n=eval_ctx(va,cm,(L,a,lam)); bpe=bl/max(n,1)
+                z=(bpe,L,a,lam)
+                if best1 is None or z<best1: best1=z
+    hp1=(best1[1],best1[2],best1[3])
+    best2=None; fitted={}
+    for S in STATE_GRID:
+        md=fit_hmm(tr,S,seedbase+j*1000+S*10)
+        fitted[S]=md
+        bl,n=eval_hmm(va,md); bpe=bl/max(n,1)
+        z=(bpe,S)
+        if best2 is None or z<best2:best2=z
+    Ssel=best2[1]; md=fitted[Ssel]
+    b0,n0=baseline_bits(te); b1,n1=eval_ctx(te,cm,hp1); b2,n2=eval_hmm(te,md)
+    assert n0==n1==n2
+    return {"test_fold":j,"validation_fold":v,"n":n0,
+            "m0_bits":b0,"m1_bits":b1,"m2_bits":b2,
+            "m0_bpe":b0/n0,"m1_bpe":b1/n0,"m2_bpe":b2/n0,
+            "m1_hp":{"L":hp1[0],"alpha":hp1[1],"lambda":hp1[2]},
+            "m2_S":Ssel,"m2_train_ll":md["train_ll"],"m2_iters":md["iters"],
+            "gain_m1":(b0-b1)/n0,"gain_m2":(b0-b2)/n0,"m2_minus_m1":(b1-b2)/n0}
+
 def crossval(lines,seedbase=202610081700):
-    folds={j:[s for s in lines if seq_fold(s)==j] for j in range(5)}
-    foldout=[]; total={"M0":[0.,0],"M1":[0.,0],"M2":[0.,0]}
-    for j in range(5):
-        v=(j+1)%5
-        tr=[s for k in range(5) if k not in (j,v) for s in folds[k]]
-        va=folds[v]; te=folds[j]
-        # M1 selection
-        cm=fit_ctx(tr,5); best1=None
-        for L in DEPTH_GRID:
-            for a in ALPHA_GRID:
-                for lam in LAMBDA_GRID:
-                    bl,n=eval_ctx(va,cm,(L,a,lam)); bpe=bl/max(n,1)
-                    z=(bpe,L,a,lam)
-                    if best1 is None or z<best1: best1=z
-        hp1=(best1[1],best1[2],best1[3])
-        # M2 selection
-        best2=None; fitted={}
-        for S in STATE_GRID:
-            md=fit_hmm(tr,S,seedbase+j*1000+S*10)
-            fitted[S]=md
-            bl,n=eval_hmm(va,md); bpe=bl/max(n,1)
-            z=(bpe,S)
-            if best2 is None or z<best2:best2=z
-        Ssel=best2[1]; md=fitted[Ssel]
-        # untouched test
-        b0,n0=baseline_bits(te); b1,n1=eval_ctx(te,cm,hp1); b2,n2=eval_hmm(te,md)
-        assert n0==n1==n2
-        for k,bv in (("M0",b0),("M1",b1),("M2",b2)):
-            total[k][0]+=bv; total[k][1]+=n0
-        foldout.append({"test_fold":j,"validation_fold":v,"n":n0,
-                        "m0_bpe":b0/n0,"m1_bpe":b1/n0,"m2_bpe":b2/n0,
-                        "m1_hp":{"L":hp1[0],"alpha":hp1[1],"lambda":hp1[2]},
-                        "m2_S":Ssel,"m2_train_ll":md["train_ll"],"m2_iters":md["iters"],
-                        "gain_m1":(b0-b1)/n0,"gain_m2":(b0-b2)/n0,"m2_minus_m1":(b1-b2)/n0})
+    with ProcessPoolExecutor(max_workers=5) as ex:
+        foldout=list(ex.map(outer_fold_task,[(lines,j,seedbase) for j in range(5)]))
+    foldout=sorted(foldout,key=lambda x:x["test_fold"])
+    total={"M0":[0.,0],"M1":[0.,0],"M2":[0.,0]}
+    for x in foldout:
+        n=x["n"]
+        for k,bv in (("M0",x["m0_bits"]),("M1",x["m1_bits"]),("M2",x["m2_bits"])):
+            total[k][0]+=bv; total[k][1]+=n
     bpe={k:v[0]/v[1] for k,v in total.items()}
     gm1=bpe["M0"]-bpe["M1"]; gm2=bpe["M0"]-bpe["M2"]; d=bpe["M1"]-bpe["M2"]
     pos1=sum(x["gain_m1"]>0 for x in foldout); pos2=sum(x["gain_m2"]>0 for x in foldout); beat=sum(x["m2_minus_m1"]>0 for x in foldout)
