@@ -84,9 +84,8 @@ def weighted_tilt(P,Y,W,b0=None,l2=L2_EMIT):
         D=Q.copy(); D[np.arange(len(Y)),Y]-=1.0
         g=np.sum(W[:,None]*D,axis=0)+l2*b; g-=g.mean()
         if np.max(np.abs(g))<1e-7: break
-        H=l2*I
-        for wi,q in zip(W,Q):
-            if wi>1e-12: H += wi*(np.diag(q)-np.outer(q,q))
+        qw=W[:,None]*Q
+        H=l2*I + np.diag(qw.sum(axis=0)) - Q.T@qw
         step=np.linalg.solve(H+I*1e-9,g); step-=step.mean()
         t=1.0
         while t>1e-5:
@@ -218,8 +217,12 @@ def crossval(lines,seedbase=202610081700):
             "positive_folds_m1":pos1,"positive_folds_m2":pos2,"m2_beats_m1_folds":beat,
             "decision":dec,"folds":foldout}
 
+import os
+target=os.getenv("RESIDREC2_COHORT","").strip()
+run_cohorts=(target,) if target else COHORTS
 OUT={}
-for i,c in enumerate(COHORTS):
+for c in run_cohorts:
+    i=COHORTS.index(c)
     print("RUN_COHORT",c,flush=True)
     OUT[c]=crossval(REAL[c]["lines"],202610081700+i*100000)
     print("COHORT_RESULT",c,json.dumps(OUT[c],separators=(",",":")),flush=True)
