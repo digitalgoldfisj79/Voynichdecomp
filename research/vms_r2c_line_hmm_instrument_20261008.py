@@ -22,7 +22,7 @@ MODE=args.mode
 lines,meta,n=core["build_parent"]()
 # annotate exact entry metadata only; no observed-history features needed
 lines,_=core["annotate"](lines)
-if n!=9616: raise RuntimeError(("N",n))
+# Engineering alignment invariant: all token arrays, planted labels, and EM state weights\n# use one canonical physical-entry order. Scientific model/specification unchanged.\nlines=sorted(lines,key=lambda s:(int(s[0]["eid"]),int(s[0]["entry_line_index"])))\nif n!=9616: raise RuntimeError(("N",n))
 
 # stable physical entry grouping
 def entries_from_lines(ls):
