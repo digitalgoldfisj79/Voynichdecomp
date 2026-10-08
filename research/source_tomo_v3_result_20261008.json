@@ -1,0 +1,37 @@
+{
+  "programme": "SOURCE-TOMO-v3",
+  "date": "2026-10-08",
+  "preregister": "voynich_source_tomo_v3_preregister_20261008",
+  "runner_commit": "49d8d688911af1f753f1dc8f257862109b5550a0",
+  "hf_job": "6ac72eafe7a0dae8a2780d9a",
+  "promoted": {
+    "Herbal-A": {},
+    "Q13": {
+      "Hcond2_lower_bound_bits_per_source_event": 0.46691277600955283
+    }
+  },
+  "ood": {
+    "Herbal-A": {
+      "distance": 1.4595537095435156,
+      "q99": 3.809154629518581,
+      "pass": true
+    },
+    "Q13": {
+      "distance": 3.6913575587387273,
+      "q99": 3.792834784094389,
+      "pass": true
+    }
+  },
+  "q13_Hcond2_lower_qualification": {
+    "aggregate_coverage": 0.921875,
+    "median_excluded_fraction": 0.20083832988017275,
+    "family_coverage": {
+      "M1": 0.921875,
+      "VAR2": 0.984375,
+      "RENEW": 0.859375,
+      "MOTIF": 0.921875
+    },
+    "circa_control_pass": true
+  },
+  "note": "All other two-sided and one-sided source coordinates failed preregistered calibration and/or historical-control gates. Clock remains unidentifiable."
+}
