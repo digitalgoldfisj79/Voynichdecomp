@@ -163,19 +163,26 @@ def render_config(fam,K,level,strength,clock,line_lengths,rep,section_code):
         lines.append(apply_clock(z,L,strength,clock,SEED+rep*3000000+section_code*700000+j*131+int(strength*100)+list(CLOCKS).index(clock)))
     return lines
 GENS=("M1","VAR2","RENEW","MOTIF");PROPS=("H1","Hcond1","Hcond2","repeat1","repeat2");SIM={s:[] for s in REAL}
-for rep in range(4):
-  for K in (8,16,32,64):
-   for fam in GENS:
-    for level in (0,1):
-     struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam]
-     truth=source_truth(generate_source(make_params(fam,K,level,struct_seed),50000,struct_seed+777))
-     for strength in STRENGTHS:
-      for clock in CLOCKS:
-       cid=f"r{rep}|K{K}|{fam}|L{level}|S{strength}|{clock}"
-       for section,scode in (("Herbal-A",1),("Q13",2)):
-        lines=render_config(fam,K,level,strength,clock,REAL[section]["line_lengths"],rep,scode);sp,cp,au=surface_panels(lines)
-        SIM[section].append({"config_id":cid,"rep":rep,"K":K,"gen":fam,"level":level,"strength":strength,"clock":clock,"truth":truth,"source":sp.tolist(),"clock_panel":cp.tolist(),"audit":au})
-  print("SIM_DONE",rep,{s:len(SIM[s]) for s in SIM},flush=True)
+def run_rep(rep):
+    local={s:[] for s in REAL}
+    for K in (8,16,32,64):
+      for fam in GENS:
+       for level in (0,1):
+        struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam]
+        truth=source_truth(generate_source(make_params(fam,K,level,struct_seed),50000,struct_seed+777))
+        for strength in STRENGTHS:
+         for clock in CLOCKS:
+          cid=f"r{rep}|K{K}|{fam}|L{level}|S{strength}|{clock}"
+          for section,scode in (("Herbal-A",1),("Q13",2)):
+           lines=render_config(fam,K,level,strength,clock,REAL[section]["line_lengths"],rep,scode);sp,cp,au=surface_panels(lines)
+           local[section].append({"config_id":cid,"rep":rep,"K":K,"gen":fam,"level":level,"strength":strength,"clock":clock,"truth":truth,"source":sp.tolist(),"clock_panel":cp.tolist(),"audit":au})
+    return rep,local
+if __name__=="__main__":
+    import multiprocessing as mp
+    with mp.get_context("fork").Pool(4) as pool:
+        for rep,local in pool.imap_unordered(run_rep,range(4)):
+            for section in SIM:SIM[section].extend(local[section])
+            print("SIM_DONE",rep,{s:len(local[s]) for s in local},flush=True)
 def model(section,panel):
     train=[r for r in SIM[section] if r["rep"]<3];X=np.array([r[panel] for r in train]);lw=LedoitWolf().fit(X);return train,X,lw.precision_
 def neighbor(train,X,P,v,k=40):
