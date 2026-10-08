@@ -1,0 +1,113 @@
+{
+  "programme": "SOURCE-TOMO-v1",
+  "date": "2026-10-08",
+  "preregister": "voynich_source_tomo_v1_preregister_20261008",
+  "runner_commit": "9a8896faa9f141bb7531fcbfe56cffd95245e490",
+  "hf_job": "6ac726d8e7a0dae8a2780bd6",
+  "qualifications": {
+    "Herbal-A": {
+      "log2_neff": {
+        "coverage90": 0.8555555555555555,
+        "width_fraction": 0.5149055158696381,
+        "qualified": true
+      },
+      "entropy_rate": {
+        "coverage90": 0.8944444444444445,
+        "width_fraction": 0.5664881834726743,
+        "qualified": true
+      },
+      "memory_gap": {
+        "coverage90": 0.9055555555555556,
+        "width_fraction": 0.6553812054951058,
+        "qualified": false
+      },
+      "repeat1": {
+        "coverage90": 0.8944444444444445,
+        "width_fraction": 0.4565174706528483,
+        "qualified": true
+      },
+      "clock": {
+        "accuracy": 0.35555555555555557,
+        "qualified": false
+      },
+      "ood": {
+        "distance": 0.8066337757481201,
+        "q99": 3.5758418907307146,
+        "pass": true
+      },
+      "intervals": {
+        "log2_neff": [
+          3.288510536231426,
+          5.943037851275992
+        ],
+        "entropy_rate": [
+          1.4187902840354705,
+          3.609714074192438
+        ],
+        "repeat1": [
+          0.13330751051363132,
+          0.5560977225182866
+        ]
+      }
+    },
+    "Q13": {
+      "log2_neff": {
+        "coverage90": 0.8722222222222222,
+        "width_fraction": 0.5143583442573995,
+        "qualified": true
+      },
+      "entropy_rate": {
+        "coverage90": 0.8777777777777778,
+        "width_fraction": 0.5700120118378742,
+        "qualified": true
+      },
+      "memory_gap": {
+        "coverage90": 0.9166666666666666,
+        "width_fraction": 0.6679316552055605,
+        "qualified": false
+      },
+      "repeat1": {
+        "coverage90": 0.9,
+        "width_fraction": 0.4602254220667519,
+        "qualified": true
+      },
+      "clock": {
+        "accuracy": 0.34444444444444444,
+        "qualified": false
+      },
+      "ood": {
+        "distance": 1.792403661362025,
+        "q99": 3.2119021528568057,
+        "pass": true
+      },
+      "intervals": {
+        "log2_neff": [
+          0.9946440174260438,
+          4.8337719914706145
+        ],
+        "entropy_rate": [
+          0.5651337525227659,
+          3.6207053614482736
+        ],
+        "repeat1": [
+          0.12773781123654568,
+          0.8570382422333823
+        ]
+      }
+    }
+  },
+  "circa_control": {
+    "truth": {
+      "log2_neff": 2.7845974895590864,
+      "entropy_rate": 2.5529139272557955,
+      "memory_gap": 0.2316835623032909,
+      "repeat1": 0.38325655039536877
+    },
+    "contained": {
+      "log2_neff": true,
+      "entropy_rate": true,
+      "memory_gap": false,
+      "repeat1": true
+    }
+  }
+}
