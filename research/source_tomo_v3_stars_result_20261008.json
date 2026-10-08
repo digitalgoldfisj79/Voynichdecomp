@@ -1,0 +1,21 @@
+{
+  "programme": "SOURCE-TOMO-v3-Stars",
+  "date": "2026-10-08",
+  "preregister": "voynich_source_tomo_v3_stars_preregister_20261008",
+  "runner_commit": "d0c6b58102b9702b7b7566acc75b93bd049e9d34",
+  "hf_job": "6ac733e4df2184ac91ac7cda",
+  "ood": {
+    "distance": 2.8963744986943736,
+    "q99": 4.1221313352718045,
+    "pass": true
+  },
+  "promoted": {
+    "Hcond1_lower_bits_per_source_event": 1.5930558314456638,
+    "Hcond2_lower_bits_per_source_event": 1.0188202476733526,
+    "repeat2_upper": 0.4457218149392516
+  },
+  "historical_control": {
+    "pass_for_promoted_bounds": true
+  },
+  "note": "No two-sided interval, H1 bound, or repeat1 bound qualified."
+}
