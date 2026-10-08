@@ -250,7 +250,7 @@ def render_exact_source(z,line_lengths,strength,seed):
         out.append(line)
     return out
 csp,ccp,cau=surface_panels(render_exact_source(cz,REAL["Stars"]["line_lengths"],1.5,SEED+9999));cd,cp=predict("Stars",csp)
-CIRCA={"truth":ctruth,"distance":cd,"q99":CAL["Stars"]["q99"],"ood":bool(cd>CAL["Herbal-A"]["q99"]),"properties":{}}
+CIRCA={"truth":ctruth,"distance":cd,"q99":CAL["Stars"]["q99"],"ood":bool(cd>CAL["Stars"]["q99"]),"properties":{}}
 ranges=MODELS["Stars"][3]
 for p in PROPS:
     loR,hiR=ranges[p];m=cp[p]["m"];sc=cp[p]["s"];q=CAL["Stars"]["properties"][p]["q"];two=[max(loR,m-q["two"]*sc),min(hiR,m+q["two"]*sc)];lb=max(loR,m-q["lower"]*sc);ub=min(hiR,m+q["upper"]*sc);t=ctruth[p]
