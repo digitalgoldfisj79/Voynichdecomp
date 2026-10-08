@@ -148,7 +148,7 @@ def apply_clock(source_seq,L,strength,clock,seed):
 def render_config(fam,K,level,strength,clock,line_lengths,rep,section_code):
     struct_seed=SEED+rep*1000000+K*10000+level*1000+{"M1":10,"VAR2":20,"RENEW":30,"MOTIF":40}[fam];lines=[]
     for j,L in enumerate(line_lengths):
-        z=make_source(fam,K,level,max(100,L*8+100),struct_seed,SEED+rep*2000000+section_code*500000+j*97+K*13+level)
+        z=make_source(fam,K,level,max(24,int(L*2.5)+12),struct_seed,SEED+rep*2000000+section_code*500000+j*97+K*13+level)
         lines.append(apply_clock(z,L,strength,clock,SEED+rep*3000000+section_code*700000+j*131+int(strength*100)+list(CLOCKS).index(clock)))
     return lines
 GENS=("M1","VAR2","RENEW","MOTIF");PROPS=("H1","Hcond1","Hcond2","repeat1","repeat2");SIM={s:[] for s in REAL}
