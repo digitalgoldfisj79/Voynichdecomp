@@ -164,6 +164,35 @@ def overlap(U1,V1,U2,V2,k):
     b=float(np.linalg.norm(V1[:,:k].T@V2[:,:k],"fro")**2/k)
     return (a+b)/2
 
+def rank_summary_only(feature_lines):
+    P,F=windows(feature_lines,3);eps=1e-8
+    if len(P)<10:s=np.zeros(20)
+    else:
+        P=P-P.mean(0);F=F-F.mean(0);C=(P.T@F)/len(P);s=np.linalg.svd(C,compute_uv=False);s=np.pad(s[:20],(0,max(0,20-len(s))))[:20]
+    s1=max(s[0],eps);stable=float(np.sum(s*s)/(s1*s1));p=s/max(s.sum(),eps);eff=float(np.exp(-np.sum(p[p>0]*np.log(p[p>0]))))
+    e=s*s;den=max(e.sum(),eps);cum=[float(e[:k].sum()/den) for k in (1,2,4,8)]
+    normE=float(np.sum(e)/(P.shape[1]*F.shape[1])) if len(P)>=10 else 0.
+    vec=np.array([math.log10(float(s[i])+eps) for i in range(12)]+[stable,eff]+cum+[normE],float)
+    return vec,{"stable_rank":stable,"effective_rank":eff,"norm_frob_energy":normE}
+
+def rank_summary_general_only(feature_lines):
+    P=[];F=[]
+    for fol,A in feature_lines:
+        if len(A)<6:continue
+        for t in range(3,len(A)-3+1):
+            P.append(A[t-3:t].reshape(-1));F.append(A[t:t+3].reshape(-1))
+    eps=1e-8
+    if not P:
+        s=np.zeros(20);normE=0.
+    else:
+        P=np.array(P,float);F=np.array(F,float);P=P-P.mean(0);F=F-F.mean(0);C=(P.T@F)/len(P)
+        raw=np.linalg.svd(C,compute_uv=False);s=np.pad(raw[:20],(0,max(0,20-len(raw))))[:20]
+        normE=float(np.sum(s*s)/(C.shape[0]*C.shape[1]))
+    s1=max(s[0],eps);stable=float(np.sum(s*s)/(s1*s1));p=s/max(s.sum(),eps);eff=float(np.exp(-np.sum(p[p>0]*np.log(p[p>0]))))
+    e=s*s;den=max(e.sum(),eps);cum=[float(e[:k].sum()/den) for k in (1,2,4,8)]
+    vec=np.array([math.log10(float(s[i])+eps) for i in range(12)]+[stable,eff]+cum+[normE],float)
+    return vec,{"stable_rank":stable,"effective_rank":eff,"norm_frob_energy":normE}
+
 def simulate_case(rep,R,geom,strength,clock):
     base=SEED+rep*10_000_000+R*100_000+GEOMS.index(geom)*10_000+int(strength*1000)*10+list(CLOCKS).index(clock)
     A=make_A(R,geom,base)
@@ -171,15 +200,11 @@ def simulate_case(rep,R,geom,strength,clock):
     for j,(fol,L) in enumerate(LINE_META):
         surf,src=render_line(A,L,strength,clock,base+1000+j*173)
         surfrec.append((fol,surf));srcrec.append((fol,src))
-    fl=surface_feature_lines(surfrec,False);vec,spec=rank_summary(fl)
-    sf=source_feature_lines(srcrec,R);svec,sspec=rank_summary_general(sf)
-    # odd/even predictive subspaces
-    odd=[x for x in fl if fnum(x[0])%2==1];even=[x for x in fl if fnum(x[0])%2==0]
-    _,ospec=rank_summary(odd);_,espec=rank_summary(even)
+    fl=surface_feature_lines(surfrec,False);vec,spec=rank_summary_only(fl)
+    sf=source_feature_lines(srcrec,R);svec,sspec=rank_summary_general_only(sf)
     return {"rep":rep,"R":R,"geom":geom,"strength":strength,"clock":clock,"summary":vec.tolist(),
             "surface_stable":spec["stable_rank"],"surface_eff":spec["effective_rank"],"surface_energy":spec["norm_frob_energy"],
-            "source_stable":sspec["stable_rank"],"source_eff":sspec["effective_rank"],"source_energy":sspec["norm_frob_energy"],
-            "Uo":ospec["U"].tolist(),"Vo":ospec["V"].tolist(),"Ue":espec["U"].tolist(),"Ve":espec["V"].tolist()}
+            "source_stable":sspec["stable_rank"],"source_eff":sspec["effective_rank"],"source_energy":sspec["norm_frob_energy"]}
 
 def op_svd_general(feature_lines,maxsv=20):
     # same 3-step windows, arbitrary per-token feature dimension.
@@ -264,16 +289,33 @@ def real_split_spec(parity):
     return rank_summary(fl)[1]
 RO=real_split_spec(1);RE=real_split_spec(0)
 STAGEB={"opened":GLOBAL_POWER,"results":{},"resolved_any":False}
+
+def case_subspaces(key):
+    rep,R,geom,strength,clock=key
+    base=SEED+rep*10_000_000+R*100_000+GEOMS.index(geom)*10_000+int(strength*1000)*10+list(CLOCKS).index(clock)
+    A=make_A(R,geom,base);surfrec=[]
+    for j,(fol,L) in enumerate(LINE_META):
+        surf,src=render_line(A,L,strength,clock,base+1000+j*173);surfrec.append((fol,surf))
+    fl=surface_feature_lines(surfrec,False);odd=[x for x in fl if fnum(x[0])%2==1];even=[x for x in fl if fnum(x[0])%2==0]
+    os=rank_summary(odd)[1];es=rank_summary(even)[1]
+    return key,{"Uo":os["U"],"Vo":os["V"],"Ue":es["U"],"Ve":es["V"]}
+
 if GLOBAL_POWER:
-    # index cases
-    ix={(r["rep"],r["R"],r["geom"],r["strength"],r["clock"]):r for r in SIM}
+    keys3=[(3,R,g,st,c) for R in RANKS for g in GEOMS for st in STRENGTHS for c in CLOCKS]
+    keys2=[(2,R,g,st,c) for R in RANKS for g in GEOMS for st in STRENGTHS for c in CLOCKS]
+    sub={}
+    if __name__=="__main__":
+        import multiprocessing as mp
+        with mp.get_context("fork").Pool(4) as pool:
+            for key,val in pool.imap_unordered(case_subspaces,keys3+keys2):
+                sub[key]=val
     for k in (2,4,8,12):
         realov=overlap(np.array(RO["U"]),np.array(RO["V"]),np.array(RE["U"]),np.array(RE["V"]),k)
         same=[];null=[]
-        for r in [q for q in SIM if q["rep"]==3]:
-            same.append(overlap(np.array(r["Uo"]),np.array(r["Vo"]),np.array(r["Ue"]),np.array(r["Ve"]),k))
-            mate=ix[(2,r["R"],r["geom"],r["strength"],r["clock"])]
-            null.append(overlap(np.array(r["Uo"]),np.array(r["Vo"]),np.array(mate["Ue"]),np.array(mate["Ve"]),k))
+        for key3 in keys3:
+            _,R,g,st,c=key3;key2=(2,R,g,st,c);r=sub[key3];mate=sub[key2]
+            same.append(overlap(r["Uo"],r["Vo"],r["Ue"],r["Ve"],k))
+            null.append(overlap(r["Uo"],r["Vo"],mate["Ue"],mate["Ve"],k))
         mu=float(np.mean(null));sd=float(np.std(null,ddof=1));z=(realov-mu)/sd if sd>0 else None
         lo,hi=np.quantile(same,[.025,.975]);resolved=bool(z is not None and z>=2 and lo<=realov<=hi)
         STAGEB["results"][str(k)]={"real_overlap":realov,"null_mean":mu,"null_sd":sd,"z":z,"same_q025":float(lo),"same_q975":float(hi),"resolved":resolved}
