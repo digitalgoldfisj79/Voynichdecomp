@@ -213,7 +213,6 @@ def analyze(section):
     real={"nearest_distance":real_nnd,"q99_blind":q99,"ood":bool(real_nnd>q99),
           "nearest_configs":[{"K":z["K"],"d":z["d"],"strength":z["strength"],"clock":z["clock"],"distance":float(dd[i])} for i,z in zip(ix[:10],[train[j] for j in ix[:10]])],
           "clock_vote":dict(collections.Counter(z["clock"] for z in nn))}
-    }
     for p in PROPS:
         vals=np.array([z["truth"][p] for z in nn]);real[p]={"q05":float(np.quantile(vals,.05)),"median":float(np.median(vals)),"q95":float(np.quantile(vals,.95)),"qualified":qual[p]["qualified"]}
     return {"qualification":qual,"clock":{"accuracy":cacc,"recall":crec,"qualified":cqual},
