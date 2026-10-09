@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SHARDING_VERIFIED_20261009
 # VMS-R2D: fixed 2-state entry-level latent regime recoverability instrument.
 import argparse,collections,json,math,urllib.request
 import numpy as np
