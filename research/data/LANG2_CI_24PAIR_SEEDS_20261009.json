@@ -1,0 +1,127 @@
+{
+  "protocol": "LANG2_CI_24P_CONFIRM_20261009",
+  "version": 1,
+  "seed_derivation": "model_seed and scramble_seed each derive from 1+(uint64be(first 8 bytes of SHA256('LANG2-CI-GER2-CONFIRM-20261009-V1|pair-XX|model' or '|scramble')) mod (2^31-2))",
+  "pairs": [
+    {
+      "pair": 1,
+      "model_seed": 502261994,
+      "scramble_seed": 1349709413
+    },
+    {
+      "pair": 2,
+      "model_seed": 1226010420,
+      "scramble_seed": 1829303557
+    },
+    {
+      "pair": 3,
+      "model_seed": 857002309,
+      "scramble_seed": 544413741
+    },
+    {
+      "pair": 4,
+      "model_seed": 1977088395,
+      "scramble_seed": 1227931188
+    },
+    {
+      "pair": 5,
+      "model_seed": 1933132367,
+      "scramble_seed": 658788334
+    },
+    {
+      "pair": 6,
+      "model_seed": 1863653119,
+      "scramble_seed": 135037915
+    },
+    {
+      "pair": 7,
+      "model_seed": 1102886958,
+      "scramble_seed": 171187306
+    },
+    {
+      "pair": 8,
+      "model_seed": 1501580245,
+      "scramble_seed": 2011196939
+    },
+    {
+      "pair": 9,
+      "model_seed": 1524398923,
+      "scramble_seed": 1650054274
+    },
+    {
+      "pair": 10,
+      "model_seed": 893803291,
+      "scramble_seed": 1013911732
+    },
+    {
+      "pair": 11,
+      "model_seed": 1535304363,
+      "scramble_seed": 111889380
+    },
+    {
+      "pair": 12,
+      "model_seed": 1255760146,
+      "scramble_seed": 1678034778
+    },
+    {
+      "pair": 13,
+      "model_seed": 1005162895,
+      "scramble_seed": 1932145794
+    },
+    {
+      "pair": 14,
+      "model_seed": 715032453,
+      "scramble_seed": 489742399
+    },
+    {
+      "pair": 15,
+      "model_seed": 165467021,
+      "scramble_seed": 1897080569
+    },
+    {
+      "pair": 16,
+      "model_seed": 1466174830,
+      "scramble_seed": 2102051935
+    },
+    {
+      "pair": 17,
+      "model_seed": 979750596,
+      "scramble_seed": 1346396645
+    },
+    {
+      "pair": 18,
+      "model_seed": 1865289073,
+      "scramble_seed": 914128823
+    },
+    {
+      "pair": 19,
+      "model_seed": 90989445,
+      "scramble_seed": 1395232844
+    },
+    {
+      "pair": 20,
+      "model_seed": 1448665307,
+      "scramble_seed": 570046908
+    },
+    {
+      "pair": 21,
+      "model_seed": 283207752,
+      "scramble_seed": 107427700
+    },
+    {
+      "pair": 22,
+      "model_seed": 490663375,
+      "scramble_seed": 1631428037
+    },
+    {
+      "pair": 23,
+      "model_seed": 840557596,
+      "scramble_seed": 1891112799
+    },
+    {
+      "pair": 24,
+      "model_seed": 235933997,
+      "scramble_seed": 200089415
+    }
+  ]
+}
