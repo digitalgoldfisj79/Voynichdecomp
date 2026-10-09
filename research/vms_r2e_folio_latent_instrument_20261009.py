@@ -192,9 +192,9 @@ def cv(Y,seedbase):
             "positive_folds":int(sum(r["gain"]>0 for r in rows)),
             "folds":rows}
 
-ALL_SEEDS={"cal":list(range(202610084100,202610084120)),
-           "blind":list(range(202610084120,202610084140)),
-           "plant":list(range(202610084200,202610084220))}[MODE]
+ALL_SEEDS={"cal":list(range(202610095100,202610095120)),
+           "blind":list(range(202610095120,202610095140)),
+           "plant":list(range(202610095200,202610095220))}[MODE]
 if ARGS.start<0 or ARGS.count<1 or ARGS.start+ARGS.count>20:
     raise ValueError(("SHARD",ARGS.start,ARGS.count))
 seeds=ALL_SEEDS[ARGS.start:ARGS.start+ARGS.count]
