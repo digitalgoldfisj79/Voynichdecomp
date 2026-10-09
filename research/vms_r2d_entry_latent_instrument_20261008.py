@@ -13,7 +13,10 @@ K=core["K"]; S=2; EPS=1e-15; L2=10.0; MAXITER=30; RESTARTS=2
 TARGET_KL_BITS=.008
 ap=argparse.ArgumentParser()
 ap.add_argument("--mode",choices=["cal","blind","plant"],required=True)
-MODE=ap.parse_args().mode
+ap.add_argument("--start",type=int,default=0)
+ap.add_argument("--count",type=int,default=20)
+ARGS=ap.parse_args()
+MODE=ARGS.mode
 
 lines,meta,n=core["build_parent"]()
 lines,_=core["annotate"](lines)
@@ -183,14 +186,17 @@ def cv(Y,seedbase):
             "positive_folds":int(sum(r["gain"]>0 for r in rows)),
             "folds":rows}
 
-seeds={"cal":range(202610084100,202610084120),
-       "blind":range(202610084120,202610084140),
-       "plant":range(202610084200,202610084220)}[MODE]
+ALL_SEEDS={"cal":list(range(202610084100,202610084120)),
+           "blind":list(range(202610084120,202610084140)),
+           "plant":list(range(202610084200,202610084220))}[MODE]
+if ARGS.start<0 or ARGS.count<1 or ARGS.start+ARGS.count>20:
+    raise ValueError(("SHARD",ARGS.start,ARGS.count))
+seeds=ALL_SEEDS[ARGS.start:ARGS.start+ARGS.count]
 outs=[]
 for i,seed in enumerate(seeds):
     Y=sample_plant(seed) if MODE=="plant" else sample_null(seed)
     z=cv(Y,202610084300+seed%10000)
-    z.update(rep=i,seed=seed); outs.append(z)
+    z.update(rep=ARGS.start+i,seed=seed); outs.append(z)
     print("R2D_REP",MODE,i,json.dumps({"gain":z["gain"],"pos":z["positive_folds"]},separators=(",",":")),flush=True)
 print("R2D_SHARD="+json.dumps({"programme":"VMS-R2D","mode":MODE,"status":"complete",
       "n_events":len(Y0),"shard_start":ARGS.start,"shard_count":ARGS.count,"plant_scale":PLANT_SCALE,
