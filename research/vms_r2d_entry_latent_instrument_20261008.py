@@ -193,5 +193,5 @@ for i,seed in enumerate(seeds):
     z.update(rep=i,seed=seed); outs.append(z)
     print("R2D_REP",MODE,i,json.dumps({"gain":z["gain"],"pos":z["positive_folds"]},separators=(",",":")),flush=True)
 print("R2D_SHARD="+json.dumps({"programme":"VMS-R2D","mode":MODE,"status":"complete",
-      "n_events":len(Y0),"plant_scale":PLANT_SCALE,
+      "n_events":len(Y0),"shard_start":ARGS.start,"shard_count":ARGS.count,"plant_scale":PLANT_SCALE,
       "plant_expected_kl_bits":expected_kl(PLANT_SCALE),"results":outs},separators=(",",":")),flush=True)
