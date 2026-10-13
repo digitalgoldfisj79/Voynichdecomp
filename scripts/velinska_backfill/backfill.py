@@ -494,7 +494,7 @@ def parse_stage():
             nodes = soup.select("div.post")
             node = nodes[0] if nodes else soup
             rec = parse_post_node(node, soup)
-            if not rec["body_text"]:
+            if rec["body_text"] is None:   # "" is fine: image-only post
                 raise ValueError("no div.post-body")
         except Exception as ex:
             failures.append({"key": key, "file": e["file"], "error": str(ex)})
@@ -529,7 +529,7 @@ def parse_stage():
                                  "error": f"post without permalink: {rec['title']!r}"})
                 continue
             month_titles[key] = rec["title"]
-            if key in posts or not rec["body_text"]:
+            if key in posts or rec["body_text"] is None:
                 continue
             y, mm, slug = key.split("-", 2)
             rec.pop("href")
@@ -538,6 +538,20 @@ def parse_stage():
                           "word_count": len(rec["body_text"].split()),
                           "capture_timestamp": e["capture_timestamp"],
                           "source": "month_page"}
+
+    # permalinks seen anywhere in saved pages (archive widget, Older/Newer Post)
+    linked = {}
+    generic = {"older post", "newer post", "home", ""}
+    for path in [os.path.join(ROOT, e["file"]) for e in m["posts"].values()
+                 if e.get("status") == "fetched"] + \
+                [os.path.join(ROOT, e["file"]) for e in m["month_pages"].values()
+                 if e.get("status") == "fetched"]:
+        for a in soup_of(path).find_all("a", href=True):
+            k = key_from_href(a["href"])
+            if k:
+                t = a.get_text(" ", strip=True)
+                if k not in linked or (linked[k] is None and t.lower() not in generic):
+                    linked[k] = None if t.lower() in generic else t
 
     feed_entries, feed_totals = parse_feeds(m)
     for key, fe in feed_entries.items():
@@ -561,7 +575,7 @@ def parse_stage():
         for c in comments:
             f.write(json.dumps(c, ensure_ascii=False) + "\n")
     m["parse"] = {"failures": failures, "feed_totals": feed_totals,
-                  "month_titles": month_titles,
+                  "month_titles": month_titles, "linked": linked,
                   "feed_index": {k: {"title": v["title"], "published": v["published"]}
                                  for k, v in feed_entries.items()}}
     save_manifest(m)
@@ -598,6 +612,8 @@ def verify_stage():
         known[k] = (v["title"], "feed")
     for k, t in p.get("month_titles", {}).items():
         known.setdefault(k, (t, "month page"))
+    for k, t in p.get("linked", {}).items():
+        known.setdefault(k, (t, "link in saved page"))
     for k, e in m["posts"].items():
         known.setdefault(k, (None, "CDX only"))
     missing = sorted(k for k in known if k not in posts)

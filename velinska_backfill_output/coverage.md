@@ -1,8 +1,8 @@
 # Coverage: ellievelinska.blogspot.com
 
 Expected total (2020-05-23 archive widget): **184**  
-Recovered: **167 / 184**  
-Source breakdown: month_page=120, post=35, feed=12
+Recovered: **170 / 184**  
+Source breakdown: month_page=134, post=35, feed=1
 
 ## Per month
 
@@ -13,9 +13,9 @@ Source breakdown: month_page=120, post=35, feed=12
 | 2011-05 | 1 | 1 | +0 |
 | 2011-07 | 1 | 1 | +0 |
 | 2011-10 | 1 | 1 | +0 |
-| 2012-04 | 1 | 3 | -2 ⚠ |
+| 2012-04 | 3 | 3 | +0 |
 | 2012-06 | 1 | 1 | +0 |
-| 2012-07 | 3 | 4 | -1 ⚠ |
+| 2012-07 | 4 | 4 | +0 |
 | 2012-08 | 1 | 1 | +0 |
 | 2012-10 | 2 | 2 | +0 |
 | 2012-12 | 1 | 1 | +0 |
@@ -46,35 +46,33 @@ Source breakdown: month_page=120, post=35, feed=12
 | 2016-10 | 1 | 1 | +0 |
 | 2016-11 | 1 | 1 | +0 |
 
-## Missing posts (3 named; 14 more unnamed vs widget count)
+## Missing posts (1 named; 13 more unnamed vs widget count)
 
 | key | title | known from |
 |---|---|---|
-| 2012-04-bush | Bush | month page |
-| 2012-04-fire-starter | Fire Starter | month page |
-| 2012-07-princes-of-east | Princes of the East | month page |
+| 2013-07-the-voynich-manuscript-willowherb | (title unknown) | link in saved page |
 
 ## Feed cross-check
 
-- feed 20111106101435 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120103232002 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120104015211 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120104022503 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120104024806 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120104042402 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20120104045159 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 167 recovered)
-- feed 20140814094533 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=168 (vs 184 expected, 167 recovered)
-- feed 20140916103036 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=168 (vs 184 expected, 167 recovered)
-- feed 20150409111130 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=177 (vs 184 expected, 167 recovered)
-- feed 20160223083832 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=180 (vs 184 expected, 167 recovered)
-- feed 20160709064019 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=182 (vs 184 expected, 167 recovered)
-- feed 20170915181027 (http://ellievelinska.blogspot.com:80/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20180501104129 (http://ellievelinska.blogspot.com:80/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20180616054316 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20181205182423 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20190527224348 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20190820204136 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
-- feed 20200512073113 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 167 recovered)
+- feed 20111106101435 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120103232002 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120104015211 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120104022503 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120104024806 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120104042402 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20120104045159 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=24 (vs 184 expected, 170 recovered)
+- feed 20140814094533 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=168 (vs 184 expected, 170 recovered)
+- feed 20140916103036 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=168 (vs 184 expected, 170 recovered)
+- feed 20150409111130 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=177 (vs 184 expected, 170 recovered)
+- feed 20160223083832 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=180 (vs 184 expected, 170 recovered)
+- feed 20160709064019 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=182 (vs 184 expected, 170 recovered)
+- feed 20170915181027 (http://ellievelinska.blogspot.com:80/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20180501104129 (http://ellievelinska.blogspot.com:80/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20180616054316 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20181205182423 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20190527224348 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20190820204136 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
+- feed 20200512073113 (http://ellievelinska.blogspot.com/feeds/posts/default): totalResults=184 (vs 184 expected, 170 recovered)
 Feed entries: 65; title/date mismatches: 0
 
 ## Parse / fetch failures
