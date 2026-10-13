@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voynich Walk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap">
+<style>
+  /* parchment, ink and a rust red taken from the manuscript's own palette */
+  :root { --paper: #efe5cf; --paper-2: #d9c9a6; --ink: #3b2f21; --rust: #9a4b32; --ground: #1d1b17;
+          --display: 'IM Fell English', 'Iowan Old Style', Palatino, Georgia, serif; --body: Georgia, 'Times New Roman', serif; color-scheme: light; }
+  html, body { margin: 0; height: 100%; background: var(--ground); color: var(--ink); overflow: hidden; font-family: var(--body); }
+  canvas#world { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; margin: auto; }
+  canvas#world.pointing { cursor: pointer; }
+  [hidden] { display: none !important; }
+
+  #loading { position: fixed; inset: 0; background: var(--paper); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding-inline: 16px; text-align: center; transition: opacity .8s; z-index: 20; }
+  #loading.done { opacity: 0; pointer-events: none; }
+  #loading h1 { font-family: var(--display); font-weight: normal; font-size: clamp(40px, 9vw, 80px); margin: 0; }
+  #loading p { margin: 0; font-family: var(--display); font-style: italic; opacity: .75; }
+  #loading .track { width: min(320px, 70vw); height: 3px; background: rgba(59,47,33,.15); }
+  #bar { height: 100%; width: 0; background: var(--rust); transition: width .2s; }
+  #fileWarning { display: none; max-width: 520px; padding: 12px 16px; border: 1px solid var(--rust); line-height: 1.45; }
+
+  .hud { position: fixed; z-index: 5; font-family: var(--display); }
+  #where { left: 16px; top: calc(14px + env(safe-area-inset-top, 0px)); font-size: 19px; font-style: italic; text-shadow: 0 0 8px var(--paper), 0 0 2px var(--paper); pointer-events: none; max-width: calc(100vw - 32px); }
+  #help { left: 16px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); background: rgba(239,229,207,.85); padding: 7px 12px; border-radius: 3px; font-size: 15px; line-height: 1.5; pointer-events: none; max-width: calc(100vw - 32px); }
+  #help b { color: var(--rust); font-weight: normal; }
+  #progress { left: 0; right: 0; bottom: 0; height: 3px; background: rgba(59,47,33,.12); }
+  #progress i { display: block; height: 100%; width: 0; background: var(--rust); }
+  #rec { right: 16px; top: 16px; width: 14px; height: 14px; border-radius: 50%; background: #c0392b; animation: blink 1s infinite; }
+  @keyframes blink { 50% { opacity: .25; } }
+  body.clean .hud:not(#rec), body.clean #info { display: none !important; }
+  body.clean canvas#world { cursor: none; }
+
+  /* the info card */
+  #info { position: fixed; z-index: 8; right: 16px; top: 16px; width: min(340px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; background: var(--paper); border: 1px solid #4a3825; box-shadow: 0 6px 24px rgba(30,20,10,.35); padding: 20px 20px 18px; box-sizing: border-box; }
+  #info .body { display: flex; flex-direction: column; gap: 8px; }
+  #info .thumb { max-width: 100%; max-height: 220px; object-fit: contain; align-self: center; }
+  #info .thumb.wide { width: 100%; max-height: none; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid #4a3825; box-sizing: border-box; }
+  #info .eyebrow { margin: 0; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--rust); }
+  #info h2 { margin: 0; font-family: var(--display); font-weight: normal; font-size: 26px; line-height: 1.15; text-wrap: balance; }
+  #info .meta { margin: 0; font-size: 15px; opacity: .8; }
+  #info .note { margin: 0; font-size: 16px; line-height: 1.5; }
+  #info .actions { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 6px; align-items: center; }
+  #info a { color: var(--rust); font-size: 15px; }
+  button { font: 16px var(--display); color: var(--ink); background: var(--paper-2); border: 1px solid var(--rust); border-radius: 3px; padding: 6px 14px; cursor: pointer; }
+  button:hover { background: #cdb990; }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--rust); outline-offset: 2px; }
+  .close { position: absolute; right: 8px; top: 8px; background: none; border: none; font-size: 22px; line-height: 1; padding: 4px 8px; }
+
+  /* the video viewer */
+  #lightbox { position: fixed; inset: 0; z-index: 15; background: rgba(20,16,10,.82); display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; }
+  #lightbox .sheet { position: relative; background: var(--paper); padding: 18px 18px 14px; border: 1px solid #4a3825; width: min(1100px, 100%, calc((100vh - 110px) * 16 / 9)); box-sizing: border-box; }
+  #lightbox h2 { margin: 0 40px 12px 0; font-family: var(--display); font-weight: normal; font-size: 24px; }
+  #lightbox .stage { position: relative; aspect-ratio: 16 / 9; background: #000; max-width: 100%; }
+  #lightbox video, #lightbox iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  #lightbox .foot { margin: 8px 0 0; min-height: 1em; font-size: 15px; text-align: right; }
+  #lightbox .foot:empty { display: none; }
+  #lightbox a { color: var(--rust); }
+  #lightbox .yt-out { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+  #lightbox .yt-out img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .8; }
+  #lightbox .yt-out span { position: relative; font: 22px var(--display); color: var(--ink); background: var(--paper); border: 1px solid var(--rust); border-radius: 3px; padding: 10px 20px; box-shadow: 0 4px 18px rgba(0,0,0,.4); }
+  #lightbox .yt-out:hover span, #lightbox .yt-out:focus-visible span { background: var(--paper-2); }
+
+  /* the guide's speech bubble */
+  #guide-bubble { position: fixed; left: 0; top: 0; z-index: 7; width: min(320px, calc(100vw - 32px)); box-sizing: border-box; background: var(--paper);
+    border: 1px solid #4a3825; border-radius: 6px; padding: 12px 14px 12px; box-shadow: 0 4px 18px rgba(30,20,10,.28); will-change: transform; }
+  #guide-bubble::after { content: ''; position: absolute; left: var(--tail, 40px); bottom: -9px; width: 16px; height: 16px; background: var(--paper);
+    border-right: 1px solid #4a3825; border-bottom: 1px solid #4a3825; transform: translateX(-50%) rotate(45deg); }
+  #guide-bubble .gb-k { margin: 0 22px 2px 0; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--rust); }
+  #guide-bubble .gb-t { margin: 0 0 4px; font-family: var(--display); font-weight: normal; font-size: 21px; line-height: 1.15; text-wrap: balance; }
+  #guide-bubble .gb-s { margin: 0; font-size: 15px; line-height: 1.45; min-height: 2.9em; }
+  #guide-bubble .gb-a { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  #guide-bubble .gb-a button { font-size: 15px; padding: 5px 12px; }
+  #guide-bubble .gb-a button.sec { background: transparent; }
+  #guide-bubble .gb-bar { height: 2px; background: rgba(59,47,33,.12); margin-top: 10px; }
+  #guide-bubble .gb-bar i { display: block; height: 100%; width: 0; background: var(--rust); }
+  #guide-bubble .gb-x { position: absolute; right: 6px; top: 4px; background: none; border: none; font-size: 18px; padding: 2px 6px; }
+  body.clean #guide-bubble { display: none !important; }
+  .lil-gui.root { z-index: 9; }
+  body .lil-gui { --background-color: rgba(239,229,207,.96); --text-color: #3b2f21; --title-background-color: #d9c9a6; --title-text-color: #3b2f21; --widget-color: #d9c9a6; --hover-color: #cdb990; --focus-color: #c4ae80; --number-color: #7a3b25; --string-color: #4f6b3a; --font-family: Georgia, serif; }
+  @media (max-width: 700px) { #help { display: none; } #where { font-size: 16px; } }
+  @media (prefers-reduced-motion: reduce) { #loading { transition: none; } #rec { animation: none; } }
+</style>
+</head>
+<body>
+<canvas id="world"></canvas>
+
+<div id="loading">
+  <h1>Voynich Walk</h1>
+  <p>gathering the plants of Beinecke MS 408…</p>
+  <div class="track"><div id="bar"></div></div>
+  <div id="fileWarning">The pictures can't load because this page was opened straight from the folder. Double-click
+    <b>start-windows.bat</b> (Windows) or <b>start-mac.command</b> (Mac) instead. See README.md.</div>
+</div>
+
+<div id="where" class="hud"></div>
+<div id="help" class="hud"><b>scroll</b> or <b>← →</b> walk · <b>Space</b> next video · <b>click</b> anything · <b>T</b> tour · <b>P</b> glide · <b>H</b> hide all · <b>G</b> settings · click the guide</div>
+<div id="progress" class="hud"><i></i></div>
+<div id="rec" class="hud" hidden></div>
+
+<div id="guide-bubble" hidden aria-live="polite"><button type="button" class="gb-x" aria-label="Hide the guide's messages">×</button>
+  <p class="gb-k"></p><h2 class="gb-t"></h2><p class="gb-s"></p><div class="gb-a"></div><div class="gb-bar" hidden><i></i></div></div>
+<aside id="info" hidden aria-live="polite"><button type="button" class="close" aria-label="Close">×</button><div class="body"></div></aside>
+<div id="lightbox" hidden role="dialog" aria-modal="true"><div class="sheet"><button type="button" class="close" aria-label="Close">×</button><h2></h2><div class="stage"></div><p class="foot"></p></div></div>
+
+<script>
+  if (location.protocol === 'file:') document.getElementById('fileWarning').style.display = 'block';
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
