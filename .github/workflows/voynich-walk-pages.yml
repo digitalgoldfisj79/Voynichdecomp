@@ -1,0 +1,37 @@
+# Publishes the voynich-walk/ folder (and nothing else in this repo) to GitHub Pages.
+# One-time setup: Settings -> Pages -> Source: "GitHub Actions".
+name: Voynich Walk site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'voynich-walk/**'
+      - '.github/workflows/voynich-walk-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: voynich-walk-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: voynich-walk
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: voynich-walk
+      - id: deployment
+        uses: actions/deploy-pages@v4
