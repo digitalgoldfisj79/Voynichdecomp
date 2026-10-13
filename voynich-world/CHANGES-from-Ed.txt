@@ -1,0 +1,36 @@
+VOYNICH WORLD v2 - placeholders replaced with Voynich cut-outs
+===============================================================
+
+Your v2, unchanged except for what is listed here. It still runs by double-clicking index.html.
+
+WHAT IS IN IT  (the smaller download, voynich-world-v2-cutouts.zip, leaves out the PNG originals;
+               it runs the same, but you need the -with-pngs zip to change pictures)
+  plants/   120 plant cut-outs, one per herbal folio, named f12r_plant.png etc.
+  nymphs/   17 bathing figures from f75r-f77r (some files are groups of 2-3 figures)
+  animals/  the f76v creature, the Pisces fish, three bathers-in-barrels from f70v2 (not used yet)
+  Cut from Yale's full-resolution scans of Beinecke MS 408 with hand-checked (SAM-assisted) masks,
+  so the edges are clean and there are no holes. Stray specks were removed; a thin parchment
+  fringe remains on some edges.
+
+WHY THE PICTURES ARE ALSO IN images/*.js
+  Chrome blocks loose PNG files as textures on a page opened from disk (file://) - tested with
+  your three.js r149: "Access to image ... from origin 'null' has been blocked".
+  Pictures stored inside a .js file are allowed. tools/pack_images.py builds images/plants.js,
+  images/nymphs.js and images/animals.js from the PNG folders (640 px WebP; the landmark f93r at
+  1024 px). After you add or change a PNG:   python tools/pack_images.py --big f93r_plant=1024
+  (needs Python + Pillow). If you serve the folder from a web server you could load the PNGs
+  directly instead, but the packed files work either way.
+
+CODE CHANGES (small, marked in the files)
+  index.html       loads images/plants.js, images/nymphs.js, images/animals.js and js/images.js
+  js/images.js     NEW: turns the packed pictures into the same [{id, aspect, texture}] list your
+                   placeholders return; group names for the plant sets
+  js/main.js       kinds = makeImageKinds() || makePlaceholderKinds()   (falls back if images/ is missing)
+  js/plants.js     sets may use group names: 'tall', 'mid', 'wide', 'all'
+  js/nymphs.js     uses the nymph cut-outs, each at its own width (was a fixed 0.5 x height)
+  js/settings.js   plants.sets -> groups; landmarkKind -> 'f93r_plant';
+                   nymphs.pictures -> which nymph files to use (single figures only for now)
+
+IDEAS NOT DONE
+  - animals/ pictures are packed but nothing uses them yet (your Stage 2 animals).
+  - The pale fringe on the nymphs could be trimmed by eroding the masks 1-2 px.

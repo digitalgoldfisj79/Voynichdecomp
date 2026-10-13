@@ -1,4 +1,7 @@
-# Publishes the voynich-walk/ folder (and nothing else in this repo) to GitHub Pages.
+# Publishes to GitHub Pages (nothing else in this repo is published):
+#   /            the voynich-walk/ folder (side-scroller)
+#   /world/      the voynich-world/ folder (Koen's first-person world with the cut-outs)
+#   /downloads/  zips of voynich-world, built here (not stored in the repo)
 # One-time setup: Settings -> Pages -> Source: "GitHub Actions".
 name: Voynich Walk site
 
@@ -7,6 +10,7 @@ on:
     branches: [main]
     paths:
       - 'voynich-walk/**'
+      - 'voynich-world/**'
       - '.github/workflows/voynich-walk-pages.yml'
   workflow_dispatch:
 
@@ -28,10 +32,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: voynich-walk
+          sparse-checkout: |
+            voynich-walk
+            voynich-world
+      - name: Assemble site
+        run: |
+          mkdir -p _site/world _site/downloads
+          cp -r voynich-walk/. _site/
+          cp -r voynich-world/. _site/world/
+          zip -qr _site/downloads/voynich-world-v2-cutouts.zip voynich-world -x 'voynich-world/plants/*.png' 'voynich-world/nymphs/*.png' 'voynich-world/animals/*.png'
+          zip -qr _site/downloads/voynich-world-v2-cutouts-with-pngs.zip voynich-world
+          ls -la _site/downloads
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: voynich-walk
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
