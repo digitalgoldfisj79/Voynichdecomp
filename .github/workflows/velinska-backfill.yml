@@ -1,0 +1,45 @@
+name: velinska-backfill
+
+# Wayback Machine backfill of ellievelinska.blogspot.com.
+# Runs only on the velinska-backfill branch; output is a workflow artifact,
+# nothing is committed back to the repo.
+on:
+  push:
+    branches: [velinska-backfill]
+    paths:
+      - scripts/velinska_backfill/**
+      - .github/workflows/velinska-backfill.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests beautifulsoup4
+      - name: Run backfill
+        working-directory: scripts/velinska_backfill
+        run: python -u backfill.py all
+      - name: Coverage summary
+        if: always()
+        working-directory: scripts/velinska_backfill
+        run: |
+          if [ -f coverage.md ]; then cat coverage.md >> "$GITHUB_STEP_SUMMARY"; else echo "No coverage.md produced" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: velinska_backfill
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            scripts/velinska_backfill/velinska_backfill.zip
+            scripts/velinska_backfill/coverage.md
+            scripts/velinska_backfill/manifest.json
+            scripts/velinska_backfill/cdx_rows.json
