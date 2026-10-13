@@ -12,6 +12,7 @@ class Player {
     this.camera = camera; this.S = S; this.terrain = null;
     this.mode = 'walk';                         // 'walk' | 'fly' | 'auto'
     this.keys = {};
+    this.stick = { x: 0, y: 0 };                // on-screen joystick on phones/tablets (js/touch.js): -1..1
     this.pos = new THREE.Vector3();             // ground position (x,z used)
     this.vx = 0; this.vz = 0;                   // current walking velocity
     this.yaw = 0; this.pitch = 0;               // where the camera really looks
@@ -67,8 +68,8 @@ class Player {
   update(dt) {
     const P = this.S.player, T = this.terrain;
     this.time += dt;
-    const f = this._key('KeyW', 'ArrowUp') - this._key('KeyS', 'ArrowDown');
-    const r = this._key('KeyD', 'ArrowRight') - this._key('KeyA', 'ArrowLeft');
+    const f = clamp(this._key('KeyW', 'ArrowUp') - this._key('KeyS', 'ArrowDown') + this.stick.y, -1, 1);
+    const r = clamp(this._key('KeyD', 'ArrowRight') - this._key('KeyA', 'ArrowLeft') + this.stick.x, -1, 1);
     const anyMove = f !== 0 || r !== 0;
     if (this.mode === 'auto' && anyMove) this.setMode('walk');           // moving yourself cancels the autopilot
 
@@ -85,12 +86,12 @@ class Player {
       // direction you want to go, from the keys and where you face
       let dx = -Math.sin(this.yaw) * f + Math.cos(this.yaw) * r;
       let dz = -Math.cos(this.yaw) * f - Math.sin(this.yaw) * r;
-      const len = Math.hypot(dx, dz);
+      const len = Math.hypot(dx, dz), mag = Math.min(1, len);    // mag < 1 = joystick pushed only part-way: walk slower
       if (len > 0) { dx /= len; dz /= len; }
       const speed = P.walkSpeed * (this.keys.ShiftLeft || this.keys.ShiftRight ? P.runMultiplier : 1)
                     * (T.inWater(this.pos.x, this.pos.z) ? P.wadeSpeed : 1);   // slower in water
       // speed ramps toward the wanted speed (acceleration) or toward zero (braking)
-      const tvx = dx * speed, tvz = dz * speed;
+      const tvx = dx * speed * mag, tvz = dz * speed * mag;
       const ex = tvx - this.vx, ez = tvz - this.vz, el = Math.hypot(ex, ez), step = (len > 0 ? P.acceleration : P.braking) * dt;
       if (el <= step) { this.vx = tvx; this.vz = tvz; } else { this.vx += ex / el * step; this.vz += ez / el * step; }
       this._tryMove(this.vx * dt, 0); this._tryMove(0, this.vz * dt);
@@ -105,7 +106,7 @@ class Player {
       lateral = Math.cos(this.bobPhase * 0.5) * amt * 0.6;
 
     } else if (this.mode === 'fly') {
-      const up = (this.keys.Space ? 1 : 0) - (this.keys.KeyC ? 1 : 0) + (this.keys.KeyE ? 1 : 0) - (this.keys.KeyQ ? 1 : 0);
+      const up = (this.keys.Space ? 1 : 0) - (this.keys.KeyC ? 1 : 0) + (this.keys.KeyE ? 1 : 0) - (this.keys.KeyQ ? 1 : 0) + (this.stickUp || 0);
       const cp = Math.cos(this.pitch), sp = Math.sin(this.pitch);
       const fwd = [-Math.sin(this.yaw) * cp, sp, -Math.cos(this.yaw) * cp];
       const speed = P.flySpeed * (this.keys.ShiftLeft || this.keys.ShiftRight ? 2.5 : 1) * dt;

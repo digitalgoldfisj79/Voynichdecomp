@@ -16,11 +16,24 @@
 //   'all'   every plant
 // ============================================================================
 
+// On phones and tablets the pictures are shrunk (settings.touch.maxPicture), because
+// 120 full-size pictures can use more graphics memory than a phone allows.
+const IS_TOUCH = !!(window.matchMedia && matchMedia('(pointer: coarse)').matches);
+
 function textureFromPacked(p) {
   const img = new Image();
   const texture = new THREE.Texture(img);
   texture.anisotropy = 4;
-  img.onload = () => { texture.needsUpdate = true; };     // drawn as soon as the picture is decoded (a moment after start)
+  img.onload = () => {                                    // drawn as soon as the picture is decoded (a moment after start)
+    const max = IS_TOUCH && SETTINGS.touch ? SETTINGS.touch.maxPicture : 0;
+    if (max > 0 && Math.max(img.width, img.height) > max) {
+      const s = max / Math.max(img.width, img.height), c = document.createElement('canvas');
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      texture.image = c;
+    }
+    texture.needsUpdate = true;
+  };
   img.src = p.src;
   return texture;
 }

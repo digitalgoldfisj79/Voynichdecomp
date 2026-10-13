@@ -149,6 +149,13 @@ const SETTINGS = {
     ],
   },
 
+  // ---- Phones and tablets (js/touch.js) -------------------------------------------
+  touch: {
+    lookSpeed: 2.2,          // how fast dragging turns the view (x the mouse sensitivity)
+    stickSize: 120,          // size of the on-screen joystick, in pixels
+    maxPicture: 384,         // pictures are shrunk to this many pixels on phones (saves memory; 0 = keep)
+  },
+
   // ---- Nymphs bathing in the ponds ----------------------------------------------------------
   nymphs: {
     enabled: true,

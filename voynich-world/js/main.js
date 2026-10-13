@@ -47,7 +47,7 @@
     const R = S.recording;
     let w, h;
     if (R.enabled) { w = R.width; h = R.height; renderer.setPixelRatio(1); }
-    else { w = window.innerWidth; h = window.innerHeight; renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); }
+    else { w = window.innerWidth; h = window.innerHeight; renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, (typeof IS_TOUCH !== 'undefined' && IS_TOUCH) ? 1.5 : 2)); }   // phones: a little less sharp, much faster
     renderer.setSize(w, h, false);                  // the CSS scales it to fit the window, keeping proportions
     camera.aspect = w / h;
     camera.fov = S.camera.fov;

@@ -31,6 +31,16 @@ CODE CHANGES (small, marked in the files)
   js/settings.js   plants.sets -> groups; landmarkKind -> 'f93r_plant';
                    nymphs.pictures -> which nymph files to use (single figures only for now)
 
+PHONES AND TABLETS (added after the first version)
+  js/touch.js      NEW: only switches on for touch screens. Left thumb = joystick (appears under your
+                   thumb on the lower-left; push part-way to walk slowly), right thumb = drag to look,
+                   buttons for Autopilot, Fly/Walk and up/down while flying. The panel starts folded.
+  js/player.js     reads the joystick (player.stick, -1..1) alongside the keys; walking speed follows
+                   how far it is pushed. Keyboard behaviour is unchanged.
+  js/images.js     on touch screens pictures are shrunk to settings.touch.maxPicture (384 px) to save memory
+  js/main.js       pixel ratio capped at 1.5 on touch screens (2 on desktop, as before)
+  js/settings.js   new 'touch' block (lookSpeed, stickSize, maxPicture)
+
 IDEAS NOT DONE
   - animals/ pictures are packed but nothing uses them yet (your Stage 2 animals).
   - The pale fringe on the nymphs could be trimmed by eroding the masks 1-2 px.
