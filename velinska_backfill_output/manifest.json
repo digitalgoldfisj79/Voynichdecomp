@@ -1,0 +1,3684 @@
+{
+ "cdx": {
+  "ellievelinska.blogspot.ca": {
+   "captures": 5,
+   "urlkeys_collapsed": 1
+  },
+  "ellievelinska.blogspot.co.uk": {
+   "captures": 102,
+   "urlkeys_collapsed": 57
+  },
+  "ellievelinska.blogspot.com": {
+   "captures": 399,
+   "urlkeys_collapsed": 187
+  },
+  "ellievelinska.blogspot.com.au": {
+   "captures": 94,
+   "urlkeys_collapsed": 55
+  },
+  "ellievelinska.blogspot.ie": {
+   "captures": 0,
+   "urlkeys_collapsed": 0
+  }
+ },
+ "feeds": {
+  "20111106101435|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20111106101435_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20111106101435"
+  },
+  "20120103232002|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120103232002_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120103232002"
+  },
+  "20120104015211|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120104015211_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120104015211"
+  },
+  "20120104022503|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120104022503_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120104022503"
+  },
+  "20120104024806|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120104024806_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120104024806"
+  },
+  "20120104042402|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120104042402_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120104042402"
+  },
+  "20120104045159|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20120104045159_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20120104045159"
+  },
+  "20140814094026|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20140814094026_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20140814094026"
+  },
+  "20140814094533|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20140814094533_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20140814094533"
+  },
+  "20140916101525|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20140916101525_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20140916101525"
+  },
+  "20140916103036|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20140916103036_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20140916103036"
+  },
+  "20150409110443|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20150409110443_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20150409110443"
+  },
+  "20150409111130|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20150409111130_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20150409111130"
+  },
+  "20160223035230|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20160223035230_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20160223035230"
+  },
+  "20160223083832|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20160223083832_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20160223083832"
+  },
+  "20160709022836|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20160709022836_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20160709022836"
+  },
+  "20160709064019|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20160709064019_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20160709064019"
+  },
+  "20170915162822|http://ellievelinska.blogspot.com:80/feeds/posts/default?alt=rss": {
+   "file": "feeds/20170915162822_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com:80/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20170915162822"
+  },
+  "20170915181027|http://ellievelinska.blogspot.com:80/feeds/posts/default": {
+   "file": "feeds/20170915181027_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com:80/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20170915181027"
+  },
+  "20180501104129|http://ellievelinska.blogspot.com:80/feeds/posts/default": {
+   "file": "feeds/20180501104129_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com:80/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20180501104129"
+  },
+  "20180503060718|http://ellievelinska.blogspot.com:80/feeds/posts/default?alt=rss": {
+   "file": "feeds/20180503060718_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com:80/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20180503060718"
+  },
+  "20180616050837|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20180616050837_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20180616050837"
+  },
+  "20180616054316|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20180616054316_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20180616054316"
+  },
+  "20181205121033|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20181205121033_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20181205121033"
+  },
+  "20181205182423|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20181205182423_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20181205182423"
+  },
+  "20190527224347|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20190527224347_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20190527224347"
+  },
+  "20190527224348|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20190527224348_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20190527224348"
+  },
+  "20190820204136|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20190820204136_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20190820204136"
+  },
+  "20190826052727|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20190826052727_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20190826052727"
+  },
+  "20200511155913|http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss": {
+   "file": "feeds/20200511155913_posts_default_alt_rss.xml",
+   "mimetype": "application/rss+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default?alt=rss",
+   "status": "fetched",
+   "timestamp": "20200511155913"
+  },
+  "20200512073113|http://ellievelinska.blogspot.com/feeds/posts/default": {
+   "file": "feeds/20200512073113_posts_default.xml",
+   "mimetype": "application/atom+xml",
+   "original": "http://ellievelinska.blogspot.com/feeds/posts/default",
+   "status": "fetched",
+   "timestamp": "20200512073113"
+  }
+ },
+ "month_pages": {
+  "2010-12": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2010/12/",
+     "timestamp": "20170915183909",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2010/12/",
+     "timestamp": "20170630184656",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2010_12_01_archive.html",
+     "timestamp": "20170204063143",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2010_12_01_archive.html",
+     "timestamp": "20161230004445",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2010_12_01_archive.html",
+     "timestamp": "20160224004431",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2010_12_01_archive.html",
+     "timestamp": "20150607092747",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915183909",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2010/12/",
+   "file": "raw/_month_pages/2010-12.html",
+   "status": "fetched",
+   "tried": [
+    "20170915183909|http://ellievelinska.blogspot.com:80/2010/12/"
+   ],
+   "variant": "direct"
+  },
+  "2011-01": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2011/01/",
+     "timestamp": "20170915175953",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2011/01/",
+     "timestamp": "20170630184907",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_01_01_archive.html",
+     "timestamp": "20170204065012",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2011_01_01_archive.html",
+     "timestamp": "20161230053803",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_01_01_archive.html",
+     "timestamp": "20160224012731",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2011_01_01_archive.html",
+     "timestamp": "20150607094246",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175953",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2011/01/",
+   "file": "raw/_month_pages/2011-01.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175953|http://ellievelinska.blogspot.com:80/2011/01/"
+   ],
+   "variant": "direct"
+  },
+  "2011-05": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2011/05/",
+     "timestamp": "20170915170717",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_05_01_archive.html",
+     "timestamp": "20170204071545",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2011_05_01_archive.html",
+     "timestamp": "20161230070431",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_05_01_archive.html",
+     "timestamp": "20160224062039",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2011_05_01_archive.html",
+     "timestamp": "20150607042216",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915170717",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2011/05/",
+   "file": "raw/_month_pages/2011-05.html",
+   "status": "fetched",
+   "tried": [
+    "20170915170717|http://ellievelinska.blogspot.com:80/2011/05/"
+   ],
+   "variant": "direct"
+  },
+  "2011-07": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2011/07/",
+     "timestamp": "20170915175014",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_07_01_archive.html",
+     "timestamp": "20170204055128",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2011_07_01_archive.html",
+     "timestamp": "20161230031217",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2011_07_01_archive.html",
+     "timestamp": "20160214195738",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2011_07_01_archive.html",
+     "timestamp": "20150607094308",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175014",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2011/07/",
+   "file": "raw/_month_pages/2011-07.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175014|http://ellievelinska.blogspot.com:80/2011/07/"
+   ],
+   "variant": "direct"
+  },
+  "2011-10": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2011/10/",
+     "timestamp": "20170915175021",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2011_10_01_archive.html",
+     "timestamp": "20170204070202",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2011_10_01_archive.html",
+     "timestamp": "20161230022324",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2011_10_01_archive.html",
+     "timestamp": "20150607092732",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175021",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2011/10/",
+   "file": "raw/_month_pages/2011-10.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175021|http://ellievelinska.blogspot.com:80/2011/10/"
+   ],
+   "variant": "direct"
+  },
+  "2012-04": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/04/",
+     "timestamp": "20170915180049",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_04_01_archive.html",
+     "timestamp": "20170204070018",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_04_01_archive.html",
+     "timestamp": "20161230070521",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_04_01_archive.html",
+     "timestamp": "20160214233557",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_04_01_archive.html",
+     "timestamp": "20150607094234",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915180049",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2012/04/",
+   "file": "raw/_month_pages/2012-04.html",
+   "status": "fetched",
+   "tried": [
+    "20170915180049|http://ellievelinska.blogspot.com:80/2012/04/"
+   ],
+   "variant": "direct"
+  },
+  "2012-06": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/06/",
+     "timestamp": "20170915175009",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_06_01_archive.html",
+     "timestamp": "20170204004806",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_06_01_archive.html",
+     "timestamp": "20161230053818",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_06_01_archive.html",
+     "timestamp": "20160214224600",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_06_01_archive.html",
+     "timestamp": "20150607092759",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175009",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2012/06/",
+   "file": "raw/_month_pages/2012-06.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175009|http://ellievelinska.blogspot.com:80/2012/06/"
+   ],
+   "variant": "direct"
+  },
+  "2012-07": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/07/",
+     "timestamp": "20170915182109",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_07_01_archive.html",
+     "timestamp": "20170204055131",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_07_01_archive.html",
+     "timestamp": "20161229233609",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_07_01_archive.html",
+     "timestamp": "20160224001903",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_07_01_archive.html",
+     "timestamp": "20150607094208",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915182109",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2012/07/",
+   "file": "raw/_month_pages/2012-07.html",
+   "status": "fetched",
+   "tried": [
+    "20170915182109|http://ellievelinska.blogspot.com:80/2012/07/"
+   ],
+   "variant": "direct"
+  },
+  "2012-08": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_08_01_archive.html",
+     "timestamp": "20190920000210",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/08/",
+     "timestamp": "20170915164126",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/08/",
+     "timestamp": "20170630184706",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_08_01_archive.html",
+     "timestamp": "20170204041436",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_08_01_archive.html",
+     "timestamp": "20161229232200",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_08_01_archive.html",
+     "timestamp": "20160224001504",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_08_01_archive.html",
+     "timestamp": "20160214133240",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_08_01_archive.html",
+     "timestamp": "20150607035905",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2012-10": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/10/",
+     "timestamp": "20170915190717",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_10_01_archive.html",
+     "timestamp": "20170204064957",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_10_01_archive.html",
+     "timestamp": "20161230053823",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_10_01_archive.html",
+     "timestamp": "20160223194725",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_10_01_archive.html",
+     "timestamp": "20150607092855",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915190717",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2012/10/",
+   "file": "raw/_month_pages/2012-10.html",
+   "status": "fetched",
+   "tried": [
+    "20170915190717|http://ellievelinska.blogspot.com:80/2012/10/"
+   ],
+   "variant": "direct"
+  },
+  "2012-12": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2012/12/",
+     "timestamp": "20170915174711",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2012_12_01_archive.html",
+     "timestamp": "20170204065655",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2012_12_01_archive.html",
+     "timestamp": "20161229235019",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2012_12_01_archive.html",
+     "timestamp": "20150607094225",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915174711",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2012/12/",
+   "file": "raw/_month_pages/2012-12.html",
+   "status": "fetched",
+   "tried": [
+    "20170915174711|http://ellievelinska.blogspot.com:80/2012/12/"
+   ],
+   "variant": "direct"
+  },
+  "2013-01": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/",
+     "timestamp": "20170915175639",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_01_01_archive.html",
+     "timestamp": "20170204035603",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_01_01_archive.html",
+     "timestamp": "20161230000427",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_01_01_archive.html",
+     "timestamp": "20160224014247",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_01_01_archive.html",
+     "timestamp": "20160214153538",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_01_01_archive.html",
+     "timestamp": "20150607040451",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175639",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/01/",
+   "file": "raw/_month_pages/2013-01.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175639|http://ellievelinska.blogspot.com:80/2013/01/"
+   ],
+   "variant": "direct"
+  },
+  "2013-02": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/",
+     "timestamp": "20170915162425",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_02_01_archive.html",
+     "timestamp": "20170204130614",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_02_01_archive.html",
+     "timestamp": "20161230055841",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_02_01_archive.html",
+     "timestamp": "20160214194516",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_02_01_archive.html",
+     "timestamp": "20150607092728",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915162425",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/02/",
+   "file": "raw/_month_pages/2013-02.html",
+   "status": "fetched",
+   "tried": [
+    "20170915162425|http://ellievelinska.blogspot.com:80/2013/02/"
+   ],
+   "variant": "direct"
+  },
+  "2013-03": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/03/",
+     "timestamp": "20170915170723",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_03_01_archive.html",
+     "timestamp": "20170204054645",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_03_01_archive.html",
+     "timestamp": "20161230055908",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_03_01_archive.html",
+     "timestamp": "20160224004452",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_03_01_archive.html",
+     "timestamp": "20160214225128",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_03_01_archive.html",
+     "timestamp": "20150607065426",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204054645",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2013_03_01_archive.html",
+   "file": "raw/_month_pages/2013-03.html",
+   "last_error": "giving up on https://web.archive.org/web/20170915170723id_/http://ellievelinska.blogspot.com:80/2013/03/: ConnectTimeout: HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20170915170723id_/http://ellievelinska.blogspot.com:80/2013/03/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='web.archive.org', port=443) at 0x7fb711a81c40>, 'Connection to web.archive.org timed out. (connect timeout=60)'))",
+   "status": "fetched",
+   "tried": [
+    "20170915170723|http://ellievelinska.blogspot.com:80/2013/03/",
+    "20170204054645|http://ellievelinska.blogspot.co.uk/2013_03_01_archive.html"
+   ],
+   "variant": "direct"
+  },
+  "2013-04": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/04/",
+     "timestamp": "20170915190742",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_04_01_archive.html",
+     "timestamp": "20170204001348",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_04_01_archive.html",
+     "timestamp": "20161230055855",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_04_01_archive.html",
+     "timestamp": "20160223183327",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_04_01_archive.html",
+     "timestamp": "20160214233923",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915190742",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/04/",
+   "file": "raw/_month_pages/2013-04.html",
+   "status": "fetched",
+   "tried": [
+    "20170915190742|http://ellievelinska.blogspot.com:80/2013/04/"
+   ],
+   "variant": "direct"
+  },
+  "2013-05": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/",
+     "timestamp": "20170915180954",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_05_01_archive.html",
+     "timestamp": "20170204054649",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_05_01_archive.html",
+     "timestamp": "20161230053449",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_05_01_archive.html",
+     "timestamp": "20160224001923",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_05_01_archive.html",
+     "timestamp": "20160214163153",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_05_01_archive.html",
+     "timestamp": "20150607034738",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915180954",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/05/",
+   "file": "raw/_month_pages/2013-05.html",
+   "status": "fetched",
+   "tried": [
+    "20170915180954|http://ellievelinska.blogspot.com:80/2013/05/"
+   ],
+   "variant": "direct"
+  },
+  "2013-06": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/06/",
+     "timestamp": "20170915175410",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2013/06",
+     "timestamp": "20170531143403",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_06_01_archive.html",
+     "timestamp": "20170204062040",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_06_01_archive.html",
+     "timestamp": "20161230004814",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_06_01_archive.html",
+     "timestamp": "20160224020657",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_06_01_archive.html",
+     "timestamp": "20150607092751",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175410",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/06/",
+   "file": "raw/_month_pages/2013-06.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175410|http://ellievelinska.blogspot.com:80/2013/06/"
+   ],
+   "variant": "direct"
+  },
+  "2013-07": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/",
+     "timestamp": "20170915175037",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_07_01_archive.html",
+     "timestamp": "20170204063133",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_07_01_archive.html",
+     "timestamp": "20161230053828",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_07_01_archive.html",
+     "timestamp": "20150607092851",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175037",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/07/",
+   "file": "raw/_month_pages/2013-07.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175037|http://ellievelinska.blogspot.com:80/2013/07/"
+   ],
+   "variant": "direct"
+  },
+  "2013-08": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/08/",
+     "timestamp": "20170915180519",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_08_01_archive.html",
+     "timestamp": "20170204065650",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_08_01_archive.html",
+     "timestamp": "20161230070615",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_08_01_archive.html",
+     "timestamp": "20150607061459",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915180519",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/08/",
+   "file": "raw/_month_pages/2013-08.html",
+   "status": "fetched",
+   "tried": [
+    "20170915180519|http://ellievelinska.blogspot.com:80/2013/08/"
+   ],
+   "variant": "direct"
+  },
+  "2013-09": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/",
+     "timestamp": "20180502140820",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/",
+     "timestamp": "20180501104113",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/",
+     "timestamp": "20170915164105",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_09_01_archive.html",
+     "timestamp": "20170204115437",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_09_01_archive.html",
+     "timestamp": "20161230010158",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_09_01_archive.html",
+     "timestamp": "20160224020947",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_09_01_archive.html",
+     "timestamp": "20160214213818",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_09_01_archive.html",
+     "timestamp": "20150607043823",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20180502140820",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/09/",
+   "file": "raw/_month_pages/2013-09.html",
+   "status": "fetched",
+   "tried": [
+    "20180502140820|http://ellievelinska.blogspot.com:80/2013/09/"
+   ],
+   "variant": "direct"
+  },
+  "2013-10": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/10/",
+     "timestamp": "20170915175050",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_10_01_archive.html",
+     "timestamp": "20170204065659",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_10_01_archive.html",
+     "timestamp": "20161230053740",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_10_01_archive.html",
+     "timestamp": "20160224001514",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_10_01_archive.html",
+     "timestamp": "20160214160402",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_10_01_archive.html",
+     "timestamp": "20150607032742",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175050",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/10/",
+   "file": "raw/_month_pages/2013-10.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175050|http://ellievelinska.blogspot.com:80/2013/10/"
+   ],
+   "variant": "direct"
+  },
+  "2013-11": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/11/",
+     "timestamp": "20170915170711",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_11_01_archive.html",
+     "timestamp": "20170204055117",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_11_01_archive.html",
+     "timestamp": "20161230053812",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013_11_01_archive.html",
+     "timestamp": "20160223182044",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013_11_01_archive.html",
+     "timestamp": "20160214195733",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013_11_01_archive.html",
+     "timestamp": "20150607094332",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915170711",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/11/",
+   "file": "raw/_month_pages/2013-11.html",
+   "status": "fetched",
+   "tried": [
+    "20170915170711|http://ellievelinska.blogspot.com:80/2013/11/"
+   ],
+   "variant": "direct"
+  },
+  "2014-01": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/",
+     "timestamp": "20170915182131",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_01_01_archive.html",
+     "timestamp": "20170204065003",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_01_01_archive.html",
+     "timestamp": "20161229235155",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_01_01_archive.html",
+     "timestamp": "20160214195713",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_01_01_archive.html",
+     "timestamp": "20150607040934",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915182131",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/01/",
+   "file": "raw/_month_pages/2014-01.html",
+   "status": "fetched",
+   "tried": [
+    "20170915182131|http://ellievelinska.blogspot.com:80/2014/01/"
+   ],
+   "variant": "direct"
+  },
+  "2014-02": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/02/",
+     "timestamp": "20170915180716",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/02/",
+     "timestamp": "20170630184727",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_02_01_archive.html",
+     "timestamp": "20170204072301",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_02_01_archive.html",
+     "timestamp": "20161230013305",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_02_01_archive.html",
+     "timestamp": "20150607042457",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915180716",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/02/",
+   "file": "raw/_month_pages/2014-02.html",
+   "status": "fetched",
+   "tried": [
+    "20170915180716|http://ellievelinska.blogspot.com:80/2014/02/"
+   ],
+   "variant": "direct"
+  },
+  "2014-03": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/03/",
+     "timestamp": "20170915191316",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_03_01_archive.html",
+     "timestamp": "20170204012711",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_03_01_archive.html",
+     "timestamp": "20161230040632",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_03_01_archive.html",
+     "timestamp": "20160223193912",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_03_01_archive.html",
+     "timestamp": "20160214224912",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_03_01_archive.html",
+     "timestamp": "20150607070735",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915191316",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/03/",
+   "file": "raw/_month_pages/2014-03.html",
+   "status": "fetched",
+   "tried": [
+    "20170915191316|http://ellievelinska.blogspot.com:80/2014/03/"
+   ],
+   "variant": "direct"
+  },
+  "2014-05": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/05/",
+     "timestamp": "20170915175344",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_05_01_archive.html",
+     "timestamp": "20170204055136",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_05_01_archive.html",
+     "timestamp": "20161230053743",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_05_01_archive.html",
+     "timestamp": "20160224012725",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_05_01_archive.html",
+     "timestamp": "20150607034021",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175344",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/05/",
+   "file": "raw/_month_pages/2014-05.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175344|http://ellievelinska.blogspot.com:80/2014/05/"
+   ],
+   "variant": "direct"
+  },
+  "2014-06": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/06/",
+     "timestamp": "20170915163846",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_06_01_archive.html",
+     "timestamp": "20170204115120",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_06_01_archive.html",
+     "timestamp": "20161230053754",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_06_01_archive.html",
+     "timestamp": "20160224021221",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_06_01_archive.html",
+     "timestamp": "20150607092744",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2014-09": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/09/",
+     "timestamp": "20170915191311",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_09_01_archive.html",
+     "timestamp": "20170204065702",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_09_01_archive.html",
+     "timestamp": "20161230004848",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_09_01_archive.html",
+     "timestamp": "20160224003922",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_09_01_archive.html",
+     "timestamp": "20160214171032",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_09_01_archive.html",
+     "timestamp": "20150607044228",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915191311",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/09/",
+   "file": "raw/_month_pages/2014-09.html",
+   "status": "fetched",
+   "tried": [
+    "20170915191311|http://ellievelinska.blogspot.com:80/2014/09/"
+   ],
+   "variant": "direct"
+  },
+  "2014-10": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/10/",
+     "timestamp": "20170915175118",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_10_01_archive.html",
+     "timestamp": "20170204065008",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_10_01_archive.html",
+     "timestamp": "20161230001127",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_10_01_archive.html",
+     "timestamp": "20160224001511",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_10_01_archive.html",
+     "timestamp": "20160214194512",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_10_01_archive.html",
+     "timestamp": "20150607033333",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175118",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/10/",
+   "file": "raw/_month_pages/2014-10.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175118|http://ellievelinska.blogspot.com:80/2014/10/"
+   ],
+   "variant": "direct"
+  },
+  "2014-11": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/11/",
+     "timestamp": "20170915182203",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_11_01_archive.html",
+     "timestamp": "20170203233838",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_11_01_archive.html",
+     "timestamp": "20161230070545",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2014_11_01_archive.html",
+     "timestamp": "20160223180339",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2014_11_01_archive.html",
+     "timestamp": "20160214194520",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014_11_01_archive.html",
+     "timestamp": "20150607055814",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915182203",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/11/",
+   "file": "raw/_month_pages/2014-11.html",
+   "status": "fetched",
+   "tried": [
+    "20170915182203|http://ellievelinska.blogspot.com:80/2014/11/"
+   ],
+   "variant": "direct"
+  },
+  "2015-02": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2015/02/",
+     "timestamp": "20170915164132",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015_02_01_archive.html",
+     "timestamp": "20170203234706",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015_02_01_archive.html",
+     "timestamp": "20161230070603",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015_02_01_archive.html",
+     "timestamp": "20160223181201",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015_02_01_archive.html",
+     "timestamp": "20160214234248",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2015_02_01_archive.html",
+     "timestamp": "20150607054805",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915164132",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2015/02/",
+   "file": "raw/_month_pages/2015-02.html",
+   "status": "fetched",
+   "tried": [
+    "20170915164132|http://ellievelinska.blogspot.com:80/2015/02/"
+   ],
+   "variant": "direct"
+  },
+  "2015-04": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2015/04/",
+     "timestamp": "20170915180925",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015_04_01_archive.html",
+     "timestamp": "20170204115440",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015_04_01_archive.html",
+     "timestamp": "20161230020938",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015_04_01_archive.html",
+     "timestamp": "20160224062035",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015_04_01_archive.html",
+     "timestamp": "20160214224410",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2016-01": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/01/",
+     "timestamp": "20170915162448",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/01/",
+     "timestamp": "20170630191532",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016_01_01_archive.html",
+     "timestamp": "20170204061433",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016_01_01_archive.html",
+     "timestamp": "20161230053748",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2016-03": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/03/",
+     "timestamp": "20170915175210",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016_03_01_archive.html",
+     "timestamp": "20170204055123",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016_03_01_archive.html",
+     "timestamp": "20161230053807",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2016-04": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/04/",
+     "timestamp": "20170915182104",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/04/",
+     "timestamp": "20170630184913",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016_04_01_archive.html",
+     "timestamp": "20170204015236",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016_04_01_archive.html",
+     "timestamp": "20161230053507",
+     "variant": "direct"
+    }
+   ],
+   "status": "pending"
+  },
+  "2016-10": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/10/",
+     "timestamp": "20170915170855",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915170855",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2016/10/",
+   "file": "raw/_month_pages/2016-10.html",
+   "status": "fetched",
+   "tried": [
+    "20170915170855|http://ellievelinska.blogspot.com:80/2016/10/"
+   ],
+   "variant": "direct"
+  },
+  "2016-11": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/11/",
+     "timestamp": "20170915162817",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2016/11/",
+     "timestamp": "20170630184928",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915162817",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2016/11/",
+   "file": "raw/_month_pages/2016-11.html",
+   "status": "fetched",
+   "tried": [
+    "20170915162817|http://ellievelinska.blogspot.com:80/2016/11/"
+   ],
+   "variant": "direct"
+  }
+ },
+ "parse": {
+  "failures": [],
+  "feed_index": {
+   "2010-12-bloom": {
+    "published": "2010-12-26T13:11:00.000-08:00",
+    "title": "Bloom"
+   },
+   "2010-12-construction": {
+    "published": "2010-12-07T07:00:00.000-08:00",
+    "title": "Construction"
+   },
+   "2010-12-construction-worker": {
+    "published": "2010-12-07T07:53:00.000-08:00",
+    "title": "Construction worker"
+   },
+   "2010-12-fall": {
+    "published": "2010-12-05T16:47:00.000-08:00",
+    "title": "Fall"
+   },
+   "2010-12-green-leaf": {
+    "published": "2010-12-10T16:44:00.000-08:00",
+    "title": "Green Leaf"
+   },
+   "2010-12-home-wrap": {
+    "published": "2010-12-07T07:44:00.000-08:00",
+    "title": "Home Wrap"
+   },
+   "2010-12-home-wrapping": {
+    "published": "2010-12-07T07:57:00.000-08:00",
+    "title": "Home Wrapping"
+   },
+   "2010-12-hrizantema": {
+    "published": "2010-12-10T18:23:00.000-08:00",
+    "title": "Hrizantema"
+   },
+   "2010-12-lili": {
+    "published": "2010-12-19T14:39:00.000-08:00",
+    "title": "Lili"
+   },
+   "2010-12-red-leaf": {
+    "published": "2010-12-05T16:22:00.000-08:00",
+    "title": "Red Leaf"
+   },
+   "2010-12-ribbon": {
+    "published": "2010-12-15T19:01:00.000-08:00",
+    "title": "Ribbon"
+   },
+   "2010-12-rose": {
+    "published": "2010-12-13T06:32:00.000-08:00",
+    "title": "Rose"
+   },
+   "2010-12-sepia": {
+    "published": "2010-12-11T16:35:00.000-08:00",
+    "title": "Sepia"
+   },
+   "2010-12-sky": {
+    "published": "2010-12-05T17:00:00.000-08:00",
+    "title": "Sky"
+   },
+   "2010-12-snow": {
+    "published": "2010-12-27T13:58:00.000-08:00",
+    "title": "Snow"
+   },
+   "2010-12-vanilla-and-chocolate": {
+    "published": "2010-12-23T17:42:00.000-08:00",
+    "title": "Vanilla and Chocolate"
+   },
+   "2010-12-wine": {
+    "published": "2010-12-21T20:09:00.000-08:00",
+    "title": "Wine"
+   },
+   "2010-12-wine-glass": {
+    "published": "2010-12-22T16:10:00.000-08:00",
+    "title": "Wine glass"
+   },
+   "2010-12-z": {
+    "published": "2010-12-15T18:42:00.000-08:00",
+    "title": "Z"
+   },
+   "2011-01-happy-new-yaer": {
+    "published": "2011-01-02T13:40:00.000-08:00",
+    "title": "Happy New Yaer"
+   },
+   "2011-01-leaf": {
+    "published": "2011-01-14T19:51:00.000-08:00",
+    "title": "Leaf"
+   },
+   "2011-05-flowers-from-alex": {
+    "published": "2011-05-17T08:10:00.000-07:00",
+    "title": "Flowers from Alex"
+   },
+   "2011-07-royal-crown-cola": {
+    "published": "2011-07-17T08:31:00.000-07:00",
+    "title": "Royal Crown Cola"
+   },
+   "2011-10-lake-jordan": {
+    "published": "2011-10-24T07:52:00.000-07:00",
+    "title": "Lake Jordan"
+   },
+   "2013-07-the-voynich-manuscript-fishbone-thistle": {
+    "published": "2013-07-25T09:51:00.000-07:00",
+    "title": "The Voynich Manuscript: Fishbone Thistle"
+   },
+   "2013-07-the-voynich-manuscript-persimmon-and": {
+    "published": "2013-07-24T15:13:00.002-07:00",
+    "title": "The Voynich Manuscript: Persimmon and Noah's Ark"
+   },
+   "2013-07-the-voynich-manuscript-yellow-star": {
+    "published": "2013-07-19T13:22:00.001-07:00",
+    "title": "The Voynich Manuscript: Yellow Star-Thistle"
+   },
+   "2013-08-the-voynich-manuscript-blonde-saints": {
+    "published": "2013-08-29T06:31:00.001-07:00",
+    "title": "The Voynich Manuscript: the Blonde Saints"
+   },
+   "2013-08-the-voynich-manuscript-castle-next-to": {
+    "published": "2013-08-02T08:00:00.001-07:00",
+    "title": "The Voynich Manuscript: the Castle next to the Volcano"
+   },
+   "2013-09-the-voynich-manuscript-anatomy": {
+    "published": "2013-09-11T08:08:00.000-07:00",
+    "title": "The Voynich Manuscript: Anatomy"
+   },
+   "2013-09-the-voynich-manuscript-decebre": {
+    "published": "2013-09-24T11:41:00.000-07:00",
+    "title": "The Voynich Manuscript: Decebre"
+   },
+   "2013-09-the-voynich-manuscript-decoration": {
+    "published": "2013-09-27T08:11:00.000-07:00",
+    "title": "The Voynich Manuscript: Decoration Pattern"
+   },
+   "2013-09-the-voynich-manuscript-dotted-stars": {
+    "published": "2013-09-09T06:49:00.000-07:00",
+    "title": "The Voynich Manuscript: Dotted Stars"
+   },
+   "2013-09-the-voynich-manuscript-funny-violet": {
+    "published": "2013-09-06T10:24:00.000-07:00",
+    "title": "The Voynich Manuscript: Funny Violet"
+   },
+   "2013-09-the-voynich-manuscript-hunting": {
+    "published": "2013-09-18T07:38:00.000-07:00",
+    "title": "The Voynich Manuscript: Hunting Tapestries"
+   },
+   "2013-09-the-voynich-manuscript-la-cite-de-dieu": {
+    "published": "2013-09-01T07:45:00.000-07:00",
+    "title": "The Voynich Manuscript: La Cit\u00e9 de Dieu"
+   },
+   "2013-09-the-voynich-manuscript-rolandus": {
+    "published": "2013-09-30T08:56:00.002-07:00",
+    "title": "The Voynich Manuscript: Rolandus Scriptoris"
+   },
+   "2013-10-the-voynich-manuscript-charms": {
+    "published": "2013-10-05T12:37:00.001-07:00",
+    "title": "The Voynich Manuscript: Charms"
+   },
+   "2013-11-the-voynich-manuscript-boat-root": {
+    "published": "2013-11-29T08:59:00.001-08:00",
+    "title": "The Voynich Manuscript: Boat Root"
+   },
+   "2013-11-the-voynich-manuscript-nymphs-of-elihu": {
+    "published": "2013-11-20T10:17:00.000-08:00",
+    "title": "The Voynich Manuscript: the Nymphs of Elihu Vedder"
+   },
+   "2014-01-the-voynich-manuscript-april-fools-day": {
+    "published": "2014-01-23T09:27:00.000-08:00",
+    "title": "The Voynich Manuscript: April Fool's Day"
+   },
+   "2014-01-the-voynich-manuscript-st-albinus-of": {
+    "published": "2014-01-24T08:00:00.000-08:00",
+    "title": "The Voynich manuscript: St Albinus of Angers"
+   },
+   "2014-01-the-voynich-manuscript-tucker-and": {
+    "published": "2014-01-24T17:47:00.001-08:00",
+    "title": "The Voynich Manuscript: Tucker and Talbert"
+   },
+   "2014-02-the-voynich-manuscript-fish": {
+    "published": "2014-02-01T12:40:00.001-08:00",
+    "title": "The Voynich Manuscript: Fish"
+   },
+   "2014-02-the-voynich-manuscript-glyphs": {
+    "published": "2014-02-06T09:33:00.000-08:00",
+    "title": "The Voynich Manuscript: Glyphs"
+   },
+   "2014-03-the-voynich-manuscript-another-split": {
+    "published": "2014-03-12T08:08:00.000-07:00",
+    "title": "The Voynich Manuscript: Another Split Beard"
+   },
+   "2014-03-the-voynich-manuscript-pyramid-of-khafre": {
+    "published": "2014-03-31T07:42:00.000-07:00",
+    "title": "The Voynich Manuscript: the Pyramid of Khafre"
+   },
+   "2014-05-the-voynich-manuscript-indigo-milk-cap": {
+    "published": "2014-05-14T12:04:00.000-07:00",
+    "title": "The Voynich Manuscript: Indigo Milk Cap"
+   },
+   "2014-06-the-voynich-manuscript-geocentric-model": {
+    "published": "2014-06-08T15:35:00.001-07:00",
+    "title": "The Voynich Manuscript: Geocentric Model"
+   },
+   "2014-09-the-voynich-manuscript-dotted-doodling": {
+    "published": "2014-09-29T06:13:00.000-07:00",
+    "title": "The Voynich Manuscript: Dotted Doodling"
+   },
+   "2014-10-the-voynich-manuscript-honey": {
+    "published": "2014-10-22T08:32:00.001-07:00",
+    "title": "The Voynich manuscript: Honey"
+   },
+   "2014-10-the-voynich-manuscript-purgatory": {
+    "published": "2014-10-22T06:12:00.000-07:00",
+    "title": "The Voynich Manuscript: the Purgatory"
+   },
+   "2014-11-the-voynich-manuscript-display-in": {
+    "published": "2014-11-13T11:21:00.001-08:00",
+    "title": "The Voynich Manuscript: Display in Washington DC"
+   },
+   "2015-02-the-voynich-manuscript-fleabane": {
+    "published": "2015-02-27T08:41:00.000-08:00",
+    "title": "The Voynich Manuscript: Fleabane"
+   },
+   "2015-02-the-voynich-manuscript-ground-oak": {
+    "published": "2015-02-17T10:27:00.001-08:00",
+    "title": "The Voynich Manuscript: Ground Oak"
+   },
+   "2015-02-the-voynich-manuscript-kirchers-answer": {
+    "published": "2015-02-09T09:29:00.000-08:00",
+    "title": "The Voynich Manuscript: Kircher's Answer"
+   },
+   "2015-02-the-voynich-manuscript-white-mulberry": {
+    "published": "2015-02-24T07:36:00.001-08:00",
+    "title": "The Voynich Manuscript: White Mulberry"
+   },
+   "2015-04-the-voynich-manuscript-palm-sunday": {
+    "published": "2015-04-05T09:30:00.002-07:00",
+    "title": "The Voynich Manuscript: Palm Sunday"
+   },
+   "2015-04-the-voynich-manuscript-thunder": {
+    "published": "2015-04-19T10:14:00.001-07:00",
+    "title": "The Voynich Manuscript: Thunder"
+   },
+   "2015-04-the-voynich-manuscript-winds": {
+    "published": "2015-04-30T10:39:00.000-07:00",
+    "title": "The Voynich Manuscript: Winds"
+   },
+   "2016-01-the-voynich-manuscript-babenberg-family": {
+    "published": "2016-01-15T11:31:00.000-08:00",
+    "title": "The Voynich Manuscript: the Babenberg Family Tree"
+   },
+   "2016-03-the-voynich-manuscript-eagle": {
+    "published": "2016-03-09T08:59:00.000-08:00",
+    "title": "The Voynich Manuscript: Eagle"
+   },
+   "2016-04-arcimboldi": {
+    "published": "2016-04-01T07:02:00.003-07:00",
+    "title": "Arcimboldi"
+   },
+   "2016-10-the-voynich-manuscript-blue-cube": {
+    "published": "2016-10-05T06:42:00.000-07:00",
+    "title": "The Voynich manuscript: the Blue Cube"
+   },
+   "2016-11-the-voynich-manuscript-treviso": {
+    "published": "2016-11-20T07:41:00.000-08:00",
+    "title": "The Voynich Manuscript: the Treviso Arithmetic"
+   }
+  },
+  "feed_totals": [
+   [
+    "20111106101435",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120103232002",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120104015211",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120104022503",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120104024806",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120104042402",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20120104045159",
+    24,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20140814094533",
+    168,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20140916103036",
+    168,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20150409111130",
+    177,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20160223083832",
+    180,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20160709064019",
+    182,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20170915181027",
+    184,
+    "http://ellievelinska.blogspot.com:80/feeds/posts/default"
+   ],
+   [
+    "20180501104129",
+    184,
+    "http://ellievelinska.blogspot.com:80/feeds/posts/default"
+   ],
+   [
+    "20180616054316",
+    184,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20181205182423",
+    184,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20190527224348",
+    184,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20190820204136",
+    184,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ],
+   [
+    "20200512073113",
+    184,
+    "http://ellievelinska.blogspot.com/feeds/posts/default"
+   ]
+  ],
+  "month_titles": {
+   "2010-12-bloom": "Bloom",
+   "2010-12-construction": "Construction",
+   "2010-12-construction-worker": "Construction worker",
+   "2010-12-fall": "Fall",
+   "2010-12-green-leaf": "Green Leaf",
+   "2010-12-home-wrap": "Home Wrap",
+   "2010-12-home-wrapping": "Home Wrapping",
+   "2010-12-hrizantema": "Hrizantema",
+   "2010-12-lili": "Lili",
+   "2010-12-red-leaf": "Red Leaf",
+   "2010-12-ribbon": "Ribbon",
+   "2010-12-rose": "Rose",
+   "2010-12-sepia": "Sepia",
+   "2010-12-sky": "Sky",
+   "2010-12-snow": "Snow",
+   "2010-12-vanilla-and-chocolate": "Vanilla and Chocolate",
+   "2010-12-wine": "Wine",
+   "2010-12-wine-glass": "Wine glass",
+   "2010-12-z": "Z",
+   "2011-01-happy-new-yaer": "Happy New Yaer",
+   "2011-01-leaf": "Leaf",
+   "2011-05-flowers-from-alex": "Flowers from Alex",
+   "2011-07-royal-crown-cola": "Royal Crown Cola",
+   "2011-10-lake-jordan": "Lake Jordan",
+   "2012-04-bush": "Bush",
+   "2012-04-fire-starter": "Fire Starter",
+   "2012-04-south-vs-north": "South vs North",
+   "2012-06-voynich-manuscript-under-big-tent": "The Voynich Manuscript: Under the Big Tent",
+   "2012-07-princes-of-east": "Princes of the East",
+   "2012-07-voynich-manuscript-animals-of-jean-duc": "Voynich Manuscript: the Animals of Jean, Duc de Berry",
+   "2012-07-voynich-manuscript-coconuts-of-jean-duc": "The Voynich Manuscript: the Coconuts of Jean, Duc de Berry",
+   "2012-07-voynich-manuscript-visconti-tarot-cards": "Voynich Manuscript: the Visconti Tarot Cards",
+   "2012-10-voynich-manuscript-golden-horde": "Voynich Manuscript: the Golden Horde",
+   "2012-10-voynich-manuscript-lemon-juice-arsonist": "Voynich Manuscript: the Lemon Juice Arsonist",
+   "2012-12-voynich-manuscript-dirty-sleeve": "Voynich Manuscript: the Dirty Sleeve",
+   "2013-01-the-voynich-manuscript-alchemy-symbols": "The Voynich Manuscript: Alchemy Symbols",
+   "2013-01-the-voynich-manuscript-castello": "The Voynich Manuscript: Castello Carrarese",
+   "2013-01-the-voynich-manuscript-karnak-palace": "The Voynich Manuscript: the Karnak Palace",
+   "2013-01-the-voynich-manuscript-nymphs-of-jean": "The Voynich Manuscript: the Nymphs of Jean Duc de Berry",
+   "2013-01-the-voynich-manuscript-written-right-to": "The Voynich Manuscript: written right to left?",
+   "2013-01-the-voynich-manuscriptcarmina-burana": "The Voynich Manuscript:Carmina Burana",
+   "2013-02-the-voynich-manuscript-ars-notoria-sive": "The Voynich Manuscript: Ars Notoria, sive Flores Aurei",
+   "2013-02-the-voynich-manuscript-brass-inkwell": "The Voynich Manuscript: the Brass Inkwell",
+   "2013-02-the-voynich-manuscript-buch-der": "The Voynich Manuscript: Buch der heiligen Dreifaltigkeit",
+   "2013-03-the-voyncih-manuscript-medieval-tents": "The Voyncih Manuscript: the Medieval Tents",
+   "2013-03-the-voynich-manuscirpt-knotgrass": "The Voynich Manuscirpt: Knotgrass",
+   "2013-03-the-voynich-manuscript-alchemilla-alpina": "The Voynich Manuscript: Alchemilla Alpina",
+   "2013-03-the-voynich-manuscript-basilisca": "The Voynich Manuscript: Basilisca, Heliotropium",
+   "2013-03-the-voynich-manuscript-brass-mortar": "The Voynich Manuscript: the Brass Mortar",
+   "2013-03-the-voynich-manuscript-chenopodium": "The Voynich Manuscript: Chenopodium Bonus Henricus",
+   "2013-03-the-voynich-manuscript-chronik-des": "The Voynich Manuscript: Chronik des Konstanzer Konzils",
+   "2013-03-the-voynich-manuscript-european": "The Voynich Manuscript: European Baneberries",
+   "2013-03-the-voynich-manuscript-geranium-jasea": "The Voynich Manuscript: Geranium, Jasea, Syperus",
+   "2013-03-the-voynich-manuscript-guy-with-beard": "The Voynich Manuscript: the Guy with the Beard",
+   "2013-03-the-voynich-manuscript-hazel": "The Voynich Manuscript: Hazel",
+   "2013-03-the-voynich-manuscript-pincushion-flower": "The Voynich Manuscript: Pincushion Flower",
+   "2013-03-the-voynich-manuscript-st-johns-wort": "The Voynich Manuscript: St. John's Wort",
+   "2013-03-the-voynich-manuscript-trithemius": "The Voynich Manuscript: Trithemius and the Calendar of Duc de Berry",
+   "2013-03-the-voynich-manuscript-viola-tricolor": "The Voynich Manuscript: Viola Tricolor",
+   "2013-04-the-voynich-manuscript-black-arum": "The Voynich Manuscript: Black Arum Hidden Dragon",
+   "2013-04-the-voynich-manuscript-bog-rosemary": "The Voynich Manuscript: Bog Rosemary",
+   "2013-04-the-voynich-manuscript-calendula": "The Voynich Manuscript: Calendula",
+   "2013-04-the-voynich-manuscript-carlina": "The Voynich Manuscript: Carlina",
+   "2013-04-the-voynich-manuscript-cockscomb": "The Voynich Manuscript: Cockscomb",
+   "2013-04-the-voynich-manuscript-costmary": "The Voynich Manuscript: Costmary",
+   "2013-04-the-voynich-manuscript-dill": "The Voynich Manuscript: Dill",
+   "2013-04-the-voynich-manuscript-edelweiss": "The Voynich Manuscript: Edelweiss",
+   "2013-04-the-voynich-manuscript-fumaria": "The Voynich Manuscript: Fumaria",
+   "2013-04-the-voynich-manuscript-ghost-flower": "The Voynich Manuscript: The Ghost Flower",
+   "2013-04-the-voynich-manuscript-hairy-alpenrose": "The Voynich Manuscript: Hairy Alpenrose",
+   "2013-04-the-voynich-manuscript-herb-paris": "The Voynich Manuscript: Herb Paris",
+   "2013-04-the-voynich-manuscript-immortelle": "The Voynich Manuscript: Immortelle",
+   "2013-04-the-voynich-manuscript-marsh-cinquefoil": "The Voynich Manuscript: Marsh Cinquefoil",
+   "2013-04-the-voynich-manuscript-nettle": "The Voynich Manuscript: Nettle",
+   "2013-04-the-voynich-manuscript-red-campion": "The Voynich Manuscript: Red campion",
+   "2013-04-the-voynich-manuscript-same-but-what": "The Voynich Manuscript: The Same... but What?",
+   "2013-04-the-voynich-manuscript-schoner-brunnen": "The Voynich Manuscript: Schoner Brunnen",
+   "2013-04-the-voynich-manuscript-turks-cap-lily": "The Voynich Manuscript: Turk's Cap Lily",
+   "2013-04-the-voynich-manuscript-von-der": "The Voynich Manuscript: Von der Universal Tinctur",
+   "2013-04-the-voynich-manuscript-wild-strawberry": "The Voynich Manuscript: Wild Strawberry, Threeleaved Goldthread",
+   "2013-04-the-voynich-manuscript-wild-teasel": "The Voynich Manuscript: Wild Teasel",
+   "2013-04-the-voynivh-manuscript-pinkroot": "The Voynivh Manuscript: Pinkroot",
+   "2013-05-the-voynich-manuscript-alpine-sea-holly": "The Voynich Manuscript: Alpine Sea Holly",
+   "2013-05-the-voynich-manuscript-aorta-and-heart": "The Voynich Manuscript: the Aorta and the Heart",
+   "2013-05-the-voynich-manuscript-appendix": "The Voynich Manuscript: Appendix",
+   "2013-05-the-voynich-manuscript-book-of-charles": "The Voynich Manuscript: The Book of Charles VIII",
+   "2013-05-the-voynich-manuscript-brain": "The Voynich Manuscript: the Brain",
+   "2013-05-the-voynich-manuscript-calendar-pages": "The Voynich Manuscript: The Calendar Pages",
+   "2013-05-the-voynich-manuscript-clematis-vitalba": "The Voynich Manuscript: Clematis Vitalba",
+   "2013-05-the-voynich-manuscript-cornflower": "The Voynich Manuscript: Cornflower",
+   "2013-05-the-voynich-manuscript-doctor": "The Voynich Manuscript: Doctor-Astrologer Jehan Michel",
+   "2013-05-the-voynich-manuscript-following-stars": "The Voynich Manuscript: Following the Stars",
+   "2013-05-the-voynich-manuscript-great-masterwort": "The Voynich Manuscript: Great Masterwort",
+   "2013-05-the-voynich-manuscript-henbane": "The Voynich Manuscript: Henbane",
+   "2013-05-the-voynich-manuscript-ivy-leaved": "The Voynich Manuscript: Ivy-Leaved Bellflower",
+   "2013-05-the-voynich-manuscript-kidneys": "The Voynich Manuscript: the Kidneys",
+   "2013-05-the-voynich-manuscript-narcissus": "The Voynich Manuscript: Narcissus, Snowdrop",
+   "2013-05-the-voynich-manuscript-our-ladys-comb": "The Voynich Manuscript: Our Lady's Comb",
+   "2013-05-the-voynich-manuscript-schloss": "The Voynich Manuscript: Schloss Lichtenstein",
+   "2013-05-the-voynich-manuscript-senses": "The Voynich manuscript: the Senses",
+   "2013-05-the-voynich-manuscript-sistine-chapel": "The Voynich Manuscript: the Sistine Chapel",
+   "2013-05-the-voynich-manuscript-strawberry-blite": "The Voynich Manuscript: Strawberry Blite, Red Valerian",
+   "2013-05-the-voynich-manuscript-tarragon": "The Voynich Manuscript: Tarragon",
+   "2013-05-the-voynich-manuscript-tents-and-castles": "The Voynich Manuscript: Tents and Castles",
+   "2013-05-the-voynich-manuscript-trachea-and-lungs": "The Voynich Manuscript: Trachea and Lungs",
+   "2013-05-the-voynich-manuscript-wild-leek": "The Voynich Manuscript: Wild Leek",
+   "2013-06-the-voynich-manuscript": "The Voynich Manuscript: Fornovo,Mantua...Parma,Modena and Ferrara",
+   "2013-06-the-voynich-manuscript-black-cumin": "The Voynich Manuscript: Black Cumin",
+   "2013-06-the-voynich-manuscript-castor-oil-plant": "The Voynich Manuscript: Castor Oil Plant",
+   "2013-06-the-voynich-manuscript-cats-head": "The Voynich Manuscript: Cat's Head",
+   "2013-06-the-voynich-manuscript-da-vincis": "The Voynich Manuscript: Da Vinci's Appendix",
+   "2013-06-the-voynich-manuscript-garden-of": "The Voynich Manuscript: The garden of Earthly Delights",
+   "2013-06-the-voynich-manuscript-great-pox": "The Voynich Manuscript: the Great Pox",
+   "2013-06-the-voynich-manuscript-le-mystere-de-la": "The Voynich Manuscript: Le Myst\u00e8re de la Passion",
+   "2013-06-the-voynich-manuscript-mastic": "The Voynich Manuscript: Mastic",
+   "2013-06-the-voynich-manuscript-missing-codebook": "The Voynich Manuscript: Missing Codebook",
+   "2013-06-the-voynich-manuscript-myrrh-and": "The Voynich Manuscript: Myrrh and Frankincense",
+   "2013-06-the-voynich-manuscript-nettle": "The Voynich Manuscript: Nettle",
+   "2013-06-the-voynich-manuscript-original-theory": "The Voynich Manuscript: the Original Theory",
+   "2013-06-the-voynich-manuscript-pseudo-apuleius": "The Voynich Manuscript: Pseudo Apuleius",
+   "2013-06-the-voynich-manuscript-shrubby": "The Voynich Manuscript: Shrubby Cinquefoil",
+   "2013-06-the-voynich-manuscript-spanish-flag": "The Voynich Manuscript: Spanish Flag Lantana",
+   "2013-06-the-voynich-manuscript-stomach": "The Voynich Manuscript: the Stomach",
+   "2013-06-the-voynich-manuscript-veronica": "The Voynich Manuscript: Veronica",
+   "2013-07-the-voynich-manuscript-fishbone-thistle": "The Voynich Manuscript: Fishbone Thistle",
+   "2013-07-the-voynich-manuscript-jasmine": "The Voynich Manuscript: Jasmine",
+   "2013-07-the-voynich-manuscript-persimmon-and": "The Voynich Manuscript: Persimmon and Noah's Ark",
+   "2013-07-the-voynich-manuscript-plant-id-list": "The Voynich Manuscript: Plant ID List",
+   "2013-07-the-voynich-manuscript-rue": "The Voynich Manuscript: Rue",
+   "2013-07-the-voynich-manuscript-yellow-star": "The Voynich Manuscript: Yellow Star-Thistle",
+   "2013-08-the-voynich-manuscript-blonde-saints": "The Voynich Manuscript: the Blonde Saints",
+   "2013-08-the-voynich-manuscript-castle-next-to": "The Voynich Manuscript: the Castle next to the Volcano",
+   "2013-09-the-voynich-manuscript-anatomy": "The Voynich Manuscript: Anatomy",
+   "2013-09-the-voynich-manuscript-decebre": "The Voynich Manuscript: Decebre",
+   "2013-09-the-voynich-manuscript-decoration": "The Voynich Manuscript: Decoration Pattern",
+   "2013-09-the-voynich-manuscript-dotted-stars": "The Voynich Manuscript: Dotted Stars",
+   "2013-09-the-voynich-manuscript-hunting": "The Voynich Manuscript: Hunting Tapestries",
+   "2013-09-the-voynich-manuscript-rolandus": "The Voynich Manuscript: Rolandus Scriptoris",
+   "2013-10-the-voynich-manuscript-charms": "The Voynich Manuscript: Charms",
+   "2013-11-the-voynich-manuscript-boat-root": "The Voynich Manuscript: Boat Root",
+   "2013-11-the-voynich-manuscript-nymphs-of-elihu": "The Voynich Manuscript: the Nymphs of Elihu Vedder",
+   "2014-01-the-voynich-manuscript-april-fools-day": "The Voynich Manuscript: April Fool's Day",
+   "2014-01-the-voynich-manuscript-st-albinus-of": "The Voynich manuscript: St Albinus of Angers",
+   "2014-01-the-voynich-manuscript-tucker-and": "The Voynich Manuscript: Tucker and Talbert",
+   "2014-02-the-voynich-manuscript-fish": "The Voynich Manuscript: Fish",
+   "2014-02-the-voynich-manuscript-glyphs": "The Voynich Manuscript: Glyphs",
+   "2014-03-the-voynich-manuscript-another-split": "The Voynich Manuscript: Another Split Beard",
+   "2014-03-the-voynich-manuscript-pyramid-of-khafre": "The Voynich Manuscript: the Pyramid of Khafre",
+   "2014-05-the-voynich-manuscript-indigo-milk-cap": "The Voynich Manuscript: Indigo Milk Cap",
+   "2014-09-the-voynich-manuscript-dotted-doodling": "The Voynich Manuscript: Dotted Doodling",
+   "2014-10-the-voynich-manuscript-honey": "The Voynich manuscript: Honey",
+   "2014-10-the-voynich-manuscript-purgatory": "The Voynich Manuscript: the Purgatory",
+   "2014-11-the-voynich-manuscript-display-in": "The Voynich Manuscript: Display in Washington DC",
+   "2015-02-the-voynich-manuscript-fleabane": "The Voynich Manuscript: Fleabane",
+   "2015-02-the-voynich-manuscript-ground-oak": "The Voynich Manuscript: Ground Oak",
+   "2015-02-the-voynich-manuscript-kirchers-answer": "The Voynich Manuscript: Kircher's Answer",
+   "2015-02-the-voynich-manuscript-white-mulberry": "The Voynich Manuscript: White Mulberry",
+   "2016-10-the-voynich-manuscript-blue-cube": "The Voynich manuscript: the Blue Cube",
+   "2016-11-the-voynich-manuscript-treviso": "The Voynich Manuscript: the Treviso Arithmetic"
+  }
+ },
+ "posts": {
+  "2012-08-voynich-manuscript-peter-of-candia-pope": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2012/08/voynich-manuscript-peter-of-candia-pope.html",
+     "timestamp": "20121024182732",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20121024182732",
+   "fetched_from": "http://ellievelinska.blogspot.com/2012/08/voynich-manuscript-peter-of-candia-pope.html",
+   "file": "raw/2012-08-voynich-manuscript-peter-of-candia-pope.html",
+   "status": "fetched",
+   "tried": [
+    "20121024182732|http://ellievelinska.blogspot.com/2012/08/voynich-manuscript-peter-of-candia-pope.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2012/08/voynich-manuscript-peter-of-candia-pope.html",
+   "variant": "direct"
+  },
+  "2013-01-the-voynich-manuscript-castello": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-castello.html",
+     "timestamp": "20170915175700",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915175700",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-castello.html",
+   "file": "raw/2013-01-the-voynich-manuscript-castello.html",
+   "status": "fetched",
+   "tried": [
+    "20170915175700|http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-castello.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/01/the-voynich-manuscript-castello.html",
+   "variant": "direct"
+  },
+  "2013-01-the-voynich-manuscript-karnak-palace": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-karnak-palace.html",
+     "timestamp": "20170915184500",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170915184500",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-karnak-palace.html",
+   "file": "raw/2013-01-the-voynich-manuscript-karnak-palace.html",
+   "status": "fetched",
+   "tried": [
+    "20170915184500|http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-karnak-palace.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/01/the-voynich-manuscript-karnak-palace.html",
+   "variant": "direct"
+  },
+  "2013-01-the-voynich-manuscript-nymphs-of-jean": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20190911085902",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20181011211054",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180908012641",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180807074746",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180706180405",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180604215209",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180504064702",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180402185157",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180401111425",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180217061549",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20180117052358",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20171216202119",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20171115112536",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20171014224357",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20170928104752",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20170913144230",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+     "timestamp": "20170828110607",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html?showCommentx3d1359997594743",
+     "timestamp": "20170915190654",
+     "variant": "query"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html?showCommentx3d1413725760134",
+     "timestamp": "20170915175405",
+     "variant": "query"
+    }
+   ],
+   "capture_timestamp": "20190911085902",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+   "file": "raw/2013-01-the-voynich-manuscript-nymphs-of-jean.html",
+   "status": "fetched",
+   "tried": [
+    "20190911085902|http://ellievelinska.blogspot.com:80/2013/01/the-voynich-manuscript-nymphs-of-jean.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/01/the-voynich-manuscript-nymphs-of-jean.html",
+   "variant": "direct"
+  },
+  "2013-02-the-voynich-manuscript-ars-notoria-sive": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-ars-notoria-sive.html",
+     "timestamp": "20151009033457",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-ars-notoria-sive.html",
+     "timestamp": "20131118083134",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20151009033457",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-ars-notoria-sive.html",
+   "file": "raw/2013-02-the-voynich-manuscript-ars-notoria-sive.html",
+   "status": "fetched",
+   "tried": [
+    "20151009033457|http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-ars-notoria-sive.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/02/the-voynich-manuscript-ars-notoria-sive.html",
+   "variant": "direct"
+  },
+  "2013-02-the-voynich-manuscript-buch-der": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+     "timestamp": "20190911085611",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+     "timestamp": "20181103100748",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+     "timestamp": "20181001004956",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+     "timestamp": "20180829173839",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+     "timestamp": "20180722032824",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20190911085611",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html",
+   "file": "raw/2013-02-the-voynich-manuscript-buch-der.html",
+   "status": "fetched",
+   "tried": [
+    "20190911085611|http://ellievelinska.blogspot.com:80/2013/02/the-voynich-manuscript-buch-der.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/02/the-voynich-manuscript-buch-der.html",
+   "variant": "direct"
+  },
+  "2013-03-the-voynich-manuscript-brass-mortar": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-brass-mortar.html",
+     "timestamp": "20190527224337",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013/03/the-voynich-manuscript-brass-mortar.html",
+     "timestamp": "20151107011939",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20190527224337",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-brass-mortar.html",
+   "file": "raw/2013-03-the-voynich-manuscript-brass-mortar.html",
+   "status": "fetched",
+   "tried": [
+    "20190527224337|http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-brass-mortar.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-brass-mortar.html",
+   "variant": "direct"
+  },
+  "2013-03-the-voynich-manuscript-pincushion-flower": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-pincushion-flower.html",
+     "timestamp": "20150630234933",
+     "variant": "direct"
+    }
+   ],
+   "last_error": "giving up on https://web.archive.org/web/20150630234933id_/http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-pincushion-flower.html: ConnectTimeout: HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20150630234933id_/http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-pincushion-flower.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='web.archive.org', port=443) at 0x7fb711a82e10>, 'Connection to web.archive.org timed out. (connect timeout=60)'))",
+   "status": "no_capture",
+   "tried": [
+    "20150630234933|http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-pincushion-flower.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-pincushion-flower.html"
+  },
+  "2013-03-the-voynich-manuscript-st-johns-wort": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-st-johns-wort.html",
+     "timestamp": "20171214160202",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20171214160202",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-st-johns-wort.html",
+   "file": "raw/2013-03-the-voynich-manuscript-st-johns-wort.html",
+   "status": "fetched",
+   "tried": [
+    "20171214160202|http://ellievelinska.blogspot.com:80/2013/03/the-voynich-manuscript-st-johns-wort.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/03/the-voynich-manuscript-st-johns-wort.html",
+   "variant": "direct"
+  },
+  "2013-04-the-voynich-manuscript-wild-strawberry": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/04/the-voynich-manuscript-wild-strawberry.html",
+     "timestamp": "20130508202824",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20130508202824",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/04/the-voynich-manuscript-wild-strawberry.html",
+   "file": "raw/2013-04-the-voynich-manuscript-wild-strawberry.html",
+   "status": "fetched",
+   "tried": [
+    "20130508202824|http://ellievelinska.blogspot.com/2013/04/the-voynich-manuscript-wild-strawberry.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/04/the-voynich-manuscript-wild-strawberry.html",
+   "variant": "direct"
+  },
+  "2013-05-the-voynich-manuscript-appendix": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-appendix.html",
+     "timestamp": "20180104193857",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-appendix.html",
+     "timestamp": "20160511110712",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20180104193857",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-appendix.html",
+   "file": "raw/2013-05-the-voynich-manuscript-appendix.html",
+   "status": "fetched",
+   "tried": [
+    "20180104193857|http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-appendix.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-appendix.html",
+   "variant": "direct"
+  },
+  "2013-05-the-voynich-manuscript-clematis-vitalba": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-clematis-vitalba.html",
+     "timestamp": "20130803081614",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20130803081614",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-clematis-vitalba.html",
+   "file": "raw/2013-05-the-voynich-manuscript-clematis-vitalba.html",
+   "status": "fetched",
+   "tried": [
+    "20130803081614|http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-clematis-vitalba.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-clematis-vitalba.html",
+   "variant": "direct"
+  },
+  "2013-05-the-voynich-manuscript-cornflower": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-cornflower.html",
+     "timestamp": "20150611114242",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20150611114242",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-cornflower.html",
+   "file": "raw/2013-05-the-voynich-manuscript-cornflower.html",
+   "status": "fetched",
+   "tried": [
+    "20150611114242|http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-cornflower.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-cornflower.html",
+   "variant": "direct"
+  },
+  "2013-05-the-voynich-manuscript-sistine-chapel": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html",
+     "timestamp": "20190911080739",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html",
+     "timestamp": "20181103101857",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html",
+     "timestamp": "20181001001311",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html",
+     "timestamp": "20150710055848",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-sistine-chapel.html",
+     "timestamp": "20130820021915",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20190911080739",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html",
+   "file": "raw/2013-05-the-voynich-manuscript-sistine-chapel.html",
+   "status": "fetched",
+   "tried": [
+    "20190911080739|http://ellievelinska.blogspot.com:80/2013/05/the-voynich-manuscript-sistine-chapel.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/05/the-voynich-manuscript-sistine-chapel.html",
+   "variant": "direct"
+  },
+  "2013-07-the-voynich-manuscript-fishtail-palm": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-fishtail-palm.html",
+     "timestamp": "20150607094250",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20150607094250",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-fishtail-palm.html",
+   "file": "raw/2013-07-the-voynich-manuscript-fishtail-palm.html",
+   "status": "fetched",
+   "tried": [
+    "20150607094250|http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-fishtail-palm.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-fishtail-palm.html",
+   "variant": "direct"
+  },
+  "2013-07-the-voynich-manuscript-plant-id-list": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20200111130724",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20191229144231",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20191030071333",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20191022194322",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20190822142941",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20190307231142",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20180914215529",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20180913013101",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20180514010052",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20171006025814",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170901112256",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170831061855",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170730174037",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170709200655",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170629010315",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170526223334",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20170421065002",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20160826145435",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20160324050041",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20151026122325",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20150322055414",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+     "timestamp": "20140720145329",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402430975328",
+     "timestamp": "20171103035426",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378510703523",
+     "timestamp": "20150607094348",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378934612289",
+     "timestamp": "20150607094344",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1375972588771",
+     "timestamp": "20150607094340",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373926059147",
+     "timestamp": "20150607094336",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402362104480",
+     "timestamp": "20150607094328",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378508721341",
+     "timestamp": "20150607094321",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373964369736",
+     "timestamp": "20150607094316",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1377489437953",
+     "timestamp": "20150607094312",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378476526463",
+     "timestamp": "20150607094304",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378294984102",
+     "timestamp": "20150607094259",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1385166738445",
+     "timestamp": "20150607094254",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1383168213179",
+     "timestamp": "20150607094242",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373933939508",
+     "timestamp": "20150607094238",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378489708858",
+     "timestamp": "20150607094229",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378509916414",
+     "timestamp": "20150607094220",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378939215112",
+     "timestamp": "20150607094213",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373976329887",
+     "timestamp": "20150607094203",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402363493173",
+     "timestamp": "20150607094154",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1385069838660",
+     "timestamp": "20150607092846",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402362300072",
+     "timestamp": "20150607092841",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378405464047",
+     "timestamp": "20150607092835",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373975311822",
+     "timestamp": "20150607092830",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1385002230627",
+     "timestamp": "20150607092825",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402622886358",
+     "timestamp": "20150607092820",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1379299454230",
+     "timestamp": "20150607092816",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378655075588",
+     "timestamp": "20150607092809",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378835934984",
+     "timestamp": "20150607092804",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378419934555",
+     "timestamp": "20150607092755",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402748667769",
+     "timestamp": "20150607092739",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378405649213",
+     "timestamp": "20150607092735",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1381414177056",
+     "timestamp": "20150607092724",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1406499496741",
+     "timestamp": "20150607071255",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402367256972",
+     "timestamp": "20150607070115",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378697075261",
+     "timestamp": "20150607065848",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378593727809",
+     "timestamp": "20150607065731",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1385167030789",
+     "timestamp": "20150607064801",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1420647330767",
+     "timestamp": "20150607064544",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378836647500",
+     "timestamp": "20150607064347",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378422209434",
+     "timestamp": "20150607063526",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1374054806622",
+     "timestamp": "20150607063519",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378854115338",
+     "timestamp": "20150607062904",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378608687537",
+     "timestamp": "20150607062219",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378504292290",
+     "timestamp": "20150607061932",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1375972161032",
+     "timestamp": "20150607060856",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378356648121",
+     "timestamp": "20150607055213",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1393324237014",
+     "timestamp": "20150607055113",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378504174070",
+     "timestamp": "20150607055042",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1381350316428",
+     "timestamp": "20150607052914",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402431627770",
+     "timestamp": "20150607045532",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1383173707593",
+     "timestamp": "20150607045142",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402431239320",
+     "timestamp": "20150607044514",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378594612166",
+     "timestamp": "20150607043155",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1379372111066",
+     "timestamp": "20150607041906",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378835904139",
+     "timestamp": "20150607041729",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378568645337",
+     "timestamp": "20150607041336",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1402430975328",
+     "timestamp": "20150607041335",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378509611156",
+     "timestamp": "20150607041240",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1412899542594",
+     "timestamp": "20150607041134",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378654995071",
+     "timestamp": "20150607041118",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378370670128",
+     "timestamp": "20150607041035",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378507708038",
+     "timestamp": "20150607034812",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1422615691893",
+     "timestamp": "20150607034710",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373965957049",
+     "timestamp": "20150607034650",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1373916970391",
+     "timestamp": "20150607034638",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378281317006",
+     "timestamp": "20150607034309",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378504875112",
+     "timestamp": "20150607034301",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1378421714880",
+     "timestamp": "20150607033308",
+     "variant": "showComment"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html?showComment=1417840732868",
+     "timestamp": "20150607032612",
+     "variant": "showComment"
+    }
+   ],
+   "capture_timestamp": "20200111130724",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+   "file": "raw/2013-07-the-voynich-manuscript-plant-id-list.html",
+   "status": "fetched",
+   "tried": [
+    "20200111130724|http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-plant-id-list.html",
+   "variant": "direct"
+  },
+  "2013-07-the-voynich-manuscript-rue": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-rue.html",
+     "timestamp": "20150607041438",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20150607041438",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-rue.html",
+   "file": "raw/2013-07-the-voynich-manuscript-rue.html",
+   "status": "fetched",
+   "tried": [
+    "20150607041438|http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-rue.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/07/the-voynich-manuscript-rue.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-anatomy": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20190819084826",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20180501110308",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20171012114708",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20170911055738",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20170810185231",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20170709180326",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20170630184722",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20160604093938",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20150626134124",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-anatomy.html",
+     "timestamp": "20150607052458",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20190819084826",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-anatomy.html",
+   "file": "raw/2013-09-the-voynich-manuscript-anatomy.html",
+   "status": "fetched",
+   "tried": [
+    "20190819084826|http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-anatomy.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-anatomy.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-decebre": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html",
+     "timestamp": "20190911065817",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html",
+     "timestamp": "20190318082600",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html",
+     "timestamp": "20180502140800",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html",
+     "timestamp": "20180501104118",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20190911065817",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html",
+   "file": "raw/2013-09-the-voynich-manuscript-decebre.html",
+   "status": "fetched",
+   "tried": [
+    "20190911065817|http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decebre.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-decebre.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-decoration": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decoration.html",
+     "timestamp": "20180501104124",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decoration.html",
+     "timestamp": "20170915174634",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-decoration.html",
+     "timestamp": "20150607094217",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20180501104124",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decoration.html",
+   "file": "raw/2013-09-the-voynich-manuscript-decoration.html",
+   "status": "fetched",
+   "tried": [
+    "20180501104124|http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-decoration.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-decoration.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-dotted-stars": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20191022185519",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20180914215908",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20180715131337",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20180501110314",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20170915170742",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20151231151141",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20151130055445",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-dotted-stars.html",
+     "timestamp": "20150607034517",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20191022185519",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-dotted-stars.html",
+   "file": "raw/2013-09-the-voynich-manuscript-dotted-stars.html",
+   "status": "fetched",
+   "tried": [
+    "20191022185519|http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-dotted-stars.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-dotted-stars.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-hunting": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-hunting.html",
+     "timestamp": "20191022192402",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-hunting.html",
+     "timestamp": "20180928150005",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-hunting.html",
+     "timestamp": "20180501110320",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20191022192402",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-hunting.html",
+   "file": "raw/2013-09-the-voynich-manuscript-hunting.html",
+   "status": "fetched",
+   "tried": [
+    "20191022192402|http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-hunting.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-hunting.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-la-cite-de-dieu": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2013/09/the-voynich-manuscript-la-cite-de-dieu.html",
+     "timestamp": "20131010100310",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20131010100310",
+   "fetched_from": "http://ellievelinska.blogspot.com.au/2013/09/the-voynich-manuscript-la-cite-de-dieu.html",
+   "file": "raw/2013-09-the-voynich-manuscript-la-cite-de-dieu.html",
+   "status": "fetched",
+   "tried": [
+    "20131010100310|http://ellievelinska.blogspot.com.au/2013/09/the-voynich-manuscript-la-cite-de-dieu.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-la-cite-de-dieu.html",
+   "variant": "direct"
+  },
+  "2013-09-the-voynich-manuscript-rolandus": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-rolandus.html",
+     "timestamp": "20180501110324",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20180501110324",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-rolandus.html",
+   "file": "raw/2013-09-the-voynich-manuscript-rolandus.html",
+   "status": "fetched",
+   "tried": [
+    "20180501110324|http://ellievelinska.blogspot.com:80/2013/09/the-voynich-manuscript-rolandus.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/09/the-voynich-manuscript-rolandus.html",
+   "variant": "direct"
+  },
+  "2013-11-the-voynich-manuscript-nymphs-of-elihu": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/11/the-voynich-manuscript-nymphs-of-elihu.html",
+     "timestamp": "20191022200411",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2013/11/the-voynich-manuscript-nymphs-of-elihu.html",
+     "timestamp": "20190822145403",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20191022200411",
+   "fetched_from": "http://ellievelinska.blogspot.com/2013/11/the-voynich-manuscript-nymphs-of-elihu.html",
+   "file": "raw/2013-11-the-voynich-manuscript-nymphs-of-elihu.html",
+   "status": "fetched",
+   "tried": [
+    "20191022200411|http://ellievelinska.blogspot.com/2013/11/the-voynich-manuscript-nymphs-of-elihu.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2013/11/the-voynich-manuscript-nymphs-of-elihu.html",
+   "variant": "direct"
+  },
+  "2014-01-the-voynich-manuscript-tucker-and": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20171005150856",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20170831214348",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20170730192342",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20170628171044",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20170522101739",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+     "timestamp": "20170420061655",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20171005150856",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html",
+   "file": "raw/2014-01-the-voynich-manuscript-tucker-and.html",
+   "status": "fetched",
+   "tried": [
+    "20171005150856|http://ellievelinska.blogspot.com:80/2014/01/the-voynich-manuscript-tucker-and.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2014/01/the-voynich-manuscript-tucker-and.html",
+   "variant": "direct"
+  },
+  "2014-06-the-voynich-manuscript-geocentric-model": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20190709150918",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20180913013121",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20180514120759",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20180331172942",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20180202063539",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20180101142345",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20171130133054",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.ca:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20171108120809",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20171026091902",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.ca:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20171008032727",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.ca:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170905220545",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.ca:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170805233915",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.ca:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170706023404",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170703042530",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170530221359",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20170428045621",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2014/06/the-voynich-manuscript-geocentric-model.html",
+     "timestamp": "20160410123428",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html?showComment=1403017366564",
+     "timestamp": "20191222012924",
+     "variant": "showComment"
+    }
+   ],
+   "capture_timestamp": "20190709150918",
+   "fetched_from": "http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html",
+   "file": "raw/2014-06-the-voynich-manuscript-geocentric-model.html",
+   "status": "fetched",
+   "tried": [
+    "20190709150918|http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2014/06/the-voynich-manuscript-geocentric-model.html",
+   "variant": "direct"
+  },
+  "2015-02-the-voynich-manuscript-fleabane": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-fleabane.html",
+     "timestamp": "20170204005948",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-fleabane.html",
+     "timestamp": "20161230053833",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-fleabane.html",
+     "timestamp": "20160223191717",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-fleabane.html",
+     "timestamp": "20160215020716",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204005948",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-fleabane.html",
+   "file": "raw/2015-02-the-voynich-manuscript-fleabane.html",
+   "status": "fetched",
+   "tried": [
+    "20170204005948|http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-fleabane.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-fleabane.html",
+   "variant": "direct"
+  },
+  "2015-02-the-voynich-manuscript-ground-oak": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-ground-oak.html",
+     "timestamp": "20160214224153",
+     "variant": "direct"
+    }
+   ],
+   "last_error": "giving up on https://web.archive.org/web/20160214224153id_/http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-ground-oak.html: ConnectTimeout: HTTPSConnectionPool(host='web.archive.org', port=443): Max retries exceeded with url: /web/20160214224153id_/http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-ground-oak.html (Caused by ConnectTimeoutError(<HTTPSConnection(host='web.archive.org', port=443) at 0x7fb711a95670>, 'Connection to web.archive.org timed out. (connect timeout=60)'))",
+   "status": "no_capture",
+   "tried": [
+    "20160214224153|http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-ground-oak.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-ground-oak.html"
+  },
+  "2015-02-the-voynich-manuscript-kirchers-answer": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-kirchers-answer.html",
+     "timestamp": "20191020082258",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-kirchers-answer.html",
+     "timestamp": "20160224020422",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/02/the-voynich-manuscript-kirchers-answer.html",
+     "timestamp": "20160214135554",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20191020082258",
+   "fetched_from": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-kirchers-answer.html",
+   "file": "raw/2015-02-the-voynich-manuscript-kirchers-answer.html",
+   "status": "fetched",
+   "tried": [
+    "20191020082258|http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-kirchers-answer.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-kirchers-answer.html",
+   "variant": "direct"
+  },
+  "2015-02-the-voynich-manuscript-white-mulberry": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com:80/2015/02/the-voynich-manuscript-white-mulberry.html",
+     "timestamp": "20170620014828",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/02/the-voynich-manuscript-white-mulberry.html",
+     "timestamp": "20160224001507",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170620014828",
+   "fetched_from": "http://ellievelinska.blogspot.com:80/2015/02/the-voynich-manuscript-white-mulberry.html",
+   "file": "raw/2015-02-the-voynich-manuscript-white-mulberry.html",
+   "status": "fetched",
+   "tried": [
+    "20170620014828|http://ellievelinska.blogspot.com:80/2015/02/the-voynich-manuscript-white-mulberry.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/02/the-voynich-manuscript-white-mulberry.html",
+   "variant": "direct"
+  },
+  "2015-04-the-voynich-manuscript-palm-sunday": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-palm-sunday.html",
+     "timestamp": "20170204004604",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/04/the-voynich-manuscript-palm-sunday.html",
+     "timestamp": "20161230053459",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/04/the-voynich-manuscript-palm-sunday.html",
+     "timestamp": "20160214213911",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204004604",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-palm-sunday.html",
+   "file": "raw/2015-04-the-voynich-manuscript-palm-sunday.html",
+   "status": "fetched",
+   "tried": [
+    "20170204004604|http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-palm-sunday.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-palm-sunday.html",
+   "variant": "direct"
+  },
+  "2015-04-the-voynich-manuscript-thunder": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-thunder.html",
+     "timestamp": "20170204043655",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/04/the-voynich-manuscript-thunder.html",
+     "timestamp": "20161230053504",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-thunder.html",
+     "timestamp": "20160224001908",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204043655",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-thunder.html",
+   "file": "raw/2015-04-the-voynich-manuscript-thunder.html",
+   "status": "fetched",
+   "tried": [
+    "20170204043655|http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-thunder.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-thunder.html",
+   "variant": "direct"
+  },
+  "2015-04-the-voynich-manuscript-winds": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-winds.html",
+     "timestamp": "20180913013125",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-winds.html",
+     "timestamp": "20170204063049",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2015/04/the-voynich-manuscript-winds.html",
+     "timestamp": "20161230053759",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2015/04/the-voynich-manuscript-winds.html",
+     "timestamp": "20160223184724",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20180913013125",
+   "fetched_from": "http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-winds.html",
+   "file": "raw/2015-04-the-voynich-manuscript-winds.html",
+   "status": "fetched",
+   "tried": [
+    "20180913013125|http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-winds.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2015/04/the-voynich-manuscript-winds.html",
+   "variant": "direct"
+  },
+  "2016-01-the-voynich-manuscript-babenberg-family": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016/01/the-voynich-manuscript-babenberg-family.html",
+     "timestamp": "20170204115431",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016/01/the-voynich-manuscript-babenberg-family.html",
+     "timestamp": "20161229234020",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204115431",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2016/01/the-voynich-manuscript-babenberg-family.html",
+   "file": "raw/2016-01-the-voynich-manuscript-babenberg-family.html",
+   "status": "fetched",
+   "tried": [
+    "20170204115431|http://ellievelinska.blogspot.co.uk/2016/01/the-voynich-manuscript-babenberg-family.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2016/01/the-voynich-manuscript-babenberg-family.html",
+   "variant": "direct"
+  },
+  "2016-03-the-voynich-manuscript-eagle": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016/03/the-voynich-manuscript-eagle.html",
+     "timestamp": "20170204055109",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016/03/the-voynich-manuscript-eagle.html",
+     "timestamp": "20161230053454",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170204055109",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2016/03/the-voynich-manuscript-eagle.html",
+   "file": "raw/2016-03-the-voynich-manuscript-eagle.html",
+   "status": "fetched",
+   "tried": [
+    "20170204055109|http://ellievelinska.blogspot.co.uk/2016/03/the-voynich-manuscript-eagle.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2016/03/the-voynich-manuscript-eagle.html",
+   "variant": "direct"
+  },
+  "2016-04-arcimboldi": {
+   "candidates": [
+    {
+     "original": "http://ellievelinska.blogspot.co.uk/2016/04/arcimboldi.html",
+     "timestamp": "20170203233731",
+     "variant": "direct"
+    },
+    {
+     "original": "http://ellievelinska.blogspot.com.au/2016/04/arcimboldi.html",
+     "timestamp": "20161230025332",
+     "variant": "direct"
+    }
+   ],
+   "capture_timestamp": "20170203233731",
+   "fetched_from": "http://ellievelinska.blogspot.co.uk/2016/04/arcimboldi.html",
+   "file": "raw/2016-04-arcimboldi.html",
+   "status": "fetched",
+   "tried": [
+    "20170203233731|http://ellievelinska.blogspot.co.uk/2016/04/arcimboldi.html"
+   ],
+   "url": "http://ellievelinska.blogspot.com/2016/04/arcimboldi.html",
+   "variant": "direct"
+  }
+ }
+}
