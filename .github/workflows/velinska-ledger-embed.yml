@@ -1,0 +1,34 @@
+name: velinska-ledger-embed
+
+# Embeds velinska_ledger/ledger_passages.jsonl with Supabase/gte-small and
+# commits the vectors back to this branch. No database access.
+on:
+  push:
+    branches: [velinska-backfill]
+    paths:
+      - velinska_ledger/embed_ledger_rows.py
+      - velinska_ledger/ledger_passages.jsonl
+      - velinska_ledger/calibration.json
+      - .github/workflows/velinska-ledger-embed.yml
+
+permissions:
+  contents: write
+
+jobs:
+  embed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install "torch>=2.4,<3" "transformers>=4.44,<5" --extra-index-url https://download.pytorch.org/whl/cpu
+      - run: python velinska_ledger/embed_ledger_rows.py velinska_ledger
+      - name: Commit vectors
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add velinska_ledger/ledger_passages_embedded.jsonl velinska_ledger/calibration_embedded.json
+          git commit -m "Add gte-small embeddings for velinska ledger rows"
+          git push origin HEAD:velinska-backfill
