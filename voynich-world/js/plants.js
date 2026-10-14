@@ -126,6 +126,7 @@ class Plants {
     for (const c of clusters) {
       const n = Math.round(P.count * c.weight / totalW);
       let set = expandPlantSet(P.sets[c.zone] || []).filter((id) => this.kindMap[id]);   // group names like 'tall' are allowed (js/images.js)
+      if (!set.length && P.emptyZonesBare && Array.isArray(P.sets[c.zone]) && P.sets[c.zone].length === 0) continue;   // [picker] a place with nothing chosen stays bare
       if (!set.length) set = allIds;
       const favs = [rng.pick(set), rng.pick(set), rng.pick(set)];       // a clump has 2-3 favourite pictures
       c.bigKind = favs[0];                                              // ...and its big plants are all ONE kind

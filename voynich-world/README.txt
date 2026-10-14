@@ -2,6 +2,7 @@ VOYNICH WORLD - v2 (placeholders only)
 ======================================
 
   ** This copy has the Voynich cut-outs in place of the placeholders - see CHANGES-from-Ed.txt **
+  ** To choose which plants grow where, open picker.html **
 
 RUN IT (no server needed - it is just files)
   Mac:      open voynich-world-v2/index.html

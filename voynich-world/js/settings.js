@@ -129,6 +129,7 @@ const SETTINGS = {
     },
 
     landmarkKind: 'f93r_plant', // which image is the giant landmark (f93r: O'Neill's "sunflower")
+    emptyZonesBare: true,       // a place whose list is empty [] gets no plants (false = it gets any plant)
     landmarkHeight: 70,
     landmarkIgnoresFog: true,   // true = it stays visible over the hills from far away
   },

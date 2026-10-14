@@ -6,6 +6,17 @@
   const S = SETTINGS;
   const qs = new URLSearchParams(location.search);
   if (qs.has('seed')) S.seed = parseInt(qs.get('seed'), 10) || S.seed;     // index.html?seed=777
+  // [picker] picker.html opens the world with its choice in the address (#pick=...), so you can try it before pasting
+  try {
+    const m = location.hash.match(/pick=([^&]+)/);
+    if (m) {
+      const P = JSON.parse(decodeURIComponent(m[1]));
+      if (P.sets) S.plants.sets = P.sets;
+      if (P.landmark) S.plants.landmarkKind = P.landmark;
+      if (P.nymphs) S.nymphs.pictures = P.nymphs;
+      S.plants.emptyZonesBare = true;
+    }
+  } catch (e) { console.warn('Could not read the picker choice', e); }
 
   // ---- Renderer, scene, camera ------------------------------------------------
   const canvas = document.getElementById('view');

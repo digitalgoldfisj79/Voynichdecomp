@@ -59,6 +59,16 @@ QUALITY AND SPEED (third round) - all switches in settings.js -> quality
                    plants.js (lighting, shadows, culling), sky.js (passes the sun on), main.js (camera position,
                    resolution, fps in HUD), settings.js (quality block), index.html (loads js/quality.js).
 
+PLANT PICKER (fourth round)
+  picker.html      NEW: open it like index.html (double-click). All 120 plants with their folio and section.
+                   Choose a place (Path, Edge, Grove, Pond, Meadow, Glade), click plants to put them there,
+                   pick the landmark and which bathing figures to use. Filter by section or shape; the closer
+                   look links to Yale's whole page. "Try it in the world" opens the world with your choice;
+                   "Copy for settings.js" gives the lines to paste so it sticks. Remembered in your browser.
+  images/picture-info.js  NEW: folio, section and Yale id per picture (for the picker)
+  js/main.js       reads the picker's choice from the address (index.html#pick=...)
+  js/plants.js     a place whose list is empty [] now stays bare (settings: plants.emptyZonesBare)
+
 IDEAS NOT DONE
   - animals/ pictures are packed but nothing uses them yet (your Stage 2 animals).
   - The pale fringe on the nymphs could be trimmed by eroding the masks 1-2 px.
