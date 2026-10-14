@@ -112,6 +112,10 @@ class Sky {
     const sunUp = sunDir.y > -0.05;
     this.dir.color.copy(c.sun); this.dir.intensity = c.sunPower * 0.55;
     this.dir.position.copy(sunUp ? sunDir : moonDir).multiplyScalar(100);
+    if (typeof Q !== 'undefined') {                    // [quality] the plants' light and shadows follow the sun (or, faintly, the moon)
+      Q.sun.dir.value.copy(sunUp ? sunDir : moonDir); Q.sun.color.value.copy(c.sun);
+      Q.sun.power.value = sunUp ? clamp(c.sunPower, 0, 1) * smoothstep(-0.05, 0.25, sunDir.y) : 0.12 * (1 - c.level);
+    }
 
     const night = clamp(1 - (c.level - 0.5) * 3, 0, 1);               // 1 at deep night, 0 by day
     this.starMat.opacity = night;

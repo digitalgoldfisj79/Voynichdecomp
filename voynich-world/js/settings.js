@@ -149,6 +149,23 @@ const SETTINGS = {
     ],
   },
 
+  // ---- Picture quality and speed (js/quality.js) ------------------------------------
+  quality: {
+    targetFps: 60,           // the frame rate to hold
+    adaptiveResolution: true,// draw a little less sharp when the computer can't keep up (never in recording mode)
+    minResolution: 0.6,      // ...but never below this fraction of full sharpness
+    maxPixelRatio: 2,        // on very sharp screens, at most this many pixels per screen pixel
+    plantShading: true,      // light from the sun on the plants, darker near the roots
+    shadows: true,           // plant shadows on the ground
+    shadowStrength: 0.38,    // how dark the shadows are (0-1)
+    shadowDistance: 60,      // shadows fade out by this distance
+    shadowMinLength: 0.7,    // shadows are at least this long (x plant height), even at noon - it looks better
+    cullPlants: true,        // only draw the plants in view (faster; no visible difference)
+    groundShading: true,     // hollows and the foot of the hills a little darker (needs a new world: N)
+    paperGrain: 0.55,        // paper grain and fibres on the ground up close (0 = off)
+    waterShading: true,      // ponds reflect the sky colour and ripple
+  },
+
   // ---- Phones and tablets (js/touch.js) -------------------------------------------
   touch: {
     lookSpeed: 2.2,          // how fast dragging turns the view (x the mouse sensitivity)

@@ -92,6 +92,12 @@ class Terrain {
         tmp.lerp(cHigh, smoothstep(0.35, 0.95, tall) * away);
         if (h < W.waterLevel + 0.4) tmp.lerp(cBed, 0.7);
         tmp.multiplyScalar(1 + (noise(x * 0.08 + 50, z * 0.08 + 50) - 0.5) * 0.25);   // wash variation
+        if (S.quality && S.quality.groundShading) {             // [quality] darker in hollows and at the foot of the hills
+          const i0 = Math.max(i - 2, 0), i1 = Math.min(i + 2, N), j0 = Math.max(j - 2, 0), j1 = Math.min(j + 2, N);
+          const around = (this.H[j * n1 + i0] + this.H[j * n1 + i1] + this.H[j0 * n1 + i] + this.H[j1 * n1 + i]) / 4;
+          const hollow = clamp((around - h) / 1.2, 0, 1);       // the ground around is higher than here
+          tmp.multiplyScalar(1 - 0.22 * hollow);
+        }
         vc[idx * 3] = tmp.r; vc[idx * 3 + 1] = tmp.g; vc[idx * 3 + 2] = tmp.b;
       }
     }
@@ -132,12 +138,15 @@ class Terrain {
         pushTri(v10, v01, v11);      // triangle 2
       }
     }
-    const geo = new THREE.BufferGeometry();
+    let geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
     geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
     if (W.flatShading) geo.computeVertexNormals();
     else geo.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
-    const ground = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ vertexColors: true }));
+    if (!W.flatShading) geo = this._sharedGrid(vc);           // [quality] smooth ground: each grid point used once (6x fewer vertices)
+    const groundMat = new THREE.MeshLambertMaterial({ vertexColors: true });
+    if (S.quality && S.quality.paperGrain) addPaperGrain(groundMat, S.quality.paperGrain);   // [quality] paper grain up close
+    const ground = new THREE.Mesh(geo, groundMat);
 
     this.group = new THREE.Group();
     this.group.add(ground);
@@ -145,6 +154,7 @@ class Terrain {
     // ---- 5. Water for the ponds -----------------------------------------------------
     this.waterColor = new THREE.Color(W.colors.water);
     this.waterMat = new THREE.MeshBasicMaterial({ color: this.waterColor.clone(), transparent: true, opacity: 0.85, depthWrite: false });
+    if (S.quality && S.quality.waterShading) addWaterShading(this.waterMat);   // [quality] sky reflection and moving ripples
     for (const c of ponds) {
       const g = new THREE.CircleGeometry(c.radius, 48);
       g.rotateX(-Math.PI / 2);
@@ -162,9 +172,35 @@ class Terrain {
     this.start = { x: a.x, z: a.z, yaw: Math.atan2(-t.x, -t.z) };
   }
 
+  // [quality] the smooth ground as an indexed mesh: same shape and colours, one vertex per grid point.
+  _sharedGrid(vc) {
+    const N = this.N, n1 = N + 1, half = this.size / 2, H = this.H;
+    const pos = new Float32Array(n1 * n1 * 3), nor = new Float32Array(n1 * n1 * 3);
+    for (let j = 0; j < n1; j++) for (let i = 0; i < n1; i++) {
+      const v = j * n1 + i;
+      pos[v * 3] = -half + i * this.cell; pos[v * 3 + 1] = H[v]; pos[v * 3 + 2] = -half + j * this.cell;
+      const i0 = Math.max(i - 1, 0), i1 = Math.min(i + 1, N), j0 = Math.max(j - 1, 0), j1 = Math.min(j + 1, N);
+      const gx = (H[j * n1 + i1] - H[j * n1 + i0]) / ((i1 - i0) * this.cell), gz = (H[j1 * n1 + i] - H[j0 * n1 + i]) / ((j1 - j0) * this.cell);
+      const l = Math.hypot(gx, 1, gz);
+      nor[v * 3] = -gx / l; nor[v * 3 + 1] = 1 / l; nor[v * 3 + 2] = -gz / l;
+    }
+    const idx = new Uint32Array(N * N * 6); let k = 0;
+    for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) {
+      const v00 = j * n1 + i, v10 = v00 + 1, v01 = v00 + n1, v11 = v01 + 1;
+      idx[k++] = v00; idx[k++] = v01; idx[k++] = v10; idx[k++] = v10; idx[k++] = v01; idx[k++] = v11;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+    g.setAttribute('color', new THREE.BufferAttribute(vc.slice(), 3));
+    g.setIndex(new THREE.BufferAttribute(idx, 1));
+    return g;
+  }
+
   // Called every frame: darken the water at night.
   update(level) {
     this.waterMat.color.copy(this.waterColor).multiplyScalar(level);
+    if (this.waterMat.userData.u) this.waterMat.userData.u.uTime.value = performance.now() / 1000;
   }
 
   pathByName(name) {

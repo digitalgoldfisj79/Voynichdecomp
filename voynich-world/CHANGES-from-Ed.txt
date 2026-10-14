@@ -41,6 +41,24 @@ PHONES AND TABLETS (added after the first version)
   js/main.js       pixel ratio capped at 1.5 on touch screens (2 on desktop, as before)
   js/settings.js   new 'touch' block (lookSpeed, stickSize, maxPicture)
 
+QUALITY AND SPEED (third round) - all switches in settings.js -> quality
+  js/quality.js    NEW: shared pieces below, and the automatic resolution.
+  Shading          plants are lit from the sun (the card facing the sun is brighter), darker near the roots,
+                   and each plant has a slightly different tone. Plant pictures are now 768 px (were 640).
+  Shadows          every plant casts its own silhouette onto the ground, away from the sun, lying on the slopes;
+                   they follow the time of day (long in the evening, gone at night) and fade with distance.
+                   Never shorter than shadowMinLength x height, so noon still has shadows.
+  Ground           paper grain and fibres up close; hollows and the foot of the hills slightly darker;
+                   the smooth ground is now one shared mesh (6x fewer vertices, same shape).
+  Water            ponds take the sky colour at a glance and ripple.
+  Speed            the mist's slow swirl is worked out per mesh point instead of per pixel (its cost roughly
+                   halved); only the plants in view and inside the fog are drawn; and the resolution adapts
+                   to hold settings.quality.targetFps (60). The HUD now shows fps (and 'res 80%' when lowered).
+                   Recording mode (R) always keeps full resolution.
+  Changed files    groundfog.js (swirl in the vertex shader), terrain.js (shared mesh, hollows, paper, water),
+                   plants.js (lighting, shadows, culling), sky.js (passes the sun on), main.js (camera position,
+                   resolution, fps in HUD), settings.js (quality block), index.html (loads js/quality.js).
+
 IDEAS NOT DONE
   - animals/ pictures are packed but nothing uses them yet (your Stage 2 animals).
   - The pale fringe on the nymphs could be trimmed by eroding the masks 1-2 px.

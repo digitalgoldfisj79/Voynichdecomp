@@ -35,6 +35,7 @@
     if (groundFog) groundFog.dispose();
     if (terrain) terrain.dispose();
     terrain = new Terrain(S, S.seed);
+    Q.setTerrain(terrain);                           // [quality] ground heights for the plant shadows
     scene.add(terrain.group);
     player.setTerrain(terrain);
     groundFog = new GroundFog(scene, terrain, S);
@@ -47,7 +48,9 @@
     const R = S.recording;
     let w, h;
     if (R.enabled) { w = R.width; h = R.height; renderer.setPixelRatio(1); }
-    else { w = window.innerWidth; h = window.innerHeight; renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, (typeof IS_TOUCH !== 'undefined' && IS_TOUCH) ? 1.5 : 2)); }   // phones: a little less sharp, much faster
+    else { w = window.innerWidth; h = window.innerHeight;
+           const maxPR = (S.quality && S.quality.maxPixelRatio) || 2;
+           renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, (typeof IS_TOUCH !== 'undefined' && IS_TOUCH) ? 1.5 : maxPR) * Q.resolution.scale); }   // phones: a little less sharp, much faster; [quality] x the automatic resolution
     renderer.setSize(w, h, false);                  // the CSS scales it to fit the window, keeping proportions
     camera.aspect = w / h;
     camera.fov = S.camera.fov;
@@ -118,8 +121,10 @@
   let hudTimer = 0;
   function frame() {
     requestAnimationFrame(frame);
-    const dt = Math.min(clock.getDelta(), 0.05);
+    const raw = clock.getDelta(), dt = Math.min(raw, 0.05);
+    Q.resolution.update(raw, renderer, S, applySize);  // [quality] hold the frame rate (settings.quality)
     player.update(dt);
+    Q.camPos.value.copy(camera.position);            // [quality]
     sky.update(camera, dt);
     terrain.update(sky.level);
     plants.update(camera, sky.level, dt);
@@ -129,7 +134,8 @@
     if (hudTimer <= 0) {
       hudTimer = 0.25;
       const m = { walk: 'walking', fly: 'flying', auto: 'autopilot' }[player.mode];
-      hud.textContent = hud.dataset.flash || ('seed ' + S.seed + '  ·  ' + m + '  ·  ' + Math.floor(sky.hour) + ':' + String(Math.floor((sky.hour % 1) * 60)).padStart(2, '0'));
+      hud.textContent = hud.dataset.flash || ('seed ' + S.seed + '  ·  ' + m + '  ·  ' + Math.floor(sky.hour) + ':' + String(Math.floor((sky.hour % 1) * 60)).padStart(2, '0')
+        + '  ·  ' + Math.round(Q.resolution.fps) + ' fps' + (Q.resolution.scale < 0.999 ? '  ·  res ' + Math.round(Q.resolution.scale * 100) + '%' : ''));
     }
     renderer.render(scene, camera);
   }

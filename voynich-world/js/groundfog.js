@@ -48,18 +48,28 @@ class GroundFog {
           uCam: { value: new THREE.Vector3() }, uColor: { value: new THREE.Color() },
         },
         vertexShader: `
-          uniform float uOffset; attribute float aBoost;
-          varying vec3 vWorld; varying float vBoost;
+          uniform float uOffset, uTime, uScale, uSeed, uSwirl; attribute float aBoost;
+          varying vec3 vWorld; varying float vBoost; varying vec2 vWarp;
+          float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+          float vnoise(vec2 p) {
+            vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+            return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+          }
           void main() {
             vec3 p = position; p.y += uOffset;
             vec4 wp = modelMatrix * vec4(p, 1.0);
             vWorld = wp.xyz; vBoost = aBoost;
+            // [quality] the slow swirl is worked out here, once per mesh point, instead of for every pixel
+            // (it changes over tens of metres, so the result looks the same and costs half as much)
+            vec2 q = wp.xz * uScale + uSeed;
+            vWarp = (vec2(vnoise(q * 0.8 + vec2(uTime * 0.05, -uTime * 0.04)),
+                          vnoise(q * 0.8 + vec2(5.2 - uTime * 0.045, 1.3 + uTime * 0.05))) - 0.5) * uSwirl * 5.0;
             gl_Position = projectionMatrix * viewMatrix * wp;
           }`,
         fragmentShader: `
           uniform float uTime, uDensity, uScale, uSeed, uSwirl, uRadius;
           uniform vec3 uCam, uColor;
-          varying vec3 vWorld; varying float vBoost;
+          varying vec3 vWorld; varying float vBoost; varying vec2 vWarp;
           float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
           float vnoise(vec2 p) {
             vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
@@ -67,10 +77,7 @@ class GroundFog {
           }
           void main() {
             vec2 p = vWorld.xz * uScale + uSeed;
-            // swirl: bend the lookup position with a second, slowly drifting noise
-            vec2 w = vec2(vnoise(p * 0.8 + vec2(uTime * 0.05, -uTime * 0.04)),
-                          vnoise(p * 0.8 + vec2(5.2 - uTime * 0.045, 1.3 + uTime * 0.05)));
-            p += (w - 0.5) * uSwirl * 5.0;
+            p += vWarp;                                           // swirl (from the vertex shader)
             p += vec2(0.035, 0.02) * uTime;                       // overall drift with the wind
             float n = vnoise(p) * 0.65 + vnoise(p * 2.1 + 3.7) * 0.35;
             float cloud = smoothstep(0.30, 0.78, n);              // patches with gaps between them

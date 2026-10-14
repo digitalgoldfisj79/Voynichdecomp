@@ -10,7 +10,7 @@ allowed. So this reads
     nymphs/*.png    ->  images/nymphs.js
     animals/*.png   ->  images/animals.js
 
-shrinking each picture (longest side --size pixels, default 640) and storing it
+shrinking each picture (longest side --size pixels, default 640; this copy uses --size 768) and storing it
 as WebP, which keeps the transparency and is about 5x smaller than PNG.
 
 After adding, removing or editing a PNG, run this again and reload the page.

@@ -14,13 +14,14 @@
 // 'crossed' = two cards in an X. segY = how finely the card is cut up
 // (the wind bends the card, so it needs a few slices).
 function makeCardGeometry(crossed, segY) {
-  const quads = crossed ? 2 : 1, pos = [], uv = [], idx = [];
+  const quads = crossed ? 2 : 1, pos = [], uv = [], idx = [], quad = [];
   for (let q = 0; q < quads; q++) {
     const a = q * Math.PI / 2, dx = Math.cos(a) * 0.5, dz = -Math.sin(a) * 0.5, base = pos.length / 3;
     for (let j = 0; j <= segY; j++) {
       const v = j / segY;
       pos.push(-dx, v, -dz,  dx, v, dz);
       uv.push(0, v, 1, v);
+      quad.push(q, q);                              // [quality] which of the two cards (for lighting)
     }
     for (let j = 0; j < segY; j++) {
       const a0 = base + j * 2;
@@ -30,6 +31,7 @@ function makeCardGeometry(crossed, segY) {
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
   g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  g.setAttribute('aQuad', new THREE.Float32BufferAttribute(quad, 1));
   g.setIndex(idx);
   return g;
 }
@@ -196,24 +198,39 @@ class Plants {
     const m = new THREE.Matrix4(), q = new THREE.Quaternion(), pos = new THREE.Vector3(), sc = new THREE.Vector3();
     const up = new THREE.Vector3(0, 1, 0);
     this.geometry = makeCardGeometry(crossed, 8);
+    const QS = this.S.quality || {};
+    if (QS.shadows) this.shadowGeometry = makeCardGeometry(false, 6);
     for (const id of Object.keys(byKind)) {
       const kind = this.kindMap[id], items = byKind[id];
       // MeshBasicMaterial = flat colour, no shading: right for paper cut-outs.
       // alphaTest = pixels more transparent than this are not drawn at all (clean cut edges, no sorting glitches).
       const material = new THREE.MeshBasicMaterial({ map: kind.texture, alphaTest: 0.5, side: THREE.DoubleSide, alphaToCoverage: P.smoothEdges });
       addSway(material, this.wind);
+      if (QS.plantShading) addPlantShading(material);       // [quality] light from the sun, darker near the roots
       const mesh = new THREE.InstancedMesh(this.geometry, material, items.length);
       mesh.frustumCulled = false;                     // instanced meshes would otherwise vanish at odd moments
       mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+      const mats = new Float32Array(items.length * 16);   // [quality] every plant's placement, kept so only the visible ones are sent to be drawn
       items.forEach((p, i) => {
         q.setFromAxisAngle(up, p.yaw);
         pos.set(p.x, p.y - p.h * 0.03, p.z);          // sink the root a hair into the ground
         sc.set(p.h * kind.aspect * p.flip, p.h, 1);
         m.compose(pos, q, sc);
         mesh.setMatrixAt(i, m);
+        m.toArray(mats, i * 16);
       });
       this.group.add(mesh);
-      this.layers.push({ mesh, items, material, aspect: kind.aspect });
+      let shadow = null;
+      if (QS.shadows) {                               // [quality] each plant's shadow, laid on the ground away from the sun
+        const sm = new THREE.MeshBasicMaterial({ map: kind.texture, color: 0x000000, transparent: true, depthWrite: false, fog: false, side: THREE.DoubleSide,
+          polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 });
+        addSway(sm, this.wind); addPlantShadow(sm, this.S);
+        shadow = new THREE.InstancedMesh(this.shadowGeometry, sm, items.length);
+        shadow.instanceMatrix = mesh.instanceMatrix;  // same placements as the plants (one list, sent once)
+        shadow.frustumCulled = false; shadow.renderOrder = 1;
+        this.group.add(shadow);
+      }
+      this.layers.push({ mesh, items, material, aspect: kind.aspect, mats, shadow });
     }
 
     // The landmark: one huge plant you can spot from far away.
@@ -222,6 +239,7 @@ class Plants {
       this.landGeom = makeCardGeometry(true, 8);
       const mat = new THREE.MeshBasicMaterial({ map: kind.texture, alphaTest: 0.5, side: THREE.DoubleSide, fog: !P.landmarkIgnoresFog });
       addSway(mat, this.windLandmark);
+      if ((this.S.quality || {}).plantShading) addPlantShading(mat);   // [quality]
       const mesh = new THREE.Mesh(this.landGeom, mat);
       mesh.position.set(L.x, this.terrain.height(L.x, L.z) - 0.5, L.z);
       mesh.scale.set(P.landmarkHeight * kind.aspect, P.landmarkHeight, 1);
@@ -240,22 +258,41 @@ class Plants {
     this.windLandmark.uAmp.value = W.strength * 0.35;            // the giant landmark leans less
     for (const l of this.layers) l.material.color.setScalar(level);
     if (this.landmark) this.landmark.mat.color.setScalar(level * 0.85);
+    const QS = this.S.quality || {};
+    const shadowA = (QS.shadowStrength ?? 0.38) * Q.sun.power.value;
+    for (const l of this.layers) if (l.shadow) { l.shadow.material.opacity = shadowA; l.shadow.visible = shadowA > 0.01; }
 
-    // Billboard mode: turn every card to face the camera (only when we moved).
-    if (this.S.plants.mode === 'billboard' && this._lastCam.distanceToSquared(camera.position) > 0.0004) {
-      this._lastCam.copy(camera.position);
-      const m = new THREE.Matrix4(), q = new THREE.Quaternion(), pos = new THREE.Vector3(), sc = new THREE.Vector3();
-      const up = new THREE.Vector3(0, 1, 0);
-      for (const l of this.layers) {
-        l.items.forEach((p, i) => {
+    // [quality] Only the plants in view (and not lost in the fog) are sent to be drawn.
+    // Re-checked when you move or turn; in billboard mode the cards are also turned to face you.
+    camera.updateMatrixWorld();
+    const moved = this._lastCam.distanceToSquared(camera.position) > 0.04, turned = !this._lastQ || this._lastQ.angleTo(camera.quaternion) > 0.02;
+    const billboard = this.S.plants.mode === 'billboard';
+    if (!(moved || turned || this._dirty !== false)) return;
+    this._dirty = false; this._lastCam.copy(camera.position); this._lastQ = (this._lastQ || new THREE.Quaternion()).copy(camera.quaternion);
+    const fr = this._frustum || (this._frustum = new THREE.Frustum()), pm = this._pm || (this._pm = new THREE.Matrix4());
+    fr.setFromProjectionMatrix(pm.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
+    const far = QS.cullPlants === false ? 1e9 : this.S.fog.far + 6, far2 = far * far;
+    const sph = this._sph || (this._sph = new THREE.Sphere()), m = new THREE.Matrix4(), q = new THREE.Quaternion(), pos = new THREE.Vector3(), sc = new THREE.Vector3();
+    const up = new THREE.Vector3(0, 1, 0), cx = camera.position.x, cz = camera.position.z;
+    const shadowReach = QS.shadows ? 1 / Math.max(Q.sun.dir.value.y, 0.35) : 0;
+    for (const l of this.layers) {
+      const arr = l.mesh.instanceMatrix.array; let n = 0;
+      l.items.forEach((p, i) => {
+        const dx = p.x - cx, dz = p.z - cz;
+        if (QS.cullPlants !== false) {
+          if (dx * dx + dz * dz > far2) return;
+          sph.center.set(p.x, p.y + p.h * 0.5, p.z); sph.radius = p.h * (0.6 + 0.5 * shadowReach);   // a bit bigger so its shadow is kept too
+          if (!fr.intersectsSphere(sph)) return;
+        }
+        if (billboard) {
           q.setFromAxisAngle(up, Math.atan2(camera.position.x - p.x, camera.position.z - p.z));
-          pos.set(p.x, p.y - p.h * 0.03, p.z);
-          sc.set(p.h * l.aspect * p.flip, p.h, 1);
-          m.compose(pos, q, sc);
-          l.mesh.setMatrixAt(i, m);
-        });
-        l.mesh.instanceMatrix.needsUpdate = true;
-      }
+          pos.set(p.x, p.y - p.h * 0.03, p.z); sc.set(p.h * l.aspect * p.flip, p.h, 1);
+          m.compose(pos, q, sc); m.toArray(arr, n * 16);
+        } else arr.set(l.mats.subarray(i * 16, i * 16 + 16), n * 16);
+        n++;
+      });
+      l.mesh.count = n; l.mesh.visible = n > 0; l.mesh.instanceMatrix.needsUpdate = true;
+      if (l.shadow) { l.shadow.count = n; if (n === 0) l.shadow.visible = false; }
     }
   }
 
@@ -263,6 +300,8 @@ class Plants {
     for (const l of this.layers) { l.mesh.dispose(); l.material.dispose(); }
     if (this.landmark) this.landmark.mat.dispose();
     this.geometry.dispose();
+    if (this.shadowGeometry) this.shadowGeometry.dispose();
+    for (const l of this.layers) if (l.shadow) l.shadow.material.dispose();
     if (this.landGeom) this.landGeom.dispose();
     this.parent.remove(this.group);
   }
