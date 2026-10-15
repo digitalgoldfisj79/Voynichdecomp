@@ -1,4 +1,4 @@
-# VBM – Kurzübersicht für Joachim
+# VBM – Kurzübersicht für Jost
 
 **Stand: 14. Oktober 2026.** Dieses Paket enthält die in dieser Unterhaltung verfügbaren Original- und Auswertungsarchive zu VBM. Die darin enthaltenen ZIP-Dateien sind unverändert übernommen; sie sollten bei Bedarf einzeln entpackt werden.
 
@@ -19,7 +19,7 @@ Die Tests belegen technische Eigenschaften **selbst entworfener Varianten**. Sie
 
 ## Paketstruktur
 
-- `01_Original/`: Joachim originales Prüfzip (unverändert).
+- `01_Original/`: Josts originales Prüfzip (unverändert).
 - `02_Grundlagen_und_Pruefvertraege/`: Ausgangsaudit und Falsifizierbarkeitsvertrag.
 - `03_v141_bis_v142/`: erste reversible und überarbeitete Architekturvarianten.
 - `04_v143_bis_v144/`: wortübergreifender Zustand, alternative Erzeugung, Currier-A/B-Tests.
@@ -27,6 +27,6 @@ Die Tests belegen technische Eigenschaften **selbst entworfener Varianten**. Sie
 - `06_Schreibpraxis/`: mathematische und schreibpraktische Machbarkeitsgrenzen.
 - `07_Weitere_Diagnosen/`: ergänzende Tests zu Nähten und sichtbarer Zustandsabhängigkeit.
 - `MANIFEST_SHA256.csv`: Dateiverzeichnis mit SHA-256-Prüfsummen.
-- `E-Mail_an_Joachim_DE.txt`: Entwurf der Nachricht.
+- `E-Mail_an_Jost_DE.txt`: Entwurf der Nachricht.
 
 Die Archive enthalten die dort verfügbaren Skripte, Ergebnisse, Protokolle und Testdaten. **Nicht beansprucht wird Vollständigkeit bezüglich anderer Chatverläufe, nicht lokal zugänglicher Claude-Archive oder späterer externer Datenänderungen.** An einigen Stellen wird der ursprüngliche externe Transkriptionsstand per Quellenangabe referenziert, statt im ZIP vervielfältigt zu werden. Einzelheiten stehen in den jeweiligen Berichten.

@@ -1,4 +1,4 @@
-# VBM – Analyse und Dateien für Joachim (14. Oktober 2026)
+# VBM – Analyse und Dateien für Jost (14. Oktober 2026)
 
 **Stand: abgeschlossen.** Dieses Verzeichnis enthält die **einzeln ausgepackten Dateien** aus dem VBM-Forschungspaket: 316 Original-, Analyse-, Programm-, Test- und Ergebnisdateien. Ein Binär-ZIP ist für den Zugriff nicht erforderlich.
 
@@ -7,6 +7,7 @@
 - [Alle Einzelfiles und Verzeichnisse](./Material/)
 - [Originalgenerator v138](./Material/01_Original/Generator_v138_Pruefpaket_2026-10-14/gen138/)
 - [Deutscher Paketindex](./Material/LESEN_ZUERST_DE.md)
+- [E-Mail-Entwurf für Jost](./Material/E-Mail_an_Jost_DE.txt)
 - [Direktaudit v138](./01_v138_Originalgenerator_Audit.md)
 - [Falsifizierbarkeits- und Identifizierbarkeitsaudit](./02_VBM_Falsifizierbarkeit.md)
 - [v142: Unabhängige Dekodierung](./03_v142_Decodierbarkeit.md)
