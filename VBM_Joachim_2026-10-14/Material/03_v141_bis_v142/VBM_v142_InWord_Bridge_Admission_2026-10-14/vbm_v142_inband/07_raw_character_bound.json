@@ -1,0 +1,37 @@
+{
+  "native_b": {
+    "words": 21679,
+    "unattested_char_2gram_words": 0,
+    "fraction_char_2gram_violation": 0.0,
+    "unattested_char_3gram_words": 0,
+    "fraction_char_3gram_violation": 0.0
+  },
+  "v142a_dev": {
+    "words": 68396,
+    "unattested_char_2gram_words": 23108,
+    "fraction_char_2gram_violation": 0.33785601497163575,
+    "unattested_char_3gram_words": 60842,
+    "fraction_char_3gram_violation": 0.8895549447336102
+  },
+  "v142a_hartlieb": {
+    "words": 13232,
+    "unattested_char_2gram_words": 4097,
+    "fraction_char_2gram_violation": 0.3096281741233374,
+    "unattested_char_3gram_words": 11519,
+    "fraction_char_3gram_violation": 0.8705411124546554
+  },
+  "v142b_dev": {
+    "words": 68396,
+    "unattested_char_2gram_words": 17386,
+    "fraction_char_2gram_violation": 0.254196151821744,
+    "unattested_char_3gram_words": 60454,
+    "fraction_char_3gram_violation": 0.8838820983683257
+  },
+  "v142b_hartlieb": {
+    "words": 13232,
+    "unattested_char_2gram_words": 2773,
+    "fraction_char_2gram_violation": 0.2095677146311971,
+    "unattested_char_3gram_words": 11745,
+    "fraction_char_3gram_violation": 0.8876209189842805
+  }
+}

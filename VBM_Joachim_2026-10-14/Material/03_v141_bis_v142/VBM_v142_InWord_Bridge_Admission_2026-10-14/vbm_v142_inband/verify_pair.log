@@ -1,0 +1,68 @@
+{
+  "reference": {
+    "words": 21679,
+    "mean_length": 5.060519396651137,
+    "median_length": 5,
+    "pct95": 8,
+    "bad_bigram_count": 0,
+    "bad_trigram_count": 0,
+    "bad_bigram_fraction": 0.0,
+    "bad_trigram_fraction": 0.0,
+    "examples": []
+  },
+  "train": {
+    "words": 68396,
+    "mean_length": 7.105766419088836,
+    "median_length": 6.0,
+    "pct95": 14,
+    "bad_bigram_count": 21052,
+    "bad_trigram_count": 61541,
+    "bad_bigram_fraction": 0.30779577753084975,
+    "bad_trigram_fraction": 0.8997748406339552,
+    "examples": [
+      "oyoq",
+      "oniiaqarotnialoydok",
+      "dytarl",
+      "ydodoydeeckhydot",
+      "yldyt"
+    ]
+  },
+  "hartlieb": {
+    "words": 13232,
+    "mean_length": 7.089102176541717,
+    "median_length": 6.0,
+    "pct95": 14,
+    "bad_bigram_count": 3519,
+    "bad_trigram_count": 12027,
+    "bad_bigram_fraction": 0.2659461910519952,
+    "bad_trigram_fraction": 0.9089328899637243,
+    "examples": [
+      "yjdyq",
+      "yjdyqdyt",
+      "lykaraddyt",
+      "oyoq",
+      "yldyr"
+    ]
+  },
+  "folio_mean_length_range": [
+    2.4696132596685083,
+    5.586206896551724
+  ],
+  "controls": {
+    "train_exact": true,
+    "hartlieb_exact": true,
+    "same_state_collision_detected": true,
+    "escaped_cell_misconfigured_detected": true,
+    "invalid_pair_detected": true,
+    "valid_pair_mutation_intrinsically_rejected": false,
+    "valid_pair_mutation_changes_text": true
+  },
+  "gate": {
+    "roundtrip": true,
+    "0_bad_bigram": false,
+    "0_bad_trigram": false,
+    "control_tamper": true,
+    "separate_mechanism_test": "NOT_IDENTIFIED",
+    "matched_shuffle_sd_for_atomic_gate": 0.0
+  }
+}

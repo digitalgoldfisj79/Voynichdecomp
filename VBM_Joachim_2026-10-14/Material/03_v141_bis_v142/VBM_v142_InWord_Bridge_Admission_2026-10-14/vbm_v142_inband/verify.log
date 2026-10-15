@@ -1,0 +1,325 @@
+{
+  "engineering": {
+    "train": {
+      "word_count": 68396,
+      "source_characters": 280665,
+      "cipher_characters": 430820,
+      "source_char_per_word": 4.103529446166442,
+      "cipher_char_per_word": 6.298906368793497,
+      "cipher_char_median": 6.0,
+      "cipher_95pct": 12,
+      "types": 8247,
+      "exact": true
+    },
+    "hartlieb": {
+      "word_count": 13232,
+      "source_characters": 53967,
+      "cipher_characters": 83961,
+      "source_char_per_word": 4.078521765417171,
+      "cipher_char_per_word": 6.345299274486094,
+      "cipher_char_median": 6.0,
+      "cipher_95pct": 12,
+      "types": 2276,
+      "exact": true
+    }
+  },
+  "controls": {
+    "independent_roundtrip_hartlieb": true,
+    "same_state_code_collision_detected": true,
+    "state_marker_collision_detected": true,
+    "prefix_collision_detected": true,
+    "invalid_glyph_rejected": true,
+    "deleted_word_space_detected_intrinsically": false,
+    "deleted_word_space_changes_decoding": true,
+    "novel_valid_synthetic_word_decodable": true,
+    "section_preserving_line_shuffle_surface_positive": true,
+    "word_order_is_not_tested_by_seam_gate": true
+  },
+  "train_surface": {
+    "count": 68396,
+    "mean_character_length": 6.298906368793497,
+    "median": 6.0,
+    "pct95": 12,
+    "unattested_bigram_token_count": 24114,
+    "unattested_trigram_token_count": 60897,
+    "unattested_bigram_token_fraction": 0.35256447745482195,
+    "unattested_trigram_token_fraction": 0.8903590853266273,
+    "bad_bigram_positions": 27840,
+    "bad_trigram_positions": 179146,
+    "examples": [
+      {
+        "token": "yliysh",
+        "invalid_bigram": [
+          [
+            "i",
+            "y"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "l",
+            "i",
+            "y"
+          ],
+          [
+            "i",
+            "y",
+            "sh"
+          ]
+        ]
+      },
+      {
+        "token": "iyek",
+        "invalid_bigram": [
+          [
+            "i",
+            "y"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "i",
+            "y",
+            "e"
+          ]
+        ]
+      },
+      {
+        "token": "erd",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "e",
+            "r",
+            "d"
+          ]
+        ]
+      },
+      {
+        "token": "anioleradlikiyok",
+        "invalid_bigram": [
+          [
+            "i",
+            "y"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "o",
+            "l",
+            "e"
+          ],
+          [
+            "l",
+            "e",
+            "r"
+          ]
+        ]
+      },
+      {
+        "token": "erdeym",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "e",
+            "r",
+            "d"
+          ],
+          [
+            "d",
+            "e",
+            "y"
+          ]
+        ]
+      },
+      {
+        "token": "rochiloecth",
+        "invalid_bigram": [
+          [
+            "i",
+            "l"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "o",
+            "ch",
+            "i"
+          ],
+          [
+            "ch",
+            "i",
+            "l"
+          ]
+        ]
+      },
+      {
+        "token": "ylerd",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "l",
+            "e",
+            "r"
+          ],
+          [
+            "e",
+            "r",
+            "d"
+          ]
+        ]
+      }
+    ]
+  },
+  "hartlieb_surface": {
+    "count": 13232,
+    "mean_character_length": 6.345299274486094,
+    "median": 6.0,
+    "pct95": 12,
+    "unattested_bigram_token_count": 4377,
+    "unattested_trigram_token_count": 11536,
+    "unattested_bigram_token_fraction": 0.3307889963724305,
+    "unattested_trigram_token_fraction": 0.871825876662636,
+    "bad_bigram_positions": 4966,
+    "bad_trigram_positions": 32838,
+    "examples": [
+      {
+        "token": "ypeyq",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "p",
+            "e",
+            "y"
+          ],
+          [
+            "e",
+            "y",
+            "q"
+          ]
+        ]
+      },
+      {
+        "token": "yleym",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "l",
+            "e",
+            "y"
+          ],
+          [
+            "e",
+            "y",
+            "m"
+          ]
+        ]
+      },
+      {
+        "token": "ypeyqerd",
+        "invalid_bigram": [
+          [
+            "q",
+            "e"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "p",
+            "e",
+            "y"
+          ],
+          [
+            "e",
+            "y",
+            "q"
+          ]
+        ]
+      },
+      {
+        "token": "selakerd",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "s",
+            "e",
+            "l"
+          ],
+          [
+            "k",
+            "e",
+            "r"
+          ]
+        ]
+      },
+      {
+        "token": "iyek",
+        "invalid_bigram": [
+          [
+            "i",
+            "y"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "i",
+            "y",
+            "e"
+          ]
+        ]
+      },
+      {
+        "token": "yleyf",
+        "invalid_bigram": [],
+        "invalid_trigram": [
+          [
+            "l",
+            "e",
+            "y"
+          ],
+          [
+            "e",
+            "y",
+            "f"
+          ]
+        ]
+      },
+      {
+        "token": "serotiyok",
+        "invalid_bigram": [
+          [
+            "i",
+            "y"
+          ]
+        ],
+        "invalid_trigram": [
+          [
+            "s",
+            "e",
+            "r"
+          ],
+          [
+            "o",
+            "t",
+            "i"
+          ]
+        ]
+      }
+    ]
+  },
+  "reference_mean": 5.060519396651137,
+  "folio_length_range": [
+    2.4696132596685083,
+    5.586206896551724
+  ],
+  "gates": {
+    "exact_roundtrip": true,
+    "one_token_per_source_word": true,
+    "prefix_free": true,
+    "negative_control_sensitivity": true,
+    "seam_bigram_pass": false,
+    "seam_trigram_pass": false,
+    "historical_mechanism": "NOT_IDENTIFIED",
+    "author_pair_vowel_mechanism": "NOT_IMPLEMENTED (explicitly relaxed)"
+  }
+}

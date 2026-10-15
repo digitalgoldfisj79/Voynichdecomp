@@ -1,0 +1,29 @@
+{
+  "program":"VBM-v142 in-band grammar feasibility (engineering only)",
+  "baseline":"v141 exact decoder PASS, Voynich surface NO-GO; v138 original global injectivity NO-GO",
+  "test_date":"2026-10-14",
+  "hypotheses":{
+    "H1":"One printed ciphertext token per normalized plaintext word; in-word markers and state-conditional prefix-free cells recover exact source and boundaries without per-message side information.",
+    "H2":"Output passes strict glyph/atom seam admissibility against author's B-reference inventory without modification to fit the generated output.",
+    "H3":"Historical VBM identifiable against an unconstrained autonomous slot generator using manuscript surface observables alone. This is declared nonidentifiable without independent anchor, and NOT tested."
+  },
+  "precommitted_engineering_gates":{
+    "exact_roundtrip_fraction":1.0,
+    "spaces_represent_normalized_source_word_boundaries":true,
+    "standalone_control_tokens":0,
+    "unattested_atom_bigram_tokens":0,
+    "unattested_atom_trigram_tokens":0,
+    "per_state_prefix_free":true,
+    "max_source_units":235,
+    "max_cell_inventory":443,
+    "max_explicit_mapping_plus_inventory_entries":697,
+    "max_grammar_rules":12
+  },
+  "test_order":["check input hashes and existing falsifications","prove prefix-free capacity and present grammar","build from Bavarian only and freeze","independent decode Bavarian and Hartlieb","hard negatives including collisions and tampered markers","surface gate against fixed B inventory; halt if fails"],
+  "leakage_rules":"Source unit ordering may use only Bavarian development counts. Existing B inventory is imported as historically fitted and therefore any compatibility is in-sample; use only as a necessary feasibility gate, never as independent corroboration.",
+  "explicitly_relaxed_from_v141":"Vowels now have dedicated internal single-glyph values, not the original next-key-dependent VBM pair table. This is a constructive engineering control, not the same VBM hypothesis.",
+  "not_permitted":"No word dictionary expansion, no post-hoc seam repairs, no exceptions for heldout failures, no global manuscript claim, no use of holdout to fit codebook, no VMS section pooling for inference.",
+  "positive_control":"Exact decode of text encoded by grammar from separate source; arbitrary new combinations of existing alphabet.",
+  "hard_negatives":["duplicate codeword in one state must fail", "marker collision with cell key must fail", "invalid cell must fail", "empty source token must fail", "word-space removal must not be interpreted as original plaintext"],
+  "mechanism_identification":"Not admissible without independently verified plaintext/linguistic anchor or a frozen prediction that hard matched autonomous controls cannot reproduce."
+}

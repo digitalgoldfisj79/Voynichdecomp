@@ -1,0 +1,1359 @@
+{
+  "engineering": {
+    "train": {
+      "word_count": 68396,
+      "source_characters": 280665,
+      "cipher_characters": 430820,
+      "source_char_per_word": 4.103529446166442,
+      "cipher_char_per_word": 6.298906368793497,
+      "cipher_char_median": 6.0,
+      "cipher_95pct": 12,
+      "types": 8247,
+      "exact": true
+    },
+    "hartlieb": {
+      "word_count": 13232,
+      "source_characters": 53967,
+      "cipher_characters": 83961,
+      "source_char_per_word": 4.078521765417171,
+      "cipher_char_per_word": 6.345299274486094,
+      "cipher_char_median": 6.0,
+      "cipher_95pct": 12,
+      "types": 2276,
+      "exact": true
+    }
+  },
+  "controls": {
+    "independent_roundtrip_hartlieb": true,
+    "same_state_code_collision_detected": true,
+    "state_marker_collision_detected": true,
+    "prefix_collision_detected": true,
+    "invalid_glyph_rejected": true,
+    "deleted_word_space_detected_intrinsically": false,
+    "deleted_word_space_changes_decoding": true,
+    "novel_valid_synthetic_word_decodable": true,
+    "section_preserving_line_shuffle_surface_positive": true,
+    "word_order_is_not_tested_by_seam_gate": true
+  },
+  "surface": {
+    "reference_b": {
+      "count": 21679,
+      "mean_character_length": 5.060519396651137,
+      "median": 5,
+      "pct95": 8,
+      "unattested_bigram_token_count": 0,
+      "unattested_trigram_token_count": 0,
+      "unattested_bigram_token_fraction": 0.0,
+      "unattested_trigram_token_fraction": 0.0,
+      "bad_bigram_positions": 0,
+      "bad_trigram_positions": 0,
+      "examples": []
+    },
+    "by_folio": {
+      "f26r": {
+        "count": 90,
+        "mean_character_length": 4.8,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f26v": {
+        "count": 92,
+        "mean_character_length": 4.967391304347826,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f27r": {
+        "count": 94,
+        "mean_character_length": 4.095744680851064,
+        "median": 4.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f27v": {
+        "count": 61,
+        "mean_character_length": 4.688524590163935,
+        "median": 4,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f28r": {
+        "count": 68,
+        "mean_character_length": 5.088235294117647,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f28v": {
+        "count": 67,
+        "mean_character_length": 4.567164179104478,
+        "median": 4,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f32r": {
+        "count": 76,
+        "mean_character_length": 4.697368421052632,
+        "median": 4.5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f32v": {
+        "count": 89,
+        "mean_character_length": 4.235955056179775,
+        "median": 4,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f48r": {
+        "count": 89,
+        "mean_character_length": 5.280898876404494,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f48v": {
+        "count": 128,
+        "mean_character_length": 4.5859375,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f49r": {
+        "count": 108,
+        "mean_character_length": 4.944444444444445,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f49v": {
+        "count": 161,
+        "mean_character_length": 4.77639751552795,
+        "median": 5,
+        "pct95": 9,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f50r": {
+        "count": 93,
+        "mean_character_length": 5.053763440860215,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f50v": {
+        "count": 99,
+        "mean_character_length": 5.0606060606060606,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f51r": {
+        "count": 89,
+        "mean_character_length": 5.370786516853933,
+        "median": 5,
+        "pct95": 9,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f51v": {
+        "count": 82,
+        "mean_character_length": 5.195121951219512,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f52r": {
+        "count": 68,
+        "mean_character_length": 4.676470588235294,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f52v": {
+        "count": 78,
+        "mean_character_length": 4.961538461538462,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f53r": {
+        "count": 61,
+        "mean_character_length": 4.377049180327869,
+        "median": 4,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f53v": {
+        "count": 73,
+        "mean_character_length": 5.397260273972603,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f54r": {
+        "count": 110,
+        "mean_character_length": 4.136363636363637,
+        "median": 4.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f54v": {
+        "count": 93,
+        "mean_character_length": 4.559139784946237,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f55r": {
+        "count": 124,
+        "mean_character_length": 4.443548387096774,
+        "median": 4.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f55v": {
+        "count": 105,
+        "mean_character_length": 4.447619047619048,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f56r": {
+        "count": 103,
+        "mean_character_length": 4.776699029126213,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f56v": {
+        "count": 91,
+        "mean_character_length": 4.846153846153846,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f57r": {
+        "count": 87,
+        "mean_character_length": 5.586206896551724,
+        "median": 6,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f57v": {
+        "count": 181,
+        "mean_character_length": 2.4696132596685083,
+        "median": 1,
+        "pct95": 6,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f58r": {
+        "count": 377,
+        "mean_character_length": 5.06631299734748,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f58v": {
+        "count": 372,
+        "mean_character_length": 4.801075268817204,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f65r": {
+        "count": 3,
+        "mean_character_length": 4,
+        "median": 4,
+        "pct95": 5,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f65v": {
+        "count": 45,
+        "mean_character_length": 4.8,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f66r": {
+        "count": 344,
+        "mean_character_length": 4.8895348837209305,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f66v": {
+        "count": 113,
+        "mean_character_length": 5.185840707964601,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f75r": {
+        "count": 418,
+        "mean_character_length": 4.779904306220096,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f75v": {
+        "count": 358,
+        "mean_character_length": 4.681564245810056,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f76r": {
+        "count": 569,
+        "mean_character_length": 4.776801405975395,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f76v": {
+        "count": 399,
+        "mean_character_length": 5.293233082706767,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f77r": {
+        "count": 332,
+        "mean_character_length": 5.3343373493975905,
+        "median": 6.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f77v": {
+        "count": 331,
+        "mean_character_length": 5.1299093655589125,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f78r": {
+        "count": 294,
+        "mean_character_length": 4.812925170068027,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f78v": {
+        "count": 294,
+        "mean_character_length": 4.6020408163265305,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f79r": {
+        "count": 382,
+        "mean_character_length": 4.882198952879581,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f79v": {
+        "count": 355,
+        "mean_character_length": 5.053521126760564,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f80r": {
+        "count": 445,
+        "mean_character_length": 5.013483146067416,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f80v": {
+        "count": 376,
+        "mean_character_length": 4.86436170212766,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f81r": {
+        "count": 210,
+        "mean_character_length": 4.7,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f81v": {
+        "count": 252,
+        "mean_character_length": 4.825396825396825,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f82r": {
+        "count": 290,
+        "mean_character_length": 5.413793103448276,
+        "median": 6.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f82v": {
+        "count": 319,
+        "mean_character_length": 5.1880877742946705,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f83r": {
+        "count": 341,
+        "mean_character_length": 5.392961876832844,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f83v": {
+        "count": 259,
+        "mean_character_length": 5.351351351351352,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f84r": {
+        "count": 367,
+        "mean_character_length": 4.874659400544959,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f84v": {
+        "count": 338,
+        "mean_character_length": 4.804733727810651,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f103r": {
+        "count": 522,
+        "mean_character_length": 5.237547892720307,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f103v": {
+        "count": 452,
+        "mean_character_length": 4.9402654867256635,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f104r": {
+        "count": 447,
+        "mean_character_length": 5.400447427293065,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f104v": {
+        "count": 474,
+        "mean_character_length": 5.343881856540085,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f105r": {
+        "count": 378,
+        "mean_character_length": 5.156084656084656,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f105v": {
+        "count": 398,
+        "mean_character_length": 5.123115577889447,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f106r": {
+        "count": 430,
+        "mean_character_length": 5.527906976744186,
+        "median": 6.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f106v": {
+        "count": 443,
+        "mean_character_length": 5.334085778781039,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f107r": {
+        "count": 486,
+        "mean_character_length": 5.18724279835391,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f107v": {
+        "count": 462,
+        "mean_character_length": 5.147186147186147,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f108r": {
+        "count": 490,
+        "mean_character_length": 5.289795918367347,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f108v": {
+        "count": 580,
+        "mean_character_length": 5.281034482758621,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f111r": {
+        "count": 622,
+        "mean_character_length": 5.254019292604502,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f111v": {
+        "count": 564,
+        "mean_character_length": 5.074468085106383,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f112r": {
+        "count": 398,
+        "mean_character_length": 4.907035175879397,
+        "median": 5.0,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f112v": {
+        "count": 419,
+        "mean_character_length": 5.312649164677804,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f113r": {
+        "count": 529,
+        "mean_character_length": 5.446124763705104,
+        "median": 6,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f113v": {
+        "count": 499,
+        "mean_character_length": 5.062124248496994,
+        "median": 5,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f114r": {
+        "count": 456,
+        "mean_character_length": 5.453947368421052,
+        "median": 5.0,
+        "pct95": 9,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f114v": {
+        "count": 374,
+        "mean_character_length": 5.577540106951871,
+        "median": 6.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f115r": {
+        "count": 460,
+        "mean_character_length": 5.3,
+        "median": 5.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f115v": {
+        "count": 408,
+        "mean_character_length": 5.487745098039215,
+        "median": 6.0,
+        "pct95": 8,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f116r": {
+        "count": 543,
+        "mean_character_length": 4.6187845303867405,
+        "median": 5,
+        "pct95": 7,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      },
+      "f116v": {
+        "count": 2,
+        "mean_character_length": 4.5,
+        "median": 4.5,
+        "pct95": 5,
+        "unattested_bigram_token_count": 0,
+        "unattested_trigram_token_count": 0,
+        "unattested_bigram_token_fraction": 0.0,
+        "unattested_trigram_token_fraction": 0.0,
+        "bad_bigram_positions": 0,
+        "bad_trigram_positions": 0,
+        "examples": []
+      }
+    },
+    "train": {
+      "count": 68396,
+      "mean_character_length": 6.298906368793497,
+      "median": 6.0,
+      "pct95": 12,
+      "unattested_bigram_token_count": 24114,
+      "unattested_trigram_token_count": 60897,
+      "unattested_bigram_token_fraction": 0.35256447745482195,
+      "unattested_trigram_token_fraction": 0.8903590853266273,
+      "bad_bigram_positions": 27840,
+      "bad_trigram_positions": 179146,
+      "examples": [
+        {
+          "token": "yliysh",
+          "invalid_bigram": [
+            [
+              "i",
+              "y"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "l",
+              "i",
+              "y"
+            ],
+            [
+              "i",
+              "y",
+              "sh"
+            ]
+          ]
+        },
+        {
+          "token": "iyek",
+          "invalid_bigram": [
+            [
+              "i",
+              "y"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "i",
+              "y",
+              "e"
+            ]
+          ]
+        },
+        {
+          "token": "erd",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "e",
+              "r",
+              "d"
+            ]
+          ]
+        },
+        {
+          "token": "anioleradlikiyok",
+          "invalid_bigram": [
+            [
+              "i",
+              "y"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "o",
+              "l",
+              "e"
+            ],
+            [
+              "l",
+              "e",
+              "r"
+            ]
+          ]
+        },
+        {
+          "token": "erdeym",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "e",
+              "r",
+              "d"
+            ],
+            [
+              "d",
+              "e",
+              "y"
+            ]
+          ]
+        },
+        {
+          "token": "rochiloecth",
+          "invalid_bigram": [
+            [
+              "i",
+              "l"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "o",
+              "ch",
+              "i"
+            ],
+            [
+              "ch",
+              "i",
+              "l"
+            ]
+          ]
+        },
+        {
+          "token": "ylerd",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "l",
+              "e",
+              "r"
+            ],
+            [
+              "e",
+              "r",
+              "d"
+            ]
+          ]
+        }
+      ]
+    },
+    "hartlieb": {
+      "count": 13232,
+      "mean_character_length": 6.345299274486094,
+      "median": 6.0,
+      "pct95": 12,
+      "unattested_bigram_token_count": 4377,
+      "unattested_trigram_token_count": 11536,
+      "unattested_bigram_token_fraction": 0.3307889963724305,
+      "unattested_trigram_token_fraction": 0.871825876662636,
+      "bad_bigram_positions": 4966,
+      "bad_trigram_positions": 32838,
+      "examples": [
+        {
+          "token": "ypeyq",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "p",
+              "e",
+              "y"
+            ],
+            [
+              "e",
+              "y",
+              "q"
+            ]
+          ]
+        },
+        {
+          "token": "yleym",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "l",
+              "e",
+              "y"
+            ],
+            [
+              "e",
+              "y",
+              "m"
+            ]
+          ]
+        },
+        {
+          "token": "ypeyqerd",
+          "invalid_bigram": [
+            [
+              "q",
+              "e"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "p",
+              "e",
+              "y"
+            ],
+            [
+              "e",
+              "y",
+              "q"
+            ]
+          ]
+        },
+        {
+          "token": "selakerd",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "s",
+              "e",
+              "l"
+            ],
+            [
+              "k",
+              "e",
+              "r"
+            ]
+          ]
+        },
+        {
+          "token": "iyek",
+          "invalid_bigram": [
+            [
+              "i",
+              "y"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "i",
+              "y",
+              "e"
+            ]
+          ]
+        },
+        {
+          "token": "yleyf",
+          "invalid_bigram": [],
+          "invalid_trigram": [
+            [
+              "l",
+              "e",
+              "y"
+            ],
+            [
+              "e",
+              "y",
+              "f"
+            ]
+          ]
+        },
+        {
+          "token": "serotiyok",
+          "invalid_bigram": [
+            [
+              "i",
+              "y"
+            ]
+          ],
+          "invalid_trigram": [
+            [
+              "s",
+              "e",
+              "r"
+            ],
+            [
+              "o",
+              "t",
+              "i"
+            ]
+          ]
+        }
+      ]
+    },
+    "native_reference_folios": 78,
+    "inventory_in_sample": true,
+    "reference_folio_mean_length_min_max": [
+      2.4696132596685083,
+      5.586206896551724
+    ],
+    "seam_matched_shuffle_null_standard_deviation": 0.0,
+    "null_interpretation": "All within-line token permutations retain the exact token multiset, hence seam-count SD exactly zero; seam gate cannot discriminate any ordering mechanism."
+  },
+  "gates": {
+    "exact_roundtrip": true,
+    "one_token_per_source_word": true,
+    "prefix_free": true,
+    "negative_control_sensitivity": true,
+    "seam_bigram_pass": false,
+    "seam_trigram_pass": false,
+    "historical_mechanism": "NOT_IDENTIFIED",
+    "author_pair_vowel_mechanism": "NOT_IMPLEMENTED (explicitly relaxed)"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "date":"2026-10-14",
+  "program":"VBM-v142b pair-preserving in-word branch",
+  "parent":"v142 single-glyph vowels exact roundtrip PASS / atomic seam gate FAIL",
+  "scope":"One final independent architecture branch, not a post-hoc parameter search: restore original supported (bridge, next-key)->vowel lookup in a prefix-free in-word grammar.",
+  "technical_hypotheses":["All vowel transitions are recoverable from an actually attested bridge and next cell key", "One ciphertext token per source word and independently recoverable normalised plaintext", "Atomic seams satisfy exact reference bigram/trigram gate"],
+  "frozen_rules":["Native word spaces encode German word boundaries", "Consonant runs use shared source units and vowel-state-specific prefix-free key/state/head cells", "Allowed keys are a=y,n; e=y,n,r; i=y; o=y; u=y,r", "Nonempty bridges are a:sh-y/o-n, e:d-y/ch-n/a-r, i:o-y, o:p-y, u:l-y/ch-r, all in supplied bridge lookup", "No vowel-specific key tables learned from Hartlieb", "If 146-cell y inventory insufficient for 222 universal units, reserve exactly one escape and use two cells for higher-rank units in i/o", "A vowel with empty following consonant run uses an explicit epsilon cell INSIDE the ciphertext word", "No explicit control tokens, no source word dictionary, no seam repairs, no inverse event ledger", "Grammar parser rejects invalid pairs and same-state collisions, in-word boundary recoverable only as whitespace"],
+  "qualification":["100% exact independently decoded train and Hartlieb", "0 generated tokens with reference-unattested atomic bigrams", "0 generated tokens with reference-unattested atomic trigrams", "No hard-negative parser control bypass for collision, missing bridge, or unknown cell", "No historical hypothesis promotion without discriminating matched null and independent anchors"],
+  "stop_rule":"If either source or holdout fails exact independent decode, or the fixed native seam gate fails, record NO-GO. Do not retune pair mapping or introduce new source-specific repairs in this stage."
+}
