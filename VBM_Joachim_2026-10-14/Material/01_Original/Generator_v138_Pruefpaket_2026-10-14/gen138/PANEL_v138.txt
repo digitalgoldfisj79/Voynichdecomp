@@ -1,0 +1,23 @@
+                                    vms_B_REVA_atomstream.  GENERAT_v138_kurzertex
+Zeilen                                                2557                   10272
+Token                                                21343                   99973
+LAM p/t/k/f % der Zeilen                              20.7                    16.1
+LAM Verteilung                                p10 t8 k2 f1             p7 t6 k2 f1
+m-Token am REVA-Zeilenanfang %                        13.1                    12.9
+ohne Schluessel %                                      6.2                     0.0
+kopflos %                                             11.9                     7.0
+kopflos Top                             lo niia ra ro la y      ro y la yo lo niia
+Vorbau %                                              25.1                    26.7
+Vorbau mit Lauf %                                     61.4                    39.1
+Vorbau innen l %                                      24.4                    23.4
+Vorbau innen Bank %                                    8.7                     5.6
+Space aus Paar %                                      76.0                    86.0
+Fuge oq->y %                                          77.0                    94.0
+Fuge l->y %                                           62.0                    56.0
+Fuge a->r %                                           48.0                    89.0
+Fuge ch->n %                                          28.0                    39.0
+Paar H|Zellen bit                                     1.31                    1.08
+Paar Top %                                            67.0                    71.0
+Typen/20000                                           4279                    2659
+Hapax %                                               67.6                    48.4
+WL                                                    4.55                    4.76
