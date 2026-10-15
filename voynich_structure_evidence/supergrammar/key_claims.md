@@ -1,10 +1,11 @@
 # Super Grammar claims relevant to the transformation / ordering questions
 
 Exported verbatim from the claims register (`claims_register_v03.csv`, all 147 rows). Status is the register's own
-`certification_status`: only CERTIFIED / CERTIFIED_BOUNDED items are part of the certified v03 kernel; OPEN_UNCERTIFIED and
-OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and rejected. Where a claim appears under more than one run, each row is shown.
+`certification_status`, the ledger label set before certificates were issued. Certification itself is recorded in
+`certificate_status` (see [`certification/`](certification/README.md)); the only claim below with a certified certificate is SGK17 in run supergrammar_v03_20260920, which backs theorem SGT06.
+OPEN_UNCERTIFIED and OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and rejected. Where a claim appears under more than one run, each row is shown.
 
-## SG64_PORTABLE_REALIZATION_OPERATOR_LIBRARY  (OPEN_UNCERTIFIED; run supergrammar_v04_realization_library_20260924; layer surface_choice)
+## SG64_PORTABLE_REALIZATION_OPERATOR_LIBRARY  (OPEN_UNCERTIFIED; certificate NO_CERTIFICATE; run supergrammar_v04_realization_library_20260924; layer surface_choice)
 
 **Statement.** Beyond the Xy<->Xdy operator, ordinary Voynich running text contains a portable family-conditioned one-edit realization layer: multiple operator classes discovered in Herbal A/B preserve the same A/B polarity under independent Pharmaceutical-A versus Biological+Stars-B validation.
 
@@ -14,7 +15,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Exhaustive 5,076-type one-edit graph. Discovery restricted to Herbal A/B; validation restricted to non-Herbal Pharmaceutical-A versus Biological+Stars-B. Operator statistics in vms_realization_operator_outdomain_v01.
 
-## SG65_REALIZATION_FAMILY_COMPRESSION_BOUND  (OPEN_UNCERTIFIED; run supergrammar_v04_realization_library_20260924; layer surface_choice)
+## SG65_REALIZATION_FAMILY_COMPRESSION_BOUND  (OPEN_UNCERTIFIED; certificate NO_CERTIFICATE; run supergrammar_v04_realization_library_20260924; layer surface_choice)
 
 **Statement.** A conservative portable realization library substantially reduces exact-EVA type and hapax counts, but the resulting components are formal surface families rather than demonstrated semantic equivalence classes.
 
@@ -24,7 +25,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Derived graph-component bound from vms_realization_library_summary_v01; operators are externally validated SG64 classes plus separately tested gallows pairs where stated.
 
-## SG66_LATENT_ROOT_OBFUSCATION_HYPOTHESIS  (OPEN_UNCERTIFIED; run supergrammar_v04_realization_library_20260924; layer latent_state)
+## SG66_LATENT_ROOT_OBFUSCATION_HYPOTHESIS  (OPEN_UNCERTIFIED; certificate NO_CERTIFICATE; run supergrammar_v04_realization_library_20260924; layer latent_state)
 
 **Statement.** A subset of the validated surface-realization operators is consistent with many-to-one latent-root obfuscation: collapsing those families removes substantially more Currier A/B lexical divergence than size-matched random collapses, and several operator pairs occupy unusually similar external contexts. This supports a latent-root mechanism hypothesis but does not yet establish semantic identity for every operator family.
 
@@ -34,7 +35,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Post-SG64 hypothesis test on conservative top8 realization components plus separately established gallows; Currier A/B JSD collapse null and root-neighbour context JSD matched one-edit controls.
 
-## SG47_NPCOMPL_MULTI_REGIME  (OPEN_HELD; run supergrammar_v03_20260920; layer register)
+## SG47_NPCOMPL_MULTI_REGIME  (OPEN_HELD; certificate OPEN; run supergrammar_v03_20260920; layer register)
 
 **Statement.** The proposed early-A / late-A-pharma / B-core / biological / ACZ page ecology is a useful descriptive partition, but it is not resolved as an independent held-out grammar layer under whole-physical-quire validation.
 
@@ -44,7 +45,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Voynich Ninja thread 6084 audit + Super-Grammar parent mediation 2026-09-18
 
-## SG12_CURRIER_COORDINATE  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer modulation)
+## SG12_CURRIER_COORDINATE  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer modulation)
 
 **Statement.** Currier A/B is a useful coarse graphotactic/register coordinate, but it is not independently identified as a grammar switch apart from Davis hand and section.
 
@@ -54,7 +55,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** surface canonicalisation audit; Claude q72-style residualisation
 
-## SGK17_CURRIER_NOT_INDEPENDENT  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer modulation)
+## SGK17_CURRIER_NOT_INDEPENDENT  (OPEN_UNCERTIFIED; certificate CERTIFIED_BOUNDED; run supergrammar_v03_20260920; layer modulation)
 
 **Statement.** Current manuscript support cannot identify Currier A/B as an effect independent of both section and Davis hand because no observed section-plus-hand stratum contains both A and B.
 
@@ -64,7 +65,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Currier support audit and whole-quire nested tests in SG1.0; vms_supergrammar_currier_support_v01.
 
-## SGK17_CURRIER_NOT_INDEPENDENT  (OPEN_HELD; run supergrammar_v031_20260928; layer modulation)
+## SGK17_CURRIER_NOT_INDEPENDENT  (OPEN_HELD; certificate OPEN; run supergrammar_v031_20260928; layer modulation)
 
 **Statement.** Current manuscript support cannot identify Currier A/B as an effect independent of both section and Davis hand because no observed section-plus-hand stratum contains both A and B.
 
@@ -74,7 +75,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** v03.1 correction candidate of supergrammar_v03_20260920; Currier support audit and whole-quire nested tests in SG1.0; vms_supergrammar_currier_support_v01.
 
-## SG08_PAGE_LEAF_REGIME  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer regional_state)
+## SG08_PAGE_LEAF_REGIME  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** Surface/subword regime is strongly localised at page and especially physical-leaf scale.
 
@@ -84,7 +85,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Sept 2026 boundary localisation/local-state carrier
 
-## SG09_BIFOLIUM_NOT_INDEPENDENT_STATE  (TERMINAL_REJECTED; run supergrammar_v03_20260920; layer regional_state)
+## SG09_BIFOLIUM_NOT_INDEPENDENT_STATE  (TERMINAL_REJECTED; certificate REJECTED; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** Do not model bifolium as an independently established linguistic state unit.
 
@@ -94,7 +95,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Sept 2026 boundary localisation
 
-## SG57_BIFOLIUM_REPERTOIRE_STATE  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer repertoire)
+## SG57_BIFOLIUM_REPERTOIRE_STATE  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer repertoire)
 
 **Statement.** A low-dimensional repertoire-plan state has a reproducible physical-bifolium component, including a two-state mode within the clean Herbal hand-S1 subset that survives whole-quire holdout.
 
@@ -104,7 +105,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** SG55 follow-ups C/D and four-state persistence localisation, 2026-09-18
 
-## SG23_REMOTE_STATE_REUSE  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer regional_state)
+## SG23_REMOTE_STATE_REUSE  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** Subword regimes recur on remote pages/quires after matching broad metadata, so local state is reusable rather than purely continuous page drift.
 
@@ -114,7 +115,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Sept 2026 local-state carrier
 
-## SGK12_REMOTE_STATE_REUSE  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer regional_state)
+## SGK12_REMOTE_STATE_REUSE  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** A subword-state match selected on one split of paragraphs predicts a remote matched page on the held-out split in both split directions.
 
@@ -124,7 +125,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** local-state carrier programme; vms_local_state_carrier_results_v01.
 
-## SGK10_SHORT_STATE_LAG1  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer regional_state)
+## SGK10_SHORT_STATE_LAG1  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** Local subword-state similarity remains elevated at paragraph lag 1 under the registered matched null.
 
@@ -134,7 +135,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** local-state carrier programme; vms_local_state_carrier_results_v01.
 
-## SGK11_SHORT_STATE_LAG2  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer regional_state)
+## SGK11_SHORT_STATE_LAG2  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer regional_state)
 
 **Statement.** Local subword-state similarity remains elevated at paragraph lag 2 under the registered matched null.
 
@@ -144,7 +145,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** local-state carrier programme; vms_local_state_carrier_results_v01.
 
-## SG22_REPERTOIRE_RESERVOIR  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer repertoire)
+## SG22_REPERTOIRE_RESERVOIR  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer repertoire)
 
 **Statement.** Generation/selection operates from active local repertoires rather than a single manuscript-wide IID lexicon.
 
@@ -154,7 +155,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Aug-Sep 2026 working-set and localisation programmes
 
-## SG29_LINE_BOUNDARY_INNOVATION  (OPEN_HELD; run supergrammar_v03_20260920; layer innovation)
+## SG29_LINE_BOUNDARY_INNOVATION  (OPEN_HELD; certificate OPEN; run supergrammar_v03_20260920; layer innovation)
 
 **Statement.** Novel/changed morphological material is enriched at physical line boundaries, especially line starts, but old PGCS-triple estimates are representation-bound.
 
@@ -164,7 +165,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** ChatGPT 2026-03; later line programmes
 
-## SG31_DERIVATIVE_COPY_PARTIAL  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer near_form)
+## SG31_DERIVATIVE_COPY_PARTIAL  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer near_form)
 
 **Statement.** Local derivative/copy-mutate processes are sufficient for part of the near-form structure but are not a complete grammar.
 
@@ -174,7 +175,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** faithful Timm and generator ablations; master consolidation
 
-## SG25_NO_PARAGRAPH_CONTENT_STATE  (TERMINAL_REJECTED; run supergrammar_v03_20260920; layer semantic_state)
+## SG25_NO_PARAGRAPH_CONTENT_STATE  (TERMINAL_REJECTED; certificate REJECTED; run supergrammar_v03_20260920; layer semantic_state)
 
 **Statement.** No reusable paragraph-level abstract/content state has been admitted by calibrated tests.
 
@@ -184,7 +185,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** Sept 2026 latent-content closeout
 
-## SG33_NO_TRANSFERABLE_CODE_UNIT  (TERMINAL_REJECTED; run supergrammar_v03_20260920; layer latent_state)
+## SG33_NO_TRANSFERABLE_CODE_UNIT  (TERMINAL_REJECTED; certificate REJECTED; run supergrammar_v03_20260920; layer latent_state)
 
 **Statement.** No stable transferable cross-scribe latent word/code unit has been recovered.
 
@@ -194,7 +195,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** July-Aug 2026 cross-scribe scale and payload programmes
 
-## SG10_SECTION_REGISTER  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer modulation)
+## SG10_SECTION_REGISTER  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer modulation)
 
 **Statement.** Section/register is a major conditioning variable on token families and surface probabilities.
 
@@ -204,7 +205,7 @@ OPEN_HELD are provisional; TERMINAL_REJECTED means the claim was tested and reje
 
 **Provenance.** v2.3; generation master; repeated held-out work
 
-## SG11_HAND_MODULATOR  (OPEN_UNCERTIFIED; run supergrammar_v03_20260920; layer modulation)
+## SG11_HAND_MODULATOR  (OPEN_UNCERTIFIED; certificate OPEN; run supergrammar_v03_20260920; layer modulation)
 
 **Statement.** Davis hand can modulate surface statistics but is not a standalone compact grammar.
 

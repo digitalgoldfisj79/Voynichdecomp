@@ -4,7 +4,7 @@ One place for the evidence behind our replies in voynich.ninja threads 6182 and 
 text can and cannot tell us about order, the Super Grammar results on word transformations, and the run records
 they come from. Every number below is copied from a file in this folder or in `research/bifolium_order_tests/`.
 
-**Read the status column.** Only items marked *certified* are part of the frozen Super Grammar v03 kernel
+**Read the status column.** Only items with a *certified* certificate are part of the frozen Super Grammar v03 kernel
 ([release note](../research/RELEASE_supergrammar_v03_20260920.md)). Everything marked *provisional* passed its own
 held-out tests but has not been through the fail-closed certification and clean-room replay. *Rejected* means tested
 and rejected. Nothing here is a decipherment or a claim about meaning.
@@ -15,7 +15,8 @@ and rejected. Nothing here is a decipherment or a claim about meaning.
 |---|---|
 | [`../research/bifolium_order_tests/`](../research/bifolium_order_tests/) | Runnable code + inputs + expected outputs for the bifolium, ordering-calibration and Echo-chain tests (`./run_all.sh`, about an hour) |
 | [`figures/`](figures/) | The five figures from the thread 6199 reply |
-| [`supergrammar/claims_register_v03.csv`](supergrammar/claims_register_v03.csv) | All 147 Super Grammar claims with statement, evidence, falsifier, provenance and certification status (also `.json`) |
+| [`supergrammar/certification/`](supergrammar/certification/README.md) | The v03 certificates: 9 certified theorems, the lemmas each depends on, 141 claim certificates (32 certified), 2,537 proof obligations, the evidence rows behind them, release checks, replay jobs and retractions |
+| [`supergrammar/claims_register_v03.csv`](supergrammar/claims_register_v03.csv) | All 147 Super Grammar claims with statement, evidence, falsifier, provenance and `certificate_status` (also `.json`) |
 | [`supergrammar/key_claims.md`](supergrammar/key_claims.md) | The claims that bear on the questions below, in full |
 | [`supergrammar/theorems_v03.csv`](supergrammar/theorems_v03.csv) | Theorem wrappers and their status |
 | `supergrammar/npcompl_regime_*.csv` | The test of the five-regime partition against Davis hands |
@@ -119,4 +120,4 @@ So far: the transformations are real formal relations between spellings; whether
   matched nulls; the provenance field of each claim says where it came from. Records are exported as written,
   including their own retractions.
 - Transliterations differ between runs (ZL, Takahashi, others); each record states which it used.
-- Exported from the research database on 14 October 2026.
+- Claims, theorems and records exported from the research database on 14 October 2026; certification tables on 15 October 2026.

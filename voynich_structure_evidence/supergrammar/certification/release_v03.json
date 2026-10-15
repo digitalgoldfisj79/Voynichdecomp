@@ -1,0 +1,338 @@
+[
+ {
+  "release_id": "supergrammar_v03_release_20260920",
+  "run_id": "supergrammar_v03_20260920",
+  "release_status": "FROZEN_CERTIFIED_KERNEL",
+  "theorem_count": 9,
+  "certified_claim_count": 32,
+  "failed_claim_count": 2,
+  "excluded_open_kernel_count": 5,
+  "retraction_count": 9,
+  "release_manifest": {
+   "scope": {
+    "excludes": "Decipherment, semantics, historical mechanism, labels/circular/radial loci, and uncertified candidate claims.",
+    "includes": "Certified running-text structural grammar kernel and explicit negative/bounding theorems."
+   },
+   "run_id": "supergrammar_v03_20260920",
+   "security": {
+    "exposure_model": "SERVICE_ROLE_PRIVATE",
+    "client_policies_created": false,
+    "all_v03_tables_rls_enabled": true,
+    "v03_security_advisor_findings": 0,
+    "v03_performance_advisor_findings": 0
+   },
+   "release_id": "supergrammar_v03_release_20260920",
+   "validation": [
+    {
+     "status": "PASS",
+     "check_id": "canonical_authority_chain",
+     "expected": {
+      "canonical_sources": 5,
+      "legacy_candidate_authority": "SUPERSEDED_AS_AUTHORITY"
+     },
+     "observed": {
+      "canonical_sources": 5,
+      "legacy_candidate_authority": "SUPERSEDED_AS_AUTHORITY"
+     }
+    },
+    {
+     "status": "PASS",
+     "check_id": "certified_claim_obligations_closed",
+     "expected": {
+      "violations": 0
+     },
+     "observed": {
+      "violations": 0
+     }
+    },
+    {
+     "status": "PASS",
+     "check_id": "certified_theorem_dependency_closure",
+     "expected": {
+      "violations": 0
+     },
+     "observed": {
+      "violations": 0
+     }
+    },
+    {
+     "status": "PASS",
+     "check_id": "failed_claim_not_in_positive_core",
+     "expected": {
+      "violations": 0
+     },
+     "observed": {
+      "violations": 0
+     }
+    },
+    {
+     "status": "PASS",
+     "check_id": "active_compute_replays",
+     "expected": {
+      "target": 0
+     },
+     "observed": {
+      "running": 0
+     }
+    }
+   ],
+   "fail_closed": true,
+   "source_hashes": {
+    "rows_sha256": "74f7310ea35922dc5ed71012f0825ef9480d051a1fa516c79fc5ca53f88a925f",
+    "folds_sha256": "e774001ca046d88f24f56bf70f29213007d9cac3500d50f414e1782688d74888",
+    "corpus_sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f"
+   },
+   "verifier_runs": [
+    {
+     "status": "FAILED_PREOUTCOME",
+     "hf_job_id": "6aaf937c52d0dbd7f1d7323e",
+     "git_commit": "3680f0728f2fc9510ddd90f91f479582ffdb57ad",
+     "script_path": "research/supergrammar_v03_certifier_20260920.py",
+     "verifier_id": "sgv03_certifier_attempt0",
+     "failure_stage": "INPUT_NORMALISATION",
+     "result_sha256": null,
+     "script_sha256": "e6be3c8b5e95b3d6c0886a37fd86d8e317241a62468ff2314a4617b163969b8c"
+    },
+    {
+     "status": "COMPLETED",
+     "hf_job_id": "6aaf93ab52d0dbd7f1d73246",
+     "git_commit": "82caeb96df395035528eb43c387ffec7895d10af",
+     "script_path": "research/supergrammar_v03_certifier_20260920.py",
+     "verifier_id": "sgv03_certifier_v1",
+     "failure_stage": null,
+     "result_sha256": "6b235bd6002d8f51823181b6766061056063384332a6cdc3262bb5d0f9d4b41a",
+     "script_sha256": "d0dcd9a24ad3157ee2ea9cdc4cfce7844499afc02e91612244b4b9c84a799b15"
+    },
+    {
+     "status": "COMPLETED",
+     "hf_job_id": "6aaf953452d0dbd7f1d732a0",
+     "git_commit": "82caeb96df395035528eb43c387ffec7895d10af",
+     "script_path": "research/supergrammar_v03_certifier_20260920.py",
+     "verifier_id": "sgv03_certifier_v1_summary_replay",
+     "failure_stage": null,
+     "result_sha256": "6b235bd6002d8f51823181b6766061056063384332a6cdc3262bb5d0f9d4b41a",
+     "script_sha256": "d0dcd9a24ad3157ee2ea9cdc4cfce7844499afc02e91612244b4b9c84a799b15"
+    },
+    {
+     "status": "COMPLETED",
+     "hf_job_id": "6aaf985251992417dfccc6d6",
+     "git_commit": "23ff233e315bd932dd0777fd90ed41b7f0036cf9",
+     "script_path": "research/supergrammar_v03_r64_current_20260920.py",
+     "verifier_id": "sgv03_r64_current_v1",
+     "failure_stage": null,
+     "result_sha256": "a282e222a8f83c20091e39d5eca85215f4ec07b4dfc79902d5b8543b95a7d0e8",
+     "script_sha256": "f55b309d5801fefa98991d79ec991d20e61aaef06d2ca7cd6ec38f14735d2306"
+    },
+    {
+     "status": "INVALIDATED",
+     "hf_job_id": "6aaf97ab51992417dfccc6b8",
+     "git_commit": "4406c16f826abd14fc1b6cc824468730e0eaf7ca",
+     "script_path": "research/supergrammar_v03_closure_certifier_20260920.py",
+     "verifier_id": "sgv03_closure_v1",
+     "failure_stage": "HYPERPARAMETER_TUNING_LOGIC",
+     "result_sha256": null,
+     "script_sha256": "a781672311b644334bcc83c2a9961660f6bd94a3c5cd7b0c2f8f920b862bcf7e"
+    },
+    {
+     "status": "FAILED_PREOUTCOME",
+     "hf_job_id": "6aaf9a2151992417dfccc726",
+     "git_commit": "fc420d4ac06409e7cdd9237118e11ee21dd880cc",
+     "script_path": "research/supergrammar_v03_closure_certifier_20260920.py",
+     "verifier_id": "sgv03_closure_v1b",
+     "failure_stage": "STALE_FUNCTION_REFERENCE",
+     "result_sha256": null,
+     "script_sha256": "e2376d5eff121639caaedd098d301707a6f9cb59059746b2e5e7af8133ddcc80"
+    },
+    {
+     "status": "COMPLETED",
+     "hf_job_id": "6aaf9a8f51992417dfccc736",
+     "git_commit": "c42a80faac061bab84e773cf282f1ad3b25085cb",
+     "script_path": "research/supergrammar_v03_conditionals_20260920.py",
+     "verifier_id": "sgv03_conditionals_v1",
+     "failure_stage": null,
+     "result_sha256": "15ae35e720ace4dff1475140cdd1eeb737b43f841cd648d573191c3ac6fa8e5a",
+     "script_sha256": "5615eb45b72aa5aba763d9df38d2516f8b3dd361f2b477e6e8070f831354ccda"
+    },
+    {
+     "status": "COMPLETED",
+     "hf_job_id": "6aaf9ac752d0dbd7f1d733fb",
+     "git_commit": "a959a95a3c3dfae5d5dd6a1c7c019052250049ee",
+     "script_path": "research/supergrammar_v03_closure_certifier_20260920.py",
+     "verifier_id": "sgv03_closure_v1c",
+     "failure_stage": null,
+     "result_sha256": "774819b6b2f8cfb4d8957011ad0a418ed9b2545ce5f10b2bf57f4f2fb09d0fc4",
+     "script_sha256": "da33220eff309db753877bbe0618a787344257f74fa2398016ab4e10604180a7"
+    }
+   ],
+   "certified_theorems": [
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "Voynich running-text token forms obey representation-robust local graphotactic constraints and require at least second-order within-token context; third-order context is admitted only if its own smoothing-robust replay closes.",
+     "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+     "theorem_md5": "87c55dbbb9e01b216ba3d6d9fcc11d5b"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "An explicit preselected page-family codebook is not part of the certified architecture; page-scale repertoire effects must be represented by mechanisms that survive deletion of that layer.",
+     "theorem_id": "SGT04_REPERTOIRE_BOUND",
+     "theorem_md5": "5775a4acda65514f4afdabdcc1a4daee"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "The observed physical-line ED1 attenuation is not certified as an independent avoidance rule once marginals and coarse vertical geometry are preserved.",
+     "theorem_id": "SGT05_BOUNDARY_ED1_BOUND",
+     "theorem_md5": "da63963a254cb8d8cb753d5b8622e471"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "Currier A/B may index real lower-dimensional distributional differences, but current manuscript support does not identify Currier as independent of section and Davis hand.",
+     "theorem_id": "SGT06_CURRIER_BOUND",
+     "theorem_md5": "559f8ec90c75f830e1bc482d817b0f31"
+    },
+    {
+     "status": "CERTIFIED",
+     "statement": "Across the frozen transcription family and smoothing grid, the local edge dependency is stronger across within-line SPACE than across physical LINE_BREAK.",
+     "theorem_id": "SGT07_SPACE_LINE_ATTENUATION",
+     "theorem_md5": "032b947d5d4135fe5b291ed91a0170f4"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "Third-order within-token context is not admitted to the certified core because its incremental predictive gain is smoothing-dependent under the frozen sensitivity grid.",
+     "theorem_id": "SGT08_ORDER3_NOT_CORE",
+     "theorem_md5": "0eba05a708fe2697306e012575f17ef8"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "Under the current SG1.1 no-codebook architecture, a banded same-page exact-reuse channel over lags 2-64 improves the targeted lag-2-5 recurrence geometry; banding improves over uniform R64. The data do not establish that lag 1 must be excluded.",
+     "theorem_id": "SGT09_R64_CURRENT",
+     "theorem_md5": "b0b2596e37498820541416455300abfe"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "Two local conditional graphotactic effects survive independent heldout replay: q-context carries incremental k/t information beyond exact continuation tail, and i-run length carries incremental terminator information beyond short left context. The q effect is majority-transcription robust rather than universal.",
+     "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+     "theorem_md5": "7e85ecff6260157f78d7ab55051180be"
+    },
+    {
+     "status": "CERTIFIED_BOUNDED",
+     "statement": "The running-text junction architecture contains a representation-robust previous-token morphology/length residual and a stronger within-line SPACE than LINE_BREAK edge dependency. Complete exact previous-token closure is not certified: TTLI retains a small resolved exact-identity residual, while most other layers do not resolve a positive exact increment.",
+     "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+     "theorem_md5": "a75874021d84ee52ca2df1b17e1813c9"
+    }
+   ],
+   "canonical_authority": {
+    "evidence_graph": "voynich_theory_compiler_stageD_graph_20260919",
+    "mechanism_claims": "voynich_theory_compiler_stageB_claims_20260919",
+    "novelty_frontier": "voynich_theory_compiler_stageE_novelty_20260919",
+    "mechanism_closure": "voynich_theory_compiler_stageC_closure_20260919",
+    "surface_architecture": "voynich_supergrammar_v11_running_text_20260919"
+   },
+   "superseded_theorems": [
+    {
+     "note": "Requires space-edge, space>line, morphology residual and exact-identity closure lemmas. Superseded after v03 closure replay: SGK09 universal exact-identity closure failed; see SGT11.",
+     "theorem_id": "SGT02_JUNCTION_GRAMMAR"
+    },
+    {
+     "note": "R64 is scoped to the targeted recurrence coordinates because total joint improvement over mutation-off does not resolve. Superseded by SGT09_R64_CURRENT, which retests recurrence under the current SG1.1 no-codebook parent. Legacy sequential-mutation rejection remains unexported pending comparable replay.",
+     "theorem_id": "SGT03_SHORT_MEMORY"
+    }
+   ],
+   "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1",
+   "excluded_open_kernel_claims": [
+    {
+     "claim_id": "SGK10_SHORT_STATE_LAG1",
+     "statement": "Local subword-state similarity remains elevated at paragraph lag 1 under the registered matched null.",
+     "source_summary": "Primary trigram lag1 effect 0.0121257 with null SD 0.00353763, z=3.428.",
+     "release_disposition": "EXCLUDED_UNCERTIFIED_NOT_A_RELEASE_BLOCKER"
+    },
+    {
+     "claim_id": "SGK11_SHORT_STATE_LAG2",
+     "statement": "Local subword-state similarity remains elevated at paragraph lag 2 under the registered matched null.",
+     "source_summary": "Primary trigram lag2 effect 0.0125631 with null SD 0.00219444, z=5.725.",
+     "release_disposition": "EXCLUDED_UNCERTIFIED_NOT_A_RELEASE_BLOCKER"
+    },
+    {
+     "claim_id": "SGK12_REMOTE_STATE_REUSE",
+     "statement": "A subword-state match selected on one split of paragraphs predicts a remote matched page on the held-out split in both split directions.",
+     "source_summary": "Even-heldout effect 0.0196012/null SD 0.00677852, z=2.892; odd-heldout 0.0273737/0.00733911, z=3.730.",
+     "release_disposition": "EXCLUDED_UNCERTIFIED_NOT_A_RELEASE_BLOCKER"
+    },
+    {
+     "claim_id": "SGK13_R64_RECURRENCE_GEOMETRY",
+     "statement": "With sequential mutation removed, refractory exact reuse from same-page lags 2-64 improves the targeted lag-2-5 recurrence geometry beyond the mutation-off parent.",
+     "source_summary": "L3 versus L1 total joint effect does not resolve: 0.02601/null SD 0.01642, z=1.59. Targeted lag2-5 residual improvement 1.2006 z-units/null SD 0.09223, z=13.02.",
+     "release_disposition": "EXCLUDED_UNCERTIFIED_NOT_A_RELEASE_BLOCKER"
+    },
+    {
+     "claim_id": "SGK14_SEQUENTIAL_MUTATION_REJECTED",
+     "statement": "The inherited dedicated sequential ED1 mutation source is unnecessary and harmful in the frozen local-realiser comparison.",
+     "source_summary": "Removing mutation reduces joint distance by 0.133384 with paired-label null SD 0.015515, z=8.60, better 5/5 folds.",
+     "release_disposition": "EXCLUDED_UNCERTIFIED_NOT_A_RELEASE_BLOCKER"
+    }
+   ],
+   "retractions_and_corrections": [
+    {
+     "reason": "The candidate ledger predates canonical SG1.1 and still contains claims later deleted or superseded, including explicit PAGE_CODEBOOK causality and the pre-deletion generated/table-driven mechanism label. Canonical authority is SG1.1 plus Theory Compiler Stages B-E.",
+     "finding": "vms_supergrammar_candidates_v01 is the authoritative current Super-Grammar source",
+     "priority": -2,
+     "disposition": "RETRACTED"
+    },
+    {
+     "reason": "Preregistered deletion: no-codebook A4 adequate 4/5 frozen folds and inside empirical d95 5/5; explicit-codebook A3 adequate 0/5. Mean joint 1.140162 vs 3.060952, 62.75% lower after deletion. HF runner commit 92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5 and five completed fold jobs reproduce the frozen outputs.",
+     "finding": "Explicit preselected PAGE_CODEBOOK / page-family-pool is a causal Super-Grammar layer",
+     "priority": -1,
+     "disposition": "DATA_KILLED"
+    },
+    {
+     "reason": "Clean-room bifolium-heldout replay reproduces strong second-order context but third-order gain changes sign or falls below ratio 2 under the frozen alpha grid in every transcription layer. Example ZLZI alpha=16: LTR effect -0.00098664/null SD 0.00247465; RTL +0.00371542/0.00255975 = 1.45.",
+     "finding": "Third-order within-token context is a smoothing-robust CORE layer",
+     "priority": 0,
+     "disposition": "DOWNGRADED_TO_NON_ROBUST"
+    },
+    {
+     "reason": "Candidate ledger contains 64 claims; 11 later claims SG53-SG62-era are absent from the v02 graph, including major constructive advances and rejections.",
+     "finding": "v02 53-super-rule graph is complete/authoritative",
+     "priority": 1,
+     "disposition": "RETRACTED"
+    },
+    {
+     "reason": "All 64 candidate claims are recertified from explicit obligations; legacy labels are inputs only and cannot satisfy dependency closure.",
+     "finding": "Legacy CORE/SUPPORTED labels constitute certification",
+     "priority": 2,
+     "disposition": "RETRACTED"
+    },
+    {
+     "reason": "Complement-of-status-buckets classification was invalid and included unresolved/rejected/retracted/superseded material.",
+     "finding": "132 evidenced nodes",
+     "priority": 3,
+     "disposition": "RETRACTED"
+    },
+    {
+     "reason": "Legacy promotion_class was confounded with rule family and cannot establish strength-based selection.",
+     "finding": "Legacy HOLD distribution demonstrates strength-based promotion",
+     "priority": 4,
+     "disposition": "RETRACTED"
+    },
+    {
+     "reason": "Current SG1.1 tournament: lag2-64 banded versus lag1-64 banded joint-error effect -0.000327794/null SD 0.000210970, ratio 1.55; only 2/5 folds favor exclusion. The metric does not resolve this.",
+     "finding": "Lag 1 must be excluded from the exact-reuse window in the current Super-Grammar",
+     "priority": 5,
+     "disposition": "DOWNGRADED_TO_UNRESOLVED"
+    },
+    {
+     "reason": "Six-layer clean-room replay: the frozen closure decision passes only 2/6 layers. TTLI has effect +0.00103619/null SD 0.000381602, ratio 2.715, with only 2/5 folds selecting the off-switch. Primary ZLZI itself does not resolve an exact increment.",
+     "finding": "Exact previous-token identity is fully closed after SG45 morphology in the running-text architecture",
+     "priority": 6,
+     "disposition": "DOWNGRADED_TO_REPRESENTATION_SENSITIVE_RESIDUAL"
+    }
+   ]
+  },
+  "manifest_sha256": "c4bbace849cf1cc79ff3999f02a2031ddc888bc3aa222a78a2174c3b6253027e",
+  "frozen_at": "2026-09-20T08:43:39.874516+00:00",
+  "note": "Frozen certified theorem kernel. Candidate/open claims remain queryable but are not exported as established grammar.",
+  "documentation_git_commit": "6410a88a5e2370f1495fa2a04fab66159391e979",
+  "documentation_path": "research/RELEASE_supergrammar_v03_20260920.md",
+  "repository_pr_number": 31,
+  "repository_merge_commit": "5957e5957d998ee7d5a580c43022a0b87b97585c"
+ }
+]

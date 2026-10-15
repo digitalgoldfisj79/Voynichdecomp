@@ -1,0 +1,83 @@
+[
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "theorem_statement": "Voynich running-text token forms obey representation-robust local graphotactic constraints and require at least second-order within-token context; third-order context is admitted only if its own smoothing-robust replay closes.",
+  "theorem_kind": "SURFACE_GRAMMAR",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "87c55dbbb9e01b216ba3d6d9fcc11d5b",
+  "note": "Fail-closed theorem: SGK01 plus all 19 hard-zero lemmas are required; SGK02 is a separate optional strengthening. All REQUIRED dependencies are certified; optional BOUND_ONLY order3 strengthening failed and is excluded."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT04_REPERTOIRE_BOUND",
+  "theorem_statement": "An explicit preselected page-family codebook is not part of the certified architecture; page-scale repertoire effects must be represented by mechanisms that survive deletion of that layer.",
+  "theorem_kind": "NEGATIVE_CONSTRAINT",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "5775a4acda65514f4afdabdcc1a4daee",
+  "note": "Backed by the preregistered SG1.1 deletion theorem."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT05_BOUNDARY_ED1_BOUND",
+  "theorem_statement": "The observed physical-line ED1 attenuation is not certified as an independent avoidance rule once marginals and coarse vertical geometry are preserved.",
+  "theorem_kind": "MECHANISM_BOUND",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "da63963a254cb8d8cb753d5b8622e471",
+  "note": "Negative/bounding theorem, not a positive grammar rule."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT06_CURRIER_BOUND",
+  "theorem_statement": "Currier A/B may index real lower-dimensional distributional differences, but current manuscript support does not identify Currier as independent of section and Davis hand.",
+  "theorem_kind": "MECHANISM_BOUND",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "559f8ec90c75f830e1bc482d817b0f31",
+  "note": "Identifiability theorem; no historical/authorial interpretation is licensed."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT07_SPACE_LINE_ATTENUATION",
+  "theorem_statement": "Across the frozen transcription family and smoothing grid, the local edge dependency is stronger across within-line SPACE than across physical LINE_BREAK.",
+  "theorem_kind": "SURFACE_GRAMMAR",
+  "theorem_status": "CERTIFIED",
+  "theorem_md5": "032b947d5d4135fe5b291ed91a0170f4",
+  "note": "Direct theorem wrapper over SGK05; worst clean-room effect/null-SD ratio is 2.1336."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT08_ORDER3_NOT_CORE",
+  "theorem_statement": "Third-order within-token context is not admitted to the certified core because its incremental predictive gain is smoothing-dependent under the frozen sensitivity grid.",
+  "theorem_kind": "MECHANISM_BOUND",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "0eba05a708fe2697306e012575f17ef8",
+  "note": "Negative robustness theorem over SGK02B_ORDER3_NOT_ROBUST."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT09_R64_CURRENT",
+  "theorem_statement": "Under the current SG1.1 no-codebook architecture, a banded same-page exact-reuse channel over lags 2-64 improves the targeted lag-2-5 recurrence geometry; banding improves over uniform R64. The data do not establish that lag 1 must be excluded.",
+  "theorem_kind": "ARCHITECTURE",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "b0b2596e37498820541416455300abfe",
+  "note": "Current-parent constructive theorem. R64 target ratio 2.2348; banding-over-uniform 2.2219; lag1-exclusion ratio 1.5537 does not resolve."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+  "theorem_statement": "Two local conditional graphotactic effects survive independent heldout replay: q-context carries incremental k/t information beyond exact continuation tail, and i-run length carries incremental terminator information beyond short left context. The q effect is majority-transcription robust rather than universal.",
+  "theorem_kind": "SURFACE_GRAMMAR",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "7e85ecff6260157f78d7ab55051180be",
+  "note": "q: primary ratio 4.77, 4/5 alternate layers resolved positive, JSLI ratio 0.43 unresolved; i-run: both context tests resolve in all six layers, worst ratio 3.52."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "theorem_statement": "The running-text junction architecture contains a representation-robust previous-token morphology/length residual and a stronger within-line SPACE than LINE_BREAK edge dependency. Complete exact previous-token closure is not certified: TTLI retains a small resolved exact-identity residual, while most other layers do not resolve a positive exact increment.",
+  "theorem_kind": "SURFACE_GRAMMAR",
+  "theorem_status": "CERTIFIED_BOUNDED",
+  "theorem_md5": "a75874021d84ee52ca2df1b17e1813c9",
+  "note": "Morphology primary ratio 3.84; 4/5 alternate layers resolve positive with no negative contradiction. TTLI exact residual +0.001036/null SD 0.0003816, ratio 2.72. Universal exact closure therefore fails."
+ }
+]

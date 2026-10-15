@@ -1,0 +1,618 @@
+[
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK01_INTERNAL_ORDER2",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK02_INTERNAL_ORDER3",
+  "requirement": "BOUND_ONLY",
+  "status": "FAILED",
+  "note": "Optional strengthening; theorem does not require order3."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_ci",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_dh",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_dn",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kk",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_km",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kn",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kp",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_lh",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_ln",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pl",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pn",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pp",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pt",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tm",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tn",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tp",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tr",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tt",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_yn",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "All frozen hard-zero lemmas are required."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT02_JUNCTION_GRAMMAR",
+  "lemma_id": "SGK04_SPACE_EDGE",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT02_JUNCTION_GRAMMAR",
+  "lemma_id": "SGK05_SPACE_GT_LINEBREAK",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT02_JUNCTION_GRAMMAR",
+  "lemma_id": "SGK08_PREV_TOKEN_MORPH",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT02_JUNCTION_GRAMMAR",
+  "lemma_id": "SGK09_EXACT_IDENTITY_CLOSED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "OPEN",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT03_SHORT_MEMORY",
+  "lemma_id": "SGK13_R64_RECURRENCE_GEOMETRY",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": " Superseded for current architecture by certified SGK13B/SGT09."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT03_SHORT_MEMORY",
+  "lemma_id": "SGK14_SEQUENTIAL_MUTATION_REJECTED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "OPEN",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT04_REPERTOIRE_BOUND",
+  "lemma_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT05_BOUNDARY_ED1_BOUND",
+  "lemma_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT06_CURRIER_BOUND",
+  "lemma_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "requirement": "BOUND_ONLY",
+  "status": "SATISFIED",
+  "note": null
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT07_SPACE_LINE_ATTENUATION",
+  "lemma_id": "SGK05_SPACE_GT_LINEBREAK",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Certified direct dependency."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT08_ORDER3_NOT_CORE",
+  "lemma_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "SATISFIED",
+  "note": "Certified negative robustness bound."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT09_R64_CURRENT",
+  "lemma_id": "SGK13B_R64_CURRENT",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Current-parent constructive replay."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT09_R64_CURRENT",
+  "lemma_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "requirement": "BOUND_ONLY",
+  "status": "SATISFIED",
+  "note": "Prevents overstatement of refractory lag1 exclusion."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+  "lemma_id": "SGK06_Q_SELECTS_K",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Independent clean-room replay."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+  "lemma_id": "SGK07_I_RUN_TERMINATION",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Independent clean-room replay."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK05_SPACE_GT_LINEBREAK",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Certified relative boundary-scale scaffold."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK08_PREV_TOKEN_MORPH",
+  "requirement": "REQUIRED",
+  "status": "SATISFIED",
+  "note": "Certified morphology residual."
+ },
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "requirement": "BOUND_ONLY",
+  "status": "SATISFIED",
+  "note": "Prevents universal exact-closure overclaim."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK01_INTERNAL_ORDER2",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK02_INTERNAL_ORDER3",
+  "requirement": "BOUND_ONLY",
+  "status": "FAILED",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_ci",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_dh",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_dn",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kk",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_km",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kn",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_kp",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_lh",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_ln",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pl",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pn",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pp",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_pt",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tm",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tn",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tp",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tr",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_tt",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT01_LOCAL_FORM_GRAMMAR",
+  "lemma_id": "SGK03_HZ_yn",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT04_REPERTOIRE_BOUND",
+  "lemma_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT05_BOUNDARY_ED1_BOUND",
+  "lemma_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT06_CURRIER_BOUND",
+  "lemma_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "requirement": "BOUND_ONLY",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT07_SPACE_LINE_ATTENUATION",
+  "lemma_id": "SGK05_SPACE_GT_LINEBREAK",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT08_ORDER3_NOT_CORE",
+  "lemma_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "requirement": "NEGATIVE_CONSTRAINT",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT09_R64_CURRENT",
+  "lemma_id": "SGK13B_R64_CURRENT",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT09_R64_CURRENT",
+  "lemma_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "requirement": "BOUND_ONLY",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+  "lemma_id": "SGK06_Q_SELECTS_K",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT10_CONDITIONAL_GRAPHOTACTICS",
+  "lemma_id": "SGK07_I_RUN_TERMINATION",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK05_SPACE_GT_LINEBREAK",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK08_PREV_TOKEN_MORPH",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "theorem_id": "SGT11_JUNCTION_MORPHOLOGY",
+  "lemma_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "requirement": "BOUND_ONLY",
+  "status": "OPEN",
+  "note": "Mirrors v03 dependency; lemma certificate OPEN pending external review."
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "theorem_id": "SGT12_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "lemma_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "External review remains open."
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "theorem_id": "SGT13_VERTICAL_OPENER_GRAMMAR",
+  "lemma_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Independent implementation replay and external review remain open."
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "theorem_id": "SGT13_VERTICAL_OPENER_GRAMMAR",
+  "lemma_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Independent implementation replay and external review remain open."
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "theorem_id": "SGT13_VERTICAL_OPENER_GRAMMAR",
+  "lemma_id": "SGK21C_DQY_DIRECTION",
+  "requirement": "REQUIRED",
+  "status": "OPEN",
+  "note": "Independent implementation replay and external review remain open."
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "theorem_id": "SGT13_VERTICAL_OPENER_GRAMMAR",
+  "lemma_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "requirement": "BOUND_ONLY",
+  "status": "OPEN",
+  "note": "Non-resolution bounds the directional substructure; does not prove absence."
+ }
+]

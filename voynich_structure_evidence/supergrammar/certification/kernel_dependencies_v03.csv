@@ -1,0 +1,78 @@
+run_id,theorem_id,lemma_id,requirement,status,note
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK01_INTERNAL_ORDER2,REQUIRED,SATISFIED,
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK02_INTERNAL_ORDER3,BOUND_ONLY,FAILED,Optional strengthening; theorem does not require order3.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_ci,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_dh,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_dn,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kk,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_km,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kn,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kp,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_lh,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_ln,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pl,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pn,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pp,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pt,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tm,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tn,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tp,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tr,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tt,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_yn,REQUIRED,SATISFIED,All frozen hard-zero lemmas are required.
+supergrammar_v03_20260920,SGT02_JUNCTION_GRAMMAR,SGK04_SPACE_EDGE,REQUIRED,SATISFIED,
+supergrammar_v03_20260920,SGT02_JUNCTION_GRAMMAR,SGK05_SPACE_GT_LINEBREAK,REQUIRED,SATISFIED,
+supergrammar_v03_20260920,SGT02_JUNCTION_GRAMMAR,SGK08_PREV_TOKEN_MORPH,REQUIRED,OPEN,
+supergrammar_v03_20260920,SGT02_JUNCTION_GRAMMAR,SGK09_EXACT_IDENTITY_CLOSED,NEGATIVE_CONSTRAINT,OPEN,
+supergrammar_v03_20260920,SGT03_SHORT_MEMORY,SGK13_R64_RECURRENCE_GEOMETRY,REQUIRED,SATISFIED, Superseded for current architecture by certified SGK13B/SGT09.
+supergrammar_v03_20260920,SGT03_SHORT_MEMORY,SGK14_SEQUENTIAL_MUTATION_REJECTED,NEGATIVE_CONSTRAINT,OPEN,
+supergrammar_v03_20260920,SGT04_REPERTOIRE_BOUND,SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED,NEGATIVE_CONSTRAINT,SATISFIED,
+supergrammar_v03_20260920,SGT05_BOUNDARY_ED1_BOUND,SGK16_BOUNDARY_ED1_DERIVED,NEGATIVE_CONSTRAINT,SATISFIED,
+supergrammar_v03_20260920,SGT06_CURRIER_BOUND,SGK17_CURRIER_NOT_INDEPENDENT,BOUND_ONLY,SATISFIED,
+supergrammar_v03_20260920,SGT07_SPACE_LINE_ATTENUATION,SGK05_SPACE_GT_LINEBREAK,REQUIRED,SATISFIED,Certified direct dependency.
+supergrammar_v03_20260920,SGT08_ORDER3_NOT_CORE,SGK02B_ORDER3_NOT_ROBUST,NEGATIVE_CONSTRAINT,SATISFIED,Certified negative robustness bound.
+supergrammar_v03_20260920,SGT09_R64_CURRENT,SGK13B_R64_CURRENT,REQUIRED,SATISFIED,Current-parent constructive replay.
+supergrammar_v03_20260920,SGT09_R64_CURRENT,SGK13C_LAG1_EXCLUSION_UNRESOLVED,BOUND_ONLY,SATISFIED,Prevents overstatement of refractory lag1 exclusion.
+supergrammar_v03_20260920,SGT10_CONDITIONAL_GRAPHOTACTICS,SGK06_Q_SELECTS_K,REQUIRED,SATISFIED,Independent clean-room replay.
+supergrammar_v03_20260920,SGT10_CONDITIONAL_GRAPHOTACTICS,SGK07_I_RUN_TERMINATION,REQUIRED,SATISFIED,Independent clean-room replay.
+supergrammar_v03_20260920,SGT11_JUNCTION_MORPHOLOGY,SGK05_SPACE_GT_LINEBREAK,REQUIRED,SATISFIED,Certified relative boundary-scale scaffold.
+supergrammar_v03_20260920,SGT11_JUNCTION_MORPHOLOGY,SGK08_PREV_TOKEN_MORPH,REQUIRED,SATISFIED,Certified morphology residual.
+supergrammar_v03_20260920,SGT11_JUNCTION_MORPHOLOGY,SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED,BOUND_ONLY,SATISFIED,Prevents universal exact-closure overclaim.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK01_INTERNAL_ORDER2,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK02_INTERNAL_ORDER3,BOUND_ONLY,FAILED,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_ci,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_dh,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_dn,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kk,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_km,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kn,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_kp,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_lh,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_ln,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pl,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pn,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pp,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_pt,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tm,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tn,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tp,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tr,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_tt,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT01_LOCAL_FORM_GRAMMAR,SGK03_HZ_yn,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT04_REPERTOIRE_BOUND,SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED,NEGATIVE_CONSTRAINT,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT05_BOUNDARY_ED1_BOUND,SGK16_BOUNDARY_ED1_DERIVED,NEGATIVE_CONSTRAINT,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT06_CURRIER_BOUND,SGK17_CURRIER_NOT_INDEPENDENT,BOUND_ONLY,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT07_SPACE_LINE_ATTENUATION,SGK05_SPACE_GT_LINEBREAK,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT08_ORDER3_NOT_CORE,SGK02B_ORDER3_NOT_ROBUST,NEGATIVE_CONSTRAINT,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT09_R64_CURRENT,SGK13B_R64_CURRENT,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT09_R64_CURRENT,SGK13C_LAG1_EXCLUSION_UNRESOLVED,BOUND_ONLY,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT10_CONDITIONAL_GRAPHOTACTICS,SGK06_Q_SELECTS_K,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT10_CONDITIONAL_GRAPHOTACTICS,SGK07_I_RUN_TERMINATION,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT11_JUNCTION_MORPHOLOGY,SGK05_SPACE_GT_LINEBREAK,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT11_JUNCTION_MORPHOLOGY,SGK08_PREV_TOKEN_MORPH,REQUIRED,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v031_20260928,SGT11_JUNCTION_MORPHOLOGY,SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED,BOUND_ONLY,OPEN,Mirrors v03 dependency; lemma certificate OPEN pending external review.
+supergrammar_v032_20261002,SGT12_WITHIN_LINE_RECURRENCE_GEOMETRY,SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY,REQUIRED,OPEN,External review remains open.
+supergrammar_v032_20261002,SGT13_VERTICAL_OPENER_GRAMMAR,SGK21A_VERTICAL_OPENER_DEPENDENCY,REQUIRED,OPEN,Independent implementation replay and external review remain open.
+supergrammar_v032_20261002,SGT13_VERTICAL_OPENER_GRAMMAR,SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION,REQUIRED,OPEN,Independent implementation replay and external review remain open.
+supergrammar_v032_20261002,SGT13_VERTICAL_OPENER_GRAMMAR,SGK21C_DQY_DIRECTION,REQUIRED,OPEN,Independent implementation replay and external review remain open.
+supergrammar_v032_20261002,SGT13_VERTICAL_OPENER_GRAMMAR,SGK21D_DQY_LAG2_UNRESOLVED,BOUND_ONLY,OPEN,Non-resolution bounds the directional substructure; does not prove absence.

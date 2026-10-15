@@ -1,0 +1,2192 @@
+[
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK01_INTERNAL_ORDER2",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 41
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02_INTERNAL_ORDER3",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 43
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK02B_ORDER3_NOT_ROBUST",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 42
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 50
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ci",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 69
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 51
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dh",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 70
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 52
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_dn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 71
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 53
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kk",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 72
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 54
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_km",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 73
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 55
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 74
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 56
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_kp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 75
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 57
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_lh",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 76
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 58
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_ln",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 77
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 59
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pl",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 78
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 60
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 79
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 61
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 80
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 62
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_pt",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 81
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 63
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tm",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 82
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 64
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 83
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 65
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tp",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 84
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 66
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tr",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 85
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 67
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_tt",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 86
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 68
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK03_HZ_yn",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 87
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 44
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK04_SPACE_EDGE",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 45
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 46
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 47
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK05_SPACE_GT_LINEBREAK",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 48
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK06_Q_SELECTS_K",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 93
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK07_I_RUN_TERMINATION",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 88
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK08_PREV_TOKEN_MORPH",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 94
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 95
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13B_R64_CURRENT",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 91
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK13C_LAG1_EXCLUSION_UNRESOLVED",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 92
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 90
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK16_BOUNDARY_ED1_DERIVED",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 49
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "REPLICATION",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "claim_id": "SGK17_CURRIER_NOT_INDEPENDENT",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 89
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "CONFOUNDS",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "FALSIFIER",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK20_WITHIN_LINE_RECURRENCE_GEOMETRY",
+  "obligation_code": "SOURCE_CONTRACT",
+  "evidence_id": 96
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "CONFOUNDS",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "FALSIFIER",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21A_VERTICAL_OPENER_DEPENDENCY",
+  "obligation_code": "SOURCE_CONTRACT",
+  "evidence_id": 97
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "CONFOUNDS",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "FALSIFIER",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21B_VERTICAL_SELF_REPEAT_SUPPRESSION",
+  "obligation_code": "SOURCE_CONTRACT",
+  "evidence_id": 98
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "CONFOUNDS",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "FALSIFIER",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21C_DQY_DIRECTION",
+  "obligation_code": "SOURCE_CONTRACT",
+  "evidence_id": 99
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "CONFOUNDS",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "EFFECT_BOUND",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "FALSIFIER",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "MATCHED_NULL",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "evidence_id": 100
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "claim_id": "SGK21D_DQY_LAG2_UNRESOLVED",
+  "obligation_code": "SOURCE_CONTRACT",
+  "evidence_id": 100
+ }
+]

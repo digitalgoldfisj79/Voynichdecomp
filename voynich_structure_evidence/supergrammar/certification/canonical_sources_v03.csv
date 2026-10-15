@@ -1,0 +1,6 @@
+source_order,source_key,source_role,source_status,source_version,content_md5,content_chars,note
+1,voynich_supergrammar_v11_running_text_20260919,CANONICAL_SURFACE_ARCHITECTURE,completed,1,bb21ce62c596388e8961527939e9343f,3538,Supersedes SG1.0; explicit page codebook removed.
+2,voynich_theory_compiler_stageB_claims_20260919,NORMALIZED_MECHANISM_CLAIMS,active,1,a2f4f7f24e44b6f1a68f583a2e154c8d,6955,28-card normalized mechanism/theory ledger.
+3,voynich_theory_compiler_stageC_closure_20260919,MECHANISM_CLOSURE,active,1,11ab55d50bc880f5305b6231ca4fbc7e,4813,20-family closure ledger; statuses are bounds not votes.
+4,voynich_theory_compiler_stageD_graph_20260919,EVIDENCE_GRAPH,active,2,fa0a4946f15b5445e0b3449a2dc4da45,4715,Supported internal chain and missing couplers.
+5,voynich_theory_compiler_stageE_novelty_20260919,NOVELTY_FRONTIER,active,3,f61a8da163a331f60c7dd39b1ef8a4a3,12787,Duplicate elimination and admissible future-input frontier.
