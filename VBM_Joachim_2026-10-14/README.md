@@ -30,8 +30,12 @@ Diese Arbeitszweig-Dokumentation unterscheidet zwischen der **direkten Prüfung 
 - [08_Schreibpraktische_Pruefung.md](./08_Schreibpraktische_Pruefung.md)
 - [09_Paketindex_original.md](./09_Paketindex_original.md)
 
-## Originalarchive (separates ZIP)
+## Gesamte Arbeitsdateien – auf diesem Branch verfügbar
 
-Das **Gesamtpaket** `VBM_Gesamtpaket_fuer_Joachim_2026-10-14.zip` (6.408.563 Byte, SHA-256 `3bef2beebdeba2be78fb662b220409f51c4b2dd2ca1a53e8ba89abd4699012af`) enthält auch Joachims unveränderte Originaldateien und sämtliche verfügbaren Reproduzierbarkeits-ZIPs. **Dieses Binärarchiv ist zum Zeitpunkt dieser Veröffentlichung nicht auf den Branch hochgeladen.** Es kann über GitHubs Weboberfläche mit 'Add file → Upload files' im Branch ergänzt werden.
+Die vollständige **entpackte** Sammlung liegt unter [Material](./Material/). Sie enthält 316 Einträge aus dem Archiv (Originalgenerator, Quellcode, Eingabedaten, Prüfberichte, Ergebnistabellen und Binär-Checkpoints), jeweils in ihrer Unterordnerstruktur. Die Vollständigkeit wurde anhand des Archiv-Manifests mit Dateipfaden und Größen überprüft.
 
-**Hinweis:** Dies ist ein **öffentlich sichtbares Repository**. Das Hochladen des Gesamtpakets würde auch Joachims Originalmaterial öffentlich verbreiten; dafür sollten die entsprechenden Weitergaberechte geklärt sein.
+**Einzige Transport-Ausnahme:** `Material/05_v145_bis_v147/VBM_v145_Seam_Compatible_Codebooks_2026-10-14/vbm_v145/inputs/voynich_transcriptions_slim.json` wird als `voynich_transcriptions_slim.json.gz` gespeichert. Diese verlustfreie gzip-Komprimierung war wegen der Upload-Grenze erforderlich. Zur Wiederherstellung `gzip -dk voynich_transcriptions_slim.json.gz` verwenden. Die rekonstruierte Datei besitzt unverändert 4.483.164 Byte und den SHA-256-Hash `26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f`. Siehe `inputs/RESTORE_DATA.txt`.
+
+**Das Gesamt-ZIP ist nicht notwendig:** Es muss nicht gesondert heruntergeladen oder hochgeladen werden. Der komplette Dateiinhalt ist im Branch einzeln verfügbar.
+
+**Vertraulichkeit:** Das Repository ist öffentlich. Joachims Originaldateien wurden in diesem Arbeitszweig als Einzeldateien veröffentlicht. Eine separate Genehmigung für eine öffentliche Weitergabe wurde in dieser Dokumentation nicht geprüft; gegebenenfalls ist der Zugriff auf das Repository einzuschränken.
