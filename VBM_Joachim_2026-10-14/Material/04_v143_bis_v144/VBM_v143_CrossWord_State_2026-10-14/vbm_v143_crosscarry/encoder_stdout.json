@@ -1,0 +1,86 @@
+{
+  "train": {
+    "label": "train",
+    "words": 68396,
+    "states": {
+      "-": {
+        "carry": 596,
+        "statefree": 601
+      },
+      "a": {
+        "carry": 11040,
+        "statefree": 11156
+      },
+      "e": {
+        "carry": 28322,
+        "statefree": 28226
+      },
+      "i": {
+        "carry": 13648,
+        "statefree": 13567
+      },
+      "o": {
+        "carry": 5288,
+        "statefree": 5331
+      },
+      "u": {
+        "carry": 9502,
+        "statefree": 9515
+      }
+    },
+    "changed_cells": {
+      "carry": 152546,
+      "statefree": 152265
+    },
+    "total_cells": {
+      "carry": 156511,
+      "statefree": 156511
+    },
+    "per_word_length_equal": true,
+    "base_sha256": "d8c1259e47de60e7bb4c23d91ca38a8aca14f8ce5b3f862a18d440fae0a511fb",
+    "carry_sha256": "c41af1c1a65f8a84bbfd8fb03c32135d63a7b0ab336bf2ed70d7190491d468fb",
+    "statefree_sha256": "5dcc1a516d8fe3dfe85152bea22e456de047af5248fb8d3028bd57be78e19161"
+  },
+  "hartlieb": {
+    "label": "hartlieb",
+    "words": 13232,
+    "states": {
+      "-": {
+        "carry": 5,
+        "statefree": 138
+      },
+      "a": {
+        "carry": 2121,
+        "statefree": 2139
+      },
+      "e": {
+        "carry": 5397,
+        "statefree": 5448
+      },
+      "i": {
+        "carry": 2654,
+        "statefree": 2627
+      },
+      "o": {
+        "carry": 642,
+        "statefree": 1052
+      },
+      "u": {
+        "carry": 2413,
+        "statefree": 1828
+      }
+    },
+    "changed_cells": {
+      "carry": 29117,
+      "statefree": 28788
+    },
+    "total_cells": {
+      "carry": 29734,
+      "statefree": 29734
+    },
+    "per_word_length_equal": true,
+    "base_sha256": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d",
+    "carry_sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+    "statefree_sha256": "8de171a3025f3e9a0bced6839bfc5c8b1efba819f6154056324b675d7e5e918b"
+  }
+}

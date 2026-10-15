@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-14",
+  "title": "VBM v143 conditional cross-word carry: paired-source qualification only",
+  "parent": "v142b pair-in-word compact manifest, unchanged",
+  "competing_mechanisms": {
+    "A": "v142b exactly as frozen: no cross-word carry",
+    "B": "v142b with six-state previous-word carry selecting bijective code-cell permutations within fixed (vowel,key,cell-length) equivalence classes",
+    "C": "state-free matched permutation selector: same codebook, six options and same state marginal distribution fitted on development source, but choice determined by a public word-index hash rather than previous plaintext"
+  },
+  "predetermined_carry": "Last vowel of immediately preceding normalised source word; '-': no preceding word or no vowel; state update derived solely from independently decoded preceding ciphertext word",
+  "frozen_permutation": "For each vowel state, rotate the indices in each code-cell group with identical initial key and glyph length by shift carry_index modulo group size; leave bridges, word spaces, escape usage, and all codes structurally intact",
+  "permutation_order": ["-", "a", "e", "i", "o", "u"],
+  "statefree_schedule_seed": "v143-null-2026-10-14",
+  "statefree_distribution": "Six-category empirical previous-word carry probabilities determined on development plaintext alone, frozen before held-out Hartlieb",
+  "source_preparation": "Use v142b normalized Bavarian development and untouched Hartlieb holdout as distributed; no fitting on Hartlieb",
+  "qualifying_tests": [
+    "Exact independent decode of whole development and held-out Hartlieb for each of three arms",
+    "Identical ciphertext word count, total characters and per-position word lengths across arms",
+    "No new code cells, bridge pairs, state classes, source units or external event logs",
+    "Match bridge/key semantics and uniqueness of prefix-free cell parsing",
+    "A versus B versus C synthetic paired-source discriminator on Hartlieb after freezing null probabilities on development, tested against a source-aware conditional permutation null"
+  ],
+  "mechanism_limit": "No ciphertext-only signature can identify historical plaintext when a matched autonomous generator can reproduce the output law; a synthetic paired-source test is only an engineering test",
+  "surface_gate": "Inherited v142b glyph-seam NO-GO remains in force; do not tune seams and do not promote new VMS test without distinct observable and qualified matching null",
+  "stopping_rule": "If any mechanical or matched-null qualification fails, record NO-GO without retuning. Even if it passes, do not claim Voynich mechanism or SELECT resolution without an independent source anchor and fair output-only test.",
+  "audit_sequence": ["circularity", "leakage", "confounds", "matched nulls", "control fairness", "measurement degeneracy", "representation dependence", "decision fragility", "audit completeness"]
+}

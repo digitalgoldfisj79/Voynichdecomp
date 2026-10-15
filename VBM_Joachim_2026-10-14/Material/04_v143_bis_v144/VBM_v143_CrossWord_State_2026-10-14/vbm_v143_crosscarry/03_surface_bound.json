@@ -1,0 +1,59 @@
+{
+  "reference_words": 21679,
+  "raw_bigrams": 258,
+  "raw_trigrams": 1132,
+  "reference_self_bad_bigrams": 0,
+  "reference_self_bad_trigrams": 0,
+  "null_sd_for_reference_token_shuffle": 0,
+  "note": "In-sample necessary support bound, not a qualified matched historical model test. Reference self-support is degenerate by construction.",
+  "results": {
+    "train_baseline": {
+      "n_words": 68396,
+      "invalid_bigram": 17386,
+      "invalid_trigram": 60454,
+      "invalid_bigram_fraction": 0.254196151821744,
+      "invalid_trigram_fraction": 0.8838820983683257,
+      "avg_length": 7.105766419088836
+    },
+    "train_carry": {
+      "n_words": 68396,
+      "invalid_bigram": 17181,
+      "invalid_trigram": 61205,
+      "invalid_bigram_fraction": 0.25119890052049826,
+      "invalid_trigram_fraction": 0.8948622726475233,
+      "avg_length": 7.105766419088836
+    },
+    "train_statefree": {
+      "n_words": 68396,
+      "invalid_bigram": 16993,
+      "invalid_trigram": 61554,
+      "invalid_bigram_fraction": 0.24845020176618515,
+      "invalid_trigram_fraction": 0.8999649102286683,
+      "avg_length": 7.105766419088836
+    },
+    "hartlieb_baseline": {
+      "n_words": 13232,
+      "invalid_bigram": 2773,
+      "invalid_trigram": 11745,
+      "invalid_bigram_fraction": 0.2095677146311971,
+      "invalid_trigram_fraction": 0.8876209189842805,
+      "avg_length": 7.089102176541717
+    },
+    "hartlieb_carry": {
+      "n_words": 13232,
+      "invalid_bigram": 3096,
+      "invalid_trigram": 11810,
+      "invalid_bigram_fraction": 0.23397823458282951,
+      "invalid_trigram_fraction": 0.8925332527206772,
+      "avg_length": 7.089102176541717
+    },
+    "hartlieb_statefree": {
+      "n_words": 13232,
+      "invalid_bigram": 2851,
+      "invalid_trigram": 11911,
+      "invalid_bigram_fraction": 0.21546251511487305,
+      "invalid_trigram_fraction": 0.9001662636033857,
+      "avg_length": 7.089102176541717
+    }
+  }
+}

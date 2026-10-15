@@ -1,0 +1,140 @@
+{
+  "contract_sha256": "3382fc17f8c968b447a77b687b495a8c0efec1443ed21ab9e16631b840cf1eb5",
+  "engineering": {
+    "hartlieb": {
+      "arms": {
+        "baseline": {
+          "characters": 93803,
+          "distinct_words": 2276,
+          "exact_words": 13232,
+          "hapax_types": 1305,
+          "pct_types_hapax": 0.5733743409490334,
+          "roundtrip": true
+        },
+        "carry": {
+          "characters": 93803,
+          "distinct_words": 3461,
+          "exact_words": 13232,
+          "hapax_types": 2291,
+          "pct_types_hapax": 0.6619474140421844,
+          "roundtrip": true
+        },
+        "statefree": {
+          "characters": 93803,
+          "distinct_words": 3847,
+          "exact_words": 13232,
+          "hapax_types": 2622,
+          "pct_types_hapax": 0.6815700545879907,
+          "roundtrip": true
+        }
+      },
+      "baseline_distinct": 2276,
+      "baseline_hapax_types": 1305,
+      "identical_word_lengths": true,
+      "pairwise_differing_word_fractions": {
+        "baseline__carry": 0.9842805320435308,
+        "baseline__statefree": 0.9714328899637243,
+        "carry__statefree": 0.7192412333736397
+      },
+      "same_cell_inventory_and_lengths": true,
+      "word_count": 13232
+    },
+    "train": {
+      "arms": {
+        "baseline": {
+          "characters": 486006,
+          "distinct_words": 8247,
+          "exact_words": 68396,
+          "hapax_types": 4648,
+          "pct_types_hapax": 0.5635988844428277,
+          "roundtrip": true
+        },
+        "carry": {
+          "characters": 486006,
+          "distinct_words": 13500,
+          "exact_words": 68396,
+          "hapax_types": 8460,
+          "pct_types_hapax": 0.6266666666666667,
+          "roundtrip": true
+        },
+        "statefree": {
+          "characters": 486006,
+          "distinct_words": 14708,
+          "exact_words": 68396,
+          "hapax_types": 9447,
+          "pct_types_hapax": 0.6423035082948055,
+          "roundtrip": true
+        }
+      },
+      "baseline_distinct": 8247,
+      "baseline_hapax_types": 4648,
+      "identical_word_lengths": true,
+      "pairwise_differing_word_fractions": {
+        "baseline__carry": 0.980671384291479,
+        "baseline__statefree": 0.9786975846540733,
+        "carry__statefree": 0.7292385519621031
+      },
+      "same_cell_inventory_and_lengths": true,
+      "word_count": 68396
+    }
+  },
+  "interpretation": {
+    "full_historical_attribution": "NOT IDENTIFIED",
+    "output_only_identifiability": "All arms use the same codecell glyph inventory and output lengths but wrong-state decoders may reject on epsilon/boundary syntax. With an independently justified codebook, that can distinguish particular grammars; without a historically grounded codebook, an autonomous state generator can reproduce the full ciphertext law.",
+    "source_aware": "Paired controls measure an engineered relationship and are not evidence about unlabeled Voynich.",
+    "vms_surface": "Inherited V142b seam NO-GO; no Voynich mechanism test admitted or run."
+  },
+  "manifest_sha256": "b57d6e4e63f97d6398fd7f80e3ba9d460db1073818684a48f3a86e37557bbd9c",
+  "paired_tests": {
+    "hartlieb_carry": {
+      "conditional_null_mean": 0.41645731630992616,
+      "effect_accuracy": 0.5835426836900739,
+      "eligible_events": 10652,
+      "exact_word_groups": 966,
+      "null_max": 0.4279008636875704,
+      "null_sd": 0.0040927202809053365,
+      "observed_accuracy": 1.0,
+      "permutations": 300,
+      "seed": 17682,
+      "total_decodable_events": 11955,
+      "z": 142.58064163646932
+    },
+    "hartlieb_statefree": {
+      "conditional_null_mean": 0.2576943297033421,
+      "effect_accuracy": 0.004134434847915869,
+      "eligible_events": 10652,
+      "exact_word_groups": 966,
+      "null_max": 0.2665227187382651,
+      "null_sd": 0.003379810627519696,
+      "observed_accuracy": 0.261828764551258,
+      "permutations": 300,
+      "seed": 17682,
+      "total_decodable_events": 11955,
+      "z": 1.223274113126853
+    }
+  },
+  "synthetic_controls": {
+    "collision_rejected": true,
+    "hartlieb_cross_decode": {
+      "baseline": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      },
+      "statefree": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      }
+    },
+    "invalid_letter_rejected": true,
+    "train_cross_decode": {
+      "baseline": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      },
+      "statefree": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      }
+    }
+  }
+}
