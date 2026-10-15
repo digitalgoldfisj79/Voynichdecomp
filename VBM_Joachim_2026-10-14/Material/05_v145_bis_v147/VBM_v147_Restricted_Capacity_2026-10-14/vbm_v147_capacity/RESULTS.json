@@ -1,0 +1,124 @@
+{
+  "bounds": {
+    "hartlieb.reference.txt vs A_REVA_reference.txt": {
+      "fixed_three_position_perfect_support_possible": false,
+      "plain_1x1_any_missing_at_least": 495,
+      "position3_missing_at_least": {
+        "end_mmf": 0,
+        "interior_mmm": 664,
+        "single_triple_imf": 0,
+        "start_imm": 265
+      }
+    },
+    "hartlieb.reference.txt vs VMS_B_REVA_reference.txt": {
+      "fixed_three_position_perfect_support_possible": false,
+      "plain_1x1_any_missing_at_least": 265,
+      "position3_missing_at_least": {
+        "end_mmf": 0,
+        "interior_mmm": 476,
+        "single_triple_imf": 0,
+        "start_imm": 175
+      }
+    },
+    "train.reference.txt vs A_REVA_reference.txt": {
+      "fixed_three_position_perfect_support_possible": false,
+      "plain_1x1_any_missing_at_least": 1704,
+      "position3_missing_at_least": {
+        "end_mmf": 340,
+        "interior_mmm": 1874,
+        "single_triple_imf": 119,
+        "start_imm": 728
+      }
+    },
+    "train.reference.txt vs VMS_B_REVA_reference.txt": {
+      "fixed_three_position_perfect_support_possible": false,
+      "plain_1x1_any_missing_at_least": 1474,
+      "position3_missing_at_least": {
+        "end_mmf": 227,
+        "interior_mmm": 1686,
+        "single_triple_imf": 83,
+        "start_imm": 638
+      }
+    }
+  },
+  "date": "2026-10-14",
+  "oracle_vocabulary_capacity": {
+    "hartlieb.reference.txt vs A_REVA_reference.txt": {
+      "distinct_word_dictionary_possible": true,
+      "reference_types": 3098,
+      "source_types": 2276
+    },
+    "hartlieb.reference.txt vs VMS_B_REVA_reference.txt": {
+      "distinct_word_dictionary_possible": true,
+      "reference_types": 4778,
+      "source_types": 2276
+    },
+    "train.reference.txt vs A_REVA_reference.txt": {
+      "distinct_word_dictionary_possible": false,
+      "reference_types": 3098,
+      "source_types": 8247
+    },
+    "train.reference.txt vs VMS_B_REVA_reference.txt": {
+      "distinct_word_dictionary_possible": false,
+      "reference_types": 4778,
+      "source_types": 8247
+    }
+  },
+  "reference_inputs": {
+    "A_REVA_reference.txt": {
+      "atom_trigrams": {
+        "all": 1255,
+        "end_mmf": 650,
+        "interior_mmm": 646,
+        "single_triple_imf": 279,
+        "start_imm": 438
+      },
+      "mean_raw_characters": 4.783447021373352,
+      "sha256": "1160ebebc68acda9f93d29fd54b7dae304679baaa2883c47d78cee521db7dbc4",
+      "tokens": 10995,
+      "types": 3098
+    },
+    "VMS_B_REVA_reference.txt": {
+      "atom_trigrams": {
+        "all": 1485,
+        "end_mmf": 763,
+        "interior_mmm": 834,
+        "single_triple_imf": 315,
+        "start_imm": 528
+      },
+      "mean_raw_characters": 5.060706707260818,
+      "sha256": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+      "tokens": 21678,
+      "types": 4778
+    }
+  },
+  "scope": "restricted necessary-condition feasibility: 1 atom per source letter, distinct 23 glyph atoms per positional class (I,M,F); all encoded atom-trigrams must be attested in corresponding A or B original REVA inventory. No claim about finite-state code or unknown actual source.",
+  "source_inputs": {
+    "hartlieb.reference.txt": {
+      "mean_letters": 4.078521765417171,
+      "sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+      "tokens": 13232,
+      "trigrams": {
+        "all": 1750,
+        "end_mmf": 535,
+        "interior_mmm": 1310,
+        "single_triple_imf": 181,
+        "start_imm": 703
+      },
+      "types": 2276
+    },
+    "train.reference.txt": {
+      "mean_letters": 4.103529446166442,
+      "sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+      "tokens": 68396,
+      "trigrams": {
+        "all": 2959,
+        "end_mmf": 990,
+        "interior_mmm": 2520,
+        "single_triple_imf": 398,
+        "start_imm": 1166
+      },
+      "types": 8247
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "train.reference.txt": {
+    "sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+    "size": 349061
+  },
+  "VMS_B_REVA_reference.txt": {
+    "sha256": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+    "size": 152246
+  },
+  "hartlieb.reference.txt": {
+    "sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+    "size": 67199
+  },
+  "A_REVA_reference.txt": {
+    "sha256": "1160ebebc68acda9f93d29fd54b7dae304679baaa2883c47d78cee521db7dbc4",
+    "size": 63589
+  }
+}

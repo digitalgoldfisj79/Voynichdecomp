@@ -1,0 +1,140 @@
+{
+  "contract_sha256": "e6848a981c6858ca80c4e734036001ecef0b5cea92d7223137a75ac66bccae9f",
+  "controls": {
+    "baseline": {
+      "qualified": true,
+      "n": 4751,
+      "total_eligible_preholdout": 10635,
+      "folds": [
+        {
+          "fold": 0,
+          "n": 1077,
+          "train": 8192,
+          "eligible_shells": 76
+        },
+        {
+          "fold": 1,
+          "n": 1051,
+          "train": 8190,
+          "eligible_shells": 86
+        },
+        {
+          "fold": 2,
+          "n": 1020,
+          "train": 8285,
+          "eligible_shells": 83
+        },
+        {
+          "fold": 3,
+          "n": 848,
+          "train": 8854,
+          "eligible_shells": 95
+        },
+        {
+          "fold": 4,
+          "n": 755,
+          "train": 9019,
+          "eligible_shells": 91
+        }
+      ],
+      "gain_bits": 0.03751273725608546,
+      "null_mean_bits": 0.001171501572654977,
+      "null_sd_bits": 0.002244225126723752,
+      "effect_bits": 0.036341235683430485,
+      "z": 16.1932219948377,
+      "null_reps": 40,
+      "seed": 7188,
+      "sha256": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d"
+    },
+    "carry": {
+      "qualified": true,
+      "n": 3906,
+      "total_eligible_preholdout": 10635,
+      "folds": [
+        {
+          "fold": 0,
+          "n": 876,
+          "train": 8192,
+          "eligible_shells": 101
+        },
+        {
+          "fold": 1,
+          "n": 847,
+          "train": 8190,
+          "eligible_shells": 92
+        },
+        {
+          "fold": 2,
+          "n": 890,
+          "train": 8285,
+          "eligible_shells": 102
+        },
+        {
+          "fold": 3,
+          "n": 686,
+          "train": 8854,
+          "eligible_shells": 107
+        },
+        {
+          "fold": 4,
+          "n": 607,
+          "train": 9019,
+          "eligible_shells": 107
+        }
+      ],
+      "gain_bits": 0.06758609172081662,
+      "null_mean_bits": 0.010855571656829054,
+      "null_sd_bits": 0.0031212122292941925,
+      "effect_bits": 0.05673052006398756,
+      "z": 18.175797061007984,
+      "null_reps": 40,
+      "seed": 7188,
+      "sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8"
+    },
+    "statefree": {
+      "qualified": true,
+      "n": 3652,
+      "total_eligible_preholdout": 10635,
+      "folds": [
+        {
+          "fold": 0,
+          "n": 825,
+          "train": 8192,
+          "eligible_shells": 108
+        },
+        {
+          "fold": 1,
+          "n": 831,
+          "train": 8190,
+          "eligible_shells": 103
+        },
+        {
+          "fold": 2,
+          "n": 791,
+          "train": 8285,
+          "eligible_shells": 110
+        },
+        {
+          "fold": 3,
+          "n": 641,
+          "train": 8854,
+          "eligible_shells": 120
+        },
+        {
+          "fold": 4,
+          "n": 564,
+          "train": 9019,
+          "eligible_shells": 115
+        }
+      ],
+      "gain_bits": 0.01658054260419652,
+      "null_mean_bits": 0.0031879279308298127,
+      "null_sd_bits": 0.0014231930775839541,
+      "effect_bits": 0.013392614673366707,
+      "z": 9.410258442306594,
+      "null_reps": 40,
+      "seed": 7188,
+      "sha256": "8de171a3025f3e9a0bced6839bfc5c8b1efba819f6154056324b675d7e5e918b"
+    }
+  }
+}

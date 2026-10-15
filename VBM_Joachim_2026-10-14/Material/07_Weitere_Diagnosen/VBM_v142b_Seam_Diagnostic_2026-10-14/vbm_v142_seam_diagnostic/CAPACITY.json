@@ -1,0 +1,129 @@
+{
+  "a": {
+    "total_v142_prefixfree_cells": 222,
+    "join_compatible_prefixfree_cells": 207,
+    "by_first_key": {
+      "y": {
+        "total": 142,
+        "good": 128
+      },
+      "n": {
+        "total": 80,
+        "good": 79
+      }
+    },
+    "capacity_for_direct_src_units_no_escape": 207,
+    "source_units_including_empty": 222,
+    "current_direct": 222,
+    "current_escape": null,
+    "max_capacity_one_escape_within_existing_cells": 403,
+    "max_continuations": 197,
+    "best_escape": "yoeech",
+    "would_fit_222": true,
+    "corrected_best_one_escape_capacity": 410,
+    "corrected_continuations_any_v142_cell": 204,
+    "corrected_best_escape": "ydoiiad",
+    "corrected_passes_222_capacity": true
+  },
+  "e": {
+    "total_v142_prefixfree_cells": 222,
+    "join_compatible_prefixfree_cells": 198,
+    "by_first_key": {
+      "y": {
+        "total": 90,
+        "good": 83
+      },
+      "r": {
+        "total": 87,
+        "good": 79
+      },
+      "n": {
+        "total": 45,
+        "good": 36
+      }
+    },
+    "capacity_for_direct_src_units_no_escape": 198,
+    "source_units_including_empty": 222,
+    "current_direct": 222,
+    "current_escape": null,
+    "max_capacity_one_escape_within_existing_cells": 394,
+    "max_continuations": 197,
+    "best_escape": "ydiad",
+    "would_fit_222": true,
+    "corrected_best_one_escape_capacity": 394,
+    "corrected_continuations_any_v142_cell": 197,
+    "corrected_best_escape": "ydiad",
+    "corrected_passes_222_capacity": true
+  },
+  "i": {
+    "total_v142_prefixfree_cells": 146,
+    "join_compatible_prefixfree_cells": 117,
+    "by_first_key": {
+      "y": {
+        "total": 146,
+        "good": 117
+      }
+    },
+    "capacity_for_direct_src_units_no_escape": 117,
+    "source_units_including_empty": 222,
+    "current_direct": 145,
+    "current_escape": "ydeeckh",
+    "max_capacity_one_escape_within_existing_cells": 233,
+    "max_continuations": 117,
+    "best_escape": "yesh",
+    "would_fit_222": true,
+    "corrected_best_one_escape_capacity": 255,
+    "corrected_continuations_any_v142_cell": 139,
+    "corrected_best_escape": "yek",
+    "corrected_passes_222_capacity": true
+  },
+  "o": {
+    "total_v142_prefixfree_cells": 146,
+    "join_compatible_prefixfree_cells": 98,
+    "by_first_key": {
+      "y": {
+        "total": 146,
+        "good": 98
+      }
+    },
+    "capacity_for_direct_src_units_no_escape": 98,
+    "source_units_including_empty": 222,
+    "current_direct": 145,
+    "current_escape": "ydeeckh",
+    "max_capacity_one_escape_within_existing_cells": 195,
+    "max_continuations": 98,
+    "best_escape": "yok",
+    "would_fit_222": false,
+    "corrected_best_one_escape_capacity": 236,
+    "corrected_continuations_any_v142_cell": 139,
+    "corrected_best_escape": "yok",
+    "corrected_passes_222_capacity": true
+  },
+  "u": {
+    "total_v142_prefixfree_cells": 222,
+    "join_compatible_prefixfree_cells": 187,
+    "by_first_key": {
+      "y": {
+        "total": 123,
+        "good": 97
+      },
+      "r": {
+        "total": 99,
+        "good": 90
+      }
+    },
+    "capacity_for_direct_src_units_no_escape": 187,
+    "source_units_including_empty": 222,
+    "current_direct": 222,
+    "current_escape": null,
+    "max_capacity_one_escape_within_existing_cells": 373,
+    "max_continuations": 187,
+    "best_escape": "ydiiad",
+    "would_fit_222": true,
+    "corrected_best_one_escape_capacity": 392,
+    "corrected_continuations_any_v142_cell": 206,
+    "corrected_best_escape": "ydiiad",
+    "corrected_passes_222_capacity": true
+  },
+  "note": "Necessary bridge|first-cell admissibility bound only. It does not address cell-cell seams, escape decoding, exact word distribution, A inventory or historical model."
+}

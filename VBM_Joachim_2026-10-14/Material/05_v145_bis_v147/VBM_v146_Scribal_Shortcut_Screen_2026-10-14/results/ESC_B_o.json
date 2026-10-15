@@ -1,0 +1,73 @@
+{
+  "family": "B",
+  "escape_prefix": "o",
+  "source_digraphs": [
+    "en",
+    "er",
+    "ch",
+    "un"
+  ],
+  "training_objective": 0.6300671040319152,
+  "validation": {
+    "n": 1849,
+    "mean_length": 5.307733910221741,
+    "bad_trigram_rate": 0.4034613304488913,
+    "bad_bigram_rate": 0.16819902650081126,
+    "invalid_trigrams_per_word": 0.8171984856679286,
+    "invalid_bigrams_per_word": 0.18550567874526772,
+    "invalid_boundary_rate": 0.31422390481341267,
+    "share_len_ge_10": 0.09843158464034614,
+    "exact_native_word_rate": 0.13953488372093023,
+    "objective": 0.6538969956288684
+  },
+  "holdout": {
+    "n": 13232,
+    "mean_length": 5.523428053204353,
+    "bad_trigram_rate": 0.39578295042321643,
+    "bad_bigram_rate": 0.15371825876662637,
+    "invalid_trigrams_per_word": 0.7679866989117291,
+    "invalid_bigrams_per_word": 0.16293833131801694,
+    "invalid_boundary_rate": 0.2629987908101572,
+    "share_len_ge_10": 0.12877871825876663,
+    "exact_native_word_rate": 0.15394498186215236,
+    "objective": 0.6450459977570225
+  },
+  "codebook": {
+    "d": "s",
+    "i": "sh",
+    "t": "d",
+    "e": "e",
+    "a": "ch",
+    "s": "y",
+    "en": "l",
+    "n": "k",
+    "u": "a",
+    "er": "cth",
+    "l": "cfh",
+    "r": "cph",
+    "g": "r",
+    "ch": "p",
+    "o": "i",
+    "m": "ckh",
+    "w": "f",
+    "un": "q",
+    "z": "n",
+    "h": "g",
+    "b": "t",
+    "f": "m",
+    "p": "oe",
+    "k": "och",
+    "c": "osh",
+    "x": "ol",
+    "q": "oq"
+  },
+  "escape_tails": [
+    "oe",
+    "och",
+    "osh",
+    "ol",
+    "oq"
+  ],
+  "table_entries": 27,
+  "exact_decoding": true
+}

@@ -1,0 +1,102 @@
+{
+  "A": {
+    "table": {
+      "e": "o",
+      "n": "y",
+      "r": "ch",
+      "d": "e",
+      "i": "i",
+      "t": "a",
+      "u": "d",
+      "a": "l",
+      "s": "k",
+      "h": "r",
+      "c": "n",
+      "l": "t",
+      "g": "sh",
+      "o": "q",
+      "m": "s",
+      "w": "cth",
+      "z": "m",
+      "b": "ckh",
+      "f": "p",
+      "p": "cph",
+      "k": "f",
+      "x": "g",
+      "q": "cfh"
+    },
+    "native_words": 10995,
+    "native_avg_length": 4.783447021373352,
+    "holdout": {
+      "n": 13232,
+      "mean_length": 4.850740628778718,
+      "share_len_ge_10": 0.07126662636033858,
+      "share_len_ge_15": 0.002116082224909311,
+      "bad_trigram_rate": 0.5570586457073761,
+      "bad_bigram_rate": 0.3949516324062878,
+      "exact_vms_word_rate": 0.05161729141475212,
+      "cipher_sha256": "964b480ea3e78a42864d4491ce774e795ee2d360b8bfaecdbb718a6514b8c49b"
+    },
+    "train": {
+      "n": 68396,
+      "mean_length": 4.938051932861571,
+      "share_len_ge_10": 0.07677349552605416,
+      "share_len_ge_15": 0.0067109187671793675,
+      "bad_trigram_rate": 0.5708228551377273,
+      "bad_bigram_rate": 0.4084449383004854,
+      "exact_vms_word_rate": 0.051786654190303524,
+      "cipher_sha256": "296c504f7c03e6f4ca22dc82ea817275161c1cdd13ad1a2b7179ea4b62a7a622"
+    },
+    "distinct_assignments": 23
+  },
+  "B": {
+    "table": {
+      "e": "o",
+      "n": "e",
+      "r": "y",
+      "d": "a",
+      "i": "d",
+      "t": "i",
+      "u": "l",
+      "a": "k",
+      "s": "ch",
+      "h": "q",
+      "c": "r",
+      "l": "n",
+      "g": "t",
+      "o": "sh",
+      "m": "s",
+      "w": "p",
+      "z": "m",
+      "b": "ckh",
+      "f": "cth",
+      "p": "f",
+      "k": "cph",
+      "x": "g",
+      "q": "cfh"
+    },
+    "native_words": 21678,
+    "native_avg_length": 5.060706707260818,
+    "holdout": {
+      "n": 13232,
+      "mean_length": 4.851571946795647,
+      "share_len_ge_10": 0.05841898428053204,
+      "share_len_ge_15": 0.0026451027811366383,
+      "bad_trigram_rate": 0.655229746070133,
+      "bad_bigram_rate": 0.3856559854897219,
+      "exact_vms_word_rate": 0.044059854897218864,
+      "cipher_sha256": "bf1d2cefd2b70acd226836893e1d13ea6875cf0388c7889f3f9a7d41c20dc00b"
+    },
+    "train": {
+      "n": 68396,
+      "mean_length": 4.735715538920405,
+      "share_len_ge_10": 0.05791274343528861,
+      "share_len_ge_15": 0.0049271887244868124,
+      "bad_trigram_rate": 0.6594976314404352,
+      "bad_bigram_rate": 0.3984297327329084,
+      "exact_vms_word_rate": 0.07806012047488158,
+      "cipher_sha256": "bb61fe6b5051822adcab1cd76092f5acca943156007f5247021ac57edb23fee1"
+    },
+    "distinct_assignments": 23
+  }
+}

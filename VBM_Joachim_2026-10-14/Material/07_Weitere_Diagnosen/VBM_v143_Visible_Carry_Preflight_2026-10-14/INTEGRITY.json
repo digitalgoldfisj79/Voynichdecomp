@@ -1,0 +1,11 @@
+{
+  "inputs": {
+    "baseline.vbm": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d",
+    "carry.vbm": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+    "statefree.vbm": "8de171a3025f3e9a0bced6839bfc5c8b1efba819f6154056324b675d7e5e918b"
+  },
+  "contracts": {
+    "CONTRACT.md": "e6848a981c6858ca80c4e734036001ecef0b5cea92d7223137a75ac66bccae9f",
+    "CONTRACT_V2.md": "3a5e08be5dda1c23728099d2c62536bfae7930efedadff5c1661efeeb4021512"
+  }
+}

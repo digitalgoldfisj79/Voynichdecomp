@@ -1,0 +1,213 @@
+{
+  "note": "Necessary local support screen for the frozen source-unit table, not a language or cipher test. Edge legality tested with original B REVA reference and bridge determined by following cell key. Some length-two escape codewords may already be internally illegal.",
+  "unattested_inside_source_unit_codeword": {
+    "a": 0,
+    "e": 0,
+    "i": 14,
+    "o": 14,
+    "u": 0
+  },
+  "by_state_transition": {
+    "a>a": {
+      "valid_pairs": 23208,
+      "pairs": 49284,
+      "percent": 47.090333576820065,
+      "preceding_units_with_any_valid_continuation": 187,
+      "next_units_with_valid_predecessor": 207,
+      "total_units": 222
+    },
+    "a>e": {
+      "valid_pairs": 17491,
+      "pairs": 49284,
+      "percent": 35.49021994967941,
+      "preceding_units_with_any_valid_continuation": 188,
+      "next_units_with_valid_predecessor": 198,
+      "total_units": 222
+    },
+    "a>i": {
+      "valid_pairs": 30494,
+      "pairs": 49284,
+      "percent": 61.87403619836052,
+      "preceding_units_with_any_valid_continuation": 158,
+      "next_units_with_valid_predecessor": 193,
+      "total_units": 222
+    },
+    "a>o": {
+      "valid_pairs": 6612,
+      "pairs": 49284,
+      "percent": 13.416118821524227,
+      "preceding_units_with_any_valid_continuation": 38,
+      "next_units_with_valid_predecessor": 174,
+      "total_units": 222
+    },
+    "a>u": {
+      "valid_pairs": 24605,
+      "pairs": 49284,
+      "percent": 49.92492492492492,
+      "preceding_units_with_any_valid_continuation": 172,
+      "next_units_with_valid_predecessor": 187,
+      "total_units": 222
+    },
+    "e>a": {
+      "valid_pairs": 22590,
+      "pairs": 49284,
+      "percent": 45.836376917458,
+      "preceding_units_with_any_valid_continuation": 181,
+      "next_units_with_valid_predecessor": 207,
+      "total_units": 222
+    },
+    "e>e": {
+      "valid_pairs": 16117,
+      "pairs": 49284,
+      "percent": 32.70229689148608,
+      "preceding_units_with_any_valid_continuation": 188,
+      "next_units_with_valid_predecessor": 198,
+      "total_units": 222
+    },
+    "e>i": {
+      "valid_pairs": 28371,
+      "pairs": 49284,
+      "percent": 57.5663501339177,
+      "preceding_units_with_any_valid_continuation": 147,
+      "next_units_with_valid_predecessor": 193,
+      "total_units": 222
+    },
+    "e>o": {
+      "valid_pairs": 6090,
+      "pairs": 49284,
+      "percent": 12.356951546140735,
+      "preceding_units_with_any_valid_continuation": 35,
+      "next_units_with_valid_predecessor": 174,
+      "total_units": 222
+    },
+    "e>u": {
+      "valid_pairs": 23490,
+      "pairs": 49284,
+      "percent": 47.662527392257125,
+      "preceding_units_with_any_valid_continuation": 165,
+      "next_units_with_valid_predecessor": 187,
+      "total_units": 222
+    },
+    "i>a": {
+      "valid_pairs": 23246,
+      "pairs": 49284,
+      "percent": 47.16743770797825,
+      "preceding_units_with_any_valid_continuation": 189,
+      "next_units_with_valid_predecessor": 207,
+      "total_units": 222
+    },
+    "i>e": {
+      "valid_pairs": 16777,
+      "pairs": 49284,
+      "percent": 34.04147390633877,
+      "preceding_units_with_any_valid_continuation": 185,
+      "next_units_with_valid_predecessor": 198,
+      "total_units": 222
+    },
+    "i>i": {
+      "valid_pairs": 31073,
+      "pairs": 49284,
+      "percent": 63.04885967048129,
+      "preceding_units_with_any_valid_continuation": 161,
+      "next_units_with_valid_predecessor": 193,
+      "total_units": 222
+    },
+    "i>o": {
+      "valid_pairs": 6786,
+      "pairs": 49284,
+      "percent": 13.76917457998539,
+      "preceding_units_with_any_valid_continuation": 39,
+      "next_units_with_valid_predecessor": 174,
+      "total_units": 222
+    },
+    "i>u": {
+      "valid_pairs": 24882,
+      "pairs": 49284,
+      "percent": 50.486973459946434,
+      "preceding_units_with_any_valid_continuation": 173,
+      "next_units_with_valid_predecessor": 187,
+      "total_units": 222
+    },
+    "o>a": {
+      "valid_pairs": 23246,
+      "pairs": 49284,
+      "percent": 47.16743770797825,
+      "preceding_units_with_any_valid_continuation": 189,
+      "next_units_with_valid_predecessor": 207,
+      "total_units": 222
+    },
+    "o>e": {
+      "valid_pairs": 16777,
+      "pairs": 49284,
+      "percent": 34.04147390633877,
+      "preceding_units_with_any_valid_continuation": 185,
+      "next_units_with_valid_predecessor": 198,
+      "total_units": 222
+    },
+    "o>i": {
+      "valid_pairs": 31073,
+      "pairs": 49284,
+      "percent": 63.04885967048129,
+      "preceding_units_with_any_valid_continuation": 161,
+      "next_units_with_valid_predecessor": 193,
+      "total_units": 222
+    },
+    "o>o": {
+      "valid_pairs": 6786,
+      "pairs": 49284,
+      "percent": 13.76917457998539,
+      "preceding_units_with_any_valid_continuation": 39,
+      "next_units_with_valid_predecessor": 174,
+      "total_units": 222
+    },
+    "o>u": {
+      "valid_pairs": 24882,
+      "pairs": 49284,
+      "percent": 50.486973459946434,
+      "preceding_units_with_any_valid_continuation": 173,
+      "next_units_with_valid_predecessor": 187,
+      "total_units": 222
+    },
+    "u>a": {
+      "valid_pairs": 23050,
+      "pairs": 49284,
+      "percent": 46.769742715688665,
+      "preceding_units_with_any_valid_continuation": 186,
+      "next_units_with_valid_predecessor": 207,
+      "total_units": 222
+    },
+    "u>e": {
+      "valid_pairs": 17314,
+      "pairs": 49284,
+      "percent": 35.13107702296892,
+      "preceding_units_with_any_valid_continuation": 190,
+      "next_units_with_valid_predecessor": 198,
+      "total_units": 222
+    },
+    "u>i": {
+      "valid_pairs": 30108,
+      "pairs": 49284,
+      "percent": 61.09082055028001,
+      "preceding_units_with_any_valid_continuation": 156,
+      "next_units_with_valid_predecessor": 193,
+      "total_units": 222
+    },
+    "u>o": {
+      "valid_pairs": 7482,
+      "pairs": 49284,
+      "percent": 15.181397613830047,
+      "preceding_units_with_any_valid_continuation": 43,
+      "next_units_with_valid_predecessor": 174,
+      "total_units": 222
+    },
+    "u>u": {
+      "valid_pairs": 24792,
+      "pairs": 49284,
+      "percent": 50.30435841246652,
+      "preceding_units_with_any_valid_continuation": 172,
+      "next_units_with_valid_predecessor": 187,
+      "total_units": 222
+    }
+  },
+  "source": "/mnt/data/VBM_v142b_Seam_Diagnostic_2026-10-14/VMS_B_REVA_reference.txt"
+}

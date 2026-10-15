@@ -1,0 +1,90 @@
+{
+  "assumptions": {
+    "bound": "output_length(word) >= 2*source_cell_count(word) + vowel_count(word)",
+    "bridge_min_raw_EVA_chars": 1,
+    "cell_min_raw_EVA_chars": 2,
+    "segmentation": "two-consonant source units, one explicit bridge and at least one explicit code cell per vowel",
+    "source_word_count_equals_output_word_count": true
+  },
+  "input_hashes": {
+    "04_pair_bridge_manifest.json": "9371877cf5186b9967d1391c8ee94bb952276c9d0257bed8cf35e8f007c7b8af",
+    "A_REVA_reference.txt": "1160ebebc68acda9f93d29fd54b7dae304679baaa2883c47d78cee521db7dbc4",
+    "VMS_B_REVA_reference.txt": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+    "hartlieb.reference.txt": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+    "train.reference.txt": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+    "v145_A_hartlieb_length_constrained.vbm": "b67cd589cd40875c888680edfc8d9dabb9ddf94b9c7ea4a68bd937ccf0083387",
+    "v145_B_hartlieb_length_constrained.vbm": "bde294f8d71956968d590c51b42591ffaceff9b36be5a93394e7df215055b307"
+  },
+  "reference": {
+    "Currier_A_REVA": {
+      "distinct_words": 3098,
+      "mean_EVA_atoms": 4.139517962710323,
+      "mean_raw_chars": 4.783447021373352,
+      "n": 10995,
+      "pct_atoms_at_least_10": 0.11823556161891768,
+      "pct_raw_at_least_10": 0.5638926784902228,
+      "pct_raw_at_least_15": 0.0
+    },
+    "Currier_B_REVA": {
+      "distinct_words": 4779,
+      "mean_EVA_atoms": 4.577563540753725,
+      "mean_raw_chars": 5.060519396651137,
+      "n": 21679,
+      "pct_atoms_at_least_10": 0.272152774574473,
+      "pct_raw_at_least_10": 0.8072328059412335,
+      "pct_raw_at_least_15": 0.0
+    }
+  },
+  "sources": {
+    "hartlieb": {
+      "gap_to_native_A_mean_chars": 1.1399205723388608,
+      "gap_to_native_B_mean_chars": 0.8628481970610755,
+      "hard_min_ge_10_pct": 9.64328899637243,
+      "hard_min_ge_15_pct": 0.6423821039903265,
+      "hard_raw_mean_lower_bound": 5.9233675937122126,
+      "mandatory_bridges": 18928,
+      "mandatory_cells": 29725,
+      "mean_bridges": 1.4304715840386941,
+      "mean_cells": 2.2464480048367594,
+      "min_hard_output_chars_total": 78378,
+      "reachable_assignments": 434,
+      "source_mean_letters": 4.078521765417171,
+      "source_words": 13232,
+      "v145_A_exact_word_matches": 3,
+      "v145_A_synthetic": {
+        "distinct_words": 2276,
+        "mean_EVA_atoms": 7.472717654171705,
+        "mean_raw_chars": 8.054489117291414,
+        "n": 13232,
+        "pct_atoms_at_least_10": 24.35006045949214,
+        "pct_raw_at_least_10": 29.073458282950423,
+        "pct_raw_at_least_15": 8.713724304715841
+      },
+      "v145_B_exact_word_matches": 3,
+      "v145_B_synthetic": {
+        "distinct_words": 2276,
+        "mean_EVA_atoms": 7.558948004836759,
+        "mean_raw_chars": 7.958811970979443,
+        "n": 13232,
+        "pct_atoms_at_least_10": 26.25453446191052,
+        "pct_raw_at_least_10": 29.34552599758162,
+        "pct_raw_at_least_15": 8.45677146311971
+      }
+    },
+    "train": {
+      "gap_to_native_A_mean_chars": 1.2695092918613406,
+      "gap_to_native_B_mean_chars": 0.9924369165835554,
+      "hard_min_ge_10_pct": 10.911456810339786,
+      "hard_min_ge_15_pct": 0.8684718404585063,
+      "hard_raw_mean_lower_bound": 6.052956313234692,
+      "mandatory_bridges": 101108,
+      "mandatory_cells": 156445,
+      "mean_bridges": 1.4782735832504825,
+      "mean_cells": 2.2873413649921046,
+      "min_hard_output_chars_total": 413998,
+      "reachable_assignments": 705,
+      "source_mean_letters": 4.103529446166442,
+      "source_words": 68396
+    }
+  }
+}

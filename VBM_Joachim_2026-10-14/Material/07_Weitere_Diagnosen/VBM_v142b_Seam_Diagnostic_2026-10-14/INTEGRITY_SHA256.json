@@ -1,0 +1,13 @@
+{
+  "train.reference.txt": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+  "VBM_v142b_Seam_Diagnostic_Report.md": "7f9afe88a64ae7c7020bff121167e4ff2c1dc9bcefbe756134d199d040475db6",
+  "hartlieb.pair.vbm": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d",
+  "VMS_B_REVA_reference.txt": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+  "VBM_v142b_Transition_Capacity_2026-10-14.json": "756c04cd5be6edfb8c14bc06a3c1df92e4bffd9440e174b02130d81945f63e40",
+  "hartlieb.reference.txt": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+  "run_transition_capacity.py": "0664368a5abdcbfd068da708034df399c1cf67ca70a230b4dc20e53de338d9a5",
+  "04_pair_bridge_manifest.json": "9371877cf5186b9967d1391c8ee94bb952276c9d0257bed8cf35e8f007c7b8af",
+  "VBM_v142b_Seam_Attribution_2026-10-14.json": "62c65ddd79272990ea31f13e241fd1d6b5673f1e48371f4a3f86fbaee157f3c4",
+  "train.pair.vbm": "d8c1259e47de60e7bb4c23d91ca38a8aca14f8ce5b3f862a18d440fae0a511fb",
+  "run_seam_localization.py": "820a57d98b2f9fb6128c41ba3b9dfcb3edd4e1d10ce901f2de82c049c887244e"
+}

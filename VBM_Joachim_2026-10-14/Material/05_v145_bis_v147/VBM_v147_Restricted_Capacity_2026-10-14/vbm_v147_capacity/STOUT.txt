@@ -1,0 +1,98 @@
+{
+  "source": {
+    "train.reference.txt": {
+      "all": 2959,
+      "start_imm": 1166,
+      "interior_mmm": 2520,
+      "end_mmf": 990,
+      "single_triple_imf": 398
+    },
+    "hartlieb.reference.txt": {
+      "all": 1750,
+      "start_imm": 703,
+      "interior_mmm": 1310,
+      "end_mmf": 535,
+      "single_triple_imf": 181
+    }
+  },
+  "reference": {
+    "A_REVA_reference.txt": {
+      "all": 1255,
+      "start_imm": 438,
+      "interior_mmm": 646,
+      "end_mmf": 650,
+      "single_triple_imf": 279
+    },
+    "VMS_B_REVA_reference.txt": {
+      "all": 1485,
+      "start_imm": 528,
+      "interior_mmm": 834,
+      "end_mmf": 763,
+      "single_triple_imf": 315
+    }
+  },
+  "bounds": {
+    "train.reference.txt vs A_REVA_reference.txt": {
+      "plain_1x1_any_missing_at_least": 1704,
+      "position3_missing_at_least": {
+        "start_imm": 728,
+        "interior_mmm": 1874,
+        "end_mmf": 340,
+        "single_triple_imf": 119
+      },
+      "fixed_three_position_perfect_support_possible": false
+    },
+    "train.reference.txt vs VMS_B_REVA_reference.txt": {
+      "plain_1x1_any_missing_at_least": 1474,
+      "position3_missing_at_least": {
+        "start_imm": 638,
+        "interior_mmm": 1686,
+        "end_mmf": 227,
+        "single_triple_imf": 83
+      },
+      "fixed_three_position_perfect_support_possible": false
+    },
+    "hartlieb.reference.txt vs A_REVA_reference.txt": {
+      "plain_1x1_any_missing_at_least": 495,
+      "position3_missing_at_least": {
+        "start_imm": 265,
+        "interior_mmm": 664,
+        "end_mmf": 0,
+        "single_triple_imf": 0
+      },
+      "fixed_three_position_perfect_support_possible": false
+    },
+    "hartlieb.reference.txt vs VMS_B_REVA_reference.txt": {
+      "plain_1x1_any_missing_at_least": 265,
+      "position3_missing_at_least": {
+        "start_imm": 175,
+        "interior_mmm": 476,
+        "end_mmf": 0,
+        "single_triple_imf": 0
+      },
+      "fixed_three_position_perfect_support_possible": false
+    }
+  },
+  "oracle": {
+    "train.reference.txt vs A_REVA_reference.txt": {
+      "source_types": 8247,
+      "reference_types": 3098,
+      "distinct_word_dictionary_possible": false
+    },
+    "train.reference.txt vs VMS_B_REVA_reference.txt": {
+      "source_types": 8247,
+      "reference_types": 4778,
+      "distinct_word_dictionary_possible": false
+    },
+    "hartlieb.reference.txt vs A_REVA_reference.txt": {
+      "source_types": 2276,
+      "reference_types": 3098,
+      "distinct_word_dictionary_possible": true
+    },
+    "hartlieb.reference.txt vs VMS_B_REVA_reference.txt": {
+      "source_types": 2276,
+      "reference_types": 4778,
+      "distinct_word_dictionary_possible": true
+    }
+  }
+}

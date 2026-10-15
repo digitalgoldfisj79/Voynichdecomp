@@ -1,0 +1,80 @@
+{
+  "reference_words": 21679,
+  "reference_trigrams": 1132,
+  "reference_bigrams": 258,
+  "frozen_code_sha256": "9371877cf5186b9967d1391c8ee94bb952276c9d0257bed8cf35e8f007c7b8af",
+  "measurement": "unseen character n-grams: entirely within emitted segment vs cross one-or-more segment boundaries, test all 81628 words exact reconstruction",
+  "source": "author supplied Currier B REVA, frozen v142b",
+  "results": {
+    "train": {
+      "counts": {
+        "tokens": 68396,
+        "bad_any": 60454,
+        "bad_seam": 60454,
+        "bad_internal": 9,
+        "bad_both": 9
+      },
+      "trigram_invalid_instances_by_location": {
+        "multi_segment_bridgevcell": 79102,
+        "TOTAL": 137616,
+        "multi_segment_vcell": 7242,
+        "multi_segment_bridgeleadcellvcell": 23421,
+        "multi_segment_bridgeleadcell": 26749,
+        "multi_segment_leadcell": 1093,
+        "single_segment_vcell": 9
+      },
+      "bigram_invalid_instances_by_location": {
+        "multi_segment_bridgevcell": 6540,
+        "TOTAL": 19308,
+        "multi_segment_vcell": 354,
+        "multi_segment_bridgeleadcell": 12374,
+        "multi_segment_leadcell": 40
+      },
+      "violating_words_by_location": {
+        "multi_segment_bridgevcell": 45501,
+        "multi_segment_vcell": 4864,
+        "multi_segment_bridgeleadcellvcell": 23421,
+        "multi_segment_bridgeleadcell": 23277,
+        "multi_segment_leadcell": 1009,
+        "single_segment_vcell": 9
+      },
+      "input_sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+      "cipher_sha256": "d8c1259e47de60e7bb4c23d91ca38a8aca14f8ce5b3f862a18d440fae0a511fb"
+    },
+    "hartlieb": {
+      "counts": {
+        "tokens": 13232,
+        "bad_any": 11745,
+        "bad_seam": 11745,
+        "bad_internal": 2,
+        "bad_both": 2
+      },
+      "trigram_invalid_instances_by_location": {
+        "multi_segment_bridgeleadcell": 4890,
+        "TOTAL": 24605,
+        "multi_segment_bridgeleadcellvcell": 3782,
+        "multi_segment_bridgevcell": 14149,
+        "multi_segment_vcell": 1644,
+        "multi_segment_leadcell": 138,
+        "single_segment_vcell": 2
+      },
+      "bigram_invalid_instances_by_location": {
+        "multi_segment_bridgeleadcell": 2000,
+        "TOTAL": 3069,
+        "multi_segment_bridgevcell": 1009,
+        "multi_segment_vcell": 54,
+        "multi_segment_leadcell": 6
+      },
+      "violating_words_by_location": {
+        "multi_segment_bridgeleadcell": 4126,
+        "multi_segment_bridgeleadcellvcell": 3782,
+        "multi_segment_bridgevcell": 8786,
+        "multi_segment_vcell": 1099,
+        "multi_segment_leadcell": 131,
+        "single_segment_vcell": 2
+      },
+      "input_sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+      "cipher_sha256": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d"
+    }
+  }
+}

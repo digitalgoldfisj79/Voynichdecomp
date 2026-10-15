@@ -1,0 +1,156 @@
+{
+  "source_sha256": {
+    "B_reference": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+    "manifest": "9371877cf5186b9967d1391c8ee94bb952276c9d0257bed8cf35e8f007c7b8af"
+  },
+  "reference_words": 21679,
+  "reference_trigram_support": 1132,
+  "audits": {
+    "train": {
+      "words": 68396,
+      "word_count_invalid": {
+        "invalid_any": 60454,
+        "invalid_only_internal": 0,
+        "invalid_only_boundary": 60454,
+        "invalid_both": 0,
+        "invalid_internal": 0,
+        "invalid_boundary": 60454
+      },
+      "invalid_word_proportions": {
+        "invalid_any": 0.8838820983683257,
+        "invalid_only_internal": 0.0,
+        "invalid_only_boundary": 0.8838820983683257,
+        "invalid_both": 0.0,
+        "invalid_internal": 0.0,
+        "invalid_boundary": 0.8838820983683257
+      },
+      "bad_trigram_occurrences_by_origin": {
+        "boundary_bridge": 129272,
+        "boundary_cell_cell": 8344
+      },
+      "total_bad_trigram_occurrences": 137616,
+      "examples": {
+        "boundary_bridge": {
+          "word": "oyoq",
+          "bad_trigram": "oyo",
+          "pieces": [
+            [
+              "bridge",
+              "o"
+            ],
+            [
+              "cell",
+              "yoq"
+            ]
+          ],
+          "index": 0
+        },
+        "boundary_cell_cell": {
+          "word": "oniiaqarotnialoydok",
+          "bad_trigram": "otn",
+          "pieces": [
+            [
+              "bridge",
+              "o"
+            ],
+            [
+              "cell",
+              "niiaq"
+            ],
+            [
+              "bridge",
+              "a"
+            ],
+            [
+              "cell",
+              "rot"
+            ],
+            [
+              "cell",
+              "nial"
+            ],
+            [
+              "bridge",
+              "o"
+            ],
+            [
+              "cell",
+              "ydok"
+            ]
+          ],
+          "index": 8
+        }
+      },
+      "sample_mean_components": 3.766579916954208
+    },
+    "hartlieb": {
+      "words": 13232,
+      "word_count_invalid": {
+        "invalid_any": 11745,
+        "invalid_only_internal": 0,
+        "invalid_only_boundary": 11745,
+        "invalid_both": 0,
+        "invalid_internal": 0,
+        "invalid_boundary": 11745
+      },
+      "invalid_word_proportions": {
+        "invalid_any": 0.8876209189842805,
+        "invalid_only_internal": 0.0,
+        "invalid_only_boundary": 0.8876209189842805,
+        "invalid_both": 0.0,
+        "invalid_internal": 0.0,
+        "invalid_boundary": 0.8876209189842805
+      },
+      "bad_trigram_occurrences_by_origin": {
+        "boundary_bridge": 22821,
+        "boundary_cell_cell": 1784
+      },
+      "total_bad_trigram_occurrences": 24605,
+      "examples": {
+        "boundary_bridge": {
+          "word": "yjdyq",
+          "bad_trigram": "yjd",
+          "pieces": [
+            [
+              "cell",
+              "yj"
+            ],
+            [
+              "bridge",
+              "d"
+            ],
+            [
+              "cell",
+              "yq"
+            ]
+          ],
+          "index": 0
+        },
+        "boundary_cell_cell": {
+          "word": "ymaralrd",
+          "bad_trigram": "lrd",
+          "pieces": [
+            [
+              "cell",
+              "ym"
+            ],
+            [
+              "bridge",
+              "a"
+            ],
+            [
+              "cell",
+              "ral"
+            ],
+            [
+              "cell",
+              "rd"
+            ]
+          ],
+          "index": 5
+        }
+      },
+      "sample_mean_components": 3.677599758162031
+    }
+  }
+}

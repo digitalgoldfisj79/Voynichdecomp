@@ -1,0 +1,71 @@
+{
+  "contract_sha256": "3a5e08be5dda1c23728099d2c62536bfae7930efedadff5c1661efeeb4021512",
+  "n_common": 9790,
+  "n_initial": 10635,
+  "folds": [
+    {
+      "fold": 0,
+      "all": 2443,
+      "admitted": 2269
+    },
+    {
+      "fold": 1,
+      "all": 2445,
+      "admitted": 2213
+    },
+    {
+      "fold": 2,
+      "all": 2350,
+      "admitted": 2156
+    },
+    {
+      "fold": 3,
+      "all": 1781,
+      "admitted": 1632
+    },
+    {
+      "fold": 4,
+      "all": 1616,
+      "admitted": 1520
+    }
+  ],
+  "arm_results": {
+    "baseline": {
+      "gain_bits": 0.1373310376493581,
+      "null_mean_bits": -0.126629698023062,
+      "effect_bits": 0.2639607356724201,
+      "null_sd_bits": 0.006657950863649661,
+      "z": 39.64594228436914
+    },
+    "carry": {
+      "gain_bits": 0.11208515562962484,
+      "null_mean_bits": -0.09281492462607588,
+      "effect_bits": 0.20490008025570072,
+      "null_sd_bits": 0.004967577199331302,
+      "z": 41.247487866576655
+    },
+    "statefree": {
+      "gain_bits": 0.029530225213873204,
+      "null_mean_bits": -0.07562440096668772,
+      "effect_bits": 0.10515462618056093,
+      "null_sd_bits": 0.004803375261140926,
+      "z": 21.891819910731684
+    }
+  },
+  "contrasts": {
+    "carry_vs_baseline": {
+      "raw_gain_difference": -0.025245882019733268,
+      "null_mean": 0.033814773396986145,
+      "effect_bits": -0.05906065541671941,
+      "null_sd_bits": 0.005720965510352651,
+      "z": -10.323546840099514
+    },
+    "carry_vs_statefree": {
+      "raw_gain_difference": 0.08255493041575164,
+      "null_mean": -0.017190523659388144,
+      "effect_bits": 0.09974545407513978,
+      "null_sd_bits": 0.0053647634666963975,
+      "z": 18.59270305100006
+    }
+  }
+}
