@@ -1,0 +1,27 @@
+Betreff: Rückmeldung zu deinen VBM-Dateien und meinen Tests
+
+Hallo Joachim,
+
+noch einmal vielen Dank, dass du mir deine VBM-Dateien und den Generator zur Verfügung gestellt hast. Ich habe mich mit Unterstützung von ChatGPT ziemlich intensiv damit beschäftigt und wollte dir eine Rückmeldung geben, was dabei herausgekommen ist.
+
+Zunächst habe ich den Generator v138 anhand deiner Originaldateien reproduzieren und anschließend genauer untersuchen lassen. Die Ausgabe ließ sich exakt wiederherstellen. Bei der Prüfung der internen Zuordnungen zeigten sich allerdings einige Schwierigkeiten: Mehrere Konsonantencluster landen in denselben Tabellenzellen, der übertragene Zustand stimmt nicht immer mit der tatsächlich ausgegebenen Zelle überein, und bei den Übergängen entstehen teilweise Zeichenfolgen, die in der verwendeten Voynich-Referenz nicht vorkommen. Auch der statistische Ähnlichkeitstest erwies sich als zu wenig trennscharf; er ließ beispielsweise auch künstlich umsortierte Voynich-Zeilen passieren.
+
+Danach habe ich ChatGPT verschiedene experimentelle Varianten bauen und prüfen lassen. Eine wichtige Frage war zunächst, ob ein zusammengesetztes, zustandsabhängiges Verfahren überhaupt eindeutig dekodierbar sein kann. Das ließ sich für einige dieser Varianten tatsächlich zeigen: Ein unabhängig implementierter Decoder konnte insgesamt 81.628 normalisierte deutsche Wörter aus dem bayerischen Ausgangstext und dem Hartlieb-Material fehlerfrei zurückgewinnen.
+
+Dabei muss ich aber einen wesentlichen Unterschied zu deinem ursprünglichen Ansatz betonen: Diese Varianten waren keine unveränderte Implementierung deiner VBM. Insbesondere lagen die Vokalbrücken zunächst innerhalb der ausgegebenen Wörter, und die Leerzeichen entsprachen den deutschen Wortgrenzen. In deinem Modell liegen die Brücken dagegen über EVA-Leerzeichen hinweg, die gerade nicht mit Klartextwortgrenzen zusammenfallen müssen. Der Nachweis der Dekodierbarkeit gilt deshalb für die abgewandelten Verfahren, nicht für deine Originalkonstruktion.
+
+Interessant war auch ein Versuch, bei dem die Kodierung eines Wortes vom vorhergehenden Wort abhing. Das funktionierte technisch und war statistisch gut nachweisbar. Allerdings ließ sich dieselbe Ausgabefolge auch mit einem autonomen Verfahren erzeugen, das gar keinen deutschen Klartext benötigt. Eine solche Abhängigkeit allein kann also noch nicht zeigen, dass der Voynich-Text verschlüsselte Sprache enthält.
+
+Das größte praktische Hindernis war die Form der erzeugten Wörter. Die ersten eindeutig dekodierbaren Modelle lieferten sehr viele Zeichenkombinationen, die nicht zur Voynich-Referenz passten. Durch eine gezieltere Wahl der Tabellenzellen ließ sich dieser Anteil deutlich verringern, bei einer B-orientierten Variante von knapp 89 auf etwa 38 Prozent. Dafür wurden die Wörter aber zu lang: im Mittel knapp acht EVA-Zeichen statt ungefähr fünf im entsprechenden Voynich-Material. Einfachere Alphabete und wenige feste Abkürzungen lösten das Längenproblem teilweise, verschlechterten jedoch wieder die Wortformen. Auch getrennte Prüfungen für Currier A und B führten bislang nicht zu einem überzeugenden Gesamtmodell.
+
+Ein weiterer Punkt ist mir inzwischen besonders wichtig geworden: Ein mögliches Verfahren muss nicht nur mathematisch funktionieren, sondern auch schreibpraktisch plausibel sein. Ein Schreiber des 15. Jahrhunderts müsste es mit überschaubaren Regeln oder Tabellen, nachvollziehbaren Schreibbewegungen und vertretbarem Aufwand anwenden können. Manche der technisch erfolgreichen Tabellenvarianten waren dafür einfach zu kompliziert.
+
+Mein derzeitiges Fazit lautet deshalb nicht, dass deine VBM widerlegt wäre. Vielmehr habe ich mit diesen Versuchen einige technisch mögliche Wege und mehrere harte Grenzen kennengelernt. Bisher gibt es aber weder eine ausreichend gute Nachbildung des tatsächlichen Voynich-Textes noch einen Nachweis, dass ausgerechnet ein Klartextverfahren hinter den beobachteten Strukturen steckt. Ich habe die weitere Entwicklung deshalb vorerst angehalten, statt einfach immer neue Generatorversionen zu produzieren.
+
+Für besonders interessant halte ich weiterhin deine ursprüngliche Idee der Vokalbrücken über die Leerzeichen hinweg sowie die Rollen von C1 und C2. Die entscheidende Frage wäre aus meiner Sicht, ob sich daraus eine feste, überprüfbare Vorhersage ableiten lässt, die ein vergleichbares rein generatives Verfahren nicht ebenso gut erfüllt. Falls du dazu schon konkrete Zuordnungsregeln oder Gegenbeispiele im Kopf hast, würde mich das sehr interessieren.
+
+Ich habe dir die Berichte, Programme und Ergebnisse in einem ZIP-Paket zusammengestellt, einschließlich deiner unveränderten Originaldateien. Die Versuche und ihre Grenzen sind darin getrennt dokumentiert. Es ist etwas Material geworden, aber vielleicht ist der eine oder andere Befund für dich nützlich.
+
+Vielen Dank noch einmal für deine Offenheit. Die Beschäftigung mit deiner Idee hat mir viel Stoff zum Nachdenken gegeben.
+
+Viele Grüße

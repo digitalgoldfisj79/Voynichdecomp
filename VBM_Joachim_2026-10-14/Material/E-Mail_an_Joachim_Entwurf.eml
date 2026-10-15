@@ -1,0 +1,93 @@
+Subject: =?utf-8?q?R=C3=BCckmeldung?= zu deinen VBM-Dateien und meinen Tests
+X-Unsent: 1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hallo Joachim,
+
+noch einmal vielen Dank, dass du mir deine VBM-Dateien und den Generator zur =
+Verf=C3=BCgung gestellt hast. Ich habe mich mit Unterst=C3=BCtzung von ChatGP=
+T ziemlich intensiv damit besch=C3=A4ftigt und wollte dir eine R=C3=BCckmeldu=
+ng geben, was dabei herausgekommen ist.
+
+Zun=C3=A4chst habe ich den Generator v138 anhand deiner Originaldateien repro=
+duzieren und anschlie=C3=9Fend genauer untersuchen lassen. Die Ausgabe lie=C3=
+=9F sich exakt wiederherstellen. Bei der Pr=C3=BCfung der internen Zuordnunge=
+n zeigten sich allerdings einige Schwierigkeiten: Mehrere Konsonantencluster =
+landen in denselben Tabellenzellen, der =C3=BCbertragene Zustand stimmt nicht=
+ immer mit der tats=C3=A4chlich ausgegebenen Zelle =C3=BCberein, und bei den =
+=C3=9Cberg=C3=A4ngen entstehen teilweise Zeichenfolgen, die in der verwendete=
+n Voynich-Referenz nicht vorkommen. Auch der statistische =C3=84hnlichkeitste=
+st erwies sich als zu wenig trennscharf; er lie=C3=9F beispielsweise auch k=
+=C3=BCnstlich umsortierte Voynich-Zeilen passieren.
+
+Danach habe ich ChatGPT verschiedene experimentelle Varianten bauen und pr=C3=
+=BCfen lassen. Eine wichtige Frage war zun=C3=A4chst, ob ein zusammengesetzte=
+s, zustandsabh=C3=A4ngiges Verfahren =C3=BCberhaupt eindeutig dekodierbar sei=
+n kann. Das lie=C3=9F sich f=C3=BCr einige dieser Varianten tats=C3=A4chlich =
+zeigen: Ein unabh=C3=A4ngig implementierter Decoder konnte insgesamt 81.628 n=
+ormalisierte deutsche W=C3=B6rter aus dem bayerischen Ausgangstext und dem Ha=
+rtlieb-Material fehlerfrei zur=C3=BCckgewinnen.
+
+Dabei muss ich aber einen wesentlichen Unterschied zu deinem urspr=C3=BCnglic=
+hen Ansatz betonen: Diese Varianten waren keine unver=C3=A4nderte Implementie=
+rung deiner VBM. Insbesondere lagen die Vokalbr=C3=BCcken zun=C3=A4chst inner=
+halb der ausgegebenen W=C3=B6rter, und die Leerzeichen entsprachen den deutsc=
+hen Wortgrenzen. In deinem Modell liegen die Br=C3=BCcken dagegen =C3=BCber E=
+VA-Leerzeichen hinweg, die gerade nicht mit Klartextwortgrenzen zusammenfalle=
+n m=C3=BCssen. Der Nachweis der Dekodierbarkeit gilt deshalb f=C3=BCr die abg=
+ewandelten Verfahren, nicht f=C3=BCr deine Originalkonstruktion.
+
+Interessant war auch ein Versuch, bei dem die Kodierung eines Wortes vom vorh=
+ergehenden Wort abhing. Das funktionierte technisch und war statistisch gut n=
+achweisbar. Allerdings lie=C3=9F sich dieselbe Ausgabefolge auch mit einem au=
+tonomen Verfahren erzeugen, das gar keinen deutschen Klartext ben=C3=B6tigt. =
+Eine solche Abh=C3=A4ngigkeit allein kann also noch nicht zeigen, dass der Vo=
+ynich-Text verschl=C3=BCsselte Sprache enth=C3=A4lt.
+
+Das gr=C3=B6=C3=9Fte praktische Hindernis war die Form der erzeugten W=C3=B6r=
+ter. Die ersten eindeutig dekodierbaren Modelle lieferten sehr viele Zeichenk=
+ombinationen, die nicht zur Voynich-Referenz passten. Durch eine gezieltere W=
+ahl der Tabellenzellen lie=C3=9F sich dieser Anteil deutlich verringern, bei =
+einer B-orientierten Variante von knapp 89 auf etwa 38 Prozent. Daf=C3=BCr wu=
+rden die W=C3=B6rter aber zu lang: im Mittel knapp acht EVA-Zeichen statt ung=
+ef=C3=A4hr f=C3=BCnf im entsprechenden Voynich-Material. Einfachere Alphabete=
+ und wenige feste Abk=C3=BCrzungen l=C3=B6sten das L=C3=A4ngenproblem teilwei=
+se, verschlechterten jedoch wieder die Wortformen. Auch getrennte Pr=C3=BCfun=
+gen f=C3=BCr Currier A und B f=C3=BChrten bislang nicht zu einem =C3=BCberzeu=
+genden Gesamtmodell.
+
+Ein weiterer Punkt ist mir inzwischen besonders wichtig geworden: Ein m=C3=B6=
+gliches Verfahren muss nicht nur mathematisch funktionieren, sondern auch sch=
+reibpraktisch plausibel sein. Ein Schreiber des 15. Jahrhunderts m=C3=BCsste =
+es mit =C3=BCberschaubaren Regeln oder Tabellen, nachvollziehbaren Schreibbew=
+egungen und vertretbarem Aufwand anwenden k=C3=B6nnen. Manche der technisch e=
+rfolgreichen Tabellenvarianten waren daf=C3=BCr einfach zu kompliziert.
+
+Mein derzeitiges Fazit lautet deshalb nicht, dass deine VBM widerlegt w=C3=A4=
+re. Vielmehr habe ich mit diesen Versuchen einige technisch m=C3=B6gliche Weg=
+e und mehrere harte Grenzen kennengelernt. Bisher gibt es aber weder eine aus=
+reichend gute Nachbildung des tats=C3=A4chlichen Voynich-Textes noch einen Na=
+chweis, dass ausgerechnet ein Klartextverfahren hinter den beobachteten Struk=
+turen steckt. Ich habe die weitere Entwicklung deshalb vorerst angehalten, st=
+att einfach immer neue Generatorversionen zu produzieren.
+
+F=C3=BCr besonders interessant halte ich weiterhin deine urspr=C3=BCngliche I=
+dee der Vokalbr=C3=BCcken =C3=BCber die Leerzeichen hinweg sowie die Rollen v=
+on C1 und C2. Die entscheidende Frage w=C3=A4re aus meiner Sicht, ob sich dar=
+aus eine feste, =C3=BCberpr=C3=BCfbare Vorhersage ableiten l=C3=A4sst, die ei=
+n vergleichbares rein generatives Verfahren nicht ebenso gut erf=C3=BCllt. Fa=
+lls du dazu schon konkrete Zuordnungsregeln oder Gegenbeispiele im Kopf hast,=
+ w=C3=BCrde mich das sehr interessieren.
+
+Ich habe dir die Berichte, Programme und Ergebnisse in einem ZIP-Paket zusamm=
+engestellt, einschlie=C3=9Flich deiner unver=C3=A4nderten Originaldateien. Di=
+e Versuche und ihre Grenzen sind darin getrennt dokumentiert. Es ist etwas Ma=
+terial geworden, aber vielleicht ist der eine oder andere Befund f=C3=BCr dic=
+h n=C3=BCtzlich.
+
+Vielen Dank noch einmal f=C3=BCr deine Offenheit. Die Besch=C3=A4ftigung mit =
+deiner Idee hat mir viel Stoff zum Nachdenken gegeben.
+
+Viele Gr=C3=BC=C3=9Fe
