@@ -1,0 +1,34 @@
+{
+  "source_units": 222,
+  "alloc": {
+    "a": {
+      "prefixfree_cells": 237,
+      "direct_units": 222,
+      "two_cell_units": 0
+    },
+    "e": {
+      "prefixfree_cells": 343,
+      "direct_units": 222,
+      "two_cell_units": 0
+    },
+    "i": {
+      "prefixfree_cells": 146,
+      "direct_units": 145,
+      "two_cell_units": 77
+    },
+    "o": {
+      "prefixfree_cells": 146,
+      "direct_units": 145,
+      "two_cell_units": 77
+    },
+    "u": {
+      "prefixfree_cells": 252,
+      "direct_units": 222,
+      "two_cell_units": 0
+    }
+  },
+  "source_counts": [
+    68396,
+    13232
+  ]
+}

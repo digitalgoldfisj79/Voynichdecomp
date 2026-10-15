@@ -1,0 +1,122 @@
+[
+  {
+    "name": "00_frozen_contract.json",
+    "size": 2302,
+    "sha256": "561b321fad93f54d2672d2a222b1d9171315d7654aa1f573b45df4fd7e2a9d8d"
+  },
+  {
+    "name": "01_frozen_manifest.json",
+    "size": 24273,
+    "sha256": "2b00e236b5c79992e7f9cdb75c3ce35c76d9f44cab597d9611998cd2eb40c4a6"
+  },
+  {
+    "name": "02_verified_results.json",
+    "size": 3939,
+    "sha256": "2b20074e44a3e4f5c7a828a5dea0631bc554ce88f3d47967922545d6dd4b449f"
+  },
+  {
+    "name": "03_diagnostic_bounds.json",
+    "size": 564,
+    "sha256": "9257de0ff640868f08ebaa8e6000c990d6b1a9593c14ad06de92ded9837d8585"
+  },
+  {
+    "name": "REPRODUCE.md",
+    "size": 2311,
+    "sha256": "d95c5e7b8838178d4b77a2690fead6bdb387e4dce80772d51ba918d6843b6802"
+  },
+  {
+    "name": "VBM_v141_Lateral_Engineering_Report_2026-10-14.md",
+    "size": 12714,
+    "sha256": "c0338ab38a509dd1e1b85e264d7b9615f7058baa851bef2849e130a0afa2a374"
+  },
+  {
+    "name": "build_encoder.py",
+    "size": 9065,
+    "sha256": "fd8a877674621e31a5133f408419a914f542449022fd6d683c81672b747f58d9"
+  },
+  {
+    "name": "extra_checks.py",
+    "size": 2222,
+    "sha256": "8ca15415033a750eeb8cc9a4ca2e8870ee6b3e98e513ede625757064a8c5e02f"
+  },
+  {
+    "name": "hartlieb.decoded.txt",
+    "size": 67199,
+    "sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72"
+  },
+  {
+    "name": "hartlieb.reference.txt",
+    "size": 67199,
+    "sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72"
+  },
+  {
+    "name": "hartlieb.vbm",
+    "size": 229201,
+    "sha256": "763be32fafbe8df090b43af66b05b08411a6d5a3a92ee6e1b87374193447e314"
+  },
+  {
+    "name": "independent_decoder.py",
+    "size": 3007,
+    "sha256": "4f9f8225d106da1ac1ad957cd3a2648705032b622c971911d43ff881bcedba0c"
+  },
+  {
+    "name": "stage0_contract_provenance.pkl",
+    "size": 2234,
+    "sha256": "6d042d87e2f6be1a35b42b581cd50366bf2122eda9e6b7a7b7e6d6c5ec6f1be2"
+  },
+  {
+    "name": "stage1_tables.pkl",
+    "size": 1282,
+    "sha256": "f169066bfc538f629d1db82be8114f6b8e9c0649684329671791c804511762b7"
+  },
+  {
+    "name": "stage2_emit_hartlieb.pkl",
+    "size": 292,
+    "sha256": "240d57429bd99bb220748b565c329853cb3d47716a45435bc8de48064db233d8"
+  },
+  {
+    "name": "stage2_emit_train.pkl",
+    "size": 302,
+    "sha256": "de7ec7b1467069c153114a54bce5e2140002ebf8e87b6a6b329a57813d7e7d41"
+  },
+  {
+    "name": "stage3_independent_roundtrip_surface.pkl",
+    "size": 814,
+    "sha256": "dd9109ef2f2b07ee0c2a4f07935974be3d98872ba304744ead41bad9646d4143"
+  },
+  {
+    "name": "stage4_controls.pkl",
+    "size": 452,
+    "sha256": "bb6bf4bbbed2caa14b9cf12a98a51718ec99a138972aa49673e4aa6d5851ca19"
+  },
+  {
+    "name": "stage5_final_decision.pkl",
+    "size": 317,
+    "sha256": "266d57b693870effc64145fa5b5abe4682776c7b42515419f5a950b9c3c16731"
+  },
+  {
+    "name": "stage6_diagnostic_bounds.pkl",
+    "size": 342,
+    "sha256": "29f60d032121978a332b3c757385658021dfcb79757914ca22df5351b6a78b85"
+  },
+  {
+    "name": "train.decoded.txt",
+    "size": 349061,
+    "sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d"
+  },
+  {
+    "name": "train.reference.txt",
+    "size": 349061,
+    "sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d"
+  },
+  {
+    "name": "train.vbm",
+    "size": 1193432,
+    "sha256": "e290b97e56a90cdfefe43cd2a2e4456e3c326878b87aff6efed2b36b86e0c61b"
+  },
+  {
+    "name": "verify.py",
+    "size": 8084,
+    "sha256": "08eeb0ad57fa05a0e03fbefb50da02dea62231e1702406dbe1a01267abfbdf43"
+  }
+]
