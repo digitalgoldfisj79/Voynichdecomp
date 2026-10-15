@@ -1,0 +1,19 @@
+obligation_code,audit_order,description,default_required
+SOURCE_CONTRACT,1,"Frozen statement, corpus/source contract and source hashes are explicit.",True
+CIRCULARITY,2,Claim is not used to construct the feature/test that is then cited as evidence for the same claim.,True
+LEAKAGE,3,Training/selection/tuning does not inspect held-out units or outcomes used for evaluation.,True
+CONFOUNDS,4,"Material confounds are controlled, crossed, residualised, or explicitly bound.",True
+MATCHED_NULL,5,Null preserves the relevant opportunity structure; otherwise the result is descriptive only.,True
+CONTROL_FAIRNESS,6,"Comparator/control has matched information, capacity and tuning privileges appropriate to the claim.",True
+MEASUREMENT_DEGENERACY,7,"Metric is not driven by degenerate variance, collapsed support, or an identity artefact.",True
+REPRESENTATION_DEPENDENCE,8,Claim is replicated across required representations or explicitly scoped as frame-specific.,True
+DECISION_RULE_FRAGILITY,9,"Thresholds, selection rules and model choices are frozen or subjected to sensitivity/adversarial tests.",True
+EFFECT_BOUND,10,For quantitative claims the effect and matched null SD (or exact finite bound) are stored; ratio<2 cannot support a resolving claim.,True
+REPLICATION,11,Independent fold/unit/representation replay or equivalent prospective replication supports the claim where applicable.,True
+DEPENDENCY_CLOSURE,12,Every parent premise is certified or explicitly conditional; no open premise is silently promoted.,True
+AUDIT_COMPLETENESS,13,"Exact evidence rows, source relation/version and reproducible extraction are recorded.",True
+FALSIFIER,14,A concrete falsifier/kill rule or scope bound is recorded.,True
+RETRACTION_CHECK,15,Contradicted/superseded prior findings are visible and cannot silently remain active.,True
+ATOMICITY,16,Claim is a single auditable proposition or explicitly decomposed into certified component lemmas.,True
+IMPLEMENTATION_REPLAY,17,Runner/query/code path and source data are preserved sufficiently for an independent exact replay.,True
+EXTERNAL_ADVERSARIAL_REVIEW,18,A context-free adversarial review (user rule 20) of the claim and its data has been run and recorded; no supportive context supplied to the reviewer.,True

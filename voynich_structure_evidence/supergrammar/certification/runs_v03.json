@@ -1,0 +1,168 @@
+[
+ {
+  "run_id": "supergrammar_v03_20260920",
+  "source_candidate_relation": "public.handoff_docs canonical SG1.1 + Theory Compiler; candidate ledger retained as legacy import only",
+  "source_candidate_count": 64,
+  "source_candidate_md5": "d0c3aed332a78c6f13aac9c448341e5f",
+  "source_v02_run_id": "supergrammar_v02_20260920",
+  "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1",
+  "fail_closed": true,
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "manifest": {
+   "principle": "No claim inherits certification from legacy labels. Certification requires dependency closure and explicit proof/evidence obligations.",
+   "release_id": "supergrammar_v03_release_20260920",
+   "audit_order": [
+    "source_contract",
+    "circularity",
+    "leakage",
+    "confounds",
+    "matched_nulls",
+    "control_fairness",
+    "measurement_degeneracy",
+    "representation_dependence",
+    "decision_rule_fragility",
+    "effect_bound",
+    "replication",
+    "dependency_closure",
+    "audit_completeness"
+   ],
+   "graph_drift": {
+    "v02_superrules": 53,
+    "candidate_claims": 64,
+    "candidate_claims_missing_from_v02": 11
+   },
+   "handoff_key": "voynich_supergrammar_v03_certified_release_20260920",
+   "release_status": "FROZEN_CERTIFIED_KERNEL",
+   "documentation_path": "research/RELEASE_supergrammar_v03_20260920.md",
+   "canonical_authority": {
+    "evidence_graph": "voynich_theory_compiler_stageD_graph_20260919",
+    "mechanism_claims": "voynich_theory_compiler_stageB_claims_20260919",
+    "novelty_frontier": "voynich_theory_compiler_stageE_novelty_20260919",
+    "mechanism_closure": "voynich_theory_compiler_stageC_closure_20260919",
+    "surface_architecture": "voynich_supergrammar_v11_running_text_20260919"
+   },
+   "page_codebook_status": "DATA_KILLED_AS_EXPLICIT_CAUSAL_LAYER",
+   "repository_pr_number": 31,
+   "page_codebook_deletion": {
+    "hf_jobs": [
+     "6aae4bae52d0dbd7f1d6dead",
+     "6aae4bbc51992417dfcc9182",
+     "6aae4bc851992417dfcc9184",
+     "6aae4bd452d0dbd7f1d6deb5",
+     "6aae4bdf52d0dbd7f1d6deb7"
+    ],
+    "fold_sha256": "e774001ca046d88f24f56bf70f29213007d9cac3500d50f414e1782688d74888",
+    "event_sha256": "74f7310ea35922dc5ed71012f0825ef9480d051a1fa516c79fc5ca53f88a925f",
+    "corpus_sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+    "runner_commit": "92ec41cb26d233a388b6f65fa1a4b7c45d7ad8c5",
+    "runner_sha256": "9cbb02b128f019d5b4cff735b8798068f84087afa288270dc3b13e77e1c3d623",
+    "protocol_sha256": "a0814553e272a1274c88f23dc40d637a9e862f5fa969a6dc6e37fae85aff8673"
+   },
+   "certified_theorem_count": 9,
+   "release_manifest_sha256": "c4bbace849cf1cc79ff3999f02a2031ddc888bc3aa222a78a2174c3b6253027e",
+   "repository_merge_commit": "5957e5957d998ee7d5a580c43022a0b87b97585c",
+   "documentation_git_commit": "6410a88a5e2370f1495fa2a04fab66159391e979",
+   "excluded_open_kernel_count": 5,
+   "legacy_candidate_ledger_status": "SUPERSEDED_AS_AUTHORITY"
+  }
+ },
+ {
+  "run_id": "supergrammar_v03_extension_gallows_20260924",
+  "source_candidate_relation": "public.vms_directional_token_v01 + post-release CLS/Cgm811 gallows audit",
+  "source_candidate_count": 3,
+  "source_candidate_md5": "8361be6c691e0a215297a9dc4cba370c",
+  "source_v02_run_id": null,
+  "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1",
+  "fail_closed": true,
+  "created_at": "2026-09-24T06:01:03.271899+00:00",
+  "manifest": {
+   "status": "POST_RELEASE_CANDIDATE_EXTENSION__NOT_CERTIFIED_KERNEL",
+   "trigger": "Cgm 811 historical control plus gallows-family audit",
+   "principle": "Register evidence now; do not mutate frozen certified kernel until independent replay, representation robustness and physical-line tests close.",
+   "source_rows": 24314,
+   "parent_run_id": "supergrammar_v03_20260920",
+   "source_folios": 176,
+   "source_relation": "public.vms_directional_token_v01",
+   "parent_release_id": "supergrammar_v03_release_20260920",
+   "source_paragraphs": 806
+  }
+ },
+ {
+  "run_id": "supergrammar_v04_realization_library_20260924",
+  "source_candidate_relation": "public.vms_realization_oneedit_edges_v01 + public.vms_realization_operator_outdomain_v01 + public.vms_realization_library_summary_v01",
+  "source_candidate_count": 2,
+  "source_candidate_md5": "6668d19947e9c95f0f8e1e28385f1cee",
+  "source_v02_run_id": null,
+  "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1",
+  "fail_closed": true,
+  "created_at": "2026-09-24T10:19:49.963624+00:00",
+  "manifest": {
+   "status": "POST_RELEASE_PROVISIONAL_CORE_EXTENSION__NOT_CERTIFIED_KERNEL",
+   "decision_gate": "same A/B polarity and >=2 null SD in discovery and independent-domain validation",
+   "representation": "raw EVA/local edit relations",
+   "discovery_domain": "Herbal A versus Herbal B",
+   "parent_extension": "SG47_CURRIER_CONDITIONED_REALIZATION_LAYER",
+   "parent_release_id": "supergrammar_v03_release_20260920",
+   "validation_domain": "Pharmaceutical A versus Biological+Stars B",
+   "operator_enumeration": "exhaustive one-edit token graph",
+   "certification_boundary": "alternate-transcription replay and repository-frozen implementation remain open",
+   "candidate_context_operators": 137,
+   "externally_validated_operators": 21
+  }
+ },
+ {
+  "run_id": "supergrammar_v031_20260928",
+  "source_candidate_relation": "vms_supergrammar_claims_v03 run supergrammar_v03_20260920 (32 certified + SGK02_INTERNAL_ORDER3)",
+  "source_candidate_count": 33,
+  "source_candidate_md5": "4ae6fc36c311c89acc7b31ea2c056083",
+  "source_v02_run_id": "supergrammar_v02_20260920",
+  "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1+EXTERNAL_ADVERSARIAL_REVIEW",
+  "fail_closed": true,
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "manifest": {
+   "status": "CANDIDATE_PENDING_EXTERNAL_ADVERSARIAL_REVIEW",
+   "changes": [
+    "C1 line-number regex fix",
+    "C2 within-paragraph LINE_BREAK arm",
+    "C3 SPACE volume-matched arm (10 seeds)",
+    "C4 atomic frame A1 hard zeros",
+    "C5 local corpus option + resumable checkpoints",
+    "C6 all-layer decisions"
+   ],
+   "git_commit": "630c17a6030e558b32d94839234ff28d60912ee2",
+   "export_rule": "All certificates OPEN on EXTERNAL_ADVERSARIAL_REVIEW; nothing enters vms_supergrammar_certified_theorems_v03 until review and export-view scoping.",
+   "script_path": "research/supergrammar_v031_certifier_20260928.py",
+   "candidate_id": "supergrammar_v031_candidate_20260928",
+   "pull_request": "https://github.com/digitalgoldfisj79/Voynichdecomp/pull/32",
+   "result_sha256": "fe0bd39b55447fb12ff7c207ae4279d88995d8453991102b081aa0aff52070a1",
+   "script_sha256": "c65bcdc2ba88a0cf3692ccf84f5b3e1f1e3327484025c18ec066c968818f2993",
+   "corrects_release": "supergrammar_v03_release_20260920",
+   "corrects_manifest_sha256": "c4bbace849cf1cc79ff3999f02a2031ddc888bc3aa222a78a2174c3b6253027e"
+  }
+ },
+ {
+  "run_id": "supergrammar_v032_20261002",
+  "source_candidate_relation": "Post-v03.1 delta integration: SGT12 XD1 closeout + SGT13 vertical opener programme",
+  "source_candidate_count": 5,
+  "source_candidate_md5": "3fdeaeaf53f5e4ceb55baef499988e0e",
+  "source_v02_run_id": "supergrammar_v02_20260920",
+  "certification_standard": "FORTUNE_STYLE_FAIL_CLOSED_V1+EXTERNAL_ADVERSARIAL_REVIEW",
+  "fail_closed": true,
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "manifest": {
+   "status": "DELTA_CANDIDATE_PENDING_REVIEW",
+   "additions": [
+    "SGT12_WITHIN_LINE_RECURRENCE_GEOMETRY",
+    "SGT13_VERTICAL_OPENER_GRAMMAR"
+   ],
+   "github_pr": 33,
+   "export_rule": "Delta only. No row enters certified export until open obligations close and a new release manifest is built.",
+   "github_path": "research/SUPERGRAMMAR_V032_DELTA_20261002.md",
+   "xd1_handoff": "voynich_supergrammar_xd1_closeout_20260928",
+   "github_commit": "3214c61df5a5fae3a672cb0dd442b97e5849aece",
+   "parent_candidate": "supergrammar_v031_20260928",
+   "vertical_handoff": "voynich_vertical_opener_transition_program_20261002_v01",
+   "frozen_release_untouched": "supergrammar_v03_release_20260920"
+  }
+ }
+]

@@ -14,7 +14,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ChatGPT history 2025-12; transcription pipeline",
   "statement_md5": "fc96d4b284bbe9a30e7d043e4f16412c",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "cfea59fe212c9f8bf79288155e84c7c0"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -31,7 +33,9 @@
   "source_supersedes": "PGCS-as-unique-grammar",
   "source_provenance_text": "Claude 2026-08 STA audit; Sept 2026 mechanism work",
   "statement_md5": "17d7495190748c2cfbf1063b87218c5b",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ed7f6060eca4ef06b1f022614dcb5792"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -48,7 +52,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.3 rules; generation master",
   "statement_md5": "dc8264f7c15cb36066250fe52855c478",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "d342e669fa3cd249b02b5748d56f7a2d"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -65,7 +71,9 @@
   "source_supersedes": "PGCS unique hidden grammar",
   "source_provenance_text": "Claude/ChatGPT 2026 hostile audits; generation master",
   "statement_md5": "d83f3581d212eb8b2cf19e13fb66827a",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "6282a056e9af7946655fa36a2bca7068"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -82,7 +90,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.3 line_pos; later line-boundary programmes",
   "statement_md5": "0e2f68274f8caabeb71b81d623083e2f",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "152768d40273098759d9f4847cce6286"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -99,7 +109,9 @@
   "source_supersedes": "old assumption of independent token generation",
   "source_provenance_text": "v2.3 cross_pair/cross_pair2; Sept 2026 directional tests",
   "statement_md5": "2ea7b769758b7c3310031efc7a84cfe1",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "95e3ab8fc37b010a7cd98d953afaf1fa"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -116,7 +128,9 @@
   "source_supersedes": "universal boundary equivalence",
   "source_provenance_text": "v2.3 within-line vs cross_line; later boundary programmes",
   "statement_md5": "1f090d5bc855cb872974a5bd266d07e7",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "fee8f0dac918b8ded8af5a29a2b01c29"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -133,7 +147,9 @@
   "source_supersedes": "paragraph-reset grammar",
   "source_provenance_text": "Sept 2026 latent-content programme; local-state carrier",
   "statement_md5": "a7c688539ea56fc7b995052b792f9e46",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "689735f8848599788a6c603e3585de02"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -150,7 +166,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Sept 2026 boundary localisation/local-state carrier",
   "statement_md5": "e2776f3a882af64282c10db8c0454b2d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3c8d9c8ec4a498688d81f85c838b5b77"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -167,7 +185,9 @@
   "source_supersedes": "older bifolium-as-language-unit framing",
   "source_provenance_text": "Sept 2026 boundary localisation",
   "statement_md5": "283999df890ecae8e407878059b1bbd8",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "09774adefe1982c05ab5f6fc5dc569f2"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -184,7 +204,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.3; generation master; repeated held-out work",
   "statement_md5": "e1533c28579368ebcfc6522eb41da906",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "19912d74a0437f452889de719b580004"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -201,7 +223,9 @@
   "source_supersedes": "hand-only grammar",
   "source_provenance_text": "generation master; hand hostile tests; f115r natural experiment",
   "statement_md5": "b1bc4a9ef86eab0fd7541dc2e9c42f8d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "b9db3aede55d10bceb4cf7e342ef6463"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -218,7 +242,9 @@
   "source_supersedes": "Currier as two languages/independent grammars",
   "source_provenance_text": "surface canonicalisation audit; Claude q72-style residualisation",
   "statement_md5": "89e2f27a9ca5134aecbd2466d8d86317",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "be614af8f635c38d0265a305e3dd038e"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -235,7 +261,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.3 + 2026-09 boundary-depth test",
   "statement_md5": "2b53101480bf35959707db817a2a2862",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "25f214c9b43da67856e0fdcbe8bcc554"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -252,7 +280,9 @@
   "source_supersedes": "flat cross_pair2 independence",
   "source_provenance_text": "2026-09 v2.3 boundary-depth test",
   "statement_md5": "98f938bc9487308ea47d666526da5da2",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "dcdf61a50141669084c9dc4bacbb7af7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -269,7 +299,9 @@
   "source_supersedes": "two-character code across spaces",
   "source_provenance_text": "2026-09 v2.3 boundary-depth test",
   "statement_md5": "a6707fd31f7d85d17c6d0c847433e3cd",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "e27ad5cfcb7fc1a83525692b5ed2baa5"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -286,7 +318,9 @@
   "source_supersedes": null,
   "source_provenance_text": "2026-09 v2.3 specificity screen",
   "statement_md5": "18d6d33a556bddfe1d5306c2ffa09693",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3090b05bfeea3bb0b147b9659ef6a5e5"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -303,7 +337,9 @@
   "source_supersedes": "global d operator; RTL inference",
   "source_provenance_text": "2026-09 d programme",
   "statement_md5": "a1ad12b298760da9980b5688ff61a7bf",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "259a02913eb93fa91872114588eaec7d"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -320,7 +356,9 @@
   "source_supersedes": "smooth generic d edge gradient",
   "source_provenance_text": "2026-09 d programme",
   "statement_md5": "e16c60397c69ae05953771308508179a",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "c998cd6073325d43513cae9177185453"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -337,7 +375,9 @@
   "source_supersedes": null,
   "source_provenance_text": "July-Aug 2026 prospective component programmes; generation master",
   "statement_md5": "6f487a3e0187c66ca265c65565862101",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "4da1f0970afc0a6aa3fe4dd7493cf146"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -354,7 +394,9 @@
   "source_supersedes": "old adjacent exact-repetition anomaly",
   "source_provenance_text": "Claude Aug 2026 tight-null audit; generation master",
   "statement_md5": "150dbf3f123dffccefd50abe588e0c51",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "RETRACTED",
+  "certificate_md5": "b92f6d4a35c4241ff5012932f88ab29a"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -371,7 +413,9 @@
   "source_supersedes": "exact-token refractory mechanism",
   "source_provenance_text": "Claude Aug 2026 tight-null audit; generation master regional persistence",
   "statement_md5": "86a336c96b940ee4b167b5a2cf7accbc",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "1f7ceed70fc647d98a45e2f5adb702d1"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -388,7 +432,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Aug-Sep 2026 working-set and localisation programmes",
   "statement_md5": "9694d5d0a7e0b545d42412c1558b3270",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ffeb60dac8c16de13855235fca436e2e"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -405,7 +451,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Sept 2026 local-state carrier",
   "statement_md5": "7b2308b9a8c9e67e6e5e2ef9fd2edf9c",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "d49cb657e49bf48382f5119d0984fa09"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -422,7 +470,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Sept 2026 local-state carrier",
   "statement_md5": "4fd42394101ea122b0c8b6b8bc3efe62",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "f74911ee10794690e8425b14c5d9d675"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -439,7 +489,9 @@
   "source_supersedes": "paragraph semantic/content layer",
   "source_provenance_text": "Sept 2026 latent-content closeout",
   "statement_md5": "c4f4b45e874b97d5049e0c171c11959d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "076e16c083f3cc0a30fa15740e489547"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -456,7 +508,9 @@
   "source_supersedes": "K=4 record/line mixture",
   "source_provenance_text": "Aug 2026 line-state rescue",
   "statement_md5": "62c03834e88a6c7ebe53ab5c2cb18480",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "96afb8daaeb11acc30d8baee05d15fa7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -473,7 +527,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.1/v2.3 conditional:q_selects_k",
   "statement_md5": "0958b435546c63cdf422f95227556c59",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "39340fbb42283bff14de4422183b8bcd"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -490,7 +546,9 @@
   "source_supersedes": null,
   "source_provenance_text": "v2.1/v2.3 conditional:i_runlength_terminator",
   "statement_md5": "d06a0e30c17bbae2e87168117a93e8de",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "0df2766ff9f4119603f9ef154511b011"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -507,7 +565,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ChatGPT 2026-03; later line programmes",
   "statement_md5": "1e4e7d7216d29f53cc374ccfb384c5c9",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "d9dfdd42e17828d6ccdbc02b991431b7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -524,7 +584,9 @@
   "source_supersedes": null,
   "source_provenance_text": "generation master; Seraphinian control",
   "statement_md5": "13ef4a989a6dd34d4452f42a7d93f7ab",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "7049bfe49db9a7ccb2d0771f2f3071e8"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -541,7 +603,9 @@
   "source_supersedes": "Timm/full copy-mutate mechanism",
   "source_provenance_text": "faithful Timm and generator ablations; master consolidation",
   "statement_md5": "895aa769ff28e840789603b000c7a609",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "25c4b8f7c1858c0b7dbfba42293cea9d"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -558,7 +622,9 @@
   "source_supersedes": "scribe-specific state reset",
   "source_provenance_text": "f115r S2→S3 natural experiment 2026-09",
   "statement_md5": "689a5a3d774490aa0cab6c0bf1ada202",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "97efece4929d535332ccfe25e1f915c3"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -575,7 +641,9 @@
   "source_supersedes": "shared hidden codebook layer",
   "source_provenance_text": "July-Aug 2026 cross-scribe scale and payload programmes",
   "statement_md5": "f32353072a9f66a71544bfb0232ddd9c",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "edca5495fbb7068826a71e1078ffd234"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -592,7 +660,9 @@
   "source_supersedes": "one universal running-text grammar",
   "source_provenance_text": "IVTFF locus structure; historical grammar audits",
   "statement_md5": "6644b286bcb526e4ab7f7525876ce15b",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "81001ac706ef4e924ed8fe8fa56dc8be"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -609,7 +679,9 @@
   "source_supersedes": "copy-mutate explanation of length autocorrelation",
   "source_provenance_text": "older generator programme; hostile consolidation",
   "statement_md5": "613d0d0eb52a3e70a8cd7f23204ca2f9",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "0b8735ecf945b82b0fddd7a330d55c27"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -626,7 +698,9 @@
   "source_supersedes": "raw cross-space MI as one causal rule",
   "source_provenance_text": "Claude June q69-style audit; current exact-pair programme",
   "statement_md5": "b04426befc63c54cd1a59a012a5a8906",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "c0d48318e408eac58776c100a37c086d"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -643,7 +717,9 @@
   "source_supersedes": "space=word axiom",
   "source_provenance_text": "Claude/ChatGPT tokenisation audits; alternative word-division robustness; v2.3 junction results",
   "statement_md5": "6b82ee7592f0a5057dddafadd5586edf",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "1b1ea64043fef545145408b226a7ef7b"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -660,7 +736,9 @@
   "source_supersedes": "claims of generation/meaninglessness",
   "source_provenance_text": "generation master and user constraint",
   "statement_md5": "df4cd4ed45864583e307612e6a6b112d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "SUPERSEDED",
+  "certificate_md5": "2b876fdadd3455e209c8fc469fc42808"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -677,7 +755,9 @@
   "source_supersedes": "single fixed word-division preprocessing",
   "source_provenance_text": "Claude 2026-08 STA/tokenisation audit; multi-transcription recurrence audits",
   "statement_md5": "bf6726a296f7bb9ea5d91e40cac0e49d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "8ca1bce7de8f4f4475694feac62cbbfa"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -694,7 +774,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ChatGPT Q64/VBM-era observation; rechecked 2026-09-18 on public.vms_directional_token_v01",
   "statement_md5": "c3407d7fc078b93fb9176f8c449dd9f3",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3baed5c588ac7e761700d8635c5721c7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -711,7 +793,9 @@
   "source_supersedes": "Over-strong reading of SG15 as no individual 2x2 residuals",
   "source_provenance_text": "Supergrammar v0.1 parent-mediation compiler, 2026-09-18",
   "statement_md5": "7e89fcf59bbf61e2926db0d2b36a2f8e",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "a99d9c930f024cece1552cd022f398b6"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -728,7 +812,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Supergrammar chargram depth compiler v0.3 + compound-atomic aggregate replication, 2026-09-18",
   "statement_md5": "c78a3d2ad9f95885f584ae01eaea0771",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "144ab1850795dbc24cfe6639131c4c91"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -745,7 +831,9 @@
   "source_supersedes": "v2.3 lexeme rules as 107 independent grammar nodes",
   "source_provenance_text": "Supergrammar lexeme compiler + aggregate bound 2026-09-18",
   "statement_md5": "25051abf909adc2a3bdadddf9f98e802",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ce408bbb0c5a4c4fde3689b91701897a"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -762,7 +850,9 @@
   "source_supersedes": "v2.3 623-cell flat cross_line layer",
   "source_provenance_text": "Supergrammar cross-line compiler 2026-09-18",
   "statement_md5": "daf1c2402049294676e2e64e16f8173d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ec0620d28492a1d8badd97af94f230e8"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -779,7 +869,9 @@
   "source_supersedes": "v0.3 exact-token transition residual",
   "source_provenance_text": "Supergrammar closure v0.4-v0.4b 2026-09-18",
   "statement_md5": "1ceaf1c8940df96b151124a2a2497868",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ad772b812a6bcc815065cf98a8e47dcc"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -796,7 +888,9 @@
   "source_supersedes": "SG38_NO_FULL_CLOSURE for running-text structural scope",
   "source_provenance_text": "Supergrammar closure v0.1-v0.5 2026-09-18",
   "statement_md5": "9c33a9e15472d1c33c498f63318a7a0b",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ec5eedd81f5ad6d625f099e51ffb97ee"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -813,7 +907,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Voynich Ninja thread 6084 audit + Super-Grammar parent mediation 2026-09-18",
   "statement_md5": "4441b518f0e02eb190a00b2c8164909e",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "b129a5f17b40dac84ca5be13ddb803ad"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -830,7 +926,9 @@
   "source_supersedes": "Refined by SG50_F58_ACZ_CROSS_LOCUS",
   "source_provenance_text": "Voynich Ninja thread 6084 f58 replication + raw/atomic Super-Grammar audit 2026-09-18",
   "statement_md5": "822517585738a9b590fb6f43b5df6e64",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "SUPERSEDED",
+  "certificate_md5": "35a0b586dc6c3d64436f03be221fbed2"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -847,7 +945,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Full blinded label programme v0.1 2026-09-18",
   "statement_md5": "32a62a8bce4eecf1e8c4e8028eab8bbd",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "9b2bbe83c058cd85acd602da2f3ef591"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -864,7 +964,9 @@
   "source_supersedes": "SG48_F58_OUTLIER_COORDINATE",
   "source_provenance_text": "Blinded label programme + ACZ cross-locus factorisation v0.1-v0.3 2026-09-18",
   "statement_md5": "547f6c7d04144dae01192305c7d140e7",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "f59d277d09760228fad58fc974dcfafc"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -881,7 +983,9 @@
   "source_supersedes": "Refined by SG52_LENGTH_STRATIFIED_SECOND_UNIT",
   "source_provenance_text": "ACZ cross-locus transfer/factorisation v0.1-v0.3 2026-09-18",
   "statement_md5": "53460a1662daf61ad8d02ba8c2ccfdc9",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "SUPERSEDED",
+  "certificate_md5": "ef267bdf856cc2c45bc896813b5422cd"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -898,7 +1002,9 @@
   "source_supersedes": "SG51_ACZ_LENGTH_CONDITIONAL_REGION",
   "source_provenance_text": "SG51 length-proxy hostile audit + leak-safe middle test + event-zone decomposition 2026-09-18",
   "statement_md5": "a956233dfb35952229acfd5f478731cd",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "5ed9a0933919788a730e5ec1e16a57f8"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -915,7 +1021,9 @@
   "source_supersedes": "voynich_supergrammar_v11_running_text_20260919",
   "source_provenance_text": "Control-sequence forward tournament v0.1, 2026-09-18",
   "statement_md5": "f654d6139b0104ef2ed739378652b73b",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "SUPERSEDED",
+  "certificate_md5": "55051f6f728f776771025ac21662d1c6"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -932,7 +1040,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Page-codebook + SG1 realiser v0.2 2026-09-18",
   "statement_md5": "a7f381f8ffca03944e26f8c9f2de2001",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "1d09284f0558d6c7ebc5961f9c467833"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -949,7 +1059,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Page-codebook factorisation v0.1 2026-09-18",
   "statement_md5": "b56239e230fa1f429f44abc35ea82c9e",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "6a97df1d55b4e4d019429350d1ca9e57"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -966,7 +1078,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Discrete K4 page repertoire v0.1 2026-09-18",
   "statement_md5": "30747947ced31aa8fc57d2f3419ec02d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "34988318a871f18f9685c9a1f675bc12"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -983,7 +1097,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG55 follow-ups C/D and four-state persistence localisation, 2026-09-18",
   "statement_md5": "b247879ce52920f36f5c11ef5add8d2d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "d45c7412b366ea7374620d2d864e2426"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1000,7 +1116,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.1 2026-09-19",
   "statement_md5": "88b58f9666313412a17ec4d678b1451d",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3477771692d68b7f42c7727b7cc31fcc"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1017,7 +1135,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.1 2026-09-19",
   "statement_md5": "3733564281b3e567ed241673b94c6895",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "072be8325f405e2278d37d6377a2df6b"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1034,7 +1154,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.2 2026-09-19",
   "statement_md5": "da500599b83084038287b4460d8cf6dd",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "1e349825c0e9d8ec947922a1f8cd5a19"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1051,7 +1173,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.2 2026-09-19",
   "statement_md5": "32c41c988cc7a97f367e64cf50cc45c9",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "REJECTED",
+  "certificate_md5": "86c8dde5be24db10f528f1efbbc8c422"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1068,7 +1192,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Boundary ED1 parent mediation v0.1-v0.4 2026-09-19",
   "statement_md5": "7f2b68e5a0d63e4c3b60960ab34c2f52",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "378ed3f5c0298a370d25c8edd5121717"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1085,7 +1211,9 @@
   "source_supersedes": "voynich_supergrammar_v11_running_text_20260919",
   "source_provenance_text": "Blinded mechanism-class forward tournament v1.0 2026-09-19",
   "statement_md5": "12e83b556a701de7cafee700f2213868",
-  "created_at": "2026-09-20T07:44:59.512713+00:00"
+  "created_at": "2026-09-20T07:44:59.512713+00:00",
+  "certificate_status": "SUPERSEDED",
+  "certificate_md5": "f72c25efb27f6bcfc8fda2fbbfc6605c"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1102,7 +1230,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 chargram-depth compiler; primary table vms_supergrammar_chargram_aggregate_v01; independent v03 verifier.",
   "statement_md5": "8d8242235375c7baebdc68278efff19c",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED",
+  "certificate_md5": "c2a4cceb059cd09ac8c33686b38ee4d7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1119,7 +1249,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 chargram-depth compiler; primary table vms_supergrammar_chargram_aggregate_v01; independent v03 verifier.",
   "statement_md5": "93c970a4fcad23f26bb25587f37f0e7b",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "FAILED",
+  "certificate_md5": "d1533834a0319317b5626bc9a0166f8e"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1136,7 +1268,9 @@
   "source_supersedes": "SGK02_INTERNAL_ORDER3",
   "source_provenance_text": "Independent clean-room verifier commit 82caeb96...; HF jobs 6aaf93ab... and exact-summary replay 6aaf9534....",
   "statement_md5": "cff56edba25c3b53310d5b10a06efd3c",
-  "created_at": "2026-09-20T08:18:56.186381+00:00"
+  "created_at": "2026-09-20T08:18:56.186381+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "db3361a3df86e4c1cfa53fc9efd76cc4"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1153,7 +1287,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "0c32b6735846b5695533deb1e7eb428e",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "63370919e0ea8386e7eaca94ebd4dac9"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1170,7 +1306,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "fe1f30262e44ba920c24da332880de21",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "0a5c1b6b88a7f961b24588fa59d80de8"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1187,7 +1325,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "d6cc3e2fab1945b2f3cb98b9b37daf9a",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "8bd9bf62e3c06f5a236edd2f701e5176"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1204,7 +1344,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "4caf1ce7e8b5b4eb55f5af643cd85630",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "e8746a949b388a547881420a23aec394"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1221,7 +1363,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "5e858019ea9a74c2e035ae506b2d935f",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "bc143212a41f44c9cbe57fc342b62a13"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1238,7 +1382,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "84387f5e217573d817a34678d859b4a8",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "9f6d0ec68d337b5bbd9c69827d1fd0cc"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1255,7 +1401,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "697edcef04a2d4e7fb6f36355d3e3bcf",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "5054678dc1ef0faae32cd028edbddadc"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1272,7 +1420,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "285e422290efc57343d5c031e65c1730",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "d5071eabec41f1fe3e492754c252b609"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1289,7 +1439,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "587688d415dea667f8507aa4266e84d2",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "d6524d0526306b43cb759defcf7b5ecb"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1306,7 +1458,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "dac06f70465a5755839bfe8a47f6a2d0",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "8dc5bdede0cce21c25a20deb77ef591e"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1323,7 +1477,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "d4b55bfff92d2faa7ec1a874693bff13",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "f7c52a17d21458a66045d79df330aad3"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1340,7 +1496,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "181f8e9731bf84f3f2f4cb21d6f89b7f",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "777f65478434bd50d40eac3d6c3c0603"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1357,7 +1515,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "24c7ebc26401d575460a3d4a2d6eb521",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "d7af8fbc95e6a14ec974d6ed234f2827"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1374,7 +1534,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "9c8314a9d7218ff5c6b106992cebe76b",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "c5e9c41a89fff1078c1e58885fd68c19"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1391,7 +1553,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "bb1843eeae731e263a7926a14667ea8d",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "4a59899bddc99b3f72700d16be1b50d6"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1408,7 +1572,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "070036247ab50921b3dc24ce78c750e8",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "05074de30dd548b58bf0d75fbf0abc63"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1425,7 +1591,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "e9a8279fb66e5cc7175b72564a2d290f",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "110389ebe8697eb53d70e2fa4aba501c"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1442,7 +1610,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "2e0dca77c543b8f5b03a5dc2ef2d4ca2",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "5f9d4f1443d279445a4c6ef38e3ff4c3"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1459,7 +1629,9 @@
   "source_supersedes": "SG02_GRAPHOTACTIC_LEGALITY",
   "source_provenance_text": "Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "ea9ff80ea88aeb0341e12eb79a94aba6",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "7530eb1d2d33118e07b3f1bcf4b27a88"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1476,7 +1648,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 boundary-scale compiler; primary table vms_supergrammar_boundary_scale_v01; independent v03 verifier.",
   "statement_md5": "f975313cfe60fd7de705497b81195b25",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "2e4e61849a71cac3d92397ddec4d4eb0"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1493,7 +1667,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 boundary-scale compiler; primary table vms_supergrammar_boundary_scale_v01; independent v03 verifier.",
   "statement_md5": "097a3882d1c74ee2e8cc53be7b54661b",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED",
+  "certificate_md5": "7e50dc05175d5c619a70a42e391112d9"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1510,7 +1686,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 legacy-conditional revalidation; vms_supergrammar_conditional_tests_v01.",
   "statement_md5": "16bef8a5103c702f599565dab32064ca",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "c94dbe12f448ffb16eb422fe886d777a"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1527,7 +1705,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 legacy-conditional revalidation; vms_supergrammar_conditional_tests_v01.",
   "statement_md5": "a08455a5bd6b19b3dc6623d50c2cfcda",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "39a8a4f1a1c5e2502d3f3f79c629fdd2"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1544,7 +1724,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 closure v0.4b/v0.4c; vms_supergrammar_closure_v04b_contrasts_v01 and v04c results/summary.",
   "statement_md5": "299952961ef0cd2eac2ec3eb5fd02397",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "c98cc8965a0ed44ca98c1559ed99ec48"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1561,7 +1743,9 @@
   "source_supersedes": null,
   "source_provenance_text": "SG1.0 closure v0.5; vms_supergrammar_closure_v05_v01.",
   "statement_md5": "a4aaf6c77bcecae01d332b868f3b4d70",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "FAILED",
+  "certificate_md5": "03fde592ad1f27b53440dd810feb77c5"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1578,7 +1762,9 @@
   "source_supersedes": "SGK09_EXACT_IDENTITY_CLOSED",
   "source_provenance_text": "Independent closure verifier commit a959a95a3c3dfae5d5dd6a1c7c019052250049ee; HF job 6aaf9ac752d0dbd7f1d733fb.",
   "statement_md5": "6fb565ee1b41ffc7a5372d8212a045b1",
-  "created_at": "2026-09-20T08:40:50.972531+00:00"
+  "created_at": "2026-09-20T08:40:50.972531+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "fcf219ca2c5da03390dd9431c0d5793f"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1595,7 +1781,9 @@
   "source_supersedes": null,
   "source_provenance_text": "local-state carrier programme; vms_local_state_carrier_results_v01.",
   "statement_md5": "87c5e5dea336561f143dff537abaffbe",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "82dfb4092b28f0d5df572e96923072f7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1612,7 +1800,9 @@
   "source_supersedes": null,
   "source_provenance_text": "local-state carrier programme; vms_local_state_carrier_results_v01.",
   "statement_md5": "232e7125872f25625c087347481188f8",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "7eedae14754b3dd431a33650f0a9d4e1"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1629,7 +1819,9 @@
   "source_supersedes": null,
   "source_provenance_text": "local-state carrier programme; vms_local_state_carrier_results_v01.",
   "statement_md5": "ff32f24390951c3cb6cdd45cbb3757d2",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "6fa3988b7336403c6ad116866d4382f7"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1646,7 +1838,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.1 frozen tournament in canonical SG1.0 handoff.",
   "statement_md5": "8c647e0a155e1dfea9d2ed605fa75a80",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "9197e705cb863fae9c9d4a716d7d75a0"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1663,7 +1857,9 @@
   "source_supersedes": "SGK13_R64_RECURRENCE_GEOMETRY",
   "source_provenance_text": "Independent current-parent tournament commit 23ff233e315bd932dd0777fd90ed41b7f0036cf9; HF job 6aaf985251992417dfccc6d6.",
   "statement_md5": "ebd735bdd027722b8567abb1c0f8b81e",
-  "created_at": "2026-09-20T08:29:32.107579+00:00"
+  "created_at": "2026-09-20T08:29:32.107579+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "26b068d83a2e80f9f04fdab98a71d412"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1680,7 +1876,9 @@
   "source_supersedes": "SGK13_R64_RECURRENCE_GEOMETRY",
   "source_provenance_text": "Independent current-parent tournament commit 23ff233e315bd932dd0777fd90ed41b7f0036cf9; HF job 6aaf985251992417dfccc6d6.",
   "statement_md5": "dcbcedbacce3066c4e3d5ad055756f18",
-  "created_at": "2026-09-20T08:29:32.107579+00:00"
+  "created_at": "2026-09-20T08:29:32.107579+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "1fcc2fddb7f1b082ac79d4f5be75bf1b"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1697,7 +1895,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Local realiser repair v0.1 frozen tournament in canonical SG1.0 handoff.",
   "statement_md5": "9b24d517e6d0f7e09a1fd89071a4b9b8",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "ae545880176c00a4b8517d193c0487fd"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1714,7 +1914,9 @@
   "source_supersedes": "SG53_PAGE_CODEBOOK_CONTROL_LAYER",
   "source_provenance_text": "Preregistered emergent-occupancy deletion protocol + closeout; immutable Git runner 92ec41cb...; five HF fold jobs.",
   "statement_md5": "037e8851ff141efc43ee7cd11ea161a4",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "bf41acc3465437fc3a5b5fd68d660db5"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1731,7 +1933,9 @@
   "source_supersedes": "SG30_ED1_BOUNDARY_ATTENUATION",
   "source_provenance_text": "Boundary-ED1 v0.4 primary table vms_boundary_ed1_pairing_v04; independent v03 verifier.",
   "statement_md5": "7a7f1af3e76d355b6dab293668ce313b",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "5ecbed11dfb17b20a30665cd3f253f91"
  },
  {
   "run_id": "supergrammar_v03_20260920",
@@ -1748,7 +1952,9 @@
   "source_supersedes": "SG12_CURRIER_COORDINATE",
   "source_provenance_text": "Currier support audit and whole-quire nested tests in SG1.0; vms_supergrammar_currier_support_v01.",
   "statement_md5": "f0be16878074a4ec2246a5fe187a39d5",
-  "created_at": "2026-09-20T08:13:01.066181+00:00"
+  "created_at": "2026-09-20T08:13:01.066181+00:00",
+  "certificate_status": "CERTIFIED_BOUNDED",
+  "certificate_md5": "4dbf5e00c587df0c58c67fab0ab6178d"
  },
  {
   "run_id": "supergrammar_v03_extension_gallows_20260924",
@@ -1765,7 +1971,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Post-release gallows audit on public.vms_directional_token_v01; triggered by Cgm 811 historical feature-family control.",
   "statement_md5": "59bd24cf7525dbe2cae09b36258c4d60",
-  "created_at": "2026-09-24T06:01:03.271899+00:00"
+  "created_at": "2026-09-24T06:01:03.271899+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  },
  {
   "run_id": "supergrammar_v03_extension_gallows_20260924",
@@ -1782,7 +1990,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Post-release gallows audit on public.vms_directional_token_v01; exact collapsed k/t skeleton matching; q-state stratified.",
   "statement_md5": "54b1aada480c27a549ab0c4109ab70d2",
-  "created_at": "2026-09-24T06:01:03.271899+00:00"
+  "created_at": "2026-09-24T06:01:03.271899+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  },
  {
   "run_id": "supergrammar_v03_extension_gallows_20260924",
@@ -1799,7 +2009,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Post-release gallows audit on public.vms_directional_token_v01; exact collapsed p/f skeleton matching; q-state stratified.",
   "statement_md5": "2e17d2fa2aa76e4517a152726c3efd2b",
-  "created_at": "2026-09-24T06:01:03.271899+00:00"
+  "created_at": "2026-09-24T06:01:03.271899+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1816,7 +2028,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK01_INTERNAL_ORDER2",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 chargram-depth compiler; primary table vms_supergrammar_chargram_aggregate_v01; independent v03 verifier.",
   "statement_md5": "8d8242235375c7baebdc68278efff19c",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "f230debb816c747b341dc2f449237c07"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1833,7 +2047,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK02_INTERNAL_ORDER3",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 chargram-depth compiler; primary table vms_supergrammar_chargram_aggregate_v01; independent v03 verifier.",
   "statement_md5": "93c970a4fcad23f26bb25587f37f0e7b",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "FAILED",
+  "certificate_md5": "58b9003fc13aa2da31ba165dcdddf791"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1850,7 +2066,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK02B_ORDER3_NOT_ROBUST",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Independent clean-room verifier commit 82caeb96...; HF jobs 6aaf93ab... and exact-summary replay 6aaf9534....",
   "statement_md5": "cff56edba25c3b53310d5b10a06efd3c",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3f77ab20e445d3350137374130250891"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1867,7 +2085,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_ci",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "3076810b597788a5db9ac296f4ce3a48",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "e06beecebaa8c0c72ac1833d3b256559"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1884,7 +2104,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_dh",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "2c4f67796cbb1ea6a020fb9b74d36a60",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "0d33e16d7df0052f6bf458dcfbd15db2"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1901,7 +2123,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_dn",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "14fe3dcff1d4e3c671f213672a857bff",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "390381164fe29cd3a108bf0b1ebe3ae3"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1918,7 +2142,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_kk",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "9f8e1d8b882a98ebd33daa3a76213b1c",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "cb1ad91133f7154501959f3c84a6c058"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1935,7 +2161,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_km",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "efa25c896a93f87069fea5873f37bddd",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "1dc0df5a79e0e07fcd5859ef48e792f4"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1952,7 +2180,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_kn",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "2066163f51141fb4d95ef1311f4a1ad1",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "aa05914734b8c48381b55439a69b7df0"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1969,7 +2199,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_kp",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "bda53f46bafe2842389e634455c13b32",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "7b42b4bf3cf96425b1bc403bd5401b56"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -1986,7 +2218,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_lh",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "4fe82d096dfb1d9abd7b853f9d66d4e5",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "1b35e93534f1444df5ed09d0f7ea609c"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2003,7 +2237,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_ln",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "b93ca371af7ff9943f60470e8009b11d",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "5cda645187f77c47ea43c6f135bf4c37"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2020,7 +2256,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_pl",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "2d961afe32701bcf6d77f57985a80f2d",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "9f10af154fd0a4bba6df31b9bd8ddb2b"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2037,7 +2275,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_pn",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "564b951b65daaeebad91cf07be0ad836",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "cd77ee5df525c7ab6a1befdde713e709"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2054,7 +2294,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_pp",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "fc53bf9ef9861faacab07f7bfbf5a5da",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "d42eb83c50ffa6228a95beba1464d7f8"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2071,7 +2313,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_pt",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "0b298f5d22fd27355c2429f78a8a84be",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "af134583f517685b5bc8d67863524ef6"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2088,7 +2332,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_tm",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "017c235a9a47f0d09cad83cd7932b518",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "626284d7f42690addc064cf593851f5d"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2105,7 +2351,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_tn",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "da935f6ded4d1eb37cc58e53cc07562d",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "bef63824e276dcfeaf6108749e997df5"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2122,7 +2370,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_tp",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "ec57d465fb88b9017bb77d820963adbf",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "e200356f6f277e32268c6a8650a2be5a"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2139,7 +2389,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_tr",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "d7a076a975cdbe35cc02a5ee3d2346e8",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "f5f51e06fa183fd446a7f2d352fcc006"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2156,7 +2408,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_tt",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "610fde3bc27ff271e23547e2c140ba3e",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "a5984baddd19abd947461673fafa661f"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2173,7 +2427,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK03_HZ_yn",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Forbidden-bigram compiler v01; primary table vms_supergrammar_forbidden_bigram_v01; independent v03 verifier.",
   "statement_md5": "a3f15f615467dbb5112366fc8b7f99c2",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "7b6ff171f630483e85f98df3f16f9ee1"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2190,7 +2446,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK04_SPACE_EDGE",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 boundary-scale compiler; primary table vms_supergrammar_boundary_scale_v01; independent v03 verifier.",
   "statement_md5": "ebafe9755a29b06676d3e69c12880479",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "76a1c3d2bf19b012ce0ef33102c3c5cf"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2207,7 +2465,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK05_SPACE_GT_LINEBREAK",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 boundary-scale compiler; primary table vms_supergrammar_boundary_scale_v01; independent v03 verifier.",
   "statement_md5": "9e968e84d2f70fc7b90c4a1c3b91da7d",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "901c7433a1126345516097060920a248"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2224,7 +2484,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK06_Q_SELECTS_K",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 legacy-conditional revalidation; vms_supergrammar_conditional_tests_v01.",
   "statement_md5": "16bef8a5103c702f599565dab32064ca",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "3011984b6f6bc2f1273e121c13f0fc3c"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2241,7 +2503,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK07_I_RUN_TERMINATION",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 legacy-conditional revalidation; vms_supergrammar_conditional_tests_v01.",
   "statement_md5": "a08455a5bd6b19b3dc6623d50c2cfcda",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "7a68ae75573561fd36a0fe4ded0c67bc"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2258,7 +2522,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK08_PREV_TOKEN_MORPH",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; SG1.0 closure v0.4b/v0.4c; vms_supergrammar_closure_v04b_contrasts_v01 and v04c results/summary.",
   "statement_md5": "ae3cb62f39ea2d4b06e73ad42af9db4b",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "cf17be90270e85d752c9ba43e956bde3"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2275,7 +2541,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK09B_EXACT_IDENTITY_NOT_UNIVERSALLY_CLOSED",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Independent closure verifier commit a959a95a3c3dfae5d5dd6a1c7c019052250049ee; HF job 6aaf9ac752d0dbd7f1d733fb.",
   "statement_md5": "6fb565ee1b41ffc7a5372d8212a045b1",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "1d1eac90ce167e25ebf6987b159b7c1d"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2292,7 +2560,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK13B_R64_CURRENT",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Independent current-parent tournament commit 23ff233e315bd932dd0777fd90ed41b7f0036cf9; HF job 6aaf985251992417dfccc6d6.",
   "statement_md5": "ebd735bdd027722b8567abb1c0f8b81e",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "55de3325b44269c8f868cef9caa6ec64"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2309,7 +2579,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK13C_LAG1_EXCLUSION_UNRESOLVED",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Independent current-parent tournament commit 23ff233e315bd932dd0777fd90ed41b7f0036cf9; HF job 6aaf985251992417dfccc6d6.",
   "statement_md5": "dcbcedbacce3066c4e3d5ad055756f18",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "381341acd6f5d9cef9e153cfe6e3868c"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2326,7 +2598,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK15_EXPLICIT_PAGE_CODEBOOK_REJECTED",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Preregistered emergent-occupancy deletion protocol + closeout; immutable Git runner 92ec41cb...; five HF fold jobs.",
   "statement_md5": "037e8851ff141efc43ee7cd11ea161a4",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "45d264c17bfb82c266350ca01f438a30"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2343,7 +2617,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK16_BOUNDARY_ED1_DERIVED",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Boundary-ED1 v0.4 primary table vms_boundary_ed1_pairing_v04; independent v03 verifier.",
   "statement_md5": "7a7f1af3e76d355b6dab293668ce313b",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "4c3f98f2420b44127490ece9df29c3ff"
  },
  {
   "run_id": "supergrammar_v031_20260928",
@@ -2360,7 +2636,9 @@
   "source_supersedes": "supergrammar_v03_20260920:SGK17_CURRIER_NOT_INDEPENDENT",
   "source_provenance_text": "v03.1 correction candidate of supergrammar_v03_20260920; Currier support audit and whole-quire nested tests in SG1.0; vms_supergrammar_currier_support_v01.",
   "statement_md5": "f0be16878074a4ec2246a5fe187a39d5",
-  "created_at": "2026-09-28T15:18:22.137184+00:00"
+  "created_at": "2026-09-28T15:18:22.137184+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "f7b7bbeeb7b5bba4d05d7139bcf83f6b"
  },
  {
   "run_id": "supergrammar_v032_20261002",
@@ -2377,7 +2655,9 @@
   "source_supersedes": null,
   "source_provenance_text": "XD1 closeout 2026-09-28; ZLZI plus CoReMA, ReM, charm and RF/STA sensitivity.",
   "statement_md5": "378c21c0a4a5d49b0bda18edc124766d",
-  "created_at": "2026-10-02T15:59:21.996988+00:00"
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "9902d2b1613c34ea130b73d7597e67d0"
  },
  {
   "run_id": "supergrammar_v032_20261002",
@@ -2394,7 +2674,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ZL3b-n v3b 2025-05-13; 4130 paragraph lines; 3326 within-paragraph adjacent pairs; two 1000-permutation matched nulls.",
   "statement_md5": "f780a02fbe6f771db26bace49b140e34",
-  "created_at": "2026-10-02T15:59:21.996988+00:00"
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "76f0a951918eafe1f370dabd5c4283d2"
  },
  {
   "run_id": "supergrammar_v032_20261002",
@@ -2411,7 +2693,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ZL3b-n v3b 2025-05-13; same adjacent-pair universe and nulls as SGK21A.",
   "statement_md5": "fa6adac6215ca868f2763d1ccf2b49be",
-  "created_at": "2026-10-02T15:59:21.996988+00:00"
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "975abb13e464703d49133bd6f99124f9"
  },
  {
   "run_id": "supergrammar_v032_20261002",
@@ -2428,7 +2712,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ZL3b-n v3b 2025-05-13; prior-art target from Voynich Ninja thread 6139; alternate RF1b, IT2a and VT0e replications.",
   "statement_md5": "6bc39b95db00d4a95f17c1f01c2a58d9",
-  "created_at": "2026-10-02T15:59:21.996988+00:00"
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "fd2acd803735a2536f4b4a186d0e09e4"
  },
  {
   "run_id": "supergrammar_v032_20261002",
@@ -2445,7 +2731,9 @@
   "source_supersedes": null,
   "source_provenance_text": "ZL3b-n v3b 2025-05-13; lag-2 within-paragraph pairs N=2624; alternate RF1b, IT2a and VT0e sensitivity.",
   "statement_md5": "31b4c97f8b49d15e6d214488412b8a9c",
-  "created_at": "2026-10-02T15:59:21.996988+00:00"
+  "created_at": "2026-10-02T15:59:21.996988+00:00",
+  "certificate_status": "OPEN",
+  "certificate_md5": "0a43cb439df20c82bda2c00904c551df"
  },
  {
   "run_id": "supergrammar_v04_realization_library_20260924",
@@ -2462,7 +2750,9 @@
   "source_supersedes": "SG47_CURRIER_CONDITIONED_REALIZATION_LAYER",
   "source_provenance_text": "Exhaustive 5,076-type one-edit graph. Discovery restricted to Herbal A/B; validation restricted to non-Herbal Pharmaceutical-A versus Biological+Stars-B. Operator statistics in vms_realization_operator_outdomain_v01.",
   "statement_md5": "b1d6975c8fed5f0ec3478b0fd243eaef",
-  "created_at": "2026-09-24T10:19:49.963624+00:00"
+  "created_at": "2026-09-24T10:19:49.963624+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  },
  {
   "run_id": "supergrammar_v04_realization_library_20260924",
@@ -2479,7 +2769,9 @@
   "source_supersedes": null,
   "source_provenance_text": "Derived graph-component bound from vms_realization_library_summary_v01; operators are externally validated SG64 classes plus separately tested gallows pairs where stated.",
   "statement_md5": "4a728bf33d287e1ece3156e00de81422",
-  "created_at": "2026-09-24T10:19:49.963624+00:00"
+  "created_at": "2026-09-24T10:19:49.963624+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  },
  {
   "run_id": "supergrammar_v04_realization_library_20260924",
@@ -2496,6 +2788,8 @@
   "source_supersedes": null,
   "source_provenance_text": "Post-SG64 hypothesis test on conservative top8 realization components plus separately established gallows; Currier A/B JSD collapse null and root-neighbour context JSD matched one-edit controls.",
   "statement_md5": "79a319917581b425fc013849a082af12",
-  "created_at": "2026-09-24T10:32:52.158385+00:00"
+  "created_at": "2026-09-24T10:32:52.158385+00:00",
+  "certificate_status": "NO_CERTIFICATE",
+  "certificate_md5": null
  }
 ]

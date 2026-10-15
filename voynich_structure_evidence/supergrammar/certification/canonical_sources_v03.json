@@ -1,0 +1,52 @@
+[
+ {
+  "source_order": 1,
+  "source_key": "voynich_supergrammar_v11_running_text_20260919",
+  "source_role": "CANONICAL_SURFACE_ARCHITECTURE",
+  "source_status": "completed",
+  "source_version": 1,
+  "content_md5": "bb21ce62c596388e8961527939e9343f",
+  "content_chars": 3538,
+  "note": "Supersedes SG1.0; explicit page codebook removed."
+ },
+ {
+  "source_order": 2,
+  "source_key": "voynich_theory_compiler_stageB_claims_20260919",
+  "source_role": "NORMALIZED_MECHANISM_CLAIMS",
+  "source_status": "active",
+  "source_version": 1,
+  "content_md5": "a2f4f7f24e44b6f1a68f583a2e154c8d",
+  "content_chars": 6955,
+  "note": "28-card normalized mechanism/theory ledger."
+ },
+ {
+  "source_order": 3,
+  "source_key": "voynich_theory_compiler_stageC_closure_20260919",
+  "source_role": "MECHANISM_CLOSURE",
+  "source_status": "active",
+  "source_version": 1,
+  "content_md5": "11ab55d50bc880f5305b6231ca4fbc7e",
+  "content_chars": 4813,
+  "note": "20-family closure ledger; statuses are bounds not votes."
+ },
+ {
+  "source_order": 4,
+  "source_key": "voynich_theory_compiler_stageD_graph_20260919",
+  "source_role": "EVIDENCE_GRAPH",
+  "source_status": "active",
+  "source_version": 2,
+  "content_md5": "fa0a4946f15b5445e0b3449a2dc4da45",
+  "content_chars": 4715,
+  "note": "Supported internal chain and missing couplers."
+ },
+ {
+  "source_order": 5,
+  "source_key": "voynich_theory_compiler_stageE_novelty_20260919",
+  "source_role": "NOVELTY_FRONTIER",
+  "source_status": "active",
+  "source_version": 3,
+  "content_md5": "f61a8da163a331f60c7dd39b1ef8a4a3",
+  "content_chars": 12787,
+  "note": "Duplicate elimination and admissible future-input frontier."
+ }
+]

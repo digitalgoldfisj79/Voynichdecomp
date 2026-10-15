@@ -1,0 +1,110 @@
+[
+ {
+  "obligation_code": "SOURCE_CONTRACT",
+  "audit_order": 1,
+  "description": "Frozen statement, corpus/source contract and source hashes are explicit.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "CIRCULARITY",
+  "audit_order": 2,
+  "description": "Claim is not used to construct the feature/test that is then cited as evidence for the same claim.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "LEAKAGE",
+  "audit_order": 3,
+  "description": "Training/selection/tuning does not inspect held-out units or outcomes used for evaluation.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "CONFOUNDS",
+  "audit_order": 4,
+  "description": "Material confounds are controlled, crossed, residualised, or explicitly bound.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "MATCHED_NULL",
+  "audit_order": 5,
+  "description": "Null preserves the relevant opportunity structure; otherwise the result is descriptive only.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "CONTROL_FAIRNESS",
+  "audit_order": 6,
+  "description": "Comparator/control has matched information, capacity and tuning privileges appropriate to the claim.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "MEASUREMENT_DEGENERACY",
+  "audit_order": 7,
+  "description": "Metric is not driven by degenerate variance, collapsed support, or an identity artefact.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "REPRESENTATION_DEPENDENCE",
+  "audit_order": 8,
+  "description": "Claim is replicated across required representations or explicitly scoped as frame-specific.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "DECISION_RULE_FRAGILITY",
+  "audit_order": 9,
+  "description": "Thresholds, selection rules and model choices are frozen or subjected to sensitivity/adversarial tests.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "EFFECT_BOUND",
+  "audit_order": 10,
+  "description": "For quantitative claims the effect and matched null SD (or exact finite bound) are stored; ratio<2 cannot support a resolving claim.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "REPLICATION",
+  "audit_order": 11,
+  "description": "Independent fold/unit/representation replay or equivalent prospective replication supports the claim where applicable.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "DEPENDENCY_CLOSURE",
+  "audit_order": 12,
+  "description": "Every parent premise is certified or explicitly conditional; no open premise is silently promoted.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "AUDIT_COMPLETENESS",
+  "audit_order": 13,
+  "description": "Exact evidence rows, source relation/version and reproducible extraction are recorded.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "FALSIFIER",
+  "audit_order": 14,
+  "description": "A concrete falsifier/kill rule or scope bound is recorded.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "RETRACTION_CHECK",
+  "audit_order": 15,
+  "description": "Contradicted/superseded prior findings are visible and cannot silently remain active.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "ATOMICITY",
+  "audit_order": 16,
+  "description": "Claim is a single auditable proposition or explicitly decomposed into certified component lemmas.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "IMPLEMENTATION_REPLAY",
+  "audit_order": 17,
+  "description": "Runner/query/code path and source data are preserved sufficiently for an independent exact replay.",
+  "default_required": true
+ },
+ {
+  "obligation_code": "EXTERNAL_ADVERSARIAL_REVIEW",
+  "audit_order": 18,
+  "description": "A context-free adversarial review (user rule 20) of the claim and its data has been run and recorded; no supportive context supplied to the reviewer.",
+  "default_required": true
+ }
+]
