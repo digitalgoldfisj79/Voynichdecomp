@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-14",
+  "data_source": "Aspect-Research ZL3b 13 May 2025, GitHub blob 2a4533ab9bdfa85db9bad602d590978953055df1",
+  "status": "NO_GO",
+  "sections": {
+    "HA": {
+      "n": 1006,
+      "gain": -0.0015815723728408004,
+      "effect": 0.003564011816352212,
+      "null_sd": 0.0036373200168178395,
+      "null_mean": -0.005145584189193013,
+      "positive_units": 3,
+      "units": 9,
+      "planted_effect": 0.020817601992884165,
+      "planted_null_sd": 0.006994173893923489
+    },
+    "HB": {
+      "n": 307,
+      "gain": -0.03313305737122448,
+      "effect": -0.016660475344395447,
+      "null_sd": 0.012877013960780828,
+      "null_mean": -0.016472582026829035,
+      "positive_units": 0,
+      "units": 6,
+      "planted_effect": 0.017484232938026423,
+      "planted_null_sd": 0.012012277965400948
+    },
+    "BB": {
+      "n": 1226,
+      "gain": -0.00984295196666085,
+      "effect": -0.0038144587238491756,
+      "null_sd": 0.003877668074173755,
+      "null_mean": -0.006028493242811674,
+      "positive_units": 6,
+      "units": 19,
+      "planted_effect": 0.0037640082668880088,
+      "planted_null_sd": 0.00426113283615927
+    },
+    "SB": {
+      "n": 2057,
+      "gain": 0.007599184631571744,
+      "effect": 0.01461367725200882,
+      "null_sd": 0.0032907190921632433,
+      "null_mean": -0.0070144926204370765,
+      "positive_units": 16,
+      "units": 23,
+      "planted_effect": 0.022995565637132738,
+      "planted_null_sd": 0.003812316173373714
+    },
+    "PA": {
+      "n": 20,
+      "status": "UNQUALIFIED"
+    }
+  },
+  "bounds": {
+    "EVA_folio": {
+      "n": 2057,
+      "effect": 0.01242007335164311,
+      "null_sd": 0.0030943478327687397,
+      "raw_gain": 0.007599184631571749,
+      "positive_units": 16,
+      "units": 23
+    },
+    "EVA_leaf": {
+      "n": 2065,
+      "effect": 0.015171269359351197,
+      "null_sd": 0.00380283881859156,
+      "raw_gain": 0.009656130618153068,
+      "positive_units": 9,
+      "units": 12
+    },
+    "EVA_leaf_recheck": {
+      "n": 2065,
+      "effect": 0.01412032058507927,
+      "null_sd": 0.0035883937084652162,
+      "raw_gain": 0.009656130618153068,
+      "positive_units": 9,
+      "units": 12
+    },
+    "REVA_leaf": {
+      "n": 3016,
+      "effect": 0.0034206611939743403,
+      "null_sd": 0.002145011028520299,
+      "raw_gain": -0.0018550497816017496,
+      "positive_units": 4,
+      "units": 12
+    }
+  },
+  "retracted_or_narrowed": [
+    "Stars B initial raw EVA positive cannot be promoted: failed REVA representation",
+    "HB and BB negatives underpowered at 15% plant",
+    "PA blocked by quire-heldout support"
+  ],
+  "limitations": [
+    "Original 411671-character input not present locally",
+    "Synthetic positive control was run after preliminary corpus test; not blind preregistration",
+    "Grouping null does not preserve complete morphological geometry",
+    "No independent manuscript/quire Stars holdout"
+  ]
+}

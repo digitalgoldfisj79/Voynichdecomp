@@ -1,0 +1,100 @@
+{
+  "files": {
+    "00_FROZEN_PROTOCOL.md": {
+      "sha256": "69c80209a46ea68efd77e1a80fe5cd925db99734824108dfa0077b9186b7d5f7",
+      "bytes": 2956
+    },
+    "01_AUTONOMOUS_EQUIVALENCE_PROTOCOL.md": {
+      "sha256": "90276f2fdf15ae164b14dde76d4a6f0b4e74f738753a59c4e5e8afc64859d053",
+      "bytes": 1547
+    },
+    "EQUIVALENCE_RESULTS.json": {
+      "sha256": "c1ce884e0503cd70666a9b4a9a4087fdee2f264c3943e65a9611d86e6e05dee8",
+      "bytes": 924
+    },
+    "RESULTS.json": {
+      "sha256": "350eb4046974e3a66bb24b7664b8cbe296d9034cddd828e7769267abac60e6ac",
+      "bytes": 2155
+    },
+    "V144_Bridge_Orbit_and_Equivalence_Report.md": {
+      "sha256": "a402b5f0daa93b8098047da1bbf3169b54edfcf79fda2d95d0c3d672c83746b4",
+      "bytes": 8260
+    },
+    "autonomous_equivalence.py": {
+      "sha256": "cd92c4675ac86d1f36ce87fe953c59b9d9f3e0216f3d702d67943fa8b7314b19",
+      "bytes": 2842
+    },
+    "autonomous_equivalence_standalone.py": {
+      "sha256": "ceab23e2ab03a80626c5c385764aaaf9a47b3d591761edb90f93cef0a8de5f15",
+      "bytes": 2804
+    },
+    "hartlieb.surface_autonomous.vbm": {
+      "sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+      "bytes": 107035
+    },
+    "inputs/01_v143_frozen_manifest.json": {
+      "sha256": "b57d6e4e63f97d6398fd7f80e3ba9d460db1073818684a48f3a86e37557bbd9c",
+      "bytes": 20598
+    },
+    "inputs/hartlieb.carry.vbm": {
+      "sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+      "bytes": 107035
+    },
+    "inputs/hartlieb.pair.vbm": {
+      "sha256": "f0bd46c440e6d5a1fc92ebebd4456e32d48b7027c5c55a2a0ff5d2e33ee22f5d",
+      "bytes": 107035
+    },
+    "inputs/hartlieb.reference.txt": {
+      "sha256": "00383566dc6967cf97713f7fab7f59c795575afee23048539f0882f73c983c72",
+      "bytes": 67199
+    },
+    "inputs/hartlieb.statefree.vbm": {
+      "sha256": "8de171a3025f3e9a0bced6839bfc5c8b1efba819f6154056324b675d7e5e918b",
+      "bytes": 107035
+    },
+    "inputs/train.carry.vbm": {
+      "sha256": "c41af1c1a65f8a84bbfd8fb03c32135d63a7b0ab336bf2ed70d7190491d468fb",
+      "bytes": 554402
+    },
+    "inputs/train.pair.vbm": {
+      "sha256": "d8c1259e47de60e7bb4c23d91ca38a8aca14f8ce5b3f862a18d440fae0a511fb",
+      "bytes": 554402
+    },
+    "inputs/train.reference.txt": {
+      "sha256": "cdc2c847e70a542a66582b0e11531e602f45e7672d0bf953da81ef8b246e990d",
+      "bytes": 349061
+    },
+    "inputs/train.statefree.vbm": {
+      "sha256": "5dcc1a516d8fe3dfe85152bea22e456de047af5248fb8d3028bd57be78e19161",
+      "bytes": 554402
+    },
+    "run.log": {
+      "sha256": "c27e12ae721e31fb855c288605b7fcd1ca67407201f4c6a5fc471bcc92ebd275",
+      "bytes": 2676
+    },
+    "run.py": {
+      "sha256": "bf2e0d4ba5b99a21743afcb6e6c41a94029a36403b2bd3d2d809f9f0c120d15f",
+      "bytes": 5334
+    },
+    "run_standalone.py": {
+      "sha256": "54ee8b76b215dd46f7f9162d4525f15380e061da3cc808ddf0a38fc907164ff7",
+      "bytes": 5303
+    },
+    "stage0_parse_invariants.pkl": {
+      "sha256": "4dbd71e9ec3ebff0a511d8dba28bc7704429ea856098215721f013a1ae5cf935",
+      "bytes": 126
+    },
+    "stage1_results.pkl": {
+      "sha256": "86a0660754bd702f2d9fd9bb4e9f47ee3d30e1364a084a033b9b49c0949634ae",
+      "bytes": 856
+    },
+    "stage2_autonomous_equivalence.pkl": {
+      "sha256": "c3fbd80f3042e429d7be7b2c96ed4a20d32e9ff4f0c12efdcf18658602ced8fc",
+      "bytes": 563
+    },
+    "train.surface_autonomous.vbm": {
+      "sha256": "c41af1c1a65f8a84bbfd8fb03c32135d63a7b0ab336bf2ed70d7190491d468fb",
+      "bytes": 554402
+    }
+  }
+}

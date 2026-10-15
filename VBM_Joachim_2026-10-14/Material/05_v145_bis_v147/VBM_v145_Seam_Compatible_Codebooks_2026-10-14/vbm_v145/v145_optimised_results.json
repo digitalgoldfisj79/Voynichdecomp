@@ -1,0 +1,50 @@
+{
+  "A": {
+    "source_graph_edges": 7319,
+    "source_graph_edge_events": 88049,
+    "initial_bad_seam_trigrams": 86283,
+    "optimised_bad_seam_trigrams": 12238,
+    "iterations": 18000,
+    "accepted": 7634,
+    "improved_swaps": 1364,
+    "source_spec": "development only, Hartlieb untouched until final validation",
+    "cases": {
+      "train": {
+        "n": 68396,
+        "badwords": 9960,
+        "badtrigrams": 12238,
+        "mean_len": 14.831583718346103
+      },
+      "hartlieb": {
+        "n": 13232,
+        "badwords": 1770,
+        "badtrigrams": 2283,
+        "mean_len": 14.50649939540508
+      }
+    }
+  },
+  "B": {
+    "source_graph_edges": 7319,
+    "source_graph_edge_events": 88049,
+    "initial_bad_seam_trigrams": 84034,
+    "optimised_bad_seam_trigrams": 9464,
+    "iterations": 18000,
+    "accepted": 7364,
+    "improved_swaps": 1488,
+    "source_spec": "development only, Hartlieb untouched until final validation",
+    "cases": {
+      "train": {
+        "n": 68396,
+        "badwords": 7368,
+        "badtrigrams": 9464,
+        "mean_len": 14.003172700157904
+      },
+      "hartlieb": {
+        "n": 13232,
+        "badwords": 1291,
+        "badtrigrams": 1653,
+        "mean_len": 13.805169286577993
+      }
+    }
+  }
+}

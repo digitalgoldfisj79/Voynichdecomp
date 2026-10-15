@@ -1,0 +1,34 @@
+{
+  "train": {
+    "words": 68396,
+    "identical": true,
+    "surface_sha256": "c41af1c1a65f8a84bbfd8fb03c32135d63a7b0ab336bf2ed70d7190491d468fb",
+    "source_carry_sha256": "c41af1c1a65f8a84bbfd8fb03c32135d63a7b0ab336bf2ed70d7190491d468fb",
+    "initial_state": "-",
+    "state_counts": {
+      "-": 596,
+      "i": 13648,
+      "e": 28322,
+      "a": 11040,
+      "u": 9502,
+      "o": 5288
+    },
+    "last_source_vowel_equals_last_visible_bridge": 68396
+  },
+  "hartlieb": {
+    "words": 13232,
+    "identical": true,
+    "surface_sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+    "source_carry_sha256": "587ab349b448ca2c31dfcdca76cb37dc5f66c79dece8c4226ffb31e9a7af29d8",
+    "initial_state": "-",
+    "state_counts": {
+      "-": 5,
+      "e": 5397,
+      "i": 2654,
+      "u": 2413,
+      "o": 642,
+      "a": 2121
+    },
+    "last_source_vowel_equals_last_visible_bridge": 13232
+  }
+}

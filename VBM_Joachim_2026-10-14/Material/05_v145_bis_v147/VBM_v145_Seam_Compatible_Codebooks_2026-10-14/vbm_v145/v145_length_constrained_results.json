@@ -1,0 +1,120 @@
+{
+  "A": {
+    "selection_rule": "minimize development seam illegality subject to mean ciphertext len <=8.25 across frozen 0.4/0.8/1.6 lambda grid; never inspect Hartlieb before selection",
+    "candidate_grid": [
+      {
+        "lambda": 0.4,
+        "dev_bad_seams": 42324,
+        "dev_chars": 584105,
+        "dev_mean_len": 8.540046201532252,
+        "initial_dev_bad_seams": 93886,
+        "initial_dev_mean_len": 7.891835779870168,
+        "improved_swaps": 1522
+      },
+      {
+        "lambda": 0.8,
+        "dev_bad_seams": 66415,
+        "dev_chars": 547084,
+        "dev_mean_len": 7.998771858003392,
+        "initial_dev_bad_seams": 93886,
+        "initial_dev_mean_len": 7.891835779870168,
+        "improved_swaps": 1177
+      },
+      {
+        "lambda": 1.6,
+        "dev_bad_seams": 77568,
+        "dev_chars": 540630,
+        "dev_mean_len": 7.904409614597345,
+        "initial_dev_bad_seams": 93886,
+        "initial_dev_mean_len": 7.891835779870168,
+        "improved_swaps": 908
+      }
+    ],
+    "selected": {
+      "lambda": 0.8,
+      "dev_bad_seams": 66415,
+      "dev_chars": 547084,
+      "dev_mean_len": 7.998771858003392,
+      "initial_dev_bad_seams": 93886,
+      "initial_dev_mean_len": 7.891835779870168,
+      "improved_swaps": 1177
+    },
+    "validation": {
+      "train": {
+        "n": 68396,
+        "decode_exact": true,
+        "badwords": 36834,
+        "badtri": 66415,
+        "badbi": 9510,
+        "length": 7.998771858003392
+      },
+      "hartlieb": {
+        "n": 13232,
+        "decode_exact": true,
+        "badwords": 7104,
+        "badtri": 12222,
+        "badbi": 1466,
+        "length": 8.054489117291414
+      }
+    }
+  },
+  "B": {
+    "selection_rule": "minimize development seam illegality subject to mean ciphertext len <=8.25 across frozen 0.4/0.8/1.6 lambda grid; never inspect Hartlieb before selection",
+    "candidate_grid": [
+      {
+        "lambda": 0.4,
+        "dev_bad_seams": 43155,
+        "dev_chars": 552401,
+        "dev_mean_len": 8.076510322241067,
+        "initial_dev_bad_seams": 81847,
+        "initial_dev_mean_len": 7.644979238551962,
+        "improved_swaps": 1639
+      },
+      {
+        "lambda": 0.8,
+        "dev_bad_seams": 55424,
+        "dev_chars": 531081,
+        "dev_mean_len": 7.764796186911515,
+        "initial_dev_bad_seams": 81847,
+        "initial_dev_mean_len": 7.644979238551962,
+        "improved_swaps": 1359
+      },
+      {
+        "lambda": 1.6,
+        "dev_bad_seams": 59615,
+        "dev_chars": 524570,
+        "dev_mean_len": 7.669600561436341,
+        "initial_dev_bad_seams": 81847,
+        "initial_dev_mean_len": 7.644979238551962,
+        "improved_swaps": 1087
+      }
+    ],
+    "selected": {
+      "lambda": 0.4,
+      "dev_bad_seams": 43155,
+      "dev_chars": 552401,
+      "dev_mean_len": 8.076510322241067,
+      "initial_dev_bad_seams": 81847,
+      "initial_dev_mean_len": 7.644979238551962,
+      "improved_swaps": 1639
+    },
+    "validation": {
+      "train": {
+        "n": 68396,
+        "decode_exact": true,
+        "badwords": 26942,
+        "badtri": 43155,
+        "badbi": 6180,
+        "length": 8.076510322241067
+      },
+      "hartlieb": {
+        "n": 13232,
+        "decode_exact": true,
+        "badwords": 5000,
+        "badtri": 7990,
+        "badbi": 810,
+        "length": 7.958811970979443
+      }
+    }
+  }
+}

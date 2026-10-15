@@ -1,0 +1,112 @@
+{
+  "corpus": {
+    "A": 10995,
+    "B_from_slim": 22708,
+    "B_original": 21679,
+    "by_section": {
+      "text-only|A": 937,
+      "Herbal-A|A": 6947,
+      "Herbal-A|B": 2823,
+      "text-only|B": 2049,
+      "Balneological|B": 6180,
+      "Rosettes|B": 426,
+      "Herbal-B|A": 832,
+      "Pharmaceutical|A": 2279,
+      "Herbal-B|B": 530,
+      "Stars|B": 10700
+    },
+    "b_pages": 78
+  },
+  "per_inventory": {
+    "B": {
+      "a": {
+        "native_cells": 222,
+        "compatible_direct": 207,
+        "optimistic_1escape": 410,
+        "escape": "ydoiiad",
+        "one_cell_shortfall": 15
+      },
+      "e": {
+        "native_cells": 222,
+        "compatible_direct": 198,
+        "optimistic_1escape": 394,
+        "escape": "ydiad",
+        "one_cell_shortfall": 24
+      },
+      "i": {
+        "native_cells": 146,
+        "compatible_direct": 117,
+        "optimistic_1escape": 255,
+        "escape": "yek",
+        "one_cell_shortfall": 105
+      },
+      "o": {
+        "native_cells": 146,
+        "compatible_direct": 98,
+        "optimistic_1escape": 236,
+        "escape": "yok",
+        "one_cell_shortfall": 124
+      },
+      "u": {
+        "native_cells": 222,
+        "compatible_direct": 187,
+        "optimistic_1escape": 392,
+        "escape": "ydiiad",
+        "one_cell_shortfall": 35
+      }
+    },
+    "A": {
+      "a": {
+        "native_cells": 222,
+        "compatible_direct": 175,
+        "optimistic_1escape": 349,
+        "escape": "yoeech",
+        "one_cell_shortfall": 47
+      },
+      "e": {
+        "native_cells": 222,
+        "compatible_direct": 171,
+        "optimistic_1escape": 336,
+        "escape": "yoch",
+        "one_cell_shortfall": 51
+      },
+      "i": {
+        "native_cells": 146,
+        "compatible_direct": 73,
+        "optimistic_1escape": 192,
+        "escape": "ydoiiad",
+        "one_cell_shortfall": 149
+      },
+      "o": {
+        "native_cells": 146,
+        "compatible_direct": 83,
+        "optimistic_1escape": 202,
+        "escape": "ydoiiad",
+        "one_cell_shortfall": 139
+      },
+      "u": {
+        "native_cells": 222,
+        "compatible_direct": 107,
+        "optimistic_1escape": 285,
+        "escape": "riiad",
+        "one_cell_shortfall": 115
+      }
+    }
+  },
+  "support_size": {
+    "A": 935,
+    "B": 1132
+  },
+  "generated": {
+    "train": {
+      "n": 68396,
+      "unattested_by_A": 54932,
+      "unattested_by_B": 60454
+    },
+    "hartlieb": {
+      "n": 13232,
+      "unattested_by_A": 10324,
+      "unattested_by_B": 11745
+    }
+  }
+}

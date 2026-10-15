@@ -1,0 +1,140 @@
+{
+  "manifest_sha256": "b57d6e4e63f97d6398fd7f80e3ba9d460db1073818684a48f3a86e37557bbd9c",
+  "contract_sha256": "3382fc17f8c968b447a77b687b495a8c0efec1443ed21ab9e16631b840cf1eb5",
+  "engineering": {
+    "train": {
+      "word_count": 68396,
+      "baseline_distinct": 8247,
+      "baseline_hapax_types": 4648,
+      "arms": {
+        "baseline": {
+          "roundtrip": true,
+          "exact_words": 68396,
+          "distinct_words": 8247,
+          "hapax_types": 4648,
+          "characters": 486006,
+          "pct_types_hapax": 0.5635988844428277
+        },
+        "carry": {
+          "roundtrip": true,
+          "exact_words": 68396,
+          "distinct_words": 13500,
+          "hapax_types": 8460,
+          "characters": 486006,
+          "pct_types_hapax": 0.6266666666666667
+        },
+        "statefree": {
+          "roundtrip": true,
+          "exact_words": 68396,
+          "distinct_words": 14708,
+          "hapax_types": 9447,
+          "characters": 486006,
+          "pct_types_hapax": 0.6423035082948055
+        }
+      },
+      "identical_word_lengths": true,
+      "pairwise_differing_word_fractions": {
+        "baseline__carry": 0.980671384291479,
+        "baseline__statefree": 0.9786975846540733,
+        "carry__statefree": 0.7292385519621031
+      },
+      "same_cell_inventory_and_lengths": true
+    },
+    "hartlieb": {
+      "word_count": 13232,
+      "baseline_distinct": 2276,
+      "baseline_hapax_types": 1305,
+      "arms": {
+        "baseline": {
+          "roundtrip": true,
+          "exact_words": 13232,
+          "distinct_words": 2276,
+          "hapax_types": 1305,
+          "characters": 93803,
+          "pct_types_hapax": 0.5733743409490334
+        },
+        "carry": {
+          "roundtrip": true,
+          "exact_words": 13232,
+          "distinct_words": 3461,
+          "hapax_types": 2291,
+          "characters": 93803,
+          "pct_types_hapax": 0.6619474140421844
+        },
+        "statefree": {
+          "roundtrip": true,
+          "exact_words": 13232,
+          "distinct_words": 3847,
+          "hapax_types": 2622,
+          "characters": 93803,
+          "pct_types_hapax": 0.6815700545879907
+        }
+      },
+      "identical_word_lengths": true,
+      "pairwise_differing_word_fractions": {
+        "baseline__carry": 0.9842805320435308,
+        "baseline__statefree": 0.9714328899637243,
+        "carry__statefree": 0.7192412333736397
+      },
+      "same_cell_inventory_and_lengths": true
+    }
+  },
+  "paired_tests": {
+    "hartlieb_carry": {
+      "eligible_events": 10652,
+      "total_decodable_events": 11955,
+      "exact_word_groups": 966,
+      "observed_accuracy": 1.0,
+      "conditional_null_mean": 0.41645731630992616,
+      "null_sd": 0.0040927202809053365,
+      "effect_accuracy": 0.5835426836900739,
+      "z": 142.58064163646932,
+      "null_max": 0.4279008636875704,
+      "permutations": 300,
+      "seed": 17682
+    },
+    "hartlieb_statefree": {
+      "eligible_events": 10652,
+      "total_decodable_events": 11955,
+      "exact_word_groups": 966,
+      "observed_accuracy": 0.261828764551258,
+      "conditional_null_mean": 0.2576943297033421,
+      "null_sd": 0.003379810627519696,
+      "effect_accuracy": 0.004134434847915869,
+      "z": 1.223274113126853,
+      "null_max": 0.2665227187382651,
+      "permutations": 300,
+      "seed": 17682
+    }
+  },
+  "synthetic_controls": {
+    "collision_rejected": true,
+    "invalid_letter_rejected": true,
+    "train_cross_decode": {
+      "baseline": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      },
+      "statefree": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      }
+    },
+    "hartlieb_cross_decode": {
+      "baseline": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      },
+      "statefree": {
+        "accepted": false,
+        "error": "epsilon outside vowel"
+      }
+    }
+  },
+  "interpretation": {
+    "source_aware": "Paired controls measure an engineered relationship and are not evidence about unlabeled Voynich.",
+    "output_only_identifiability": "All arms use the same codecell glyph inventory and output lengths but wrong-state decoders may reject on epsilon/boundary syntax. With an independently justified codebook, that can distinguish particular grammars; without a historically grounded codebook, an autonomous state generator can reproduce the full ciphertext law.",
+    "vms_surface": "Inherited V142b seam NO-GO; no Voynich mechanism test admitted or run.",
+    "full_historical_attribution": "NOT IDENTIFIED"
+  }
+}

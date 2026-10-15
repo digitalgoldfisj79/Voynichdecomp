@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-14",
+  "source": "ZL3b-n.txt (Zandbergen–Landini, updated 2025-05-13)",
+  "source_github_blob_sha": "2a4533ab9bdfa85db9bad602d590978953055df1",
+  "source_url": "https://github.com/Aspect-Research/voynich-autoexploration/blob/master/data/transcriptions/eva_zl3b.txt",
+  "data_scope": "Loci P running text, strict alphabetic certain tokens only; no labels; 1500 training words per comparison, held-out physical quire; excludes same quire from both training pools",
+  "overall": {
+    "A": {"words": 9902, "folios":114, "sections_words": {"T":201,"H":6781,"S":725,"P":2195}, "hands_by_word":{"1":9177,"3":725}},
+    "B": {"words":22178, "folios":83, "sections_words":{"H":3037,"T":2043,"B":6025,"C":445,"S":10628}, "hands_by_word":{"2":10256,"3":10669,"4":34,"5":766,"@":453}}
+  },
+  "test":{"scope":"Herbal A and Herbal B only", "unit":"fraction of held-out words containing >=1 training-unseen raw character trigram", "n_resamples":100,"n_train_each":1500, "note":"No qualified hand-controlled matched null exists in these strata; no inference about independent Currier mechanism."},
+  "results":{"EVA":{"Herbal_A":{"holdout_words":6781,"within":0.08551983483262057,"cross":0.1383040849432237,"gap":0.05278425011060313},"Herbal_B":{"holdout_words":3037,"within":0.07534408956206784,"cross":0.24928218636812646,"gap":0.17393809680605857}},"REVA":{"Herbal_A":{"holdout_words":6781,"within":0.08657867571154697,"cross":0.1385562601386226,"gap":0.05197758442707566},"Herbal_B":{"holdout_words":3037,"within":0.07565031280869282,"cross":0.26536055317747775,"gap":0.18971024036878495}}},
+  "limits":["Observed pattern demonstrates different conditioned trigram-support repertoires, not different cipher mechanisms.","A/B strongly confounded with hand, even in Herbal; no same-hand A/B comparison.","JoJo B-specific REVA reference and public ZL source are not the same transcription and cleaning pipeline.","Neither historical plaintext, v143 carry state, nor decoder codebook was identified from Voynich.","The 100 train subsamples quantify descriptive stability; their variation is not a qualified matched-null standard deviation."]
+}

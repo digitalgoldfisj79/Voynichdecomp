@@ -1,0 +1,14 @@
+{
+  "02_BOUNDING_PROTOCOL.md": "1994b2402a99ec8ceb40f7bcd0a5303c1fc6ce28c247a9bee4f33d74d5466b6e",
+  "stage0_source_and_gate.pkl": "c82b9a5f64249a5e9f82a00a102166a09811fea1782c82d467d2ecaec64ae107",
+  "voynich_transcriptions_slim.json": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+  "00_FROZEN_CONTRACT.md": "f065f64dbc66bf0adf83197c848cc33fb1a41e7072bb2ea5b103662efa070d25",
+  "stage2_bounding.pkl": "e7fb229e0bf8dcae6e3c115f8ed2fa6716048bdeacdec807d527e418adc99dbb",
+  "stage1_real_folds.pkl": "ab8d0f6876227467a1ae34bab828b55d9c702ba42cc29eb5fe88b9114b0b77f0",
+  "REPRODUCE.md": "35e8b16d0a2e7e2d3dc2ed97d52397000f7e9fc03f77289802c29708823e3dc6",
+  "replicate_orbit_test.py": "071307b899453119b4dcf04deef4cb56fb782ee6a1159f0e2d5996a9399c2535",
+  "04_RESULTS.json": "b266a69968933a4686f4fbb3c230295e70abacea63b613c42501cbd5ca8866d5",
+  "03_REAL_VOYNICH_ADMISSION_REPORT.md": "0bcac8f05a246ae3c7346eec25b732219000a80befe71b6f1d0385a2f205aa96",
+  "01_PREFLIGHT_STATUS.md": "fdd21602d6f8872ef20cd2338558d8e3d00e52ba421e24f4694ff2874ec45353",
+  "stage3_decision.pkl": "bbcd8ff3e0fc5457a7322fc58105db0cdf047014a128c56100b96d3f5ac21eed"
+}

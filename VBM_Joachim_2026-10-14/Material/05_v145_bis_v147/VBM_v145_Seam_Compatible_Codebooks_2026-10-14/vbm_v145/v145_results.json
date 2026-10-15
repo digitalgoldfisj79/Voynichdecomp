@@ -1,0 +1,154 @@
+{
+  "A": {
+    "training_support_trigrams": 935,
+    "counts": {
+      "a": {
+        "direct_bridge_safe": 175,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "ydch"
+        ],
+        "admissible_codewords_before_truncate": 349,
+        "chosen_two_cell": 48,
+        "mean_code_length": 5.599099099099099
+      },
+      "e": {
+        "direct_bridge_safe": 171,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "ych"
+        ],
+        "admissible_codewords_before_truncate": 336,
+        "chosen_two_cell": 52,
+        "mean_code_length": 4.68018018018018
+      },
+      "i": {
+        "direct_bridge_safe": 73,
+        "escapes_needed": 2,
+        "escape_firstcells": [
+          "ydod",
+          "ydeed"
+        ],
+        "admissible_codewords_before_truncate": 311,
+        "chosen_two_cell": 151,
+        "mean_code_length": 7.531531531531532
+      },
+      "o": {
+        "direct_bridge_safe": 83,
+        "escapes_needed": 2,
+        "escape_firstcells": [
+          "ydod",
+          "ydeed"
+        ],
+        "admissible_codewords_before_truncate": 321,
+        "chosen_two_cell": 141,
+        "mean_code_length": 7.2657657657657655
+      },
+      "u": {
+        "direct_bridge_safe": 107,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "rad"
+        ],
+        "admissible_codewords_before_truncate": 285,
+        "chosen_two_cell": 116,
+        "mean_code_length": 5.815315315315315
+      }
+    },
+    "emissions": {
+      "train": {
+        "source_words": 68396,
+        "decoded_exact": true,
+        "word_invalid_trigrams": 42690,
+        "invalid_trigram_occurrences": 86283,
+        "invalid_bigrams": 16929,
+        "mean_cipher_length": 8.271229311655652,
+        "sha256": "503beb913020b4c0080157e9f466a86e4906ef03a32ad5b02597459995fb3f4d"
+      },
+      "hartlieb": {
+        "source_words": 13232,
+        "decoded_exact": true,
+        "word_invalid_trigrams": 8104,
+        "invalid_trigram_occurrences": 15809,
+        "invalid_bigrams": 3114,
+        "mean_cipher_length": 8.252418379685611,
+        "sha256": "103eac59c2cf2363a5a0686aba108ee3bf8df6612897b8992ae14c702db2c3c9"
+      }
+    }
+  },
+  "B": {
+    "training_support_trigrams": 1132,
+    "counts": {
+      "a": {
+        "direct_bridge_safe": 207,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "nad"
+        ],
+        "admissible_codewords_before_truncate": 410,
+        "chosen_two_cell": 34,
+        "mean_code_length": 5.036036036036036
+      },
+      "e": {
+        "direct_bridge_safe": 198,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "rad"
+        ],
+        "admissible_codewords_before_truncate": 394,
+        "chosen_two_cell": 25,
+        "mean_code_length": 4.387387387387387
+      },
+      "i": {
+        "direct_bridge_safe": 117,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "yek"
+        ],
+        "admissible_codewords_before_truncate": 255,
+        "chosen_two_cell": 106,
+        "mean_code_length": 6.247747747747748
+      },
+      "o": {
+        "direct_bridge_safe": 98,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "yok"
+        ],
+        "admissible_codewords_before_truncate": 236,
+        "chosen_two_cell": 125,
+        "mean_code_length": 6.527027027027027
+      },
+      "u": {
+        "direct_bridge_safe": 187,
+        "escapes_needed": 1,
+        "escape_firstcells": [
+          "rad"
+        ],
+        "admissible_codewords_before_truncate": 392,
+        "chosen_two_cell": 42,
+        "mean_code_length": 4.761261261261262
+      }
+    },
+    "emissions": {
+      "train": {
+        "source_words": 68396,
+        "decoded_exact": true,
+        "word_invalid_trigrams": 42073,
+        "invalid_trigram_occurrences": 84034,
+        "invalid_bigrams": 13586,
+        "mean_cipher_length": 7.989312240481899,
+        "sha256": "de645258cfea9854aebd027fbc89a2443db03d0e2da97e45877d7e7a36932210"
+      },
+      "hartlieb": {
+        "source_words": 13232,
+        "decoded_exact": true,
+        "word_invalid_trigrams": 6950,
+        "invalid_trigram_occurrences": 13923,
+        "invalid_bigrams": 2161,
+        "mean_cipher_length": 7.99319830713422,
+        "sha256": "2d8e5279b0a105001bd172520d8ddd1e4768a7c07a50683a1e96ec411daa5b9d"
+      }
+    }
+  }
+}
