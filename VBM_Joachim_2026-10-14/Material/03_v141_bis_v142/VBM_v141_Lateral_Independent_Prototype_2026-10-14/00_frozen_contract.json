@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-14",
+  "hypotheses": [
+    "H0 symbolic stateful substitution is syntactically feasible",
+    "H1 independently decodable without source or per-message ledgers",
+    "H2 VMS-B surface constraint satisfies held-out manuscript token structure (untested, separate gate)",
+    "H3 VBM identifies historical Voynich source (unidentifiable from engineering-only test)"
+  ],
+  "limits": {
+    "bridge_pairs": 40,
+    "explicit_rules": 12,
+    "shared_unit_vocabulary": 235,
+    "vms_cell_inventory": 443
+  },
+  "name": "compositional-vbm-lateral-compact-v1",
+  "no_historical_inference_without": [
+    "matched section-conditioned held-out tests",
+    "positive historical-language anchors and hard negative matched slot generators",
+    "observable separating VBM from autonomous non-plaintext mechanism"
+  ],
+  "rules": [
+    "casefold, diacritic removal, letter normalisations exactly as source package",
+    "canonicalise § lexical macro to und; original spelling is irrecoverable",
+    "split each word into maximal leading-consonant and vowel-plus-consonant runs",
+    "split consonant runs into greedy pairs, then unknown pair into two singleton letters",
+    "one shared primitive rank dictionary used for all five vowel states",
+    "cell index is primitive rank in vowel-eligible cells (not five handwritten dictionaries)",
+    "leading consonants use public default e state",
+    "one m+bridge control token introduces each vowel; the NEXT cell key disambiguates its vowel",
+    "after a vowel an empty consonant run is encoded by its reserved epsilon cell",
+    "consecutive cell tokens are continuation within current consonant run",
+    "s token explicitly terminates every normalised source word",
+    "decoder obtains everything from ciphertext and frozen public manifest; reject invalid grammar"
+  ],
+  "scope": "Engineering-only synthetic test. m and s markers are not a qualified Voynich surface grammar.",
+  "success_requires": [
+    "100% exact normalised text and boundaries on development and Hartlieb",
+    "100% parse and detection of injected invalid control/collision/undelimited EOF",
+    "no decoder source-file or hidden event ledger input",
+    "no manifest mutation between development and Hartlieb",
+    "no inventory/complexity ceiling exceedance"
+  ]
+}

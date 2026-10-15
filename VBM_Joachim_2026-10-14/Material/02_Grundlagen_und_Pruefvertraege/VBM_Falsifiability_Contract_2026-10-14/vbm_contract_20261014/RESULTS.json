@@ -1,0 +1,71 @@
+{
+  "provenance": {
+    "source_zip": {
+      "path": "/mnt/data/Generator_v138_Pruefpaket_2026-10-14.zip",
+      "sha256": "e67fe89555f8d8b2e74218077bb186f4f6fec4e5444f0ee9c289750d1efd4033"
+    },
+    "source_audit": {
+      "path": "/mnt/data/audit_summary.json",
+      "sha256": "1a32a18016be5b97a0cea518cdd724b743e29592696d878d484760ec5749cb8e"
+    },
+    "pair_result": {
+      "path": "/mnt/data/vbm_v142_inband/05_pair_bridge_results.json",
+      "sha256": "437d6e711ad5200e97564486607f180666540ea556e50b768488f883b6adafff"
+    },
+    "pair_contract": {
+      "path": "/mnt/data/vbm_v142_inband/03_pair_bridge_contract.json",
+      "sha256": "34128cb817dba14df57e5aa1bcf871479e02088e8aad13a027b11c66b51beda5"
+    },
+    "pair_report": {
+      "path": "/mnt/data/vbm_v142_inband/VBM_v142_Admission_Report_2026-10-14.md",
+      "sha256": "0bae85cec9a822525898faea292e2b8290b52abf3bc4aec5a0798b4c24ee57ca"
+    },
+    "facts_validated": {
+      "author_spec_cross_space": true,
+      "v142_b_in_word": true,
+      "v142_roundtrip_both": true,
+      "v142_surface_gate_fails": true
+    }
+  },
+  "engineering": {
+    "v138": {
+      "cluster_types": 722,
+      "cells": 443,
+      "collision_cells": 147,
+      "generated_tokens": 101297,
+      "bad_trigram_tokens": 7259
+    },
+    "v142b": {
+      "development_words": 68396,
+      "hartlieb_words": 13232,
+      "development_bad_trigram": 61541,
+      "hartlieb_bad_trigram": 12027,
+      "roundtrip_both": true,
+      "cross_space_bridges_retained": false
+    },
+    "comparison_type": "implementation audit, not a historical mechanism comparison",
+    "null_sd": "not applicable to deterministic consistency checks; none estimated for mechanism identification"
+  },
+  "preflight": {
+    "question": "Is there an available precommitted, identifiable comparison of plaintext VBM versus autonomous slot generation on existing ciphertext alone?",
+    "P": "plaintext source + cipher transformation",
+    "S": "autonomous process with exactly the same observable marginal distribution for the ciphertext",
+    "mathematical_relation": "P_P(C=c)=sum_m P(M=m) P(C=c|M=m); define P_S(C=c) to equal that marginal for each c",
+    "observational_discriminator_without_external_anchor": false,
+    "restricted_generator_approach": "Possible only if both mechanisms are fully specified with bounded complexity and held-out predictions, but it cannot establish general historical encoding",
+    "data_status": {
+      "external_anchor_verified": false,
+      "author_frozen_essentials_confirmed": false,
+      "prior_q65_v10_identification_passed": false
+    },
+    "decision": {
+      "more_plain_ciphertext_generator_tuning": "STOP",
+      "v138_engineering_claims": "remain failed",
+      "v142_exact_roundtrip": "retain as related engineering proof only",
+      "seek_author_specification": "GO",
+      "external_anchor_candidate_registration": "GO",
+      "historical_test": "NOT ADMITTED"
+    },
+    "note": "The absence of independently anchored plaintext is status of available evidence in this investigation, not a claim none exists anywhere."
+  }
+}

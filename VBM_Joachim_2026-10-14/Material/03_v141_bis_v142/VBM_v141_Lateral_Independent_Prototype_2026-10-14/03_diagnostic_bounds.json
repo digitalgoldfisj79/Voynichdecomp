@@ -1,0 +1,23 @@
+{
+  "train": {
+    "word_count": 68396,
+    "und_macro_count": 3466,
+    "two_character_chunks": 37219,
+    "unrepresented_pairs": 0,
+    "fallback_extra_cell_tokens": 0,
+    "unknown_letters": []
+  },
+  "hartlieb": {
+    "word_count": 13232,
+    "und_macro_count": 857,
+    "two_character_chunks": 7724,
+    "unrepresented_pairs": 12,
+    "fallback_extra_cell_tokens": 12,
+    "unknown_letters": []
+  },
+  "holdout_independent_blocks": {
+    "number_of_sections": 5,
+    "all_exact": true,
+    "segmentation": "source-word-blocked; not Voynich folio blocks"
+  }
+}

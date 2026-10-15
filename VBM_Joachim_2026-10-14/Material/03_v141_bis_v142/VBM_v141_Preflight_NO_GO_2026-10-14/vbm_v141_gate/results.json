@@ -1,0 +1,216 @@
+{
+  "provenance": {
+    "package_sha256": "e67fe89555f8d8b2e74218077bb186f4f6fec4e5444f0ee9c289750d1efd4033",
+    "contract_sha256": "f5c433604a3af9643eae2ab23924ea0b50f68ee7079b00403037dde901500f6d",
+    "files": {
+      "GENERAT_v138_kurzertext_REFERENZ.txt": "43b3aa4b9a6709bdc86e6ad37c5be32477d462a68809f8c5cf2e1dd19c633cc2",
+      "PANEL_v138.txt": "191ac6a4371e8c28199d43e04afa38deace14f3ad8934c6acd29af728a2aca38",
+      "Paket_v100/__pycache__/vbm_tafel_v119det.cpython-312.pyc": "f0812dba585640a209de192e278bed35ff18c3387b808a76178d21bc633080dc",
+      "Paket_v100/mess_v118.py": "9867b4304e17b45fa3ead6c056fed623daf0e9abf8ef338cc255a98e71a88d79",
+      "Paket_v100/vbm_tafel_v119det.py": "07f6db17629c0b14c1875326d21992769b813198c69c33c7c9831eb2f6ec131b",
+      "README.md": "8b61ff74703dad34f37e1d63b8feccc652f5934b029e171c33fe23e71fbf130b",
+      "belegung.json": "4ecee0dfd55632b1327b32df25587cbabdab8e8e807dcc6639ae06a716b729b9",
+      "daten/vms_B_even.txt": "7dd45bdaa0a85016d09fa8b3fc0435a5e592308f4c7da5df3f200368baf6aedb",
+      "daten/vms_B_odd.txt": "b0ec14ce2f19ef29f991f65ccb22646a991a04a49585b25a2d31f2abced359e5",
+      "klartext/bairisch_kurzertext_GROSS.txt": "f4cf24e168a7ab844865c73257e552f41d98595416e00da3e5dfe543d3d48eb8",
+      "klartext/hartlieb_klartext.txt": "32ba603b827a0727396327060e14e32b2aa3719d6724df19812b1e4f972e4953",
+      "panel_v126.py": "84c2087a9722caaa2a78358941d539531c7db90e8c2c8739de8b096f88d1490c",
+      "rest_stuecke_dt.json": "aaa7204ba09fe039274d0abeacbe0918291c17e338c18b80206bc2b8b07f66e2",
+      "vbm_tafel_v138.py": "96325873cb377ab491030629b0197a0b0e3cfa045d00086a3d3b62ff5695b6fe",
+      "vbm_tafel_v140.py": "86ae00929d5ac6585c9733ef34086e4ee625e995499b642d657658cd3c2f01a5",
+      "vms_B_REVA_atomstream.txt": "3556ff86ffef4c20197884c79c57c75f5323f14e44a5c9176843c20779cadb5c",
+      "vorbau_strings_vms.json": "0621785beb7687d6d73248d8298b5366158130bf0b486f9f3495512ffa5cedc4"
+    },
+    "complete_source_files": 17
+  },
+  "baseline": {
+    "events": 97641,
+    "empty_cluster_events": 6407,
+    "nonempty_cluster_events": 91234,
+    "unique_clusters": 722,
+    "distinct_cells": 443,
+    "rank_cells_used": 443,
+    "duplicate_assigned_cells": 147,
+    "cluster_types_in_duplicate_cells": 426,
+    "forced_collisions_lower_bound": 279,
+    "known_next_events": 85364,
+    "unsupported_events": 13369,
+    "unsupported_by_vowel_and_key": {
+      "('i', 'r')": 1958,
+      "('i', 'n')": 4121,
+      "('a', 'l')": 2309,
+      "('u', 'l')": 1240,
+      "('o', 'n')": 948,
+      "('o', 'r')": 768,
+      "('u', 'n')": 2025
+    },
+    "supported_keys_by_vowel": {
+      "a": [
+        "n",
+        "r",
+        "y"
+      ],
+      "e": [
+        "l",
+        "n",
+        "r",
+        "y"
+      ],
+      "i": [
+        "l",
+        "y"
+      ],
+      "o": [
+        "l",
+        "s",
+        "y"
+      ],
+      "u": [
+        "r",
+        "y"
+      ]
+    },
+    "first_failures": [
+      {
+        "event_index": 4,
+        "vowel": "i",
+        "next_cluster": "ft",
+        "next_key": "r"
+      },
+      {
+        "event_index": 11,
+        "vowel": "i",
+        "next_cluster": "ch",
+        "next_key": "n"
+      },
+      {
+        "event_index": 24,
+        "vowel": "i",
+        "next_cluster": "ch",
+        "next_key": "n"
+      },
+      {
+        "event_index": 26,
+        "vowel": "i",
+        "next_cluster": "nd",
+        "next_key": "n"
+      },
+      {
+        "event_index": 43,
+        "vowel": "i",
+        "next_cluster": "ch",
+        "next_key": "n"
+      },
+      {
+        "event_index": 46,
+        "vowel": "a",
+        "next_cluster": "ht",
+        "next_key": "l"
+      },
+      {
+        "event_index": 50,
+        "vowel": "i",
+        "next_cluster": "nd",
+        "next_key": "n"
+      },
+      {
+        "event_index": 52,
+        "vowel": "u",
+        "next_cluster": "g",
+        "next_key": "l"
+      },
+      {
+        "event_index": 57,
+        "vowel": "o",
+        "next_cluster": "sz",
+        "next_key": "n"
+      },
+      {
+        "event_index": 71,
+        "vowel": "o",
+        "next_cluster": "tl",
+        "next_key": "r"
+      },
+      {
+        "event_index": 94,
+        "vowel": "i",
+        "next_cluster": "ch",
+        "next_key": "n"
+      },
+      {
+        "event_index": 100,
+        "vowel": "a",
+        "next_cluster": "ht",
+        "next_key": "l"
+      },
+      {
+        "event_index": 102,
+        "vowel": "i",
+        "next_cluster": "tm",
+        "next_key": "r"
+      },
+      {
+        "event_index": 110,
+        "vowel": "u",
+        "next_cluster": "g",
+        "next_key": "l"
+      },
+      {
+        "event_index": 127,
+        "vowel": "i",
+        "next_cluster": "ch",
+        "next_key": "n"
+      },
+      {
+        "event_index": 130,
+        "vowel": "a",
+        "next_cluster": "zl",
+        "next_key": "l"
+      }
+    ],
+    "original_output_sha256": "43b3aa4b9a6709bdc86e6ad37c5be32477d462a68809f8c5cf2e1dd19c633cc2"
+  },
+  "optimized_bound": {
+    "max_covered_distinct_cluster_types": 443,
+    "unmapped_types": 279,
+    "max_covered_source_events": 88751,
+    "total_mapped_source_events": 91234,
+    "left_unmapped_source_events": 2483,
+    "assigned_by_key": {
+      "y": 150,
+      "n": 98,
+      "r": 109,
+      "l": 86
+    },
+    "cell_capacity_by_key": {
+      "y": 150,
+      "n": 98,
+      "l": 86,
+      "r": 109
+    },
+    "positive_control_unique_inverse_pass": true,
+    "negative_control_same_key_collision_rejected": true,
+    "negative_control_test_clusters": [
+      "dl",
+      "schr"
+    ],
+    "compatibility_test_scope": "incoming vowels for each source cluster, not full emitted-token seam grammar",
+    "disambiguation": "No available keys or plaintext are inferred from the Voynich text"
+  },
+  "admission": {
+    "status": "NO-GO",
+    "scope": "unmodified 443-cell, one-cell-per-cluster v138 mechanism",
+    "checks": {
+      "enough_distinct_cells": false,
+      "rank_map_injective": false,
+      "all_known_bridge_transitions_supported": false,
+      "maximum_matching_covers_every_type": false
+    },
+    "trace": [
+      "stage0_provenance.pkl",
+      "stage1_baseline.pkl",
+      "stage2_optimized_bound.pkl"
+    ],
+    "reason": "Existing table inventory cannot satisfy its declared injectivity and key compatibility constraints. No encoder/decoder/held-out Voynich run admitted."
+  }
+}

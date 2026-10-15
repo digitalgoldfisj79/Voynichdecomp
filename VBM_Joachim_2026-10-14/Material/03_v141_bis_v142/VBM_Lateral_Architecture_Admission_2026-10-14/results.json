@@ -1,0 +1,104 @@
+{
+  "provenance": {
+    "zip_sha256": "e67fe89555f8d8b2e74218077bb186f4f6fec4e5444f0ee9c289750d1efd4033",
+    "original_unchanged": true,
+    "admission_scope": "symbolic capacity only, no end-to-end decoding or Voynich fit"
+  },
+  "training": {
+    "events": 97641,
+    "nonempty_cluster_events": 91234,
+    "unique_cluster_types": 722,
+    "unique_2char_primitives": 271,
+    "primitive_letters": [
+      "b",
+      "c",
+      "d",
+      "f",
+      "g",
+      "h",
+      "k",
+      "l",
+      "m",
+      "n",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "w",
+      "x",
+      "z"
+    ],
+    "chunk_units": 97849,
+    "overhead_events": 6615,
+    "states": {
+      "a": {
+        "needed": 232,
+        "eligible_cells": 357,
+        "margin": 125
+      },
+      "e": {
+        "needed": 231,
+        "eligible_cells": 443,
+        "margin": 212
+      },
+      "i": {
+        "needed": 222,
+        "eligible_cells": 236,
+        "margin": 14
+      },
+      "o": {
+        "needed": 186,
+        "eligible_cells": 236,
+        "margin": 50
+      },
+      "u": {
+        "needed": 185,
+        "eligible_cells": 259,
+        "margin": 74
+      }
+    },
+    "coverage": {
+      "nonempty_cluster_events": 91234,
+      "chunk_units_before_fallback": 97849,
+      "unsupported_pair_occurrences": 0,
+      "events_with_fallback": 0,
+      "encoded_units_after_fallback": 97849,
+      "unseen_letters": []
+    }
+  },
+  "holdout": {
+    "source": "supplied Hartlieb reading transcription, not independent of author package",
+    "source_word_count": 13232,
+    "event_count": 18070,
+    "coverage": {
+      "nonempty_cluster_events": 16925,
+      "chunk_units_before_fallback": 18373,
+      "unsupported_pair_occurrences": 56,
+      "events_with_fallback": 56,
+      "encoded_units_after_fallback": 18429,
+      "unseen_letters": []
+    }
+  },
+  "controls": {
+    "independent_event_reconstruction": true,
+    "exactly_injective_per_vowel": true,
+    "same_vowel_cell_collision_detected": true,
+    "segmentation_not_unique_but_same_plaintext": {
+      "vowel": "a",
+      "single_chunk": "bc",
+      "alternate_split": [
+        "b",
+        "c"
+      ],
+      "NOT_a_plaintext_collision": true
+    }
+  },
+  "disqualifications": [
+    "No actual VMS token emission or atom admissibility test",
+    "No independently specified decoder or final-token seam validation",
+    "No word-boundary encoding and no normalisation recovery",
+    "No Voynich-mechanism identification or section holdout",
+    "Per-vowel distinct assignments depend on knowing that vowel from ciphertext, not proven for complete stream"
+  ]
+}

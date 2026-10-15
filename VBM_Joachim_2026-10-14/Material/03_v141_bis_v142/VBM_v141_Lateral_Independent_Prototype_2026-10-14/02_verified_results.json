@@ -1,0 +1,127 @@
+{
+  "source_inventory": {
+    "vms_reference_token_count": 21679,
+    "vms_atomic_bigram_types": 345,
+    "vms_atomic_trigram_types": 1485
+  },
+  "complexity": {
+    "shared_primitive_entries": 222,
+    "vms_cell_list_entries": 443,
+    "bridge_pair_table_entries": 32,
+    "sum_explicit_entries": 697,
+    "five_state_eligible_cells": {
+      "a": 357,
+      "e": 443,
+      "i": 236,
+      "o": 236,
+      "u": 259
+    },
+    "grammar_rule_count": 12,
+    "frozen_manifest_json_bytes": 24273
+  },
+  "roundtrip": {
+    "train": {
+      "source_words": 68396,
+      "normalized_characters": 280665,
+      "ciphertext_tokens": 325949,
+      "cell_tokens": 156445,
+      "bridge_markers": 101108,
+      "word_markers": 68396,
+      "cipher_per_normalized_word": 4.765614948242587,
+      "cipher_to_v138_token_count": 3.2177557084612576,
+      "ciphertext_characters_no_whitespace": 867483,
+      "tokens_with_unattested_atomic_bigrams": 16175,
+      "tokens_with_unattested_atomic_trigrams": 0,
+      "tokens_not_attested_as_whole_vms_B_tokens": 16452,
+      "marker_shape_counter": {
+        "m": 32084,
+        "mo": 20272,
+        "ml": 18405,
+        "ma": 14172,
+        "msh": 10608,
+        "mp": 5567
+      },
+      "distinct_surface_tokens": 293,
+      "word_boundary_recovery": true,
+      "roundtrip_exact": true,
+      "control_type_counts": {
+        "n": 25741,
+        "m": 101108,
+        "y": 84951,
+        "s": 68396,
+        "r": 27922,
+        "l": 17831
+      }
+    },
+    "hartlieb": {
+      "source_words": 13232,
+      "normalized_characters": 53967,
+      "ciphertext_tokens": 61885,
+      "cell_tokens": 29725,
+      "bridge_markers": 18928,
+      "word_markers": 13232,
+      "cipher_per_normalized_word": 4.676919588875453,
+      "cipher_to_v138_token_count": null,
+      "ciphertext_characters_no_whitespace": 167316,
+      "tokens_with_unattested_atomic_bigrams": 2980,
+      "tokens_with_unattested_atomic_trigrams": 0,
+      "tokens_not_attested_as_whole_vms_B_tokens": 3041,
+      "marker_shape_counter": {
+        "m": 5570,
+        "ml": 4200,
+        "mo": 3804,
+        "ma": 2374,
+        "msh": 2148,
+        "mp": 832
+      },
+      "distinct_surface_tokens": 205,
+      "word_boundary_recovery": true,
+      "roundtrip_exact": true,
+      "control_type_counts": {
+        "y": 15705,
+        "m": 18928,
+        "r": 4806,
+        "s": 13232,
+        "n": 5850,
+        "l": 3364
+      }
+    }
+  },
+  "controls": {
+    "duplicate_primitive_manifest_rejected": true,
+    "invalid_bridge_pair_rejected": true,
+    "missing_eof_boundary_rejected": true,
+    "interior_boundary_removal_parser_rejected": false,
+    "interior_boundary_removal_changes_reference": true,
+    "wrong_initial_state_rejected": true,
+    "wrong_initial_state_changes_reference": true,
+    "valid_bridgemutation_changes_plaintext_silently": true,
+    "malleability_case": [
+      1,
+      "ma",
+      "m",
+      [
+        "a",
+        "r"
+      ],
+      "e",
+      "-"
+    ],
+    "per_state_exact_inverse": true,
+    "no_holdout_in_codebook_training": true
+  },
+  "gate": {
+    "mechanical_reversibility": "PASS",
+    "historical_surface": "NO-GO: dedicated control tokens, VMS token count and unattested strings",
+    "mechanism_identification": "NOT TESTED / NO-GO: no independent Voynich discriminator",
+    "v138_architecture": "PREVIOUS NO-GO RETAINED",
+    "historical_attribution": "NOT ADMITTED"
+  },
+  "warnings": [
+    "Hartlieb is supplied by model author; this is text transfer not provenance-independent validation",
+    "True original German spelling is not recoverable after norm_word",
+    "Explicit space-separated marker/cell stream is artificial; no claim of reproducing MS408 surface",
+    "Valid codeword substitutions are not detectable intrinsically, requiring external expected plaintext",
+    "No new comparisons to Voynich sections were conducted; reference token attestation is descriptive only"
+  ]
+}

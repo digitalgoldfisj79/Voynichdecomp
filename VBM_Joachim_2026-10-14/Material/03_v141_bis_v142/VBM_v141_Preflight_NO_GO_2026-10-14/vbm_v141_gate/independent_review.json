@@ -1,0 +1,12 @@
+{
+  "independent_method": "SciPy Hungarian assignment vs NetworkX network simplex minimum-cost flow",
+  "independent_max_covered_event_count": 88751,
+  "optimized_type_count": 443,
+  "agrees_with_stage2": true,
+  "independent_positive_control": true,
+  "independent_collision_negative": true,
+  "first_cluster": "cz",
+  "first_key_under_optimal_stage2": "y",
+  "fixed_initial_y_compliant": true,
+  "mechanism_identifiability": "NO: every observed output stream also has a nonlinguistic copying/slot process producing it; absent external anchor, this exact-output negative cannot be rejected"
+}

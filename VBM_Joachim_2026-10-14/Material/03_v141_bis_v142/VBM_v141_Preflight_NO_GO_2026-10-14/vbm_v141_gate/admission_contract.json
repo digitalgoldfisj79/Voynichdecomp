@@ -1,0 +1,27 @@
+{
+  "title": "VBM v141 engineering pre-admission, frozen before preflight",
+  "date": "2026-10-14",
+  "scope": "Frozen v138 cell/pair architecture only, not identification of Voynich mechanism",
+  "input_package": "Generator_v138_Pruefpaket_2026-10-14.zip",
+  "primary_prediction": "Every observed source consonant-cluster type can be given a distinct existing target cell, whose key is compatible with every observed incoming vowel for that type; no fallback or silent loss.",
+  "secondary_prediction": "Every source transition with mapped next-cell key has an allowed vowel bridge for that exact key.",
+  "pass": {
+    "unique_clusters": "All nonempty cluster types have a distinct cell in the frozen 443-cell inventory",
+    "incoming_vowel_support": "Every assigned cell key is admissible for every observed incoming vowel",
+    "vowel_bridge": "Zero known-next vowel/key unsupported events",
+    "decoder": "An independent decoder must recover 100% of normalized source events and declared boundaries without side information on fresh text before any mechanism inference"
+  },
+  "controls": {
+    "positive": "Construct an injective, compatible assignment on the maximum matching subset; test key and inverse uniqueness assertions",
+    "hard_negative": "Introduce one same-key cell collision while retaining the cluster and key supports; uniqueness test must fail",
+    "observational_equivalence": "For any emitted stream a structural-slot transducer can emit that same stream; surface-only matches are not mechanism identification"
+  },
+  "sampling": "Complete supplied v138 German-source event list, not a pooled Voynich inferential sample",
+  "null_sd": "Not applicable to exact combinatorial feasibility; do not represent as statistical significance",
+  "stop": "No new Voynich similarity fit or test if current v138 architecture fails the first three pass criteria; record NO-GO and an explicit proposal to revise architecture, not retrospective relaxation",
+  "limits": [
+    "This gate cannot establish that no modified VBM could work",
+    "Cell admissibility is necessary, not sufficient: prefix, seam and word-boundary recoverability remain untested",
+    "The German source is also the source used to fit v138; this analysis is an architecture audit, not held-out prediction"
+  ]
+}
