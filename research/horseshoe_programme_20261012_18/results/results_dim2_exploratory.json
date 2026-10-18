@@ -1,0 +1,42 @@
+{
+ "img_d2_currier_raw": {
+  "auc": 0.8956,
+  "null_mean": 0.5326,
+  "null_sd": 0.0256,
+  "z": 14.17
+ },
+ "img_d2_currier_geo_partialled": {
+  "auc": 0.5383,
+  "null_mean": 0.5335,
+  "null_sd": 0.0257,
+  "z": 0.19
+ },
+ "geometry_only_currier_auc_best_single": {
+  "logw": 0.724,
+  "logh": 0.9024,
+  "logasp": 0.7771,
+  "wlen": 0.6766,
+  "n_words": 0.8703
+ },
+ "herbal_only_n": 110,
+ "herbal_img_d2_currier_raw": {
+  "auc": 0.938,
+  "null_mean": 0.5531,
+  "null_sd": 0.0396,
+  "z": 9.72
+ },
+ "herbal_img_d2_currier_geo_partialled": {
+  "auc": 0.6904,
+  "null_mean": 0.5551,
+  "null_sd": 0.0403,
+  "z": 3.35
+ },
+ "herbal_geometry_currier_auc": {
+  "logw": 0.7723,
+  "logh": 0.9428,
+  "logasp": 0.7287,
+  "wlen": 0.6172,
+  "n_words": 0.8113
+ },
+ "text_d1_vs_img_d2_spearman": -0.5251
+}

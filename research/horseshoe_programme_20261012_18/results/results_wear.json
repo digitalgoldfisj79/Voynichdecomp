@@ -1,0 +1,274 @@
+{
+ "n_pages": 161,
+ "n_ok": 161,
+ "detect_rate": 1.0,
+ "gate_f1r_pct": 0.968944099378882,
+ "gate_f116v_pct": 0.6645962732919255,
+ "gate_pass": false,
+ "PRIMARY_interior_sheets": {
+  "n": 29,
+  "mean_D": 2.0051724137931064,
+  "null_sd": 0.8466713049797417,
+  "z": 2.3683009002426085,
+  "p_one": 0.005359946400535995,
+  "positive": "18/29"
+ },
+ "SECONDARY_outermost_sheets": {
+  "n": 11,
+  "mean_D": 1.9772727272727273,
+  "null_sd": 1.5879300016469151,
+  "z": 1.2451888466254855,
+  "p_one": 0.13175868241317587,
+  "positive": "7/11"
+ },
+ "all_sheets": {
+  "n": 40,
+  "mean_D": 1.9975000000000023,
+  "null_sd": 0.7546486147278018,
+  "z": 2.646927273192559,
+  "p_one": 0.0022699773002269976,
+  "positive": "25/40"
+ },
+ "per_sheet": [
+  {
+   "sheet": "A:1-8",
+   "outermost": true,
+   "central": false,
+   "D": 13.75
+  },
+  {
+   "sheet": "A:2-7",
+   "outermost": false,
+   "central": false,
+   "D": -3.5
+  },
+  {
+   "sheet": "A:3-6",
+   "outermost": false,
+   "central": false,
+   "D": -4.75
+  },
+  {
+   "sheet": "A:4-5",
+   "outermost": false,
+   "central": true,
+   "D": -1.0
+  },
+  {
+   "sheet": "B:10-15",
+   "outermost": false,
+   "central": false,
+   "D": 4.75
+  },
+  {
+   "sheet": "B:11-14",
+   "outermost": false,
+   "central": false,
+   "D": 0.25
+  },
+  {
+   "sheet": "B:9-16",
+   "outermost": true,
+   "central": false,
+   "D": 2.75
+  },
+  {
+   "sheet": "C:17-24",
+   "outermost": true,
+   "central": false,
+   "D": 7.5
+  },
+  {
+   "sheet": "C:18-23",
+   "outermost": false,
+   "central": false,
+   "D": 7.25
+  },
+  {
+   "sheet": "C:19-22",
+   "outermost": false,
+   "central": false,
+   "D": 1.5
+  },
+  {
+   "sheet": "C:20-21",
+   "outermost": false,
+   "central": true,
+   "D": 5.75
+  },
+  {
+   "sheet": "D:25-32",
+   "outermost": true,
+   "central": false,
+   "D": 3.0
+  },
+  {
+   "sheet": "D:26-31",
+   "outermost": false,
+   "central": false,
+   "D": 7.75
+  },
+  {
+   "sheet": "D:27-30",
+   "outermost": false,
+   "central": false,
+   "D": 6.25
+  },
+  {
+   "sheet": "D:28-29",
+   "outermost": false,
+   "central": true,
+   "D": 3.5
+  },
+  {
+   "sheet": "E:33-40",
+   "outermost": true,
+   "central": false,
+   "D": -3.0
+  },
+  {
+   "sheet": "E:34-39",
+   "outermost": false,
+   "central": false,
+   "D": 4.75
+  },
+  {
+   "sheet": "E:35-38",
+   "outermost": false,
+   "central": false,
+   "D": -1.0
+  },
+  {
+   "sheet": "E:36-37",
+   "outermost": false,
+   "central": true,
+   "D": 2.5
+  },
+  {
+   "sheet": "F:41-48",
+   "outermost": true,
+   "central": false,
+   "D": -1.75
+  },
+  {
+   "sheet": "F:42-47",
+   "outermost": false,
+   "central": false,
+   "D": 15.75
+  },
+  {
+   "sheet": "F:43-46",
+   "outermost": false,
+   "central": false,
+   "D": -1.5
+  },
+  {
+   "sheet": "F:44-45",
+   "outermost": false,
+   "central": true,
+   "D": 3.5
+  },
+  {
+   "sheet": "G:49-56",
+   "outermost": true,
+   "central": false,
+   "D": 3.75
+  },
+  {
+   "sheet": "G:50-55",
+   "outermost": false,
+   "central": false,
+   "D": -1.75
+  },
+  {
+   "sheet": "G:51-54",
+   "outermost": false,
+   "central": false,
+   "D": 1.4
+  },
+  {
+   "sheet": "G:52-53",
+   "outermost": false,
+   "central": true,
+   "D": -0.25
+  },
+  {
+   "sheet": "H:57-66",
+   "outermost": true,
+   "central": false,
+   "D": -2.75
+  },
+  {
+   "sheet": "H:58-65",
+   "outermost": false,
+   "central": false,
+   "D": 5.75
+  },
+  {
+   "sheet": "M:75-84",
+   "outermost": true,
+   "central": false,
+   "D": 0.75
+  },
+  {
+   "sheet": "M:76-83",
+   "outermost": false,
+   "central": false,
+   "D": -1.5
+  },
+  {
+   "sheet": "M:77-82",
+   "outermost": false,
+   "central": false,
+   "D": 1.25
+  },
+  {
+   "sheet": "M:78-81",
+   "outermost": false,
+   "central": false,
+   "D": -2.0
+  },
+  {
+   "sheet": "M:79-80",
+   "outermost": false,
+   "central": true,
+   "D": -0.25
+  },
+  {
+   "sheet": "Q:93-96",
+   "outermost": true,
+   "central": false,
+   "D": -3.0
+  },
+  {
+   "sheet": "T:104-115",
+   "outermost": true,
+   "central": false,
+   "D": 0.75
+  },
+  {
+   "sheet": "T:105-114",
+   "outermost": false,
+   "central": false,
+   "D": 0.75
+  },
+  {
+   "sheet": "T:106-113",
+   "outermost": false,
+   "central": false,
+   "D": 2.75
+  },
+  {
+   "sheet": "T:107-112",
+   "outermost": false,
+   "central": false,
+   "D": 0.0
+  },
+  {
+   "sheet": "T:108-111",
+   "outermost": false,
+   "central": false,
+   "D": 0.25
+  }
+ ]
+}

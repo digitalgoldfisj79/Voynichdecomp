@@ -1,0 +1,62 @@
+{
+ "n_folios": 225,
+ "text_vocab_bigrams": 664,
+ "Q1_image_guttman": {
+  "lin": 0.0,
+  "quad": 0.05382154253963001
+ },
+ "Q1_text_guttman": {
+  "lin": 0.0,
+  "quad": 0.2980765705465369
+ },
+ "mds_var_share_img": [
+  0.9449,
+  0.0319
+ ],
+ "mds_var_share_txt": [
+  0.5088,
+  0.2096
+ ],
+ "Q2_image_dim1_spearman_geo": {
+  "logw": 0.6417,
+  "logh": -0.0648,
+  "logasp": 0.4363,
+  "wlen": 0.1637,
+  "n_words": -0.0691
+ },
+ "Q2_image_dim1_loo_ridge_R2_geo": 0.135,
+ "Q2_image_dim2_loo_ridge_R2_geo": 0.5647,
+ "Q2_text_dim1_spearman_geo": {
+  "logw": -0.3739,
+  "logh": -0.4769,
+  "logasp": 0.2744,
+  "wlen": 0.3763,
+  "n_words": 0.685
+ },
+ "Q2_text_dim1_loo_ridge_R2_geo": 0.3117,
+ "Q2_text_dim2_loo_ridge_R2_geo": 0.3053,
+ "Q2_wordlevel_umaparc_spearman": {
+  "logw": -0.654,
+  "logh": -0.1302,
+  "logasp": -0.534,
+  "wlen": -0.5658
+ },
+ "Q3_raw": {
+  "rho": -0.1127,
+  "null_mean": 0.0612,
+  "null_sd": 0.0313,
+  "z": 1.65,
+  "p": 0.05347326336831584
+ },
+ "Q3_geometry_partialled": {
+  "rho": -0.1606,
+  "null_mean": 0.1455,
+  "null_sd": 0.0329,
+  "z": 0.46,
+  "p": 0.3243378310844578
+ },
+ "desc_image_dim1_currierB_auc": 0.5183,
+ "desc_image_dim1_section_eta2": 0.5742,
+ "desc_text_dim1_currierB_auc": 0.9986,
+ "desc_text_dim1_section_eta2": 0.6736
+}

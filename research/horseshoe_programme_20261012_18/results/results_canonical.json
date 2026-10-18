@@ -1,0 +1,379 @@
+{
+ "canonical_section_counts": {
+  "Herbal-A": 113,
+  "Stars": 23,
+  "Balneological": 19,
+  "Pharmaceutical": 16,
+  "Herbal-B": 16,
+  "Zodiac": 12,
+  "text-only": 8,
+  "Cosmological": 8,
+  "Astronomical": 7,
+  "Rosettes": 3
+ },
+ "txt_d1_order_canonical": {
+  "Herbal-A": -0.099,
+  "Herbal-B": 0.0049,
+  "Pharmaceutical": 0.0091,
+  "Astronomical": 0.0257,
+  "Cosmological": 0.058,
+  "text-only": 0.0817,
+  "Rosettes": 0.1177,
+  "Zodiac": 0.1291,
+  "Stars": 0.1707,
+  "Balneological": 0.202
+ },
+ "eta2_txt_d1_canonical": 0.5529,
+ "eta2_txt_d1_atlas_scheme": 0.6736,
+ "eta2_img_d1_canonical": 0.5915,
+ "eta2_img_d1_atlas_scheme": 0.5742,
+ "eta2_img_d2_canonical": 0.4155,
+ "eta2_img_d2_atlas_scheme": 0.4159,
+ "Q3_raw": {
+  "n": 225,
+  "rho": -0.1127,
+  "null_mean": 0.0277,
+  "null_sd": 0.0351,
+  "z": 2.42,
+  "p": 0.0074962518740629685
+ },
+ "Q3_geo": {
+  "n": 225,
+  "rho": -0.1606,
+  "null_mean": 0.0918,
+  "null_sd": 0.0365,
+  "z": 1.89,
+  "p": 0.02848575712143928
+ },
+ "B1_within_canonical_section": {
+  "image": {
+   "obs": 0.09496,
+   "null_mean": 0.12022,
+   "null_sd": 0.00696,
+   "z": 3.63,
+   "pct_lower": 21.01
+  },
+  "text": {
+   "obs": 0.34785,
+   "null_mean": 0.40675,
+   "null_sd": 0.00287,
+   "z": 20.54,
+   "pct_lower": 14.48
+  },
+  "geometry_only": {
+   "obs": 1.62407,
+   "null_mean": 1.93773,
+   "null_sd": 0.05987,
+   "z": 5.24,
+   "pct_lower": 16.19
+  },
+  "image_geo_resid": {
+   "obs": 0.61006,
+   "null_mean": 0.82313,
+   "null_sd": 0.02245,
+   "z": 9.49,
+   "pct_lower": 25.89
+  }
+ },
+ "B3c_section_x_scribe_x_currier": {
+  "image": {
+   "obs": 0.09496,
+   "null_mean": 0.10526,
+   "null_sd": 0.00647,
+   "z": 1.59,
+   "pct_lower": 9.78
+  },
+  "text": {
+   "obs": 0.34785,
+   "null_mean": 0.37552,
+   "null_sd": 0.00198,
+   "z": 13.94,
+   "pct_lower": 7.37
+  },
+  "geometry_only": {
+   "obs": 1.62407,
+   "null_mean": 1.69062,
+   "null_sd": 0.03266,
+   "z": 2.04,
+   "pct_lower": 3.94
+  },
+  "image_geo_resid": {
+   "obs": 0.61006,
+   "null_mean": 0.75345,
+   "null_sd": 0.0212,
+   "z": 6.76,
+   "pct_lower": 19.03
+  }
+ },
+ "B2_sheet_level": {
+  "txt_d1": {
+   "n": 51,
+   "rho": 0.9376,
+   "null_mean": 0.5966,
+   "null_sd": 0.072,
+   "z": 4.73,
+   "p": 0.0001999600079984003
+  },
+  "img_d1": {
+   "n": 51,
+   "rho": -0.0069,
+   "null_mean": -0.1098,
+   "null_sd": 0.0691,
+   "z": 1.69,
+   "p": 0.04319136172765447
+  },
+  "img_d2": {
+   "n": 51,
+   "rho": -0.7984,
+   "null_mean": 0.5,
+   "null_sd": 0.067,
+   "z": 4.46,
+   "p": 0.0001999600079984003
+  },
+  "img_d1_gr": {
+   "n": 51,
+   "rho": -0.233,
+   "null_mean": 0.1394,
+   "null_sd": 0.0744,
+   "z": 1.26,
+   "p": 0.10397920415916817
+  },
+  "img_d2_gr": {
+   "n": 51,
+   "rho": -0.1696,
+   "null_mean": -0.0411,
+   "null_sd": 0.0938,
+   "z": 2.25,
+   "p": 0.011797640471905619
+  }
+ },
+ "B4_n_cross_section_conjugate_pairs": 27,
+ "B4_pairs": [
+  [
+   "f1r",
+   "f8r",
+   "text-only",
+   "Herbal-A",
+   "A:1-8",
+   0.2994
+  ],
+  [
+   "f1r",
+   "f8v",
+   "text-only",
+   "Herbal-A",
+   "A:1-8",
+   0.3178
+  ],
+  [
+   "f57r",
+   "f66r",
+   "Herbal-A",
+   "text-only",
+   "H:57-66",
+   0.3598
+  ],
+  [
+   "f57v",
+   "f66r",
+   "Cosmological",
+   "text-only",
+   "H:57-66",
+   0.4717
+  ],
+  [
+   "f57v",
+   "f66v",
+   "Cosmological",
+   "Herbal-A",
+   "H:57-66",
+   0.4932
+  ],
+  [
+   "f58r",
+   "f65v",
+   "text-only",
+   "Herbal-A",
+   "H:58-65",
+   0.5346
+  ],
+  [
+   "f58v",
+   "f65v",
+   "text-only",
+   "Herbal-A",
+   "H:58-65",
+   0.5452
+  ],
+  [
+   "f67r1",
+   "f68v1",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.316
+  ],
+  [
+   "f67r1",
+   "f68v3",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.37
+  ],
+  [
+   "f67r2",
+   "f68v1",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.4328
+  ],
+  [
+   "f67r2",
+   "f68v3",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.3958
+  ],
+  [
+   "f67v1",
+   "f68v1",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.3954
+  ],
+  [
+   "f67v1",
+   "f68v3",
+   "Astronomical",
+   "Cosmological",
+   "I:67-68",
+   0.3291
+  ],
+  [
+   "f67v2",
+   "f68r1",
+   "Cosmological",
+   "Astronomical",
+   "I:67-68",
+   0.5738
+  ],
+  [
+   "f67v2",
+   "f68r2",
+   "Cosmological",
+   "Astronomical",
+   "I:67-68",
+   0.5359
+  ],
+  [
+   "f67v2",
+   "f68r3",
+   "Cosmological",
+   "Astronomical",
+   "I:67-68",
+   0.5744
+  ],
+  [
+   "f67v2",
+   "f68v2",
+   "Cosmological",
+   "Astronomical",
+   "I:67-68",
+   0.5959
+  ],
+  [
+   "f69r",
+   "f70v1",
+   "Cosmological",
+   "Zodiac",
+   "J:69-70",
+   0.3645
+  ],
+  [
+   "f69r",
+   "f70v2",
+   "Cosmological",
+   "Zodiac",
+   "J:69-70",
+   0.3342
+  ],
+  [
+   "f69v",
+   "f70v1",
+   "Cosmological",
+   "Zodiac",
+   "J:69-70",
+   0.3963
+  ],
+  [
+   "f69v",
+   "f70v2",
+   "Cosmological",
+   "Zodiac",
+   "J:69-70",
+   0.3804
+  ],
+  [
+   "f76r",
+   "f83r",
+   "text-only",
+   "Balneological",
+   "M:76-83",
+   0.2047
+  ],
+  [
+   "f76r",
+   "f83v",
+   "text-only",
+   "Balneological",
+   "M:76-83",
+   0.2192
+  ],
+  [
+   "f85r1",
+   "f86v3",
+   "text-only",
+   "Rosettes",
+   "N:85-86",
+   0.2657
+  ],
+  [
+   "f85r1",
+   "f86v4",
+   "text-only",
+   "Rosettes",
+   "N:85-86",
+   0.2427
+  ],
+  [
+   "f85r2",
+   "f86v5",
+   "Rosettes",
+   "text-only",
+   "N:85-86",
+   0.338
+  ],
+  [
+   "f85r2",
+   "f86v6",
+   "Rosettes",
+   "text-only",
+   "N:85-86",
+   0.309
+  ]
+ ],
+ "B4": {
+  "n": 27,
+  "obs": 0.39242,
+  "null_mean": 0.41958,
+  "null_sd": 0.00693,
+  "z": 3.92,
+  "pct_lower": 6.47,
+  "pairs_using_scribe_fallback": 1,
+  "per_pair_closer_than_pool_median": 17
+ }
+}

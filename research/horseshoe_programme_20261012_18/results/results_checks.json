@@ -1,0 +1,111 @@
+{
+ "img_d1_extreme_folios": [
+  [
+   "f72r2",
+   111,
+   "Zodiac",
+   -0.569,
+   -15.656
+  ],
+  [
+   "f72r3",
+   169,
+   "Zodiac",
+   -0.567,
+   -15.61
+  ],
+  [
+   "f71v",
+   100,
+   "Zodiac",
+   -0.565,
+   -15.567
+  ],
+  [
+   "f72r1",
+   105,
+   "Zodiac",
+   -0.56,
+   -15.437
+  ],
+  [
+   "f89r2",
+   245,
+   "Pharmaceutical",
+   -0.537,
+   -14.889
+  ],
+  [
+   "f69v",
+   137,
+   "Cosmological",
+   -0.535,
+   -14.847
+  ],
+  [
+   "f70r2",
+   248,
+   "Zodiac",
+   -0.528,
+   -14.687
+  ],
+  [
+   "f89r1",
+   142,
+   "Pharmaceutical",
+   -0.518,
+   -14.449
+  ]
+ ],
+ "img_ge30_n": 224,
+ "img_ge30_var_share": [
+  0.9276,
+  0.0308
+ ],
+ "img_ge30_quadR2": 0.0537,
+ "img_ge30_d1_rho_logw": 0.6445,
+ "img_ge30_d1_rho_txt_d1": -0.1119,
+ "txt_dim3_cubic_R2": 0.1856,
+ "txt_var_share_3": [
+  0.2105,
+  0.0867,
+  0.0665
+ ],
+ "txt_d1_section_order": {
+  "Herbal-A": -0.1785,
+  "Herbal-B": -0.0491,
+  "Pharmaceutical": 0.007,
+  "Cosmological": 0.038,
+  "Astronomical": 0.0749,
+  "Rosettes": 0.1147,
+  "Zodiac": 0.1203,
+  "Stars": 0.1707,
+  "Balneological": 0.2018
+ },
+ "txt_d1_rank_f111": {
+  "f111r": 222,
+  "f111v": 198
+ },
+ "word_pca_var_share": [
+  0.3400999903678894,
+  0.09570000320672989
+ ],
+ "word_pca_quadR2": 0.695900022983551,
+ "word_pc1_rho": {
+  "logw": -0.639,
+  "logh": -0.1539,
+  "logasp": -0.508,
+  "wlen": -0.5292
+ },
+ "word_pc2_rho": {
+  "logw": -0.5246,
+  "logh": -0.1714,
+  "logasp": -0.3757,
+  "wlen": -0.5539
+ },
+ "umap_knn15_components": 2,
+ "umap_component_sizes": [
+  11945,
+  55
+ ]
+}

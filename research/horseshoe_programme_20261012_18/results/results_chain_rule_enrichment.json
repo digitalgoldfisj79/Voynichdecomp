@@ -1,0 +1,58 @@
+{
+ "1b": {
+  "peaks": 22,
+  "peaks_rule_outputs": 0,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 0.0,
+  "p": 1.0
+ },
+ "1.5a": {
+  "peaks": 10,
+  "peaks_rule_outputs": 0,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 0.0,
+  "p": 1.0
+ },
+ "2a": {
+  "peaks": 30,
+  "peaks_rule_outputs": 15,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 3.99,
+  "p": 0.0004
+ },
+ "3a": {
+  "peaks": 22,
+  "peaks_rule_outputs": 4,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 0.79,
+  "p": 0.7475
+ },
+ "3b": {
+  "peaks": 19,
+  "peaks_rule_outputs": 15,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 15.41,
+  "p": 0.0
+ },
+ "3c": {
+  "peaks": 50,
+  "peaks_rule_outputs": 8,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 0.65,
+  "p": 0.8963
+ },
+ "4a": {
+  "peaks": 45,
+  "peaks_rule_outputs": 14,
+  "tested": 489,
+  "tested_rule_outputs": 107,
+  "odds_ratio": 1.7,
+  "p": 0.0866
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "quires": 19,
+ "scribes": {
+  "1": 111,
+  "2": 46,
+  "3": 33,
+  "4": 26,
+  "5": 7,
+  "null": 2
+ },
+ "B1q_image": {
+  "obs": 0.09496,
+  "null_mean": 0.10192,
+  "null_sd": 0.00479,
+  "z": 1.45
+ },
+ "B1q_text": {
+  "obs": 0.34785,
+  "null_mean": 0.38858,
+  "null_sd": 0.00234,
+  "z": 17.4
+ },
+ "B1q_geometry_only": {
+  "obs": 1.62407,
+  "null_mean": 1.74121,
+  "null_sd": 0.0477,
+  "z": 2.46
+ },
+ "B1q_image_geo_resid": {
+  "obs": 0.61006,
+  "null_mean": 0.77919,
+  "null_sd": 0.01622,
+  "z": 10.43
+ },
+ "B2c_img_d2_within_section_x_scribe": {
+  "rho": -0.6802,
+  "null_mean": 0.6249,
+  "null_sd": 0.0125,
+  "z": 4.44
+ },
+ "B2e_img_d2_georesid_within_section_x_scribe": {
+  "rho": -0.1359,
+  "null_mean": 0.0446,
+  "null_sd": 0.0191,
+  "z": 4.78
+ },
+ "B2a_text_d1_within_section_x_scribe": {
+  "rho": 0.9333,
+  "null_mean": 0.8996,
+  "null_sd": 0.0077,
+  "z": 4.37
+ }
+}

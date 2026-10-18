@@ -1,0 +1,156 @@
+{
+ "B1_size": {
+  "obs": 0.5102,
+  "null_mean": 0.0301,
+  "null_sd": 0.0901,
+  "z": 5.33,
+  "n_pairs": 250
+ },
+ "B2_quire": {
+  "same_quire": {
+   "obs": 0.8484,
+   "null_mean": 0.6993,
+   "null_sd": 0.0472,
+   "z": 3.16,
+   "n_pairs": 50
+  },
+  "diff_quire": {
+   "obs": 0.5832,
+   "null_mean": 0.0711,
+   "null_sd": 0.0942,
+   "z": 5.44,
+   "n_pairs": 200
+  }
+ },
+ "B3_blocks": {
+  "w": {
+   "obs": 0.752,
+   "null_mean": 0.4365,
+   "null_sd": 0.0494,
+   "z": 6.38,
+   "n_pairs": 250
+  },
+  "l": {
+   "obs": 0.7358,
+   "null_mean": 0.4459,
+   "null_sd": 0.0545,
+   "z": 5.32,
+   "n_pairs": 250
+  }
+ },
+ "B4_negctrl": {
+  "CI_start": {
+   "obs": 0.8296,
+   "null_mean": 0.1908,
+   "null_sd": 0.1626,
+   "z": 3.93,
+   "n_pairs": 250
+  },
+  "Galen_w2": {
+   "obs": 0.8581,
+   "null_mean": 0.2553,
+   "null_sd": 0.1485,
+   "z": 4.06,
+   "n_pairs": 250
+  }
+ },
+ "CVA_VMS": {
+  "group": "1.0|A|Herbal-A",
+  "n": 21,
+  "obs": 0.03375,
+  "null_mean": 3e-05,
+  "null_sd": 0.00478,
+  "z": 7.06,
+  "decay_rho": 0.349
+ },
+ "CVA_CI_start": {
+  "n": 21,
+  "obs": 0.00862,
+  "null_mean": 3e-05,
+  "null_sd": 0.00307,
+  "z": 2.8,
+  "decay_rho": 0.191,
+  "truth_block": {
+   "adj_precision": 0.3,
+   "chance": 0.095,
+   "abs_spearman": 0.006
+  },
+  "truth_all": {
+   "adj_precision": 0.229,
+   "chance": 0.041,
+   "abs_spearman": 0.104
+  }
+ },
+ "CVA_CI_end": {
+  "n": 21,
+  "obs": 0.00244,
+  "null_mean": 4e-05,
+  "null_sd": 0.00232,
+  "z": 1.04,
+  "decay_rho": 0.056,
+  "truth_block": {
+   "adj_precision": 0.3,
+   "chance": 0.095,
+   "abs_spearman": 0.248
+  },
+  "truth_all": {
+   "adj_precision": 0.271,
+   "chance": 0.041,
+   "abs_spearman": 0.373
+  }
+ },
+ "CVA_Galen_w1": {
+  "n": 21,
+  "obs": 0.00083,
+  "null_mean": 3e-05,
+  "null_sd": 0.00265,
+  "z": 0.3,
+  "decay_rho": 0.145,
+  "truth_block": {
+   "adj_precision": 0.45,
+   "chance": 0.095,
+   "abs_spearman": 0.242
+  },
+  "truth_all": {
+   "adj_precision": 0.354,
+   "chance": 0.041,
+   "abs_spearman": 0.431
+  }
+ },
+ "CVA_Galen_w2": {
+  "n": 21,
+  "obs": 0.01759,
+  "null_mean": -6e-05,
+  "null_sd": 0.00317,
+  "z": 5.57,
+  "decay_rho": 0.188,
+  "truth_block": {
+   "adj_precision": 0.3,
+   "chance": 0.095,
+   "abs_spearman": 0.529
+  },
+  "truth_all": {
+   "adj_precision": 0.312,
+   "chance": 0.041,
+   "abs_spearman": 0.344
+  }
+ },
+ "CVA_Galen_w3": {
+  "n": 21,
+  "obs": 0.0121,
+  "null_mean": -0.00011,
+  "null_sd": 0.0039,
+  "z": 3.13,
+  "decay_rho": 0.064,
+  "truth_block": {
+   "adj_precision": 0.45,
+   "chance": 0.095,
+   "abs_spearman": 0.027
+  },
+  "truth_all": {
+   "adj_precision": 0.292,
+   "chance": 0.041,
+   "abs_spearman": 0.055
+  }
+ }
+}
