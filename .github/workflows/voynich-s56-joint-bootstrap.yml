@@ -1,0 +1,127 @@
+name: Voynich S56 joint RF-ZL text bootstrap
+
+on:
+  push:
+    branches:
+      - research/v2-joint-bootstrap-20261018
+    paths:
+      - 'research/horseshoe_programme_20261012_18/scripts/s56_joint_refit_20261018.py'
+      - '.github/workflows/voynich-s56-joint-bootstrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  refit:
+    name: refit ${{ matrix.rep }} shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        rep: [zl, rf]
+        shard: [0, 1, 2, 3]
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: eo777/voynich-clusters
+          ref: main
+          path: external
+          sparse-checkout: |
+            chronology-stability/replication
+            path-v2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pinned scientific runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            numpy==2.0.2 scipy==1.13.1 scikit-learn==1.6.1 \
+            threadpoolctl==3.6.0 elpigraph-python==0.3.4 \
+            igraph==0.11.8 numba==0.60.0 llvmlite==0.43.0 \
+            networkx==3.2.1 shapely==2.0.7 texttable==1.7.0
+      - name: Source gate and complete line-bootstrap refits
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile research/horseshoe_programme_20261012_18/scripts/s56_joint_refit_20261018.py
+          START=$((1 + ${{ matrix.shard }} * 25))
+          python -u research/horseshoe_programme_20261012_18/scripts/s56_joint_refit_20261018.py \
+            --mode run --representation '${{ matrix.rep }}' \
+            --replication external/chronology-stability/replication \
+            --output s56_output --start "$START" --count 25 --workers 2 \
+            | tee "s56_${{ matrix.rep }}_${{ matrix.shard }}.log"
+      - name: Upload recoverable checkpoints, even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: s56-${{ matrix.rep }}-${{ matrix.shard }}
+          path: |
+            s56_output/
+            s56_*.log
+          if-no-files-found: warn
+          retention-days: 90
+
+  aggregate:
+    name: frozen v2 versus joint uncertainty
+    needs: refit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: eo777/voynich-clusters
+          ref: main
+          path: external
+          sparse-checkout: |
+            chronology-stability/replication/solve/botanical_enrichment/team_golf/golf_published_stability_20261016/ensemble_pool50_point_l010.json
+            path-v2
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install numpy==2.0.2
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: s56-*
+          path: artifacts
+      - name: Assemble pickle checkpoints from eight shards
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assembled/zl assembled/rf
+          for artifact in artifacts/s56-*; do
+            test -d "$artifact/s56_output" || { echo "Missing shard output $artifact"; exit 1; }
+            for rep in zl rf; do
+              if test -d "$artifact/s56_output/$rep"; then
+                cp "$artifact/s56_output/$rep"/rep_*.pkl "assembled/$rep/"
+                cp "$artifact/s56_output/$rep"/source_gate.json "assembled/$rep/source_gate.json"
+              fi
+            done
+          done
+          test "$(find assembled/zl -name 'rep_*.pkl' | wc -l)" -eq 100
+          test "$(find assembled/rf -name 'rep_*.pkl' | wc -l)" -eq 100
+      - name: Aggregate same-fit conditional consensus
+        run: |
+          python -u research/horseshoe_programme_20261012_18/scripts/s56_joint_refit_20261018.py \
+            --mode aggregate --replication external/chronology-stability/replication \
+            --input assembled --output final | tee s56_aggregate.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s56-joint-conclusions
+          path: |
+            final/
+            s56_aggregate.log
+          if-no-files-found: warn
+          retention-days: 90
