@@ -140,7 +140,7 @@ def fit_one(z):
     with threadpool_limits(1):
         c=load_configuration(rep_root,rep)
         lines,gate=prepare_lines(c,rep,Path(output)/rep/"lines.pkl")
-        dst=Path(output)/rep/"rep_%03d.pkl"%b
+        dst=Path(output)/rep/("rep_%03d.pkl"%b)
         if dst.exists():
             old=pickle.load(dst.open("rb"))
             if old["version"]==VERSION and old["representation"]==rep:
@@ -262,7 +262,7 @@ def aggregate(args):
              stages=blocks(.95),rank={m["id"]:int(r) for m,r in zip(meta,ranks)},
              score={m["id"]:float(z) for m,z in zip(meta,score)})
         order_result[path]=key
-    prior=json.loads((base.parent/"path-v2/collection.json").read_text())
+    prior=json.loads((base.parents[1]/"path-v2/collection.json").read_text())
     prior_meta=prior["cohorts"]["bifolia"]["meta"]
     assert [x["id"] for x in meta]==[x["id"] for x in prior_meta]
     historical={}
