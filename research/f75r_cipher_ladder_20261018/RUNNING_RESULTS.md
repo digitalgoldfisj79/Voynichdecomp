@@ -2,6 +2,8 @@
 
 **R1 / 2026-10-18 / RETRACTED:** The automatically emitted `candidate_promotion=true` on a naive within-position glyph-permutation null **does not establish a decipherment, cipher mechanism, source language, or anything language-specific**. All six distinct language models clear this null; the null destroys readily detectable graphotactic structure. Replace the gate with planted recovery **plus** language-specific hard negative controls, chronology-matched witnesses, and genuinely held-out coherent plaintext before promotion. This retraction remains at the top on all updates.
 
+**R2 / 2026-10-18 / BOUNDING CORRECTION:** Initial huge deviations against within-word glyph permutation were non-specific. Under matched whole-word permutation with full refitting, none of six languages exceeds 2 null SD; the corresponding heldout word-order contrast also fails to resolve. This is **not** an exclusion of monoalphabetic substitution because these controls preserve lexical word identities and may not distinguish correct decipherments; positive language-discrimination controls remain to be qualified.
+
 # F75R PROGRESSIVE BRUTE-FORCE LADDER: RUNNING RESULTS
 
 Source: TTLI f75r, 352 words and 20 atomic EVA glyph types; training page f75r, heldout same-ecology page f76r (5 unknown glyph instances' **words**, not glyphs, excluded). Caesar conventional glyph-order sweep then 26-letter injection monoalphabetic GPU parallel population annealer. All corpus transcriptions and source SHAs pinned in [results/rung1_gpu_results.json](results/rung1_gpu_results.json). Calibration uses independently heldout UD text; source corpora are not fifteenth-century witnesses.
@@ -33,3 +35,20 @@ Six T4 GPU jobs, each capped at 35 minutes at the current public T4 rate $0.40/h
 - UD reference corpora vary widely in period/genre and tokenize Hebrew/Yiddish via Unidecode, which is merely a lossy proxy, not a fifteenth-century transliteration model.
 - The page-internal permutation nulls were not adequate to identify language.
 - No plaintext translation, semantic claim or historical cipher inference is licensed.
+
+## Harder bounding controls (all six GPU jobs complete)
+
+Three sets per language: refit to whole-word-order shuffles, reoptimise on recurrence-preserving Markov(2) generated pseudo-word types, and fixed mapping tested on untouched f76r against line-local word-order shuffles. Cells give **effect / null SD / ratio**. The word-order comparison retains every actual Voynich word so it specifically tests between-word order, NOT dictionary alignment or lexical substitution. Positive control of that semantic discrimination is still outstanding; avoid an exclusion claim.
+
+| Language | Train: refit word-order null | Train: recurrence-preserving Markov(2) null | Heldout: word-order null |
+|---|---:|---:|---:|
+| la | -0.0034 / 0.0510 / -0.07 | 0.3025 / 0.1051 / 2.88 | 0.0047 / 0.0025 / 1.88 |
+| it | 0.0209 / 0.0293 / 0.71 | 0.1488 / 0.0832 / 1.79 | 0.0041 / 0.0046 / 0.90 |
+| de | -0.0385 / 0.0372 / -1.04 | 0.2075 / 0.0705 / 2.94 | 0.0035 / 0.0020 / 1.80 |
+| cs | -0.0375 / 0.0220 / -1.71 | 0.1516 / 0.0739 / 2.05 | -0.0020 / 0.0015 / -1.36 |
+| he | 0.0180 / 0.0175 / 1.03 | 0.1358 / 0.0702 / 1.94 | 0.0047 / 0.0030 / 1.56 |
+| yi | -0.0109 / 0.0540 / -0.20 | 0.2152 / 0.0979 / 2.20 | 0.0016 / 0.0031 / 0.53 |
+
+**Interpretation:** All six word-order refit scores are below 2 null SD; all six heldout word-order comparisons are below 2 null SD. The Markov(2) score is higher in several languages, but those controls reproduce only a subset of Voynich graphotactics and do not distinguish lexical decipherment from generic word-formation structure. An automated `candidate_promotion=true` from the prior run is **still retracted**.
+
+Rung 2 one-null search: new exhaustive twenty-way glyph-null branch added with a synthetic injected-null qualification gate; it will not score f75r if that gate fails. Prior calibration never licensed historical language selection.
