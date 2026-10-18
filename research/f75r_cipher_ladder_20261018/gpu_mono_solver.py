@@ -64,7 +64,7 @@ def tokens_to_ids(words,glyph_index):
   for g in glyphs(w):
    if g not in glyph_index:raise ValueError(("unknown glyph",g))
    seq.append(glyph_index[g])
-  seq.append(len(glyph_index))
+  seq.append(SPACE)
  return seq[:-1]
 def make_model(words):
  t=" ".join(words);trip=collections.Counter(t[i:i+3] for i in range(len(t)-2))
@@ -109,7 +109,7 @@ def anneal(ids,n,model,seed,steps=850,pop=256):
  return best_key,best_score
 def decoded(key,ids,n):
  key=key[:n].tolist()
- return "".join(" " if q==n else A[key[q]] for q in ids)
+ return "".join(" " if q==SPACE else A[key[q]] for q in ids)
 def lexical(text,lexicon):
  w=text.split();hits=[s for s in w if s in lexicon]
  return {"words":len(w),"matched":len(hits),"match_rate":round(len(hits)/max(len(w),1),5),
@@ -133,7 +133,7 @@ def control(lang,dev,n,steps,pop,model,seed,lex):
  cipher_by_plain={alphabet[i]:permutation[i] for i in range(n0)}
  ids=[]
  for w in selected:
-  ids.extend(cipher_by_plain[c] for c in w);ids.append(n0)
+  ids.extend(cipher_by_plain[c] for c in w);ids.append(SPACE)
  ids=ids[:-1];truth=[None]*n0
  for c,i in cipher_by_plain.items():truth[i]=A.index(c)
  device=model.device
@@ -165,7 +165,7 @@ def positional_null(words,seed):
 def seq_null(words,index,seed):
  s=positional_null(words,seed);flat=[]
  for word in s:
-  flat.extend(index[g] for g in word);flat.append(len(index))
+  flat.extend(index[g] for g in word);flat.append(SPACE)
  return flat[:-1]
 def run(args):
  torch.manual_seed(args.seed);random.seed(args.seed)
@@ -184,14 +184,16 @@ def run(args):
   emit("LADDER_GATE",{"status":"FAILED_PLANTED_RECOVERY","action":"NO_VOYNICH_SCORE","lang":args.lang})
   return
  vw=getvms("f75r",args.trans);hw=getvms("f76r",args.trans)
- glyph_vocab=sorted(set(g for w in vw+hw for g in glyphs(w)))
+ glyph_vocab=sorted(set(g for w in vw for g in glyphs(w)))
  # Holdout-only novel glyphs are carried but never selected for calibration.
  primary=sorted(set(g for w in vw for g in glyphs(w)))
  unseen=sorted(set(glyph_vocab)-set(primary))
  if len(glyph_vocab)>26:raise ValueError("More glyphs than the Latin alphabet, monoalphabetic model invalid")
  idx={g:i for i,g in enumerate(glyph_vocab)}
+ hw_known=[w for w in hw if set(glyphs(w)).issubset(idx)]
+ if not hw_known:raise RuntimeError("No holdout words without unseen glyphs")
  seq=torch.tensor(tokens_to_ids(vw,idx),device=device,dtype=torch.long)
- hold=torch.tensor(tokens_to_ids(hw,idx),device=device,dtype=torch.long)
+ hold=torch.tensor(tokens_to_ids(hw_known,idx),device=device,dtype=torch.long)
  # Rung 0: Caesar under explicit (noncanonical) glyph order, 26 trial shifts.
  base=list(range(26))
  caesar=[]
@@ -205,7 +207,7 @@ def run(args):
  "best":[{"shift":i,"score":round(s,6)} for s,i in caesar[:3]]})
  key,score=anneal(seq,len(idx),model,args.seed+4000,args.steps,args.pop)
  decoded_train=decoded(key,tokens_to_ids(vw,idx),len(idx))
- decoded_hold=decoded(key,tokens_to_ids(hw,idx),len(idx))
+ decoded_hold=decoded(key,tokens_to_ids(hw_known,idx),len(idx))
  holdscore=float(mean_score(key[None,:],hold,model).item())
  arr=[]
  for k in range(args.nulls):
@@ -219,7 +221,7 @@ def run(args):
  z=delta/sd if sd and sd>0 else None
  result={"status":"EXPLORATORY_NOT_DECIPHERED","language":args.lang,"trans":args.trans,
  "source_folio":"f75r","holdout_folio":"f76r","train_words":len(vw),
- "holdout_words":len(hw),"n_glyphs":len(idx),"unknown_holdout_glyphs":unseen,
+ "holdout_words":len(hw),"holdout_words_scored":len(hw_known),"n_glyphs":len(idx),"unknown_holdout_glyphs":unseen,
  "key":{g:A[int(key[idx[g]].item())] for g in idx},
  "rung":"mono","fit_trigram":score,"holdout_trigram":holdscore,
  "null_scores":arr,"null_mean":mu,"null_sd":sd,"effect":delta,"effect_over_null_sd":z,
