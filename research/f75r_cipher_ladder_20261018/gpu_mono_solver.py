@@ -34,6 +34,7 @@ def clean(s):
  s=unicodedata.normalize("NFKD",unidecode(s.lower().replace("ß","ss")))
  return re.sub("[^a-z]","",s.lower())
 def conllu(lang,split):
+ if lang=="la" and split=="dev":split="test" # Perseus has no dev; sealed external control
  repo,prefix=LANG[lang]
  u=ROOT+f"UniversalDependencies/{repo}/master/{prefix}-ud-{split}.conllu"
  b,h=download(u)
@@ -187,7 +188,7 @@ def run(args):
  glyph_vocab=sorted(set(g for w in vw for g in glyphs(w)))
  # Holdout-only novel glyphs are carried but never selected for calibration.
  primary=sorted(set(g for w in vw for g in glyphs(w)))
- unseen=sorted(set(glyph_vocab)-set(primary))
+ unseen=sorted(set(g for w in hw for g in glyphs(w))-set(primary))
  if len(glyph_vocab)>26:raise ValueError("More glyphs than the Latin alphabet, monoalphabetic model invalid")
  idx={g:i for i,g in enumerate(glyph_vocab)}
  hw_known=[w for w in hw if set(glyphs(w)).issubset(idx)]
