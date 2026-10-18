@@ -1,5 +1,16 @@
 # Horseshoe comparison — running results
 
+
+## RETRACTION R7 / S56 supersession (2026-10-18): the joint RF/ZL line-bootstrap refit REPLACES the proxy intersection
+
+Earlier October 18 v2 *conservative intersection* analysis suggested 18/32 at a 99%-pairwise rule. WITHDRAWN for the requested joint-refit question: **the directly executed 3,200-fit RF/ZL text-bootstrap × published point-mask × two-penalty × eight-start study resolves NO boundary at 99% across all four scenarios.** At 90% and 95% the common block sizes are **10/8/32**. Original separate ZL seven-stage result remains scenario-specific, not universal. Source gates: both transcriptions exactly reconstruct 4,130 lines, no count errors; all 3,200 fits converge; independent pickle replay reproduces every rank/score. Threshold block counts are descriptive and have no matched-null SD. Earlier R6 retractions still apply. Caution: 1a-before-1b acceptance is imposed.
+
+Full output and qualification: [S56 JOINT REPORT](S56_JOINT_REFIT_REPORT_20261018.md). Code: [S56 refit script](scripts/s56_joint_refit_20261018.py). [Completed workflow](https://github.com/digitalgoldfisj79/Voynichdecomp/actions/runs/39161321555).
+
+## RETRACTED FINDINGS REGISTER — current addendum
+- R7: the 99%-threshold 18/32 statement from proxy intersection is superseded by the *actual* four-path line-bootstrap fit (no 99% boundary).
+- R6(a-d), R5, R4, R3, R2 and R1 retain their earlier prominence and full explanations below.
+
 ## RETRACTION R6 (2026-10-17 ~23:20): cold demolition of PREREG 34-37 (context-free check; key numbers re-verified by me)
 (a) PREREG 34/34b "CONFIRMS — his stability is not inflated by text noise": MISLEADING. The registered metric (all 1,225 pairs) is dominated by trivially
     decisive cross-group pairs. Re-verified: same-group pairs (126) decisive his 38.9% vs line-bootstrap 23.0% (ratio 0.59; multinomial 0.86); pairs within 0.05
@@ -1364,3 +1375,18 @@ Read Layfield & Davis 2026 (Digital Medievalist 19, PDF supplied by Ed): ZL v2a 
  (uniform assumption, my arithmetic) — and his internal Q20 positions are not settled under resampling. Same transcription family (ZL) in both; word-level vs glyph-transition features of the same text.
 
 ## 2026-10-18 07:30 — Supabase sync: handoff_docs voynich_horseshoe_programme_20261018 (10,391 chars) and voynich_npcompl33t_order_stage_map_20261018 inserted (research-agent project). Local copies in handoff/. Nothing else in Supabase changed.
+
+
+## 2026-10-18 — S56 RF/ZL v2 path-collection joint bootstrap (code-first locked design; 3,200 fitting calls)
+
+The full combined uncertainty experiment was executed, rather than inferring uncertainty by intersection of a frozen v2 and previous ZL-only stage map. Frozen design in GitHub source/Actions workflow commit 7c6731e3bf0e740d85b55ca2025157f708951f96. Matrix: 100 whole-line resamples per pooled sheet × ZL/Zattera and RF1b-er/basic EVA × penalties 0.01/0.05 × eight initializations. Matched 90%-inclusion masks. After resampling, recomputed weighted transition JS distances, MDS, ElPiGraph growth and refinement; selected minimum-objective converged trajectory under 1a-before-1b and each path's conditional directions. All 3,200/3,200 fits converged. Exact source-count reconstruction in both corpora, 4,130 paragraph lines and 0 word/line count mismatch, distance gate < 1e-12. Independent audit replayed all 200 pickle checkpoints and reproduced every consensus score and rank.
+
+At strict all-cross-pair settled boundary rule:
+- Paths 1–4 JOINTLY, threshold 0.90: stage sizes 10/8/32; threshold 0.95: 10/8/32; threshold 0.99: one block of 50 (zero settled cuts).
+- Individual path 95%-settled sizes: default 10/8/5/15/4/1/2/5; path2 10/8/5/27; path3 10/8/20/4/1/2/5; path4 10/8/20/5/7.
+- Default same-Golf-group pair decisiveness 28/126 (22.2%) vs fixed-input default 47/126 (37.3%), difference −19/126 (−15.1 percentage points); no matched-null SD for the difference, so no z or historical significance claim. Across four paths, 20/126 same-group pairs keep the same direction with >=0.95 support; 140/1225 pairs flip majority direction between at least two scenarios. These are descriptive sensitivity measures, not probabilities of chronological position.
+- The earlier s55 7-stage ZL-only best map remains a valid scenario-specific sensitivity result, not a jointly resolved chronological stage map.
+- R7 above is mandatory whenever citing the prior proxy intersection at 99%.
+
+Open: independently anchored manuscript production dates/writing sequence, fair same-length known-order positive and hard matched negative controls. No chronology mechanism identified. All running-results retractions remain active.
+
