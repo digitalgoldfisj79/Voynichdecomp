@@ -1,0 +1,313 @@
+{
+ "prereg": "PREREG 17",
+ "nperm": 200,
+ "cap": 40000,
+ "seed": 20261015,
+ "gate_vms": true,
+ "gate_word": true,
+ "reproducing_arms": [],
+ "all_subword_lag1_suppressed": true,
+ "verdict": "FALSIFIES_UNIT_SUBSTITUTION_PRODUCES_SGT12",
+ "arms": {
+  "VMS_ZLZI": {
+   "n_units": 34201,
+   "n_lines": 4089,
+   "n_types": 6741,
+   "lag1": {
+    "obs": 291,
+    "null_mean": 285.82,
+    "null_sd": 12.487887598926292,
+    "ratio": 1.018123294381079,
+    "z": 0.4148019397968783
+   },
+   "lag2": {
+    "obs": 303,
+    "null_mean": 247.08,
+    "null_sd": 14.871766782604578,
+    "ratio": 1.2263234579893152,
+    "z": 3.7601450330305943
+   },
+   "arm": "VMS_ZLZI"
+  },
+  "LATIN_circa_instans_WORD": {
+   "n_units": 40000,
+   "n_lines": 4739,
+   "n_types": 11568,
+   "lag1": {
+    "obs": 43,
+    "null_mean": 318.415,
+    "null_sd": 15.829581588479579,
+    "ratio": 0.13504388926401079,
+    "z": -17.39875425389898
+   },
+   "lag2": {
+    "obs": 318,
+    "null_mean": 279.45,
+    "null_sd": 13.918553468419997,
+    "ratio": 1.1379495437466451,
+    "z": 2.7696843703957206
+   },
+   "arm": "LATIN_circa_instans_WORD"
+  },
+  "LATIN_circa_instans_LETTER": {
+   "n_units": 40000,
+   "n_lines": 4782,
+   "n_types": 25,
+   "lag1": {
+    "obs": 1022,
+    "null_mean": 2088.185,
+    "null_sd": 36.219886469719874,
+    "ratio": 0.48942023814939767,
+    "z": -29.436453393948085
+   },
+   "lag2": {
+    "obs": 1908,
+    "null_mean": 1814.165,
+    "null_sd": 34.30937834194982,
+    "ratio": 1.051723520186973,
+    "z": 2.7349664883105356
+   },
+   "arm": "LATIN_circa_instans_LETTER"
+  },
+  "LATIN_circa_instans_LETTER_HOMO3": {
+   "n_units": 39999,
+   "n_lines": 4838,
+   "n_types": 72,
+   "lag1": {
+    "obs": 329,
+    "null_mean": 668.925,
+    "null_sd": 23.819661128601453,
+    "ratio": 0.4918339126209964,
+    "z": -14.270773969652955
+   },
+   "lag2": {
+    "obs": 591,
+    "null_mean": 579.835,
+    "null_sd": 20.523984621013973,
+    "ratio": 1.0192554778514578,
+    "z": 0.5439976791138506
+   },
+   "arm": "LATIN_circa_instans_LETTER_HOMO3"
+  },
+  "LATIN_circa_instans_CHUNK": {
+   "n_units": 40000,
+   "n_lines": 4805,
+   "n_types": 407,
+   "lag1": {
+    "obs": 302,
+    "null_mean": 560.74,
+    "null_sd": 21.14231271490121,
+    "ratio": 0.5385740271783714,
+    "z": -12.238017831305596
+   },
+   "lag2": {
+    "obs": 524,
+    "null_mean": 487.375,
+    "null_sd": 20.750597860249446,
+    "ratio": 1.0751474737112081,
+    "z": 1.7650093865565244
+   },
+   "arm": "LATIN_circa_instans_CHUNK"
+  },
+  "LATIN_circa_instans_CHUNK_HOMO3": {
+   "n_units": 39999,
+   "n_lines": 4773,
+   "n_types": 1065,
+   "lag1": {
+    "obs": 89,
+    "null_mean": 192.735,
+    "null_sd": 11.880255779524893,
+    "ratio": 0.4617739383090772,
+    "z": -8.731714360795397
+   },
+   "lag2": {
+    "obs": 172,
+    "null_mean": 167.52,
+    "null_sd": 11.205687715884716,
+    "ratio": 1.026743075453677,
+    "z": 0.39979697039471557
+   },
+   "arm": "LATIN_circa_instans_CHUNK_HOMO3"
+  },
+  "LATIN_circa_instans_SYLLABLE": {
+   "n_units": 40000,
+   "n_lines": 4780,
+   "n_types": 1282,
+   "lag1": {
+    "obs": 135,
+    "null_mean": 338.12,
+    "null_sd": 15.581060529892722,
+    "ratio": 0.3992665325919792,
+    "z": -13.036339831316894
+   },
+   "lag2": {
+    "obs": 298,
+    "null_mean": 291.8,
+    "null_sd": 15.025606284643077,
+    "ratio": 1.0212474297464016,
+    "z": 0.4126289403933537
+   },
+   "arm": "LATIN_circa_instans_SYLLABLE"
+  },
+  "LATIN_circa_instans_SYLLABLE_HOMO3": {
+   "n_units": 40000,
+   "n_lines": 4777,
+   "n_types": 2602,
+   "lag1": {
+    "obs": 45,
+    "null_mean": 110.795,
+    "null_sd": 9.62998745022325,
+    "ratio": 0.4061555124328715,
+    "z": -6.832303815564649
+   },
+   "lag2": {
+    "obs": 91,
+    "null_mean": 96.78,
+    "null_sd": 8.088182333957159,
+    "ratio": 0.9402769167183302,
+    "z": -0.714622861026938
+   },
+   "arm": "LATIN_circa_instans_SYLLABLE_HOMO3"
+  },
+  "GREEK_galen_WORD": {
+   "n_units": 40000,
+   "n_lines": 4839,
+   "n_types": 7447,
+   "lag1": {
+    "obs": 10,
+    "null_mean": 368.635,
+    "null_sd": 16.223680657309295,
+    "ratio": 0.02712710404600757,
+    "z": -22.105649610307342
+   },
+   "lag2": {
+    "obs": 418,
+    "null_mean": 323.31,
+    "null_sd": 15.28436978743301,
+    "ratio": 1.292876805542668,
+    "z": 6.195217815120859
+   },
+   "arm": "GREEK_galen_WORD"
+  },
+  "GREEK_galen_LETTER": {
+   "n_units": 39999,
+   "n_lines": 4749,
+   "n_types": 20,
+   "lag1": {
+    "obs": 318,
+    "null_mean": 2177.455,
+    "null_sd": 37.68859410522155,
+    "ratio": 0.146042053681936,
+    "z": -49.337340491095226
+   },
+   "lag2": {
+    "obs": 2425,
+    "null_mean": 1901.47,
+    "null_sd": 41.219221500478724,
+    "ratio": 1.275329087495464,
+    "z": 12.7011132414017
+   },
+   "arm": "GREEK_galen_LETTER"
+  },
+  "GREEK_galen_LETTER_HOMO3": {
+   "n_units": 40000,
+   "n_lines": 4794,
+   "n_types": 60,
+   "lag1": {
+    "obs": 104,
+    "null_mean": 720.54,
+    "null_sd": 23.928671223715355,
+    "ratio": 0.1443361923002193,
+    "z": -25.765743289119882
+   },
+   "lag2": {
+    "obs": 838,
+    "null_mean": 627.465,
+    "null_sd": 23.58303570078122,
+    "ratio": 1.3355326591921461,
+    "z": 8.927391819748877
+   },
+   "arm": "GREEK_galen_LETTER_HOMO3"
+  },
+  "GREEK_galen_CHUNK": {
+   "n_units": 40000,
+   "n_lines": 4772,
+   "n_types": 266,
+   "lag1": {
+    "obs": 179,
+    "null_mean": 637.75,
+    "null_sd": 24.433634861862327,
+    "ratio": 0.28067424539396313,
+    "z": -18.77534810492106
+   },
+   "lag2": {
+    "obs": 648,
+    "null_mean": 554.89,
+    "null_sd": 20.80896356919586,
+    "ratio": 1.1677990232298294,
+    "z": 4.474514056905437
+   },
+   "arm": "GREEK_galen_CHUNK"
+  },
+  "GREEK_galen_CHUNK_HOMO3": {
+   "n_units": 40000,
+   "n_lines": 4791,
+   "n_types": 742,
+   "lag1": {
+    "obs": 47,
+    "null_mean": 227.12,
+    "null_sd": 14.004148703313694,
+    "ratio": 0.20693906305036985,
+    "z": -12.86190284150436
+   },
+   "lag2": {
+    "obs": 222,
+    "null_mean": 198.715,
+    "null_sd": 12.88853547668114,
+    "ratio": 1.117177867800619,
+    "z": 1.806644365616938
+   },
+   "arm": "GREEK_galen_CHUNK_HOMO3"
+  },
+  "GREEK_galen_SYLLABLE": {
+   "n_units": 40000,
+   "n_lines": 4750,
+   "n_types": 942,
+   "lag1": {
+    "obs": 121,
+    "null_mean": 314.24,
+    "null_sd": 15.557072750450647,
+    "ratio": 0.3850560081466395,
+    "z": -12.421359924179976
+   },
+   "lag2": {
+    "obs": 261,
+    "null_mean": 271.62,
+    "null_sd": 13.578197125757516,
+    "ratio": 0.9609012591119946,
+    "z": -0.7821362366181971
+   },
+   "arm": "GREEK_galen_SYLLABLE"
+  },
+  "GREEK_galen_SYLLABLE_HOMO3": {
+   "n_units": 40000,
+   "n_lines": 4780,
+   "n_types": 2183,
+   "lag1": {
+    "obs": 45,
+    "null_mean": 104.81,
+    "null_sd": 8.752538755890592,
+    "ratio": 0.4293483446236046,
+    "z": -6.833445891313187
+   },
+   "lag2": {
+    "obs": 100,
+    "null_mean": 91.995,
+    "null_sd": 9.188422636816608,
+    "ratio": 1.087015598673841,
+    "z": 0.8712050279364797
+   },
+   "arm": "GREEK_galen_SYLLABLE_HOMO3"
+  }
+ }
+}

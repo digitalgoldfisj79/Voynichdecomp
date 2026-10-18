@@ -1,0 +1,25 @@
+{
+ "n": 33,
+ "mean_inner": 0.3368247410407232,
+ "mean_cross": 0.3451941494249304,
+ "mean_outer": 0.3382627492335322,
+ "D_inner": {
+  "mean": 0.00837,
+  "null_sd": 0.00784,
+  "z": 1.07,
+  "positive": "20/33"
+ },
+ "D_outer": {
+  "mean": 0.00693,
+  "null_sd": 0.00736,
+  "z": 0.94,
+  "positive": "18/33"
+ },
+ "inner_vs_outer": {
+  "mean": 0.00144,
+  "null_sd": 0.01376,
+  "z": 0.1,
+  "positive": "20/33"
+ },
+ "verdict": "NOT RESOLVED"
+}

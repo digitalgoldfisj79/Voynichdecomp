@@ -1,0 +1,65 @@
+{
+ "a_sheets_tested": 38,
+ "a_sheets_conjugate_closer": 35,
+ "a_sign_test_p": 3.338936949148774e-08,
+ "b_central_sheets_dropped": [
+  "A:4-5",
+  "B:12-13",
+  "C:20-21",
+  "D:28-29",
+  "E:36-37",
+  "F:44-45",
+  "G:52-53",
+  "I:67-68",
+  "J:69-70",
+  "K:71-72",
+  "L:73-74",
+  "M:79-80",
+  "N:85-86",
+  "O:88-89",
+  "Q:94-95",
+  "S:100-101"
+ ],
+ "b_no_central": {
+  "n_pairs": 148,
+  "obs": 0.33439,
+  "null_mean": 0.34661,
+  "null_sd": 0.00304,
+  "z": 4.01,
+  "pct_lower": 3.53
+ },
+ "c_fixed_60_words_pages": 211,
+ "c_fixed_60_words": {
+  "n_pairs": 222,
+  "obs": 0.41258,
+  "null_mean": 0.42641,
+  "null_sd": 0.00123,
+  "z": 11.21,
+  "pct_lower": 3.24
+ },
+ "c_fixed_60_words_no_central": {
+  "n_pairs": 130,
+  "obs": 0.40173,
+  "null_mean": 0.41778,
+  "null_sd": 0.00224,
+  "z": 7.17,
+  "pct_lower": 3.84
+ },
+ "c_fixed_100_words_pages": 119,
+ "c_fixed_100_words": {
+  "n_pairs": 103,
+  "obs": 0.35314,
+  "null_mean": 0.36203,
+  "null_sd": 0.0019,
+  "z": 4.68,
+  "pct_lower": 2.45
+ },
+ "c_fixed_100_words_no_central": {
+  "n_pairs": 61,
+  "obs": 0.3426,
+  "null_mean": 0.35957,
+  "null_sd": 0.00304,
+  "z": 5.59,
+  "pct_lower": 4.72
+ }
+}

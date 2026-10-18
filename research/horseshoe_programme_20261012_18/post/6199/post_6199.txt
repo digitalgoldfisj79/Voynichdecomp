@@ -1,0 +1,47 @@
+Following Mauro's summary, and Marco's point about wanting the evidence here rather than in an app, here's what I've been testing over the last few days. Three questions: is the bifolium really a unit, can the text put the sheets back in order, and does the Echo chain survive a simple alternative explanation. I wrote down what would count as a pass or a fail before running each test. Code and data are linked at the bottom if anyone wants to rerun it or pull it apart.
+
+Method in one line: for each page I count glyph transitions (inside words and along lines) and compare pages with Jensen-Shannon distance. Sheets are from eo777's table and scribes are Lisa's five hands. The null shuffles whole leaves between sheets, but only within the same quire and the same scribe, so a "same sheet" pair is never up against a different hand.
+
+[b]The bifolium[/b]
+
+[fig1_conjugate_per_sheet.png]
+
+35 of 38 sheets: a page is closer to the other half of its own sheet than to other sheets by the same scribe in the same quire. Against the shuffled-leaf null the two halves are about 5% closer, z = 7.1. Put Currier, scribe, section and quire into a PERMANOVA first and there's still a sheet term (z = 6.3), worth about 3% of the variance once you subtract what shuffled sheets give. Small next to A/B, then, but it's there.
+
+[fig2_sheet_vs_opening.png]
+
+And it follows the sheet, not the opening. I regressed every page-pair distance on leaf, quire, scribe, section, Currier, distance in book order and page size. Same-sheet pairs come out more alike than the shuffled baseline (z = 6.8). Facing pages land where they do when the words have been shuffled between pages of the same scribe and quire, which is to say nowhere special.
+
+[fig3_robustness.png]
+
+This kind of distance is sensitive to page length, and I should have controlled for that from the start. Cutting every page down to the same number of glyph pairs leaves the sheet effect at z = 6.4 (PERMANOVA 5.4). Shuffled text gives 0.7. I also rebuilt it from scratch for 12 transliterations in four alphabets and got z between 6.5 and 7.5 every time.
+
+[b]Can the text order the sheets?[/b]
+
+[fig4_what_text_can_order.png]
+
+Before trusting any text gradient as an order I wanted to see what a text of known order looks like under the same treatment. I took Circa instans (Latin) and a Galen (Greek), chopped each into 49 single-sheet gatherings using the page sizes of real VMS sheets, and asked four methods to put them back. The best, a shortest path through the distances, gets about one true neighbour in five. Chance is 4%. A TempSeq-style smoothness method and a biostratigraphy-style incidence method didn't beat it. So even with a text you know was written in sequence, at these page sizes you can't rebuild it sheet by sheet from the statistics.
+
+The VMS gradient is still interesting. Within Herbal A, scribe 1 (21 sheets), I built the order twice, once from one leaf of each sheet and once from the other. The two orders agree (z = 3.5 with incidence seriation, 2.7 with spectral), at least as well as in any of the five known-order windows. It matches npcompl33t's sequence on those sheets (rho 0.76) and partly follows the Currier A to B direction. What it can't tell you is which end came first.
+
+[b]The Echo chain[/b]
+
+[fig5_echo_chain_mixture.png]
+
+Two things.
+
+First, a confound. On the chain's own pages the move from A to B is also a change of hand: 1a, 1b and 1.5a are all scribe 1, and from 3a on the stages mix scribes 2, 3 and 5. A gradual change across the B stages is hard to tell apart from a changing mix of scribes.
+
+Second, a test. If a stage is just a blend of the pages before and after it, it shouldn't have word forms that are commoner there than on both sides. I counted those forms for each interior stage and compared the count with 2,000 reshuffles of whole pages. 1.5a, the "transitional A" stage, doesn't beat the blend on the full chain: 10 forms where 8.9 are expected, z = 0.28. Within scribe 1 alone it does (z = 3.0). The other stages all pass. At 2a, half the forms that stand out are outputs of the Echo rules (okeol, cheol, cheody, cheo, cheos), which fits *ol > *eol > *edy.
+
+Credit where it's due: Torsten has already documented this path, chol > cheol > cheo > chey > chedy, including cheol being common on the pharma A pages (Timm & Schinner 2020, Cryptologia, https://doi.org/10.1080/01611194.2019.1596999; his tables are at https://github.com/TorstenTimm/SelfCitationTextgenerator/blob/master/chey_chedy.md). So that part confirms his observation rather than adding anything new. I also didn't plan the 2a count in advance, and 2a is pharma and astronomical pages, so it could simply be section vocabulary.
+
+[b]What didn't hold up[/b]
+
+I'd earlier reported that pages on the same face of the flat sheet were more alike. Once page length was equalised it fell below the threshold, so I've dropped it. Compression distance (NCD) shows the raw sheet effect but loses it once size, Currier and section are controlled. And a test for edge soiling on outer faces failed its own positive control, so there's no result from that.
+
+[b]Code and data[/b]
+
+https://github.com/digitalgoldfisj79/Voynichdecomp/tree/main/research/bifolium_order_tests
+
+Needs Python 3.10+ with numpy, scipy, pandas and matplotlib. ./run_all.sh runs the lot in about an hour with fixed seeds; SLIM=1 ./run_all.sh adds the 12-transliteration check. My outputs are in results_expected/ so you can compare, and the README says what each script is testing. The Echo inputs come from eo777/voynich-rules at commit 42ea839.

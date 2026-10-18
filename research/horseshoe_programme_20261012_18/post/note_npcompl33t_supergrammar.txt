@@ -1,0 +1,42 @@
+Hi again,
+
+Separate note on the wider Super Grammar, since the first one only covered the parts that bear on your five questions.
+
+What it is: a grammar of the running text (labels and circular/radial text are left out), kept as a ledger of claims. Each claim has a falsifier written down before the test and is tested against a matched null on held-out folios, in several transliterations. A claim only goes into a release if it survives an independent clean-room replay. Anything that fails stays in the ledger marked rejected or retracted. The current frozen release is v03 (20 September). It describes structure. It isn't a decipherment and says nothing about meaning or how the book was made.
+
+Certified (9 theorems, backed by 32 claim certificates)
+
+Each certified claim had to pass 16 or 17 required checks (matched null, leakage, circularity, confounds, replication, representation dependence and so on, plus an independent implementation replay for 31 of the 32), and every one passed.
+
+Inside words:
+- The next glyph depends on at least the two before it. A third adds nothing that holds up across smoothing settings, so it's kept out.
+- 19 glyph pairs never occur, and they stay at zero in all six transliterations tested.
+- Whether q comes first helps predict k versus t, over and above the rest of the word (4.8 SD in ZL; four of five other transliterations agree, one is unresolved).
+- The length of an i run helps predict how the word ends, beyond the glyph or two before it (at least 3.5 SD in all six).
+
+Between words:
+- The previous word's shape (first glyph, last two glyphs, length) helps predict the next word (3.8 SD). Knowing the exact previous word adds almost nothing beyond that, apart from a small residual in one transliteration.
+- The link across a space is stronger than the link across a line break. This one is fully certified, but only just clears the bar (2.1 SD at its weakest).
+- On the same page, exact words recur at short distances (2 to 64 words) in a structured way (2.2 SD). Whether the immediately following word should be excluded isn't resolved.
+
+What it rules out:
+- A fixed page-by-page codebook. With a preselected codebook the model passes 0 of 5 held-out folds; without one it passes 4 of 5. That kills that model class, not every possible page-level mechanism.
+- Currier A/B as something separate from section and hand. No section+hand group contains both A and B, so the manuscript can't separate them (1.18 SD, unresolved).
+- Avoidance at line boundaries as a rule of its own. It goes away once page layout and frequencies are kept (1.07 SD).
+
+Tested and rejected: a hidden paragraph-level content state; a four-state hidden line regime; a stable code unit that carries across scribes; the bifolium as an independent linguistic state; a sequential one-edit mutation process. An earlier claim of extra immediate repeats of the same word is retracted.
+
+Open, not certified
+
+- v03.1 restates the certified theorems more tightly (named transliterations, atomic glyph frame). The only thing blocking them is external adversarial review, so if you want to attack any of them, that would be genuinely useful.
+- Two new candidates. Within a line, the same word turns up again two words later more often than expected, while immediate repeats aren't suppressed. And the opening glyph group of each line carries information about the opening group of the line above, beyond section, Currier, hand and line position; identical openers on consecutive lines are rare. The openers fall into four sets ({q,t}, {d,o}, {ch,sh}, {s,y}) and the pattern carries across Lisa's hands 1 and 2, not yet 3.
+- The transformation work from the first note (the operator library, the A/C/B steps, the collapse tests) is further back. It has no certificate yet, and checks including circularity, confounds and an independent implementation replay are still open.
+
+In the v03 run there are 103 claims: 32 certified, 2 failed replay, 8 rejected, 5 superseded, 1 retracted and 55 still open. Everything since then is still open.
+
+The certificates themselves are in the folder from my last note, with every check and the evidence row behind each one:
+https://github.com/digitalgoldfisj79/Voynichdecomp/tree/main/voynich_structure_evidence/supergrammar/certification
+The release note has the headline numbers, replay hashes and retraction list:
+https://github.com/digitalgoldfisj79/Voynichdecomp/blob/main/research/RELEASE_supergrammar_v03_20260920.md
+
+Ed

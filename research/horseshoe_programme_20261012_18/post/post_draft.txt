@@ -1,0 +1,35 @@
+Re: Mauro's question in #32 about support for Lisa's bifolio-as-unit proposal.
+
+I have been running a set of controlled tests on exactly this over the last few days, using the sheet assignments from the eo777/voynich-clusters repository (I assume this is npcompl33t's, since the sheet codes match his posts). Short version: the bifolium effect is real and it survives scribe, quire, section, Currier language and page size. It is also small, and it attaches to the physical sheet rather than to the opening. Details and figures below. Every test was written down with its pass/fail criteria before it was run.
+
+[Figure 1: fig1_sheet_opening_v2.png]
+
+Why the distinction matters. If the text had been written into the bound book front to back, the pages that face each other (3v and 4r in the sketch) were written one after the other and should be the most alike. Leaves 1 and 8 would have been written far apart in time. If instead the text was written on the loose sheets before they were nested, the two halves of a sheet (1 and 8) should be alike, and facing pages should be nothing special. The two models make opposite predictions, so the data can choose between them.
+
+Data. Page profiles of glyph transitions inside words and along lines, compared with Jensen-Shannon distance (a rebuild of npcompl33t's approach). Scribes are Lisa's five hands, sections are the voynich.nu per-page descriptions, and sheets are from the eo777 table. The null models shuffle whole leaves between sheets within the same quire and the same scribe, so a "same sheet" pair is only ever compared against pages written by the same hand in the same gathering.
+
+1. Conjugate leaves are more alike
+
+[Figure 2: fig2_conjugate_per_sheet.png]
+
+In 35 of 38 sheets, a page is closer to the other half of its own sheet than to other sheets by the same scribe in the same quire. Against the leaf-shuffling null the two halves of a sheet are about 5% closer (z = 7.1); with every page cut to the same length it is about 3% (z = 6.6, 33 of 35 sheets). A PERMANOVA with Currier, scribe, section and quire entered first still finds a sheet term (z = 6.3; 5.3 with equal-length pages), worth about 3% of the total text variance. So the effect is consistent, but it is much smaller than the Currier A/B difference.
+
+2. The sheet, not the opening
+
+[Figure 3: fig3_sheet_vs_opening_v2.png]
+
+A regression over all page pairs, with leaf, quire, scribe, section, Currier, distance in book order and page size all in the model. Same-sheet pairs come out more alike than in the shuffled-leaf baseline (z = 7.0; 6.4 with equal-length pages). Facing pages come out exactly where they do in a control where the words are shuffled between pages of the same scribe and quire. This holds when facing pairs that are also conjugate are removed, and when short pages are dropped. Pages that sit next to each other in the present binding are not more alike than chance once everything else is accounted for. Pages that share a piece of parchment are.
+
+3. It does not depend on the transliteration
+
+[Figure 4: fig4_transliterations_v2.png]
+
+I rebuilt everything from scratch for every transliteration in the voynich.science set with enough coverage: Takahashi, Zandbergen-Landini, the VMS database files, both Friedman group files, Glen Claston's v101, Currier, and Reeds/Gillogly. That is 12 after removing exact duplicates, across four alphabet families. The sheet effect is there in all 12 (z 6.4 to 7.3). A reading habit on faded pages should not reproduce at the same size across different transliterators using different alphabets. (The Reeds/Gillogly file looks to be derived from Currier's, and the VMS database files merge others, so these 12 are not all independent readings.)
+
+What this does not show
+
+It says nothing about what the text means, whether it is a cipher, or which way time runs. The sheet effect is small. This distance is sensitive to page length, so I re-ran the main tests with every page cut to the same number of glyph pairs, plus a control with words shuffled between pages of the same scribe and quire (it gives nothing). A same-face effect I first saw did not survive this and is left out. The bifolium assignments come from that repository and I have not checked them against the Davis-Layfield collation. Two alternatives remain open. Sheets may have been planned by subject, which would make conjugate pages share vocabulary for that reason (too few sheets cross a section boundary to test this properly). And a legibility effect that misleads every transliterator in the same way on one skin side cannot be ruled out by the transliteration check. One corroboration attempt failed: compression distance (NCD) shows the raw sheet effect, but it disappears once size, Currier and section are controlled, so I am not counting it.
+
+On the horseshoe argument between npcompl33t and Jorge: correspondence analysis on the raw transition counts shows no arch at all, and detrended CA (my own implementation) keeps a second axis about 60% the size of the first. So the structure is not one gradient. The ordering itself is reproducible, though. A spectral seriation of the sheets, a completely different method, matches npcompl33t's sequence with rho = 0.91.
+
+Code and per-sheet tables are available if anyone wants to check or break this.

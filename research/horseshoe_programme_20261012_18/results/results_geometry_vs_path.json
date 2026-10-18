@@ -1,0 +1,66 @@
+{
+ "sheet_level_within_section": {
+  "logw": {
+   "rho": -0.547,
+   "null_mean": 0.2773,
+   "null_sd": 0.0825,
+   "z": 3.27
+  },
+  "logh": {
+   "rho": -0.6948,
+   "null_mean": 0.4981,
+   "null_sd": 0.0638,
+   "z": 3.08
+  },
+  "logasp": {
+   "rho": 0.4327,
+   "null_mean": 0.4465,
+   "null_sd": 0.0544,
+   "z": -0.25
+  },
+  "wlen": {
+   "rho": 0.4776,
+   "null_mean": 0.464,
+   "null_sd": 0.0566,
+   "z": 0.24
+  },
+  "n_words": {
+   "rho": 0.7883,
+   "null_mean": 0.6903,
+   "null_sd": 0.05,
+   "z": 1.96
+  }
+ },
+ "page_level_within_section_x_scribe": {
+  "logw": {
+   "rho": -0.3859,
+   "null_mean": 0.3381,
+   "null_sd": 0.0161,
+   "z": 2.97
+  },
+  "logh": {
+   "rho": -0.5877,
+   "null_mean": 0.5865,
+   "null_sd": 0.013,
+   "z": 0.09
+  },
+  "logasp": {
+   "rho": 0.3307,
+   "null_mean": 0.3779,
+   "null_sd": 0.0153,
+   "z": -3.08
+  },
+  "wlen": {
+   "rho": 0.3466,
+   "null_mean": 0.3697,
+   "null_sd": 0.0173,
+   "z": -1.34
+  },
+  "n_words": {
+   "rho": 0.7127,
+   "null_mean": 0.7051,
+   "null_sd": 0.0119,
+   "z": 0.64
+  }
+ }
+}

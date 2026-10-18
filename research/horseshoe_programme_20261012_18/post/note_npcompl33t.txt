@@ -1,0 +1,33 @@
+Hi,
+
+Here's where the testing has got to on the five things you listed. It's all in one folder now: https://github.com/digitalgoldfisj79/Voynichdecomp/tree/main/voynich_structure_evidence. The README takes your questions one at a time and links every number to the run it came from.
+
+One caveat first. Most of this is provisional. Each result passed a pre-registered test against a matched null and was checked on held-out data, but only a few have been through my full certification and replay. The README marks which. None of it says anything about meaning.
+
+What holds up
+
+1. The bifolium shows up in the text. A page is closer to the other half of its own sheet than to other sheets by the same scribe in the same quire: 35 of 38 sheets, z 7.1 against a leaf-shuffle null, 6.4 with page lengths equalised, 0.7 on shuffled text. It's small (about 3% of the variance) but it holds in 12 transliterations, and it tracks the sheet: facing pages across an opening show nothing special. At word level the sheet behaves like a shared repertoire (reproducible in 8 of 8 herbal quires held out). As a separate linguistic state it collapses under a strict leaf-pair control.
+
+2. There's a family of word transformations that runs with Currier A to B and carries over to sections it wasn't learned on. I built every one-edit link between the 5,076 running-text word types, found the operators on Herbal A vs Herbal B, then replayed them on Pharma A vs Bio/Stars B. 21 operator classes kept their direction and cleared 2 SD both times. The strongest is inserting d before final y (6.9 SD in discovery, 4.8 SD in validation). The top eight touch about two thirds of running-text tokens (65.9%, or 74.1% with the k/t and p/f gallows families). Typical pairs: chey/chedy, shey/shedy, qokey/qokedy, okey/okedy, chy/chdy.
+
+3. The shift is stepwise through C. ey > edy is 4.7% of the pair in A, 20.7% in C and 61.8% in B; chy > chdy goes 26.7%, 31.8%, 68.4%. The A/C/B interaction is 8.4 SD and holds in three transliterations. The catch is that Currier can't be separated from section and hand. No section+hand group has both A and B pages, so this can't tell you whether time, scribe or section is driving it.
+
+4. The text gives a reproducible gradient but can't rebuild the order. On two texts of known order cut to VMS sheet sizes, the best method gets about 1 true neighbour in 5 (chance is 4%). Inside Herbal A, scribe 1, the order you get from one leaf of each sheet agrees with the order from the other leaf (z 3.5), and it matches your sequence on those sheets (rho 0.76). It can't say which end came first. In that block the middle sheets were no more stable than the end ones (Spearman 0.10, p 0.68), so I can't back the idea that the middle of the sequence is more secure, at least there.
+
+Not resolved, or didn't hold
+
+- Your five regimes are useful for describing the book, but as a held-out model they don't beat the simpler parent (z 1.33) and they don't line up with Lisa's hands better than chance (z 0.38). That means the test doesn't resolve them, which isn't the same as them being wrong.
+- Echo's rules: the correspondences are real and line up with A/B, but the A to B direction doesn't clear the strictest control (z 1.8 in ZL, 1.9 in Takahashi). On the chain itself the A to B step coincides with a change of scribe, and stage 1.5a can't be told apart from a mix of the pages either side (z 0.28; within scribe 1 alone it can, z 3.0). The *ol > *eol > *edy path at 2a is there, but Torsten published it in 2020.
+- Transformations learned in one section don't transfer to unseen word groups (-3.0 and -1.6 SD).
+
+Rare vs common
+
+The operators reach rare words at the same rate as words overall: collapsing the top eight cuts 24.8% of types and 23.1% of hapaxes. But grouping by them only helps predict common words. For rare and unseen words prediction gets worse. I haven't tested directly how a change spreads from common to rare words along the sequence.
+
+Meaning
+
+Some different word types do share contexts, e.g. aiiin, aiin, ain, air, ar, or, r, s (7.3 SD; 3.4 SD after a topology-matched control). The Echo-linked forms don't (0.25 SD). Collapsing the operator families removes 29.5% of the A/B vocabulary difference against 17.2% for random collapses of the same size, but the same collapse does nothing on a fresh Stars early/late split. Every attempt to strip the operators off as noise and get a simpler underlying text failed. That fits them being part of how the surface text was produced, though my models failing isn't proof. So: real, regular relations between spellings; whether they preserve meaning isn't shown either way.
+
+The bifolium and ordering code runs end to end (./run_all.sh in research/bifolium_order_tests, about an hour). Each claim in the register has its falsifier written next to it, so if you want to break something, that's where to start.
+
+Ed

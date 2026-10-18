@@ -1,0 +1,20 @@
+{
+ "rho_text_vs_D_image_raw": {
+  "rho": 0.106,
+  "p": 0.5586
+ },
+ "rho_text_vs_D_image_geo_resid": {
+  "rho": 0.332,
+  "p": 0.0594
+ },
+ "rho_text_vs_D_geometry_only": {
+  "rho": 0.079,
+  "p": 0.6613
+ },
+ "text_effect_at_zero_image_effect (intercept)": 0.00528462979806919,
+ "slope_on_image": 0.3121059811345132,
+ "loo_min_z": 2.1671865393211722,
+ "drop_top3_z": 1.6829316427579957,
+ "median_D": 0.0092455683848389,
+ "trimmed_mean_10pct": 0.007825103986735759
+}
