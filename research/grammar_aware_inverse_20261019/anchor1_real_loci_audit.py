@@ -75,6 +75,26 @@ def main():
             "label_control_examples":[{"folio":x["folio"],"line":x["line"],
                                        "raw":x["raw"],"unit":x["unit"]}
                                       for x in active if x["folio"] not in FOCUS][:25]}
+    # CANONICAL ECOLOGY OVERRIDE: read-only Supabase vms_catalogue.vms_folios
+    # query checked 2026-10-19. Numeric folio ranges are NOT a safe section map.
+    folio_sections={
+        "f1r":"text-only","f2r":"Herbal-A","f11v":"Herbal-A",
+        "f17r":"Herbal-A","f49v":"Herbal-A","f57v":"Cosmological",
+        "f65r":"Herbal-A","f66r":"text-only"
+    }
+    for layer in layers:
+        rr=rows(pop,layer)
+        labels=[x for x in rr if x["ecology"]=="LABEL" and folio_sections.get(x["folio"])=="Herbal-A" and x["tokens"]]
+        multichar=[x for x in labels if any(len(t)>=3 for t in x["tokens"])]
+        layers[layer]["canonical_audited_herbal_label_folios"]=sorted(set(x["folio"] for x in labels))
+        layers[layer]["canonical_audited_herbal_label_locus_count"]=len(labels)
+        layers[layer]["canonical_audited_herbal_label_nontrivial_loci"]=len(multichar)
+        layers[layer]["canonical_audited_herbal_label_nontrivial_folios"]=sorted(set(x["folio"] for x in multichar))
+        layers[layer]["canonical_audited_herbal_label_loci"]=[
+           {"folio":x["folio"],"line_key":x["original_line_key"],"unit":x["unit"],"text":x["raw"]}
+           for x in multichar
+        ]
+    
     def find(layer,f,li):
         return next((x for x in layers[layer]["focus"][f] if x["line"]==li),None)
     checks={
@@ -84,7 +104,8 @@ def main():
     }
     if not all(checks.values()):raise RuntimeError("SOURCE_AUDIT_ASSERTIONS "+json.dumps(checks))
     out={"schema":"ANCHOR1-REAL-CORPUS-AUDIT","sha256":sha,
-         "note":"Herbal folio range used only for preliminary source counts; controls require canonical section/hand/physical bifolium metadata before hypothesis testing.",
+         "note":"Numeric folio-range label counts are preliminary only. CANONICAL section annotation for all eight label-bearing low-number folios is frozen below; controls still need hand/bifolium matched metadata.",
+         "canonical_section_map_eight_candidate_folios":folio_sections,
          "unit_rule":"Unit indicator P is running; L is label; no pooled training or scoring.",
          "layers":layers,"checks":checks,
          "promotion":"NO: f2r plant identity is disputed; Egerton labelled peony and centaury are admissible historical vocabulary but not aligned proof."}
