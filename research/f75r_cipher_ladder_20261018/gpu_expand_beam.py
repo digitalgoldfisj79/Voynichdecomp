@@ -28,7 +28,7 @@ ABC=g["ABC"];emit=g["emit"];tokenize=g["tokenize"];lexicon=g["lexicon"];build_lo
 if not torch.cuda.is_available():raise RuntimeError("GPU_REQUIRED")
 device="cuda:0"; t0=time.time()
 manifest=json.loads(grab(args.input));gl=list(manifest["glyphs"])
-if len(gl)!=6:raise ValueError("input must be K6 exact")
+if len(gl) not in (6,7,8):raise ValueError("input must be K6/K7/K8 exact")
 train,sha=read_page("f75r");hold,_=read_page("f76r")
 lex,audit=lexicon(args.lexicon)
 initial=manifest["topkeys"][:args.init]
@@ -50,7 +50,7 @@ emit("BEAM_AUDIT",{"exact_seed_keys":len(initial),"glyphs":gl,"up_to":args.up_to
 "beam":args.beam,"source_vms_sha":sha,"source_manifest":args.input,
 "not_exhaustive_after_k6":True,"limit":args.lexicon})
 results=[]
-for k in range(7,args.up_to+1):
+for k in range(len(gl)+1,args.up_to+1):
  rem=[x for x in allgs if x not in gl]
  if not rem:break
  newglyph=pick_extension(rem,gl,train);gl.append(newglyph)
