@@ -52,3 +52,21 @@ Three sets per language: refit to whole-word-order shuffles, reoptimise on recur
 **Interpretation:** All six word-order refit scores are below 2 null SD; all six heldout word-order comparisons are below 2 null SD. The Markov(2) score is higher in several languages, but those controls reproduce only a subset of Voynich graphotactics and do not distinguish lexical decipherment from generic word-formation structure. An automated `candidate_promotion=true` from the prior run is **still retracted**.
 
 Rung 2 one-null search: new exhaustive twenty-way glyph-null branch added with a synthetic injected-null qualification gate; it will not score f75r if that gate fails. Prior calibration never licensed historical language selection.
+
+## Rung 2 completed: one-null glyph, Latin and Italian (2026-10-18)
+
+Job logs (direct primary outputs):
+- Latin: https://huggingface.co/jobs/Digitalgoldfish79/6ad52f32c662881452278b01
+- Italian: https://huggingface.co/jobs/Digitalgoldfish79/6ad52f3dc662881452278b11
+- Initial Latin smoke failed the planted instrument, and was excluded: https://huggingface.co/jobs/Digitalgoldfish79/6ad52dee5ccb47ba0f7c7c35
+
+Full 900-step, 256-way GPU search with exactly one candidate null position enumerated over every glyph; synthetic planted null identification passed independently for both languages before target scoring. Fixed pnull = 0.05, with log-probability scoring per original cipher glyph.
+
+| Language | Planted character accuracy | Correct planted null | Best selected f75r null | f75r deletion frequency | f76r one-null minus mono (per source glyph) | Matched null SD |
+|---|---:|:---:|---|---:|---:|---|
+| Latin | 93.85% | yes | EVA e | 13.77% | -0.0055784 | not measured |
+| Italian | 98.20% | yes | EVA d | 10.65% | +0.2207300 | not measured |
+
+**Inference firewall:** Both real-text effect sizes await a properly matched null standard deviation and controls distinguishing the one-null family from flexible graphotactic overfitting; no historical-language, literal-null or cipher promotion. The pnull=0.05 fixed encoding differs substantially from the selected 10–14% empirical deletion frequencies and must receive prior-sensitivity checks. The comparison uses different optimization runs and equal-search-budget assessment should be confirmed. Do not infer a language rank from raw Latin vs Italian score deltas. Positive no-null synthetic false-selection rate must also be calibrated before promotion.
+
+**Status:** NO CLAIM. Hard family-matched null controls, false-positive rate, and historical corpus fitness remain unqualified. Additional complexity is blocked until those tests can discriminate the alternatives.
