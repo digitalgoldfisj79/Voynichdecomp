@@ -63,7 +63,8 @@ for k in range(len(gl)+1,args.up_to+1):
   extended=torch.cat([part[:,None,:].expand(-1,26,-1),ext[:,:,None]],dim=-1)
   cand.append(extended[not_used])
  expanded=torch.cat(cand)
- lookups=build_lookups(train,gl,lex)
+ # Dictionary never includes words longer than ten normalized letters; skip unscorable forms.
+ lookups=build_lookups([w for w in train if len(tokenize(w))<=10],gl,lex)
  allscores=[];allhits=[]
  for i in range(0,len(expanded),args.batch):
   sc,hi=score(expanded[i:i+args.batch],lookups)
