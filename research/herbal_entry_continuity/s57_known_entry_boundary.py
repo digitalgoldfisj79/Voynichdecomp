@@ -159,10 +159,10 @@ def boundaries(pages,meta):
         for b in pages[i+1:]:
             if not a.get("sheet") or a["sheet"]!=b.get("sheet"):continue
             an=int(re.search(r"\d+",a["id"]).group());bn=int(re.search(r"\d+",b["id"]).group())
-            if an==bn or (a["id"],b["id"]) in seen:continue
+            if an==bn or (bn==an+1 and a["id"].endswith("v") and b["id"].endswith("r")) or (a["id"],b["id"]) in seen:continue
             if not all(a[k]==b[k] for k in ("quire","currier","scribe")):continue
             seen.add((a["id"],b["id"]))
-            pairs.append(dict(a=a,b=b,relation="conjugate"))
+            pairs.append(dict(a=a,b=b,relation="conjugate_nonadjacent"))
     return pairs
 def source_map(path):
     d={}
@@ -255,7 +255,7 @@ def main():
     pages,corpus=source_voynich(rep)
     pairs=boundaries(pages,source_map(args.sheet_map))
     vms={}
-    for rel in ["leaf_rv","next_leaf","conjugate"]:
+    for rel in ["leaf_rv","next_leaf","conjugate_nonadjacent"]:
         relpairs=[p for p in pairs if p["relation"]==rel]
         vms[rel]={m:sampled_comparison(pages,relpairs,rel,m) for m in ["word","tri"]}
     result=dict(program="S57",seed=SEED,control_source=URL,control_sha256=control_digest,
