@@ -1,0 +1,6618 @@
+{
+  "schema": "F75R_EXACT_ENUM_20261019",
+  "mode": "real",
+  "k": 7,
+  "first_start": 20,
+  "first_stop": 23,
+  "seen": 382536000,
+  "batches": 4702,
+  "elapsed_s": 46.29590392112732,
+  "complete": true,
+  "best_score": 34.61430358886719,
+  "top": [
+    {
+      "rank": 1,
+      "score": 34.61430358886719,
+      "n_matching_types_search": 14,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "h",
+        "o": "s",
+        "q": "m",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 59,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mshyvt",
+            "occurrences": 13,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 11,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mshyt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tbyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "hyybt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mshyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "thyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "myt",
+            "occurrences": 1,
+            "lang": [
+              "cs",
+              "he",
+              "ru",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 83,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 10,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mshyt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mshyvt",
+            "occurrences": 7,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "byyt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mshyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "byv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "score": 34.34275436401367,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "v",
+        "e": "b",
+        "k": "h",
+        "o": "s",
+        "q": "l",
+        "sh": "r",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 64,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "rbvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lshbvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "rbt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lsht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lshbt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "rbbvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shbvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "trbvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshdy",
+            "plain": "lshrvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lshbv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shbt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "lbt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 73,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "rbvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "rbt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lshbt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lshbvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shbvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "rvt",
+            "occurrences": 4,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lshbv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "rbbvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lsht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "rbv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shbt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 3,
+      "score": 33.66718673706055,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "n",
+        "k": "h",
+        "o": "s",
+        "q": "l",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 64,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bnvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lshnvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bnt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lsht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lshnt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "bnnvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbnvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shnvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshdy",
+            "plain": "lshbvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hbnt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shnt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 74,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bnvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bnt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lshnt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lshnvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shnvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbnvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "bnnvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lsht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "bnv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shnt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "score": 33.65930938720703,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "d",
+        "y": "r"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dyvr",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "dyr",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "sdyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 90,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dyvr",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "dyr",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "dyyr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "dvr",
+            "occurrences": 4,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsr",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "dyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 5,
+      "score": 33.32296371459961,
+      "n_matching_types_search": 14,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "h",
+        "o": "s",
+        "q": "m",
+        "sh": "n",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 56,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "nyvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mshyvt",
+            "occurrences": 13,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "nyt",
+            "occurrences": 11,
+            "lang": [
+              "en",
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mshyt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshedy",
+            "plain": "mshnyvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshdy",
+            "plain": "mshnvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "hyynt",
+            "occurrences": 1,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mshyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "thyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hnyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "myt",
+            "occurrences": 1,
+            "lang": [
+              "cs",
+              "he",
+              "ru",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 81,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "nyvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "nyt",
+            "occurrences": 10,
+            "lang": [
+              "en",
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mshyt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mshyvt",
+            "occurrences": 7,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "nyyt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "nvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mshyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "nyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tnyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "nht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 6,
+      "score": 33.11112976074219,
+      "n_matching_types_search": 13,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "h",
+        "o": "s",
+        "q": "k",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 60,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "kshyvt",
+            "occurrences": 13,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 11,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "ksht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tbyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "hyybt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "thyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "kyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 75,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 10,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "kshyvt",
+            "occurrences": 7,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "byyt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "ksht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "byv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 7,
+      "score": 32.96430206298828,
+      "n_matching_types_search": 13,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "h",
+        "o": "s",
+        "q": "n",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 58,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "nshyvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 11,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "nshyt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tbyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "hyybt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "thyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "nyt",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "he",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 81,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 10,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "nshyt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "nshyvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "byyt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "shyvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "sht",
+            "occurrences": 3,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "shyyt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "byv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "shyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 8,
+      "score": 32.81718826293945,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "h",
+        "k": "k",
+        "o": "r",
+        "q": "m",
+        "sh": "s",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 64,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "shvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mrkhvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "sht",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mrkt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mrkht",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "shhvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vshvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rkhvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ksht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rkht",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 69,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "shvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "sht",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mrkht",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mrkhvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rkhvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vshvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "shhvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mrkt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "shv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rkht",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tsht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "skt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 9,
+      "score": 32.3671875,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "v",
+        "e": "l",
+        "k": "h",
+        "o": "k",
+        "q": "m",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "blvt",
+            "occurrences": 16,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhllvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "blt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhlt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "mkhllt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vblvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "khlvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "khlt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mlt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 82,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "blvt",
+            "occurrences": 28,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "blt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "mkhllt",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhlt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhllvt",
+            "occurrences": 6,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "khlvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vblvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "kht",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "blv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "plain": "khllv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "khlt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tblt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 10,
+      "score": 32.20930480957031,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "a",
+        "y": "r"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "ayvr",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ayr",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 89,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "ayvr",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ayr",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "ayyr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "avr",
+            "occurrences": 4,
+            "lang": [
+              "fr",
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsr",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "asr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 11,
+      "score": 32.20930480957031,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "g",
+        "y": "r"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "gyvr",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "gyr",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 81,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "gyvr",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "gyr",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "gvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsr",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 12,
+      "score": 32.20930480957031,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "l",
+        "y": "r"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lyvr",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lyr",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 83,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lyvr",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lyr",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "lvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsr",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "lyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 13,
+      "score": 32.00930404663086,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "m",
+        "y": "d"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 60,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "myvd",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvd",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "myd",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsd",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyd",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvd",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshdy",
+            "plain": "htsmvd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "myysd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 16,
+        "dictionary_matching_tokens": 82,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "myvd",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "myd",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyd",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvd",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "myyd",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvd",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "mvd",
+            "occurrences": 4,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsd",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyd",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsd",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "myysd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "syyd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "msd",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 14,
+      "score": 31.817188262939453,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "v",
+        "e": "h",
+        "k": "k",
+        "o": "r",
+        "q": "b",
+        "sh": "s",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "shvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "brkhvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "sht",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "brkt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "brkht",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "shhvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vshvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rkhvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ksht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rkht",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 69,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "shvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "sht",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "brkht",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "brkhvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rkhvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vshvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "shhvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "brkt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "shv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rkht",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tsht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "skt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 15,
+      "score": 31.03084945678711,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "r",
+        "o": "p",
+        "q": "s",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 58,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "spryvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 11,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "spryt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "spryyt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tbyvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "spryv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "rbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "pryt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "syt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 87,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "byvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byt",
+            "occurrences": 10,
+            "lang": [
+              "cs",
+              "he",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "spryyt",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "spryt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "spryvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "byyt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbyvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "prt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "spryv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "byv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "ryyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "pryt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tbyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "brt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "nl",
+              "pt"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 16,
+      "score": 30.959304809570312,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "v",
+        "e": "y",
+        "k": "s",
+        "o": "t",
+        "q": "h",
+        "sh": "b",
+        "y": "r"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 48,
+        "words": [
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "byr",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "syybr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "sbyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "hyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 56,
+        "words": [
+          {
+            "cipher": "shey",
+            "plain": "byr",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "htsyyr",
+            "occurrences": 9,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "htsyr",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "htsyvr",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "tsyvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvr",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "tsr",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "tsyyr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "htsyv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "htsr",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "byv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "htsyyt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "tsyr",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "bsr",
+            "occurrences": 1,
+            "lang": [
+              "yi"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 17,
+      "score": 30.642757415771484,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "v",
+        "e": "t",
+        "k": "y",
+        "o": "b",
+        "q": "l",
+        "sh": "p",
+        "y": "h"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 60,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "ptvh",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lbytvh",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "pth",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lbyh",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lbyth",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "bytvh",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "hptvh",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lbytv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ypth",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "byth",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "lth",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 67,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "ptvh",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "pth",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "lbyth",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lbytvh",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "bytvh",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "byh",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lbytv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lbyh",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "byth",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "hpth",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "pyh",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 18,
+      "score": 30.359304428100586,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "u",
+        "e": "e",
+        "k": "t",
+        "o": "a",
+        "q": "m",
+        "sh": "h",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 59,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "heus",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mateus",
+            "occurrences": 13,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "hes",
+            "occurrences": 11,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mats",
+            "occurrences": 7,
+            "lang": [
+              "de",
+              "el",
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mates",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "en",
+              "es"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ateus",
+            "occurrences": 2,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokshedy",
+            "plain": "matheus",
+            "occurrences": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mateu",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "thes",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ates",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mes",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ru"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 78,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "heus",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "hes",
+            "occurrences": 10,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mates",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "en",
+              "es"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mateus",
+            "occurrences": 7,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "hees",
+            "occurrences": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ateus",
+            "occurrences": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "hus",
+            "occurrences": 4,
+            "lang": [
+              "cs",
+              "hu",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mateu",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mats",
+            "occurrences": 2,
+            "lang": [
+              "de",
+              "el",
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "heu",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "tees",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ates",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "shes",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "hts",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 19,
+      "score": 30.177675247192383,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "v",
+        "e": "n",
+        "k": "h",
+        "o": "k",
+        "q": "l",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 59,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bnvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lkhnvt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bnt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lkht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "bnnvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbnvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "khnvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokshdy",
+            "plain": "lkhbvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lkhnv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hbnt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 67,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bnvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bnt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "lkhnvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "khnvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "vbnvt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "kht",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "lkhnv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "bnnvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "lkht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "bnv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 20,
+      "score": 30.159303665161133,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "v",
+        "e": "l",
+        "k": "a",
+        "o": "h",
+        "q": "s",
+        "sh": "k",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 61,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "klvt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "shalvt",
+            "occurrences": 13,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "klt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "shat",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "shalt",
+            "occurrences": 5,
+            "lang": [
+              "en",
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "kllvt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tklvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "shalv",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "halt",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "slt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 76,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "klvt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "klt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "shalt",
+            "occurrences": 8,
+            "lang": [
+              "en",
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "shalvt",
+            "occurrences": 7,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "kllt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "kvt",
+            "occurrences": 4,
+            "lang": [
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "hat",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "en",
+              "es",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "shalv",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "kllvt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "shat",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "allt",
+            "occurrences": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "halt",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "kat",
+            "occurrences": 1,
+            "lang": [
+              "cs",
+              "de",
+              "el",
+              "en",
+              "fr",
+              "hu",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "topkeys": [
+    {
+      "key": "vyhsmbt",
+      "score": 34.61430358886719,
+      "hits": 14
+    },
+    {
+      "key": "vbhslrt",
+      "score": 34.34275436401367,
+      "hits": 12
+    },
+    {
+      "key": "vnhslbt",
+      "score": 33.66718673706055,
+      "hits": 11
+    },
+    {
+      "key": "vysthdr",
+      "score": 33.65930938720703,
+      "hits": 12
+    },
+    {
+      "key": "vyhsmnt",
+      "score": 33.32296371459961,
+      "hits": 14
+    },
+    {
+      "key": "vyhskbt",
+      "score": 33.11112976074219,
+      "hits": 13
+    },
+    {
+      "key": "vyhsnbt",
+      "score": 32.96430206298828,
+      "hits": 13
+    },
+    {
+      "key": "vhkrmst",
+      "score": 32.81718826293945,
+      "hits": 11
+    },
+    {
+      "key": "vlhkmbt",
+      "score": 32.3671875,
+      "hits": 10
+    },
+    {
+      "key": "vysthar",
+      "score": 32.20930480957031,
+      "hits": 11
+    },
+    {
+      "key": "vysthgr",
+      "score": 32.20930480957031,
+      "hits": 11
+    },
+    {
+      "key": "vysthlr",
+      "score": 32.20930480957031,
+      "hits": 11
+    },
+    {
+      "key": "vysthmd",
+      "score": 32.00930404663086,
+      "hits": 12
+    },
+    {
+      "key": "vhkrbst",
+      "score": 31.817188262939453,
+      "hits": 10
+    },
+    {
+      "key": "vyrpsbt",
+      "score": 31.03084945678711,
+      "hits": 11
+    },
+    {
+      "key": "vysthbr",
+      "score": 30.959304809570312,
+      "hits": 12
+    },
+    {
+      "key": "vtyblph",
+      "score": 30.642757415771484,
+      "hits": 11
+    },
+    {
+      "key": "uetamhs",
+      "score": 30.359304428100586,
+      "hits": 11
+    },
+    {
+      "key": "vnhklbt",
+      "score": 30.177675247192383,
+      "hits": 10
+    },
+    {
+      "key": "vlahskt",
+      "score": 30.159303665161133,
+      "hits": 10
+    },
+    {
+      "key": "vbhslkr",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "vlmhskt",
+      "score": 29.959304809570312,
+      "hits": 10
+    },
+    {
+      "key": "vyrbhst",
+      "score": 29.842756271362305,
+      "hits": 10
+    },
+    {
+      "key": "vstyhar",
+      "score": 29.517189025878906,
+      "hits": 10
+    },
+    {
+      "key": "vlhkmgt",
+      "score": 29.509305953979492,
+      "hits": 9
+    },
+    {
+      "key": "vyhslbt",
+      "score": 29.411128997802734,
+      "hits": 13
+    },
+    {
+      "key": "vklhmst",
+      "score": 29.4006404876709,
+      "hits": 9
+    },
+    {
+      "key": "vysthpr",
+      "score": 29.30930519104004,
+      "hits": 11
+    },
+    {
+      "key": "uoigats",
+      "score": 29.19275665283203,
+      "hits": 10
+    },
+    {
+      "key": "vyhkmsn",
+      "score": 28.99275779724121,
+      "hits": 10
+    },
+    {
+      "key": "vnhsmbt",
+      "score": 28.98084831237793,
+      "hits": 10
+    },
+    {
+      "key": "vrhslnt",
+      "score": 28.91718864440918,
+      "hits": 9
+    },
+    {
+      "key": "vybhslt",
+      "score": 28.909305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vybhsmt",
+      "score": 28.909305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vybhsnt",
+      "score": 28.909305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vybhspt",
+      "score": 28.909305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vbysmrt",
+      "score": 28.856416702270508,
+      "hits": 10
+    },
+    {
+      "key": "vbhslyr",
+      "score": 28.80930519104004,
+      "hits": 11
+    },
+    {
+      "key": "vrbhlnt",
+      "score": 28.717187881469727,
+      "hits": 9
+    },
+    {
+      "key": "vyrhabt",
+      "score": 28.717187881469727,
+      "hits": 9
+    },
+    {
+      "key": "uetamns",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "uoigams",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "uoregts",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "uoremts",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "ureboat",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "vbhslnr",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "vhsygat",
+      "score": 28.47507095336914,
+      "hits": 8
+    },
+    {
+      "key": "vhsygpt",
+      "score": 28.47507095336914,
+      "hits": 8
+    },
+    {
+      "key": "uetamrs",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vbhslat",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vmhslan",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vmhslgr",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vmhslrn",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vystbdr",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vystbhr",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vryhsnt",
+      "score": 28.267187118530273,
+      "hits": 9
+    },
+    {
+      "key": "vhkrmat",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vhkrmpt",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vmsthld",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vykhsbt",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vynhsbt",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vyrhkbt",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "vybrhst",
+      "score": 28.05641746520996,
+      "hits": 9
+    },
+    {
+      "key": "vidopla",
+      "score": 28.025854110717773,
+      "hits": 9
+    },
+    {
+      "key": "vidopna",
+      "score": 28.025854110717773,
+      "hits": 9
+    },
+    {
+      "key": "vyhsknt",
+      "score": 27.91979217529297,
+      "hits": 11
+    },
+    {
+      "key": "vhsrdat",
+      "score": 27.88555908203125,
+      "hits": 9
+    },
+    {
+      "key": "vhsrdpt",
+      "score": 27.88555908203125,
+      "hits": 9
+    },
+    {
+      "key": "vrhsbnt",
+      "score": 27.877676010131836,
+      "hits": 10
+    },
+    {
+      "key": "vysthcr",
+      "score": 27.859304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vysthkr",
+      "score": 27.859304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vysthmr",
+      "score": 27.859304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vysthnr",
+      "score": 27.859304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vysthzr",
+      "score": 27.859304428100586,
+      "hits": 10
+    },
+    {
+      "key": "uoregms",
+      "score": 27.825851440429688,
+      "hits": 10
+    },
+    {
+      "key": "vbhkrlt",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "vhskbat",
+      "score": 27.738731384277344,
+      "hits": 9
+    },
+    {
+      "key": "vhskbpt",
+      "score": 27.738731384277344,
+      "hits": 9
+    },
+    {
+      "key": "vnmahbt",
+      "score": 27.677675247192383,
+      "hits": 9
+    },
+    {
+      "key": "vyhlmbt",
+      "score": 27.624788284301758,
+      "hits": 11
+    },
+    {
+      "key": "vnydmbt",
+      "score": 27.5837345123291,
+      "hits": 8
+    },
+    {
+      "key": "vybrhnt",
+      "score": 27.572965621948242,
+      "hits": 9
+    },
+    {
+      "key": "vyhspbt",
+      "score": 27.561128616333008,
+      "hits": 12
+    },
+    {
+      "key": "vphslyt",
+      "score": 27.542757034301758,
+      "hits": 9
+    },
+    {
+      "key": "vnhksbt",
+      "score": 27.530847549438477,
+      "hits": 9
+    },
+    {
+      "key": "vnypsbt",
+      "score": 27.530847549438477,
+      "hits": 9
+    },
+    {
+      "key": "vrhslmt",
+      "score": 27.509305953979492,
+      "hits": 9
+    },
+    {
+      "key": "vrhslpt",
+      "score": 27.509305953979492,
+      "hits": 9
+    },
+    {
+      "key": "vlhkmst",
+      "score": 27.49275779724121,
+      "hits": 9
+    },
+    {
+      "key": "vbhslmr",
+      "score": 27.459304809570312,
+      "hits": 11
+    },
+    {
+      "key": "vybhsgt",
+      "score": 27.41718864440918,
+      "hits": 9
+    },
+    {
+      "key": "uilopns",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "uiramns",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "vlahsbt",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "vokatde",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "vyarhbt",
+      "score": 27.361127853393555,
+      "hits": 9
+    },
+    {
+      "key": "vybhsrt",
+      "score": 27.35930633544922,
+      "hits": 9
+    },
+    {
+      "key": "vrbhlkt",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vrbhlmt",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vrbhlpt",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vrbhlzt",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vhsygmt",
+      "score": 27.267187118530273,
+      "hits": 8
+    },
+    {
+      "key": "vryhsmt",
+      "score": 27.25930404663086,
+      "hits": 9
+    },
+    {
+      "key": "vryhspt",
+      "score": 27.25930404663086,
+      "hits": 9
+    },
+    {
+      "key": "vhsrmat",
+      "score": 27.235559463500977,
+      "hits": 9
+    },
+    {
+      "key": "vhsrmpt",
+      "score": 27.235559463500977,
+      "hits": 9
+    },
+    {
+      "key": "vyhsmrt",
+      "score": 27.222963333129883,
+      "hits": 11
+    },
+    {
+      "key": "uidarbt",
+      "score": 27.205278396606445,
+      "hits": 9
+    },
+    {
+      "key": "vyhlbst",
+      "score": 27.153244018554688,
+      "hits": 10
+    },
+    {
+      "key": "vhsrlat",
+      "score": 27.08873176574707,
+      "hits": 9
+    },
+    {
+      "key": "vhsrlpt",
+      "score": 27.08873176574707,
+      "hits": 9
+    },
+    {
+      "key": "vhkrbat",
+      "score": 27.067188262939453,
+      "hits": 8
+    },
+    {
+      "key": "vhkrbpt",
+      "score": 27.067188262939453,
+      "hits": 8
+    },
+    {
+      "key": "vnhsbmt",
+      "score": 27.05930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vphslmt",
+      "score": 27.05930519104004,
+      "hits": 9
+    },
+    {
+      "key": "vhsrpat",
+      "score": 27.02507209777832,
+      "hits": 10
+    },
+    {
+      "key": "vlhmbkt",
+      "score": 27.00641632080078,
+      "hits": 9
+    },
+    {
+      "key": "vnhsybt",
+      "score": 26.941335678100586,
+      "hits": 10
+    },
+    {
+      "key": "uetambs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamcs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamds",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamgs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamks",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamps",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamvs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uetamzs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uiargfl",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigabs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigafs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigaks",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigans",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigaps",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uoigavs",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uonegts",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "uorabts",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpsdy",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpsjy",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpsky",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpsly",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpsny",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varpswy",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vbhslgt",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vmhslar",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vmhsltn",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vtyblmh",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vystbar",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vystbgr",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "vystblr",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "warpsky",
+      "score": 26.859304428100586,
+      "hits": 9
+    },
+    {
+      "key": "varknmt",
+      "score": 26.847394943237305,
+      "hits": 10
+    },
+    {
+      "key": "vrpsmht",
+      "score": 26.764299392700195,
+      "hits": 9
+    },
+    {
+      "key": "vtyplbh",
+      "score": 26.71112823486328,
+      "hits": 9
+    },
+    {
+      "key": "vylhkbt",
+      "score": 26.71112823486328,
+      "hits": 9
+    },
+    {
+      "key": "vhsrdmt",
+      "score": 26.677675247192383,
+      "hits": 9
+    },
+    {
+      "key": "vnmalbt",
+      "score": 26.677675247192383,
+      "hits": 8
+    },
+    {
+      "key": "vystbmd",
+      "score": 26.66979217529297,
+      "hits": 10
+    },
+    {
+      "key": "vbhklrt",
+      "score": 26.66979217529297,
+      "hits": 9
+    },
+    {
+      "key": "vyhkrbt",
+      "score": 26.66718864440918,
+      "hits": 10
+    },
+    {
+      "key": "vyhkmbn",
+      "score": 26.659305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vyhkmdn",
+      "score": 26.659305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vyhkmzn",
+      "score": 26.659305572509766,
+      "hits": 9
+    },
+    {
+      "key": "vyrkbst",
+      "score": 26.659303665161133,
+      "hits": 10
+    },
+    {
+      "key": "vhklmst",
+      "score": 26.647396087646484,
+      "hits": 9
+    },
+    {
+      "key": "vayrbmt",
+      "score": 26.6171875,
+      "hits": 8
+    },
+    {
+      "key": "vayrkmt",
+      "score": 26.6171875,
+      "hits": 8
+    },
+    {
+      "key": "vlhkmat",
+      "score": 26.60930633544922,
+      "hits": 9
+    },
+    {
+      "key": "vlhkmdt",
+      "score": 26.60930633544922,
+      "hits": 9
+    },
+    {
+      "key": "vlhkmot",
+      "score": 26.60930633544922,
+      "hits": 9
+    },
+    {
+      "key": "vlhkmpt",
+      "score": 26.60930633544922,
+      "hits": 9
+    },
+    {
+      "key": "vhslmat",
+      "score": 26.603513717651367,
+      "hits": 9
+    },
+    {
+      "key": "vhslmpt",
+      "score": 26.603513717651367,
+      "hits": 9
+    },
+    {
+      "key": "vidopba",
+      "score": 26.57585334777832,
+      "hits": 8
+    },
+    {
+      "key": "vidopma",
+      "score": 26.57585334777832,
+      "hits": 8
+    },
+    {
+      "key": "vidopra",
+      "score": 26.57585334777832,
+      "hits": 8
+    },
+    {
+      "key": "vidopsa",
+      "score": 26.57585334777832,
+      "hits": 8
+    },
+    {
+      "key": "vidopza",
+      "score": 26.57585334777832,
+      "hits": 8
+    },
+    {
+      "key": "uitcars",
+      "score": 26.575851440429688,
+      "hits": 9
+    },
+    {
+      "key": "vrysmht",
+      "score": 26.564300537109375,
+      "hits": 9
+    },
+    {
+      "key": "vyhsabt",
+      "score": 26.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "vyhsrbt",
+      "score": 26.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "vphsbyt",
+      "score": 26.542757034301758,
+      "hits": 8
+    },
+    {
+      "key": "vhyabsr",
+      "score": 26.533451080322266,
+      "hits": 10
+    },
+    {
+      "key": "vhskbmt",
+      "score": 26.530847549438477,
+      "hits": 9
+    },
+    {
+      "key": "vyhsnmt",
+      "score": 26.522964477539062,
+      "hits": 10
+    },
+    {
+      "key": "vbysmlt",
+      "score": 26.522964477539062,
+      "hits": 9
+    },
+    {
+      "key": "vyarnbt",
+      "score": 26.500640869140625,
+      "hits": 10
+    },
+    {
+      "key": "vylhsbt",
+      "score": 26.500640869140625,
+      "hits": 10
+    },
+    {
+      "key": "vatsuri",
+      "score": 26.477676391601562,
+      "hits": 9
+    },
+    {
+      "key": "vatsury",
+      "score": 26.477676391601562,
+      "hits": 9
+    },
+    {
+      "key": "vmhsbrt",
+      "score": 26.46979331970215,
+      "hits": 10
+    },
+    {
+      "key": "vmhslrt",
+      "score": 26.46979331970215,
+      "hits": 10
+    },
+    {
+      "key": "vrhsbmt",
+      "score": 26.46979331970215,
+      "hits": 10
+    },
+    {
+      "key": "vrhsbpt",
+      "score": 26.46979331970215,
+      "hits": 10
+    },
+    {
+      "key": "vhynbkl",
+      "score": 26.41690444946289,
+      "hits": 10
+    },
+    {
+      "key": "uonegis",
+      "score": 26.375852584838867,
+      "hits": 9
+    },
+    {
+      "key": "vyhsmlt",
+      "score": 26.32296371459961,
+      "hits": 10
+    },
+    {
+      "key": "vyhsmpt",
+      "score": 26.32296371459961,
+      "hits": 10
+    },
+    {
+      "key": "vnrkhbt",
+      "score": 26.29133415222168,
+      "hits": 9
+    },
+    {
+      "key": "vyhsmgt",
+      "score": 26.28084945678711,
+      "hits": 11
+    },
+    {
+      "key": "vmstbhd",
+      "score": 26.269792556762695,
+      "hits": 10
+    },
+    {
+      "key": "vyhlbnt",
+      "score": 26.269792556762695,
+      "hits": 10
+    },
+    {
+      "key": "vdhsbmt",
+      "score": 26.227676391601562,
+      "hits": 9
+    },
+    {
+      "key": "vrtopea",
+      "score": 26.175853729248047,
+      "hits": 9
+    },
+    {
+      "key": "ueramks",
+      "score": 26.175851821899414,
+      "hits": 10
+    },
+    {
+      "key": "uomedis",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uonegms",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uorabms",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uorapdn",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uoregfs",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uoregns",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uoremfs",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "uoremns",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "vhkrdsn",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogba",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogda",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogla",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogma",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogna",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogpa",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogsa",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virogza",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromba",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromda",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromla",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromna",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "virompa",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromsa",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "viromza",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "vizande",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "vokatce",
+      "score": 26.175851821899414,
+      "hits": 9
+    },
+    {
+      "key": "vhkzlsr",
+      "score": 26.12296485900879,
+      "hits": 9
+    },
+    {
+      "key": "vhkznsr",
+      "score": 26.12296485900879,
+      "hits": 9
+    },
+    {
+      "key": "vyhalbt",
+      "score": 26.111127853393555,
+      "hits": 11
+    },
+    {
+      "key": "vayrblt",
+      "score": 26.092756271362305,
+      "hits": 8
+    },
+    {
+      "key": "vayrklt",
+      "score": 26.092756271362305,
+      "hits": 8
+    },
+    {
+      "key": "vhsbyat",
+      "score": 26.08873176574707,
+      "hits": 8
+    },
+    {
+      "key": "vhsbypt",
+      "score": 26.08873176574707,
+      "hits": 8
+    },
+    {
+      "key": "vhsrbat",
+      "score": 26.08873176574707,
+      "hits": 8
+    },
+    {
+      "key": "vhsrbpt",
+      "score": 26.08873176574707,
+      "hits": 8
+    },
+    {
+      "key": "vrhsmnt",
+      "score": 26.080848693847656,
+      "hits": 9
+    },
+    {
+      "key": "vbrkhlt",
+      "score": 26.080846786499023,
+      "hits": 8
+    },
+    {
+      "key": "vnhslmt",
+      "score": 26.05930519104004,
+      "hits": 8
+    },
+    {
+      "key": "vphsbmt",
+      "score": 26.05930519104004,
+      "hits": 8
+    },
+    {
+      "key": "vyrhast",
+      "score": 26.059303283691406,
+      "hits": 8
+    },
+    {
+      "key": "vlybhkt",
+      "score": 26.059303283691406,
+      "hits": 7
+    },
+    {
+      "key": "vmhsblt",
+      "score": 26.02767562866211,
+      "hits": 9
+    },
+    {
+      "key": "vmstbld",
+      "score": 26.02767562866211,
+      "hits": 9
+    },
+    {
+      "key": "vrybhnt",
+      "score": 26.02767562866211,
+      "hits": 9
+    },
+    {
+      "key": "vrhslbt",
+      "score": 26.017189025878906,
+      "hits": 9
+    },
+    {
+      "key": "uilopes",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "uirames",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "uoregis",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "uoremis",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "vbhkrat",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "visamte",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "visapte",
+      "score": 25.975852966308594,
+      "hits": 9
+    },
+    {
+      "key": "uelovds",
+      "score": 25.97585105895996,
+      "hits": 10
+    },
+    {
+      "key": "uerapbs",
+      "score": 25.97585105895996,
+      "hits": 10
+    },
+    {
+      "key": "uerapds",
+      "score": 25.97585105895996,
+      "hits": 10
+    },
+    {
+      "key": "ueraphs",
+      "score": 25.97585105895996,
+      "hits": 10
+    },
+    {
+      "key": "uerapks",
+      "score": 25.97585105895996,
+      "hits": 10
+    },
+    {
+      "key": "uitcans",
+      "score": 25.933734893798828,
+      "hits": 8
+    },
+    {
+      "key": "vhsklbr",
+      "score": 25.880847930908203,
+      "hits": 9
+    },
+    {
+      "key": "vhsrlmt",
+      "score": 25.880847930908203,
+      "hits": 9
+    },
+    {
+      "key": "vmhsnlt",
+      "score": 25.880847930908203,
+      "hits": 9
+    },
+    {
+      "key": "vyrbhlt",
+      "score": 25.859304428100586,
+      "hits": 8
+    },
+    {
+      "key": "vyrbhmt",
+      "score": 25.859304428100586,
+      "hits": 8
+    },
+    {
+      "key": "vyrbhnt",
+      "score": 25.859304428100586,
+      "hits": 8
+    },
+    {
+      "key": "vyrbhpt",
+      "score": 25.859304428100586,
+      "hits": 8
+    },
+    {
+      "key": "uahcsrm",
+      "score": 25.839513778686523,
+      "hits": 9
+    },
+    {
+      "key": "vbhsmlr",
+      "score": 25.817188262939453,
+      "hits": 10
+    },
+    {
+      "key": "vhsrpmt",
+      "score": 25.817188262939453,
+      "hits": 10
+    },
+    {
+      "key": "vbhslmt",
+      "score": 25.80930519104004,
+      "hits": 10
+    },
+    {
+      "key": "vysthld",
+      "score": 25.809303283691406,
+      "hits": 10
+    },
+    {
+      "key": "uelovhs",
+      "score": 25.77585220336914,
+      "hits": 10
+    },
+    {
+      "key": "vlmhsbt",
+      "score": 25.733736038208008,
+      "hits": 8
+    },
+    {
+      "key": "vybrhlt",
+      "score": 25.722965240478516,
+      "hits": 8
+    },
+    {
+      "key": "vybrhmt",
+      "score": 25.722965240478516,
+      "hits": 8
+    },
+    {
+      "key": "vybrhpt",
+      "score": 25.722965240478516,
+      "hits": 8
+    },
+    {
+      "key": "vyrahbt",
+      "score": 25.71112823486328,
+      "hits": 8
+    },
+    {
+      "key": "vyldmbt",
+      "score": 25.69133758544922,
+      "hits": 9
+    },
+    {
+      "key": "vstmbar",
+      "score": 25.680849075317383,
+      "hits": 9
+    },
+    {
+      "key": "vstmhar",
+      "score": 25.680849075317383,
+      "hits": 9
+    },
+    {
+      "key": "vitsera",
+      "score": 25.659305572509766,
+      "hits": 8
+    },
+    {
+      "key": "vrhslzt",
+      "score": 25.659305572509766,
+      "hits": 8
+    },
+    {
+      "key": "vhylasm",
+      "score": 25.617189407348633,
+      "hits": 10
+    },
+    {
+      "key": "vyatlhm",
+      "score": 25.617189407348633,
+      "hits": 10
+    },
+    {
+      "key": "vhsyglt",
+      "score": 25.6171875,
+      "hits": 7
+    },
+    {
+      "key": "vhsygnt",
+      "score": 25.6171875,
+      "hits": 7
+    },
+    {
+      "key": "varpsmy",
+      "score": 25.609304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vbhsldr",
+      "score": 25.609304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vbhslgr",
+      "score": 25.609304428100586,
+      "hits": 10
+    },
+    {
+      "key": "warpsmy",
+      "score": 25.609304428100586,
+      "hits": 10
+    },
+    {
+      "key": "vphklyt",
+      "score": 25.6075382232666,
+      "hits": 8
+    },
+    {
+      "key": "vhsarpt",
+      "score": 25.552106857299805,
+      "hits": 8
+    },
+    {
+      "key": "vhmyast",
+      "score": 25.544221878051758,
+      "hits": 8
+    },
+    {
+      "key": "vbhsltr",
+      "score": 25.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "uedifns",
+      "score": 25.439512252807617,
+      "hits": 10
+    },
+    {
+      "key": "uomedts",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "veticra",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitande",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanfe",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitange",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanle",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanre",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanse",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanxe",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vitanze",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vosacmu",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vryhskt",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vryhszt",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vyrhkst",
+      "score": 25.409303665161133,
+      "hits": 8
+    },
+    {
+      "key": "vnmzhbt",
+      "score": 25.39739418029785,
+      "hits": 8
+    },
+    {
+      "key": "uedivns",
+      "score": 25.375852584838867,
+      "hits": 11
+    },
+    {
+      "key": "uorpmts",
+      "score": 25.356416702270508,
+      "hits": 9
+    },
+    {
+      "key": "vnyghbt",
+      "score": 25.344223022460938,
+      "hits": 8
+    },
+    {
+      "key": "ucramis",
+      "score": 25.333736419677734,
+      "hits": 9
+    },
+    {
+      "key": "uoalkts",
+      "score": 25.303245544433594,
+      "hits": 9
+    },
+    {
+      "key": "vyknhbt",
+      "score": 25.300642013549805,
+      "hits": 9
+    },
+    {
+      "key": "vamhslt",
+      "score": 25.29275894165039,
+      "hits": 10
+    },
+    {
+      "key": "vrbhlst",
+      "score": 25.292757034301758,
+      "hits": 9
+    },
+    {
+      "key": "vyphsbt",
+      "score": 25.261127471923828,
+      "hits": 8
+    },
+    {
+      "key": "urebokt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "urebopt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "urebovt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vhkrmlt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vhkrmnt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vmsthbd",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vnhsbzt",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vstyhmr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhkmln",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhkmtn",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhsbar",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhsbdr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhsbgr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhsblr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhslar",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhsldr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "vyhslgr",
+      "score": 25.209304809570312,
+      "hits": 8
+    },
+    {
+      "key": "uidanes",
+      "score": 25.19999885559082,
+      "hits": 8
+    },
+    {
+      "key": "vnhsbyt",
+      "score": 25.16718864440918,
+      "hits": 9
+    },
+    {
+      "key": "vbyshrt",
+      "score": 25.16690444946289,
+      "hits": 9
+    },
+    {
+      "key": "vlhkmet",
+      "score": 25.159305572509766,
+      "hits": 8
+    },
+    {
+      "key": "vlhkmut",
+      "score": 25.159305572509766,
+      "hits": 8
+    },
+    {
+      "key": "vnarkbt",
+      "score": 25.13373565673828,
+      "hits": 9
+    },
+    {
+      "key": "vphklmt",
+      "score": 25.124086380004883,
+      "hits": 8
+    },
+    {
+      "key": "vabhslt",
+      "score": 25.092758178710938,
+      "hits": 10
+    },
+    {
+      "key": "vhkrnst",
+      "score": 25.08085060119629,
+      "hits": 10
+    },
+    {
+      "key": "vhspnat",
+      "score": 25.049219131469727,
+      "hits": 9
+    },
+    {
+      "key": "vhsrdlt",
+      "score": 25.02767562866211,
+      "hits": 8
+    }
+  ],
+  "dictionary_audit": {
+    "it": {
+      "n_requested": 25000,
+      "n_eligible": 20892
+    },
+    "de": {
+      "n_requested": 25000,
+      "n_eligible": 19492
+    },
+    "cs": {
+      "n_requested": 25000,
+      "n_eligible": 23281
+    },
+    "fr": {
+      "n_requested": 25000,
+      "n_eligible": 21531
+    },
+    "es": {
+      "n_requested": 25000,
+      "n_eligible": 21491
+    },
+    "pl": {
+      "n_requested": 25000,
+      "n_eligible": 21436
+    },
+    "nl": {
+      "n_requested": 25000,
+      "n_eligible": 20540
+    },
+    "ro": {
+      "n_requested": 25000,
+      "n_eligible": 22108
+    },
+    "sk": {
+      "n_requested": 25000,
+      "n_eligible": 22766
+    },
+    "sl": {
+      "n_requested": 25000,
+      "n_eligible": 22674
+    },
+    "hu": {
+      "n_requested": 25000,
+      "n_eligible": 21450
+    },
+    "el": {
+      "n_requested": 25000,
+      "n_eligible": 20368
+    },
+    "ru": {
+      "n_requested": 25000,
+      "n_eligible": 19723
+    },
+    "uk": {
+      "n_requested": 25000,
+      "n_eligible": 20208
+    },
+    "pt": {
+      "n_requested": 25000,
+      "n_eligible": 21738
+    },
+    "ca": {
+      "n_requested": 25000,
+      "n_eligible": 21771
+    },
+    "en": {
+      "n_requested": 25000,
+      "n_eligible": 21772
+    },
+    "he": {
+      "n_requested": 25000,
+      "n_eligible": 24378
+    },
+    "la": {
+      "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-Perseus/master/la_perseus-ud-train.conllu",
+      "sha256": "49d2e3813fc34595fe8cf569f263df4396e4b21aba9429fcdb0eea3ae09e64fa"
+    },
+    "yi": {
+      "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Yiddish-YiTB/master/yi_yitb-ud-train.conllu",
+      "sha256": "19f9461e4edec9ba96e2f2ba618f08849ada24d711caed09910969d31a9caed1"
+    },
+    "unique_forms": 282966
+  },
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0c45ccb47ba0f7cfe39"
+}
