@@ -1,0 +1,5786 @@
+{
+  "schema": "F75R_NOVEL_HOLDOUT_AUDIT_20261019",
+  "job": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b7dd5ccb47ba0f7d0399",
+  "source_exact_manifest": "results/exact8_merged_20261019.json",
+  "audit": {
+    "exact_keys": 62990928000,
+    "top_candidates": 2600,
+    "train_types": 42,
+    "novel_test_types": 25,
+    "novel_test_tokens": 40,
+    "repeated_test_tokens": 106,
+    "lex_forms": 282966
+  },
+  "training_ranked": {
+    "top": [
+      {
+        "train_rank": 1,
+        "key": "kylpamrh",
+        "train_search_score": 57.345306396484375,
+        "train_match_types": 24,
+        "train_match_tokens": 92,
+        "novel_match_types": 8,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            7
+          ],
+          [
+            "hu",
+            3
+          ],
+          [
+            "de",
+            2
+          ],
+          [
+            "el",
+            2
+          ],
+          [
+            "nl",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rap",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "alap",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kap",
+            "n": 1,
+            "lang": [
+              "de",
+              "el",
+              "he",
+              "hu",
+              "nl",
+              "sl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 2,
+        "key": "kylzamrh",
+        "train_search_score": 55.329620361328125,
+        "train_match_types": 23,
+        "train_match_tokens": 91,
+        "novel_match_types": 7,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            5
+          ],
+          [
+            "ru",
+            2
+          ],
+          [
+            "cs",
+            1
+          ],
+          [
+            "fr",
+            1
+          ],
+          [
+            "pl",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "raz",
+            "n": 2,
+            "lang": [
+              "cs",
+              "fr",
+              "pl",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "zlykh",
+            "n": 2,
+            "lang": [
+              "ru"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 3,
+        "key": "kyltamrh",
+        "train_search_score": 53.67961883544922,
+        "train_match_types": 22,
+        "train_match_tokens": 90,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "he",
+            7
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "de",
+            2
+          ],
+          [
+            "en",
+            2
+          ],
+          [
+            "fr",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rat",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "fr",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maat",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "tlt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tlyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kat",
+            "n": 1,
+            "lang": [
+              "cs",
+              "de",
+              "el",
+              "en",
+              "fr",
+              "hu",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 4,
+        "key": "kylsamrh",
+        "train_search_score": 53.27901077270508,
+        "train_match_types": 22,
+        "train_match_tokens": 89,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "el",
+            2
+          ],
+          [
+            "en",
+            2
+          ],
+          [
+            "es",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ras",
+            "n": 2,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "it",
+              "nl",
+              "pl",
+              "ro",
+              "ru",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maas",
+            "n": 1,
+            "lang": [
+              "de",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "alas",
+            "n": 1,
+            "lang": [
+              "en",
+              "es",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "sls",
+            "n": 1,
+            "lang": [
+              "sl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kas",
+            "n": 1,
+            "lang": [
+              "el",
+              "nl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 5,
+        "key": "kylramvh",
+        "train_search_score": 52.229618072509766,
+        "train_match_types": 22,
+        "train_match_tokens": 87,
+        "novel_match_types": 8,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            5
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "el",
+            2
+          ],
+          [
+            "hu",
+            2
+          ],
+          [
+            "sl",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "vkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "var",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "vyk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "vlh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maar",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kar",
+            "n": 1,
+            "lang": [
+              "el",
+              "hu",
+              "nl",
+              "pl",
+              "ru",
+              "sl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 6,
+        "key": "leriapds",
+        "train_search_score": 52.20781707763672,
+        "train_match_types": 22,
+        "train_match_tokens": 88,
+        "novel_match_types": 7,
+        "novel_match_tokens": 11,
+        "dominant_novel_language": [
+          [
+            "en",
+            6
+          ],
+          [
+            "nl",
+            4
+          ],
+          [
+            "it",
+            4
+          ],
+          [
+            "es",
+            3
+          ],
+          [
+            "pt",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "dai",
+            "n": 2,
+            "lang": [
+              "en",
+              "es",
+              "it",
+              "pt",
+              "ro",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "del",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "drs",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iri",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "lai",
+            "n": 1,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 7,
+        "key": "kylramph",
+        "train_search_score": 52.02961730957031,
+        "train_match_types": 22,
+        "train_match_tokens": 87,
+        "novel_match_types": 8,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "el",
+            3
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "hu",
+            2
+          ],
+          [
+            "pl",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "pkh",
+            "n": 4,
+            "lang": [
+              "el",
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "par",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "pyk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "plh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maar",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kar",
+            "n": 1,
+            "lang": [
+              "el",
+              "hu",
+              "nl",
+              "pl",
+              "ru",
+              "sl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 8,
+        "key": "kylgamrh",
+        "train_search_score": 51.62900924682617,
+        "train_match_types": 21,
+        "train_match_tokens": 88,
+        "novel_match_types": 9,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "en",
+            1
+          ],
+          [
+            "it",
+            1
+          ],
+          [
+            "yi",
+            1
+          ],
+          [
+            "nl",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rag",
+            "n": 2,
+            "lang": [
+              "en",
+              "it"
+            ]
+          },
+          {
+            "cipher": "lkeedy",
+            "decoded": "glyykh",
+            "n": 2,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maag",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "glyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 9,
+        "key": "kylvamrh",
+        "train_search_score": 51.62900924682617,
+        "train_match_types": 21,
+        "train_match_tokens": 88,
+        "novel_match_types": 8,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            8
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rav",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "vlv",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "vlyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 10,
+        "key": "epairgos",
+        "train_search_score": 50.878536224365234,
+        "train_match_types": 21,
+        "train_match_tokens": 91,
+        "novel_match_types": 9,
+        "novel_match_tokens": 13,
+        "dominant_novel_language": [
+          [
+            "it",
+            4
+          ],
+          [
+            "fr",
+            3
+          ],
+          [
+            "ro",
+            3
+          ],
+          [
+            "uk",
+            3
+          ],
+          [
+            "ca",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "oky",
+            "decoded": "ras",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "it",
+              "nl",
+              "pl",
+              "ro",
+              "ru",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ori",
+            "n": 2,
+            "lang": [
+              "it",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ope",
+            "n": 2,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "grappe",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "oas",
+            "n": 1,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "apps",
+            "n": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "rari",
+            "n": 1,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iai",
+            "n": 1,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "eri",
+            "n": 1,
+            "lang": [
+              "hu",
+              "it",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 11,
+        "key": "kylnamrh",
+        "train_search_score": 50.81540298461914,
+        "train_match_types": 20,
+        "train_match_tokens": 87,
+        "novel_match_types": 9,
+        "novel_match_tokens": 16,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "de",
+            3
+          ],
+          [
+            "en",
+            3
+          ],
+          [
+            "pl",
+            3
+          ],
+          [
+            "ru",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ran",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "en",
+              "es",
+              "pl",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maan",
+            "n": 1,
+            "lang": [
+              "nl",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "alan",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kan",
+            "n": 1,
+            "lang": [
+              "de",
+              "el",
+              "en",
+              "fr",
+              "he",
+              "hu",
+              "nl",
+              "pl",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 12,
+        "key": "leriapfs",
+        "train_search_score": 50.757816314697266,
+        "train_match_types": 21,
+        "train_match_tokens": 87,
+        "novel_match_types": 7,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "fr",
+            4
+          ],
+          [
+            "en",
+            4
+          ],
+          [
+            "it",
+            3
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "ca",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "fees",
+            "n": 7,
+            "lang": [
+              "en",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "fai",
+            "n": 2,
+            "lang": [
+              "ca",
+              "fr",
+              "it"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "fel",
+            "n": 2,
+            "lang": [
+              "hu",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iri",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "lai",
+            "n": 1,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 13,
+        "key": "oredipas",
+        "train_search_score": 50.27593231201172,
+        "train_match_types": 23,
+        "train_match_tokens": 78,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "nl",
+            3
+          ],
+          [
+            "pt",
+            3
+          ],
+          [
+            "ru",
+            2
+          ],
+          [
+            "uk",
+            2
+          ],
+          [
+            "ca",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "aos",
+            "n": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ies",
+            "n": 3,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "aid",
+            "n": 2,
+            "lang": [
+              "en",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "aro",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sars",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "aes",
+            "n": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "ded",
+            "n": 1,
+            "lang": [
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "ders",
+            "n": 1,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "daro",
+            "n": 1,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "oid",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 14,
+        "key": "kylcamrh",
+        "train_search_score": 50.21479415893555,
+        "train_match_types": 20,
+        "train_match_tokens": 86,
+        "novel_match_types": 7,
+        "novel_match_tokens": 14,
+        "dominant_novel_language": [
+          [
+            "he",
+            5
+          ],
+          [
+            "ca",
+            1
+          ],
+          [
+            "sl",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rac",
+            "n": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kac",
+            "n": 1,
+            "lang": [
+              "sl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 15,
+        "key": "vhkbrmst",
+        "train_search_score": 50.192481994628906,
+        "train_match_types": 21,
+        "train_match_tokens": 87,
+        "novel_match_types": 5,
+        "novel_match_tokens": 7,
+        "dominant_novel_language": [
+          [
+            "he",
+            5
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shol",
+            "decoded": "srb",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "shv",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "tsht",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "skt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "vrb",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 16,
+        "key": "enrmacis",
+        "train_search_score": 50.158775329589844,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "en",
+            4
+          ],
+          [
+            "la",
+            3
+          ],
+          [
+            "uk",
+            3
+          ],
+          [
+            "ca",
+            3
+          ],
+          [
+            "es",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "ies",
+            "n": 4,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "iam",
+            "n": 2,
+            "lang": [
+              "la",
+              "pt",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ine",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sins",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "irs",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "aram",
+            "n": 1,
+            "lang": [
+              "ca",
+              "hu",
+              "la"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "mrm",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "mine",
+            "n": 1,
+            "lang": [
+              "cs",
+              "de",
+              "en",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "eam",
+            "n": 1,
+            "lang": [
+              "el",
+              "la"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 17,
+        "key": "kylmavrh",
+        "train_search_score": 50.15639877319336,
+        "train_match_types": 23,
+        "train_match_tokens": 76,
+        "novel_match_types": 8,
+        "novel_match_tokens": 15,
+        "dominant_novel_language": [
+          [
+            "he",
+            7
+          ],
+          [
+            "cs",
+            2
+          ],
+          [
+            "de",
+            2
+          ],
+          [
+            "el",
+            2
+          ],
+          [
+            "nl",
+            2
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "alh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ram",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "mlyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "kam",
+            "n": 1,
+            "lang": [
+              "cs",
+              "de",
+              "el",
+              "nl",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 18,
+        "key": "enavlpis",
+        "train_search_score": 49.99126052856445,
+        "train_match_types": 22,
+        "train_match_tokens": 83,
+        "novel_match_types": 11,
+        "novel_match_tokens": 18,
+        "dominant_novel_language": [
+          [
+            "en",
+            4
+          ],
+          [
+            "ca",
+            4
+          ],
+          [
+            "es",
+            4
+          ],
+          [
+            "pt",
+            3
+          ],
+          [
+            "sk",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "ies",
+            "n": 4,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "las",
+            "n": 3,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkeedy",
+            "decoded": "vannes",
+            "n": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ine",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sins",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "ias",
+            "n": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "lalv",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "vav",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "vans",
+            "n": 1,
+            "lang": [
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "vine",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "en",
+              "es",
+              "la",
+              "ro",
+              "ru",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "elv",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 19,
+        "key": "eropmaus",
+        "train_search_score": 49.95956802368164,
+        "train_match_types": 21,
+        "train_match_tokens": 83,
+        "novel_match_types": 12,
+        "novel_match_tokens": 18,
+        "dominant_novel_language": [
+          [
+            "ca",
+            5
+          ],
+          [
+            "fr",
+            4
+          ],
+          [
+            "en",
+            4
+          ],
+          [
+            "pt",
+            4
+          ],
+          [
+            "el",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "oky",
+            "decoded": "mos",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "hu",
+              "nl",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ump",
+            "n": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "pores",
+            "n": 2,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "lkeedy",
+            "decoded": "porres",
+            "n": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ure",
+            "n": 2,
+            "lang": [
+              "sl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "surs",
+            "n": 1,
+            "lang": [
+              "fr",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "uos",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "morre",
+            "n": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "pop",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "pors",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "pure",
+            "n": 1,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "emp",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 20,
+        "key": "enrpotis",
+        "train_search_score": 49.95816421508789,
+        "train_match_types": 21,
+        "train_match_tokens": 84,
+        "novel_match_types": 7,
+        "novel_match_tokens": 13,
+        "dominant_novel_language": [
+          [
+            "en",
+            3
+          ],
+          [
+            "ca",
+            3
+          ],
+          [
+            "es",
+            2
+          ],
+          [
+            "sk",
+            1
+          ],
+          [
+            "ro",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "ies",
+            "n": 4,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ors",
+            "n": 3,
+            "lang": [
+              "ca",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ine",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sins",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "irs",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "prns",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "pine",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 21,
+        "key": "yhtlvrsm",
+        "train_search_score": 49.91925811767578,
+        "train_match_types": 22,
+        "train_match_tokens": 82,
+        "novel_match_types": 7,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "fr",
+            1
+          ],
+          [
+            "en",
+            1
+          ],
+          [
+            "nl",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "shhm",
+            "n": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "vtm",
+            "n": 3,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "svl",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "shy",
+            "n": 2,
+            "lang": [
+              "en",
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "mshm",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "stm",
+            "n": 1,
+            "lang": [
+              "fr",
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "ltl",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 22,
+        "key": "enrmabis",
+        "train_search_score": 49.90877151489258,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "en",
+            4
+          ],
+          [
+            "la",
+            3
+          ],
+          [
+            "uk",
+            3
+          ],
+          [
+            "ca",
+            3
+          ],
+          [
+            "es",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "ies",
+            "n": 4,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "iam",
+            "n": 2,
+            "lang": [
+              "la",
+              "pt",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ine",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sins",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "irs",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "aram",
+            "n": 1,
+            "lang": [
+              "ca",
+              "hu",
+              "la"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "mrm",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "mine",
+            "n": 1,
+            "lang": [
+              "cs",
+              "de",
+              "en",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "eam",
+            "n": 1,
+            "lang": [
+              "el",
+              "la"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 23,
+        "key": "leriapcs",
+        "train_search_score": 49.90842056274414,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 8,
+        "novel_match_tokens": 18,
+        "dominant_novel_language": [
+          [
+            "nl",
+            4
+          ],
+          [
+            "fr",
+            3
+          ],
+          [
+            "es",
+            3
+          ],
+          [
+            "it",
+            3
+          ],
+          [
+            "pt",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "cees",
+            "n": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "cai",
+            "n": 2,
+            "lang": [
+              "es",
+              "it",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "cel",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "hu",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "crs",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iri",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "lai",
+            "n": 1,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 24,
+        "key": "vybmhsnt",
+        "train_search_score": 49.750282287597656,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 11,
+        "novel_match_tokens": 24,
+        "dominant_novel_language": [
+          [
+            "he",
+            11
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "nyyt",
+            "n": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "nvt",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "hbt",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "mbyvt",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "nyv",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "tnyt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "shhm",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "byyt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "mbyt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "mnyv",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "vhm",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 25,
+        "key": "dnuargie",
+        "train_search_score": 49.62593078613281,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 10,
+        "novel_match_tokens": 23,
+        "dominant_novel_language": [
+          [
+            "de",
+            5
+          ],
+          [
+            "en",
+            4
+          ],
+          [
+            "fr",
+            4
+          ],
+          [
+            "pt",
+            4
+          ],
+          [
+            "ca",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "inne",
+            "n": 7,
+            "lang": [
+              "de",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "ide",
+            "n": 4,
+            "lang": [
+              "en",
+              "fr",
+              "hu",
+              "pl",
+              "pt",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "rue",
+            "n": 3,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ira",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ind",
+            "n": 2,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "eine",
+            "n": 1,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "rura",
+            "n": 1,
+            "lang": [
+              "sk"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "aua",
+            "n": 1,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "aune",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "dra",
+            "n": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pl",
+              "pt"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 26,
+        "key": "epairtms",
+        "train_search_score": 49.54186248779297,
+        "train_match_types": 21,
+        "train_match_tokens": 83,
+        "novel_match_types": 10,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "fr",
+            5
+          ],
+          [
+            "it",
+            5
+          ],
+          [
+            "nl",
+            5
+          ],
+          [
+            "ca",
+            4
+          ],
+          [
+            "el",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "mes",
+            "n": 4,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ras",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "it",
+              "nl",
+              "pl",
+              "ro",
+              "ru",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "mri",
+            "n": 2,
+            "lang": [
+              "en",
+              "he",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "mpe",
+            "n": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "trappe",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "mas",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "apps",
+            "n": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "rari",
+            "n": 1,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iai",
+            "n": 1,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "eri",
+            "n": 1,
+            "lang": [
+              "hu",
+              "it",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 27,
+        "key": "nemirats",
+        "train_search_score": 49.50114822387695,
+        "train_match_types": 20,
+        "train_match_tokens": 86,
+        "novel_match_types": 8,
+        "novel_match_tokens": 17,
+        "dominant_novel_language": [
+          [
+            "en",
+            3
+          ],
+          [
+            "nl",
+            3
+          ],
+          [
+            "ru",
+            3
+          ],
+          [
+            "sl",
+            3
+          ],
+          [
+            "ro",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "tees",
+            "n": 7,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "tri",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "imens",
+            "n": 2,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ten",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "stes",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "armeen",
+            "n": 1,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "mees",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "imi",
+            "n": 1,
+            "lang": [
+              "ro",
+              "ru",
+              "sl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 28,
+        "key": "neriapds",
+        "train_search_score": 49.34992980957031,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 9,
+        "novel_match_tokens": 16,
+        "dominant_novel_language": [
+          [
+            "en",
+            6
+          ],
+          [
+            "nl",
+            4
+          ],
+          [
+            "es",
+            4
+          ],
+          [
+            "it",
+            4
+          ],
+          [
+            "hu",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "dns",
+            "n": 4,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "dai",
+            "n": 2,
+            "lang": [
+              "en",
+              "es",
+              "it",
+              "pt",
+              "ro",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "den",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "drs",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "iri",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "iden",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "nai",
+            "n": 1,
+            "lang": [
+              "el",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 29,
+        "key": "tibsorpe",
+        "train_search_score": 49.26743698120117,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 9,
+        "novel_match_tokens": 16,
+        "dominant_novel_language": [
+          [
+            "nl",
+            6
+          ],
+          [
+            "en",
+            5
+          ],
+          [
+            "el",
+            4
+          ],
+          [
+            "ru",
+            4
+          ],
+          [
+            "ca",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "pte",
+            "n": 4,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "obe",
+            "n": 3,
+            "lang": [
+              "cs",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "pos",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "pit",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "en",
+              "es",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ru",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "epie",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "roos",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "sbs",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "spit",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "tos",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "en",
+              "es",
+              "nl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 30,
+        "key": "erikapus",
+        "train_search_score": 49.22593307495117,
+        "train_match_types": 21,
+        "train_match_tokens": 85,
+        "novel_match_types": 5,
+        "novel_match_tokens": 8,
+        "dominant_novel_language": [
+          [
+            "fr",
+            2
+          ],
+          [
+            "sl",
+            2
+          ],
+          [
+            "hu",
+            1
+          ],
+          [
+            "nl",
+            1
+          ],
+          [
+            "cs",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "oky",
+            "decoded": "ais",
+            "n": 3,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ure",
+            "n": 2,
+            "lang": [
+              "sl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "surs",
+            "n": 1,
+            "lang": [
+              "fr",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "kik",
+            "n": 1,
+            "lang": [
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "kure",
+            "n": 1,
+            "lang": [
+              "cs"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "posthoc_explicitly_nonconfirmatory": {
+    "warning": "Re-ranking 2600 keys on heldout words leaks validation; do not use for inference.",
+    "top": [
+      {
+        "train_rank": 560,
+        "key": "nertaphs",
+        "train_search_score": 44.47056579589844,
+        "train_match_types": 18,
+        "train_match_tokens": 78,
+        "novel_match_types": 15,
+        "novel_match_tokens": 29,
+        "dominant_novel_language": [
+          [
+            "en",
+            8
+          ],
+          [
+            "nl",
+            6
+          ],
+          [
+            "es",
+            5
+          ],
+          [
+            "he",
+            5
+          ],
+          [
+            "pt",
+            5
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "hees",
+            "n": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "hns",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "hat",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "en",
+              "es",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "trens",
+            "n": 2,
+            "lang": [
+              "ca",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "hen",
+            "n": 2,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "shes",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "hrs",
+            "n": 1,
+            "lang": [
+              "en",
+              "es",
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "paat",
+            "n": 1,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "arat",
+            "n": 1,
+            "lang": [
+              "hu",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "trt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tres",
+            "n": 1,
+            "lang": [
+              "ca",
+              "es",
+              "fr",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "then",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "nat",
+            "n": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 219,
+        "key": "eirtamps",
+        "train_search_score": 46.043880462646484,
+        "train_match_types": 19,
+        "train_match_tokens": 81,
+        "novel_match_types": 14,
+        "novel_match_tokens": 22,
+        "dominant_novel_language": [
+          [
+            "sk",
+            5
+          ],
+          [
+            "uk",
+            5
+          ],
+          [
+            "en",
+            5
+          ],
+          [
+            "sl",
+            4
+          ],
+          [
+            "ca",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "pes",
+            "n": 4,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "pat",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "tries",
+            "n": 2,
+            "lang": [
+              "ca",
+              "en"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "pie",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "spis",
+            "n": 1,
+            "lang": [
+              "cs",
+              "pl",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "mariie",
+            "n": 1,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "prs",
+            "n": 1,
+            "lang": [
+              "he",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "decoded": "mariia",
+            "n": 1,
+            "lang": [
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "maat",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "arat",
+            "n": 1,
+            "lang": [
+              "hu",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "trt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tris",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "eat",
+            "n": 1,
+            "lang": [
+              "en",
+              "it",
+              "nl"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 407,
+        "key": "elatrois",
+        "train_search_score": 45.007808685302734,
+        "train_match_types": 18,
+        "train_match_tokens": 81,
+        "novel_match_types": 14,
+        "novel_match_tokens": 23,
+        "dominant_novel_language": [
+          [
+            "ca",
+            6
+          ],
+          [
+            "en",
+            4
+          ],
+          [
+            "es",
+            3
+          ],
+          [
+            "el",
+            3
+          ],
+          [
+            "sl",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "ies",
+            "n": 4,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ras",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "it",
+              "nl",
+              "pl",
+              "ro",
+              "ru",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "irt",
+            "n": 2,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "tales",
+            "n": 2,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "la",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lkeedy",
+            "decoded": "talles",
+            "n": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ile",
+            "n": 2,
+            "lang": [
+              "fr",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sils",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "ias",
+            "n": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "alls",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "ralle",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "tat",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tals",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "tile",
+            "n": 1,
+            "lang": [
+              "en",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "ert",
+            "n": 1,
+            "lang": [
+              "el",
+              "hu"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 491,
+        "key": "elipmuas",
+        "train_search_score": 44.72434997558594,
+        "train_match_types": 19,
+        "train_match_tokens": 70,
+        "novel_match_types": 14,
+        "novel_match_tokens": 28,
+        "dominant_novel_language": [
+          [
+            "en",
+            6
+          ],
+          [
+            "nl",
+            6
+          ],
+          [
+            "ca",
+            5
+          ],
+          [
+            "fr",
+            5
+          ],
+          [
+            "it",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "alls",
+            "n": 7,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "aes",
+            "n": 4,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "mis",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pl",
+              "pt",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "amp",
+            "n": 2,
+            "lang": [
+              "de",
+              "en",
+              "it",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "piles",
+            "n": 2,
+            "lang": [
+              "ca",
+              "en",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ale",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sals",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "ais",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "mille",
+            "n": 1,
+            "lang": [
+              "fr",
+              "it",
+              "la",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "pip",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "pils",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "pale",
+            "n": 1,
+            "lang": [
+              "el",
+              "en",
+              "fr",
+              "it",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "emp",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "lsheedy",
+            "decoded": "palles",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 953,
+        "key": "iertapms",
+        "train_search_score": 43.668479919433594,
+        "train_match_types": 18,
+        "train_match_tokens": 78,
+        "novel_match_types": 14,
+        "novel_match_tokens": 28,
+        "dominant_novel_language": [
+          [
+            "en",
+            6
+          ],
+          [
+            "fr",
+            6
+          ],
+          [
+            "nl",
+            6
+          ],
+          [
+            "es",
+            5
+          ],
+          [
+            "pt",
+            5
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "mees",
+            "n": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "mis",
+            "n": 4,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pl",
+              "pt",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ars",
+            "n": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "mat",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "treis",
+            "n": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "mei",
+            "n": 2,
+            "lang": [
+              "de",
+              "el",
+              "en",
+              "fr",
+              "it",
+              "la",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "smes",
+            "n": 1,
+            "lang": [
+              "cs",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "mrs",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "paat",
+            "n": 1,
+            "lang": [
+              "yi"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "rees",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "arat",
+            "n": 1,
+            "lang": [
+              "hu",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "trt",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tres",
+            "n": 1,
+            "lang": [
+              "ca",
+              "es",
+              "fr",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "iat",
+            "n": 1,
+            "lang": [
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 1512,
+        "key": "oletudas",
+        "train_search_score": 42.026363372802734,
+        "train_match_types": 18,
+        "train_match_tokens": 65,
+        "novel_match_types": 14,
+        "novel_match_tokens": 26,
+        "dominant_novel_language": [
+          [
+            "ca",
+            5
+          ],
+          [
+            "el",
+            4
+          ],
+          [
+            "it",
+            3
+          ],
+          [
+            "ru",
+            3
+          ],
+          [
+            "fr",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "alls",
+            "n": 7,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "aos",
+            "n": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "aut",
+            "n": 2,
+            "lang": [
+              "cs",
+              "de",
+              "el",
+              "fr",
+              "it",
+              "la",
+              "pl",
+              "ru",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "telos",
+            "n": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "alo",
+            "n": 2,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sals",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "duello",
+            "n": 1,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "aes",
+            "n": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "ells",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "tet",
+            "n": 1,
+            "lang": [
+              "el",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tels",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "talo",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "out",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lsheedy",
+            "decoded": "tallos",
+            "n": 1,
+            "lang": [
+              "es"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 1639,
+        "key": "ilatroes",
+        "train_search_score": 41.74992370605469,
+        "train_match_types": 17,
+        "train_match_tokens": 78,
+        "novel_match_types": 14,
+        "novel_match_tokens": 28,
+        "dominant_novel_language": [
+          [
+            "ca",
+            5
+          ],
+          [
+            "hu",
+            4
+          ],
+          [
+            "fr",
+            3
+          ],
+          [
+            "la",
+            3
+          ],
+          [
+            "el",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "ells",
+            "n": 7,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "eis",
+            "n": 4,
+            "lang": [
+              "de",
+              "el",
+              "la",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ras",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "it",
+              "nl",
+              "pl",
+              "ro",
+              "ru",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ert",
+            "n": 2,
+            "lang": [
+              "el",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "talis",
+            "n": 2,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "eli",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sels",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "eas",
+            "n": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "alls",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "ralli",
+            "n": 1,
+            "lang": [
+              "ru"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "tat",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "tals",
+            "n": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "teli",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "irt",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 1783,
+        "key": "alipmues",
+        "train_search_score": 41.424598693847656,
+        "train_match_types": 18,
+        "train_match_tokens": 67,
+        "novel_match_types": 14,
+        "novel_match_tokens": 28,
+        "dominant_novel_language": [
+          [
+            "el",
+            5
+          ],
+          [
+            "nl",
+            5
+          ],
+          [
+            "es",
+            5
+          ],
+          [
+            "ca",
+            5
+          ],
+          [
+            "pt",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "ells",
+            "n": 7,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "eas",
+            "n": 4,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "mis",
+            "n": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pl",
+              "pt",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "emp",
+            "n": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "pilas",
+            "n": 2,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ela",
+            "n": 2,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pl",
+              "pt",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sels",
+            "n": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "eis",
+            "n": 1,
+            "lang": [
+              "de",
+              "el",
+              "la",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "milla",
+            "n": 1,
+            "lang": [
+              "ca",
+              "es"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "pip",
+            "n": 1,
+            "lang": [
+              "en",
+              "nl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "pils",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "pela",
+            "n": 1,
+            "lang": [
+              "ca",
+              "es",
+              "pt",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "amp",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "it",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "lsheedy",
+            "decoded": "pellas",
+            "n": 1,
+            "lang": [
+              "el"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 1872,
+        "key": "orehcuas",
+        "train_search_score": 41.25804901123047,
+        "train_match_types": 18,
+        "train_match_tokens": 68,
+        "novel_match_types": 14,
+        "novel_match_tokens": 22,
+        "dominant_novel_language": [
+          [
+            "pl",
+            5
+          ],
+          [
+            "es",
+            5
+          ],
+          [
+            "pt",
+            5
+          ],
+          [
+            "nl",
+            4
+          ],
+          [
+            "sk",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "aos",
+            "n": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "ces",
+            "n": 3,
+            "lang": [
+              "en",
+              "es",
+              "fr",
+              "pt",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "ach",
+            "n": 2,
+            "lang": [
+              "cs",
+              "de",
+              "nl",
+              "pl",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "heros",
+            "n": 2,
+            "lang": [
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "aro",
+            "n": 2,
+            "lang": [
+              "ca",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "sars",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "aes",
+            "n": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "cech",
+            "n": 1,
+            "lang": [
+              "cs",
+              "pl",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "cerro",
+            "n": 1,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "heh",
+            "n": 1,
+            "lang": [
+              "en",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "hers",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "yksheol",
+            "decoded": "search",
+            "n": 1,
+            "lang": [
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "haro",
+            "n": 1,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "och",
+            "n": 1,
+            "lang": [
+              "cs",
+              "de",
+              "nl",
+              "pl",
+              "sk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 251,
+        "key": "lahsebmt",
+        "train_search_score": 45.788368225097656,
+        "train_match_types": 18,
+        "train_match_tokens": 86,
+        "novel_match_types": 13,
+        "novel_match_tokens": 25,
+        "dominant_novel_language": [
+          [
+            "he",
+            6
+          ],
+          [
+            "nl",
+            6
+          ],
+          [
+            "en",
+            4
+          ],
+          [
+            "ca",
+            3
+          ],
+          [
+            "el",
+            3
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "maat",
+            "n": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "mlt",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "mes",
+            "n": 2,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "shalt",
+            "n": 2,
+            "lang": [
+              "en",
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "mal",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "mht",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qool",
+            "decoded": "bees",
+            "n": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "haat",
+            "n": 1,
+            "lang": [
+              "nl",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "ehes",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "shs",
+            "n": 1,
+            "lang": [
+              "he",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "shat",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "smal",
+            "n": 1,
+            "lang": [
+              "cs",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "les",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 296,
+        "key": "kylabvrh",
+        "train_search_score": 45.50296401977539,
+        "train_match_types": 22,
+        "train_match_tokens": 72,
+        "novel_match_types": 13,
+        "novel_match_tokens": 22,
+        "dominant_novel_language": [
+          [
+            "he",
+            12
+          ],
+          [
+            "cs",
+            2
+          ],
+          [
+            "ca",
+            1
+          ],
+          [
+            "de",
+            1
+          ],
+          [
+            "el",
+            1
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "shdy",
+            "decoded": "rkh",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "decoded": "blh",
+            "n": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "rba",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "alykh",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkeedy",
+            "decoded": "alyykh",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "ryk",
+            "n": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "decoded": "hryh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "decoded": "lyyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "blba",
+            "n": 1,
+            "lang": [
+              "cs"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "decoded": "blyyk",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "ala",
+            "n": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "alyh",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "aryk",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      },
+      {
+        "train_rank": 432,
+        "key": "rohsegpt",
+        "train_search_score": 44.93519973754883,
+        "train_match_types": 19,
+        "train_match_tokens": 80,
+        "novel_match_types": 13,
+        "novel_match_tokens": 25,
+        "dominant_novel_language": [
+          [
+            "nl",
+            7
+          ],
+          [
+            "pt",
+            5
+          ],
+          [
+            "sl",
+            5
+          ],
+          [
+            "ca",
+            4
+          ],
+          [
+            "es",
+            4
+          ]
+        ],
+        "novel_matches": [
+          {
+            "cipher": "sheey",
+            "decoded": "poot",
+            "n": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "decoded": "prt",
+            "n": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shol",
+            "decoded": "pes",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "lkedy",
+            "decoded": "short",
+            "n": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "decoded": "por",
+            "n": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "decoded": "gehoor",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "decoded": "pht",
+            "n": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okol",
+            "decoded": "ehes",
+            "n": 1,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "lkl",
+            "decoded": "shs",
+            "n": 1,
+            "lang": [
+              "he",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lkey",
+            "decoded": "shot",
+            "n": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "lshed",
+            "decoded": "spor",
+            "n": 1,
+            "lang": [
+              "cs",
+              "el",
+              "pl",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "dol",
+            "decoded": "res",
+            "n": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pt",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "lsheedy",
+            "decoded": "spoort",
+            "n": 1,
+            "lang": [
+              "nl"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
