@@ -40,6 +40,23 @@ def pairauc(posterior,true_labels,seed,n=12000):
  x=np.sum(posterior[a]*posterior[b],axis=1)
  return float(roc_auc_score(y,x)) if len(set(y))==2 else None
 
+def conditional_source_auc(posterior,source_items,controller_labels,seed):
+ # Evaluate source identity *conditional on the same planted controller*, diagnostics only.
+ # Models and models' validation selection have already been frozen above.
+ rng=np.random.default_rng(seed)
+ chosen=[]
+ for group in sorted(set(controller_labels)):
+  members=np.flatnonzero(controller_labels==group)
+  if len(members)<2:continue
+  for _ in range(1500):
+   a,b=rng.choice(members,2,replace=False)
+   chosen.append((int(a),int(b)))
+ if not chosen:return None
+ ix=np.array(chosen,dtype=int)
+ y=(source_items[ix[:,0]]==source_items[ix[:,1]]).astype(int)
+ x=np.sum(posterior[ix[:,0]]*posterior[ix[:,1]],axis=1)
+ return float(roc_auc_score(y,x)) if len(set(y))==2 else None
+
 def run(family,nsource,seed,nt,nv,nte):
  rng=np.random.default_rng(seed)
  pi,A,_=q["z"]["build_source"](nsource,"LANG" if family=="NONE" else family,rng)
@@ -85,6 +102,7 @@ def run(family,nsource,seed,nt,nv,nte):
   "test_iid_class_nmi":iid_nmi,"test_hmm_class_nmi_diagnostic":seq_nmi,
   "test_iid_class_ari":float(adjusted_rand_score(truth_g,pred)),
   "test_same_class_auc":ci_auc,"test_same_source_item_auc_exploratory":item_auc,
+  "test_within_controller_source_item_auc":conditional_source_auc(posterior,truth_z,truth_g,seed+1511),
   "test_seq_gain_bits_per_token":gain,
   "test_iid_ll_nats_token":iid_ll/nte,"test_hmm_ll_nats_token":hmm_ll/nte,
   "calibration":"Synthetic only. True source labels revealed only after model selection; no real VMS decoding."}
@@ -117,6 +135,7 @@ def main():
    "median_iid_class_nmi":float(np.median([x["test_iid_class_nmi"] for x in subset])),
    "median_iid_class_auc":float(np.median([x["test_same_class_auc"] for x in subset])),
    "median_same_item_auc":float(np.median([x["test_same_source_item_auc_exploratory"] for x in subset])),
+   "median_within_controller_source_item_auc":float(np.median([x["test_within_controller_source_item_auc"] for x in subset if x["test_within_controller_source_item_auc"] is not None])),
    "median_hmm_extra_bits":float(np.median([x["test_seq_gain_bits_per_token"] for x in subset])),
    "class_gate_fraction":float(np.mean([x["test_iid_class_nmi"]>=.6 for x in subset])),
    "false_seq_alarm_fraction":float(np.mean([x["test_seq_gain_bits_per_token"]>=.02 for x in subset]))})
