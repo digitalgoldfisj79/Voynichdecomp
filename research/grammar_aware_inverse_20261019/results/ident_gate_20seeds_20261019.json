@@ -1,0 +1,816 @@
+{
+  "schema": "IDENT_GATE_20_SEED_20261019",
+  "code_commit": "bfc94481e79c530de644d96a62c5e298ff60f586",
+  "job": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5dfe28c0d0e6c5f82e4b4",
+  "complete": true,
+  "seeds": 20,
+  "summary": {
+    "semantic": {
+      "bits_per_line": {
+        "median": 0.008005854293166989,
+        "min": -0.19457743677242445,
+        "max": 0.13627114933038587
+      },
+      "auc": {
+        "median": 0.5720129870129871,
+        "min": 0.29149797570850206,
+        "max": 0.8828125
+      },
+      "gt_0_02": 6
+    },
+    "production": {
+      "bits_per_line": {
+        "median": 0.008005854293166989,
+        "min": -0.19457743677242445,
+        "max": 0.13627114933038587
+      },
+      "auc": {
+        "median": 0.5720129870129871,
+        "min": 0.29149797570850206,
+        "max": 0.8828125
+      },
+      "gt_0_02": 6
+    },
+    "independent": {
+      "bits_per_line": {
+        "median": -0.006701475480564197,
+        "min": -0.20513702058001215,
+        "max": 0.0679071238810319
+      },
+      "auc": {
+        "median": 0.5484375,
+        "min": 0.25520833333333337,
+        "max": 0.7206477732793523
+      },
+      "gt_0_02": 2
+    }
+  },
+  "equal_surface_hash_all": true,
+  "model_loglik_delta_max": 0,
+  "semantic_production_scores_exactly_equal": true,
+  "power_pass": false,
+  "fpr_pass": false,
+  "disposition": "Mechanism L and P are observationally equivalent by exact construction. Anchor sensitivity gate must be evaluated separately; no inference to Voynich. Models lack empirical CONNECT/LINE_ENTRY.",
+  "cases": [
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.5436507936507937,
+          "holdout_test_bits_per_line_gain": -0.016207531423475866,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "production": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.7732793522267207,
+          "holdout_test_bits_per_line_gain": 0.12292988096435305,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.7732793522267207,
+          "holdout_test_bits_per_line_gain": 0.12292988096435305,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271100,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -9056.822252223112,
+      "surface_sha": "bcec911b8622ed9c119d83afa69c59751426d21011dd30b362128e5ec1413a8a"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.6614583333333333,
+          "holdout_test_bits_per_line_gain": -0.027816786323222147,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.7239583333333333,
+          "holdout_test_bits_per_line_gain": 0.010869922861520949,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.7239583333333333,
+          "holdout_test_bits_per_line_gain": 0.010869922861520949,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271101,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10448.192863122596,
+      "surface_sha": "7526ba33260a12616ac4b6a5255c7369db6d775cf8e9d6b31cc827109a3112db"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.7206477732793523,
+          "holdout_test_bits_per_line_gain": 0.05361380919353616,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.4493927125506072,
+          "holdout_test_bits_per_line_gain": -0.19457743677242445,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.4493927125506072,
+          "holdout_test_bits_per_line_gain": -0.19457743677242445,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271102,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10762.17358634838,
+      "surface_sha": "8684d4d912c9caf20e6864203e3a5d69513aa19fd7386b7da947c9f57e39e2a7"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.6666666666666667,
+          "holdout_test_bits_per_line_gain": -0.008155218046535061,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.534412955465587,
+          "holdout_test_bits_per_line_gain": -0.0031802560088497072,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.534412955465587,
+          "holdout_test_bits_per_line_gain": -0.0031802560088497072,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271103,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -11311.638441177585,
+      "surface_sha": "3edd57df7c2d73dc1a9722945e86405e1e34eb5e9ead917e80379de8f6e8e349"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.6883116883116883,
+          "holdout_test_bits_per_line_gain": 0.0679071238810319,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.52734375,
+          "holdout_test_bits_per_line_gain": -0.07141885050360243,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.52734375,
+          "holdout_test_bits_per_line_gain": -0.07141885050360243,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271104,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -8974.280370988756,
+      "surface_sha": "e4921b28b7667986d66e61c370cf2ca22034855221a859af13efe5f29fc067ff"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.6785714285714286,
+          "holdout_test_bits_per_line_gain": -0.00947441795354748,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.354978354978355,
+          "holdout_test_bits_per_line_gain": -0.0875854561691939,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "semantic": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.354978354978355,
+          "holdout_test_bits_per_line_gain": -0.0875854561691939,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271105,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10239.57232050159,
+      "surface_sha": "51f67506039a55b297fb9d1c7151f9c3a7e2f8617b98279215aa98646b2669b8"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5584415584415585,
+          "holdout_test_bits_per_line_gain": 0.007015573611680492,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.47619047619047616,
+          "holdout_test_bits_per_line_gain": -0.0012398828052029708,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.47619047619047616,
+          "holdout_test_bits_per_line_gain": -0.0012398828052029708,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271106,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10751.068984147823,
+      "surface_sha": "2988c313b84667a4a61c56fb987edc98e6854cc4f7a0a159c89717dd5ae4416c"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.3927125506072875,
+          "holdout_test_bits_per_line_gain": -0.0013586754808842807,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.8828125,
+          "holdout_test_bits_per_line_gain": 0.046617707823887716,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.8828125,
+          "holdout_test_bits_per_line_gain": 0.046617707823887716,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271107,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10396.75122283398,
+      "surface_sha": "579b3c2700c856622f54813bfe5d2bb06843ba54d72f3e525ad856878b29a9c9"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.46153846153846156,
+          "holdout_test_bits_per_line_gain": -0.005247732914593333,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.47186147186147187,
+          "holdout_test_bits_per_line_gain": -0.014669971664879895,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.47186147186147187,
+          "holdout_test_bits_per_line_gain": -0.014669971664879895,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271108,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -9165.722303566356,
+      "surface_sha": "f90c9a570a9e2d1d0cf36ab67f638605e39ccc37894c7ed0a03338584253f46e"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.48051948051948057,
+          "holdout_test_bits_per_line_gain": -0.15991287350555908,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.6233766233766234,
+          "holdout_test_bits_per_line_gain": 0.03029191136194624,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.6233766233766234,
+          "holdout_test_bits_per_line_gain": 0.03029191136194624,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271109,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10230.802503174122,
+      "surface_sha": "e91e960807cf6faed99032eab12d7bc8ff4b7b60a011f0aeeba1851a1e841f35"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.55,
+          "holdout_test_bits_per_line_gain": -0.014323951390741798,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5485714285714286,
+          "holdout_test_bits_per_line_gain": -0.0018210663944350516,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5485714285714286,
+          "holdout_test_bits_per_line_gain": -0.0018210663944350516,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271110,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -11006.495099050058,
+      "surface_sha": "1c22a6f4ba5b85710cd3996483f477bb672242c6eaa589b70a41d2c21fc93f02"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.38056680161943324,
+          "holdout_test_bits_per_line_gain": 0.015508882772244275,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.78125,
+          "holdout_test_bits_per_line_gain": 0.13627114933038587,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.78125,
+          "holdout_test_bits_per_line_gain": 0.13627114933038587,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271111,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -8091.040540543922,
+      "surface_sha": "a2bb98d0a52dcf81c6797306fe646cce365f11c47a92152cd1b2b5466d499d16"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.546875,
+          "holdout_test_bits_per_line_gain": -0.023224976944816046,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.65,
+          "holdout_test_bits_per_line_gain": 0.007590950533947637,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.65,
+          "holdout_test_bits_per_line_gain": 0.007590950533947637,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271112,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -9717.093962684958,
+      "surface_sha": "241bd356ed27e2c301ba62cc810251c91019998d98448ad84a61f5b66723c9da"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.5647058823529412,
+          "holdout_test_bits_per_line_gain": -0.053274490094764926,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "production": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.3647058823529412,
+          "holdout_test_bits_per_line_gain": 0.00842075805238634,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.3,
+          "holdout_anchor_AUC": 0.3647058823529412,
+          "holdout_test_bits_per_line_gain": 0.00842075805238634,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271113,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10216.017950693185,
+      "surface_sha": "eea30958354219ba48218789b11b54d1647430125537246255d2f439c35af447"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.6431818181818182,
+          "holdout_test_bits_per_line_gain": -0.00264885067940819,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5954545454545455,
+          "holdout_test_bits_per_line_gain": 0.017085025551432976,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5954545454545455,
+          "holdout_test_bits_per_line_gain": 0.017085025551432976,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271114,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -8801.947803438568,
+      "surface_sha": "c09febacb002644aea732594e29f5a524996e6d70d3462508419054fd2364312"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5295454545454545,
+          "holdout_test_bits_per_line_gain": 0.016442122060031965,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.666015625,
+          "holdout_test_bits_per_line_gain": 0.01380937878563958,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.666015625,
+          "holdout_test_bits_per_line_gain": 0.01380937878563958,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271115,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -8766.36142223673,
+      "surface_sha": "89f4f1d152806a290b5082ea7921e9dd39c3df10bd303610d0ee72ff0972e7e0"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.5958333333333334,
+          "holdout_test_bits_per_line_gain": -0.1095795770094927,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.7135416666666667,
+          "holdout_test_bits_per_line_gain": 0.07768535610746144,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "semantic": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.7135416666666667,
+          "holdout_test_bits_per_line_gain": 0.07768535610746144,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271116,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -12063.94843092847,
+      "surface_sha": "b08193fc5c920eff9f63e334d199020f520b37b7df1acfca7a49402fb7183ef8"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.5324675324675325,
+          "holdout_test_bits_per_line_gain": 0.001569110207078147,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.4823529411764706,
+          "holdout_test_bits_per_line_gain": -0.004493130495593334,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.4823529411764706,
+          "holdout_test_bits_per_line_gain": -0.004493130495593334,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271117,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10418.574968689589,
+      "surface_sha": "916d850e7e010282a4d8ad6156c708022e3292a27c19f62d96fe3d8c31116079"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.25520833333333337,
+          "holdout_test_bits_per_line_gain": -0.0007104769731980805,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.29149797570850206,
+          "holdout_test_bits_per_line_gain": -0.017727288155049117,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.29149797570850206,
+          "holdout_test_bits_per_line_gain": -0.017727288155049117,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": false,
+      "seed": 20271118,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -10429.340539763838,
+      "surface_sha": "4a77dc013a6fec56c839d6b715ef67aa254e9c038adf1b557abe33ecd7fb68f9"
+    },
+    {
+      "arms": {
+        "independent": {
+          "base_C": 3,
+          "holdout_anchor_AUC": 0.38333333333333336,
+          "holdout_test_bits_per_line_gain": -0.20513702058001215,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 3
+        },
+        "production": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.6196078431372549,
+          "holdout_test_bits_per_line_gain": 0.04324826257799733,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        },
+        "semantic": {
+          "base_C": 0.03,
+          "holdout_anchor_AUC": 0.6196078431372549,
+          "holdout_test_bits_per_line_gain": 0.04324826257799733,
+          "test_lines": 32,
+          "train_lines": 96,
+          "validation_lines": 32,
+          "with_form_C": 0.03
+        }
+      },
+      "mechanism_loglik_difference": 0,
+      "mechanism_surface_sha_identical": true,
+      "positive_gain_exceeds_null": true,
+      "seed": 20271119,
+      "semantic_vs_production_jointly_identical": true,
+      "surface_ll_nats": -8780.276925117247,
+      "surface_sha": "bc40a8a60c52810770131a2775e4158a453b70d344c3aa750caaed6880f3f846"
+    }
+  ]
+}
