@@ -1,0 +1,139 @@
+{
+  "schema": "F75R_GPU_JOB_COST_AUDIT_20261019",
+  "scope": "Only the 16 new T4 GPU jobs from this turn; excludes older jobs and CPU-basic probes.",
+  "posted_t4_small_usd_per_hour": 0.4,
+  "posted_pricing_url": "https://huggingface.co/docs/hub/main/en/jobs-pricing",
+  "warning": "Estimates from reported job timestamps; not a billed transaction, does not verify account balance or rounding.",
+  "jobs": [
+    {
+      "name": "voynich-null3-smoke-italian",
+      "id": "6ad5a0895ccb47ba0f7cecbd",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a0895ccb47ba0f7cecbd",
+      "created_at": "2026-10-19T04:46:01.779Z",
+      "finished_at": "2026-10-19T04:46:54.499Z",
+      "seconds": 52.72
+    },
+    {
+      "name": "voynich-null3-parity-smoke-it",
+      "id": "6ad5a10bc662881452280a54",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a10bc662881452280a54",
+      "created_at": "2026-10-19T04:48:11.449Z",
+      "finished_at": "2026-10-19T04:48:55.955Z",
+      "seconds": 44.506
+    },
+    {
+      "name": "voynich-null3-synthetic-it-parity-4rep",
+      "id": "6ad5a17ec662881452280b05",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a17ec662881452280b05",
+      "created_at": "2026-10-19T04:50:06.674Z",
+      "finished_at": "2026-10-19T04:54:20.187Z",
+      "seconds": 253.513
+    },
+    {
+      "name": "voynich-null3-synthetic-la-parity-4rep",
+      "id": "6ad5a18ac662881452280b15",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a18ac662881452280b15",
+      "created_at": "2026-10-19T04:50:18.771Z",
+      "finished_at": "2026-10-19T04:54:44.241Z",
+      "seconds": 265.47
+    },
+    {
+      "name": "voynich-null3-real-it-parity-4rep",
+      "id": "6ad5a1965ccb47ba0f7ceddc",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a1965ccb47ba0f7ceddc",
+      "created_at": "2026-10-19T04:50:30.420Z",
+      "finished_at": "2026-10-19T04:52:11.487Z",
+      "seconds": 101.067
+    },
+    {
+      "name": "voynich-null3-real-la-parity-4rep",
+      "id": "6ad5a1a2c662881452280b27",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a1a2c662881452280b27",
+      "created_at": "2026-10-19T04:50:42.374Z",
+      "finished_at": "2026-10-19T04:53:51.945Z",
+      "seconds": 189.571
+    },
+    {
+      "name": "voynich-null3-bounds-it-0-60",
+      "id": "6ad5a32ec662881452280d37",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a32ec662881452280d37",
+      "created_at": "2026-10-19T04:57:18.346Z",
+      "finished_at": "2026-10-19T05:11:29.914Z",
+      "seconds": 851.568
+    },
+    {
+      "name": "voynich-null3-bounds-la-0-60",
+      "id": "6ad5a33a5ccb47ba0f7ceff0",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a33a5ccb47ba0f7ceff0",
+      "created_at": "2026-10-19T04:57:30.026Z",
+      "finished_at": "2026-10-19T05:12:04.982Z",
+      "seconds": 874.956
+    },
+    {
+      "name": "voynich-null3-bounds-it-0p05-20",
+      "id": "6ad5a3455ccb47ba0f7cf009",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a3455ccb47ba0f7cf009",
+      "created_at": "2026-10-19T04:57:41.800Z",
+      "finished_at": "2026-10-19T05:02:48.800Z",
+      "seconds": 307
+    },
+    {
+      "name": "voynich-null3-bounds-la-0p05-20",
+      "id": "6ad5a3515ccb47ba0f7cf014",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a3515ccb47ba0f7cf014",
+      "created_at": "2026-10-19T04:57:53.431Z",
+      "finished_at": "2026-10-19T05:03:22.472Z",
+      "seconds": 329.041
+    },
+    {
+      "name": "voynich-null3-lengthmatched-smoke-la-0",
+      "id": "6ad5a5cd5ccb47ba0f7cf329",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a5cd5ccb47ba0f7cf329",
+      "created_at": "2026-10-19T05:08:29.995Z",
+      "finished_at": "2026-10-19T05:09:36.113Z",
+      "seconds": 66.118
+    },
+    {
+      "name": "voynich-null3-lengthmatched-smoke-it-005",
+      "id": "6ad5a5e2c66288145228110c",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a5e2c66288145228110c",
+      "created_at": "2026-10-19T05:08:50.348Z",
+      "finished_at": "2026-10-19T05:09:39.487Z",
+      "seconds": 49.139
+    },
+    {
+      "name": "voynich-lengthmatch-it-none-20",
+      "id": "6ad5a6295ccb47ba0f7cf382",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a6295ccb47ba0f7cf382",
+      "created_at": "2026-10-19T05:10:01.879Z",
+      "finished_at": "2026-10-19T05:15:07.770Z",
+      "seconds": 305.891
+    },
+    {
+      "name": "voynich-lengthmatch-la-none-20",
+      "id": "6ad5a635c662881452281185",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a635c662881452281185",
+      "created_at": "2026-10-19T05:10:13.761Z",
+      "finished_at": "2026-10-19T05:15:21.374Z",
+      "seconds": 307.613
+    },
+    {
+      "name": "voynich-lengthmatch-it-five-20",
+      "id": "6ad5a641c662881452281197",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a641c662881452281197",
+      "created_at": "2026-10-19T05:10:25.625Z",
+      "finished_at": "2026-10-19T05:15:49.552Z",
+      "seconds": 323.927
+    },
+    {
+      "name": "voynich-lengthmatch-la-five-20",
+      "id": "6ad5a64d5ccb47ba0f7cf39d",
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5a64d5ccb47ba0f7cf39d",
+      "created_at": "2026-10-19T05:10:37.875Z",
+      "finished_at": "2026-10-19T05:16:35.096Z",
+      "seconds": 357.221
+    }
+  ],
+  "total_seconds": 4679.321,
+  "estimated_cost_usd": 0.5199245555555556
+}
