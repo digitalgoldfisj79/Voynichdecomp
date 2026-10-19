@@ -1,5 +1,7 @@
 # RETRACTED FINDINGS (TOP OF RUNNING RESULTS)
 
+**R3 / 2026-10-19 / RETRACTED:** The 2026-10-18 Italian one-null improvement `+0.2207300` log units per original cipher glyph was obtained with **20 separate one-null candidate searches versus one monoalphabetic search**. It is not an equal-search-budget mechanism effect. Equalising to 20 independent mono restarts overturns stable promotion: Italian f76r heldout gains changed sign across seeds, with selected nulls changing; Latin did not show a replicable advantage. The earlier gain is withdrawn, not silently replaced. See `results/null3_parity_pilot_20261019.json`.
+
 **R1 / 2026-10-18 / RETRACTED:** The automatically emitted `candidate_promotion=true` on a naive within-position glyph-permutation null **does not establish a decipherment, cipher mechanism, source language, or anything language-specific**. All six distinct language models clear this null; the null destroys readily detectable graphotactic structure. Replace the gate with planted recovery **plus** language-specific hard negative controls, chronology-matched witnesses, and genuinely held-out coherent plaintext before promotion. This retraction remains at the top on all updates.
 
 **R2 / 2026-10-18 / BOUNDING CORRECTION:** Initial huge deviations against within-word glyph permutation were non-specific. Under matched whole-word permutation with full refitting, none of six languages exceeds 2 null SD; the corresponding heldout word-order contrast also fails to resolve. This is **not** an exclusion of monoalphabetic substitution because these controls preserve lexical word identities and may not distinguish correct decipherments; positive language-discrimination controls remain to be qualified.
@@ -70,3 +72,16 @@ Full 900-step, 256-way GPU search with exactly one candidate null position enume
 **Inference firewall:** Both real-text effect sizes await a properly matched null standard deviation and controls distinguishing the one-null family from flexible graphotactic overfitting; no historical-language, literal-null or cipher promotion. The pnull=0.05 fixed encoding differs substantially from the selected 10–14% empirical deletion frequencies and must receive prior-sensitivity checks. The comparison uses different optimization runs and equal-search-budget assessment should be confirmed. Do not infer a language rank from raw Latin vs Italian score deltas. Positive no-null synthetic false-selection rate must also be calibrated before promotion.
 
 **Status:** NO CLAIM. Hard family-matched null controls, false-positive rate, and historical corpus fitness remain unqualified. Additional complexity is blocked until those tests can discriminate the alternatives.
+
+## Rung 2B: search-parity correction and full-strength calibration (2026-10-19)
+
+**Primary data:** [results/null3_parity_pilot_20261019.json](results/null3_parity_pilot_20261019.json). Frozen job code commit `cd7c25cd0c84ef87724af3a0deb064a36e33d8ca`; Tesla T4, 650 annealing steps and population 192 per candidate. Each null candidate has 20 trials, and mono has 20 independent restarts; all keys chosen by f75r train score only and evaluated unchanged on f76r. 4 independent *synthetic* draws at each deletion probability 0, 0.05, 0.10, 0.15 for Latin and Italian; four independent search seeds for the *same* Voynich passage are not four independent Voynich observations.
+
+| Model | Real f76r mean minus no-null synthetic mean | Synthetic no-null SD | Effect/SD | Synthetic 5% null symbol found | Synthetic no-null gains >0 | Real gain >0 across seeds |
+|---|---:|---:|---:|---:|---:|---:|
+| it | 0.189464 | 0.129299 | 1.47 | 4/4 | 0/4 | 2/4 |
+| la | -0.071590 | 0.236564 | -0.30 | 4/4 | 1/4 | 1/4 |
+
+**Inference:** metric does not resolve the Voynich one-null mechanism (neither effect magnitude reaches 2 matched-null SD). The 5% planted synthetic null is recovered 4/4 for both languages at this setting, but small no-null sample sizes preclude any calibrated 5% false-positive claim. Source-language adjudication invalid because UD witness distributions, glyph statistics, spelling period and normalisation are not matched to fifteenth-century running text. The common f76r holdout does not create independent sample size across seed reruns. Synthetic no-null experiments were completely independent of Voynich aside from the frozen architecture; their matching quality to Voynich graphotactics is NOT certified.
+
+**Independent-control extension underway:** additional 60 zero-null and 20 five-percent-null draws per language at the same compute settings, fresh seeds, GPU job logs to be appended with positive recovery and false-positive bounds. The prior program-level homophonic and terminal cipher studies were consulted before proposing any new cipher family; no duplicate homophone search authorised.
