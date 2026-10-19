@@ -1,0 +1,616 @@
+{
+  "schema": "F75R_EXACT_ENUM_GPU_COST_AUDIT_20261019",
+  "scope": "HF jobs with voynich- prefix created at/after 2026-10-19 05:40 UTC; exhaustive enumeration, controls, beam and smoke jobs",
+  "unit_rate_usd_per_t4_small_hour": 0.4,
+  "unit_rate_source": "HF Jobs published price reported in previous chat, not independently reverified in this record",
+  "billing_warning": "Estimate uses elapsed created-to-finished time, not actual billed GPU runtime; CPU jobs and account balance excluded. One beam seed attempt errored and was replaced by completed fixed run.",
+  "gpu_job_count": 58,
+  "cpu_job_count": 2,
+  "completed": 59,
+  "error": 1,
+  "other_status": 0,
+  "total_t4_elapsed_seconds": 46261.55,
+  "estimated_usd_at_published_hourly_rate": 5.140172222222223,
+  "jobs": [
+    {
+      "id": "6ad5b82fc66288145228245d",
+      "name": "voynich-exact8-to20-beam-fixed",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:26:55.078Z",
+      "finished_at": "2026-10-19T06:28:06.927Z",
+      "elapsed_seconds": 71.849,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b82fc66288145228245d"
+    },
+    {
+      "id": "6ad5b7eac662881452282431",
+      "name": "voynich-exact8-to20-gpu-beam",
+      "flavor": "t4-small",
+      "status": "ERROR",
+      "created_at": "2026-10-19T06:25:46.496Z",
+      "finished_at": "2026-10-19T06:26:30.356Z",
+      "elapsed_seconds": 43.86,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b7eac662881452282431"
+    },
+    {
+      "id": "6ad5b7dd5ccb47ba0f7d0399",
+      "name": "voynich-exact8-untouched-novel-type-audit",
+      "flavor": "cpu-basic",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:25:33.675Z",
+      "finished_at": "2026-10-19T06:26:06.707Z",
+      "elapsed_seconds": 33.032,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b7dd5ccb47ba0f7d0399"
+    },
+    {
+      "id": "6ad5b528c6628814522821c1",
+      "name": "voynich-exact8-null409-24-26",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:14:00.909Z",
+      "finished_at": "2026-10-19T06:31:47.616Z",
+      "elapsed_seconds": 1066.707,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b528c6628814522821c1"
+    },
+    {
+      "id": "6ad5b51cc6628814522821b0",
+      "name": "voynich-exact8-null409-22-24",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:13:48.740Z",
+      "finished_at": "2026-10-19T06:31:44.902Z",
+      "elapsed_seconds": 1076.162,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b51cc6628814522821b0"
+    },
+    {
+      "id": "6ad5b510c66288145228219f",
+      "name": "voynich-exact8-null409-20-22",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:13:36.654Z",
+      "finished_at": "2026-10-19T06:31:40.246Z",
+      "elapsed_seconds": 1083.592,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b510c66288145228219f"
+    },
+    {
+      "id": "6ad5b504c662881452282195",
+      "name": "voynich-exact8-null409-18-20",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:13:24.260Z",
+      "finished_at": "2026-10-19T06:30:48.327Z",
+      "elapsed_seconds": 1044.067,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b504c662881452282195"
+    },
+    {
+      "id": "6ad5b4f75ccb47ba0f7d0180",
+      "name": "voynich-exact8-null409-16-18",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:13:11.971Z",
+      "finished_at": "2026-10-19T06:31:29.596Z",
+      "elapsed_seconds": 1097.625,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4f75ccb47ba0f7d0180"
+    },
+    {
+      "id": "6ad5b4ebc66288145228217c",
+      "name": "voynich-exact8-null409-14-16",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:12:59.464Z",
+      "finished_at": "2026-10-19T06:31:14.757Z",
+      "elapsed_seconds": 1095.293,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4ebc66288145228217c"
+    },
+    {
+      "id": "6ad5b4df5ccb47ba0f7d016b",
+      "name": "voynich-exact8-null409-12-14",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:12:47.100Z",
+      "finished_at": "2026-10-19T06:31:14.257Z",
+      "elapsed_seconds": 1107.157,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4df5ccb47ba0f7d016b"
+    },
+    {
+      "id": "6ad5b4d25ccb47ba0f7d0153",
+      "name": "voynich-exact8-null409-10-12",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:12:34.072Z",
+      "finished_at": "2026-10-19T06:32:26.620Z",
+      "elapsed_seconds": 1192.548,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4d25ccb47ba0f7d0153"
+    },
+    {
+      "id": "6ad5b4c5c66288145228214d",
+      "name": "voynich-exact8-null409-8-10",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:12:21.889Z",
+      "finished_at": "2026-10-19T06:31:15.392Z",
+      "elapsed_seconds": 1133.503,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4c5c66288145228214d"
+    },
+    {
+      "id": "6ad5b4b9c662881452282141",
+      "name": "voynich-exact8-null409-6-8",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:12:09.564Z",
+      "finished_at": "2026-10-19T06:32:32.723Z",
+      "elapsed_seconds": 1223.159,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4b9c662881452282141"
+    },
+    {
+      "id": "6ad5b4adc662881452282123",
+      "name": "voynich-exact8-null409-4-6",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:11:57.082Z",
+      "finished_at": "2026-10-19T06:32:49.272Z",
+      "elapsed_seconds": 1252.19,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4adc662881452282123"
+    },
+    {
+      "id": "6ad5b4a05ccb47ba0f7d0115",
+      "name": "voynich-exact8-null409-2-4",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:11:44.528Z",
+      "finished_at": "2026-10-19T06:32:32.121Z",
+      "elapsed_seconds": 1247.593,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4a05ccb47ba0f7d0115"
+    },
+    {
+      "id": "6ad5b4945ccb47ba0f7d010d",
+      "name": "voynich-exact8-null409-0-2",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:11:32.239Z",
+      "finished_at": "2026-10-19T06:32:41.357Z",
+      "elapsed_seconds": 1269.118,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b4945ccb47ba0f7d010d"
+    },
+    {
+      "id": "6ad5b3fcc662881452282083",
+      "name": "voynich-exact8-null119-24-26",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:09:00.633Z",
+      "finished_at": "2026-10-19T06:27:20.483Z",
+      "elapsed_seconds": 1099.85,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3fcc662881452282083"
+    },
+    {
+      "id": "6ad5b3f05ccb47ba0f7d00b4",
+      "name": "voynich-exact8-null119-22-24",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:08:48.357Z",
+      "finished_at": "2026-10-19T06:26:30.924Z",
+      "elapsed_seconds": 1062.567,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3f05ccb47ba0f7d00b4"
+    },
+    {
+      "id": "6ad5b3e3c662881452282074",
+      "name": "voynich-exact8-null119-20-22",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:08:35.982Z",
+      "finished_at": "2026-10-19T06:28:59.653Z",
+      "elapsed_seconds": 1223.671,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3e3c662881452282074"
+    },
+    {
+      "id": "6ad5b3d7c66288145228206f",
+      "name": "voynich-exact8-null119-18-20",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:08:23.144Z",
+      "finished_at": "2026-10-19T06:26:53.624Z",
+      "elapsed_seconds": 1110.48,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3d7c66288145228206f"
+    },
+    {
+      "id": "6ad5b3cac662881452282062",
+      "name": "voynich-exact8-null119-16-18",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:08:10.289Z",
+      "finished_at": "2026-10-19T06:29:01.067Z",
+      "elapsed_seconds": 1250.778,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3cac662881452282062"
+    },
+    {
+      "id": "6ad5b3bd5ccb47ba0f7d0095",
+      "name": "voynich-exact8-null119-14-16",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:07:57.063Z",
+      "finished_at": "2026-10-19T06:27:46.165Z",
+      "elapsed_seconds": 1189.102,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3bd5ccb47ba0f7d0095"
+    },
+    {
+      "id": "6ad5b3b0c66288145228204e",
+      "name": "voynich-exact8-null119-12-14",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:07:44.704Z",
+      "finished_at": "2026-10-19T06:26:39.699Z",
+      "elapsed_seconds": 1134.995,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3b0c66288145228204e"
+    },
+    {
+      "id": "6ad5b3a45ccb47ba0f7d008a",
+      "name": "voynich-exact8-null119-10-12",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:07:32.125Z",
+      "finished_at": "2026-10-19T06:28:00.374Z",
+      "elapsed_seconds": 1228.249,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3a45ccb47ba0f7d008a"
+    },
+    {
+      "id": "6ad5b397c66288145228203e",
+      "name": "voynich-exact8-null119-8-10",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:07:19.689Z",
+      "finished_at": "2026-10-19T06:26:11.987Z",
+      "elapsed_seconds": 1132.298,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b397c66288145228203e"
+    },
+    {
+      "id": "6ad5b38a5ccb47ba0f7d007d",
+      "name": "voynich-exact8-null119-6-8",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:07:06.603Z",
+      "finished_at": "2026-10-19T06:27:43.647Z",
+      "elapsed_seconds": 1237.044,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b38a5ccb47ba0f7d007d"
+    },
+    {
+      "id": "6ad5b37e5ccb47ba0f7d0071",
+      "name": "voynich-exact8-null119-4-6",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:06:54.275Z",
+      "finished_at": "2026-10-19T06:28:00.504Z",
+      "elapsed_seconds": 1266.229,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b37e5ccb47ba0f7d0071"
+    },
+    {
+      "id": "6ad5b3715ccb47ba0f7d004c",
+      "name": "voynich-exact8-null119-2-4",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:06:41.769Z",
+      "finished_at": "2026-10-19T06:29:02.500Z",
+      "elapsed_seconds": 1340.731,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3715ccb47ba0f7d004c"
+    },
+    {
+      "id": "6ad5b3655ccb47ba0f7d0041",
+      "name": "voynich-exact8-null119-0-2",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:06:29.388Z",
+      "finished_at": "2026-10-19T06:27:20.938Z",
+      "elapsed_seconds": 1251.55,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3655ccb47ba0f7d0041"
+    },
+    {
+      "id": "6ad5b31fc662881452281fd1",
+      "name": "voynich-exact8-independent-words-audit",
+      "flavor": "cpu-basic",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:05:19.150Z",
+      "finished_at": "2026-10-19T06:05:30.479Z",
+      "elapsed_seconds": 11.329,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b31fc662881452281fd1"
+    },
+    {
+      "id": "6ad5b22fc662881452281ef6",
+      "name": "voynich-exact8-full-24-26",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:01:19.083Z",
+      "finished_at": "2026-10-19T06:23:50.733Z",
+      "elapsed_seconds": 1351.65,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b22fc662881452281ef6"
+    },
+    {
+      "id": "6ad5b222c662881452281ef1",
+      "name": "voynich-exact8-full-22-24",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:01:06.712Z",
+      "finished_at": "2026-10-19T06:19:26.650Z",
+      "elapsed_seconds": 1099.938,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b222c662881452281ef1"
+    },
+    {
+      "id": "6ad5b216c662881452281ee1",
+      "name": "voynich-exact8-full-20-22",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:00:54.244Z",
+      "finished_at": "2026-10-19T06:17:52.584Z",
+      "elapsed_seconds": 1018.34,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b216c662881452281ee1"
+    },
+    {
+      "id": "6ad5b20a5ccb47ba0f7cff64",
+      "name": "voynich-exact8-full-18-20",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:00:42.017Z",
+      "finished_at": "2026-10-19T06:19:49.137Z",
+      "elapsed_seconds": 1147.12,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b20a5ccb47ba0f7cff64"
+    },
+    {
+      "id": "6ad5b1fdc662881452281ecf",
+      "name": "voynich-exact8-full-16-18",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:00:29.625Z",
+      "finished_at": "2026-10-19T06:19:35.819Z",
+      "elapsed_seconds": 1146.194,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1fdc662881452281ecf"
+    },
+    {
+      "id": "6ad5b1f0c662881452281eb2",
+      "name": "voynich-exact8-full-14-16",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:00:16.530Z",
+      "finished_at": "2026-10-19T06:18:20.502Z",
+      "elapsed_seconds": 1083.972,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1f0c662881452281eb2"
+    },
+    {
+      "id": "6ad5b1e3c662881452281e49",
+      "name": "voynich-exact8-full-12-14",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T06:00:03.344Z",
+      "finished_at": "2026-10-19T06:17:35.038Z",
+      "elapsed_seconds": 1051.694,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1e3c662881452281e49"
+    },
+    {
+      "id": "6ad5b1d55ccb47ba0f7cff2d",
+      "name": "voynich-exact8-full-10-12",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:59:49.502Z",
+      "finished_at": "2026-10-19T06:17:24.558Z",
+      "elapsed_seconds": 1055.056,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1d55ccb47ba0f7cff2d"
+    },
+    {
+      "id": "6ad5b1c8c662881452281e3d",
+      "name": "voynich-exact8-full-8-10",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:59:36.757Z",
+      "finished_at": "2026-10-19T06:16:37.309Z",
+      "elapsed_seconds": 1020.552,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1c8c662881452281e3d"
+    },
+    {
+      "id": "6ad5b1bcc662881452281e38",
+      "name": "voynich-exact8-full-6-8",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:59:24.528Z",
+      "finished_at": "2026-10-19T06:16:32.324Z",
+      "elapsed_seconds": 1027.796,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1bcc662881452281e38"
+    },
+    {
+      "id": "6ad5b1af5ccb47ba0f7cff0c",
+      "name": "voynich-exact8-full-4-6",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:59:11.165Z",
+      "finished_at": "2026-10-19T06:16:15.541Z",
+      "elapsed_seconds": 1024.376,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1af5ccb47ba0f7cff0c"
+    },
+    {
+      "id": "6ad5b1a25ccb47ba0f7cff07",
+      "name": "voynich-exact8-full-2-4",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:58:58.228Z",
+      "finished_at": "2026-10-19T06:16:09.364Z",
+      "elapsed_seconds": 1031.136,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1a25ccb47ba0f7cff07"
+    },
+    {
+      "id": "6ad5b1945ccb47ba0f7cfef5",
+      "name": "voynich-exact8-full-0-2",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:58:44.984Z",
+      "finished_at": "2026-10-19T06:15:42.426Z",
+      "elapsed_seconds": 1017.442,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1945ccb47ba0f7cfef5"
+    },
+    {
+      "id": "6ad5b1315ccb47ba0f7cfea5",
+      "name": "voynich-exact8-throughput100",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:57:05.042Z",
+      "finished_at": "2026-10-19T05:57:52.092Z",
+      "elapsed_seconds": 47.05,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b1315ccb47ba0f7cfea5"
+    },
+    {
+      "id": "6ad5b0e9c662881452281d7d",
+      "name": "voynich-exact8-63b-preflight",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:55:53.481Z",
+      "finished_at": "2026-10-19T05:56:42.301Z",
+      "elapsed_seconds": 48.82,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0e9c662881452281d7d"
+    },
+    {
+      "id": "6ad5b0d15ccb47ba0f7cfe47",
+      "name": "voynich-exact7-25000lex-23-26",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:55:29.125Z",
+      "finished_at": "2026-10-19T05:57:08.343Z",
+      "elapsed_seconds": 99.218,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0d15ccb47ba0f7cfe47"
+    },
+    {
+      "id": "6ad5b0c45ccb47ba0f7cfe39",
+      "name": "voynich-exact7-25000lex-20-23",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:55:16.715Z",
+      "finished_at": "2026-10-19T05:57:31.084Z",
+      "elapsed_seconds": 134.369,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0c45ccb47ba0f7cfe39"
+    },
+    {
+      "id": "6ad5b0b8c662881452281d29",
+      "name": "voynich-exact7-25000lex-16-20",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:55:04.150Z",
+      "finished_at": "2026-10-19T05:57:43.434Z",
+      "elapsed_seconds": 159.284,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0b8c662881452281d29"
+    },
+    {
+      "id": "6ad5b0aa5ccb47ba0f7cfe25",
+      "name": "voynich-exact7-25000lex-12-16",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:54:50.975Z",
+      "finished_at": "2026-10-19T05:56:38.140Z",
+      "elapsed_seconds": 107.165,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0aa5ccb47ba0f7cfe25"
+    },
+    {
+      "id": "6ad5b09ec662881452281d0d",
+      "name": "voynich-exact7-25000lex-8-12",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:54:38.698Z",
+      "finished_at": "2026-10-19T05:56:13.739Z",
+      "elapsed_seconds": 95.041,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b09ec662881452281d0d"
+    },
+    {
+      "id": "6ad5b0915ccb47ba0f7cfe0d",
+      "name": "voynich-exact7-25000lex-4-8",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:54:25.853Z",
+      "finished_at": "2026-10-19T05:55:56.107Z",
+      "elapsed_seconds": 90.254,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0915ccb47ba0f7cfe0d"
+    },
+    {
+      "id": "6ad5b0855ccb47ba0f7cfdf4",
+      "name": "voynich-exact7-25000lex-0-4",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:54:13.236Z",
+      "finished_at": "2026-10-19T05:55:44.005Z",
+      "elapsed_seconds": 90.769,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0855ccb47ba0f7cfdf4"
+    },
+    {
+      "id": "6ad5b03ec662881452281caa",
+      "name": "voynich-exact7-preflight",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:53:02.766Z",
+      "finished_at": "2026-10-19T05:53:45.815Z",
+      "elapsed_seconds": 43.049,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b03ec662881452281caa"
+    },
+    {
+      "id": "6ad5af485ccb47ba0f7cfd05",
+      "name": "voynich-exact5-typescramble-409",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:48:56.998Z",
+      "finished_at": "2026-10-19T05:49:41.689Z",
+      "elapsed_seconds": 44.691,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5af485ccb47ba0f7cfd05"
+    },
+    {
+      "id": "6ad5af3cc662881452281bdb",
+      "name": "voynich-exact5-typescramble-119",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:48:44.741Z",
+      "finished_at": "2026-10-19T05:50:20.956Z",
+      "elapsed_seconds": 96.215,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5af3cc662881452281bdb"
+    },
+    {
+      "id": "6ad5af305ccb47ba0f7cfcee",
+      "name": "voynich-exact5-real-119",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:48:32.524Z",
+      "finished_at": "2026-10-19T05:50:27.999Z",
+      "elapsed_seconds": 115.475,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5af305ccb47ba0f7cfcee"
+    },
+    {
+      "id": "6ad5af05c662881452281bae",
+      "name": "voynich-exact6-25000lex-shard-18-26",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:47:49.171Z",
+      "finished_at": "2026-10-19T05:48:59.508Z",
+      "elapsed_seconds": 70.337,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5af05c662881452281bae"
+    },
+    {
+      "id": "6ad5aef95ccb47ba0f7cfcb5",
+      "name": "voynich-exact6-25000lex-shard-9-18",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:47:37.100Z",
+      "finished_at": "2026-10-19T05:51:02.233Z",
+      "elapsed_seconds": 205.133,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5aef95ccb47ba0f7cfcb5"
+    },
+    {
+      "id": "6ad5aeec5ccb47ba0f7cfca8",
+      "name": "voynich-exact6-25000lex-shard-0-9",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:47:24.745Z",
+      "finished_at": "2026-10-19T05:48:12.817Z",
+      "elapsed_seconds": 48.072,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5aeec5ccb47ba0f7cfca8"
+    },
+    {
+      "id": "6ad5ae2e5ccb47ba0f7cfbbb",
+      "name": "voynich-exact6-gpu-preflight-3batches",
+      "flavor": "t4-small",
+      "status": "COMPLETED",
+      "created_at": "2026-10-19T05:44:14.646Z",
+      "finished_at": "2026-10-19T05:46:54.021Z",
+      "elapsed_seconds": 159.375,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5ae2e5ccb47ba0f7cfbbb"
+    }
+  ]
+}
