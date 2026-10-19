@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "calibration": "Synthetic only. True source labels revealed only after model selection; no real VMS decoding.",
+      "dyn_val_nats_token": -7.764740905768784,
+      "emission_val_nats_token": -7.848621440331486,
+      "family": "NOTATION",
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "seed": 20278000,
+      "selected_emission_l2": 0.3,
+      "selected_emission_seed": 20279020,
+      "selected_seq": true,
+      "selected_transition_prior": 0.5,
+      "source_types": 32,
+      "test_hmm_class_nmi_diagnostic": 0.6553257803824897,
+      "test_hmm_ll_nats_token": -7.6317296536516075,
+      "test_iid_class_ari": 0.44584184110437447,
+      "test_iid_class_nmi": 0.6334552865690992,
+      "test_iid_ll_nats_token": -7.740369812791882,
+      "test_same_class_auc": 0.9005647493305018,
+      "test_same_source_item_auc_exploratory": 0.8725461305548764,
+      "test_seq_gain_bits_per_token": 0.1567346188330626
+    },
+    {
+      "calibration": "Synthetic only. True source labels revealed only after model selection; no real VMS decoding.",
+      "dyn_val_nats_token": -6.866859289719753,
+      "emission_val_nats_token": -6.944593624140346,
+      "family": "NOTATION",
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "seed": 20278001,
+      "selected_emission_l2": 0.3,
+      "selected_emission_seed": 20279004,
+      "selected_seq": true,
+      "selected_transition_prior": 0.5,
+      "source_types": 32,
+      "test_hmm_class_nmi_diagnostic": 0.5944177859081519,
+      "test_hmm_ll_nats_token": -6.782606118418298,
+      "test_iid_class_ari": 0.4169912510785586,
+      "test_iid_class_nmi": 0.6165150347529613,
+      "test_iid_ll_nats_token": -6.8451909573803595,
+      "test_same_class_auc": 0.8659664775934501,
+      "test_same_source_item_auc_exploratory": 0.832531136983638,
+      "test_seq_gain_bits_per_token": 0.09029083680540041
+    }
+  ],
+  "runtime_sec": 43.419462105000036,
+  "schema": "GAI-Q1B-SYNTHETIC-20261019",
+  "summary": [
+    {
+      "class_gate_fraction": 1,
+      "false_seq_alarm_fraction": 1,
+      "family": "NOTATION",
+      "median_hmm_extra_bits": 0.1235127278192315,
+      "median_iid_class_auc": 0.883265613461976,
+      "median_iid_class_nmi": 0.6249851606610303,
+      "median_same_item_auc": 0.8525386337692572,
+      "n": 2
+    }
+  ],
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5d5a98c0d0e6c5f82dbe1"
+}
