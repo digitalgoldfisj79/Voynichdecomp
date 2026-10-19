@@ -1,5 +1,13 @@
 # Grammar-aware inverse: running results — 2026-10-19
 
+## NEW / RETRACTED — 2026-10-19 T2 copying-template and transcription audit
+
+- **RETRACT any interpretation that 7/7 positive quire scores identifies an additional source:** the original derived-RF raw association-vs-copying advantage was +0.007333 bits/token, but **matched-null excess only +0.001451** against null SD 0.001302 (z 1.115, p .145), prereg FAIL.
+- **RETRACT original-layer transfer as transcription-stable:** when the SAME 80 folio sides are re-read from Takahashi TTLI, raw advantage +0.002008; matched-null excess **−0.001037**, null SD .000788 (p .920). Zandbergen–Landini ZLZI: raw +0.001862; matched-null excess **−0.001057**, null SD .000776 (p .925). Both FAIL. Cross-transcription scores cannot be subtracted causally without matched layer-difference controls.
+- **DO NOT CLAIM full FORM/CONNECT/LINE_ENTRY inversion or qualified matched generator:** T2 reuses the 97-way observational category proxy; the current full frozen four-rule generator is not integrated or calibrated here. Original corpus table provenance unverified; authentic TTLI and ZLZI source manifests are distinct but not original-file rehashed.
+- [T2 prereg](COPY_MATCH_T2_PREREG_20261019.md) | [Cross-transcription prereg](COPY_MATCH_T2_XTRANS_PREREG_20261019.md) | [T2 cross-layer report, all outcomes, audit](COPY_MATCH_T2_RESULTS_20261019.md) | [T2 scorer](copy_match_t2_score_20261019.js) | [RF JSON](results/copy_match_t2_real_20261019.json) | [TTLI JSON](results/copy_match_t2_ttli_20261019.json) | [ZLZI JSON](results/copy_match_t2_zlzi_20261019.json).
+
+
 ## RETRACTED / NON-PROMOTABLE FINDINGS (standing)
 - **Botanical naming requirement WITHDRAWN**: no agreed plant ID is required for label-free mechanism research. Existing f2r candidate remains post-selected surface evidence, not a plant-name reading.
 - **No source-identifiability claim**: Q1B class/inverse gate failed, IDENT-GATE proved observational source/production twins, and the new LF-T1 real pilot did NOT exceed a hard matched copying null (effect +0.001155 bits/token, null SD 0.002095; z=.55; p=.31). Do not interpret the unadjusted M2 gain +0.005581 as novel content.
