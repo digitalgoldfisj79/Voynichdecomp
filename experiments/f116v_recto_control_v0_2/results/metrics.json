@@ -1,0 +1,87 @@
+{
+  "status": "COMPLETE",
+  "verdict": "RECTO_CONTROL_INCONCLUSIVE",
+  "availability": {
+    "archive_entries": 479,
+    "f116v_raw_tiffs": 46,
+    "f116r_raw_tiffs": 0,
+    "matching_f116r_cube_available": false,
+    "recto_proxy": "https://collections.library.yale.edu/iiif/2/1006276/full/full/0/default.jpg",
+    "maximum_allowed_positive_verdict": "CANDIDATE_RECTO_INDEPENDENT_SIGNAL"
+  },
+  "reference": "Voynich_116v+MB570AM_005_F.tif",
+  "registered_bands": 46,
+  "families": {
+    "MB": 28,
+    "WB": 10,
+    "TX": 8
+  },
+  "recto_registration": {
+    "name": "hr270",
+    "corr": 0.06575236706810857,
+    "phase_response": -0.002740571763780382,
+    "dx": 1.5131288323316312,
+    "dy": 2.3080029653367546,
+    "score": 0.06561533847991954,
+    "negative_scores": [
+      {
+        "name": "nr180",
+        "corr": 0.06626513969251868,
+        "phase_response": -0.005540077350757741,
+        "dx": 0.7337977637332642,
+        "dy": 1.5204975246509775,
+        "score": 0.0659881358249808
+      },
+      {
+        "name": "hr270",
+        "corr": 0.05100419454365373,
+        "phase_response": 0.029629963924266672,
+        "dx": 0.18389076755556744,
+        "dy": -0.07945147614418602,
+        "score": 0.052485692739867064
+      }
+    ],
+    "specificity_margin_vs_best_negative": -0.0003727973450612515
+  },
+  "showthrough_median_r2": 0.0269426161476512,
+  "candidate_threshold": 0.93,
+  "bootstrap_required": 0.7,
+  "raw_candidate_pixels": 0,
+  "recto_or_prediction_explained_pixels": 0,
+  "recto_independent_candidate_pixels": 0,
+  "component_count": 0,
+  "line_group_count": 0,
+  "line_groups": [],
+  "native_confirmed_components": 0,
+  "synthetic_positive_control": {
+    "status": "COMPLETE",
+    "target_pixels": 9121,
+    "signature_l2": 1.597891092300415,
+    "ladder": [
+      {"amplitude": 0.15, "pred_pixels": 0, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      {"amplitude": 0.25, "pred_pixels": 0, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      {"amplitude": 0.4, "pred_pixels": 0, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      {"amplitude": 0.6, "pred_pixels": 0, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      {"amplitude": 0.85, "pred_pixels": 9, "precision": 1.0, "recall": 0.0009867339107553995, "f1": 0.001971522453450164},
+      {"amplitude": 1.0, "pred_pixels": 45, "precision": 1.0, "recall": 0.004933669553776998, "f1": 0.009818895919703252}
+    ],
+    "best_amplitude": 1.0,
+    "best_f1": 0.009818895919703252,
+    "best_precision": 1.0,
+    "best_recall": 0.004933669553776998
+  },
+  "control_gates": {
+    "detector_positive_control_pass": false,
+    "recto_proxy_specific": false,
+    "inconclusive_reasons": [
+      "SYNTHETIC_POSITIVE_CONTROL_FAILED",
+      "RECTO_PROXY_NOT_SPECIFIC_VS_UNRELATED_FOLIOS"
+    ]
+  },
+  "limitations": [
+    "The public 2014 MSI archive contains no f116r raw multispectral cube.",
+    "The Yale f116r IIIF image is a high-resolution visible-light proxy, not a spectrally matched capture.",
+    "No physical indentation conclusion is possible without multi-direction raking-light acquisition.",
+    "No generative restoration contributes to this verdict."
+  ]
+}
