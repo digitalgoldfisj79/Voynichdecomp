@@ -1,5 +1,8 @@
 # Grammar-aware inverse: running results — 2026-10-19
 
+## CORRECTION: 2026-10-19 — botanical naming is not a valid required gate
+The user correctly identified that no agreed identification for Voynich plants is attainable or required. The prior proposal to require an independently *named Voynich plant* before advancing research was mistaken; it would make decipherment circular and block legitimate unlabeled tests. **Superseded by [NO_PLANT_NAME_GATE_CORRECTION_20261019.md](NO_PLANT_NAME_GATE_CORRECTION_20261019.md).** Previously reported f2r centaury comparisons remain exploratory and already selected, with no semantic inference. Subsequent work must test distinguishable source-vs-production mechanisms using FORM/CONNECT/LINE_ENTRY, physical-bifolium holdouts and hard copying/position nulls without requiring agreed plant names. Named semantic anchors remain optional secondary corroboration, not an eligibility condition.
+
 ## Status and controlling documents
 - Programme: [PROGRAMME_PREREG.md](PROGRAMME_PREREG.md).
 - Frozen prior constraints: `research/SELECT_FORM_INTERFACE_SPEC_20261004.md`, `research/INVERSE_RECOVERY_CONTRACT_20261004.md`, `research/Q13_INFORMED_SELECT_SOURCE_SPEC_20261004.md`, and `research/VMS_RESIDUAL_RECOVERY_LADDER_20261008.md`.
