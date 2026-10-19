@@ -1,0 +1,426 @@
+{
+  "audit": {
+    "corpus_sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+    "f2r_was_selected_by_prior_literature": true,
+    "metadata_url": "https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/ed0d3e5cbba93701520cfc733ab16a94b2d0ab3a/research/grammar_aware_inverse_20261019/anchors/herbal_a_register.json",
+    "no_physical_bifolium_holdout": true,
+    "not_exhaustive_of_herbal_b": true,
+    "transcription_url": "https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/19fc6f2262dc2d184b370fb7c6960f11278f4778/voynich_transcriptions_slim.json"
+  },
+  "complete": true,
+  "interpretation": "Prior Bax/Sherwood centaury candidate, NOT independently verified botanical identification or decrypted word; line8 paragraph boundary pending visual review. Similarity is not a discriminating semantic anchor.",
+  "matched_cross_folio": {
+    "records": [
+      {
+        "edit_distance": 7,
+        "folio": "f10r",
+        "lengths": [
+          8,
+          7
+        ],
+        "normalized_edit": 0.875,
+        "same_initial": false,
+        "word_1": "pchocthy",
+        "word_8": "qotchor"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f13r",
+        "lengths": [
+          7,
+          6
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "torshor",
+        "word_8": "shochy"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f16r",
+        "lengths": [
+          8,
+          7
+        ],
+        "normalized_edit": 0.75,
+        "same_initial": false,
+        "word_1": "pocheody",
+        "word_8": "shotchy"
+      },
+      {
+        "edit_distance": 5,
+        "folio": "f16v",
+        "lengths": [
+          8,
+          5
+        ],
+        "normalized_edit": 0.625,
+        "same_initial": false,
+        "word_1": "pchroiin",
+        "word_8": "daiin"
+      },
+      {
+        "edit_distance": 4,
+        "folio": "f17r",
+        "lengths": [
+          6,
+          6
+        ],
+        "normalized_edit": 0.6666666666666666,
+        "same_initial": false,
+        "word_1": "fshody",
+        "word_8": "dchchy"
+      },
+      {
+        "edit_distance": 7,
+        "folio": "f17v",
+        "lengths": [
+          7,
+          6
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "pchodol",
+        "word_8": "qokeey"
+      },
+      {
+        "edit_distance": 8,
+        "folio": "f18r",
+        "lengths": [
+          8,
+          7
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "pdrairdy",
+        "word_8": "qokchor"
+      },
+      {
+        "edit_distance": 7,
+        "folio": "f23r",
+        "lengths": [
+          8,
+          6
+        ],
+        "normalized_edit": 0.875,
+        "same_initial": false,
+        "word_1": "pydchdom",
+        "word_8": "qokshy"
+      },
+      {
+        "edit_distance": 5,
+        "folio": "f23v",
+        "lengths": [
+          8,
+          7
+        ],
+        "normalized_edit": 0.625,
+        "same_initial": false,
+        "word_1": "podairol",
+        "word_8": "qokaiin"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f24v",
+        "lengths": [
+          7,
+          6
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "tchodar",
+        "word_8": "kochky"
+      },
+      {
+        "edit_distance": 5,
+        "folio": "f27v",
+        "lengths": [
+          6,
+          6
+        ],
+        "normalized_edit": 0.8333333333333334,
+        "same_initial": false,
+        "word_1": "pochof",
+        "word_8": "okshes"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f30r",
+        "lengths": [
+          7,
+          6
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": true,
+        "word_1": "okeeesy",
+        "word_8": "opchol"
+      },
+      {
+        "edit_distance": 7,
+        "folio": "f30v",
+        "lengths": [
+          8,
+          5
+        ],
+        "normalized_edit": 0.875,
+        "same_initial": false,
+        "word_1": "shosaiin",
+        "word_8": "oyshy"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f35v",
+        "lengths": [
+          7,
+          5
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "parchor",
+        "word_8": "oaiin"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f36r",
+        "lengths": [
+          6,
+          6
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "qorain",
+        "word_8": "ytchor"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f37r",
+        "lengths": [
+          7,
+          5
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "tocphol",
+        "word_8": "koiin"
+      },
+      {
+        "edit_distance": 3,
+        "folio": "f37v",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 0.5,
+        "same_initial": true,
+        "word_1": "qocthy",
+        "word_8": "qotor"
+      },
+      {
+        "edit_distance": 2,
+        "folio": "f3r",
+        "lengths": [
+          6,
+          6
+        ],
+        "normalized_edit": 0.3333333333333333,
+        "same_initial": false,
+        "word_1": "tsheos",
+        "word_8": "ysheor"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f3v",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "koaiin",
+        "word_8": "ykchy"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f42r",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "ofaiin",
+        "word_8": "yshol"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f45r",
+        "lengths": [
+          7,
+          5
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "pykydal",
+        "word_8": "tchol"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f47v",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "psheot",
+        "word_8": "daiin"
+      },
+      {
+        "edit_distance": 8,
+        "folio": "f4v",
+        "lengths": [
+          8,
+          6
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "pchooiin",
+        "word_8": "oleeeb"
+      },
+      {
+        "edit_distance": 8,
+        "folio": "f54v",
+        "lengths": [
+          8,
+          6
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "pcheodar",
+        "word_8": "daiino"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f7v",
+        "lengths": [
+          7,
+          7
+        ],
+        "normalized_edit": 0.8571428571428571,
+        "same_initial": false,
+        "word_1": "polyshy",
+        "word_8": "qoteeeo"
+      },
+      {
+        "edit_distance": 6,
+        "folio": "f90v1",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "pcheor",
+        "word_8": "daiin"
+      },
+      {
+        "edit_distance": 7,
+        "folio": "f90v2",
+        "lengths": [
+          7,
+          5
+        ],
+        "normalized_edit": 1,
+        "same_initial": false,
+        "word_1": "qocfhey",
+        "word_8": "teeas"
+      },
+      {
+        "edit_distance": 5,
+        "folio": "f9v",
+        "lengths": [
+          6,
+          5
+        ],
+        "normalized_edit": 0.8333333333333334,
+        "same_initial": false,
+        "word_1": "fochor",
+        "word_8": "soiin"
+      }
+    ],
+    "stats": {
+      "fraction_ed_le_1": 0,
+      "fraction_normalized_le_target": 0,
+      "median_edit": 6,
+      "n": 28,
+      "normalized_le_target": 0,
+      "within_ed_1": 0
+    }
+  },
+  "schema": "F2R_CENTAURY_OPENER_DESCRIPTIVE_20261019",
+  "scope": {
+    "eligible_folios": 28,
+    "n_currier_a_herbal": 89,
+    "selection": "matching positions 1/8; each word length within 1 of target; same Currier A Herbal; strict P running units"
+  },
+  "target": {
+    "edit_distance": 1,
+    "folio": "f2r",
+    "lengths": [
+      7,
+      6
+    ],
+    "normalized_edit": 0.14285714285714285,
+    "same_initial": true,
+    "word_1": "kydainy",
+    "word_8": "kydain"
+  },
+  "within_f2r": {
+    "records": [
+      {
+        "edit_distance": 5,
+        "len": 7,
+        "line": 3,
+        "normalized_edit": 0.7142857142857143,
+        "word": "qotaiin"
+      },
+      {
+        "edit_distance": 5,
+        "len": 7,
+        "line": 4,
+        "normalized_edit": 0.7142857142857143,
+        "word": "coaiidy"
+      },
+      {
+        "edit_distance": 7,
+        "len": 7,
+        "line": 5,
+        "normalized_edit": 1,
+        "word": "otochor"
+      },
+      {
+        "edit_distance": 5,
+        "len": 5,
+        "line": 6,
+        "normalized_edit": 0.7142857142857143,
+        "word": "saiin"
+      },
+      {
+        "edit_distance": 4,
+        "len": 6,
+        "line": 11,
+        "normalized_edit": 0.5714285714285714,
+        "word": "ychain"
+      }
+    ],
+    "stats": {
+      "fraction_ed_le_1": 0,
+      "fraction_normalized_le_target": 0,
+      "median_edit": 5,
+      "n": 5,
+      "normalized_le_target": 0,
+      "within_ed_1": 0
+    }
+  },
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5e6da632cfaf2180110d8"
+}
