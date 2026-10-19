@@ -1,0 +1,78 @@
+{
+  "schema": "VMS_F2R_CENTAURY_CANDIDATE_V1",
+  "status": "DISCOVERY_ONLY__NOT_TRANSLATION",
+  "voynich": {
+    "shelfmark": "Beinecke MS 408",
+    "folio": "f2r",
+    "section": "Herbal-A",
+    "currier": "A",
+    "text_type": "running",
+    "iiif": "https://collections.library.yale.edu/iiif/2/1006078",
+    "image_object_uuid": "47d29a8b-1a67-45d8-abd0-db0ac4e1c187",
+    "image_object_reviewed": false,
+    "botanical_candidate_from_unreviewed_database": "Centaurea diffusa",
+    "ZLZI_corpus_sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+    "text_units": [
+      {
+        "line": 1,
+        "word_index": 0,
+        "token": "kydainy"
+      },
+      {
+        "line": 8,
+        "word_index": 0,
+        "token": "kydain"
+      }
+    ],
+    "word_boxes_verified": false,
+    "paragraph_start_line8_visually_verified": false
+  },
+  "comparator": [
+    {
+      "id": "BL_EGERTON_747_f21",
+      "shelfmark": "Egerton MS 747",
+      "folio": "f21",
+      "object": "Centaurea minor/major",
+      "date": "c.1280–1350",
+      "language": "Latin",
+      "primary_catalogue": "https://searcharchives.bl.uk/catalog/032-001983805",
+      "folio_image_caption": "https://timelessmoon.getarchive.net/media/calamint-and-centaury-from-bl-eg-747-f-21-c0557e",
+      "warning": "Independent proof of historical centaury illustrations and names only, not proof f2r is this plant."
+    },
+    {
+      "id": "BNF_LAT_6862_f45r",
+      "shelfmark": "Latin 6862",
+      "folio": "f45r",
+      "date": "mid-9th century",
+      "primary_catalogue": "https://iiif.biblissima.fr/collections/manifest/a80ddf5b37d92bcff038b28023a41ff1a057a852",
+      "OCR_candidate": "Demirturab; centauree marore. Facadepa rirdot",
+      "OCR_source": "Gemini 2.5 Flash",
+      "rubric_reading_verified": false
+    }
+  ],
+  "prior_art": {
+    "bax_2014": "https://stephenbax.net/wp-content/uploads/2014/01/Voynich-a-provisional-partial-decoding-BAX.pdf",
+    "selection_bias": "Bax previously selected and interpreted f2r and its opening words. This is NOT an independent confirmatory test.",
+    "unreviewed_plant_db_source": "research-agent cat_objects f2r, reference Edith Sherwood"
+  },
+  "rivals": {
+    "semantic": "Opening units hypothesised to refer to plant's name.",
+    "production": "Line-entry/FORM/copying procedure creates repeated near-identical opening units with no botanical mapping.",
+    "distinguishing_observable_currently_known": false
+  },
+  "gate": {
+    "external_centaury_attestation": true,
+    "voynich_plant_identity_independently_verified": false,
+    "spatial_word_to_plant_alignment_verified": false,
+    "heldout_independent_same_plant_folio": false,
+    "production_hard_negative_satisfied": false,
+    "eligible_for_decipherment": false
+  },
+  "manual_review_requirements": [
+    "Independently review VMS f2r plant blind to opening words against manuscript-attested centaury and alternative plants.",
+    "Verify Egerton 747 f21 centaury illustration and Latin rubric at folio level.",
+    "Verify f2r paragraph start line8 and word bounding boxes from Yale image.",
+    "Find a prospectively held-out Currier A herbal folio with a separately authenticated matching plant identity.",
+    "Establish a rival production prediction not equivalent to the semantic one."
+  ]
+}
