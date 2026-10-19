@@ -33,7 +33,7 @@ train,sha=read_page("f75r");hold,_=read_page("f76r")
 lex,audit=lexicon(args.lexicon)
 initial=manifest["topkeys"][:args.init]
 keys=torch.tensor([[ABC.index(ch) for ch in x["key"]] for x in initial],device=device,dtype=torch.long)
-if keys.size(1)!=6:raise RuntimeError("wrong key length")
+if keys.size(1)!=len(gl):raise RuntimeError("wrong key length")
 def pick_extension(remaining,gl,train):
  # maximize new complete word type coverage (not any language criterion)
  eligible=collections.Counter()
