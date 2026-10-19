@@ -1,0 +1,82 @@
+{
+  "complete": true,
+  "elapsed_s": 83.27082870993763,
+  "interpretation": "All model selection on synthetic TRAIN/VAL. Real Voynich never scored; blind source category gate separate.",
+  "results": [
+    {
+      "blind_selected": "HMM",
+      "em_iters": 9,
+      "family": "NOTATION",
+      "hmm_minus_iid_test_bits_token": 0.07100437660202934,
+      "limits": "Synthetic FORM only; no CONNECT/LINE_ENTRY. Blind latent 8-class model; no real Voynich.",
+      "models_tried": 12,
+      "n_source": 32,
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "no_truth_selected_models": true,
+      "seed": 20276000,
+      "selected_l2": 1,
+      "selected_restart_seed": 20277010,
+      "selected_val_nats_token": -7.762136572836839,
+      "test_group_ari": 0.37186202503042076,
+      "test_group_pair_auc": 0.8634272147892333,
+      "test_loglik_selected_nats_token": -7.527854213069913,
+      "test_source_select_group_nmi": 0.5910852642245115,
+      "test_truth_group_distribution": [
+        54,
+        51,
+        57,
+        44,
+        49,
+        44,
+        49,
+        52
+      ]
+    },
+    {
+      "blind_selected": "HMM",
+      "em_iters": 9,
+      "family": "NOTATION",
+      "hmm_minus_iid_test_bits_token": 0.11702430279458506,
+      "limits": "Synthetic FORM only; no CONNECT/LINE_ENTRY. Blind latent 8-class model; no real Voynich.",
+      "models_tried": 12,
+      "n_source": 32,
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "no_truth_selected_models": true,
+      "seed": 20276001,
+      "selected_l2": 1,
+      "selected_restart_seed": 20277045,
+      "selected_val_nats_token": -7.536549912811048,
+      "test_group_ari": 0.47087471086591043,
+      "test_group_pair_auc": 0.8580381502757087,
+      "test_loglik_selected_nats_token": -7.517510152177722,
+      "test_source_select_group_nmi": 0.583408314697559,
+      "test_truth_group_distribution": [
+        56,
+        49,
+        52,
+        47,
+        50,
+        45,
+        59,
+        42
+      ]
+    }
+  ],
+  "schema": "GAI-Q1-SYNTHETIC-BLIND-20261019",
+  "summary": [
+    {
+      "family": "NOTATION",
+      "median_hmm_gain": 0.09401433969830719,
+      "median_nmi": 0.5872467894610353,
+      "median_pair_auc": 0.860732682532471,
+      "n": 2,
+      "pct_hmm_gain_ge_002": 1,
+      "pct_nmi_ge_06": 0
+    }
+  ],
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5d3fe632cfaf21801041c"
+}
