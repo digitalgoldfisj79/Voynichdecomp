@@ -1,0 +1,7721 @@
+{
+  "schema": "F75R_EXACT_ENUM_20261019",
+  "mode": "real",
+  "k": 7,
+  "first_start": 12,
+  "first_stop": 16,
+  "seen": 510048000,
+  "batches": 6285,
+  "elapsed_s": 59.03352689743042,
+  "complete": true,
+  "best_score": 34.82585144042969,
+  "top": [
+    {
+      "rank": 1,
+      "score": 34.82585144042969,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "r",
+        "o": "a",
+        "q": "p",
+        "sh": "d",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 65,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dens",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parens",
+            "occurrences": 13,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "des",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pars",
+            "occurrences": 7,
+            "lang": [
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "pares",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "es",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "parees",
+            "occurrences": 4,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "deens",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "reeds",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "arees",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ares",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "pes",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 82,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dens",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "des",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "parees",
+            "occurrences": 9,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "pares",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "es",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parens",
+            "occurrences": 7,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "dns",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ars",
+            "occurrences": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "arees",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "deens",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pars",
+            "occurrences": 2,
+            "lang": [
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "den",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "rees",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ares",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "drs",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 2,
+      "score": 33.880149841308594,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "n",
+        "e": "v",
+        "k": "h",
+        "o": "k",
+        "q": "m",
+        "sh": "l",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 71,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lvnt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lvt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "hlvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mvt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "ru",
+              "uk",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 77,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lvnt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lvt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 6,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "kht",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "lvn",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "plain": "mkhvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "plain": "khvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hvvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tlvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "lht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 3,
+      "score": 33.25930404663086,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "i",
+        "o": "l",
+        "q": "a",
+        "sh": "d",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dens",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "aliens",
+            "occurrences": 13,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "des",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "alis",
+            "occurrences": 7,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "alies",
+            "occurrences": 5,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "deens",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "liens",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "liees",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "alien",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ides",
+            "occurrences": 1,
+            "lang": [
+              "sk"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "lies",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "aes",
+            "occurrences": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 76,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "dens",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "des",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "alies",
+            "occurrences": 8,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "aliens",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "liens",
+            "occurrences": 4,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "dns",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "lis",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "es",
+              "fr",
+              "pl",
+              "pt",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "liees",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "alien",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "deens",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "alis",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "den",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "lies",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "dis",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "la",
+              "nl",
+              "ro"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 4,
+      "score": 33.17585372924805,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "r",
+        "o": "a",
+        "q": "p",
+        "sh": "t",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 64,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parens",
+            "occurrences": 13,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pars",
+            "occurrences": 7,
+            "lang": [
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "pares",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "es",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "parees",
+            "occurrences": 4,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 4,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "arees",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ares",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "pes",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 85,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "parees",
+            "occurrences": 9,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "pares",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "es",
+              "la",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parens",
+            "occurrences": 7,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "tees",
+            "occurrences": 7,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ars",
+            "occurrences": 3,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "arees",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 2,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pars",
+            "occurrences": 2,
+            "lang": [
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "ten",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "rees",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ares",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "stes",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 5,
+      "score": 32.93373489379883,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "m",
+        "o": "o",
+        "q": "k",
+        "sh": "l",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 65,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lent",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "hu",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "koment",
+            "occurrences": 13,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "let",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "komt",
+            "occurrences": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "komet",
+            "occurrences": 5,
+            "lang": [
+              "de",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "komeet",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "leent",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "meent",
+            "occurrences": 3,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "komen",
+            "occurrences": 1,
+            "lang": [
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "ket",
+            "occurrences": 1,
+            "lang": [
+              "hu"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 73,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lent",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "hu",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "let",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "komeet",
+            "occurrences": 9,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "komet",
+            "occurrences": 8,
+            "lang": [
+              "de",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "koment",
+            "occurrences": 7,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "komen",
+            "occurrences": 2,
+            "lang": [
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "leent",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "komt",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "len",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "en",
+              "hu",
+              "nl",
+              "ru",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "meent",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "meet",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "lmt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 6,
+      "score": 32.90064239501953,
+      "n_matching_types_search": 13,
+      "mapping": {
+        "d": "o",
+        "e": "r",
+        "k": "e",
+        "o": "i",
+        "q": "p",
+        "sh": "a",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 55,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "aros",
+            "occurrences": 16,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ars",
+            "occurrences": 11,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pies",
+            "occurrences": 7,
+            "lang": [
+              "el",
+              "en",
+              "es",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "piers",
+            "occurrences": 5,
+            "lang": [
+              "en",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "arros",
+            "occurrences": 4,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "erros",
+            "occurrences": 3,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ieros",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "saros",
+            "occurrences": 2,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "erras",
+            "occurrences": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "piero",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "it"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ears",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iers",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "prs",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "sk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 69,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "aros",
+            "occurrences": 28,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ars",
+            "occurrences": 10,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "piers",
+            "occurrences": 8,
+            "lang": [
+              "en",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ieros",
+            "occurrences": 4,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "aos",
+            "occurrences": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ies",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "piero",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "it"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "arros",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pies",
+            "occurrences": 2,
+            "lang": [
+              "el",
+              "en",
+              "es",
+              "pl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "aro",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "erros",
+            "occurrences": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iers",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "sars",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "aes",
+            "occurrences": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 7,
+      "score": 32.60930633544922,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "i",
+        "k": "r",
+        "o": "a",
+        "q": "m",
+        "sh": "g",
+        "y": "e"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "gine",
+            "occurrences": 16,
+            "lang": [
+              "el",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "marine",
+            "occurrences": 13,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "gie",
+            "occurrences": 11,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mare",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "fr",
+              "it",
+              "la",
+              "nl",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "marie",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "mariie",
+            "occurrences": 4,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "egine",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokshedy",
+            "plain": "margine",
+            "occurrences": 1,
+            "lang": [
+              "it",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "marin",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt",
+              "ro",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "arie",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "it",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mie",
+            "occurrences": 1,
+            "lang": [
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "ro"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 78,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "gine",
+            "occurrences": 28,
+            "lang": [
+              "el",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "gie",
+            "occurrences": 10,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "mariie",
+            "occurrences": 9,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "marie",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "marine",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "gne",
+            "occurrences": 4,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "are",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "marin",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt",
+              "ro",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mare",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "fr",
+              "it",
+              "la",
+              "nl",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "gin",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokeeo",
+            "plain": "mariia",
+            "occurrences": 1,
+            "lang": [
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "arie",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "it",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "gre",
+            "occurrences": 1,
+            "lang": [
+              "fr",
+              "pl",
+              "sl"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 8,
+      "score": 32.49275588989258,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "o",
+        "e": "m",
+        "k": "i",
+        "o": "r",
+        "q": "p",
+        "sh": "a",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "amos",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "primos",
+            "occurrences": 13,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ams",
+            "occurrences": 11,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pris",
+            "occurrences": 7,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "prims",
+            "occurrences": 5,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "ammos",
+            "occurrences": 4,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rimos",
+            "occurrences": 2,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "samos",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "primo",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "fr",
+              "it",
+              "la",
+              "pl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rims",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "pms",
+            "occurrences": 1,
+            "lang": [
+              "pt"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 74,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "amos",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt",
+              "ro",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ams",
+            "occurrences": 10,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "prims",
+            "occurrences": 8,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "primos",
+            "occurrences": 7,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "rimos",
+            "occurrences": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "aos",
+            "occurrences": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ris",
+            "occurrences": 3,
+            "lang": [
+              "fr",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "primo",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "fr",
+              "it",
+              "la",
+              "pl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "ammos",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "pris",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "amo",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "it",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "rims",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "ais",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 9,
+      "score": 32.430145263671875,
+      "n_matching_types_search": 9,
+      "mapping": {
+        "d": "n",
+        "e": "v",
+        "k": "h",
+        "o": "k",
+        "q": "m",
+        "sh": "b",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 9,
+        "dictionary_matching_tokens": 70,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bvnt",
+            "occurrences": 16,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bvt",
+            "occurrences": 11,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mvt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "ru",
+              "uk",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 16,
+        "dictionary_matching_tokens": 87,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "bvnt",
+            "occurrences": 28,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "bvt",
+            "occurrences": 10,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "bvvt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 6,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "bnt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "kht",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "bvn",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "plain": "mkhvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "plain": "khvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hvvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tbvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 10,
+      "score": 32.4093017578125,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "r",
+        "o": "a",
+        "q": "p",
+        "sh": "l",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lent",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "hu",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parent",
+            "occurrences": 13,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "let",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "part",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "paret",
+            "occurrences": 5,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "leent",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "arent",
+            "occurrences": 2,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qokshedy",
+            "plain": "parlent",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "leert",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "pet",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 70,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "lent",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "hu",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "let",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "paret",
+            "occurrences": 8,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "parent",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "en",
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "arent",
+            "occurrences": 4,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "art",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "paren",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "nl",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "leent",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "part",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "len",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "en",
+              "hu",
+              "nl",
+              "ru",
+              "sk"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "leert",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "reet",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 11,
+      "score": 32.333736419677734,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "o",
+        "e": "e",
+        "k": "d",
+        "o": "i",
+        "q": "v",
+        "sh": "l",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 61,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "leos",
+            "occurrences": 16,
+            "lang": [
+              "cs"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "videos",
+            "occurrences": 13,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "les",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "vids",
+            "occurrences": 7,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "vides",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "oleos",
+            "occurrences": 3,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "deels",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "idees",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "el",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "video",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "leeds",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ides",
+            "occurrences": 1,
+            "lang": [
+              "sk"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "ves",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 81,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "leos",
+            "occurrences": 28,
+            "lang": [
+              "cs"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "les",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "vides",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "fr",
+              "la"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "videos",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "lees",
+            "occurrences": 7,
+            "lang": [
+              "es",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "los",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "dshedy",
+            "plain": "oleos",
+            "occurrences": 3,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ids",
+            "occurrences": 3,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "idees",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "el",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "video",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "vids",
+            "occurrences": 2,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "leo",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "leeds",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "ides",
+            "occurrences": 1,
+            "lang": [
+              "sk"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "lds",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "sl"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 12,
+      "score": 32.32585144042969,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "m",
+        "o": "r",
+        "q": "a",
+        "sh": "t",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "armeens",
+            "occurrences": 13,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "arms",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "armes",
+            "occurrences": 5,
+            "lang": [
+              "ca",
+              "de",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "armees",
+            "occurrences": 4,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 4,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "meets",
+            "occurrences": 1,
+            "lang": [
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "armen",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "aes",
+            "occurrences": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 79,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "armees",
+            "occurrences": 9,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "armes",
+            "occurrences": 8,
+            "lang": [
+              "ca",
+              "de",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "tees",
+            "occurrences": 7,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "armeens",
+            "occurrences": 6,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "armen",
+            "occurrences": 2,
+            "lang": [
+              "de",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 2,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "arms",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "en"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "ten",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "plain": "armeen",
+            "occurrences": 1,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "mees",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "stes",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 13,
+      "score": 32.05064010620117,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "i",
+        "k": "m",
+        "o": "a",
+        "q": "r",
+        "sh": "l",
+        "y": "e"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "line",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "ramine",
+            "occurrences": 13,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lie",
+            "occurrences": 11,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "rame",
+            "occurrences": 7,
+            "lang": [
+              "fr",
+              "it",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "ramie",
+            "occurrences": 5,
+            "lang": [
+              "pl"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "miine",
+            "occurrences": 3,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "amine",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "eline",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "miile",
+            "occurrences": 1,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "amie",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "rie",
+            "occurrences": 1,
+            "lang": [
+              "es",
+              "fr",
+              "nl"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 67,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "line",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "lie",
+            "occurrences": 10,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "ramie",
+            "occurrences": 8,
+            "lang": [
+              "pl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "ramine",
+            "occurrences": 7,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "amine",
+            "occurrences": 4,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ame",
+            "occurrences": 3,
+            "lang": [
+              "el",
+              "es",
+              "fr",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "rame",
+            "occurrences": 2,
+            "lang": [
+              "fr",
+              "it",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "lin",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "miine",
+            "occurrences": 1,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "amie",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "elie",
+            "occurrences": 1,
+            "lang": [
+              "fr",
+              "ro"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 14,
+      "score": 31.967187881469727,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "m",
+        "o": "o",
+        "q": "k",
+        "sh": "r",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 63,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "rent",
+            "occurrences": 16,
+            "lang": [
+              "el",
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "koment",
+            "occurrences": 13,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ret",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "en",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "komt",
+            "occurrences": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "komet",
+            "occurrences": 5,
+            "lang": [
+              "de",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "komeet",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "meent",
+            "occurrences": 3,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "trent",
+            "occurrences": 2,
+            "lang": [
+              "el",
+              "en",
+              "nl",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "komen",
+            "occurrences": 1,
+            "lang": [
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "ket",
+            "occurrences": 1,
+            "lang": [
+              "hu"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 79,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "rent",
+            "occurrences": 28,
+            "lang": [
+              "el",
+              "en",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ret",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "en",
+              "hu",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokeey",
+            "plain": "komeet",
+            "occurrences": 9,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "komet",
+            "occurrences": 8,
+            "lang": [
+              "de",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "koment",
+            "occurrences": 7,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "reet",
+            "occurrences": 7,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "komen",
+            "occurrences": 2,
+            "lang": [
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "komt",
+            "occurrences": 2,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "ren",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "meent",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "meet",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "tret",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "ru"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "rmt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 15,
+      "score": 31.9006404876709,
+      "n_matching_types_search": 12,
+      "mapping": {
+        "d": "o",
+        "e": "r",
+        "k": "e",
+        "o": "i",
+        "q": "f",
+        "sh": "a",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 54,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "aros",
+            "occurrences": 16,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ars",
+            "occurrences": 11,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "fies",
+            "occurrences": 7,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "fiers",
+            "occurrences": 5,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "arros",
+            "occurrences": 4,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "erros",
+            "occurrences": 3,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ieros",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "saros",
+            "occurrences": 2,
+            "lang": [
+              "hu"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "erras",
+            "occurrences": 1,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "fiero",
+            "occurrences": 1,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "ears",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iers",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 70,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "aros",
+            "occurrences": 28,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ars",
+            "occurrences": 10,
+            "lang": [
+              "de",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "fiers",
+            "occurrences": 8,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "ieros",
+            "occurrences": 4,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "aos",
+            "occurrences": 4,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ies",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "fiero",
+            "occurrences": 2,
+            "lang": [
+              "it"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "arros",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "fies",
+            "occurrences": 2,
+            "lang": [
+              "de"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "aro",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "plain": "fierro",
+            "occurrences": 1,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "erros",
+            "occurrences": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iers",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "sars",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "aes",
+            "occurrences": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 16,
+      "score": 31.86359977722168,
+      "n_matching_types_search": 10,
+      "mapping": {
+        "d": "n",
+        "e": "v",
+        "k": "h",
+        "o": "k",
+        "q": "m",
+        "sh": "a",
+        "y": "t"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 10,
+        "dictionary_matching_tokens": 57,
+        "words": [
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 13,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "avt",
+            "occurrences": 11,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 5,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "tavnt",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "kshey",
+            "plain": "havt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "mvt",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "ru",
+              "uk",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 52,
+        "words": [
+          {
+            "cipher": "shey",
+            "plain": "avt",
+            "occurrences": 10,
+            "lang": [
+              "he",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "mkhvt",
+            "occurrences": 8,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "mkhvnt",
+            "occurrences": 7,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qokeedy",
+            "plain": "mkhvvnt",
+            "occurrences": 6,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "khvvnt",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "ant",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "kht",
+            "occurrences": 3,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "mkhvn",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "mkht",
+            "occurrences": 2,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "avn",
+            "occurrences": 2,
+            "lang": [
+              "he",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "qokeed",
+            "plain": "mkhvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "okeed",
+            "plain": "khvvn",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "hvvt",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "aht",
+            "occurrences": 1,
+            "lang": [
+              "he"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 17,
+      "score": 31.809303283691406,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "e",
+        "k": "i",
+        "o": "l",
+        "q": "a",
+        "sh": "t",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "aliens",
+            "occurrences": 13,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "alis",
+            "occurrences": 7,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "alies",
+            "occurrences": 5,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 4,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "liens",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "liees",
+            "occurrences": 1,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "alien",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "lies",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "aes",
+            "occurrences": 1,
+            "lang": [
+              "la",
+              "ru",
+              "uk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 80,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "tens",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "tes",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "el",
+              "fr",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "alies",
+            "occurrences": 8,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "aliens",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheey",
+            "plain": "tees",
+            "occurrences": 7,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "liens",
+            "occurrences": 4,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "lis",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "es",
+              "fr",
+              "pl",
+              "pt",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "liees",
+            "occurrences": 2,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "alien",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "nl",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "teens",
+            "occurrences": 2,
+            "lang": [
+              "de",
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "alis",
+            "occurrences": 2,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "ten",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "lies",
+            "occurrences": 1,
+            "lang": [
+              "de",
+              "en",
+              "fr",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "stes",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "tis",
+            "occurrences": 1,
+            "lang": [
+              "cs",
+              "el",
+              "en",
+              "nl",
+              "sk",
+              "uk"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 18,
+      "score": 31.809303283691406,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "i",
+        "k": "r",
+        "o": "o",
+        "q": "d",
+        "sh": "v",
+        "y": "a"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 62,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "vina",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "la",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "dorina",
+            "occurrences": 13,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "via",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "dora",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "doria",
+            "occurrences": 5,
+            "lang": [
+              "it",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "viina",
+            "occurrences": 4,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "orina",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "es"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "dorin",
+            "occurrences": 1,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "ariia",
+            "occurrences": 1,
+            "lang": [
+              "ru"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "oria",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "dia",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "sk"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 12,
+        "dictionary_matching_tokens": 70,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "vina",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "cs",
+              "es",
+              "la",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "via",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "la",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "doria",
+            "occurrences": 8,
+            "lang": [
+              "it",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "dorina",
+            "occurrences": 7,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "orina",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "es"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "ora",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "el",
+              "en",
+              "es",
+              "hu",
+              "it",
+              "la",
+              "pt",
+              "ro"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "dorin",
+            "occurrences": 2,
+            "lang": [
+              "ro"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "viina",
+            "occurrences": 2,
+            "lang": [
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "dora",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "vin",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "en",
+              "fr",
+              "it",
+              "nl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "oria",
+            "occurrences": 1,
+            "lang": [
+              "el"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "avia",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 19,
+      "score": 31.713598251342773,
+      "n_matching_types_search": 11,
+      "mapping": {
+        "d": "n",
+        "e": "a",
+        "k": "r",
+        "o": "i",
+        "q": "t",
+        "sh": "p",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 11,
+        "dictionary_matching_tokens": 61,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "pans",
+            "occurrences": 16,
+            "lang": [
+              "ca",
+              "en",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "tirans",
+            "occurrences": 13,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "pas",
+            "occurrences": 11,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "tirs",
+            "occurrences": 7,
+            "lang": [
+              "ca",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "tiras",
+            "occurrences": 5,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "iraans",
+            "occurrences": 3,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshedy",
+            "plain": "spans",
+            "occurrences": 2,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "tiran",
+            "occurrences": 1,
+            "lang": [
+              "es",
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "paars",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iras",
+            "occurrences": 1,
+            "lang": [
+              "es",
+              "fr",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "tas",
+            "occurrences": 1,
+            "lang": [
+              "el",
+              "es",
+              "fr",
+              "nl",
+              "pt"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 14,
+        "dictionary_matching_tokens": 74,
+        "words": [
+          {
+            "cipher": "shedy",
+            "plain": "pans",
+            "occurrences": 28,
+            "lang": [
+              "ca",
+              "en",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "pas",
+            "occurrences": 10,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "qokey",
+            "plain": "tiras",
+            "occurrences": 8,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "tirans",
+            "occurrences": 7,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "okeedy",
+            "plain": "iraans",
+            "occurrences": 4,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "pns",
+            "occurrences": 4,
+            "lang": [
+              "he"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "irs",
+            "occurrences": 3,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "tiran",
+            "occurrences": 2,
+            "lang": [
+              "es",
+              "nl",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "tirs",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "fr"
+            ]
+          },
+          {
+            "cipher": "shed",
+            "plain": "pan",
+            "occurrences": 2,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk",
+              "yi"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "paars",
+            "occurrences": 1,
+            "lang": [
+              "nl"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "iras",
+            "occurrences": 1,
+            "lang": [
+              "es",
+              "fr",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "spas",
+            "occurrences": 1,
+            "lang": [
+              "el",
+              "ru",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "prs",
+            "occurrences": 1,
+            "lang": [
+              "he",
+              "sk"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "rank": 20,
+      "score": 31.577674865722656,
+      "n_matching_types_search": 13,
+      "mapping": {
+        "d": "o",
+        "e": "l",
+        "k": "e",
+        "o": "p",
+        "q": "a",
+        "sh": "i",
+        "y": "s"
+      },
+      "training": {
+        "eligible_tokens": 97,
+        "eligible_types": 24,
+        "dictionary_matching_types": 13,
+        "dictionary_matching_tokens": 47,
+        "words": [
+          {
+            "cipher": "qokedy",
+            "plain": "apelos",
+            "occurrences": 13,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shey",
+            "plain": "ils",
+            "occurrences": 11,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "apes",
+            "occurrences": 7,
+            "lang": [
+              "en",
+              "la"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "illos",
+            "occurrences": 4,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "ellos",
+            "occurrences": 3,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "pelos",
+            "occurrences": 2,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "keeshy",
+            "plain": "ellis",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "es",
+              "fr",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "sk",
+              "sl"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "pells",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "apelo",
+            "occurrences": 1,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "illes",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "ykeey",
+            "plain": "sells",
+            "occurrences": 1,
+            "lang": [
+              "en"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "pels",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "qey",
+            "plain": "als",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "de",
+              "en",
+              "fr",
+              "nl",
+              "yi"
+            ]
+          }
+        ]
+      },
+      "untouched_f76r": {
+        "eligible_tokens": 113,
+        "eligible_types": 27,
+        "dictionary_matching_types": 15,
+        "dictionary_matching_tokens": 42,
+        "words": [
+          {
+            "cipher": "shey",
+            "plain": "ils",
+            "occurrences": 10,
+            "lang": [
+              "fr"
+            ]
+          },
+          {
+            "cipher": "qokedy",
+            "plain": "apelos",
+            "occurrences": 7,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "okedy",
+            "plain": "pelos",
+            "occurrences": 4,
+            "lang": [
+              "es",
+              "pt"
+            ]
+          },
+          {
+            "cipher": "shdy",
+            "plain": "ios",
+            "occurrences": 4,
+            "lang": [
+              "ca",
+              "cs",
+              "de",
+              "el",
+              "en",
+              "es",
+              "fr",
+              "he",
+              "hu",
+              "it",
+              "nl",
+              "pl",
+              "pt",
+              "ro",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "oky",
+            "plain": "pes",
+            "occurrences": 3,
+            "lang": [
+              "ca",
+              "cs",
+              "el",
+              "es",
+              "pt",
+              "ru",
+              "sk",
+              "sl",
+              "uk"
+            ]
+          },
+          {
+            "cipher": "okeey",
+            "plain": "pells",
+            "occurrences": 2,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "qoked",
+            "plain": "apelo",
+            "occurrences": 2,
+            "lang": [
+              "pt"
+            ]
+          },
+          {
+            "cipher": "sheedy",
+            "plain": "illos",
+            "occurrences": 2,
+            "lang": [
+              "la"
+            ]
+          },
+          {
+            "cipher": "qoky",
+            "plain": "apes",
+            "occurrences": 2,
+            "lang": [
+              "en",
+              "la"
+            ]
+          },
+          {
+            "cipher": "keedy",
+            "plain": "ellos",
+            "occurrences": 1,
+            "lang": [
+              "es"
+            ]
+          },
+          {
+            "cipher": "sheeky",
+            "plain": "illes",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "hu"
+            ]
+          },
+          {
+            "cipher": "keey",
+            "plain": "ells",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "okey",
+            "plain": "pels",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "nl"
+            ]
+          },
+          {
+            "cipher": "yshey",
+            "plain": "sils",
+            "occurrences": 1,
+            "lang": [
+              "ca"
+            ]
+          },
+          {
+            "cipher": "shky",
+            "plain": "ies",
+            "occurrences": 1,
+            "lang": [
+              "ca",
+              "es",
+              "ro",
+              "uk"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "topkeys": [
+    {
+      "key": "nerapds",
+      "score": 34.82585144042969,
+      "hits": 12
+    },
+    {
+      "key": "nvhkmlt",
+      "score": 33.880149841308594,
+      "hits": 10
+    },
+    {
+      "key": "neilads",
+      "score": 33.25930404663086,
+      "hits": 12
+    },
+    {
+      "key": "nerapts",
+      "score": 33.17585372924805,
+      "hits": 11
+    },
+    {
+      "key": "nemoklt",
+      "score": 32.93373489379883,
+      "hits": 10
+    },
+    {
+      "key": "oreipas",
+      "score": 32.90064239501953,
+      "hits": 13
+    },
+    {
+      "key": "niramge",
+      "score": 32.60930633544922,
+      "hits": 11
+    },
+    {
+      "key": "omirpas",
+      "score": 32.49275588989258,
+      "hits": 11
+    },
+    {
+      "key": "nvhkmbt",
+      "score": 32.430145263671875,
+      "hits": 9
+    },
+    {
+      "key": "neraplt",
+      "score": 32.4093017578125,
+      "hits": 11
+    },
+    {
+      "key": "oedivls",
+      "score": 32.333736419677734,
+      "hits": 12
+    },
+    {
+      "key": "nemrats",
+      "score": 32.32585144042969,
+      "hits": 10
+    },
+    {
+      "key": "nimarle",
+      "score": 32.05064010620117,
+      "hits": 11
+    },
+    {
+      "key": "nemokrt",
+      "score": 31.967187881469727,
+      "hits": 10
+    },
+    {
+      "key": "oreifas",
+      "score": 31.9006404876709,
+      "hits": 12
+    },
+    {
+      "key": "nvhkmat",
+      "score": 31.86359977722168,
+      "hits": 10
+    },
+    {
+      "key": "neilats",
+      "score": 31.809303283691406,
+      "hits": 11
+    },
+    {
+      "key": "nirodva",
+      "score": 31.809303283691406,
+      "hits": 11
+    },
+    {
+      "key": "naritps",
+      "score": 31.713598251342773,
+      "hits": 11
+    },
+    {
+      "key": "olepais",
+      "score": 31.577674865722656,
+      "hits": 13
+    },
+    {
+      "key": "nerapbs",
+      "score": 31.52585220336914,
+      "hits": 11
+    },
+    {
+      "key": "neraphs",
+      "score": 31.52585220336914,
+      "hits": 11
+    },
+    {
+      "key": "nerapls",
+      "score": 31.52585220336914,
+      "hits": 11
+    },
+    {
+      "key": "nirodta",
+      "score": 31.3671875,
+      "hits": 11
+    },
+    {
+      "key": "nemokst",
+      "score": 31.283735275268555,
+      "hits": 10
+    },
+    {
+      "key": "nvhkmrt",
+      "score": 31.180147171020508,
+      "hits": 10
+    },
+    {
+      "key": "nvhkmyt",
+      "score": 31.180147171020508,
+      "hits": 10
+    },
+    {
+      "key": "oedivrs",
+      "score": 31.125852584838867,
+      "hits": 12
+    },
+    {
+      "key": "nelopds",
+      "score": 31.125850677490234,
+      "hits": 11
+    },
+    {
+      "key": "norabms",
+      "score": 31.125850677490234,
+      "hits": 11
+    },
+    {
+      "key": "oedivns",
+      "score": 30.925851821899414,
+      "hits": 12
+    },
+    {
+      "key": "nirodla",
+      "score": 30.842756271362305,
+      "hits": 11
+    },
+    {
+      "key": "nemiclt",
+      "score": 30.830846786499023,
+      "hits": 11
+    },
+    {
+      "key": "onieras",
+      "score": 30.809303283691406,
+      "hits": 10
+    },
+    {
+      "key": "nemrads",
+      "score": 30.675851821899414,
+      "hits": 9
+    },
+    {
+      "key": "niramde",
+      "score": 30.55930519104004,
+      "hits": 10
+    },
+    {
+      "key": "niramle",
+      "score": 30.55930519104004,
+      "hits": 10
+    },
+    {
+      "key": "nirampe",
+      "score": 30.55930519104004,
+      "hits": 10
+    },
+    {
+      "key": "nykvham",
+      "score": 30.483734130859375,
+      "hits": 11
+    },
+    {
+      "key": "nimarde",
+      "score": 30.4006404876709,
+      "hits": 10
+    },
+    {
+      "key": "nimarge",
+      "score": 30.4006404876709,
+      "hits": 10
+    },
+    {
+      "key": "nimarpe",
+      "score": 30.4006404876709,
+      "hits": 10
+    },
+    {
+      "key": "nvmhslt",
+      "score": 30.32585334777832,
+      "hits": 10
+    },
+    {
+      "key": "niramte",
+      "score": 30.27585220336914,
+      "hits": 10
+    },
+    {
+      "key": "oreitas",
+      "score": 30.250640869140625,
+      "hits": 11
+    },
+    {
+      "key": "naregkt",
+      "score": 30.159303665161133,
+      "hits": 11
+    },
+    {
+      "key": "onelpas",
+      "score": 30.159303665161133,
+      "hits": 10
+    },
+    {
+      "key": "onirpas",
+      "score": 30.159303665161133,
+      "hits": 10
+    },
+    {
+      "key": "naritcs",
+      "score": 30.0635986328125,
+      "hits": 10
+    },
+    {
+      "key": "nariths",
+      "score": 30.0635986328125,
+      "hits": 10
+    },
+    {
+      "key": "nimacle",
+      "score": 30.011127471923828,
+      "hits": 11
+    },
+    {
+      "key": "nimagle",
+      "score": 30.011127471923828,
+      "hits": 11
+    },
+    {
+      "key": "mrvghbt",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "naregpt",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "naregvt",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "neilavs",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "nilames",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "pvhslrt",
+      "score": 29.959304809570312,
+      "hits": 11
+    },
+    {
+      "key": "neimads",
+      "score": 29.959304809570312,
+      "hits": 10
+    },
+    {
+      "key": "mahcslt",
+      "score": 29.939512252807617,
+      "hits": 10
+    },
+    {
+      "key": "nelavrt",
+      "score": 29.917186737060547,
+      "hits": 10
+    },
+    {
+      "key": "nelovrt",
+      "score": 29.917186737060547,
+      "hits": 10
+    },
+    {
+      "key": "nerapcs",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapgs",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapjs",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapms",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapvs",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapws",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nerapys",
+      "score": 29.875852584838867,
+      "hits": 10
+    },
+    {
+      "key": "nemicrt",
+      "score": 29.864299774169922,
+      "hits": 11
+    },
+    {
+      "key": "msrvpth",
+      "score": 29.717187881469727,
+      "hits": 10
+    },
+    {
+      "key": "nomedps",
+      "score": 29.717187881469727,
+      "hits": 10
+    },
+    {
+      "key": "oetamls",
+      "score": 29.717187881469727,
+      "hits": 10
+    },
+    {
+      "key": "onalpes",
+      "score": 29.717187881469727,
+      "hits": 10
+    },
+    {
+      "key": "neramts",
+      "score": 29.67584991455078,
+      "hits": 11
+    },
+    {
+      "key": "orupaes",
+      "score": 29.67408561706543,
+      "hits": 10
+    },
+    {
+      "key": "nemokbt",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokct",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokdt",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokft",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokgt",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokvt",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nemokwt",
+      "score": 29.63373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nerpads",
+      "score": 29.622962951660156,
+      "hits": 11
+    },
+    {
+      "key": "nvhkmdt",
+      "score": 29.530147552490234,
+      "hits": 9
+    },
+    {
+      "key": "nvhkmgt",
+      "score": 29.530147552490234,
+      "hits": 9
+    },
+    {
+      "key": "nerotds",
+      "score": 29.47585105895996,
+      "hits": 10
+    },
+    {
+      "key": "nilokva",
+      "score": 29.47585105895996,
+      "hits": 10
+    },
+    {
+      "key": "norefms",
+      "score": 29.47585105895996,
+      "hits": 10
+    },
+    {
+      "key": "ncirpoe",
+      "score": 29.43373680114746,
+      "hits": 9
+    },
+    {
+      "key": "negilrt",
+      "score": 29.39275550842285,
+      "hits": 10
+    },
+    {
+      "key": "narimet",
+      "score": 29.380847930908203,
+      "hits": 11
+    },
+    {
+      "key": "naritbs",
+      "score": 29.380146026611328,
+      "hits": 10
+    },
+    {
+      "key": "naritjs",
+      "score": 29.380146026611328,
+      "hits": 10
+    },
+    {
+      "key": "naritks",
+      "score": 29.380146026611328,
+      "hits": 10
+    },
+    {
+      "key": "naritls",
+      "score": 29.380146026611328,
+      "hits": 10
+    },
+    {
+      "key": "orelpas",
+      "score": 29.327674865722656,
+      "hits": 10
+    },
+    {
+      "key": "oreupas",
+      "score": 29.327674865722656,
+      "hits": 10
+    },
+    {
+      "key": "orecuas",
+      "score": 29.31542205810547,
+      "hits": 11
+    },
+    {
+      "key": "nerapis",
+      "score": 29.30930519104004,
+      "hits": 11
+    },
+    {
+      "key": "olaties",
+      "score": 29.295629501342773,
+      "hits": 12
+    },
+    {
+      "key": "nelovds",
+      "score": 29.275850296020508,
+      "hits": 11
+    },
+    {
+      "key": "neramds",
+      "score": 29.275850296020508,
+      "hits": 11
+    },
+    {
+      "key": "nasivet",
+      "score": 29.233736038208008,
+      "hits": 10
+    },
+    {
+      "key": "nelavmt",
+      "score": 29.233734130859375,
+      "hits": 9
+    },
+    {
+      "key": "nelovmt",
+      "score": 29.233734130859375,
+      "hits": 9
+    },
+    {
+      "key": "netopds",
+      "score": 29.233734130859375,
+      "hits": 9
+    },
+    {
+      "key": "naregst",
+      "score": 29.19275665283203,
+      "hits": 10
+    },
+    {
+      "key": "pvhslkt",
+      "score": 29.19275665283203,
+      "hits": 10
+    },
+    {
+      "key": "nemicst",
+      "score": 29.18084716796875,
+      "hits": 11
+    },
+    {
+      "key": "nserpoa",
+      "score": 29.067188262939453,
+      "hits": 10
+    },
+    {
+      "key": "nilokta",
+      "score": 29.033735275268555,
+      "hits": 10
+    },
+    {
+      "key": "nomedis",
+      "score": 29.033735275268555,
+      "hits": 10
+    },
+    {
+      "key": "onalpus",
+      "score": 29.033735275268555,
+      "hits": 10
+    },
+    {
+      "key": "orahsgm",
+      "score": 28.91718864440918,
+      "hits": 9
+    },
+    {
+      "key": "nvmhsbt",
+      "score": 28.875852584838867,
+      "hits": 9
+    },
+    {
+      "key": "onalpvs",
+      "score": 28.833736419677734,
+      "hits": 10
+    },
+    {
+      "key": "oeramls",
+      "score": 28.8337345123291,
+      "hits": 11
+    },
+    {
+      "key": "oleudas",
+      "score": 28.83373260498047,
+      "hits": 10
+    },
+    {
+      "key": "oleudis",
+      "score": 28.83373260498047,
+      "hits": 10
+    },
+    {
+      "key": "nemraps",
+      "score": 28.82585334777832,
+      "hits": 9
+    },
+    {
+      "key": "nivedta",
+      "score": 28.79161834716797,
+      "hits": 9
+    },
+    {
+      "key": "oralcps",
+      "score": 28.738731384277344,
+      "hits": 10
+    },
+    {
+      "key": "orefaps",
+      "score": 28.726478576660156,
+      "hits": 11
+    },
+    {
+      "key": "onarbiu",
+      "score": 28.717187881469727,
+      "hits": 9
+    },
+    {
+      "key": "negilmt",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "neradlt",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "nerapmt",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "nizubva",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "nizudva",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "noyarms",
+      "score": 28.70930290222168,
+      "hits": 9
+    },
+    {
+      "key": "mynblsh",
+      "score": 28.703245162963867,
+      "hits": 12
+    },
+    {
+      "key": "mynplsh",
+      "score": 28.69275665283203,
+      "hits": 12
+    },
+    {
+      "key": "orahpes",
+      "score": 28.644222259521484,
+      "hits": 10
+    },
+    {
+      "key": "necolra",
+      "score": 28.60324478149414,
+      "hits": 11
+    },
+    {
+      "key": "mykhsrt",
+      "score": 28.588029861450195,
+      "hits": 9
+    },
+    {
+      "key": "naregbt",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilabs",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilacs",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilags",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilahs",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilajs",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilams",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilaps",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilars",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilaws",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neilays",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nilamps",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nilokda",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodca",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodfa",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodga",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodka",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodma",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodpa",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nirodsa",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "nizabde",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "oetamns",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "otarpes",
+      "score": 28.50930404663086,
+      "hits": 10
+    },
+    {
+      "key": "neimats",
+      "score": 28.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "noargms",
+      "score": 28.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "nolambe",
+      "score": 28.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "onerpas",
+      "score": 28.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "oralces",
+      "score": 28.497394561767578,
+      "hits": 10
+    },
+    {
+      "key": "nilokme",
+      "score": 28.47585105895996,
+      "hits": 9
+    },
+    {
+      "key": "naircet",
+      "score": 28.467187881469727,
+      "hits": 9
+    },
+    {
+      "key": "ondejiu",
+      "score": 28.433734893798828,
+      "hits": 9
+    },
+    {
+      "key": "orepmas",
+      "score": 28.431970596313477,
+      "hits": 11
+    },
+    {
+      "key": "nerocds",
+      "score": 28.425851821899414,
+      "hits": 9
+    },
+    {
+      "key": "nimacde",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "nimacge",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "nimacpe",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "nimafle",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "nimagde",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "nimagpe",
+      "score": 28.361127853393555,
+      "hits": 10
+    },
+    {
+      "key": "oreifps",
+      "score": 28.358524322509766,
+      "hits": 10
+    },
+    {
+      "key": "namorps",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "nidorla",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "nirames",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "nvmhsat",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "oetamrs",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "pvhsbkr",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "pvhslgt",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "pvhslmt",
+      "score": 28.30930519104004,
+      "hits": 10
+    },
+    {
+      "key": "mahcsbt",
+      "score": 28.289512634277344,
+      "hits": 9
+    },
+    {
+      "key": "nivedla",
+      "score": 28.267187118530273,
+      "hits": 9
+    },
+    {
+      "key": "nizubta",
+      "score": 28.267187118530273,
+      "hits": 9
+    },
+    {
+      "key": "nizudta",
+      "score": 28.267187118530273,
+      "hits": 9
+    },
+    {
+      "key": "nirambe",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "niramce",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "niramfe",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "niramse",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "niramve",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "niramwe",
+      "score": 28.225852966308594,
+      "hits": 9
+    },
+    {
+      "key": "mitseca",
+      "score": 28.19275665283203,
+      "hits": 9
+    },
+    {
+      "key": "mitsena",
+      "score": 28.19275665283203,
+      "hits": 9
+    },
+    {
+      "key": "otsilcu",
+      "score": 28.19275665283203,
+      "hits": 9
+    },
+    {
+      "key": "nlatspe",
+      "score": 28.17296600341797,
+      "hits": 10
+    },
+    {
+      "key": "nesoplt",
+      "score": 28.11979103088379,
+      "hits": 10
+    },
+    {
+      "key": "nesopmt",
+      "score": 28.11979103088379,
+      "hits": 10
+    },
+    {
+      "key": "oiresnu",
+      "score": 28.109304428100586,
+      "hits": 8
+    },
+    {
+      "key": "nvhkmet",
+      "score": 28.08014678955078,
+      "hits": 8
+    },
+    {
+      "key": "nvhkmpt",
+      "score": 28.08014678955078,
+      "hits": 8
+    },
+    {
+      "key": "nirocta",
+      "score": 28.077674865722656,
+      "hits": 10
+    },
+    {
+      "key": "nimarbe",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarce",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarfe",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarse",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarte",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarve",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nimarwe",
+      "score": 28.067188262939453,
+      "hits": 9
+    },
+    {
+      "key": "nelobrt",
+      "score": 28.06718635559082,
+      "hits": 10
+    },
+    {
+      "key": "nilodvu",
+      "score": 28.025850296020508,
+      "hits": 9
+    },
+    {
+      "key": "omargis",
+      "score": 28.00852394104004,
+      "hits": 10
+    },
+    {
+      "key": "omartis",
+      "score": 28.00852394104004,
+      "hits": 10
+    },
+    {
+      "key": "narigkt",
+      "score": 27.972963333129883,
+      "hits": 11
+    },
+    {
+      "key": "narimkt",
+      "score": 27.972963333129883,
+      "hits": 11
+    },
+    {
+      "key": "negawds",
+      "score": 27.972963333129883,
+      "hits": 10
+    },
+    {
+      "key": "negawts",
+      "score": 27.972963333129883,
+      "hits": 10
+    },
+    {
+      "key": "nerpats",
+      "score": 27.972963333129883,
+      "hits": 10
+    },
+    {
+      "key": "mvhslyn",
+      "score": 27.950641632080078,
+      "hits": 11
+    },
+    {
+      "key": "natseld",
+      "score": 27.887744903564453,
+      "hits": 10
+    },
+    {
+      "key": "oraenps",
+      "score": 27.88555908203125,
+      "hits": 9
+    },
+    {
+      "key": "nabuchs",
+      "score": 27.86979103088379,
+      "hits": 8
+    },
+    {
+      "key": "nabucps",
+      "score": 27.86979103088379,
+      "hits": 8
+    },
+    {
+      "key": "oedivfs",
+      "score": 27.825851440429688,
+      "hits": 10
+    },
+    {
+      "key": "nelopts",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "nesivlt",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "nesivmt",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "nidorva",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "nilopva",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "nizabme",
+      "score": 27.825851440429688,
+      "hits": 9
+    },
+    {
+      "key": "mvykldh",
+      "score": 27.824787139892578,
+      "hits": 11
+    },
+    {
+      "key": "nepohds",
+      "score": 27.8135986328125,
+      "hits": 10
+    },
+    {
+      "key": "nepohts",
+      "score": 27.8135986328125,
+      "hits": 10
+    },
+    {
+      "key": "onmugas",
+      "score": 27.80324363708496,
+      "hits": 9
+    },
+    {
+      "key": "olatspu",
+      "score": 27.79161834716797,
+      "hits": 8
+    },
+    {
+      "key": "nalovet",
+      "score": 27.783735275268555,
+      "hits": 9
+    },
+    {
+      "key": "narigpt",
+      "score": 27.772964477539062,
+      "hits": 11
+    },
+    {
+      "key": "narigvt",
+      "score": 27.772964477539062,
+      "hits": 11
+    },
+    {
+      "key": "narimpt",
+      "score": 27.772964477539062,
+      "hits": 11
+    },
+    {
+      "key": "narimvt",
+      "score": 27.772964477539062,
+      "hits": 11
+    },
+    {
+      "key": "narevlo",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nelokmi",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nimacpo",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nitames",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nitamps",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nitapes",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nizubda",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nizubla",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "nizudla",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "noyarps",
+      "score": 27.742755889892578,
+      "hits": 9
+    },
+    {
+      "key": "naritds",
+      "score": 27.730146408081055,
+      "hits": 9
+    },
+    {
+      "key": "naritfs",
+      "score": 27.730146408081055,
+      "hits": 9
+    },
+    {
+      "key": "naritgs",
+      "score": 27.730146408081055,
+      "hits": 9
+    },
+    {
+      "key": "naritms",
+      "score": 27.730146408081055,
+      "hits": 9
+    },
+    {
+      "key": "naritvs",
+      "score": 27.730146408081055,
+      "hits": 9
+    },
+    {
+      "key": "oilapds",
+      "score": 27.677675247192383,
+      "hits": 10
+    },
+    {
+      "key": "nergads",
+      "score": 27.67725944519043,
+      "hits": 10
+    },
+    {
+      "key": "omargds",
+      "score": 27.66718864440918,
+      "hits": 10
+    },
+    {
+      "key": "nelophs",
+      "score": 27.625852584838867,
+      "hits": 10
+    },
+    {
+      "key": "neiapds",
+      "score": 27.625852584838867,
+      "hits": 9
+    },
+    {
+      "key": "neragds",
+      "score": 27.625850677490234,
+      "hits": 11
+    },
+    {
+      "key": "nepohrs",
+      "score": 27.613597869873047,
+      "hits": 11
+    },
+    {
+      "key": "nasopet",
+      "score": 27.583736419677734,
+      "hits": 9
+    },
+    {
+      "key": "nelavdt",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "nelavft",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "nelavst",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "nelovdt",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "nelovft",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "nelovst",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "netopms",
+      "score": 27.5837345123291,
+      "hits": 9
+    },
+    {
+      "key": "orehkas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "oreidas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "oreikas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "oreimas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "orevias",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "orevuas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "orevyas",
+      "score": 27.561128616333008,
+      "hits": 11
+    },
+    {
+      "key": "nidemla",
+      "score": 27.542757034301758,
+      "hits": 9
+    },
+    {
+      "key": "noargps",
+      "score": 27.542757034301758,
+      "hits": 9
+    },
+    {
+      "key": "nolamde",
+      "score": 27.542757034301758,
+      "hits": 9
+    },
+    {
+      "key": "nydmbph",
+      "score": 27.542757034301758,
+      "hits": 9
+    },
+    {
+      "key": "nariget",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicbt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicdt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicft",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicgt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemickt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicvt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "nemicwt",
+      "score": 27.530847549438477,
+      "hits": 10
+    },
+    {
+      "key": "otahces",
+      "score": 27.50930404663086,
+      "hits": 9
+    },
+    {
+      "key": "nipseva",
+      "score": 27.50930404663086,
+      "hits": 8
+    },
+    {
+      "key": "nemokit",
+      "score": 27.47507095336914,
+      "hits": 9
+    },
+    {
+      "key": "pvstmah",
+      "score": 27.459304809570312,
+      "hits": 8
+    },
+    {
+      "key": "narevso",
+      "score": 27.45930290222168,
+      "hits": 9
+    },
+    {
+      "key": "nelokti",
+      "score": 27.45930290222168,
+      "hits": 9
+    },
+    {
+      "key": "oykvhnm",
+      "score": 27.425851821899414,
+      "hits": 11
+    },
+    {
+      "key": "orecaps",
+      "score": 27.42330551147461,
+      "hits": 10
+    },
+    {
+      "key": "orehcas",
+      "score": 27.414302825927734,
+      "hits": 11
+    },
+    {
+      "key": "nydmbgh",
+      "score": 27.4006404876709,
+      "hits": 9
+    },
+    {
+      "key": "netophs",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "netoprs",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nidorta",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nilopta",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nivedsa",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nlaksoi",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nlatsoi",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "oiramds",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "onatsiu",
+      "score": 27.38373565673828,
+      "hits": 9
+    },
+    {
+      "key": "nelobmt",
+      "score": 27.38373374938965,
+      "hits": 9
+    },
+    {
+      "key": "nemrabs",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemracs",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemrags",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemrahs",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemrajs",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemrals",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemravs",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemraws",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "nemrays",
+      "score": 27.375852584838867,
+      "hits": 8
+    },
+    {
+      "key": "omircas",
+      "score": 27.342756271362305,
+      "hits": 10
+    },
+    {
+      "key": "mitsera",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "otirfes",
+      "score": 27.30930519104004,
+      "hits": 9
+    },
+    {
+      "key": "nelomds",
+      "score": 27.28951072692871,
+      "hits": 10
+    },
+    {
+      "key": "nimohle",
+      "score": 27.267187118530273,
+      "hits": 8
+    },
+    {
+      "key": "onarges",
+      "score": 27.267187118530273,
+      "hits": 8
+    },
+    {
+      "key": "oiravds",
+      "score": 27.24739646911621,
+      "hits": 9
+    },
+    {
+      "key": "mykhsbt",
+      "score": 27.23802947998047,
+      "hits": 9
+    },
+    {
+      "key": "mykhsnt",
+      "score": 27.23802947998047,
+      "hits": 9
+    },
+    {
+      "key": "orabips",
+      "score": 27.22330665588379,
+      "hits": 10
+    },
+    {
+      "key": "orabmps",
+      "score": 27.22330665588379,
+      "hits": 10
+    },
+    {
+      "key": "pmortue",
+      "score": 27.217187881469727,
+      "hits": 10
+    },
+    {
+      "key": "nykvhbm",
+      "score": 27.183734893798828,
+      "hits": 10
+    },
+    {
+      "key": "oerapls",
+      "score": 27.183734893798828,
+      "hits": 10
+    },
+    {
+      "key": "nsarkie",
+      "score": 27.175853729248047,
+      "hits": 10
+    },
+    {
+      "key": "nerapfs",
+      "score": 27.175851821899414,
+      "hits": 10
+    },
+    {
+      "key": "nerapks",
+      "score": 27.175851821899414,
+      "hits": 10
+    },
+    {
+      "key": "necolta",
+      "score": 27.153244018554688,
+      "hits": 10
+    },
+    {
+      "key": "necolva",
+      "score": 27.153244018554688,
+      "hits": 10
+    },
+    {
+      "key": "nemiplt",
+      "score": 27.141334533691406,
+      "hits": 10
+    },
+    {
+      "key": "mykhsat",
+      "score": 27.138029098510742,
+      "hits": 8
+    },
+    {
+      "key": "onrevas",
+      "score": 27.06978988647461,
+      "hits": 9
+    },
+    {
+      "key": "nipseta",
+      "score": 27.067188262939453,
+      "hits": 8
+    },
+    {
+      "key": "mizerca",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "mizerna",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "negilft",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "negilst",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "negilwt",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "nerapgt",
+      "score": 27.059303283691406,
+      "hits": 9
+    },
+    {
+      "key": "nerapkt",
+      "score": 27.059303283691406,
+      "hits": 9
+    }
+  ],
+  "dictionary_audit": {
+    "it": {
+      "n_requested": 25000,
+      "n_eligible": 20892
+    },
+    "de": {
+      "n_requested": 25000,
+      "n_eligible": 19492
+    },
+    "cs": {
+      "n_requested": 25000,
+      "n_eligible": 23281
+    },
+    "fr": {
+      "n_requested": 25000,
+      "n_eligible": 21531
+    },
+    "es": {
+      "n_requested": 25000,
+      "n_eligible": 21491
+    },
+    "pl": {
+      "n_requested": 25000,
+      "n_eligible": 21436
+    },
+    "nl": {
+      "n_requested": 25000,
+      "n_eligible": 20540
+    },
+    "ro": {
+      "n_requested": 25000,
+      "n_eligible": 22108
+    },
+    "sk": {
+      "n_requested": 25000,
+      "n_eligible": 22766
+    },
+    "sl": {
+      "n_requested": 25000,
+      "n_eligible": 22674
+    },
+    "hu": {
+      "n_requested": 25000,
+      "n_eligible": 21450
+    },
+    "el": {
+      "n_requested": 25000,
+      "n_eligible": 20368
+    },
+    "ru": {
+      "n_requested": 25000,
+      "n_eligible": 19723
+    },
+    "uk": {
+      "n_requested": 25000,
+      "n_eligible": 20208
+    },
+    "pt": {
+      "n_requested": 25000,
+      "n_eligible": 21738
+    },
+    "ca": {
+      "n_requested": 25000,
+      "n_eligible": 21771
+    },
+    "en": {
+      "n_requested": 25000,
+      "n_eligible": 21772
+    },
+    "he": {
+      "n_requested": 25000,
+      "n_eligible": 24378
+    },
+    "la": {
+      "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Latin-Perseus/master/la_perseus-ud-train.conllu",
+      "sha256": "49d2e3813fc34595fe8cf569f263df4396e4b21aba9429fcdb0eea3ae09e64fa"
+    },
+    "yi": {
+      "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Yiddish-YiTB/master/yi_yitb-ud-train.conllu",
+      "sha256": "19f9461e4edec9ba96e2f2ba618f08849ada24d711caed09910969d31a9caed1"
+    },
+    "unique_forms": 282966
+  },
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b0aa5ccb47ba0f7cfe25"
+}
