@@ -123,3 +123,16 @@ After reviewing the frozen Q0/Q1/Q1B, Q13 informed-source, existing VMS residual
 **Deliverable for the correct next step:** [anchor_candidate_gate.py](anchor_candidate_gate.py), a read-only machine-checkable noncircularity gate for independent historical citations, a specific TEXT locus, reviewed picture/witness identity, competing semantic-vs-production predictions, same-register matched negatives and independent physical folds. Self-test PASS rejecting a generic "plant" class. This is an *input validation tool*, not proof of any identity.
 
 **Decision:** Do not promote Q1B categories to lexemes. Do not rerun an upgraded unsupervised similarity solver under a new name. Register and validate one independently grounded text–meaning alignment that a production-only mechanism cannot readily mimic, then define a falsifiable heldout test. Without such an anchor, treat source-content-versus-production as nonidentifiable; predictive residual modeling remains descriptive.
+
+## 2026-10-19 — concrete medieval witness / VMS f2r candidate built and tested
+
+See [F2R_CASEBOOK_RESULTS_20261019.md](anchors/F2R_CASEBOOK_RESULTS_20261019.md) and [candidate manifest](anchors/f2r_centaury_candidate.json). External historical BL Egerton MS 747 f21r centaurea minor/maior witness from official digitized manuscript, Voynich f2r Yale IIIF, and the preregistered ZLZI line-1/line-8 1-edit pair. Source proposals for f2r predate experiment, so this remains discovery only.
+
+- Target `kydainy` versus `kydain`: ED1 (previously proposed by Bax).
+- Matched word-length and line-position Currier-A Herbal controls: **0 of 28** other folios ED1 or closer; median control edit distance 6.
+- Within f2r: **0 of 5** other eligible line-first words ED1 or closer.
+- No botanical identity independently verified, no independently verified alignment to the depicted plant, no formal matched paragraph-opener controls, no confirmatory p-value, no heldout bifolium test. Source-content vs copying/LINE_ENTRY remains nonidentifiable from this outcome.
+- HTML primary-source blind visual review packet produced in this conversation: Yale f2r/f3r/f4r and BL Egerton 747 f21r official IIIF photographs, visual scores locked before word hypotheses are revealed, exportable reviewer JSON. Visual decoys convenient, **not** a registered null cohort. Independent expert adjudication still required.
+- Hugging Face pinned assay completed. One preliminary transcription audit had a trivial non-serializable dict_keys error; corrected audit and substantive final assay completed. No ongoing compute.
+
+**Do not promote this to `centaury = kydainy` decipherment.** It is a useful empirical surface anomaly and a traceable historical comparison, but the independent text→meaning correspondence is not yet established.
