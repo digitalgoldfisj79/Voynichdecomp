@@ -64,13 +64,23 @@ def trial(words,hold,model,seed,steps,pop):
  if n>26:raise RuntimeError(("alphabet",n))
  x=solve(words,n,model,seed+117,steps,pop)
  mono=x["mono"];null=x["best"]
- mhold=score_key(mono["key"][:n],hold,model)
+ # SEARCH PARITY: the null model searches n candidate deletion symbols.
+ # Each requires a fresh anneal; give mono n independent anneals too, choosing best TRAIN score.
+ # Null solver already evaluated one mono above, so do n-1 additional restarts.
+ flat=torch.tensor(joined(words),device=model.device,dtype=torch.long)
+ bestkey=mono["key"][:n];bestfit=mono["per_cipher_glyph"]
+ for kk in range(n-1):
+  alt,altll=anneal(flat,n,model,seed+30001+kk*1009,steps,pop)
+  altfit=channel_obj(altll,len(flat),chars_only(words),0,False)/chars_only(words)
+  if altfit>bestfit:bestfit=altfit;bestkey=alt[:n].tolist()
+ mhold=score_key(bestkey,hold,model)
  nhold=score_key(null["mapping"],hold,model,null["null_symbol"])
  out={"selected_null":null["null_symbol"],"selected_deleted_rate":null["deletion_rate"],
- "mono_fit_per_glyph":mono["per_cipher_glyph"],"null_fit_per_glyph":null["score_per_cipher_glyph"],
- "train_gain":null["score_delta_vs_mono"],"mono_holdout":mhold,"null_holdout":nhold,
+ "mono_fit_per_glyph":bestfit,"mono_single_fit_per_glyph":mono["per_cipher_glyph"],
+ "null_fit_per_glyph":null["score_per_cipher_glyph"],
+ "train_gain":null["score_per_cipher_glyph"]-bestfit,"mono_holdout":mhold,"null_holdout":nhold,
  "heldout_gain":nhold-mhold,
- "fit_key":mono["key"][:n],
+ "fit_key":bestkey,
  "null_key":null["mapping"]}
  return out
 def run(lang,nreps,steps,pop,seed,mode):
@@ -82,7 +92,7 @@ def run(lang,nreps,steps,pop,seed,mode):
  emit("NULL3_AUDIT",{"lang":lang,"torch":torch.__version__,"device":torch.cuda.get_device_name(0),
    "mode":mode,"steps":steps,"pop":pop,"reps":nreps,"seed":seed,
    "training_source":source,"heldout_source":source_hold,"solver_sha":hashlib.sha256(urllib.request.urlopen(NURL).read()).hexdigest(),
-   "notes":"UD sources are not matched 15th century witnesses; no language conclusion."})
+   "notes":"UD sources not 15th century; n null-search candidates vs n mono restarts, selection by train only; never language conclusion."})
  if mode=="synthetic":
   records=[];rates=[0.,.05,.10,.15]
   for rate in rates:
