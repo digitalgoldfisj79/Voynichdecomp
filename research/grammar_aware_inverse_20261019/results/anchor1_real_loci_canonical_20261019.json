@@ -1,0 +1,660 @@
+{
+  "canonical_section_map_eight_candidate_folios": {
+    "f11v": "Herbal-A",
+    "f17r": "Herbal-A",
+    "f1r": "text-only",
+    "f2r": "Herbal-A",
+    "f49v": "Herbal-A",
+    "f57v": "Cosmological",
+    "f65r": "Herbal-A",
+    "f66r": "text-only"
+  },
+  "checks": {
+    "f2r_ZLZI_label_14_ytoail": true,
+    "f2r_ZLZI_label_15_three_tokens": true,
+    "f47r_source_first_word_conflict": true
+  },
+  "layers": {
+    "TTLI": {
+      "all_herbal_label_types": 37,
+      "canonical_audited_herbal_label_folios": [
+        "f49v",
+        "f65r"
+      ],
+      "canonical_audited_herbal_label_loci": [
+        {
+          "folio": "f65r",
+          "line_key": "1",
+          "text": "otaim dam alam",
+          "unit": "@Lp"
+        }
+      ],
+      "canonical_audited_herbal_label_locus_count": 17,
+      "canonical_audited_herbal_label_nontrivial_folios": [
+        "f65r"
+      ],
+      "canonical_audited_herbal_label_nontrivial_loci": 1,
+      "eligible_label_loci": 66,
+      "focus": {
+        "f2r": [
+          {
+            "ecology": "RUNNING",
+            "line": 1,
+            "raw": "kydainy ypchol daiin otchal ypchaiin ckholsy",
+            "tokens": [
+              "kydainy",
+              "ypchol",
+              "daiin",
+              "otchal",
+              "ypchaiin",
+              "ckholsy"
+            ],
+            "unit": "@P0"
+          }
+        ],
+        "f47r": [
+          {
+            "ecology": "RUNNING",
+            "line": 1,
+            "raw": "pchair oly sheaiin shol daiin chdy",
+            "tokens": [
+              "pchair",
+              "oly",
+              "sheaiin",
+              "shol",
+              "daiin",
+              "chdy"
+            ],
+            "unit": "@P0"
+          }
+        ]
+      },
+      "herbal_label_loci": 66,
+      "herbal_loci": 1624,
+      "herbal_running_loci": 1550,
+      "label_control_examples": [
+        {
+          "folio": "f49v",
+          "line": 1,
+          "raw": "f",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 3,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 5,
+          "raw": "r",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 7,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 15,
+          "raw": "s",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 17,
+          "raw": "p",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 19,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 23,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 25,
+          "raw": "e",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 31,
+          "raw": "p",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 33,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 37,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 43,
+          "raw": "d",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 45,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 49,
+          "raw": "k",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 51,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f57v",
+          "line": 1,
+          "raw": "dairol",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f57v",
+          "line": 6,
+          "raw": "otodarod",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f57v",
+          "line": 7,
+          "raw": "oparairdly",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f57v",
+          "line": 8,
+          "raw": "olkchdal",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f57v",
+          "line": 9,
+          "raw": "otardaly",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f65r",
+          "line": 1,
+          "raw": "otaim dam alam",
+          "unit": "@Lp"
+        },
+        {
+          "folio": "f66r",
+          "line": 1,
+          "raw": "rary",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f66r",
+          "line": 2,
+          "raw": "rals",
+          "unit": "+L0"
+        },
+        {
+          "folio": "f66r",
+          "line": 3,
+          "raw": "qor",
+          "unit": "+L0"
+        }
+      ],
+      "label_folios": 4,
+      "label_token_top20": [
+        [
+          "y",
+          9
+        ],
+        [
+          "o",
+          8
+        ],
+        [
+          "d",
+          5
+        ],
+        [
+          "r",
+          4
+        ],
+        [
+          "f",
+          3
+        ],
+        [
+          "p",
+          3
+        ],
+        [
+          "x",
+          3
+        ],
+        [
+          "s",
+          2
+        ],
+        [
+          "sh",
+          2
+        ],
+        [
+          "t",
+          2
+        ],
+        [
+          "e",
+          1
+        ],
+        [
+          "k",
+          1
+        ],
+        [
+          "dairol",
+          1
+        ],
+        [
+          "otodarod",
+          1
+        ],
+        [
+          "oparairdly",
+          1
+        ],
+        [
+          "olkchdal",
+          1
+        ],
+        [
+          "otardaly",
+          1
+        ],
+        [
+          "otaim",
+          1
+        ],
+        [
+          "dam",
+          1
+        ],
+        [
+          "alam",
+          1
+        ]
+      ],
+      "nonempty_herbal_label_loci": 66,
+      "ytoail_label_count": 0,
+      "ytoail_running_count": 0
+    },
+    "ZLZI": {
+      "all_herbal_label_types": 48,
+      "canonical_audited_herbal_label_folios": [
+        "f11v",
+        "f17r",
+        "f2r",
+        "f49v",
+        "f65r"
+      ],
+      "canonical_audited_herbal_label_loci": [
+        {
+          "folio": "f2r",
+          "line_key": "14",
+          "text": "ytoail",
+          "unit": "@Lp"
+        },
+        {
+          "folio": "f2r",
+          "line_key": "15",
+          "text": "ios an on",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f17r",
+          "line_key": "13",
+          "text": "oteeeon oiil",
+          "unit": "@Lx"
+        },
+        {
+          "folio": "f65r",
+          "line_key": "1",
+          "text": "otaim dam alam",
+          "unit": "@Lp"
+        }
+      ],
+      "canonical_audited_herbal_label_locus_count": 25,
+      "canonical_audited_herbal_label_nontrivial_folios": [
+        "f17r",
+        "f2r",
+        "f65r"
+      ],
+      "canonical_audited_herbal_label_nontrivial_loci": 4,
+      "eligible_label_loci": 77,
+      "focus": {
+        "f2r": [
+          {
+            "ecology": "RUNNING",
+            "line": 1,
+            "raw": "kydainy ypchol daiin otchal ypchaiin ckholsy",
+            "tokens": [
+              "kydainy",
+              "ypchol",
+              "daiin",
+              "otchal",
+              "ypchaiin",
+              "ckholsy"
+            ],
+            "unit": "@P0"
+          },
+          {
+            "ecology": "LABEL",
+            "line": 14,
+            "raw": "ytoail",
+            "tokens": [
+              "ytoail"
+            ],
+            "unit": "@Lp"
+          },
+          {
+            "ecology": "LABEL",
+            "line": 15,
+            "raw": "ios an on",
+            "tokens": [
+              "ios",
+              "an",
+              "on"
+            ],
+            "unit": "@L0"
+          }
+        ],
+        "f47r": [
+          {
+            "ecology": "RUNNING",
+            "line": 1,
+            "raw": "oly sheaiin shol daiin chdy",
+            "tokens": [
+              "oly",
+              "sheaiin",
+              "shol",
+              "daiin",
+              "chdy"
+            ],
+            "unit": "@P0"
+          }
+        ]
+      },
+      "herbal_label_loci": 77,
+      "herbal_loci": 1635,
+      "herbal_running_loci": 1552,
+      "label_control_examples": [
+        {
+          "folio": "f1r",
+          "line": 29,
+          "raw": "d",
+          "unit": "@Lx"
+        },
+        {
+          "folio": "f1r",
+          "line": 30,
+          "raw": "r",
+          "unit": "+Lx"
+        },
+        {
+          "folio": "f1r",
+          "line": 31,
+          "raw": "g",
+          "unit": "@Lx"
+        },
+        {
+          "folio": "f11v",
+          "line": 5,
+          "raw": "dd",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f17r",
+          "line": 13,
+          "raw": "oteeeon oiil",
+          "unit": "@Lx"
+        },
+        {
+          "folio": "f49v",
+          "line": 1,
+          "raw": "f",
+          "unit": "@L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 3,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 5,
+          "raw": "r",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 7,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 9,
+          "raw": "e",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 13,
+          "raw": "k",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 15,
+          "raw": "s",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 17,
+          "raw": "p",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 19,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 23,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 25,
+          "raw": "e",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 31,
+          "raw": "p",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 33,
+          "raw": "o",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 37,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 39,
+          "raw": "e",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 43,
+          "raw": "d",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 45,
+          "raw": "y",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 47,
+          "raw": "e",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 49,
+          "raw": "k",
+          "unit": "*L0"
+        },
+        {
+          "folio": "f49v",
+          "line": 51,
+          "raw": "y",
+          "unit": "*L0"
+        }
+      ],
+      "label_folios": 8,
+      "label_token_top20": [
+        [
+          "y",
+          9
+        ],
+        [
+          "o",
+          8
+        ],
+        [
+          "d",
+          6
+        ],
+        [
+          "f",
+          5
+        ],
+        [
+          "e",
+          4
+        ],
+        [
+          "r",
+          3
+        ],
+        [
+          "s",
+          3
+        ],
+        [
+          "p",
+          3
+        ],
+        [
+          "x",
+          3
+        ],
+        [
+          "k",
+          2
+        ],
+        [
+          "sh",
+          2
+        ],
+        [
+          "t",
+          2
+        ],
+        [
+          "g",
+          1
+        ],
+        [
+          "ytoail",
+          1
+        ],
+        [
+          "ios",
+          1
+        ],
+        [
+          "an",
+          1
+        ],
+        [
+          "on",
+          1
+        ],
+        [
+          "dd",
+          1
+        ],
+        [
+          "oteeeon",
+          1
+        ],
+        [
+          "oiil",
+          1
+        ]
+      ],
+      "nonempty_herbal_label_loci": 77,
+      "ytoail_label_count": 1,
+      "ytoail_running_count": 0
+    }
+  },
+  "note": "Numeric folio-range label counts are preliminary only. CANONICAL section annotation for all eight label-bearing low-number folios is frozen below; controls still need hand/bifolium matched metadata.",
+  "promotion": "NO: f2r plant identity is disputed; Egerton labelled peony and centaury are admissible historical vocabulary but not aligned proof.",
+  "schema": "ANCHOR1-REAL-CORPUS-AUDIT",
+  "sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+  "unit_rule": "Unit indicator P is running; L is label; no pooled training or scoring.",
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5e99e632cfaf2180112c8",
+  "code_commit": "9c207d4cf75dfcbd90818bca227eff1fc0925d0e"
+}
