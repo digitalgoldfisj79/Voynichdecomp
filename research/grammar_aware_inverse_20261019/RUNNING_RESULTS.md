@@ -1,5 +1,11 @@
 # Grammar-aware inverse: running results — 2026-10-19
 
+## RETRACTED / NON-PROMOTABLE FINDINGS (standing)
+- **Botanical naming requirement WITHDRAWN**: no agreed plant ID is required for label-free mechanism research. Existing f2r candidate remains post-selected surface evidence, not a plant-name reading.
+- **No source-identifiability claim**: Q1B class/inverse gate failed, IDENT-GATE proved observational source/production twins, and the new LF-T1 real pilot did NOT exceed a hard matched copying null (effect +0.001155 bits/token, null SD 0.002095; z=.55; p=.31). Do not interpret the unadjusted M2 gain +0.005581 as novel content.
+- Full LF-T1 [prereg](LABEL_FREE_TRANSFER_PREREG_20261019.md), [executable score](lf_transfer_score_20261019.js), [data export](lf_transfer_export_20261019.sql), [actual JSON](results/lf_transfer_t1_real_pilot_20261019.json), [adjudication](LABEL_FREE_TRANSFER_RESULTS_20261019.md).
+
+
 ## CORRECTION: 2026-10-19 — botanical naming is not a valid required gate
 The user correctly identified that no agreed identification for Voynich plants is attainable or required. The prior proposal to require an independently *named Voynich plant* before advancing research was mistaken; it would make decipherment circular and block legitimate unlabeled tests. **Superseded by [NO_PLANT_NAME_GATE_CORRECTION_20261019.md](NO_PLANT_NAME_GATE_CORRECTION_20261019.md).** Previously reported f2r centaury comparisons remain exploratory and already selected, with no semantic inference. Subsequent work must test distinguishable source-vs-production mechanisms using FORM/CONNECT/LINE_ENTRY, physical-bifolium holdouts and hard copying/position nulls without requiring agreed plant names. Named semantic anchors remain optional secondary corroboration, not an eligibility condition.
 
