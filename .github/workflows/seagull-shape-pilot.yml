@@ -1,0 +1,90 @@
+name: Voynich seagull paired shape pilot
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/seagull-shape-pilot.yml'
+      - 'experiments/sobel_shape_search/prepare_seagull_queries.py'
+      - 'experiments/sobel_shape_search/seagull_pilot_postprocess.py'
+      - 'experiments/sobel_shape_search/sobel_scan.py'
+      - 'experiments/sobel_shape_search/sobel_scan_r15.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  SUPABASE_URL: https://ymaqlcfjmdwncdbjprmw.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_9MpT1VOi0nvF-2N1LIS4Ew_h5dQWcp2
+  RELEASE_ID: 2026-08-26-r15
+  MIN_IMAGE_ID: '8575495'
+  MAX_IMAGE_ID: '9159973'
+  MAX_ITEMS: '120'
+  TOP_K: '80'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        query: [seagull_target, seagull_control]
+        shard: [8, 16]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install CPU vision dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Prepare authentic f1r query masks
+        run: python experiments/sobel_shape_search/prepare_seagull_queries.py --outdir seagull_queries
+      - name: Scan paired r15 pilot shard
+        run: |
+          python experiments/sobel_shape_search/sobel_scan_r15.py \
+            --release "$RELEASE_ID" \
+            --shard ${{ matrix.shard }} \
+            --max-items "$MAX_ITEMS" \
+            --top-k "$TOP_K" \
+            --query "seagull_queries/${{ matrix.query }}.b64" \
+            --out "${{ matrix.query }}_s${{ matrix.shard }}.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seagull-${{ matrix.query }}-s${{ matrix.shard }}
+          path: |
+            ${{ matrix.query }}_s${{ matrix.shard }}.json
+            seagull_queries/${{ matrix.query }}_crop.jpg
+            seagull_queries/${{ matrix.query }}_mask.png
+            seagull_queries/metadata.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  combine:
+    needs: scan
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install postprocess dependencies
+        run: python -m pip install --disable-pip-version-check pillow requests
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: seagull-seagull_*
+          path: pilot_parts
+      - name: Combine and render top candidates
+        run: |
+          python experiments/sobel_shape_search/seagull_pilot_postprocess.py --root pilot_parts --outdir seagull_pilot
+          cat seagull_pilot/summary.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seagull-paired-pilot-combined
+          path: seagull_pilot/
+          retention-days: 14

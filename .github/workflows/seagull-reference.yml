@@ -1,0 +1,33 @@
+name: Voynich f1r seagull reference extraction
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/seagull-reference.yml'
+      - 'experiments/sobel_shape_search/seagull_reference.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extraction dependencies
+        run: python -m pip install --disable-pip-version-check numpy pillow requests opencv-python-headless
+      - name: Extract red f1r components from Yale scan
+        run: python experiments/sobel_shape_search/seagull_reference.py --outdir seagull_reference
+      - name: Report component metadata
+        run: cat seagull_reference/components.json >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seagull-reference-components
+          path: seagull_reference/
+          retention-days: 14
