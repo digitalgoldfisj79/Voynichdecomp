@@ -1,0 +1,542 @@
+{
+  "schema": "HERBAL_A_CURRIER_METADATA_V1",
+  "source": "read-only research-agent public.vms_realization_folio_split_v01 query 2026-10-19",
+  "scope": "illustration=H,currier=A",
+  "warning": "Existing discovery/validation split has not been qualified for physical-bifolium exclusion; not independent holdout.",
+  "records": [
+    {
+      "folio": "f10r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f10v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f11r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f13r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f13v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f14r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f14v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f15v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f16r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f16v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f17r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f17v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f18r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f18v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f19r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f19v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f20r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f20v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f21r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f21v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f22r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f22v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f23r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f23v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f24r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f24v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f25r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f25v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f27r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f27v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f28v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f29r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f29v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f2r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f2v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f30r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f30v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f32r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f32v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f35r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f35v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f36r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f36v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f37r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f37v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f38r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f38v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f3r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f3v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f42r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f42v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f44r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f44v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f45r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f45v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f47r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f47v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f49r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f49v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f4r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f4v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f51r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f51v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f52r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f52v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f53r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f53v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f54r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f54v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f56r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f56v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f5r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f5v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f6r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f6v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f7v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f87r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f8r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f8v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f90r1",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f90r2",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f90v1",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f90v2",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f93r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f93v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f96r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f96v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    },
+    {
+      "folio": "f9r",
+      "currier": "A",
+      "illustration": "H",
+      "split": "VALIDATION"
+    },
+    {
+      "folio": "f9v",
+      "currier": "A",
+      "illustration": "H",
+      "split": "DISCOVERY"
+    }
+  ]
+}
