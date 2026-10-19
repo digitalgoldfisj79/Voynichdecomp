@@ -106,3 +106,20 @@ Target a directly measurable *relation* (posterior probability of shared SELECT 
 - use sectioned running text only, never contaminate with Pharma labels, Zodiac circular or Rosettes spatial inscriptions.
 
 Proceed to actual Voynich only after those qualification gates; otherwise retain the uncertainty and do not escalate arbitrary search complexity.
+
+## 2026-10-19 — Step-back identifiability audit and revised build decision
+
+After reviewing the frozen Q0/Q1/Q1B, Q13 informed-source, existing VMS residual recovery ladder and horseshoe retractions, the proposed **next relationship decoder is demoted**: another unsupervised SELECT-category similarity model would not discriminate source semantics from production/copyist structure. Q1B's within-controller identity AUC ~.50 is a formal result of the deliberately shared emission channel and cannot be overcome through brute-force search.
+
+**Implemented:** [IDENT_GATE_PREREG_20261019.md](IDENT_GATE_PREREG_20261019.md), [ident_gate.py](ident_gate.py), [results/ident_gate_20seeds_20261019.json](results/ident_gate_20seeds_20261019.json), [IDENT_GATE_RESULTS_20261019.md](IDENT_GATE_RESULTS_20261019.md). Frozen FORM exact stochastic mechanism, synthetic-only causal-source versus production twins, plus matched anchor confounding stress test. Twenty independent seeds:
+- Exact observable source/production twins **all 20/20 identical surface hashes**, full marginal log-likelihood differences exactly 0; intentional observational equivalence.
+- Plant synthetic semantics-anchor score median +.008006 bits/line, classifier AUC .5720, just 6/20 runs above prereg +.02 threshold. Matched **production anchor** numerically identical by construction.
+- Independent anchor control median −.006701 bits/line, AUC .5484, 2/20 score above .02. **Instrument power gate FAIL (6/20 < 18/20); empirical negative gate FAIL (2/20 > 1/20)**. Semantic interpretation additionally **NONIDENTIFIABLE** against exact production twin.
+- Real CONNECT and LINE_ENTRY empirical rules are NOT actually installed in this synthetic feasibility test; the contextual variables are shared nuisance proxies. Do not mislabel it a complete grammar simulation or claim real manuscript inference.
+- This is a negative methodological result, not evidence against encoded content.
+
+**Independent anchor inventory** (read-only research-agent SQL in [anchor_audit_readonly.sql](anchor_audit_readonly.sql)): Balneological image objects 44 across 3 folios, zero reviewed; 92 Balneological masks over four folios geometric only; Herbal-A 272 objects across 105 folios, just 25 reviewed as "root"/"plant" classes (not semantic plant IDs); 416 manual masks across 150 folios geometric. De Balneis comparator has 37 text/image sections and 407 witness-section concordance rows, but there is NO independently certified alignment from that material to specific Voynich words.
+
+**Deliverable for the correct next step:** [anchor_candidate_gate.py](anchor_candidate_gate.py), a read-only machine-checkable noncircularity gate for independent historical citations, a specific TEXT locus, reviewed picture/witness identity, competing semantic-vs-production predictions, same-register matched negatives and independent physical folds. Self-test PASS rejecting a generic "plant" class. This is an *input validation tool*, not proof of any identity.
+
+**Decision:** Do not promote Q1B categories to lexemes. Do not rerun an upgraded unsupervised similarity solver under a new name. Register and validate one independently grounded text–meaning alignment that a production-only mechanism cannot readily mimic, then define a falsifiable heldout test. Without such an anchor, treat source-content-versus-production as nonidentifiable; predictive residual modeling remains descriptive.
