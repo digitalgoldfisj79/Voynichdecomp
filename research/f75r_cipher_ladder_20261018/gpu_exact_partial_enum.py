@@ -185,7 +185,7 @@ def main():
  import random
  gpu=torch.device("cuda:0");t0=time.time()
  train,sha=read_page("f75r");hold,_=read_page("f76r")
- gl=GLYPHS[:ARGS.k]
+ gl={4:["d","e","sh","y"],5:["ch","d","e","sh","y"],6:GLYPHS}[ARGS.k]
  if ARGS.mode=="type_scramble":
   # One shuffle per Voynich TYPE; preserves length, glyph multiset, and all recurrence counts.
   rng=random.Random(ARGS.seed);mapping={}
