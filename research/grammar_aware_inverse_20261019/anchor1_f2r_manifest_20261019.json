@@ -1,0 +1,119 @@
+{
+  "schema": "VMS-ANCHOR1-F2R-20261019",
+  "status": "SCREENED_ONLY_NOT_SEMANTICALLY_VERIFIED",
+  "source_corpus": {
+    "url": "https://raw.githubusercontent.com/digitalgoldfisj79/Voynichdecomp/19fc6f2262dc2d184b370fb7c6960f11278f4778/voynich_transcriptions_slim.json",
+    "sha256": "26e7490e099b1074ed2ce19356d0ea493aa1791826004e1c551d3f4f9bf8574f",
+    "candidate_layer": "ZLZI",
+    "TTLI_covers_label": false
+  },
+  "target": {
+    "ms": "Beinecke MS 408",
+    "folio": "f2r",
+    "image_service": "https://collections.library.yale.edu/iiif/2/1006078",
+    "width": 2691,
+    "height": 3770,
+    "section": "Herbal-A",
+    "text_type": "label",
+    "locus_line_key": "14",
+    "unit": "@Lp",
+    "transcription": "ytoail",
+    "adjacent_locus": {
+      "line_key": "15",
+      "unit": "@L0",
+      "transcription": "ios an on",
+      "interpretation": "not known"
+    },
+    "image_object": {
+      "id": "47d29a8b-1a67-45d8-abd0-db0ac4e1c187",
+      "object_class": "plant",
+      "reviewed": false,
+      "catalogue_candidate": "Centaurea diffusa",
+      "candidate_source": "unreviewed derivative of Edith Sherwood prior list",
+      "comment": "Unreviewed plant bbox is approximate; text-label has NO verified pixel geometry."
+    }
+  },
+  "external": {
+    "ms": "British Library Egerton MS 747",
+    "repository_record": "https://searcharchives.bl.uk/catalog/032-001983805",
+    "manifest": "https://bl.digirati.io/iiif/ark:/81055/vdc_100058663072.0x000001",
+    "date": "c1280–1350",
+    "region": "Southern Italy/Salerno (catalogue attribution)",
+    "folios": [
+      {
+        "id": "A",
+        "folio": "f20v",
+        "iiif_canvas": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000030/canvas/c/48",
+        "image": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000030/full/697,1024/0/default.jpg",
+        "historical_reading": "NOT_ADJUDICATED",
+        "role": "adjacent-page manuscript-style visual control"
+      },
+      {
+        "id": "B",
+        "folio": "f21r",
+        "iiif_canvas": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000031/canvas/c/49",
+        "image": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000031/full/695,1024/0/default.jpg",
+        "historical_reading": "Centaurea minor/maior; other plants may share folio; crop-level label reading unverified",
+        "role": "centaury vocabulary candidate NOT taxonomic identity"
+      },
+      {
+        "id": "C",
+        "folio": "f72v",
+        "iiif_canvas": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000098/canvas/c/152",
+        "image": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000098/full/694,1024/0/default.jpg",
+        "historical_reading": "Peonia (external caption attribution; crop-level manuscript review pending)",
+        "role": "peony counterhypothesis"
+      },
+      {
+        "id": "D",
+        "folio": "f21v",
+        "iiif_canvas": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000032/canvas/c/50",
+        "image": "https://bl.digirati.io/images/ark:/81055/vdc_100058663074.0x000032/full/700,1024/0/default.jpg",
+        "historical_reading": "Centaurea chapter continued; relevant individual plant label not independently verified",
+        "role": "second centaury-page illustration control"
+      }
+    ]
+  },
+  "interpretations": [
+    {
+      "id": "H_semantic",
+      "prediction": "A specified plant-identifying source term should correlate with independently verified botanical identities across physically distinct herbal label folios after holding positional, scribe and FORM factors constant.",
+      "not_established": "No independent species-level labels or cross-folio map have been verified."
+    },
+    {
+      "id": "H_production",
+      "prediction": "Line/register/copying constraints and arbitrary page marks should reproduce label morphology, location and word-shape distributions without linking word identity to botanical species.",
+      "not_established": "Cannot discriminate on one target page alone."
+    }
+  ],
+  "independent_candidate_sources": [
+    {
+      "type": "folio_catalogue",
+      "url": "https://voynich.nu/q01/index.html",
+      "claim": "f2r has right-side plant label; species proposals cyanus/cornflower and centauria are tentative."
+    },
+    {
+      "type": "folio_web_descriptor",
+      "url": "https://vib.tamagothi.de/index.php?id=f2r&show=page",
+      "claim": "Historical identification notes explicitly flag cornflower leaf mismatch."
+    },
+    {
+      "type": "historical_manuscript_catalogue",
+      "url": "https://searcharchives.bl.uk/catalog/032-001983805",
+      "claim": "Egerton 747 is a Latin herbal c1280-1350 with full digital coverage."
+    }
+  ],
+  "admissibility": {
+    "text_locus_verified": true,
+    "source_same_layer_verified": false,
+    "exact_label_bbox_reviewed": false,
+    "vms_species_verified": false,
+    "external_terms_exist": true,
+    "external_plants_crop_reviewed": false,
+    "semantics_to_label_verified": false,
+    "matched_negative_panel_adequate": false,
+    "physical_bifolium_holdout_available": false,
+    "result": "NOT_QUALIFIED"
+  },
+  "no_ground_truth_override": true
+}
