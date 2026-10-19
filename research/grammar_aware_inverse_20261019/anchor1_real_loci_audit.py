@@ -38,7 +38,7 @@ def rows(pop,layer):
             txt=rec.get("t",{}).get(layer)
             if txt is None:continue
             tokens=[x.lower() for x in txt.split() if re.fullmatch("[a-z]+",x.lower())]
-            mline=re.match(r"^(\\d+)",str(line))
+            mline=re.match(r"^[0-9]+",str(line))
             if not mline:continue
             out.append({"folio":f,"line":int(mline.group(1)),"original_line_key":str(line),"unit":u,"ecology":unit,
                         "section_prelim":section(f),"raw":txt,"tokens":tokens,
