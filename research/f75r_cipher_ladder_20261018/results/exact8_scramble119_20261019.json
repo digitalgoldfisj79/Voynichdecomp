@@ -1,0 +1,1442 @@
+{
+  "schema": "F75R_EXACT8_CONTROL_SEED119_20261019",
+  "mode": "type_scramble",
+  "seed": 119,
+  "exact_complete": true,
+  "assignments": 62990928000,
+  "source": "same script and 282966 forms as real K8; per-type glyph order permuted preserving lengths/multiset/recurrence",
+  "shards": [
+    {
+      "start": 0,
+      "stop": 2,
+      "score": 37.60052490234375,
+      "seen": 4845456000,
+      "time": 993.7452955245972,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3655ccb47ba0f7d0041",
+      "top": [
+        {
+          "key": "bvsmyhtr",
+          "score": 37.60052490234375,
+          "hits": 17
+        },
+        {
+          "key": "aotbreis",
+          "score": 36.601139068603516,
+          "hits": 17
+        },
+        {
+          "key": "aroetuis",
+          "score": 35.55902099609375,
+          "hits": 15
+        },
+        {
+          "key": "absymhur",
+          "score": 35.35052490234375,
+          "hits": 14
+        },
+        {
+          "key": "brtlysvh",
+          "score": 35.26847839355469,
+          "hits": 14
+        },
+        {
+          "key": "apomsrlt",
+          "score": 34.90052795410156,
+          "hits": 14
+        },
+        {
+          "key": "amplhvyt",
+          "score": 34.701133728027344,
+          "hits": 15
+        },
+        {
+          "key": "bvsayhtr",
+          "score": 34.41847610473633,
+          "hits": 15
+        },
+        {
+          "key": "bhranvsy",
+          "score": 34.31137466430664,
+          "hits": 16
+        },
+        {
+          "key": "amtvhsir",
+          "score": 34.3005256652832,
+          "hits": 15
+        },
+        {
+          "key": "asemirtn",
+          "score": 34.2590217590332,
+          "hits": 15
+        },
+        {
+          "key": "asetirun",
+          "score": 34.2590217590332,
+          "hits": 15
+        },
+        {
+          "key": "ateomvis",
+          "score": 34.11237335205078,
+          "hits": 15
+        },
+        {
+          "key": "aopceits",
+          "score": 34.11162567138672,
+          "hits": 17
+        },
+        {
+          "key": "atedmvis",
+          "score": 34.09237289428711,
+          "hits": 14
+        },
+        {
+          "key": "arelisut",
+          "score": 34.06889724731445,
+          "hits": 14
+        },
+        {
+          "key": "arenisut",
+          "score": 34.06889724731445,
+          "hits": 14
+        },
+        {
+          "key": "aleditus",
+          "score": 33.95234680175781,
+          "hits": 13
+        },
+        {
+          "key": "alemitus",
+          "score": 33.95234680175781,
+          "hits": 13
+        },
+        {
+          "key": "aroetnis",
+          "score": 33.91326904296875,
+          "hits": 15
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "stop": 4,
+      "score": 36.15113830566406,
+      "seen": 4845456000,
+      "time": 1002.1563549041748,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3715ccb47ba0f7d004c",
+      "top": [
+        {
+          "key": "csiatloe",
+          "score": 36.15113830566406,
+          "hits": 16
+        },
+        {
+          "key": "delrauit",
+          "score": 34.686851501464844,
+          "hits": 16
+        },
+        {
+          "key": "detraoms",
+          "score": 34.121116638183594,
+          "hits": 16
+        },
+        {
+          "key": "cetraois",
+          "score": 34.100528717041016,
+          "hits": 16
+        },
+        {
+          "key": "cetvaois",
+          "score": 34.100528717041016,
+          "hits": 16
+        },
+        {
+          "key": "darlheot",
+          "score": 33.94186019897461,
+          "hits": 16
+        },
+        {
+          "key": "ditesuva",
+          "score": 33.8804817199707,
+          "hits": 16
+        },
+        {
+          "key": "creatios",
+          "score": 33.70113754272461,
+          "hits": 15
+        },
+        {
+          "key": "ditesuna",
+          "score": 33.56357955932617,
+          "hits": 15
+        },
+        {
+          "key": "ditesura",
+          "score": 33.56357955932617,
+          "hits": 15
+        },
+        {
+          "key": "detpaols",
+          "score": 33.40481948852539,
+          "hits": 16
+        },
+        {
+          "key": "dtirecns",
+          "score": 33.30027389526367,
+          "hits": 14
+        },
+        {
+          "key": "csrtaoie",
+          "score": 33.26101303100586,
+          "hits": 16
+        },
+        {
+          "key": "creatnos",
+          "score": 33.251136779785156,
+          "hits": 15
+        },
+        {
+          "key": "delraumt",
+          "score": 33.23685073852539,
+          "hits": 15
+        },
+        {
+          "key": "delraust",
+          "score": 33.23685073852539,
+          "hits": 15
+        },
+        {
+          "key": "catbreis",
+          "score": 33.10052490234375,
+          "hits": 15
+        },
+        {
+          "key": "catbrois",
+          "score": 33.10052490234375,
+          "hits": 15
+        },
+        {
+          "key": "detraois",
+          "score": 32.95481872558594,
+          "hits": 16
+        },
+        {
+          "key": "dhslvrat",
+          "score": 32.9011344909668,
+          "hits": 14
+        }
+      ]
+    },
+    {
+      "start": 4,
+      "stop": 6,
+      "score": 36.61101150512695,
+      "seen": 4845456000,
+      "time": 989.9858269691467,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b37e5ccb47ba0f7d0071",
+      "top": [
+        {
+          "key": "erisahot",
+          "score": 36.61101150512695,
+          "hits": 15
+        },
+        {
+          "key": "etbrvyah",
+          "score": 36.368900299072266,
+          "hits": 17
+        },
+        {
+          "key": "eniosaut",
+          "score": 35.62037658691406,
+          "hits": 16
+        },
+        {
+          "key": "eaptlobs",
+          "score": 35.5084114074707,
+          "hits": 16
+        },
+        {
+          "key": "eatirobs",
+          "score": 35.42635726928711,
+          "hits": 16
+        },
+        {
+          "key": "emuitpas",
+          "score": 35.24507522583008,
+          "hits": 16
+        },
+        {
+          "key": "emuitnas",
+          "score": 34.795074462890625,
+          "hits": 16
+        },
+        {
+          "key": "earvsimt",
+          "score": 34.70193099975586,
+          "hits": 16
+        },
+        {
+          "key": "etvsmkah",
+          "score": 34.676361083984375,
+          "hits": 14
+        },
+        {
+          "key": "elirotas",
+          "score": 34.518898010253906,
+          "hits": 14
+        },
+        {
+          "key": "erasinot",
+          "score": 34.50840759277344,
+          "hits": 14
+        },
+        {
+          "key": "eamvtrns",
+          "score": 34.43382263183594,
+          "hits": 15
+        },
+        {
+          "key": "eatirons",
+          "score": 34.418479919433594,
+          "hits": 16
+        },
+        {
+          "key": "earkpist",
+          "score": 34.41847610473633,
+          "hits": 15
+        },
+        {
+          "key": "eraitphs",
+          "score": 34.3720703125,
+          "hits": 14
+        },
+        {
+          "key": "eamrnvst",
+          "score": 34.312416076660156,
+          "hits": 16
+        },
+        {
+          "key": "eaptlous",
+          "score": 34.10052490234375,
+          "hits": 16
+        },
+        {
+          "key": "emrintas",
+          "score": 34.10052490234375,
+          "hits": 15
+        },
+        {
+          "key": "eathruns",
+          "score": 34.069087982177734,
+          "hits": 15
+        },
+        {
+          "key": "eatirous",
+          "score": 34.01847839355469,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 6,
+      "stop": 8,
+      "score": 36.351139068603516,
+      "seen": 4845456000,
+      "time": 988.160902261734,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b38a5ccb47ba0f7d007d",
+      "top": [
+        {
+          "key": "hatnrois",
+          "score": 36.351139068603516,
+          "hits": 17
+        },
+        {
+          "key": "hatelins",
+          "score": 35.349918365478516,
+          "hits": 17
+        },
+        {
+          "key": "hreatips",
+          "score": 34.744197845458984,
+          "hits": 15
+        },
+        {
+          "key": "hreatiys",
+          "score": 34.744197845458984,
+          "hits": 15
+        },
+        {
+          "key": "hreotiys",
+          "score": 34.744197845458984,
+          "hits": 15
+        },
+        {
+          "key": "hmylakvt",
+          "score": 34.42380142211914,
+          "hits": 15
+        },
+        {
+          "key": "hmylarvt",
+          "score": 34.276973724365234,
+          "hits": 15
+        },
+        {
+          "key": "hatnrols",
+          "score": 34.05841064453125,
+          "hits": 15
+        },
+        {
+          "key": "hatepins",
+          "score": 33.89991760253906,
+          "hits": 16
+        },
+        {
+          "key": "hatnreis",
+          "score": 33.705387115478516,
+          "hits": 16
+        },
+        {
+          "key": "hatemins",
+          "score": 33.69991683959961,
+          "hits": 16
+        },
+        {
+          "key": "hatemons",
+          "score": 33.69991683959961,
+          "hits": 16
+        },
+        {
+          "key": "hmyanvet",
+          "score": 33.46950912475586,
+          "hits": 16
+        },
+        {
+          "key": "hopelats",
+          "score": 33.457801818847656,
+          "hits": 15
+        },
+        {
+          "key": "hatepils",
+          "score": 33.45779800415039,
+          "hits": 15
+        },
+        {
+          "key": "hmylapvt",
+          "score": 33.42380142211914,
+          "hits": 14
+        },
+        {
+          "key": "hrusalot",
+          "score": 33.33397674560547,
+          "hits": 15
+        },
+        {
+          "key": "hrusalvt",
+          "score": 33.33397674560547,
+          "hits": 15
+        },
+        {
+          "key": "hopleits",
+          "score": 33.304683685302734,
+          "hits": 16
+        },
+        {
+          "key": "hopceits",
+          "score": 33.268898010253906,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 8,
+      "stop": 10,
+      "score": 40.002410888671875,
+      "seen": 4845456000,
+      "time": 991.1078324317932,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b397c66288145228203e",
+      "top": [
+        {
+          "key": "itaolpes",
+          "score": 40.002410888671875,
+          "hits": 17
+        },
+        {
+          "key": "ietvaons",
+          "score": 39.451141357421875,
+          "hits": 18
+        },
+        {
+          "key": "ietraons",
+          "score": 38.00114059448242,
+          "hits": 17
+        },
+        {
+          "key": "ithrames",
+          "score": 36.561622619628906,
+          "hits": 15
+        },
+        {
+          "key": "iemrtans",
+          "score": 36.26847839355469,
+          "hits": 16
+        },
+        {
+          "key": "iemtacns",
+          "score": 36.225284576416016,
+          "hits": 16
+        },
+        {
+          "key": "imrentas",
+          "score": 36.1511344909668,
+          "hits": 16
+        },
+        {
+          "key": "itaolges",
+          "score": 35.902408599853516,
+          "hits": 17
+        },
+        {
+          "key": "itaomues",
+          "score": 35.88813781738281,
+          "hits": 15
+        },
+        {
+          "key": "iavenord",
+          "score": 35.85552215576172,
+          "hits": 16
+        },
+        {
+          "key": "ialreznd",
+          "score": 35.63256072998047,
+          "hits": 14
+        },
+        {
+          "key": "ietvaozs",
+          "score": 35.5505256652832,
+          "hits": 17
+        },
+        {
+          "key": "iertaons",
+          "score": 35.414798736572266,
+          "hits": 17
+        },
+        {
+          "key": "iakmuerd",
+          "score": 35.38256072998047,
+          "hits": 15
+        },
+        {
+          "key": "iemracns",
+          "score": 35.225284576416016,
+          "hits": 15
+        },
+        {
+          "key": "iemvacns",
+          "score": 35.225284576416016,
+          "hits": 15
+        },
+        {
+          "key": "ievorasd",
+          "score": 35.02574920654297,
+          "hits": 15
+        },
+        {
+          "key": "iegvapns",
+          "score": 35.02528381347656,
+          "hits": 15
+        },
+        {
+          "key": "ievtapns",
+          "score": 35.02528381347656,
+          "hits": 15
+        },
+        {
+          "key": "iaventrd",
+          "score": 35.002349853515625,
+          "hits": 15
+        }
+      ]
+    },
+    {
+      "start": 10,
+      "stop": 12,
+      "score": 35.872581481933594,
+      "seen": 4845456000,
+      "time": 1007.1054096221924,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3a45ccb47ba0f7d008a",
+      "top": [
+        {
+          "key": "lhabrtmv",
+          "score": 35.872581481933594,
+          "hits": 16
+        },
+        {
+          "key": "lhkynrmv",
+          "score": 35.70840835571289,
+          "hits": 15
+        },
+        {
+          "key": "ksylhtoa",
+          "score": 35.160404205322266,
+          "hits": 16
+        },
+        {
+          "key": "lenatims",
+          "score": 34.90052795410156,
+          "hits": 14
+        },
+        {
+          "key": "lmasinut",
+          "score": 34.78397750854492,
+          "hits": 16
+        },
+        {
+          "key": "leratnsi",
+          "score": 34.564796447753906,
+          "hits": 16
+        },
+        {
+          "key": "lidpeoas",
+          "score": 34.3005256652832,
+          "hits": 15
+        },
+        {
+          "key": "lvranytm",
+          "score": 34.3005256652832,
+          "hits": 15
+        },
+        {
+          "key": "lanhvytm",
+          "score": 34.229576110839844,
+          "hits": 15
+        },
+        {
+          "key": "khrlvynm",
+          "score": 34.05170440673828,
+          "hits": 14
+        },
+        {
+          "key": "lhrbakmt",
+          "score": 34.01530838012695,
+          "hits": 15
+        },
+        {
+          "key": "lhrpakmt",
+          "score": 34.01530838012695,
+          "hits": 15
+        },
+        {
+          "key": "ksylhtea",
+          "score": 33.910404205322266,
+          "hits": 15
+        },
+        {
+          "key": "karevtis",
+          "score": 33.8584098815918,
+          "hits": 15
+        },
+        {
+          "key": "katelins",
+          "score": 33.8577995300293,
+          "hits": 17
+        },
+        {
+          "key": "lhzstrmv",
+          "score": 33.8121452331543,
+          "hits": 14
+        },
+        {
+          "key": "lerasito",
+          "score": 33.76908493041992,
+          "hits": 13
+        },
+        {
+          "key": "kvbmhyrl",
+          "score": 33.734588623046875,
+          "hits": 15
+        },
+        {
+          "key": "lvrnhytm",
+          "score": 33.705387115478516,
+          "hits": 15
+        },
+        {
+          "key": "karlheot",
+          "score": 33.659019470214844,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 12,
+      "stop": 14,
+      "score": 39.0442008972168,
+      "seen": 4845456000,
+      "time": 983.1661784648895,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3b0c66288145228204e",
+      "top": [
+        {
+          "key": "metraois",
+          "score": 39.0442008972168,
+          "hits": 18
+        },
+        {
+          "key": "methaois",
+          "score": 38.80841064453125,
+          "hits": 18
+        },
+        {
+          "key": "metnaois",
+          "score": 38.80841064453125,
+          "hits": 18
+        },
+        {
+          "key": "nreatios",
+          "score": 37.68458938598633,
+          "hits": 17
+        },
+        {
+          "key": "metanois",
+          "score": 37.52409744262695,
+          "hits": 17
+        },
+        {
+          "key": "metpaois",
+          "score": 37.207801818847656,
+          "hits": 17
+        },
+        {
+          "key": "metvaois",
+          "score": 36.7578010559082,
+          "hits": 17
+        },
+        {
+          "key": "msrtaoie",
+          "score": 35.96101379394531,
+          "hits": 16
+        },
+        {
+          "key": "metbaois",
+          "score": 35.7578010559082,
+          "hits": 16
+        },
+        {
+          "key": "metdaois",
+          "score": 35.7578010559082,
+          "hits": 16
+        },
+        {
+          "key": "metpaols",
+          "score": 35.674705505371094,
+          "hits": 17
+        },
+        {
+          "key": "marsielt",
+          "score": 35.31950759887695,
+          "hits": 14
+        },
+        {
+          "key": "metlaois",
+          "score": 35.30780029296875,
+          "hits": 16
+        },
+        {
+          "key": "metnrais",
+          "score": 35.30780029296875,
+          "hits": 16
+        },
+        {
+          "key": "metnrois",
+          "score": 35.30780029296875,
+          "hits": 16
+        },
+        {
+          "key": "neoatris",
+          "score": 34.87731170654297,
+          "hits": 14
+        },
+        {
+          "key": "metarois",
+          "score": 34.54204559326172,
+          "hits": 15
+        },
+        {
+          "key": "meoanuis",
+          "score": 34.466209411621094,
+          "hits": 13
+        },
+        {
+          "key": "metuaois",
+          "score": 34.43061065673828,
+          "hits": 16
+        },
+        {
+          "key": "mytsvadh",
+          "score": 34.33642578125,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 14,
+      "stop": 16,
+      "score": 37.8011360168457,
+      "seen": 4845456000,
+      "time": 1010.3070526123047,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3bd5ccb47ba0f7d0095",
+      "top": [
+        {
+          "key": "psiatloe",
+          "score": 37.8011360168457,
+          "hits": 17
+        },
+        {
+          "key": "oambreis",
+          "score": 37.03458786010742,
+          "hits": 17
+        },
+        {
+          "key": "oamhrens",
+          "score": 36.95254135131836,
+          "hits": 17
+        },
+        {
+          "key": "oamprets",
+          "score": 36.67049026489258,
+          "hits": 17
+        },
+        {
+          "key": "oamvrehs",
+          "score": 36.67049026489258,
+          "hits": 17
+        },
+        {
+          "key": "oaevtnhs",
+          "score": 36.633872985839844,
+          "hits": 16
+        },
+        {
+          "key": "oatimens",
+          "score": 36.23337173461914,
+          "hits": 17
+        },
+        {
+          "key": "oatemins",
+          "score": 36.03337097167969,
+          "hits": 17
+        },
+        {
+          "key": "oacpeirs",
+          "score": 35.96137237548828,
+          "hits": 17
+        },
+        {
+          "key": "oaevtphs",
+          "score": 35.38386917114258,
+          "hits": 17
+        },
+        {
+          "key": "oatelins",
+          "score": 35.349918365478516,
+          "hits": 17
+        },
+        {
+          "key": "perutais",
+          "score": 35.33065414428711,
+          "hits": 15
+        },
+        {
+          "key": "oamcreis",
+          "score": 35.30253982543945,
+          "hits": 16
+        },
+        {
+          "key": "oamhrets",
+          "score": 35.30253982543945,
+          "hits": 16
+        },
+        {
+          "key": "oambrens",
+          "score": 35.18397903442383,
+          "hits": 16
+        },
+        {
+          "key": "oambrets",
+          "score": 35.18397903442383,
+          "hits": 16
+        },
+        {
+          "key": "oathrens",
+          "score": 35.069087982177734,
+          "hits": 16
+        },
+        {
+          "key": "oampreis",
+          "score": 35.02048873901367,
+          "hits": 16
+        },
+        {
+          "key": "oamprevs",
+          "score": 35.02048873901367,
+          "hits": 16
+        },
+        {
+          "key": "oambrehs",
+          "score": 34.983978271484375,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 16,
+      "stop": 18,
+      "score": 37.483978271484375,
+      "seen": 4845456000,
+      "time": 1019.8980355262756,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3cac662881452282062",
+      "top": [
+        {
+          "key": "rktpaeos",
+          "score": 37.483978271484375,
+          "hits": 16
+        },
+        {
+          "key": "rvipaets",
+          "score": 37.264190673828125,
+          "hits": 17
+        },
+        {
+          "key": "rotpails",
+          "score": 36.20296096801758,
+          "hits": 16
+        },
+        {
+          "key": "rvapents",
+          "score": 35.43397903442383,
+          "hits": 16
+        },
+        {
+          "key": "rtipsavm",
+          "score": 35.219085693359375,
+          "hits": 14
+        },
+        {
+          "key": "rmvbtnyh",
+          "score": 35.1025390625,
+          "hits": 16
+        },
+        {
+          "key": "rktmaeos",
+          "score": 34.983367919921875,
+          "hits": 15
+        },
+        {
+          "key": "rmesanvt",
+          "score": 34.78397750854492,
+          "hits": 16
+        },
+        {
+          "key": "rmisanvt",
+          "score": 34.78397750854492,
+          "hits": 16
+        },
+        {
+          "key": "rmisanyt",
+          "score": 34.78397750854492,
+          "hits": 16
+        },
+        {
+          "key": "rniesout",
+          "score": 34.71162414550781,
+          "hits": 15
+        },
+        {
+          "key": "rktuaeos",
+          "score": 34.701316833496094,
+          "hits": 15
+        },
+        {
+          "key": "rkvatios",
+          "score": 34.67852783203125,
+          "hits": 15
+        },
+        {
+          "key": "rkvatpos",
+          "score": 34.67852783203125,
+          "hits": 15
+        },
+        {
+          "key": "rtipanus",
+          "score": 34.617431640625,
+          "hits": 16
+        },
+        {
+          "key": "rkhatnos",
+          "score": 34.58458709716797,
+          "hits": 14
+        },
+        {
+          "key": "rmusanvt",
+          "score": 34.583980560302734,
+          "hits": 16
+        },
+        {
+          "key": "rmusanyt",
+          "score": 34.583980560302734,
+          "hits": 16
+        },
+        {
+          "key": "rcoesuat",
+          "score": 34.501136779785156,
+          "hits": 13
+        },
+        {
+          "key": "rbvmanyh",
+          "score": 34.49507522583008,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 18,
+      "stop": 20,
+      "score": 37.21101379394531,
+      "seen": 4845456000,
+      "time": 970.8875005245209,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3d7c66288145228206f",
+      "top": [
+        {
+          "key": "svrnhtyb",
+          "score": 37.21101379394531,
+          "hits": 17
+        },
+        {
+          "key": "shrnytkb",
+          "score": 37.19114303588867,
+          "hits": 15
+        },
+        {
+          "key": "tampeoir",
+          "score": 36.46601104736328,
+          "hits": 17
+        },
+        {
+          "key": "smlrvkth",
+          "score": 35.5505256652832,
+          "hits": 16
+        },
+        {
+          "key": "shrmytkb",
+          "score": 35.458370208740234,
+          "hits": 14
+        },
+        {
+          "key": "shyimnra",
+          "score": 35.1182861328125,
+          "hits": 15
+        },
+        {
+          "key": "skyanvet",
+          "score": 34.95113754272461,
+          "hits": 16
+        },
+        {
+          "key": "shrtvakb",
+          "score": 34.82319259643555,
+          "hits": 16
+        },
+        {
+          "key": "shrtvnkb",
+          "score": 34.82319259643555,
+          "hits": 16
+        },
+        {
+          "key": "snopeihm",
+          "score": 34.79446792602539,
+          "hits": 14
+        },
+        {
+          "key": "snopeiym",
+          "score": 34.79446792602539,
+          "hits": 14
+        },
+        {
+          "key": "sygbvtrh",
+          "score": 34.67896270751953,
+          "hits": 14
+        },
+        {
+          "key": "snapeihm",
+          "score": 34.59446716308594,
+          "hits": 14
+        },
+        {
+          "key": "snapeiym",
+          "score": 34.59446716308594,
+          "hits": 14
+        },
+        {
+          "key": "tvybrksh",
+          "score": 34.31682205200195,
+          "hits": 15
+        },
+        {
+          "key": "smldvkth",
+          "score": 34.3005256652832,
+          "hits": 15
+        },
+        {
+          "key": "smvlanth",
+          "score": 34.3005256652832,
+          "hits": 15
+        },
+        {
+          "key": "syklhvnm",
+          "score": 34.204261779785156,
+          "hits": 14
+        },
+        {
+          "key": "shtkvyrm",
+          "score": 34.0709114074707,
+          "hits": 16
+        },
+        {
+          "key": "sertaoip",
+          "score": 34.01469802856445,
+          "hits": 14
+        }
+      ]
+    },
+    {
+      "start": 20,
+      "stop": 22,
+      "score": 39.65052795410156,
+      "seen": 4845456000,
+      "time": 1031.1629490852356,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3e3c662881452282074",
+      "top": [
+        {
+          "key": "vesatnri",
+          "score": 39.65052795410156,
+          "hits": 16
+        },
+        {
+          "key": "vetraois",
+          "score": 37.91682434082031,
+          "hits": 17
+        },
+        {
+          "key": "uetnaoms",
+          "score": 37.40052795410156,
+          "hits": 18
+        },
+        {
+          "key": "uetraoms",
+          "score": 36.351139068603516,
+          "hits": 17
+        },
+        {
+          "key": "usiotear",
+          "score": 36.128963470458984,
+          "hits": 15
+        },
+        {
+          "key": "uchreoas",
+          "score": 35.90113830566406,
+          "hits": 15
+        },
+        {
+          "key": "vesptnri",
+          "score": 35.8399543762207,
+          "hits": 14
+        },
+        {
+          "key": "vetpaols",
+          "score": 35.75053024291992,
+          "hits": 16
+        },
+        {
+          "key": "uetvaons",
+          "score": 35.750526428222656,
+          "hits": 17
+        },
+        {
+          "key": "uetdaoms",
+          "score": 35.351139068603516,
+          "hits": 16
+        },
+        {
+          "key": "uatelins",
+          "score": 35.349918365478516,
+          "hits": 17
+        },
+        {
+          "key": "uteorais",
+          "score": 35.14323425292969,
+          "hits": 15
+        },
+        {
+          "key": "uitnaoms",
+          "score": 34.911624908447266,
+          "hits": 15
+        },
+        {
+          "key": "uetraons",
+          "score": 34.70113754272461,
+          "hits": 16
+        },
+        {
+          "key": "urdpeoas",
+          "score": 34.35052490234375,
+          "hits": 13
+        },
+        {
+          "key": "varlheot",
+          "score": 34.342472076416016,
+          "hits": 16
+        },
+        {
+          "key": "usyanvot",
+          "score": 34.3011360168457,
+          "hits": 16
+        },
+        {
+          "key": "vesbtnri",
+          "score": 34.17160415649414,
+          "hits": 13
+        },
+        {
+          "key": "vesktnri",
+          "score": 34.17160415649414,
+          "hits": 13
+        },
+        {
+          "key": "uetpaoms",
+          "score": 34.14991760253906,
+          "hits": 16
+        }
+      ]
+    },
+    {
+      "start": 22,
+      "stop": 24,
+      "score": 31.119768142700195,
+      "seen": 4845456000,
+      "time": 987.6009156703949,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3f05ccb47ba0f7d00b4",
+      "top": [
+        {
+          "key": "wetpaols",
+          "score": 31.119768142700195,
+          "hits": 15
+        },
+        {
+          "key": "wetraois",
+          "score": 30.669767379760742,
+          "hits": 15
+        },
+        {
+          "key": "wetvaons",
+          "score": 30.43398094177246,
+          "hits": 15
+        },
+        {
+          "key": "watolins",
+          "score": 30.18631362915039,
+          "hits": 15
+        },
+        {
+          "key": "wetvaois",
+          "score": 30.033370971679688,
+          "hits": 15
+        },
+        {
+          "key": "wetvaoms",
+          "score": 30.033370971679688,
+          "hits": 15
+        },
+        {
+          "key": "watoliks",
+          "score": 29.98631477355957,
+          "hits": 15
+        },
+        {
+          "key": "wetvaozs",
+          "score": 29.833372116088867,
+          "hits": 15
+        },
+        {
+          "key": "watolirs",
+          "score": 29.78631591796875,
+          "hits": 15
+        },
+        {
+          "key": "wethaols",
+          "score": 29.785451889038086,
+          "hits": 14
+        },
+        {
+          "key": "walpteos",
+          "score": 29.74419593811035,
+          "hits": 14
+        },
+        {
+          "key": "watelins",
+          "score": 29.585704803466797,
+          "hits": 15
+        },
+        {
+          "key": "xatelins",
+          "score": 29.585704803466797,
+          "hits": 15
+        },
+        {
+          "key": "wmrentas",
+          "score": 29.386314392089844,
+          "hits": 13
+        },
+        {
+          "key": "wmrintas",
+          "score": 29.386314392089844,
+          "hits": 13
+        },
+        {
+          "key": "wnvamrit",
+          "score": 29.386314392089844,
+          "hits": 13
+        },
+        {
+          "key": "xlyimnea",
+          "score": 29.386314392089844,
+          "hits": 13
+        },
+        {
+          "key": "wmrantis",
+          "score": 29.350526809692383,
+          "hits": 13
+        },
+        {
+          "key": "wetraoms",
+          "score": 29.21976661682129,
+          "hits": 14
+        },
+        {
+          "key": "wtaozeis",
+          "score": 29.19680404663086,
+          "hits": 14
+        }
+      ]
+    },
+    {
+      "start": 24,
+      "stop": 26,
+      "score": 35.234588623046875,
+      "seen": 4845456000,
+      "time": 997.9232494831085,
+      "url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5b3fcc662881452282083",
+      "top": [
+        {
+          "key": "yhslvrbt",
+          "score": 35.234588623046875,
+          "hits": 15
+        },
+        {
+          "key": "yhslvrnt",
+          "score": 35.03458786010742,
+          "hits": 15
+        },
+        {
+          "key": "yrvatpkh",
+          "score": 34.78397750854492,
+          "hits": 13
+        },
+        {
+          "key": "zsyanvot",
+          "score": 34.583980560302734,
+          "hits": 16
+        },
+        {
+          "key": "zatbreis",
+          "score": 34.54419708251953,
+          "hits": 15
+        },
+        {
+          "key": "ykvmdrlh",
+          "score": 34.51101303100586,
+          "hits": 15
+        },
+        {
+          "key": "yrvbtpkh",
+          "score": 34.50192642211914,
+          "hits": 13
+        },
+        {
+          "key": "yhvpsmkt",
+          "score": 34.501136779785156,
+          "hits": 16
+        },
+        {
+          "key": "yrvstpkh",
+          "score": 34.33710479736328,
+          "hits": 13
+        },
+        {
+          "key": "yhvatdrb",
+          "score": 34.311012268066406,
+          "hits": 15
+        },
+        {
+          "key": "yhvatdsb",
+          "score": 34.26889419555664,
+          "hits": 14
+        },
+        {
+          "key": "ykvmrblh",
+          "score": 34.22896194458008,
+          "hits": 15
+        },
+        {
+          "key": "yhrlavst",
+          "score": 34.1511344909668,
+          "hits": 15
+        },
+        {
+          "key": "yetvaons",
+          "score": 34.10052490234375,
+          "hits": 16
+        },
+        {
+          "key": "ynupsivt",
+          "score": 34.10052490234375,
+          "hits": 15
+        },
+        {
+          "key": "yhslvpbt",
+          "score": 33.99507522583008,
+          "hits": 16
+        },
+        {
+          "key": "yhplvsbt",
+          "score": 33.94507598876953,
+          "hits": 15
+        },
+        {
+          "key": "yamptrns",
+          "score": 33.9438591003418,
+          "hits": 14
+        },
+        {
+          "key": "yatelins",
+          "score": 33.93570327758789,
+          "hits": 16
+        },
+        {
+          "key": "yrvatpbh",
+          "score": 33.9005241394043,
+          "hits": 13
+        }
+      ]
+    }
+  ],
+  "max_score": 40.002410888671875,
+  "warning": "Only two control replicates planned; not calibrated 5% FPR, shuffled controls disrupt positional graphotactics."
+}
