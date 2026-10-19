@@ -1,0 +1,463 @@
+{
+  "programme": "S57",
+  "date": "2026-10-19",
+  "control_source": "https://www.gutenberg.org/files/49513/49513-h/49513-h.htm",
+  "control_sha256": "9f9c2cfdf99ea72c646587fcabcafbaac2e5058d745f77a7f244a98d3ce25884",
+  "control_n_entries": 341,
+  "control_n_pairs": 279,
+  "control_scores": {
+    "word": {
+      "n_pairs": 279,
+      "auc": 0.725941341966316,
+      "mean_true": 0.04575397777324539,
+      "mean_distinct": 0.01863460619783955,
+      "mean_gap": 0.02711937157540584,
+      "null_sd": 0.004716018829336499,
+      "permutation_p": 0.00024993751562109475
+    },
+    "tri": {
+      "n_pairs": 279,
+      "auc": 0.6886859110237534,
+      "mean_true": 0.07108840814905622,
+      "mean_distinct": 0.03861653916232581,
+      "mean_gap": 0.0324718689867304,
+      "null_sd": 0.0056979329234578555,
+      "permutation_p": 0.00024993751562109475
+    }
+  },
+  "control_qualified": {
+    "word": true,
+    "tri": false
+  },
+  "corpus": {
+    "loci": 1608,
+    "n_pages": 127,
+    "tokens": 11493,
+    "by_lang": {
+      "A": 95,
+      "B": 32
+    }
+  },
+  "raw_pair_counts": {
+    "next_leaf": 31,
+    "leaf_rv": 58,
+    "conjugate_nonadjacent": 121
+  },
+  "vms": {
+    "leaf_rv": {
+      "word": {
+        "n": 46,
+        "n_quires": 7,
+        "observed": 0.0476105365750403,
+        "matched_null": 0.03488242685774049,
+        "delta": 0.012728109717299811,
+        "null_sd": 0.003028709468055879,
+        "null_p": 0.00024993751562109475,
+        "delta_quire_bootstrap_ci": [
+          0.007168238697394665,
+          0.017836353324354973
+        ],
+        "forward_minus_reverse": 0.00523397035565431,
+        "forward_reverse_p": 0.17195701074731318,
+        "top_pairs": [
+          {
+            "ids": [
+              "f10r",
+              "f10v"
+            ],
+            "score": 0.1187,
+            "null": 0.0406
+          },
+          {
+            "ids": [
+              "f8r",
+              "f8v"
+            ],
+            "score": 0.0886,
+            "null": 0.03
+          },
+          {
+            "ids": [
+              "f4r",
+              "f4v"
+            ],
+            "score": 0.0988,
+            "null": 0.0403
+          },
+          {
+            "ids": [
+              "f56r",
+              "f56v"
+            ],
+            "score": 0.086,
+            "null": 0.0275
+          },
+          {
+            "ids": [
+              "f33r",
+              "f33v"
+            ],
+            "score": 0.1011,
+            "null": 0.0501
+          },
+          {
+            "ids": [
+              "f35r",
+              "f35v"
+            ],
+            "score": 0.0793,
+            "null": 0.0295
+          }
+        ]
+      },
+      "tri": {
+        "n": 46,
+        "n_quires": 7,
+        "observed": 0.1965660098986914,
+        "matched_null": 0.1617129434427758,
+        "delta": 0.03485306645591563,
+        "null_sd": 0.006106902429521033,
+        "null_p": 0.00024993751562109475,
+        "delta_quire_bootstrap_ci": [
+          0.02194713810478101,
+          0.048041969454843576
+        ],
+        "forward_minus_reverse": -0.004487322527885546,
+        "forward_reverse_p": 0.6303424143964009,
+        "top_pairs": [
+          {
+            "ids": [
+              "f8r",
+              "f8v"
+            ],
+            "score": 0.3063,
+            "null": 0.1192
+          },
+          {
+            "ids": [
+              "f49r",
+              "f49v"
+            ],
+            "score": 0.3024,
+            "null": 0.1349
+          },
+          {
+            "ids": [
+              "f56r",
+              "f56v"
+            ],
+            "score": 0.3213,
+            "null": 0.1834
+          },
+          {
+            "ids": [
+              "f4r",
+              "f4v"
+            ],
+            "score": 0.3214,
+            "null": 0.1851
+          },
+          {
+            "ids": [
+              "f10r",
+              "f10v"
+            ],
+            "score": 0.258,
+            "null": 0.1288
+          },
+          {
+            "ids": [
+              "f51r",
+              "f51v"
+            ],
+            "score": 0.2335,
+            "null": 0.1187
+          }
+        ]
+      }
+    },
+    "next_leaf": {
+      "word": {
+        "n": 31,
+        "n_quires": 7,
+        "observed": 0.04423848467028721,
+        "matched_null": 0.03479194587170959,
+        "delta": 0.009446538798577618,
+        "null_sd": 0.004134335893648374,
+        "null_p": 0.01324668832791802,
+        "delta_quire_bootstrap_ci": [
+          -0.002726639179764492,
+          0.022973907094442206
+        ],
+        "forward_minus_reverse": -0.0035281565054903763,
+        "forward_reverse_p": 0.6900774806298425,
+        "top_pairs": [
+          {
+            "ids": [
+              "f36v",
+              "f37r"
+            ],
+            "score": 0.1101,
+            "null": 0.0206
+          },
+          {
+            "ids": [
+              "f39v",
+              "f40r"
+            ],
+            "score": 0.1553,
+            "null": 0.0848
+          },
+          {
+            "ids": [
+              "f27v",
+              "f28r"
+            ],
+            "score": 0.0687,
+            "null": 0.0198
+          },
+          {
+            "ids": [
+              "f4v",
+              "f5r"
+            ],
+            "score": 0.0767,
+            "null": 0.0323
+          },
+          {
+            "ids": [
+              "f17v",
+              "f18r"
+            ],
+            "score": 0.0735,
+            "null": 0.0293
+          },
+          {
+            "ids": [
+              "f3v",
+              "f4r"
+            ],
+            "score": 0.0546,
+            "null": 0.0169
+          }
+        ]
+      },
+      "tri": {
+        "n": 31,
+        "n_quires": 7,
+        "observed": 0.1718540659111379,
+        "matched_null": 0.16814774362173485,
+        "delta": 0.003706322289403041,
+        "null_sd": 0.008562979186947437,
+        "null_p": 0.3279180204948763,
+        "delta_quire_bootstrap_ci": [
+          -0.013800924634651858,
+          0.02011696091833421
+        ],
+        "forward_minus_reverse": -0.010097308148256254,
+        "forward_reverse_p": 0.7478130467383154,
+        "top_pairs": [
+          {
+            "ids": [
+              "f36v",
+              "f37r"
+            ],
+            "score": 0.2558,
+            "null": 0.1604
+          },
+          {
+            "ids": [
+              "f37v",
+              "f38r"
+            ],
+            "score": 0.2148,
+            "null": 0.1359
+          },
+          {
+            "ids": [
+              "f21v",
+              "f22r"
+            ],
+            "score": 0.19,
+            "null": 0.1358
+          },
+          {
+            "ids": [
+              "f6v",
+              "f7r"
+            ],
+            "score": 0.1968,
+            "null": 0.1466
+          },
+          {
+            "ids": [
+              "f44v",
+              "f45r"
+            ],
+            "score": 0.2235,
+            "null": 0.1741
+          },
+          {
+            "ids": [
+              "f5v",
+              "f6r"
+            ],
+            "score": 0.2003,
+            "null": 0.1511
+          }
+        ]
+      }
+    },
+    "conjugate_nonadjacent": {
+      "word": {
+        "n": 84,
+        "n_quires": 7,
+        "observed": 0.04636559499239961,
+        "matched_null": 0.03569470784155834,
+        "delta": 0.010670887150841267,
+        "null_sd": 0.0022451678250025946,
+        "null_p": 0.00024993751562109475,
+        "delta_quire_bootstrap_ci": [
+          0.00009552536123668375,
+          0.021464523431224004
+        ],
+        "forward_minus_reverse": 0.004897590451350693,
+        "forward_reverse_p": 0.15246188452886777,
+        "top_pairs": [
+          {
+            "ids": [
+              "f1v",
+              "f8r"
+            ],
+            "score": 0.1285,
+            "null": 0.0337
+          },
+          {
+            "ids": [
+              "f35v",
+              "f38v"
+            ],
+            "score": 0.102,
+            "null": 0.022
+          },
+          {
+            "ids": [
+              "f34v",
+              "f39v"
+            ],
+            "score": 0.1717,
+            "null": 0.0923
+          },
+          {
+            "ids": [
+              "f49r",
+              "f56r"
+            ],
+            "score": 0.0915,
+            "null": 0.0157
+          },
+          {
+            "ids": [
+              "f19v",
+              "f22v"
+            ],
+            "score": 0.1051,
+            "null": 0.0338
+          },
+          {
+            "ids": [
+              "f44r",
+              "f45v"
+            ],
+            "score": 0.0913,
+            "null": 0.0207
+          }
+        ]
+      },
+      "tri": {
+        "n": 84,
+        "n_quires": 7,
+        "observed": 0.20130475024392336,
+        "matched_null": 0.16503078948320835,
+        "delta": 0.03627396076071501,
+        "null_sd": 0.004352169000378787,
+        "null_p": 0.00024993751562109475,
+        "delta_quire_bootstrap_ci": [
+          0.022124914240738033,
+          0.04924462999649003
+        ],
+        "forward_minus_reverse": 0.009910228494295119,
+        "forward_reverse_p": 0.1709572606848288,
+        "top_pairs": [
+          {
+            "ids": [
+              "f35v",
+              "f38v"
+            ],
+            "score": 0.3867,
+            "null": 0.1395
+          },
+          {
+            "ids": [
+              "f19r",
+              "f22v"
+            ],
+            "score": 0.357,
+            "null": 0.1276
+          },
+          {
+            "ids": [
+              "f36r",
+              "f37r"
+            ],
+            "score": 0.3245,
+            "null": 0.1376
+          },
+          {
+            "ids": [
+              "f33v",
+              "f40v"
+            ],
+            "score": 0.3661,
+            "null": 0.2088
+          },
+          {
+            "ids": [
+              "f33v",
+              "f40r"
+            ],
+            "score": 0.3654,
+            "null": 0.2088
+          },
+          {
+            "ids": [
+              "f33r",
+              "f40v"
+            ],
+            "score": 0.391,
+            "null": 0.2486
+          }
+        ]
+      }
+    }
+  },
+  "opener": {
+    "A": {
+      "n": 64,
+      "observed_js": 0.19643658112832554,
+      "permutation_mean": 0.0955828939517066,
+      "null_sd": 0.03507692709303061,
+      "p": 0.010247438140464884
+    },
+    "B": {
+      "n": 23,
+      "observed_js": 0.480993413458104,
+      "permutation_mean": 0.32798977915848065,
+      "null_sd": 0.08434641926005314,
+      "p": 0.04473881529617595
+    }
+  },
+  "classification": "QUALIFIED_FEATURES_ONLY",
+  "execution_url": "https://github.com/digitalgoldfisj79/Voynichdecomp/actions/runs/39202126375",
+  "interpretation": "Undetermined independent-entry versus continuous-prose status. Conjugate relatedness reproducible; directional seam signal not detected. Char-trigrams fail control qualification. Later English control does not identify medieval/enciphered prose."
+}
