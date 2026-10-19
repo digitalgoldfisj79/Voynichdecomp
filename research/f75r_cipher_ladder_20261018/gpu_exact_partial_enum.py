@@ -171,7 +171,7 @@ def top_mixed(existing,newkeys,newscores,newhits,maxkeep):
 def main():
  global ARGS
  p=argparse.ArgumentParser()
- p.add_argument("--k",type=int,choices=[4,5,6],default=6)
+ p.add_argument("--k",type=int,choices=[4,5,6,7,8],default=6)
  p.add_argument("--first-start",type=int,default=0)
  p.add_argument("--first-stop",type=int,default=26)
  p.add_argument("--batch",type=int,default=200000)
@@ -185,7 +185,8 @@ def main():
  import random
  gpu=torch.device("cuda:0");t0=time.time()
  train,sha=read_page("f75r");hold,_=read_page("f76r")
- gl={4:["d","e","sh","y"],5:["ch","d","e","sh","y"],6:GLYPHS}[ARGS.k]
+ gl={4:["d","e","sh","y"],5:["ch","d","e","sh","y"],6:GLYPHS,
+     7:["d","e","k","o","q","sh","y"],8:["d","e","k","l","o","q","sh","y"]}[ARGS.k]
  if ARGS.mode=="type_scramble":
   # One shuffle per Voynich TYPE; preserves length, glyph multiset, and all recurrence counts.
   rng=random.Random(ARGS.seed);mapping={}
