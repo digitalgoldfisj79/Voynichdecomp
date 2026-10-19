@@ -1,0 +1,107 @@
+{
+  "result": {
+    "experiment": "GAI_LF_T1_PILOT",
+    "decision": "PILOT_FAIL_NOT_IDENTIFIABLE",
+    "corpus_rows": 4580,
+    "corpus_folios": 80,
+    "groups": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G"
+    ],
+    "heldout_scored_tokens": 3389,
+    "m0_entropy_bits": 4.0586900689757135,
+    "m1_entropy_bits": 4.0144898846110735,
+    "m2_entropy_bits": 4.008908830869253,
+    "m2_minus_m1_bits": 0.005581053741820482,
+    "null_mean_bits": 0.004426065447907738,
+    "null_sd_bits": 0.002095315153684492,
+    "effect_minus_matched_null_bits": 0.001154988293912744,
+    "effect_to_null_sd": 0.551224140140333,
+    "null_upper_p": 0.31,
+    "null_reps": 199,
+    "null_percentiles": [
+      0.0014958026635189226,
+      0.004294755816031821,
+      0.007980637687254283
+    ],
+    "positive_quires": 6,
+    "prereg_gate_pass": false,
+    "folds": [
+      {
+        "quire": "A",
+        "scored": 430,
+        "folios": 13,
+        "trained_folios": 67,
+        "gain_bits": 0.0027399566944490503,
+        "active": 369
+      },
+      {
+        "quire": "B",
+        "scored": 446,
+        "folios": 12,
+        "trained_folios": 68,
+        "gain_bits": 0.0131104604945411,
+        "active": 446
+      },
+      {
+        "quire": "C",
+        "scored": 918,
+        "folios": 16,
+        "trained_folios": 64,
+        "gain_bits": 0.009456252443811835,
+        "active": 850
+      },
+      {
+        "quire": "D",
+        "scored": 296,
+        "folios": 11,
+        "trained_folios": 69,
+        "gain_bits": 0.003678255768634063,
+        "active": 296
+      },
+      {
+        "quire": "E",
+        "scored": 291,
+        "folios": 8,
+        "trained_folios": 72,
+        "gain_bits": 0.022041889598053963,
+        "active": 291
+      },
+      {
+        "quire": "F",
+        "scored": 347,
+        "folios": 8,
+        "trained_folios": 72,
+        "gain_bits": 0.0068750441062240064,
+        "active": 347
+      },
+      {
+        "quire": "G",
+        "scored": 661,
+        "folios": 12,
+        "trained_folios": 68,
+        "gain_bits": -0.010106942900116784,
+        "active": 661
+      }
+    ]
+  },
+  "provenance": {
+    "query_file": "lf_transfer_export_20261019.sql",
+    "script_file": "lf_transfer_score_20261019.js",
+    "database": "research-agent read only",
+    "source_table": "public.vms_directional_token_v01",
+    "catalogue": "vms_catalogue.vms_folios",
+    "limitations": "The original RF transcription input checksum is not proven for this derived table; no source-level claims",
+    "validation": {
+      "unique_positions": 4580,
+      "quires": 7,
+      "folios": 80,
+      "leaves": 42
+    }
+  }
+}
