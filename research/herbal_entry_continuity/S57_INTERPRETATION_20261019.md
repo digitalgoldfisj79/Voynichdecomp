@@ -17,9 +17,9 @@
 |---|---:|---:|---:|---:|---:|---|---:|
 | Same leaf recto→verso | 46 | 0.04761 | 0.03488 | +0.01273 | .00025 | [.00717,.01784] | .172 |
 | Consecutive leaf verso→recto | 31 | 0.04424 | 0.03479 | +0.00945 | .01325 | [-.00273,.02297] | .690 |
-| Different conjugate leaves, nonadjacent | 84 | 0.0460 | 0.0353 | +0.01067 | .00025 | [.00010,.02146] | .152 |
+| Different conjugate leaves, nonadjacent | 84 | 0.04637 | 0.03569 | +0.01067 | .00025 | [.00010,.02146] | .152 |
 
-The tabulated conjugate observed/matched means are rounded approximations; source-of-truth numeric values are in S57_RESULTS_20261019.json and GitHub Actions artifact. Multiple-testing caution: p=.013 for consecutive leaves does not survive conservative Bonferroni for six family-by-feature contrasts. The unqualified character-trigram contrasts are strictly exploratory.
+All tabulated similarity means are rounded; full precision is preserved in S57_RESULTS_20261019.json and the GitHub Actions artifact. Multiple-testing caution: p=.013 for consecutive leaves does not survive conservative Bonferroni for six family-by-feature contrasts. The unqualified character-trigram contrasts are strictly exploratory.
 
 ## Entry-start effects
 Within-page swap permutation, opening token 2-character initial vs next paragraph's opening token:
