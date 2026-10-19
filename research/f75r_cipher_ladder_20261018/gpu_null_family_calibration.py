@@ -20,6 +20,9 @@ m={"__name__":"monomod"};exec(compile(urllib.request.urlopen(MURL,timeout=90).re
 v={"__name__":"nullmod"};exec(compile(urllib.request.urlopen(NURL,timeout=90).read().decode(),NURL,"exec"),v)
 get=m.__getitem__; emit=get("emit");A=get("A");SPACE=get("SPACE");conllu=get("conllu");make_model=get("make_model");getvms=get("getvms");glyphs=get("glyphs");mean_score=get("mean_score");anneal=get("anneal")
 encode=v["encode_existing"];joined=v["joined"];renumber=v["renumber"];solve=v["solve_null_candidates"];channel_obj=v["channel_obj"];chars_only=v["chars_only"]
+# Outer experiment records are exhaustive; avoid verbose progress from nested solvers.
+m["emit"]=lambda *args,**kw:None
+v["emit"]=lambda *args,**kw:None
 OUT=Path("/tmp/vms_null3");OUT.mkdir(exist_ok=True)
 def write_atomic(path,data):
  tmp=path.with_suffix(".tmp")
@@ -83,7 +86,7 @@ def trial(words,hold,model,seed,steps,pop):
  "fit_key":bestkey,
  "null_key":null["mapping"]}
  return out
-def run(lang,nreps,steps,pop,seed,mode):
+def run(lang,nreps,steps,pop,seed,mode,rates_arg):
  if not torch.cuda.is_available():raise RuntimeError("GPU_REQUIRED")
  torch.manual_seed(seed)
  model_words,source=conllu(lang,"train")
@@ -94,7 +97,8 @@ def run(lang,nreps,steps,pop,seed,mode):
    "training_source":source,"heldout_source":source_hold,"solver_sha":hashlib.sha256(urllib.request.urlopen(NURL).read()).hexdigest(),
    "notes":"UD sources not 15th century; n null-search candidates vs n mono restarts, selection by train only; never language conclusion."})
  if mode=="synthetic":
-  records=[];rates=[0.,.05,.10,.15]
+  records=[];rates=[0.,.05,.10,.15] if rates_arg=="default" else [float(x) for x in rates_arg.split(",")]
+  if not rates or any(x not in [0.,.05,.10,.15] for x in rates):raise ValueError("unsupported rates")
   for rate in rates:
    for k in range(nreps):
     ii=seed+int(rate*10000)*100+k*101
@@ -106,13 +110,13 @@ def run(lang,nreps,steps,pop,seed,mode):
     write_atomic(OUT/f"{lang}_synthetic_{int(rate*100)}_{k}.pkl",obs)
     emit("NULL3_TRIAL",obs)
   neg=[x["heldout_gain"] for x in records if x["rate"]==0]
-  mn=sum(neg)/len(neg)
+  mn=sum(neg)/len(neg) if neg else None
   sd=(sum((x-mn)**2 for x in neg)/(len(neg)-1))**.5 if len(neg)>1 else None
   metrics={}
   for rate in rates:
    a=[x for x in records if x["rate"]==rate]
    metrics[str(rate)]={"n":len(a),"mean_gain":sum(x["heldout_gain"] for x in a)/len(a),
-     "mean_minus_no_null":sum(x["heldout_gain"] for x in a)/len(a)-mn,
+     "mean_minus_no_null":sum(x["heldout_gain"] for x in a)/len(a)-mn if mn is not None else None,
      "correct_null":sum(x["correct_null"] for x in a) if rate else None,
      "gain_positive":sum(x["heldout_gain"]>0 for x in a)}
   emit("NULL3_SYNTH_RESULT",{"lang":lang,"no_null_mean":mn,"no_null_sd":sd,"metric":"heldout log score gain per cipher glyph",
@@ -144,4 +148,5 @@ if __name__=="__main__":
  p.add_argument("--steps",type=int,default=450)
  p.add_argument("--pop",type=int,default=128)
  p.add_argument("--seed",type=int,default=1931)
- a=p.parse_args();run(a.lang,a.reps,a.steps,a.pop,a.seed,a.mode)
+ p.add_argument("--rates",default="default",help="comma-separated 0,.05,.10,.15; nreps is per listed rate")
+ a=p.parse_args();run(a.lang,a.reps,a.steps,a.pop,a.seed,a.mode,a.rates)
