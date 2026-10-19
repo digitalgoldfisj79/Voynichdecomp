@@ -1,0 +1,97 @@
+{
+  "complete": true,
+  "limits": "A few oracle-positive synthetic samples only. Does not qualify blind inversion or tell whether Voynich encodes language.",
+  "results": [
+    {
+      "emission_matrix_hash": "c45942a3d6519c747f91d8437c272471542c31eb1ac1c5c02cc2018984d8731e",
+      "family": "LANG",
+      "mean_FORM_piece_len": 2.3666666666666667,
+      "n_source": 16,
+      "oracle_warning": "TRUE A, pi, SELECT controls and source-to-8-controller map given to decoder. No blind recovery.",
+      "q95_FORM_piece_len": 5,
+      "seed": 20262000,
+      "select_group_accuracy": 0.6052631578947368,
+      "select_group_nmi": 0.6885208664835102,
+      "seq_over_shuffled_gain_bits": 0.26678452248002793,
+      "sequential_over_iid_bits_per_token": 0.2056899537708954,
+      "shuffled_sequential_over_iid_bits_per_token": -0.06109456870913251,
+      "source_ari": 0.2959375056904055,
+      "source_exact_accuracy": 0.5526315789473685,
+      "source_nmi": 0.7657522970299372,
+      "source_types_seen": 15,
+      "token_n": 150,
+      "unique_surface_forms": 103
+    },
+    {
+      "emission_matrix_hash": "203da4c07859277fa6273b0d6c5d80c8db09026f3433c6e76b464a89977d26c4",
+      "family": "TABLE",
+      "mean_FORM_piece_len": 2.48,
+      "n_source": 16,
+      "oracle_warning": "TRUE A, pi, SELECT controls and source-to-8-controller map given to decoder. No blind recovery.",
+      "q95_FORM_piece_len": 5,
+      "seed": 20282000,
+      "select_group_accuracy": 0.5,
+      "select_group_nmi": 0.6556671499710401,
+      "seq_over_shuffled_gain_bits": 2.186872493270984e-15,
+      "sequential_over_iid_bits_per_token": 2.186872493270984e-15,
+      "shuffled_sequential_over_iid_bits_per_token": 0,
+      "source_ari": 0.25064123205383015,
+      "source_exact_accuracy": 0.39473684210526316,
+      "source_nmi": 0.5904549290822537,
+      "source_types_seen": 16,
+      "token_n": 150,
+      "unique_surface_forms": 114
+    },
+    {
+      "emission_matrix_hash": "9ab6eacb477791b9df55c00ea3e572da21c12b14e56b8da7d873077157b590de",
+      "family": "NONE",
+      "mean_FORM_piece_len": 2.3733333333333335,
+      "n_source": 16,
+      "oracle_warning": "TRUE A, pi, SELECT controls and source-to-8-controller map given to decoder. No blind recovery.",
+      "q95_FORM_piece_len": 4,
+      "seed": 20292000,
+      "select_group_accuracy": 0.21052631578947367,
+      "select_group_nmi": 0,
+      "seq_over_shuffled_gain_bits": 0,
+      "sequential_over_iid_bits_per_token": 0,
+      "shuffled_sequential_over_iid_bits_per_token": 0,
+      "source_ari": 0,
+      "source_exact_accuracy": 0.10526315789473684,
+      "source_nmi": 0,
+      "source_types_seen": 16,
+      "token_n": 150,
+      "unique_surface_forms": 119
+    }
+  ],
+  "schema": "GAI-Q0-STRUCTURED-ORACLE-PILOT-20261019",
+  "summary": [
+    {
+      "family": "LANG",
+      "n": 1,
+      "oracle_group_nmi_median": 0.6885208664835102,
+      "oracle_nmi_median": 0.7657522970299372,
+      "oracle_nmi_min": 0.7657522970299372,
+      "order_effect_mean_bits": 0.26678452248002793,
+      "seq_gain_mean_bits": 0.2056899537708954
+    },
+    {
+      "family": "TABLE",
+      "n": 1,
+      "oracle_group_nmi_median": 0.6556671499710401,
+      "oracle_nmi_median": 0.5904549290822537,
+      "oracle_nmi_min": 0.5904549290822537,
+      "order_effect_mean_bits": 2.186872493270984e-15,
+      "seq_gain_mean_bits": 2.186872493270984e-15
+    },
+    {
+      "family": "NONE",
+      "n": 1,
+      "oracle_group_nmi_median": 0,
+      "oracle_nmi_median": 0,
+      "oracle_nmi_min": 0,
+      "order_effect_mean_bits": 0,
+      "seq_gain_mean_bits": 0
+    }
+  ],
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5cbdb5ccb47ba0f7d14c4"
+}
