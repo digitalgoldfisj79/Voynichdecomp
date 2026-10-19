@@ -54,16 +54,19 @@ def parse_control():
         if len(h)>65 or len(h)<3 or len(words(h))>8:continue
         if not (h.upper()==h or (len(h.split())<5 and h[0].isupper())):continue
         if re.search(r"CHAPTER|BOOK |CONTENTS|INDEX|PLATE|LIST OF|INTRODUCTION|KEY TO|ENGLISH PHYSICIAN|THE COMPLETE",h,re.I):continue
-        lv=int(heading.name[1]);t=[]
+        lv=int(heading.name[1]);t=[];parts=[]
         for node in heading.next_elements:
             if getattr(node,"name",None) in ["h1","h2","h3","h4"] and node is not heading:
                 if int(node.name[1])<=lv:break
             if getattr(node,"name",None)=="p":
                 tt=node.get_text(" ",strip=True)
-                if len(tt)>35:t.extend(words(tt))
+                if len(tt)>35:
+                    pw=words(tt)
+                    t.extend(pw)
+                    parts.append(pw)
                 if len(t)>1700:break
         if 100<=len(t)<=1700:
-            eligible.append(dict(heading=h,words=t[:1000],tag=heading.name))
+            eligible.append(dict(heading=h,words=t[:1000],parts=parts,tag=heading.name))
     # Restrict to serial h3/h4 entries rather than distant sections.
     pools=collections.Counter(x["tag"] for x in eligible)
     chosen="h3" if pools["h3"]>=45 else "h4" if pools["h4"]>=45 else max(pools,key=pools.get,default="")
@@ -76,7 +79,11 @@ def build_control(entries):
     for i in range(len(entries)-1):
         e=entries[i]["words"]; nex=entries[i+1]["words"]
         if min(len(e),len(nex))<100:continue
-        cut=len(e)//2
+        parts=entries[i]["parts"]
+        cuts=np.cumsum([len(v) for v in parts])[:-1]
+        if len(cuts)==0:continue
+        cut=min(cuts,key=lambda c:abs(c-len(e)//2))
+        if cut<40 or len(e)-cut<40:continue
         true=(e[max(0,cut-40):cut],e[cut:cut+40])
         split=(e[-40:],nex[:40])
         if min(map(len,true+split))<25:continue
@@ -99,7 +106,7 @@ def control_instrument(entries,pairs):
             row=pairs[j]
             for label,key in [(1,"inside"),(0,"between")]:
                 a,b=row[key]
-                vals={typ:cosine_pair(a,b,weights,typ) for typ in weights}
+                vals={typ:cosine_pair(a,b,weights[typ],typ) for typ in weights}
                 rows.append(dict(pair=j,fold=fi,label=label,**vals))
     outputs={}
     for kind in ["word","tri"]:
