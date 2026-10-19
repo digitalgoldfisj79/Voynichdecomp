@@ -55,3 +55,54 @@ A Q1 blind synthetic **class/relation** recovery ladder:
 (E) use exact forward likelihood for final ranking, not post-hoc dictionary hits.
 
 Gate failure stops the relevant branch; keep the full record and don't respond by adding unregistered cipher flexibility. No GPU-heavy extension is justified before blind synthetic qualification.
+
+## Q1 — first blind SELECT-category recovery instrument (2026-10-19)
+Design, algorithm, validation-only selection and nulls are frozen in [Q1_BLIND_CATEGORY_PREREG.md](Q1_BLIND_CATEGORY_PREREG.md) and [q1_blind_category.py](q1_blind_category.py). Uses exact FORM log probability incl. END, 8 latent SELECT groups, separate 1200/400/400 TRAIN/VAL/TEST synthetic chains, IID vs HMM family and L2/restart selection on VAL only. Source item and controller truth sealed until TEST interpretation; K=32 source item types, each belongs to one of 8 controllers.
+
+**Discovery two seeds per family; NOT confirmation**:
+- LANG: NMI .45625, same-controller AUC .76697; sequential heldout gain +.02518 bits/token.
+- NOTATION: NMI .58725, AUC .86073; sequential gain +.09401.
+- TABLE: NMI .64765, AUC .89511; sequential gain −.02206.
+- NONE: NMI .04003, AUC .48751; sequential gain −.00530.
+
+Evidence files: [LANG](results/q1_blind32_pilot_lang.json), [NOTATION](results/q1_blind32_pilot_notation.json), [TABLE](results/q1_blind32_pilot_table.json), [NONE](results/q1_blind32_pilot_none.json).
+
+Verdict: **instrument fails NMI identification** for the structured families, and uses HMM states partly to fit sequence context rather than stable controllers. Cannot promote to Voynich. Do not count this as proof that source identity is absent. A prospective factorized alternative was then registered rather than posthoc tuning Q1.
+
+## Q1B — emission-only categories, then freeze emissions and fit dynamics (fresh 20-seed panel)
+Protocol: [Q1B_FACTORISED_BLIND_PREREG.md](Q1B_FACTORISED_BLIND_PREREG.md); code [q1b_factorised_blind.py](q1b_factorised_blind.py) commit `bc2adbe4504ba5a03d9350c7aa815f60ce32192f`. First 2 discovery seeds per family are archived separately as `results/q1b_blind32_pilot_*.json` and excluded. Confirmation seeds 20269000–20269019 per family (+10k family offset); 32 source types, 8 controller classes, 1200/400/400 TRAIN/VAL/TEST, fixed `l2` and restart bank, 8→8 transition fit on *unlabeled* TRAIN and model selection through VAL exact likelihood only.
+
+**Frozen-panel confirmatory outcomes, all 20 seeds per family:**
+
+| Synthetic family | Blind class NMI median | NMI ≥ .60 | Same-SELECT pair AUC median | Pair AUC ≥ .80 | Within-same-SELECT source-item AUC median | HMM−IID test bits/token median | Test gain ≥ .02 bits |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| LANG abstract structured sequence | **.532318** | 4/20 | **.844946** | 17/20 | .500741 | +.045966 | 16/20 |
+| NOTATION rigid motif sequence | **.570858** | 7/20 | **.847809** | 16/20 | .503210 | +.098526 | 19/20 |
+| TABLE IID repertoire | **.590681** | 7/20 | **.870456** | 17/20 | .485065 | −.014602 | 0/20 |
+| NONE source-independent grammar | **.035801** | 0/20 | **.497868** | 0/20 | .502753 | −.012817 | 0/20 |
+
+Primary artifacts with **each** case, including source seed and standalone HF job link:
+- [LANG 20 seeds](results/q1b_blind32_20seeds_lang.json)
+- [NOTATION 20 seeds](results/q1b_blind32_20seeds_notation.json)
+- [TABLE 20 seeds](results/q1b_blind32_20seeds_table.json)
+- [NONE 20 seeds](results/q1b_blind32_20seeds_none.json)
+
+Note on logs: HF truncated the large aggregate `GAI_Q1B_FINAL` line at ~16 KB, so the saved JSONs were reconstructed exclusively from the **20 intact** `GAI_Q1B_CASE` records per job and validated against the exact expected source seeds; there was no case selection or rerun.
+
+### What passed and failed
+1. **Blind stable controller identity FAIL**: none reaches registered NMI median .70 or 90% test replications NMI ≥.60. Even oracle recovered underlying item types only in some stylized source conditions. The instrument is not licensed to invert real Voynich into source classes or words.
+2. **Same-class relation detectability, PARTIAL**: same-controller pair AUC medians .845/.848/.870 vs grammar-only null .498. Positive families have only 16–17 of 20 cases above .80 (80–85% power under that threshold), **below a 90% reliability standard**. Pure IID TABLE has excellent AUC despite zero sequence signal; AUC does **not** establish natural language or encoded lexemes. Finer false-positive thresholds and context-matched negatives still needed for real text.
+3. **Source identity after conditioning on true controller, FAIL/UNIDENTIFIABLE IN THIS EMISSION MODEL**: within-class same-source-item AUC is essentially random ~.50 in all arms. That is mathematically expected because multiple source items are **designed** to share exactly the same controller-dependent FORM emission. This is a planted identifiability limitation, **not** an empirical claim that Voynich words have no meaning. The superficially high *unconditional* same-source-item AUC ~.81 arises via shared controller and must not be interpreted as lexical recovery.
+4. **Dynamic distinction QUALIFIED ONLY FOR THIS ARTIFICIAL NOTATION PROXY**: HMM vs IID test gain ≥.02 in NOTATION 19/20 and zero in TABLE/NONE (40 matched no-sequence negatives). LANG only 16/20, below prereg 90% sensitivity gate. Moreover synthetic NOTATION has near-deterministic transitions and is NOT entropy-matched to LANG; no cross-family historical inference.
+5. **Renderer scope incomplete**: current Q1B freezes FORM incl. 70 legal class transitions and END, but CONNECT and LINE_ENTRY are not installed. Negative families do not yet match true historical sections, physical bifolia, transcription errors or position-conditioned graphotactics.
+6. **No real Voynich inversion permitted**. This is a nontrivial instrument diagnostic, not a decipherment or a mechanism rejection. Stop this original blind NMI rung; design a separate label-invariant relation-specific instrument if needed, preregister new positive and hard matched nulls before use.
+
+### Recommended scientific next step (not yet completed)
+Target a directly measurable *relation* (posterior probability of shared SELECT constraints) rather than 32 individual source words. Synthetic calibration must:
+- demand ≥90% power and ≤5% FPR on challenging controls preserving FORM/CONNECT/LINE_ENTRY and observable source frequencies;
+- evaluate relation precision at frozen low FPR, not ROC AUC alone;
+- confirm transfer across independent folio/physical bifolium boundaries and transcription layers;
+- compare entropy-matched LANG/NOTATION/TABLE alternatives, not rigid notation against loose language;
+- use sectioned running text only, never contaminate with Pharma labels, Zodiac circular or Rosettes spatial inscriptions.
+
+Proceed to actual Voynich only after those qualification gates; otherwise retain the uncertainty and do not escalate arbitrary search complexity.
