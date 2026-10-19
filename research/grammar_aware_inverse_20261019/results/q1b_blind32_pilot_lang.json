@@ -1,0 +1,66 @@
+{
+  "complete": true,
+  "results": [
+    {
+      "calibration": "Synthetic only. True source labels revealed only after model selection; no real VMS decoding.",
+      "dyn_val_nats_token": -6.527122136206184,
+      "emission_val_nats_token": -6.535636434277223,
+      "family": "LANG",
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "seed": 20268000,
+      "selected_emission_l2": 0.3,
+      "selected_emission_seed": 20269003,
+      "selected_seq": true,
+      "selected_transition_prior": 3,
+      "source_types": 32,
+      "test_hmm_class_nmi_diagnostic": 0.5107344468752795,
+      "test_hmm_ll_nats_token": -7.094065966622546,
+      "test_iid_class_ari": 0.25572810381209404,
+      "test_iid_class_nmi": 0.5081655880895424,
+      "test_iid_ll_nats_token": -7.1029481793589575,
+      "test_same_class_auc": 0.8382625930219513,
+      "test_same_source_item_auc_exploratory": 0.8055137364666027,
+      "test_seq_gain_bits_per_token": 0.01281432426694064
+    },
+    {
+      "calibration": "Synthetic only. True source labels revealed only after model selection; no real VMS decoding.",
+      "dyn_val_nats_token": -6.741497840325151,
+      "emission_val_nats_token": -6.746322700164549,
+      "family": "LANG",
+      "n_test": 400,
+      "n_train": 1200,
+      "n_val": 400,
+      "seed": 20268001,
+      "selected_emission_l2": 0.3,
+      "selected_emission_seed": 20269004,
+      "selected_seq": true,
+      "selected_transition_prior": 3,
+      "source_types": 32,
+      "test_hmm_class_nmi_diagnostic": 0.5533653671338157,
+      "test_hmm_ll_nats_token": -6.860729886428448,
+      "test_iid_class_ari": 0.3554184914180018,
+      "test_iid_class_nmi": 0.5517102174929083,
+      "test_iid_ll_nats_token": -6.880358288851892,
+      "test_same_class_auc": 0.8691184576042887,
+      "test_same_source_item_auc_exploratory": 0.8246575669747183,
+      "test_seq_gain_bits_per_token": 0.028317798836874526
+    }
+  ],
+  "runtime_sec": 43.62183093600004,
+  "schema": "GAI-Q1B-SYNTHETIC-20261019",
+  "summary": [
+    {
+      "class_gate_fraction": 0,
+      "false_seq_alarm_fraction": 0.5,
+      "family": "LANG",
+      "median_hmm_extra_bits": 0.020566061551907582,
+      "median_iid_class_auc": 0.85369052531312,
+      "median_iid_class_nmi": 0.5299379027912253,
+      "median_same_item_auc": 0.8150856517206605,
+      "n": 2
+    }
+  ],
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5d59d632cfaf218010522"
+}
