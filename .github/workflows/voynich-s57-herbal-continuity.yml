@@ -1,0 +1,55 @@
+name: S57 Herbal entry continuity - controlled instrument
+
+on:
+  push:
+    branches:
+      - research/herbal-entry-continuity-20261019
+    paths:
+      - "research/herbal_entry_continuity/**"
+      - ".github/workflows/voynich-s57-herbal-continuity.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  instrument:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: eo777/voynich-clusters
+          ref: main
+          path: external
+          sparse-checkout: |
+            chronology-stability/replication/ZL_ivtff_raw.txt
+            chronology-stability/replication/voynich_toolkit
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: pip install numpy==2.0.2 scipy==1.13.1 scikit-learn==1.6.1 beautifulsoup4==4.13.4 requests==2.32.3
+      - name: Compile and run qualified tests
+        run: |
+          set -euo pipefail
+          python -m py_compile research/herbal_entry_continuity/s57_known_entry_boundary.py
+          python -u research/herbal_entry_continuity/s57_known_entry_boundary.py \
+            --replication external/chronology-stability/replication \
+            --sheet-map research/horseshoe_programme_20261012_18/results/folio_bifolium_canonical.csv \
+            --output s57_results | tee s57.log
+      - name: Store auditable results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: s57-herbal-boundary
+          path: |
+            s57_results/
+            s57.log
+          retention-days: 90
