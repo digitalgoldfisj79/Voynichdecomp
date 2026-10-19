@@ -104,3 +104,50 @@ Primary data: [60+20 controls](results/null3_expanded_controls_20261019.json), [
 **Representation and validity audit:** True f75r TTLI word lengths are 1–7 EVA glyphs (352 tokens, 163 distinct word types); f76r has 473 tokens. Original planted controls were not length/type matched and had inflated recovery power. Length-matched synthetics map genuine heldout UD word forms independently into f75r/f76r's word-length and repeated-type templates. Italian matched no-null set has zero type collisions; Latin has four unavoidable one-letter lexical collisions among 308 template types. Null insertion changes positive-control ciphertext lengths slightly, and plain source corpora are historical-period mismatched; both caveats remain. No synonym or semantic evidence, no morphology validation, no identifiable source language, no qualified mechanism. The original R3 correction remains retracted at file top.
 
 **Disposition: FAILED (no promotion).** Do not treat the Italian `d` or later `l/e` choices as a null or a decipherment. The next rung would require a newly instrument-qualified model and independent fifteenth-century source corpus; do not increase flexibility solely to fit f75r. Our completed July v0.5/v0.6 cipher programmes already evaluated homophonic and polyalphabetic families, with their own qualification failures; avoid duplicating their unsuccessful mechanisms.
+
+## Rung 3: incremental word-first exact glyph-enumeration — COMPLETE (2026-10-19)
+
+**Intent and important change:** This is the user-requested exhaustive, small-then-larger glyph assignment ladder, **not** the earlier whole-page annealing cipher scorer. For every injective EVA-glyph → Latin-letter assignment, decode only fully covered word types and count lexicon matches without presupposing a language. K9–K20 extensions are expressly pruned, not exhaustive. See [locked protocol](PREREG_EXACT8_20261019.md), [implementation](gpu_exact_partial_enum.py), and [GPU job/cost audit](results/exact_ladder_cost_audit_20261019.json).
+
+### Exhaustive coverage
+
+| Search rung | Glyphs | Distinct injective mappings enumerated |
+|---|---|---:|
+| K5 | ch d e sh y | 7,893,600 |
+| K6 | ch d e k sh y | 165,765,600 |
+| K7 | d e k o q sh y | 3,315,312,000 |
+| **K8** | d e k l o q sh y | **62,990,928,000** |
+
+Glyph subset changes between K6 and K7: these are **independently coverage-optimal exhaustive rungs**, not a single nested path. K8 covers 42 distinct fully decoded f75r word types (129 tokens) under the `len>=3` criterion. [K6 manifest](results/exact6_merged_20261019.json), [K7 manifest](results/exact7_merged_20261019.json), [K8 real manifest](results/exact8_merged_20261019.json). Thirteen K8 disjoint shards cover prefixes 0–26, each checking 4,845,456,000 valid mappings; complete all 62,990,928,000 with SHA-pinned transcript, 282,966 distinct multi-language word forms, and top score found globally through per-shard maxima.
+
+### Primary outcomes, full K8 search budget on each arm
+
+| Arm | Exact combinations | Best raw dictionary-hit score |
+|---|---:|---:|
+| Real f75r TTLI | 62,990,928,000 | **57.3453063965** |
+| Per-type glyph-order scramble (seed 119) | 62,990,928,000 | 40.0024108887 |
+| Per-type glyph-order scramble (seed 409) | 62,990,928,000 | 41.7195053101 |
+
+Control primary output [seed 119](results/exact8_scramble119_20261019.json) and [seed 409](results/exact8_scramble409_20261019.json). Difference from higher control = **15.6258010864 scoring units**, with **only two** matched negative examples. These are *not* a statistically resolving null distribution; no calibrated p-value or 5% false-positive gate can be claimed. The scrambles preserve word lengths, glyph multisets and type recurrence but **destroy positional graphotactics**, a material confound because the Voynich has positionally constrained word forms. The numerical comparison demonstrates only that natural Voynich forms are more compatible with the permissive union dictionary under this constrained null than two scrambling instances. Neither comparison establishes encoding.
+
+Best-scoring K8 fixed key, by glyph order `d e k l o q sh y`: `k y l p a m r h`. This mapping produced a raw dictionary match on 24 of the 42 eligible f75r types, not coherent plaintext. The high-score words mix romanized Hebrew with Russian and other unrelated languages, for example `shedy → rykh`, `qokedy → malykh`, `qol → map`. Hebrew matches rely on romanization of modern word sources; lexical dictionary membership is not evidence for medieval Hebrew, Yiddish, or any source language. Many short words are common across languages.
+
+### Novel folio transfer
+
+[Novel f76r word audit](results/novel_holdout_audit_20261019.json): 25 genuinely new word *types* and 40 occurrences are fully decodable on f76r using the K8 glyph inventory, in addition to many repeats from f75r. Without changing the best f75r selected key, **8/25 novel f76r types** (15/40 occurrences) match the heterogeneous union dictionary. Examples include `shdy→rkh`, `oky→alh`, `shol→rap`, `shed→ryk`, which are not contextually coherent plaintext. The novel-word forms themselves were untouched during key selection; retrospective selection among 2,600 keys by their heldout scores is explicitly *post hoc leakage* and must never be treated as validation.
+
+### Progressive all-glyph extension
+
+[GPU beam K9–K20 results](results/k8_to_k20_beam_20261019.json): start from the retained K8 keys and extend one additional glyph at a time, 2,500-key beam, 12 additional stages, up to **20 glyph units**. All 20 are covered in the reported best mapping and f75r dictionary-match count grows to 80 fully decoded word types at the final stage. These scores must not be compared between K because coverage and available word types increase. The 20-glyph extension is **not an exhaustive enumeration**; it gives no cipher recovery or historical language identification. It does implement the requested literal `glyph by glyph` extension.
+
+### Scientific disposition / audit gates
+
+1. **Exhaustive computation PASSED**: all specified K8 and matched-control combinatorial key spaces were actually enumerated; GPU jobs and primary outputs archived.
+2. **Dictionary-hit distinction INSTRUMENT-ONLY**: target scores exceed two weak scrambles, but scrambling breaks positional structure; only two controls; does not qualify evidence.
+3. **Independent semantic/language validation FAILED/NOT ESTABLISHED**: no fixed single-language grammar, coherent document semantics, paleographically appropriate witness, or independently qualified word-first solver recovery on matched 15th-ciphers.
+4. **Full structural decipherment NOT ATTEMPTED**: this finite family allows **only** atomised, injective letter substitution. Homophony, null glyphs, abbreviations, unknown segmentation, line-dependent operators or transformed-language layers remain outside its scope. Earlier whole-page cipher families and nulls are separately assessed in this file, without misapplying their negative results to every possible decipherment.
+5. **No promotion, no language assignment, no decipherment**. A sensible follow-up is a new matched null preserving glyph-position statistics and line-conditioned patterns, and one-language consistency on genuinely novel word types; avoid merely scaling to a still more flexible beam.
+
+### Operations and costs
+
+All 13 real K8, 13 scrambled seed 119, 13 scrambled seed 409 jobs completed; K5–K7 searches, novel f76r audit, and fixed K8→K20 beam completed. **One initial beam job errored and was successfully rerun under corrected code**; do not claim every *attempt* completed. Cost audit: 58 T4-small jobs plus 2 CPU-basic probes in the registered run, of which 59 total jobs completed and 1 errored (replaced); approx **12.8504 T4 GPU-hours**, equivalent to **$5.14 using a quoted $0.40/T4-hour unit price and created-to-finished timestamps**. This is not the HF invoice and does not establish available credit. No active jobs remain in the tracked scope. Code and results saved on separate GitHub experimental branch; no direct changes to `main`, Supabase or prior authoritative handoff.
