@@ -1,0 +1,32 @@
+{
+  "anchor": "Beinecke MS408 f2r ZLZI line14 @Lp ytoail",
+  "conditions": {
+    "candidate_image_species_independently_verified": false,
+    "external_source_caption_crop_and_botany_adjudicated": false,
+    "fully_blind_botanical_crops": false,
+    "matched_production_only_negative_collected": false,
+    "meaning_prediction_preset_without_text_lookups": false,
+    "physical_label_pixel_bbox_verified": false,
+    "single_canon_folio_locus_verified": true,
+    "three_independent_reviewers": false,
+    "twenty_distinct_heldout_physically_independent_herbal_label_folios": false
+  },
+  "do_not_pool": "Running text, Zodiac circular labels, pharmaceutical labels, and single-glyph alphabet annotations are separate ecologies.",
+  "expertise_roles": [],
+  "exploratory_visual_similarity_medians": {
+    "A": null,
+    "B": null,
+    "C": null,
+    "D": null
+  },
+  "label_semantics": "UNKNOWN",
+  "qualifies_for_semantic_decode": false,
+  "rejected_review_files": [],
+  "review_count": 0,
+  "schema": "ANCHOR1_ADJUDICATION_v1",
+  "source_witnesses": "Egerton 747 botanical alternatives; NO same-species matching has been certified.",
+  "status": "NOT_QUALIFIED_MISSING_INDEPENDENT_ANCHORS",
+  "unresolved_core": "Even if one witness illustration looks highly similar, the same observation can be caused by shared artistic exemplars/production; one folio and disputed species cannot discriminate encoded name from nonsemantic label.",
+  "job_url": "https://huggingface.co/jobs/Digitalgoldfish79/6ad5e9a6632cfaf2180112e9",
+  "code_commit": "653aa279d8d46c5ccbec4259d86d407f2275749b"
+}
