@@ -1,3 +1,13 @@
+# THIRD-PASS ORIGINAL IMAGE ADDENDUM — FOUR PANEL COLOUR PATTERN (2026-10-23)
+
+60/60 figures directly viewed in original-source contact sheets. An independent deterministic red-pixel threshold inside each masked NYMPH bbox was computed for all 60 photos, with 9 temporarily failed Yale subregion requests recovered. At red fraction ≥0.001: dark Aries f70v1 **0/15**, light Aries f71r **12/15**, light Taurus f71v **11/15**, dark Taurus f72r1 **0/15**. Robust to thresholds 0.0003 and 0.002. This LOW–HIGH–HIGH–LOW contrast shows *light/dark paired treatment across two signs*, not a unique one-time Taurus chronological switch. Stolfi dark Aries lists some dresses, confirming painted red vs clothed are separate traits.
+
+Direct central emblem inspection: dark Aries goat brown/green painted, light Aries goat largely unpainted; Taurus bulls light versus heavy red paint, while light Taurus nymphs painted and dark Taurus nymphs mostly unpainted. These palette observations have substantial precedent in Voynich research; here quantitatively source-linked at individual nymph level.
+
+**RESTRICTIONS:** Not preregistered, related to Stage-0 clothing variable, panel/sign units n=4/2, source image pixels do not date painting. **Stage-1 expert agreement QC still fails and preregistered Stage 2 NOT RUN.** No evidence proving exemplar/session replacement, chronological paint layering, visual data encoding, or human/author identity. This *weakens* interpreting the Stage-0 k=2 split as a unique copying boundary. Source files: [60 figure photometric dataset](./STAGE1_PHOTOMETRY_60.json) and [direct source comparison and cautions](./STAGE1_DIRECT_PIGMENT_REVIEW.md).
+
+---
+
 # POST-RUN STATUS — STOP RULE ACTIVATED (2026-10-23)
 
 **STAGE 1 COMPLETE AS AN INSTRUMENT TRIAL: QC_FAILED_INSTRUMENT. STAGE 2 CONFIRMATORY TEST NOT RUN.**
