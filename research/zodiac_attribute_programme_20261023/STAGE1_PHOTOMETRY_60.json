@@ -1,0 +1,644 @@
+{
+  "purpose": "Exploratory independent colour pixel QC after registered VLM reliability failure",
+  "method": "PIL RGB nymph bounding box, paper mask R>85 G>65 B>50 average>105, red pigment R>105 R>1.42*G R>1.27*B G>43, red_strict R>120 R>1.57*G R>1.39*B. Area fractions inside bbox. 9/60 initial Yale IIIF 500s recovered with 14px padded crop and trimmed on processing. No claim of original paint date or whether strokes retraced.",
+  "photoSource": "Yale IIIF 1006201,1006202,1006203",
+  "panelSummary": [
+    {
+      "panel": "f70v1",
+      "n": 15,
+      "red_00003": 2,
+      "red_0001": 0,
+      "red_0002": 0,
+      "red_0005": 0,
+      "red_strict_0001": 0,
+      "median": 0.000065,
+      "mean": 0.00011493333333333334
+    },
+    {
+      "panel": "f71r",
+      "n": 15,
+      "red_00003": 12,
+      "red_0001": 12,
+      "red_0002": 11,
+      "red_0005": 10,
+      "red_strict_0001": 9,
+      "median": 0.007143,
+      "mean": 0.010862199999999999
+    },
+    {
+      "panel": "f71v",
+      "n": 15,
+      "red_00003": 13,
+      "red_0001": 11,
+      "red_0002": 11,
+      "red_0005": 6,
+      "red_strict_0001": 4,
+      "median": 0.004463,
+      "mean": 0.011171866666666667
+    },
+    {
+      "panel": "f72r1",
+      "n": 15,
+      "red_00003": 0,
+      "red_0001": 0,
+      "red_0002": 0,
+      "red_0005": 0,
+      "red_strict_0001": 0,
+      "median": 0,
+      "mean": 0.0000010666666666666667
+    }
+  ],
+  "positionData": [
+    {
+      "panel": "f70v1",
+      "k": 1,
+      "red": 0.00034,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 91046,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/900,880,262,357/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 2,
+      "red": 0.000245,
+      "red_strict": 0.000022,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 89768,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1579,599,255,362/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 3,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 108200,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/2047,846,308,365/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 4,
+      "red": 0,
+      "red_strict": 0,
+      "n_paper": 88457,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/2330,1395,360,308/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f70v1",
+      "k": 5,
+      "red": 0.00007,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 99473,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/2288,1850,323,322/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 6,
+      "red": 0.000033,
+      "red_strict": 0,
+      "green": 0.000541,
+      "blue": 0,
+      "n_paper": 90577,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/2106,2179,268,369/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 7,
+      "red": 0.000049,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 81174,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1689,2352,220,387/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 8,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 88182,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1195,2304,258,344/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 9,
+      "red": 0.000271,
+      "red_strict": 0.000021,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 95837,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/816,1990,308,317/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 10,
+      "red": 0.000065,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 91740,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/605,1527,326,284/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 11,
+      "red": 0.00007,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 85277,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1195,1154,243,365/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 12,
+      "red": 0.000399,
+      "red_strict": 0.000046,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 65152,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1558,1043,207,325/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 13,
+      "red": 0,
+      "red_strict": 0,
+      "n_paper": 74516,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1940,1355,298,312/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f70v1",
+      "k": 14,
+      "red": 0.000025,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 79994,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1767,1860,253,332/full/0/default.jpg"
+    },
+    {
+      "panel": "f70v1",
+      "k": 15,
+      "red": 0.000157,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 82702,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006201/1123,1783,279,317/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 16,
+      "red": 0.00536,
+      "red_strict": 0.001787,
+      "green": 0.000044,
+      "blue": 0.000204,
+      "n_paper": 112497,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/240,1244,355,334/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 17,
+      "red": 0.007143,
+      "red_strict": 0.001471,
+      "green": 0.007199,
+      "blue": 0,
+      "n_paper": 89734,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/648,811,282,331/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 18,
+      "red": 0.00601,
+      "red_strict": 0.002355,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 86190,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1181,627,254,345/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 19,
+      "red": 0.018296,
+      "red_strict": 0.005972,
+      "green": 0.000028,
+      "blue": 0,
+      "n_paper": 105489,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1626,767,323,345/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 20,
+      "red": 0.000046,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 108507,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1963,1218,346,318/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 21,
+      "red": 0.013967,
+      "red_strict": 0.003768,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 101380,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/2050,1695,352,296/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 22,
+      "red": 0.003112,
+      "red_strict": 0.000199,
+      "n_paper": 125326,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1737,2265,360,408/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f71r",
+      "k": 23,
+      "red": 0.001217,
+      "red_strict": 0.000073,
+      "green": 0.005146,
+      "blue": 0.001349,
+      "n_paper": 68202,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1271,2532,235,345/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 24,
+      "red": 0.007217,
+      "red_strict": 0.000589,
+      "green": 0.013275,
+      "blue": 0,
+      "n_paper": 101847,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/626,2366,288,376/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 25,
+      "red": 0.028039,
+      "red_strict": 0.014598,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 78712,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/235,1831,304,267/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 26,
+      "red": 0.026382,
+      "red_strict": 0.009112,
+      "green": 0,
+      "blue": 0.001022,
+      "n_paper": 131152,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/796,1140,346,405/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 27,
+      "red": 0.023705,
+      "red_strict": 0.014887,
+      "green": 0,
+      "blue": 0.000649,
+      "n_paper": 78592,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1352,1151,292,323/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 28,
+      "red": 0.022151,
+      "red_strict": 0.002634,
+      "n_paper": 133628,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1575,1705,419,381/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f71r",
+      "k": 29,
+      "red": 0.000252,
+      "red_strict": 0,
+      "green": 0.000297,
+      "blue": 0.000861,
+      "n_paper": 67390,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/1248,2072,223,334/full/0/default.jpg"
+    },
+    {
+      "panel": "f71r",
+      "k": 30,
+      "red": 0.000036,
+      "red_strict": 0,
+      "green": 0.000036,
+      "blue": 0,
+      "n_paper": 110970,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006202/651,1801,345,331/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 1,
+      "red": 0.014197,
+      "red_strict": 0.000601,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 41628,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/625,962,191,226/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 2,
+      "red": 0.008516,
+      "red_strict": 0.000041,
+      "n_paper": 49199,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/948,602,227,281/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f71v",
+      "k": 3,
+      "red": 0.004614,
+      "red_strict": 0.001,
+      "green": 0.000953,
+      "blue": 0,
+      "n_paper": 65025,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1361,532,270,275/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 4,
+      "red": 0.020413,
+      "red_strict": 0.00876,
+      "green": 0.000129,
+      "blue": 0,
+      "n_paper": 62216,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1755,700,288,222/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 5,
+      "red": 0.004463,
+      "red_strict": 0.000142,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 77521,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1964,1064,288,270/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 6,
+      "red": 0.044265,
+      "red_strict": 0.014999,
+      "green": 0.000647,
+      "blue": 0,
+      "n_paper": 46402,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2066,1427,235,208/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 7,
+      "red": 0.00003,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 67780,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1800,1862,226,301/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 8,
+      "red": 0.000316,
+      "red_strict": 0.000079,
+      "n_paper": 50669,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1360,2029,232,281/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f71v",
+      "k": 9,
+      "red": 0.000574,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 57503,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/829,1893,262,222/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 10,
+      "red": 0.013537,
+      "red_strict": 0.000026,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 38561,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/594,1480,217,186/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 11,
+      "red": 0.048603,
+      "red_strict": 0.018804,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 45841,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/988,1082,204,230/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 12,
+      "red": 0.003348,
+      "red_strict": 0.000811,
+      "green": 0.00042,
+      "blue": 0,
+      "n_paper": 66612,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1361,860,244,288/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 13,
+      "red": 0.00218,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 53219,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1698,1250,262,204/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 14,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0.000148,
+      "blue": 0,
+      "n_paper": 60967,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/1432,1649,195,319/full/0/default.jpg"
+    },
+    {
+      "panel": "f71v",
+      "k": 15,
+      "red": 0.002522,
+      "red_strict": 0.000088,
+      "n_paper": 56700,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/886,1435,316,227/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f72r1",
+      "k": 16,
+      "red": 0,
+      "red_strict": 0,
+      "n_paper": 38105,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2397,1121,179,281/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f72r1",
+      "k": 17,
+      "red": 0,
+      "red_strict": 0,
+      "n_paper": 52358,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2588,708,205,325/full/0/default.jpg",
+      "source_retry": true
+    },
+    {
+      "panel": "f72r1",
+      "k": 18,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 46532,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3089,545,182,257/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 19,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 57956,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3466,603,235,248/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 20,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 48673,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3706,855,239,204/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 21,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 52987,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3830,1197,222,239/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 22,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 60842,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3790,1538,199,306/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 23,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 72624,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3409,1915,222,328/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 24,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 53396,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2757,1924,208,257/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 25,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 38698,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2451,1556,213,182/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 26,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 38201,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2677,1365,239,182/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 27,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 43122,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3134,878,177,244/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 28,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 60907,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3426,1095,270,226/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 29,
+      "red": 0,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 65192,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/3382,1538,217,301/full/0/default.jpg"
+    },
+    {
+      "panel": "f72r1",
+      "k": 30,
+      "red": 0.000016,
+      "red_strict": 0,
+      "green": 0,
+      "blue": 0,
+      "n_paper": 62646,
+      "roi": "https://collections.library.yale.edu/iiif/2/1006203/2899,1613,248,253/full/0/default.jpg"
+    }
+  ]
+}
