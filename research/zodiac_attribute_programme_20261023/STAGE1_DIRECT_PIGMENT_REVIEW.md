@@ -35,3 +35,10 @@ The two machine readers' Stage-1 QC continues to FAIL (star-tail κ=.40, red pig
 Primary sources: [Yale Quire 11](https://voynich.nu/q11/index.html); [Stolfi's dark Taurus](https://vib.tamagothi.de/index.php?id=f72r1&show=page). Relevant prior observations: [Voynich Portal zodiac](https://voynichportal.com/tag/zodiac/).
 
 **Retain both potential mechanisms: designed light/dark variants and selective later colouring. Neither is proved.**
+
+### Central-animal comparison (completed)
+Original Yale crops show dark Aries goat with brown/green wash and green bush versus largely unpainted light Aries goat by green bush. Light Taurus bull is lightly red-painted while the dark Taurus bull is heavily red-painted, despite closely related long-necked animal outlines. The nymphs carry substantially more red paint in **light** variants. Therefore the four panels exhibit a distribution of colour between animal and nymphs, not merely a page-by-page linear pigment increase.
+
+Direct source emblem crop RGB red-area ratios (include bushes and text, NOT animal-only segmentation): dark Aries 0.000115; light Aries 0.000034; light Taurus 0.008951; dark Taurus 0.011750. This ratio cannot measure green/brown darkness of goat or original versus later paint, so **do not call it a quantitatively proven inverse central-versus-peripheral red rule**.
+
+Original animal images: [dark Aries](https://collections.library.yale.edu/iiif/2/1006201/1331,1386,629,559/full/0/default.jpg) · [light Aries](https://collections.library.yale.edu/iiif/2/1006202/927,1435,671,682/full/0/default.jpg) · [light Taurus](https://collections.library.yale.edu/iiif/2/1006203/1042,1113,669,665/full/0/default.jpg) · [dark Taurus](https://collections.library.yale.edu/iiif/2/1006203/2850,1059,647,678/full/0/default.jpg).
