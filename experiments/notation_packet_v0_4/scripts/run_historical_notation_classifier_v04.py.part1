@@ -1,0 +1,195 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import ast
+import json
+import math
+import random
+import re
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Sequence
+
+import numpy as np
+import pandas as pd
+from sklearn.base import clone
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    average_precision_score,
+    balanced_accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+    roc_auc_score,
+)
+from sklearn.model_selection import StratifiedGroupKFold
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+
+from surface_features_v04 import (
+    canonicalize_events,
+    extract_surface_features,
+    parse_gabc_body,
+    windows,
+)
+
+WINDOW = 48
+STRIDE = 24
+MINIMUM = 48
+SEED = 20260724
+META_FIELDS = {"corpus", "family", "group", "section", "window_id", "start", "end", "representation"}
+
+
+def tokenise_line(line: str) -> list[str]:
+    line = line.strip()
+    if not line:
+        return []
+    if ":" in line and line.split(":", 1)[0].strip().lower() in {
+        "duration", "durations", "special", "duration_special", "pitch", "pitches", "rest", "pitch_rest", "top", "bottom", "line1", "line2"
+    }:
+        line = line.split(":", 1)[1].strip()
+    try:
+        obj = ast.literal_eval(line)
+        if isinstance(obj, (list, tuple)):
+            return [str(x) for x in obj]
+    except Exception:
+        pass
+    return [x for x in re.split(r"[\s,;]+", line) if x]
+
+
+def parse_ammerbach_annotation(path: Path) -> dict[str, list[str]]:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    lines = [x.strip() for x in text.splitlines() if x.strip()]
+    seqs = [tokenise_line(x) for x in lines]
+    seqs = [x for x in seqs if x]
+    if not seqs:
+        return {}
+    if len(seqs) == 1:
+        duration, pitch = [], seqs[0]
+    else:
+        duration, pitch = seqs[0], seqs[1]
+    paired: list[str] = []
+    if duration and pitch:
+        m = max(len(duration), len(pitch))
+        for i in range(m):
+            a = duration[i] if i < len(duration) else "_"
+            b = pitch[i] if i < len(pitch) else "_"
+            paired.append(f"{a}|{b}")
+    flattened = ([f"d{x}" for x in duration] + [f"p{x}" for x in pitch]) if duration else pitch[:]
+    return {"pitch": pitch, "duration": duration, "paired": paired, "flattened": flattened, "raw_lines": seqs}
+
+
+def infer_ammerbach_metadata(root: Path) -> tuple[dict[str, dict], dict]:
+    mapping: dict[str, dict] = {}
+    audit: dict = {"csv_files": [], "columns": {}, "source_counts": {}}
+    for csv_path in sorted(root.rglob("*.csv")):
+        try:
+            df = pd.read_csv(csv_path)
+        except Exception as exc:
+            audit["csv_files"].append({"path": str(csv_path), "error": str(exc)})
+            continue
+        audit["csv_files"].append({"path": str(csv_path), "rows": int(len(df))})
+        audit["columns"][str(csv_path)] = [str(x) for x in df.columns]
+        for idx, row in df.iterrows():
+            d = {str(k): (None if pd.isna(v) else str(v)) for k, v in row.to_dict().items()}
+            keys = set()
+            for col, val in d.items():
+                if val is None:
+                    continue
+                lc = col.lower()
+                if any(q in lc for q in ["file", "image", "name", "path", "index", "id"]):
+                    keys.add(Path(val).stem)
+                    keys.add(val)
+            keys.add(str(idx))
+            for k in keys:
+                mapping[k] = d
+    return mapping, audit
+
+
+def source_from_meta(path: Path, row: dict | None) -> str:
+    hay = " ".join([str(path)] + ([str(x) for x in row.values() if x is not None] if row else [])).lower()
+    if "1583" in hay or "instrument" in hay:
+        return "ammerbach_1583"
+    if "1575" in hay or "künst" in hay or "kunst" in hay:
+        return "ammerbach_1575"
+    split = next((x for x in ("train", "val", "test") if x in {p.lower() for p in path.parts}), "unknown")
+    m = re.search(r"(\d+)", path.stem)
+    if m:
+        idx = int(m.group(1))
+        cut = {"train": 500, "val": 200, "test": 500}.get(split)
+        if cut is not None:
+            return f"ammerbach_inferred_{'bookA' if idx < cut else 'bookB'}"
+    return f"ammerbach_{split}_unknown"
+
+
+def load_ammerbach(root: Path) -> tuple[dict[str, list[list[str]]], dict]:
+    mapping, audit = infer_ammerbach_metadata(root)
+    reps: dict[str, list[tuple[str, list[str], str]]] = defaultdict(list)
+    samples = []
+    counts = Counter()
+    lengths = defaultdict(list)
+    txts = [p for p in root.rglob("*.txt") if p.is_file()]
+    for path in sorted(txts):
+        ann = parse_ammerbach_annotation(path)
+        if not ann:
+            continue
+        row = mapping.get(path.stem) or mapping.get(path.name) or mapping.get(str(path))
+        source = source_from_meta(path, row)
+        counts[source] += 1
+        for rep in ("pitch", "duration", "paired", "flattened"):
+            seq = ann.get(rep, [])
+            if seq:
+                reps[rep].append((source, seq, str(path)))
+                lengths[rep].append(len(seq))
+        if len(samples) < 12:
+            samples.append({"path": str(path), "source": source, "lines": ann["raw_lines"], "lengths": {k: len(ann.get(k, [])) for k in ("pitch", "duration", "paired", "flattened")}, "metadata": row})
+    audit.update({
+        "txt_files_seen": len(txts),
+        "annotations_parsed": int(sum(counts.values())),
+        "source_counts": dict(counts),
+        "representation_lengths": {k: {"n": len(v), "mean": float(np.mean(v)) if v else 0.0, "median": float(np.median(v)) if v else 0.0, "min": min(v) if v else 0, "max": max(v) if v else 0} for k, v in lengths.items()},
+        "samples": samples,
+    })
+    return reps, audit
+
+
+def read_gabc_files(root: Path) -> tuple[dict[tuple[str, str], dict[str, list[str]]], dict]:
+    grouped: dict[tuple[str, str], dict[str, list[str]]] = defaultdict(lambda: {"notation": [], "lyrics": [], "files": []})
+    audit = {"files": 0, "families": Counter(), "manuscripts": Counter(), "parse_failures": []}
+    for path in sorted(root.rglob("*.gabc")):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if "%%" not in text:
+            audit["parse_failures"].append(str(path))
+            continue
+        header, body = text.split("%%", 1)
+        meta = {}
+        for line in header.splitlines():
+            if ":" in line:
+                k, val = line.split(":", 1)
+                meta[k.strip().lower()] = val.strip().strip(";")
+        low = str(path).lower() + " " + header.lower()
+        family = "aquitanian" if "aquit" in low else ("square" if "square" in low else "unknown")
+        manuscript = meta.get("manuscript") or meta.get("manuscript-storage-place") or path.parent.name
+        notation, lyrics = parse_gabc_body(body)
+        if not notation:
+            continue
+        key = (family, manuscript)
+        grouped[key]["notation"].extend(notation)
+        grouped[key]["lyrics"].extend(lyrics)
+        grouped[key]["files"].append(str(path))
+        audit["files"] += 1
+        audit["families"][family] += 1
+        audit["manuscripts"][manuscript] += 1
+    audit["families"] = dict(audit["families"])
+    audit["manuscripts"] = dict(audit["manuscripts"])
+    audit["groups"] = len(grouped)
+    return grouped, audit
+
+
+def monoalphabetic_cipher(events: Sequence[str], seed: int) -> list[str]:
+    chars = sorted(set("".join(events)))
+    targets = list("abcdefghijklmnopqrstuvwxyz")
+    targets += [chr(0x3B1 + i) for i in range(25)]
+    rng = random.Random(seed)

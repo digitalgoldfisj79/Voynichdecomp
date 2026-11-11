@@ -1,0 +1,16 @@
+{
+  "schema": "voynich-canonical-surface-features-sealed-v0.4",
+  "source": "enriched_records.pkl",
+  "source_records": 37465,
+  "source_sha256": "dbf87cf5525e065da881b06a26c9d411543ff8ef3f5f8e15a9e4b557808f1174",
+  "window": 48,
+  "selection": "first and last non-overlapping window per folio when available",
+  "minimum": 48,
+  "character_policy": "within-window frequency-rank canonicalisation",
+  "rows": 346,
+  "folios": 226,
+  "feature_columns": [
+    "n_events", "n_chars", "mean_event_len", "sd_event_len", "cv_event_len", "median_event_len", "max_event_len", "single_char_frac", "length_entropy", "length_autocorr1", "length_change_rate", "char_inventory", "event_inventory", "type_token_ratio", "hapax_type_frac", "top_event_mass", "same_adjacent_event_rate", "char_H0", "char_H1", "char_H2", "char_RED1", "char_RED2", "char_H0_norm", "char_H1_norm", "event_H0", "event_H1", "event_RED1", "first_char_H", "last_char_H", "first_inventory", "last_inventory", "first_last_MI", "position_char_MI", "mean_prefix_overlap", "mean_suffix_overlap", "mean_distinct_chars_per_event", "distinct_char_ratio", "digit_frac", "uppercase_frac", "punct_frac", "space_like_boundary_rate"
+  ],
+  "csv_sha256": "c94ad2c96e76ba89efe67f776cfc0b4d820b2b9c21824d44cfc43323a05bb1f1"
+}
