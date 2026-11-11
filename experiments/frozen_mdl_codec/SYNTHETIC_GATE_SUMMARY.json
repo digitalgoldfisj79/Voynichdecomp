@@ -1,0 +1,86 @@
+{
+  "status": "COMPLETE",
+  "evidential_register": "INTERNAL",
+  "seed": 20260714,
+  "remote_job_id": "6a5684a085d9643ce16d3106",
+  "source_archive_sha256": "7dd12696bb6b6e550be325a373cf5c44d60b0ea2429b8e8e9fd5090a6f73999e",
+  "configuration": {
+    "class_count": 8,
+    "homophones_per_class": 3,
+    "policies": ["iid_uniform", "cyclic", "frequency_weighted", "sticky_line_reset"],
+    "positive_per_policy": 24,
+    "control_per_policy": 80,
+    "total_positive_trials": 96,
+    "total_control_trials": 320,
+    "sequence_length": 5000,
+    "annealing_restarts": 5,
+    "annealing_steps": 2800,
+    "workers": 32
+  },
+  "gate_verdict": "PASS_SELECTION_POLICY_ROBUSTNESS",
+  "aggregate": {
+    "positive_successes": 93,
+    "positive_trials": 96,
+    "false_positives": 0,
+    "control_trials": 320
+  },
+  "holdouts": {
+    "iid_uniform": {
+      "passed": true,
+      "positive_successes": 24,
+      "positive_trials": 24,
+      "false_positives": 0,
+      "control_trials": 80,
+      "true_positive_lower_95_one_sided": 0.8986898185110513,
+      "false_positive_upper_95_one_sided": 0.036754197779982345,
+      "register_selection_rate": 1.0,
+      "median_token_accuracy": 1.0,
+      "q05_token_accuracy": 1.0,
+      "median_gain_bits": 0.2267746326964769,
+      "q05_gain_bits": 0.1932551941508543
+    },
+    "cyclic": {
+      "passed": true,
+      "positive_successes": 23,
+      "positive_trials": 24,
+      "false_positives": 0,
+      "control_trials": 80,
+      "true_positive_lower_95_one_sided": 0.8331500703478705,
+      "false_positive_upper_95_one_sided": 0.036754197779982345,
+      "register_selection_rate": 1.0,
+      "median_token_accuracy": 1.0,
+      "q05_token_accuracy": 1.0,
+      "median_gain_bits": 0.2397283060720952,
+      "q05_gain_bits": 0.21293591155738584
+    },
+    "frequency_weighted": {
+      "passed": true,
+      "positive_successes": 24,
+      "positive_trials": 24,
+      "false_positives": 0,
+      "control_trials": 80,
+      "true_positive_lower_95_one_sided": 0.8986898185110513,
+      "false_positive_upper_95_one_sided": 0.036754197779982345,
+      "register_selection_rate": 1.0,
+      "median_token_accuracy": 1.0,
+      "q05_token_accuracy": 0.9737894736842105,
+      "median_gain_bits": 0.24127790364735224,
+      "q05_gain_bits": 0.20939976987507636
+    },
+    "sticky_line_reset": {
+      "passed": true,
+      "positive_successes": 22,
+      "positive_trials": 24,
+      "false_positives": 0,
+      "control_trials": 80,
+      "true_positive_lower_95_one_sided": 0.7768791263392315,
+      "false_positive_upper_95_one_sided": 0.036754197779982345,
+      "register_selection_rate": 1.0,
+      "median_token_accuracy": 1.0,
+      "q05_token_accuracy": 0.9279736842105264,
+      "median_gain_bits": 0.23147196040519516,
+      "q05_gain_bits": 0.192832401408309
+    }
+  },
+  "scope": "Synthetic proof-of-operation for one equal-class homophonic decoder across four frozen selection policies and unseen keys. Not a Voynich result and not yet a calibration of the final morpho-local nomenclator."
+}

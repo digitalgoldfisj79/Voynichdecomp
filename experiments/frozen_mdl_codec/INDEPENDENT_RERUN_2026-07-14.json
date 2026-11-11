@@ -1,0 +1,30 @@
+{
+  "status": "COMPLETE",
+  "evidential_register": "INTERNAL",
+  "date": "2026-07-14",
+  "source_archive_sha256": "7dd12696bb6b6e550be325a373cf5c44d60b0ea2429b8e8e9fd5090a6f73999e",
+  "clean_room_job_id": "6a568789b1669a49bf072b61",
+  "full_gate_job_id": "6a5687ac85d9643ce16d312b",
+  "full_result_sha256": "98e28540e86deae8c517eaa6250a8d9af7431ca939329198ab90a2e9f1598917",
+  "checks": {
+    "source_bundle_reconstruction": "PASS",
+    "unit_tests": {"passed": 18, "failed": 0},
+    "conformance_vectors": "PASS_EXACT",
+    "fuzz_roundtrips": {"passed": 300, "failed": 0, "aggregate_sha256": "fcba2b40abdd963b74492f030c5473b5a94c547e08b45accc0b67df69926acb1"},
+    "quick_gate": "EXPECTED_FAIL_INSUFFICIENT_TRIALS",
+    "full_gate": "PASS_SELECTION_POLICY_ROBUSTNESS"
+  },
+  "full_gate": {
+    "positive_successes": 93,
+    "positive_trials": 96,
+    "false_positives": 0,
+    "control_trials": 320,
+    "holdouts": {
+      "iid_uniform": {"positive_successes": 24, "positive_trials": 24, "false_positives": 0, "control_trials": 80, "q05_token_accuracy": 1.0, "q05_gain_bits": 0.1932551941508543},
+      "cyclic": {"positive_successes": 23, "positive_trials": 24, "false_positives": 0, "control_trials": 80, "q05_token_accuracy": 1.0, "q05_gain_bits": 0.21293591155738584},
+      "frequency_weighted": {"positive_successes": 24, "positive_trials": 24, "false_positives": 0, "control_trials": 80, "q05_token_accuracy": 0.9737894736842105, "q05_gain_bits": 0.20939976987507636},
+      "sticky_line_reset": {"positive_successes": 22, "positive_trials": 24, "false_positives": 0, "control_trials": 80, "q05_token_accuracy": 0.9279736842105264, "q05_gain_bits": 0.192832401408309}
+    }
+  },
+  "scope": "Independent clean-room reproduction of the frozen codec and one equal-class homophonic selection-policy gate. No Voynich manuscript data or conclusion is included."
+}
