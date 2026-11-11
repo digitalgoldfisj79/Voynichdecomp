@@ -1,0 +1,57 @@
+{
+  "status": "COMPLETE",
+  "formal_verdict": "FAIL_EXACT_FIXED_POSITION_PAYLOAD",
+  "historical_label_correction": "The branch/path says piiv, but the fixed-second-character coverword table is in Polygraphia III. See ERRATUM.md.",
+  "primary_transcription": "ZLZI",
+  "f2_gain_bits_per_character": -1.4579542181757876,
+  "f2_familywise_permutation_p": 1.0,
+  "f2_nominal_permutation_p": 0.7227722772277227,
+  "f2_mapping_agreement": 0.32608695652173914,
+  "best_position": "F1",
+  "best_gain_bits_per_character": -1.2527194457188218,
+  "positive_controls": {
+    "latin": {
+      "gain": 0.2740849019900504,
+      "mapping_accuracy": 0.7272727272727273,
+      "mapping_agreement": 0.2727272727272727
+    },
+    "italian": {
+      "gain": 0.9397477690853098,
+      "mapping_accuracy": 0.9047619047619048,
+      "mapping_agreement": 0.7619047619047619
+    }
+  },
+  "pass_conditions": {
+    "positive_calibration": true,
+    "f2_best_or_tied": false,
+    "familywise_p_le_0_05": false,
+    "mapping_agreement_ge_0_70": false,
+    "alternate_transcriptions": false,
+    "gain_within_0_50_of_positive": false
+  },
+  "sensitivity": {
+    "ZLZB": {
+      "f2_gain": -1.3647496410868505,
+      "f2_nominal_p": 0.1,
+      "best_position": "F1"
+    },
+    "TTIA": {
+      "f2_gain": -1.40104604747793,
+      "f2_nominal_p": 0.425,
+      "best_position": "F1"
+    }
+  },
+  "calibration": {
+    "primary_null_replicates": 100,
+    "alternate_transcription_null_replicates_each": 39,
+    "passed": true
+  },
+  "scope": "Global one-glyph-per-word fixed-position payload under a monoalphabetic substitution; F2 is the literal Polygraphia III second-character prediction.",
+  "non_exclusions": [
+    "changing payload positions",
+    "polyalphabetic or scribe-specific mappings",
+    "multi-glyph payload units",
+    "insertions, deletions, nulls or sparse messages",
+    "an independent post-encryption surface realiser"
+  ]
+}
