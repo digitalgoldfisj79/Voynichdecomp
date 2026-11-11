@@ -1,0 +1,1 @@
+Historical notation recognition phase v0.4 complete. Formal result: ABSTAIN_OOD. Superseded only by explicit correction, not by downstream exploratory work.

@@ -1,0 +1,153 @@
+        m = clone(model).fit(X, y)
+        broad_probs.append(m.predict_proba(Xt)[:, 1])
+    bp = np.mean(np.vstack(broad_probs), axis=0)
+    out = target[[c for c in ["group", "section", "window_id"] if c in target.columns]].copy()
+    out["historical_notation_probability"] = bp
+    out["above_external_threshold"] = bp >= broad_result["threshold"]
+
+    labels = fam_result["labels"]
+    enc = {x: i for i, x in enumerate(labels)}
+    yf = np.array([enc[x] for x in external["family"].astype(str)], dtype=int)
+    Xf = external[features].fillna(0.0).to_numpy(float)
+    fp = []
+    for model in models(False).values():
+        m = clone(model).fit(Xf, yf)
+        raw = m.predict_proba(Xt)
+        arr = np.zeros((len(Xt), len(labels)))
+        classes = m.classes_ if hasattr(m, "classes_") else m.named_steps["clf"].classes_
+        for j, c in enumerate(classes):
+            arr[:, int(c)] = raw[:, j]
+        fp.append(arr)
+    fam_prob = np.mean(np.stack(fp), axis=0)
+    for j, lab in enumerate(labels):
+        out[f"p_{lab}"] = fam_prob[:, j]
+    out["predicted_family"] = [labels[i] for i in fam_prob.argmax(axis=1)]
+
+    summary = {
+        "windows": len(out),
+        "mean_historical_notation_probability": float(bp.mean()),
+        "median_historical_notation_probability": float(np.median(bp)),
+        "fraction_above_threshold": float(np.mean(out["above_external_threshold"])),
+        "mean_family_probabilities": {lab: float(fam_prob[:, j].mean()) for j, lab in enumerate(labels)},
+        "predicted_family_counts": out["predicted_family"].value_counts().to_dict(),
+        "by_section": {},
+    }
+    if "section" in out:
+        for sec, d in out.groupby("section"):
+            summary["by_section"][str(sec)] = {
+                "n": len(d),
+                "mean_historical_probability": float(d["historical_notation_probability"].mean()),
+                "fraction_above_threshold": float(d["above_external_threshold"].mean()),
+                "family_counts": d["predicted_family"].value_counts().to_dict(),
+            }
+    return {"summary": summary, "rows": out.to_dict("records")}
+
+
+def dataframe_from_rows(rows: list[dict]) -> tuple[pd.DataFrame, list[str]]:
+    df = pd.DataFrame(rows)
+    features = [c for c in df.columns if c not in META_FIELDS]
+    return df, features
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--ammerbach-dir", type=Path, required=True)
+    ap.add_argument("--gabc-dir", type=Path, required=True)
+    ap.add_argument("--voynich-features", type=Path, required=True)
+    ap.add_argument("--out", type=Path, required=True)
+    args = ap.parse_args()
+    args.out.mkdir(parents=True, exist_ok=True)
+
+    ammerbach_reps, ammer_audit = load_ammerbach(args.ammerbach_dir)
+    gabc_groups, gabc_audit = read_gabc_files(args.gabc_dir)
+    target, target_features = read_feature_csv(args.voynich_features)
+
+    representation_results = {}
+    external_frames = {}
+    for rep in ("paired", "pitch", "flattened"):
+        rows = build_external_rows(ammerbach_reps, gabc_groups, rep)
+        df, features = dataframe_from_rows(rows)
+        if set(features) != set(target_features):
+            raise RuntimeError(f"feature mismatch for {rep}: external-only={set(features)-set(target_features)}, target-only={set(target_features)-set(features)}")
+        features = target_features
+        broad = external_cv(df, features)
+        fam = family_cv(df, features)
+        representation_results[rep] = {"counts": df["family"].value_counts().to_dict(), "broad": broad, "family": fam}
+        external_frames[rep] = df
+        print(rep, broad["metrics"]["ensemble"], broad["gate_pass"], fam["macro_f1"], flush=True)
+
+    tie_order = {"paired": 2, "pitch": 1, "flattened": 0}
+    selected = max(representation_results, key=lambda r: (
+        representation_results[r]["broad"]["metrics"]["ensemble"]["roc_auc"],
+        representation_results[r]["broad"]["balanced_accuracy_threshold"], tie_order[r]
+    ))
+    selected_result = representation_results[selected]
+    unlocked = bool(selected_result["broad"]["gate_pass"])
+    family_unlocked = unlocked and bool(selected_result["family"]["gate_pass"])
+    target_result = None
+    if unlocked:
+        target_result = fit_and_predict(external_frames[selected], target, target_features, selected_result["broad"], selected_result["family"])
+        pd.DataFrame(target_result["rows"]).to_csv(args.out / "voynich_predictions_v0_4.csv", index=False)
+
+    compact_reps = {}
+    for rep, rr in representation_results.items():
+        compact_reps[rep] = {
+            "counts": rr["counts"],
+            "broad": {k: v for k, v in rr["broad"].items() if k != "cv_predictions"},
+            "family": rr["family"],
+        }
+    result = {
+        "schema": "historical-notation-blind-classifier-v0.4",
+        "window": WINDOW, "stride": STRIDE, "minimum": MINIMUM,
+        "character_policy": "frequency-rank canonicalised independently within each window",
+        "ammerbach_audit": ammer_audit,
+        "gabc_audit": gabc_audit,
+        "representations": compact_reps,
+        "selected_representation": selected,
+        "external_gate_pass": unlocked,
+        "family_gate_pass": family_unlocked,
+        "voynich_opened": unlocked,
+        "voynich": target_result["summary"] if target_result else None,
+    }
+    (args.out / "historical_notation_classifier_results_v0_4.json").write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
+    (args.out / "ammerbach_intake_audit_v0_4.json").write_text(json.dumps(ammer_audit, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    lines = [
+        "# Historical notation calibration v0.4 — result", "",
+        f"**Selected Ammerbach representation:** `{selected}`",  
+        f"**External recognition gate:** {'PASS' if unlocked else 'FAIL / ABSTAIN'}",  
+        f"**Historical family gate:** {'PASS' if family_unlocked else 'FAIL / ABSTAIN'}",  
+        f"**Voynich target opened:** {'yes' if unlocked else 'no'}", "",
+        "## External results", "",
+    ]
+    for rep, rr in compact_reps.items():
+        b = rr["broad"]
+        lines += [
+            f"### {rep}", "",
+            f"- Counts: `{rr['counts']}`",
+            f"- Ensemble ROC AUC: {b['metrics']['ensemble']['roc_auc']:.4f}",
+            f"- Logistic ROC AUC: {b['metrics']['logistic']['roc_auc']:.4f}",
+            f"- Forest ROC AUC: {b['metrics']['forest']['roc_auc']:.4f}",
+            f"- Calibrated balanced accuracy: {b['balanced_accuracy_threshold']:.4f}",
+            f"- Organ-tablature recall: {b['organ_recall_threshold']:.4f}",
+            f"- Multiclass macro-F1: {rr['family']['macro_f1']:.4f}",
+            f"- Broad gate: {'PASS' if b['gate_pass'] else 'FAIL'}", "",
+        ]
+    lines += ["## Voynich adjudication", ""]
+    if target_result:
+        s = target_result["summary"]
+        lines += [
+            f"- Mean historical-notation probability: {s['mean_historical_notation_probability']:.4f}",
+            f"- Median probability: {s['median_historical_notation_probability']:.4f}",
+            f"- Fraction above external threshold: {s['fraction_above_threshold']:.4f}",
+            f"- Mean family probabilities: `{s['mean_family_probabilities']}`", "",
+            "These are family-recognition outputs, not a decipherment or semantic identification.",
+        ]
+    else:
+        lines += ["The external gate failed, so the sealed Voynich feature table was not passed to the classifiers."]
+    (args.out / "HISTORICAL_NOTATION_CALIBRATION_RESULT_v0_4.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(json.dumps({"selected": selected, "external_gate": unlocked, "family_gate": family_unlocked, "voynich": result["voynich"]}, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,218 @@
+    rng.shuffle(targets)
+    if len(chars) > len(targets):
+        targets += [chr(0x430 + i) for i in range(len(chars) - len(targets))]
+    mp = dict(zip(chars, targets))
+    return ["".join(mp[ch] for ch in x) for x in events]
+
+
+def shuffled_surface(events: Sequence[str], seed: int) -> list[str]:
+    lens = [len(x) for x in events]
+    chars = list("".join(events))
+    random.Random(seed).shuffle(chars)
+    out = []
+    i = 0
+    for n in lens:
+        out.append("".join(chars[i : i + n]))
+        i += n
+    return out
+
+
+def markov_surface(events: Sequence[str], seed: int) -> list[str]:
+    rng = random.Random(seed)
+    starts = Counter(x[0] for x in events if x)
+    trans = defaultdict(Counter)
+    chars = Counter(ch for x in events for ch in x)
+    for x in events:
+        for a, b in zip(x[:-1], x[1:]):
+            trans[a][b] += 1
+    def draw(c: Counter):
+        if not c:
+            c = chars
+        total = sum(c.values())
+        z = rng.uniform(0, total)
+        acc = 0.0
+        for k, v in c.items():
+            acc += v
+            if acc >= z:
+                return k
+        return next(iter(c))
+    out = []
+    for x in events:
+        if not x:
+            out.append("")
+            continue
+        s = [draw(starts)]
+        for _ in range(len(x) - 1):
+            s.append(draw(trans[s[-1]]))
+        out.append("".join(s))
+    return out
+
+
+def procedural_sequences(groups: int = 30, events_per_group: int = 480) -> list[tuple[str, list[str]]]:
+    out = []
+    for g in range(groups):
+        rng = random.Random(SEED + 10000 + g)
+        ops = list("oydschq")
+        cores = ["".join(rng.choice("aeioux") for _ in range(rng.choice([1, 2, 2, 3]))) for _ in range(40)]
+        suffixes = ["", "n", "r", "dy", "in", "ol"]
+        state = rng.randrange(6)
+        seq = []
+        for _ in range(events_per_group):
+            if rng.random() < 0.18:
+                state = (state + rng.choice([-1, 1, 2])) % 6
+            op = ops[(state + rng.randrange(3)) % len(ops)] if rng.random() < 0.75 else ""
+            core = cores[(state * 7 + rng.randrange(12)) % len(cores)]
+            suffix = suffixes[(state + rng.randrange(3)) % len(suffixes)] if rng.random() < 0.8 else ""
+            seq.append(op + core + suffix)
+        out.append((f"procedural_{g:02d}", seq))
+    return out
+
+
+def add_windows(rows: list[dict], events: Sequence[str], corpus: str, family: str, group: str, representation: str, section: str = ""):
+    if len(events) < MINIMUM:
+        return
+    for wi, (a, b, w) in enumerate(windows(events, window=WINDOW, stride=STRIDE, minimum=MINIMUM)):
+        f = extract_surface_features(canonicalize_events(w))
+        rows.append({
+            "corpus": corpus, "family": family, "group": group, "section": section,
+            "representation": representation, "window_id": f"{group}:{wi}:{a}", "start": a, "end": b, **f,
+        })
+
+
+def build_external_rows(ammerbach_reps, gabc_groups, representation: str) -> list[dict]:
+    rows: list[dict] = []
+    by_source = defaultdict(list)
+    for source, seq, path in ammerbach_reps.get(representation, []):
+        by_source[source].extend(seq)
+    for source, seq in sorted(by_source.items()):
+        add_windows(rows, seq, "Ammerbach", "organ_tablature", source, representation)
+
+    for (family, manuscript), d in sorted(gabc_groups.items()):
+        notation = d["notation"]
+        lyrics = d["lyrics"]
+        fam = "neume_aquitanian" if family == "aquitanian" else ("neume_square" if family == "square" else "neume_unknown")
+        base_group = f"gabc:{manuscript}"
+        add_windows(rows, notation, "GABC", fam, base_group, "gabc_notation", family)
+        if lyrics:
+            add_windows(rows, lyrics, "GABC", "language_or_substitution", base_group, "latin_lyrics", family)
+            add_windows(rows, monoalphabetic_cipher(lyrics, SEED + len(base_group)), "GABC", "language_or_substitution", base_group, "monoalphabetic_cipher", family)
+        add_windows(rows, shuffled_surface(notation, SEED + 2 * len(base_group)), "GABC", "surface_null", base_group, "char_shuffle", family)
+        add_windows(rows, markov_surface(notation, SEED + 3 * len(base_group)), "GABC", "surface_null", base_group, "char_markov", family)
+
+    for group, seq in procedural_sequences():
+        add_windows(rows, seq, "Synthetic", "procedural_synthetic", group, "procedural")
+    return rows
+
+
+def read_feature_csv(path: Path) -> tuple[pd.DataFrame, list[str]]:
+    df = pd.read_csv(path)
+    features = [c for c in df.columns if c not in META_FIELDS]
+    return df, features
+
+
+def models(binary: bool = True):
+    lr = Pipeline([
+        ("scale", StandardScaler()),
+        ("clf", LogisticRegression(max_iter=5000, C=1.0, class_weight="balanced", random_state=SEED)),
+    ])
+    rf = RandomForestClassifier(
+        n_estimators=500, max_depth=10, min_samples_leaf=3,
+        class_weight="balanced_subsample", random_state=SEED, n_jobs=-1,
+    )
+    return {"logistic": lr, "forest": rf}
+
+
+def external_cv(df: pd.DataFrame, feature_cols: list[str]) -> dict:
+    historical = {"organ_tablature", "neume_aquitanian", "neume_square"}
+    broad = df[df["family"] != "procedural_synthetic"].copy()
+    broad["y"] = broad["family"].isin(historical).astype(int)
+    X = broad[feature_cols].replace([np.inf, -np.inf], np.nan).fillna(0.0).to_numpy(float)
+    y = broad["y"].to_numpy(int)
+    groups = broad["group"].astype(str).to_numpy()
+    n_groups = len(set(groups))
+    folds = min(5, n_groups)
+    splitter = StratifiedGroupKFold(n_splits=folds, shuffle=True, random_state=SEED)
+    pred = {name: np.zeros(len(y), dtype=float) for name in models()}
+    fold_rows = []
+    for fold, (tr, te) in enumerate(splitter.split(X, y, groups)):
+        for name, model in models().items():
+            m = clone(model).fit(X[tr], y[tr])
+            pred[name][te] = m.predict_proba(X[te])[:, 1]
+        fold_rows.append({"fold": fold, "train": len(tr), "test": len(te), "test_groups": sorted(set(groups[te])), "test_positive": int(y[te].sum())})
+    ensemble = np.mean(np.vstack(list(pred.values())), axis=0)
+    metric = {}
+    for name, p in {**pred, "ensemble": ensemble}.items():
+        metric[name] = {
+            "roc_auc": float(roc_auc_score(y, p)),
+            "average_precision": float(average_precision_score(y, p)),
+            "balanced_accuracy_0_5": float(balanced_accuracy_score(y, p >= 0.5)),
+        }
+    candidates = []
+    for t in np.linspace(0.01, 0.99, 99):
+        yp = ensemble >= t
+        tn = int(((y == 0) & (~yp)).sum()); fp = int(((y == 0) & yp).sum())
+        tp = int(((y == 1) & yp).sum()); fn = int(((y == 1) & (~yp)).sum())
+        fpr = fp / max(1, fp + tn); tpr = tp / max(1, tp + fn)
+        precision = tp / max(1, tp + fp)
+        if fpr <= 0.10:
+            candidates.append((tpr, precision, t, fpr))
+    if candidates:
+        tpr, precision, threshold, fpr = max(candidates, key=lambda x: (x[0], x[1], x[2]))
+    else:
+        threshold = 0.5; fpr = float("nan"); tpr = float("nan"); precision = float("nan")
+    yp = ensemble >= threshold
+    organ_mask = broad["family"].to_numpy() == "organ_tablature"
+    gate = (
+        metric["logistic"]["roc_auc"] >= 0.80 and
+        metric["forest"]["roc_auc"] >= 0.80 and
+        balanced_accuracy_score(y, yp) >= 0.70 and
+        (float(np.mean(yp[organ_mask])) if organ_mask.any() else 0.0) >= 0.60
+    )
+    return {
+        "rows": len(broad), "groups": n_groups, "folds": fold_rows,
+        "metrics": metric, "threshold": float(threshold),
+        "threshold_cv": {"fpr": float(fpr), "tpr": float(tpr), "precision": float(precision)},
+        "balanced_accuracy_threshold": float(balanced_accuracy_score(y, yp)),
+        "organ_recall_threshold": float(np.mean(yp[organ_mask])) if organ_mask.any() else None,
+        "gate_pass": bool(gate),
+        "cv_predictions": pd.DataFrame({"family": broad["family"], "group": broad["group"], "y": y, **pred, "ensemble": ensemble}).to_dict("records"),
+    }
+
+
+def family_cv(df: pd.DataFrame, feature_cols: list[str]) -> dict:
+    X = df[feature_cols].replace([np.inf, -np.inf], np.nan).fillna(0.0).to_numpy(float)
+    labels = sorted(df["family"].unique())
+    y_text = df["family"].astype(str).to_numpy()
+    enc = {x: i for i, x in enumerate(labels)}
+    y = np.array([enc[x] for x in y_text], dtype=int)
+    groups = df["group"].astype(str).to_numpy()
+    folds = min(5, len(set(groups)))
+    splitter = StratifiedGroupKFold(n_splits=folds, shuffle=True, random_state=SEED)
+    probs = {name: np.zeros((len(y), len(labels))) for name in models(False)}
+    for tr, te in splitter.split(X, y, groups):
+        for name, model in models(False).items():
+            m = clone(model).fit(X[tr], y[tr])
+            raw = m.predict_proba(X[te])
+            classes = m.classes_ if hasattr(m, "classes_") else m.named_steps["clf"].classes_
+            for j, c in enumerate(classes):
+                probs[name][te, int(c)] = raw[:, j]
+    ensemble = np.mean(np.stack(list(probs.values())), axis=0)
+    pred = ensemble.argmax(axis=1)
+    macro = float(f1_score(y, pred, average="macro"))
+    gate = macro >= 0.55
+    return {
+        "labels": labels, "macro_f1": macro, "balanced_accuracy": float(balanced_accuracy_score(y, pred)),
+        "confusion_matrix": confusion_matrix(y, pred, labels=list(range(len(labels)))).tolist(),
+        "classification_report": classification_report(y, pred, target_names=labels, output_dict=True, zero_division=0),
+        "gate_pass": bool(gate),
+    }
+
+
+def fit_and_predict(external: pd.DataFrame, target: pd.DataFrame, features: list[str], broad_result: dict, fam_result: dict) -> dict:
+    historical = {"organ_tablature", "neume_aquitanian", "neume_square"}
+    broad = external[external["family"] != "procedural_synthetic"].copy()
+    y = broad["family"].isin(historical).astype(int).to_numpy()
+    X = broad[features].fillna(0.0).to_numpy(float)
+    Xt = target[features].fillna(0.0).to_numpy(float)
+    broad_probs = []
+    for model in models().values():
