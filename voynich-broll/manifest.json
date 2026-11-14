@@ -1,0 +1,2242 @@
+[
+ {
+  "object": "PLANT_000_f93r",
+  "folio": "93r",
+  "height_m": 26.0
+ },
+ {
+  "object": "PLANT_001_f66v",
+  "folio": "66v",
+  "height_m": 2.34
+ },
+ {
+  "object": "PLANT_002_f94r",
+  "folio": "94r",
+  "height_m": 5.1
+ },
+ {
+  "object": "PLANT_003_f29r",
+  "folio": "29r",
+  "height_m": 3.38
+ },
+ {
+  "object": "PLANT_004_f30v",
+  "folio": "30v",
+  "height_m": 10.43
+ },
+ {
+  "object": "PLANT_005_f57r",
+  "folio": "57r",
+  "height_m": 1.67
+ },
+ {
+  "object": "PLANT_006_f40v",
+  "folio": "40v",
+  "height_m": 4.32
+ },
+ {
+  "object": "PLANT_007_f55r",
+  "folio": "55r",
+  "height_m": 3.92
+ },
+ {
+  "object": "PLANT_008_f95v",
+  "folio": "95v",
+  "height_m": 1.11
+ },
+ {
+  "object": "PLANT_009_f38v",
+  "folio": "38v",
+  "height_m": 3.12
+ },
+ {
+  "object": "PLANT_010_f10r",
+  "folio": "10r",
+  "height_m": 1.25
+ },
+ {
+  "object": "PLANT_011_f11v",
+  "folio": "11v",
+  "height_m": 2.36
+ },
+ {
+  "object": "PLANT_012_f37v",
+  "folio": "37v",
+  "height_m": 6.17
+ },
+ {
+  "object": "PLANT_013_f6v",
+  "folio": "6v",
+  "height_m": 2.18
+ },
+ {
+  "object": "PLANT_014_f94v-95r",
+  "folio": "94v-95r",
+  "height_m": 2.89
+ },
+ {
+  "object": "PLANT_015_f31r",
+  "folio": "31r",
+  "height_m": 4.54
+ },
+ {
+  "object": "PLANT_016_f16v",
+  "folio": "16v",
+  "height_m": 1.73
+ },
+ {
+  "object": "PLANT_017_f50r",
+  "folio": "50r",
+  "height_m": 3.02
+ },
+ {
+  "object": "PLANT_018_f90vp",
+  "folio": "90vp",
+  "height_m": 10.01
+ },
+ {
+  "object": "PLANT_019_f51v",
+  "folio": "51v",
+  "height_m": 2.42
+ },
+ {
+  "object": "PLANT_020_f29v",
+  "folio": "29v",
+  "height_m": 1.79
+ },
+ {
+  "object": "PLANT_021_f1v",
+  "folio": "1v",
+  "height_m": 4.07
+ },
+ {
+  "object": "PLANT_022_f31v",
+  "folio": "31v",
+  "height_m": 2.91
+ },
+ {
+  "object": "PLANT_023_f34v",
+  "folio": "34v",
+  "height_m": 1.37
+ },
+ {
+  "object": "PLANT_024_f23r",
+  "folio": "23r",
+  "height_m": 9.6
+ },
+ {
+  "object": "PLANT_025_f37r",
+  "folio": "37r",
+  "height_m": 1.75
+ },
+ {
+  "object": "PLANT_026_f2r",
+  "folio": "2r",
+  "height_m": 5.13
+ },
+ {
+  "object": "PLANT_027_f96r",
+  "folio": "96r",
+  "height_m": 4.15
+ },
+ {
+  "object": "PLANT_028_f8v",
+  "folio": "8v",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_029_f21r",
+  "folio": "21r",
+  "height_m": 2.15
+ },
+ {
+  "object": "PLANT_030_f39r",
+  "folio": "39r",
+  "height_m": 4.71
+ },
+ {
+  "object": "PLANT_031_f22v",
+  "folio": "22v",
+  "height_m": 2.49
+ },
+ {
+  "object": "PLANT_032_f65v",
+  "folio": "65v",
+  "height_m": 5.14
+ },
+ {
+  "object": "PLANT_033_f93r",
+  "folio": "93r",
+  "height_m": 4.36
+ },
+ {
+  "object": "PLANT_034_f93v",
+  "folio": "93v",
+  "height_m": 2.85
+ },
+ {
+  "object": "PLANT_035_f9r",
+  "folio": "9r",
+  "height_m": 2.51
+ },
+ {
+  "object": "PLANT_036_f41r",
+  "folio": "41r",
+  "height_m": 2.79
+ },
+ {
+  "object": "PLANT_037_f55v",
+  "folio": "55v",
+  "height_m": 2.55
+ },
+ {
+  "object": "PLANT_038_f49r",
+  "folio": "49r",
+  "height_m": 5.47
+ },
+ {
+  "object": "PLANT_039_f25r",
+  "folio": "25r",
+  "height_m": 4.62
+ },
+ {
+  "object": "PLANT_040_f24r",
+  "folio": "24r",
+  "height_m": 2.78
+ },
+ {
+  "object": "PLANT_041_f7v",
+  "folio": "7v",
+  "height_m": 5.11
+ },
+ {
+  "object": "PLANT_042_f7r",
+  "folio": "7r",
+  "height_m": 1.36
+ },
+ {
+  "object": "PLANT_043_f19r",
+  "folio": "19r",
+  "height_m": 4.6
+ },
+ {
+  "object": "PLANT_044_f32v",
+  "folio": "32v",
+  "height_m": 2.8
+ },
+ {
+  "object": "PLANT_045_f48r",
+  "folio": "48r",
+  "height_m": 5.33
+ },
+ {
+  "object": "PLANT_046_f34r",
+  "folio": "34r",
+  "height_m": 1.42
+ },
+ {
+  "object": "PLANT_047_f96v",
+  "folio": "96v",
+  "height_m": 2.16
+ },
+ {
+  "object": "PLANT_048_f36r",
+  "folio": "36r",
+  "height_m": 1.16
+ },
+ {
+  "object": "PLANT_049_f95vp",
+  "folio": "95vp",
+  "height_m": 4.33
+ },
+ {
+  "object": "PLANT_050_f35r",
+  "folio": "35r",
+  "height_m": 7.74
+ },
+ {
+  "object": "PLANT_051_f87r",
+  "folio": "87r",
+  "height_m": 2.77
+ },
+ {
+  "object": "PLANT_052_f13v",
+  "folio": "13v",
+  "height_m": 4.96
+ },
+ {
+  "object": "PLANT_053_f13r",
+  "folio": "13r",
+  "height_m": 1.9
+ },
+ {
+  "object": "PLANT_054_f22r",
+  "folio": "22r",
+  "height_m": 1.51
+ },
+ {
+  "object": "PLANT_055_f3r",
+  "folio": "3r",
+  "height_m": 5.21
+ },
+ {
+  "object": "PLANT_056_f49v",
+  "folio": "49v",
+  "height_m": 3.32
+ },
+ {
+  "object": "PLANT_057_f28r",
+  "folio": "28r",
+  "height_m": 3.25
+ },
+ {
+  "object": "PLANT_058_f30r",
+  "folio": "30r",
+  "height_m": 3.06
+ },
+ {
+  "object": "PLANT_059_f54v",
+  "folio": "54v",
+  "height_m": 1.9
+ },
+ {
+  "object": "PLANT_060_f42r",
+  "folio": "42r",
+  "height_m": 6.77
+ },
+ {
+  "object": "PLANT_061_f32r",
+  "folio": "32r",
+  "height_m": 7.26
+ },
+ {
+  "object": "PLANT_062_f20v",
+  "folio": "20v",
+  "height_m": 5.13
+ },
+ {
+  "object": "PLANT_063_f44r",
+  "folio": "44r",
+  "height_m": 2.81
+ },
+ {
+  "object": "PLANT_064_f56r",
+  "folio": "56r",
+  "height_m": 5.01
+ },
+ {
+  "object": "PLANT_065_f52v",
+  "folio": "52v",
+  "height_m": 2.28
+ },
+ {
+  "object": "PLANT_066_f45v",
+  "folio": "45v",
+  "height_m": 3.89
+ },
+ {
+  "object": "PLANT_067_f26r",
+  "folio": "26r",
+  "height_m": 4.86
+ },
+ {
+  "object": "PLANT_068_f42v",
+  "folio": "42v",
+  "height_m": 5.37
+ },
+ {
+  "object": "PLANT_069_f18r",
+  "folio": "18r",
+  "height_m": 1.31
+ },
+ {
+  "object": "PLANT_070_f5v",
+  "folio": "5v",
+  "height_m": 2.4
+ },
+ {
+  "object": "PLANT_071_f35v",
+  "folio": "35v",
+  "height_m": 1.83
+ },
+ {
+  "object": "PLANT_072_f33v",
+  "folio": "33v",
+  "height_m": 6.5
+ },
+ {
+  "object": "PLANT_073_f10v",
+  "folio": "10v",
+  "height_m": 2.08
+ },
+ {
+  "object": "PLANT_074_f15r",
+  "folio": "15r",
+  "height_m": 1.2
+ },
+ {
+  "object": "PLANT_075_f65r",
+  "folio": "65r",
+  "height_m": 4.01
+ },
+ {
+  "object": "PLANT_076_f51r",
+  "folio": "51r",
+  "height_m": 4.34
+ },
+ {
+  "object": "PLANT_077_f11r",
+  "folio": "11r",
+  "height_m": 7.47
+ },
+ {
+  "object": "PLANT_078_f16r",
+  "folio": "16r",
+  "height_m": 3.88
+ },
+ {
+  "object": "PLANT_079_f53r",
+  "folio": "53r",
+  "height_m": 5.36
+ },
+ {
+  "object": "PLANT_080_f36v",
+  "folio": "36v",
+  "height_m": 2.38
+ },
+ {
+  "object": "PLANT_081_f3v",
+  "folio": "3v",
+  "height_m": 2.44
+ },
+ {
+  "object": "PLANT_082_f8r",
+  "folio": "8r",
+  "height_m": 1.42
+ },
+ {
+  "object": "PLANT_083_f2v",
+  "folio": "2v",
+  "height_m": 5.17
+ },
+ {
+  "object": "PLANT_084_f48v",
+  "folio": "48v",
+  "height_m": 7.87
+ },
+ {
+  "object": "PLANT_085_f56v",
+  "folio": "56v",
+  "height_m": 3.84
+ },
+ {
+  "object": "PLANT_086_f24v",
+  "folio": "24v",
+  "height_m": 3.39
+ },
+ {
+  "object": "PLANT_087_f4r",
+  "folio": "4r",
+  "height_m": 4.27
+ },
+ {
+  "object": "PLANT_088_f54r",
+  "folio": "54r",
+  "height_m": 4.37
+ },
+ {
+  "object": "PLANT_089_f40r",
+  "folio": "40r",
+  "height_m": 4.21
+ },
+ {
+  "object": "PLANT_090_f18v",
+  "folio": "18v",
+  "height_m": 4.67
+ },
+ {
+  "object": "PLANT_091_f14r",
+  "folio": "14r",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_092_f21v",
+  "folio": "21v",
+  "height_m": 1.42
+ },
+ {
+  "object": "PLANT_093_f23v",
+  "folio": "23v",
+  "height_m": 4.5
+ },
+ {
+  "object": "PLANT_094_f14v",
+  "folio": "14v",
+  "height_m": 8.1
+ },
+ {
+  "object": "PLANT_095_f20r",
+  "folio": "20r",
+  "height_m": 1.73
+ },
+ {
+  "object": "PLANT_096_f47v",
+  "folio": "47v",
+  "height_m": 1.58
+ },
+ {
+  "object": "PLANT_097_f19v",
+  "folio": "19v",
+  "height_m": 2.26
+ },
+ {
+  "object": "PLANT_098_f53v",
+  "folio": "53v",
+  "height_m": 5.38
+ },
+ {
+  "object": "PLANT_099_f28v",
+  "folio": "28v",
+  "height_m": 2.57
+ },
+ {
+  "object": "PLANT_100_f27v",
+  "folio": "27v",
+  "height_m": 1.61
+ },
+ {
+  "object": "PLANT_101_f52r",
+  "folio": "52r",
+  "height_m": 2.65
+ },
+ {
+  "object": "PLANT_102_f90r",
+  "folio": "90r",
+  "height_m": 2.07
+ },
+ {
+  "object": "PLANT_103_f17v",
+  "folio": "17v",
+  "height_m": 4.69
+ },
+ {
+  "object": "PLANT_104_f6r",
+  "folio": "6r",
+  "height_m": 1.93
+ },
+ {
+  "object": "PLANT_105_f50v",
+  "folio": "50v",
+  "height_m": 4.4
+ },
+ {
+  "object": "PLANT_106_f47r",
+  "folio": "47r",
+  "height_m": 2.42
+ },
+ {
+  "object": "PLANT_107_f44v",
+  "folio": "44v",
+  "height_m": 1.66
+ },
+ {
+  "object": "PLANT_108_f43r",
+  "folio": "43r",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_109_f39v",
+  "folio": "39v",
+  "height_m": 4.65
+ },
+ {
+  "object": "PLANT_110_f5r",
+  "folio": "5r",
+  "height_m": 9.31
+ },
+ {
+  "object": "PLANT_111_f43v",
+  "folio": "43v",
+  "height_m": 3.06
+ },
+ {
+  "object": "PLANT_112_f15v",
+  "folio": "15v",
+  "height_m": 10.19
+ },
+ {
+  "object": "PLANT_113_f27r",
+  "folio": "27r",
+  "height_m": 8.03
+ },
+ {
+  "object": "PLANT_114_f41v",
+  "folio": "41v",
+  "height_m": 2.31
+ },
+ {
+  "object": "PLANT_115_f38r",
+  "folio": "38r",
+  "height_m": 3.06
+ },
+ {
+  "object": "PLANT_116_f17r",
+  "folio": "17r",
+  "height_m": 2.57
+ },
+ {
+  "object": "PLANT_117_f46r",
+  "folio": "46r",
+  "height_m": 5.38
+ },
+ {
+  "object": "PLANT_118_f46v",
+  "folio": "46v",
+  "height_m": 7.53
+ },
+ {
+  "object": "PLANT_119_f25v",
+  "folio": "25v",
+  "height_m": 1.95
+ },
+ {
+  "object": "PLANT_120_f45r",
+  "folio": "45r",
+  "height_m": 2.6
+ },
+ {
+  "object": "PLANT_121_f66v",
+  "folio": "66v",
+  "height_m": 5.05
+ },
+ {
+  "object": "PLANT_122_f94r",
+  "folio": "94r",
+  "height_m": 3.42
+ },
+ {
+  "object": "PLANT_123_f29r",
+  "folio": "29r",
+  "height_m": 3.78
+ },
+ {
+  "object": "PLANT_124_f30v",
+  "folio": "30v",
+  "height_m": 4.1
+ },
+ {
+  "object": "PLANT_125_f57r",
+  "folio": "57r",
+  "height_m": 4.14
+ },
+ {
+  "object": "PLANT_126_f40v",
+  "folio": "40v",
+  "height_m": 1.2
+ },
+ {
+  "object": "PLANT_127_f55r",
+  "folio": "55r",
+  "height_m": 2.58
+ },
+ {
+  "object": "PLANT_128_f95v",
+  "folio": "95v",
+  "height_m": 1.35
+ },
+ {
+  "object": "PLANT_129_f38v",
+  "folio": "38v",
+  "height_m": 3.4
+ },
+ {
+  "object": "PLANT_130_f10r",
+  "folio": "10r",
+  "height_m": 4.6
+ },
+ {
+  "object": "PLANT_131_f11v",
+  "folio": "11v",
+  "height_m": 8.12
+ },
+ {
+  "object": "PLANT_132_f37v",
+  "folio": "37v",
+  "height_m": 2.7
+ },
+ {
+  "object": "PLANT_133_f6v",
+  "folio": "6v",
+  "height_m": 4.04
+ },
+ {
+  "object": "PLANT_134_f94v-95r",
+  "folio": "94v-95r",
+  "height_m": 4.06
+ },
+ {
+  "object": "PLANT_135_f31r",
+  "folio": "31r",
+  "height_m": 4.37
+ },
+ {
+  "object": "PLANT_136_f16v",
+  "folio": "16v",
+  "height_m": 2.54
+ },
+ {
+  "object": "PLANT_137_f50r",
+  "folio": "50r",
+  "height_m": 10.48
+ },
+ {
+  "object": "PLANT_138_f90vp",
+  "folio": "90vp",
+  "height_m": 5.0
+ },
+ {
+  "object": "PLANT_139_f51v",
+  "folio": "51v",
+  "height_m": 1.19
+ },
+ {
+  "object": "PLANT_140_f29v",
+  "folio": "29v",
+  "height_m": 4.07
+ },
+ {
+  "object": "PLANT_141_f1v",
+  "folio": "1v",
+  "height_m": 1.41
+ },
+ {
+  "object": "PLANT_142_f31v",
+  "folio": "31v",
+  "height_m": 2.55
+ },
+ {
+  "object": "PLANT_143_f34v",
+  "folio": "34v",
+  "height_m": 4.48
+ },
+ {
+  "object": "PLANT_144_f23r",
+  "folio": "23r",
+  "height_m": 10.71
+ },
+ {
+  "object": "PLANT_145_f37r",
+  "folio": "37r",
+  "height_m": 1.21
+ },
+ {
+  "object": "PLANT_146_f2r",
+  "folio": "2r",
+  "height_m": 1.41
+ },
+ {
+  "object": "PLANT_147_f96r",
+  "folio": "96r",
+  "height_m": 7.51
+ },
+ {
+  "object": "PLANT_148_f8v",
+  "folio": "8v",
+  "height_m": 2.92
+ },
+ {
+  "object": "PLANT_149_f21r",
+  "folio": "21r",
+  "height_m": 5.07
+ },
+ {
+  "object": "PLANT_150_f39r",
+  "folio": "39r",
+  "height_m": 2.68
+ },
+ {
+  "object": "PLANT_151_f22v",
+  "folio": "22v",
+  "height_m": 2.46
+ },
+ {
+  "object": "PLANT_152_f65v",
+  "folio": "65v",
+  "height_m": 2.23
+ },
+ {
+  "object": "PLANT_153_f93r",
+  "folio": "93r",
+  "height_m": 4.92
+ },
+ {
+  "object": "PLANT_154_f93v",
+  "folio": "93v",
+  "height_m": 3.53
+ },
+ {
+  "object": "PLANT_155_f9r",
+  "folio": "9r",
+  "height_m": 2.02
+ },
+ {
+  "object": "PLANT_156_f41r",
+  "folio": "41r",
+  "height_m": 2.73
+ },
+ {
+  "object": "PLANT_157_f55v",
+  "folio": "55v",
+  "height_m": 4.89
+ },
+ {
+  "object": "PLANT_158_f49r",
+  "folio": "49r",
+  "height_m": 1.91
+ },
+ {
+  "object": "PLANT_159_f25r",
+  "folio": "25r",
+  "height_m": 4.73
+ },
+ {
+  "object": "PLANT_160_f24r",
+  "folio": "24r",
+  "height_m": 4.2
+ },
+ {
+  "object": "PLANT_161_f7v",
+  "folio": "7v",
+  "height_m": 1.59
+ },
+ {
+  "object": "PLANT_162_f7r",
+  "folio": "7r",
+  "height_m": 2.56
+ },
+ {
+  "object": "PLANT_163_f19r",
+  "folio": "19r",
+  "height_m": 5.11
+ },
+ {
+  "object": "PLANT_164_f32v",
+  "folio": "32v",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_165_f48r",
+  "folio": "48r",
+  "height_m": 1.86
+ },
+ {
+  "object": "PLANT_166_f34r",
+  "folio": "34r",
+  "height_m": 1.06
+ },
+ {
+  "object": "PLANT_167_f96v",
+  "folio": "96v",
+  "height_m": 1.84
+ },
+ {
+  "object": "PLANT_168_f36r",
+  "folio": "36r",
+  "height_m": 3.87
+ },
+ {
+  "object": "PLANT_169_f95vp",
+  "folio": "95vp",
+  "height_m": 2.54
+ },
+ {
+  "object": "PLANT_170_f35r",
+  "folio": "35r",
+  "height_m": 8.48
+ },
+ {
+  "object": "PLANT_171_f87r",
+  "folio": "87r",
+  "height_m": 1.21
+ },
+ {
+  "object": "PLANT_172_f13v",
+  "folio": "13v",
+  "height_m": 1.52
+ },
+ {
+  "object": "PLANT_173_f13r",
+  "folio": "13r",
+  "height_m": 2.59
+ },
+ {
+  "object": "PLANT_174_f22r",
+  "folio": "22r",
+  "height_m": 1.34
+ },
+ {
+  "object": "PLANT_175_f3r",
+  "folio": "3r",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_176_f49v",
+  "folio": "49v",
+  "height_m": 2.67
+ },
+ {
+  "object": "PLANT_177_f28r",
+  "folio": "28r",
+  "height_m": 4.27
+ },
+ {
+  "object": "PLANT_178_f30r",
+  "folio": "30r",
+  "height_m": 4.26
+ },
+ {
+  "object": "PLANT_179_f54v",
+  "folio": "54v",
+  "height_m": 1.59
+ },
+ {
+  "object": "PLANT_180_f42r",
+  "folio": "42r",
+  "height_m": 1.83
+ },
+ {
+  "object": "PLANT_181_f32r",
+  "folio": "32r",
+  "height_m": 2.25
+ },
+ {
+  "object": "PLANT_182_f20v",
+  "folio": "20v",
+  "height_m": 1.81
+ },
+ {
+  "object": "PLANT_183_f44r",
+  "folio": "44r",
+  "height_m": 2.1
+ },
+ {
+  "object": "PLANT_184_f56r",
+  "folio": "56r",
+  "height_m": 1.54
+ },
+ {
+  "object": "PLANT_185_f52v",
+  "folio": "52v",
+  "height_m": 2.66
+ },
+ {
+  "object": "PLANT_186_f45v",
+  "folio": "45v",
+  "height_m": 5.53
+ },
+ {
+  "object": "PLANT_187_f26r",
+  "folio": "26r",
+  "height_m": 1.57
+ },
+ {
+  "object": "PLANT_188_f42v",
+  "folio": "42v",
+  "height_m": 3.82
+ },
+ {
+  "object": "PLANT_189_f18r",
+  "folio": "18r",
+  "height_m": 3.76
+ },
+ {
+  "object": "PLANT_190_f5v",
+  "folio": "5v",
+  "height_m": 2.74
+ },
+ {
+  "object": "PLANT_191_f35v",
+  "folio": "35v",
+  "height_m": 2.53
+ },
+ {
+  "object": "PLANT_192_f33v",
+  "folio": "33v",
+  "height_m": 3.65
+ },
+ {
+  "object": "PLANT_193_f10v",
+  "folio": "10v",
+  "height_m": 3.34
+ },
+ {
+  "object": "PLANT_194_f15r",
+  "folio": "15r",
+  "height_m": 3.11
+ },
+ {
+  "object": "PLANT_195_f65r",
+  "folio": "65r",
+  "height_m": 4.24
+ },
+ {
+  "object": "PLANT_196_f51r",
+  "folio": "51r",
+  "height_m": 1.98
+ },
+ {
+  "object": "PLANT_197_f11r",
+  "folio": "11r",
+  "height_m": 4.51
+ },
+ {
+  "object": "PLANT_198_f16r",
+  "folio": "16r",
+  "height_m": 3.62
+ },
+ {
+  "object": "PLANT_199_f53r",
+  "folio": "53r",
+  "height_m": 2.38
+ },
+ {
+  "object": "PLANT_200_f36v",
+  "folio": "36v",
+  "height_m": 2.95
+ },
+ {
+  "object": "PLANT_201_f3v",
+  "folio": "3v",
+  "height_m": 5.28
+ },
+ {
+  "object": "PLANT_202_f8r",
+  "folio": "8r",
+  "height_m": 3.14
+ },
+ {
+  "object": "PLANT_203_f2v",
+  "folio": "2v",
+  "height_m": 1.34
+ },
+ {
+  "object": "PLANT_204_f48v",
+  "folio": "48v",
+  "height_m": 1.6
+ },
+ {
+  "object": "PLANT_205_f56v",
+  "folio": "56v",
+  "height_m": 6.12
+ },
+ {
+  "object": "PLANT_206_f24v",
+  "folio": "24v",
+  "height_m": 1.73
+ },
+ {
+  "object": "PLANT_207_f4r",
+  "folio": "4r",
+  "height_m": 5.42
+ },
+ {
+  "object": "PLANT_208_f54r",
+  "folio": "54r",
+  "height_m": 8.02
+ },
+ {
+  "object": "PLANT_209_f40r",
+  "folio": "40r",
+  "height_m": 1.4
+ },
+ {
+  "object": "PLANT_210_f18v",
+  "folio": "18v",
+  "height_m": 3.34
+ },
+ {
+  "object": "PLANT_211_f14r",
+  "folio": "14r",
+  "height_m": 2.73
+ },
+ {
+  "object": "PLANT_212_f21v",
+  "folio": "21v",
+  "height_m": 4.94
+ },
+ {
+  "object": "PLANT_213_f23v",
+  "folio": "23v",
+  "height_m": 1.51
+ },
+ {
+  "object": "PLANT_214_f14v",
+  "folio": "14v",
+  "height_m": 5.27
+ },
+ {
+  "object": "PLANT_215_f20r",
+  "folio": "20r",
+  "height_m": 1.63
+ },
+ {
+  "object": "PLANT_216_f47v",
+  "folio": "47v",
+  "height_m": 2.23
+ },
+ {
+  "object": "PLANT_217_f19v",
+  "folio": "19v",
+  "height_m": 1.72
+ },
+ {
+  "object": "PLANT_218_f53v",
+  "folio": "53v",
+  "height_m": 0.91
+ },
+ {
+  "object": "PLANT_219_f28v",
+  "folio": "28v",
+  "height_m": 2.18
+ },
+ {
+  "object": "PLANT_220_f27v",
+  "folio": "27v",
+  "height_m": 3.93
+ },
+ {
+  "object": "PLANT_221_f52r",
+  "folio": "52r",
+  "height_m": 2.21
+ },
+ {
+  "object": "PLANT_222_f90r",
+  "folio": "90r",
+  "height_m": 3.2
+ },
+ {
+  "object": "PLANT_223_f17v",
+  "folio": "17v",
+  "height_m": 9.97
+ },
+ {
+  "object": "PLANT_224_f6r",
+  "folio": "6r",
+  "height_m": 1.21
+ },
+ {
+  "object": "PLANT_225_f50v",
+  "folio": "50v",
+  "height_m": 10.37
+ },
+ {
+  "object": "PLANT_226_f47r",
+  "folio": "47r",
+  "height_m": 1.78
+ },
+ {
+  "object": "PLANT_227_f44v",
+  "folio": "44v",
+  "height_m": 2.03
+ },
+ {
+  "object": "PLANT_228_f43r",
+  "folio": "43r",
+  "height_m": 7.43
+ },
+ {
+  "object": "PLANT_229_f39v",
+  "folio": "39v",
+  "height_m": 3.45
+ },
+ {
+  "object": "PLANT_230_f5r",
+  "folio": "5r",
+  "height_m": 3.85
+ },
+ {
+  "object": "PLANT_231_f43v",
+  "folio": "43v",
+  "height_m": 5.27
+ },
+ {
+  "object": "PLANT_232_f15v",
+  "folio": "15v",
+  "height_m": 4.7
+ },
+ {
+  "object": "PLANT_233_f27r",
+  "folio": "27r",
+  "height_m": 2.6
+ },
+ {
+  "object": "PLANT_234_f41v",
+  "folio": "41v",
+  "height_m": 2.46
+ },
+ {
+  "object": "PLANT_235_f38r",
+  "folio": "38r",
+  "height_m": 6.22
+ },
+ {
+  "object": "PLANT_236_f17r",
+  "folio": "17r",
+  "height_m": 2.58
+ },
+ {
+  "object": "PLANT_237_f46r",
+  "folio": "46r",
+  "height_m": 1.34
+ },
+ {
+  "object": "PLANT_238_f46v",
+  "folio": "46v",
+  "height_m": 3.82
+ },
+ {
+  "object": "PLANT_239_f25v",
+  "folio": "25v",
+  "height_m": 9.99
+ },
+ {
+  "object": "PLANT_240_f45r",
+  "folio": "45r",
+  "height_m": 1.29
+ },
+ {
+  "object": "PLANT_241_f66v",
+  "folio": "66v",
+  "height_m": 0.9
+ },
+ {
+  "object": "PLANT_242_f94r",
+  "folio": "94r",
+  "height_m": 3.21
+ },
+ {
+  "object": "PLANT_243_f29r",
+  "folio": "29r",
+  "height_m": 10.13
+ },
+ {
+  "object": "PLANT_244_f30v",
+  "folio": "30v",
+  "height_m": 5.0
+ },
+ {
+  "object": "PLANT_245_f57r",
+  "folio": "57r",
+  "height_m": 1.45
+ },
+ {
+  "object": "PLANT_246_f40v",
+  "folio": "40v",
+  "height_m": 4.22
+ },
+ {
+  "object": "PLANT_247_f55r",
+  "folio": "55r",
+  "height_m": 4.05
+ },
+ {
+  "object": "PLANT_248_f95v",
+  "folio": "95v",
+  "height_m": 1.56
+ },
+ {
+  "object": "PLANT_249_f38v",
+  "folio": "38v",
+  "height_m": 1.67
+ },
+ {
+  "object": "PLANT_250_f10r",
+  "folio": "10r",
+  "height_m": 9.35
+ },
+ {
+  "object": "PLANT_251_f11v",
+  "folio": "11v",
+  "height_m": 1.23
+ },
+ {
+  "object": "PLANT_252_f37v",
+  "folio": "37v",
+  "height_m": 1.95
+ },
+ {
+  "object": "PLANT_253_f6v",
+  "folio": "6v",
+  "height_m": 1.54
+ },
+ {
+  "object": "PLANT_254_f94v-95r",
+  "folio": "94v-95r",
+  "height_m": 1.65
+ },
+ {
+  "object": "PLANT_255_f31r",
+  "folio": "31r",
+  "height_m": 4.77
+ },
+ {
+  "object": "PLANT_256_f16v",
+  "folio": "16v",
+  "height_m": 3.59
+ },
+ {
+  "object": "PLANT_257_f50r",
+  "folio": "50r",
+  "height_m": 5.42
+ },
+ {
+  "object": "PLANT_258_f90vp",
+  "folio": "90vp",
+  "height_m": 1.34
+ },
+ {
+  "object": "PLANT_259_f51v",
+  "folio": "51v",
+  "height_m": 2.78
+ },
+ {
+  "object": "PLANT_260_f29v",
+  "folio": "29v",
+  "height_m": 2.04
+ },
+ {
+  "object": "PLANT_261_f1v",
+  "folio": "1v",
+  "height_m": 1.0
+ },
+ {
+  "object": "PLANT_262_f31v",
+  "folio": "31v",
+  "height_m": 2.71
+ },
+ {
+  "object": "PLANT_263_f34v",
+  "folio": "34v",
+  "height_m": 5.18
+ },
+ {
+  "object": "PLANT_264_f23r",
+  "folio": "23r",
+  "height_m": 1.47
+ },
+ {
+  "object": "PLANT_265_f37r",
+  "folio": "37r",
+  "height_m": 1.63
+ },
+ {
+  "object": "PLANT_266_f2r",
+  "folio": "2r",
+  "height_m": 6.28
+ },
+ {
+  "object": "PLANT_267_f96r",
+  "folio": "96r",
+  "height_m": 2.9
+ },
+ {
+  "object": "PLANT_268_f8v",
+  "folio": "8v",
+  "height_m": 3.61
+ },
+ {
+  "object": "PLANT_269_f21r",
+  "folio": "21r",
+  "height_m": 3.2
+ },
+ {
+  "object": "PLANT_270_f39r",
+  "folio": "39r",
+  "height_m": 3.95
+ },
+ {
+  "object": "PLANT_271_f22v",
+  "folio": "22v",
+  "height_m": 2.78
+ },
+ {
+  "object": "PLANT_272_f65v",
+  "folio": "65v",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_273_f93r",
+  "folio": "93r",
+  "height_m": 5.92
+ },
+ {
+  "object": "PLANT_274_f93v",
+  "folio": "93v",
+  "height_m": 2.57
+ },
+ {
+  "object": "PLANT_275_f9r",
+  "folio": "9r",
+  "height_m": 2.05
+ },
+ {
+  "object": "PLANT_276_f41r",
+  "folio": "41r",
+  "height_m": 1.53
+ },
+ {
+  "object": "PLANT_277_f55v",
+  "folio": "55v",
+  "height_m": 1.76
+ },
+ {
+  "object": "PLANT_278_f49r",
+  "folio": "49r",
+  "height_m": 1.12
+ },
+ {
+  "object": "PLANT_279_f25r",
+  "folio": "25r",
+  "height_m": 1.64
+ },
+ {
+  "object": "PLANT_280_f24r",
+  "folio": "24r",
+  "height_m": 1.59
+ },
+ {
+  "object": "PLANT_281_f7v",
+  "folio": "7v",
+  "height_m": 2.05
+ },
+ {
+  "object": "PLANT_282_f7r",
+  "folio": "7r",
+  "height_m": 1.76
+ },
+ {
+  "object": "PLANT_283_f19r",
+  "folio": "19r",
+  "height_m": 4.61
+ },
+ {
+  "object": "PLANT_284_f32v",
+  "folio": "32v",
+  "height_m": 4.2
+ },
+ {
+  "object": "PLANT_285_f48r",
+  "folio": "48r",
+  "height_m": 2.9
+ },
+ {
+  "object": "PLANT_286_f34r",
+  "folio": "34r",
+  "height_m": 8.44
+ },
+ {
+  "object": "PLANT_287_f96v",
+  "folio": "96v",
+  "height_m": 2.39
+ },
+ {
+  "object": "PLANT_288_f36r",
+  "folio": "36r",
+  "height_m": 1.34
+ },
+ {
+  "object": "PLANT_289_f95vp",
+  "folio": "95vp",
+  "height_m": 2.68
+ },
+ {
+  "object": "PLANT_290_f35r",
+  "folio": "35r",
+  "height_m": 3.09
+ },
+ {
+  "object": "PLANT_291_f87r",
+  "folio": "87r",
+  "height_m": 2.21
+ },
+ {
+  "object": "PLANT_292_f13v",
+  "folio": "13v",
+  "height_m": 3.97
+ },
+ {
+  "object": "PLANT_293_f13r",
+  "folio": "13r",
+  "height_m": 1.99
+ },
+ {
+  "object": "PLANT_294_f22r",
+  "folio": "22r",
+  "height_m": 1.43
+ },
+ {
+  "object": "PLANT_295_f3r",
+  "folio": "3r",
+  "height_m": 3.32
+ },
+ {
+  "object": "PLANT_296_f49v",
+  "folio": "49v",
+  "height_m": 3.49
+ },
+ {
+  "object": "PLANT_297_f28r",
+  "folio": "28r",
+  "height_m": 1.31
+ },
+ {
+  "object": "PLANT_298_f30r",
+  "folio": "30r",
+  "height_m": 1.24
+ },
+ {
+  "object": "PLANT_299_f54v",
+  "folio": "54v",
+  "height_m": 1.63
+ },
+ {
+  "object": "PLANT_300_f42r",
+  "folio": "42r",
+  "height_m": 5.45
+ },
+ {
+  "object": "PLANT_301_f32r",
+  "folio": "32r",
+  "height_m": 3.83
+ },
+ {
+  "object": "PLANT_302_f20v",
+  "folio": "20v",
+  "height_m": 2.2
+ },
+ {
+  "object": "PLANT_303_f44r",
+  "folio": "44r",
+  "height_m": 1.4
+ },
+ {
+  "object": "PLANT_304_f56r",
+  "folio": "56r",
+  "height_m": 2.28
+ },
+ {
+  "object": "PLANT_305_f52v",
+  "folio": "52v",
+  "height_m": 2.06
+ },
+ {
+  "object": "PLANT_306_f45v",
+  "folio": "45v",
+  "height_m": 1.83
+ },
+ {
+  "object": "PLANT_307_f26r",
+  "folio": "26r",
+  "height_m": 5.49
+ },
+ {
+  "object": "PLANT_308_f42v",
+  "folio": "42v",
+  "height_m": 3.4
+ },
+ {
+  "object": "PLANT_309_f18r",
+  "folio": "18r",
+  "height_m": 2.76
+ },
+ {
+  "object": "PLANT_310_f5v",
+  "folio": "5v",
+  "height_m": 2.24
+ },
+ {
+  "object": "PLANT_311_f35v",
+  "folio": "35v",
+  "height_m": 6.17
+ },
+ {
+  "object": "PLANT_312_f33v",
+  "folio": "33v",
+  "height_m": 2.08
+ },
+ {
+  "object": "PLANT_313_f10v",
+  "folio": "10v",
+  "height_m": 5.25
+ },
+ {
+  "object": "PLANT_314_f15r",
+  "folio": "15r",
+  "height_m": 5.34
+ },
+ {
+  "object": "PLANT_315_f65r",
+  "folio": "65r",
+  "height_m": 5.28
+ },
+ {
+  "object": "PLANT_316_f51r",
+  "folio": "51r",
+  "height_m": 1.87
+ },
+ {
+  "object": "PLANT_317_f11r",
+  "folio": "11r",
+  "height_m": 1.95
+ },
+ {
+  "object": "PLANT_318_f16r",
+  "folio": "16r",
+  "height_m": 5.5
+ },
+ {
+  "object": "PLANT_319_f53r",
+  "folio": "53r",
+  "height_m": 8.29
+ },
+ {
+  "object": "PLANT_320_f36v",
+  "folio": "36v",
+  "height_m": 1.21
+ },
+ {
+  "object": "PLANT_321_f3v",
+  "folio": "3v",
+  "height_m": 4.14
+ },
+ {
+  "object": "PLANT_322_f8r",
+  "folio": "8r",
+  "height_m": 1.0
+ },
+ {
+  "object": "PLANT_323_f2v",
+  "folio": "2v",
+  "height_m": 4.96
+ },
+ {
+  "object": "PLANT_324_f48v",
+  "folio": "48v",
+  "height_m": 1.68
+ },
+ {
+  "object": "PLANT_325_f56v",
+  "folio": "56v",
+  "height_m": 3.01
+ },
+ {
+  "object": "PLANT_326_f24v",
+  "folio": "24v",
+  "height_m": 1.35
+ },
+ {
+  "object": "PLANT_327_f4r",
+  "folio": "4r",
+  "height_m": 3.88
+ },
+ {
+  "object": "PLANT_328_f54r",
+  "folio": "54r",
+  "height_m": 4.4
+ },
+ {
+  "object": "PLANT_329_f40r",
+  "folio": "40r",
+  "height_m": 1.33
+ },
+ {
+  "object": "PLANT_330_f18v",
+  "folio": "18v",
+  "height_m": 5.38
+ },
+ {
+  "object": "PLANT_331_f14r",
+  "folio": "14r",
+  "height_m": 1.03
+ },
+ {
+  "object": "PLANT_332_f21v",
+  "folio": "21v",
+  "height_m": 1.26
+ },
+ {
+  "object": "PLANT_333_f23v",
+  "folio": "23v",
+  "height_m": 9.35
+ },
+ {
+  "object": "PLANT_334_f14v",
+  "folio": "14v",
+  "height_m": 4.85
+ },
+ {
+  "object": "PLANT_335_f20r",
+  "folio": "20r",
+  "height_m": 5.45
+ },
+ {
+  "object": "PLANT_336_f47v",
+  "folio": "47v",
+  "height_m": 2.53
+ },
+ {
+  "object": "PLANT_337_f19v",
+  "folio": "19v",
+  "height_m": 2.46
+ },
+ {
+  "object": "PLANT_338_f53v",
+  "folio": "53v",
+  "height_m": 1.21
+ },
+ {
+  "object": "PLANT_339_f28v",
+  "folio": "28v",
+  "height_m": 2.28
+ },
+ {
+  "object": "PLANT_340_f27v",
+  "folio": "27v",
+  "height_m": 1.31
+ },
+ {
+  "object": "PLANT_341_f52r",
+  "folio": "52r",
+  "height_m": 0.96
+ },
+ {
+  "object": "PLANT_342_f90r",
+  "folio": "90r",
+  "height_m": 9.36
+ },
+ {
+  "object": "PLANT_343_f17v",
+  "folio": "17v",
+  "height_m": 1.11
+ },
+ {
+  "object": "PLANT_344_f6r",
+  "folio": "6r",
+  "height_m": 1.44
+ },
+ {
+  "object": "PLANT_345_f50v",
+  "folio": "50v",
+  "height_m": 2.53
+ },
+ {
+  "object": "PLANT_346_f47r",
+  "folio": "47r",
+  "height_m": 3.84
+ },
+ {
+  "object": "PLANT_347_f44v",
+  "folio": "44v",
+  "height_m": 1.36
+ },
+ {
+  "object": "PLANT_348_f43r",
+  "folio": "43r",
+  "height_m": 3.18
+ },
+ {
+  "object": "PLANT_349_f39v",
+  "folio": "39v",
+  "height_m": 5.01
+ },
+ {
+  "object": "PLANT_350_f5r",
+  "folio": "5r",
+  "height_m": 3.31
+ },
+ {
+  "object": "PLANT_351_f43v",
+  "folio": "43v",
+  "height_m": 7.13
+ },
+ {
+  "object": "PLANT_352_f15v",
+  "folio": "15v",
+  "height_m": 2.56
+ },
+ {
+  "object": "PLANT_353_f27r",
+  "folio": "27r",
+  "height_m": 1.74
+ },
+ {
+  "object": "PLANT_354_f41v",
+  "folio": "41v",
+  "height_m": 2.2
+ },
+ {
+  "object": "PLANT_355_f38r",
+  "folio": "38r",
+  "height_m": 4.34
+ },
+ {
+  "object": "PLANT_356_f17r",
+  "folio": "17r",
+  "height_m": 4.81
+ },
+ {
+  "object": "PLANT_357_f46r",
+  "folio": "46r",
+  "height_m": 4.37
+ },
+ {
+  "object": "PLANT_358_f46v",
+  "folio": "46v",
+  "height_m": 2.35
+ },
+ {
+  "object": "PLANT_359_f25v",
+  "folio": "25v",
+  "height_m": 2.11
+ },
+ {
+  "object": "PLANT_360_f45r",
+  "folio": "45r",
+  "height_m": 5.43
+ },
+ {
+  "object": "PLANT_361_f66v",
+  "folio": "66v",
+  "height_m": 7.76
+ },
+ {
+  "object": "PLANT_362_f94r",
+  "folio": "94r",
+  "height_m": 1.51
+ },
+ {
+  "object": "PLANT_363_f29r",
+  "folio": "29r",
+  "height_m": 2.82
+ },
+ {
+  "object": "PLANT_364_f30v",
+  "folio": "30v",
+  "height_m": 1.23
+ },
+ {
+  "object": "PLANT_365_f57r",
+  "folio": "57r",
+  "height_m": 1.01
+ },
+ {
+  "object": "PLANT_366_f40v",
+  "folio": "40v",
+  "height_m": 4.07
+ },
+ {
+  "object": "PLANT_367_f55r",
+  "folio": "55r",
+  "height_m": 2.17
+ },
+ {
+  "object": "PLANT_368_f95v",
+  "folio": "95v",
+  "height_m": 1.7
+ },
+ {
+  "object": "PLANT_369_f38v",
+  "folio": "38v",
+  "height_m": 1.2
+ },
+ {
+  "object": "PLANT_370_f10r",
+  "folio": "10r",
+  "height_m": 2.09
+ },
+ {
+  "object": "PLANT_371_f11v",
+  "folio": "11v",
+  "height_m": 2.21
+ },
+ {
+  "object": "PLANT_372_f37v",
+  "folio": "37v",
+  "height_m": 1.82
+ },
+ {
+  "object": "PLANT_373_f6v",
+  "folio": "6v",
+  "height_m": 3.01
+ },
+ {
+  "object": "PLANT_374_f94v-95r",
+  "folio": "94v-95r",
+  "height_m": 5.02
+ },
+ {
+  "object": "PLANT_375_f31r",
+  "folio": "31r",
+  "height_m": 2.13
+ },
+ {
+  "object": "PLANT_376_f16v",
+  "folio": "16v",
+  "height_m": 2.71
+ },
+ {
+  "object": "PLANT_377_f50r",
+  "folio": "50r",
+  "height_m": 4.33
+ },
+ {
+  "object": "PLANT_378_f90vp",
+  "folio": "90vp",
+  "height_m": 1.62
+ },
+ {
+  "object": "PLANT_379_f51v",
+  "folio": "51v",
+  "height_m": 5.68
+ },
+ {
+  "object": "PLANT_380_f29v",
+  "folio": "29v",
+  "height_m": 2.71
+ },
+ {
+  "object": "PLANT_381_f1v",
+  "folio": "1v",
+  "height_m": 4.86
+ },
+ {
+  "object": "PLANT_382_f31v",
+  "folio": "31v",
+  "height_m": 1.47
+ },
+ {
+  "object": "PLANT_383_f34v",
+  "folio": "34v",
+  "height_m": 1.43
+ },
+ {
+  "object": "PLANT_384_f23r",
+  "folio": "23r",
+  "height_m": 7.21
+ },
+ {
+  "object": "PLANT_385_f37r",
+  "folio": "37r",
+  "height_m": 4.85
+ },
+ {
+  "object": "PLANT_386_f2r",
+  "folio": "2r",
+  "height_m": 4.38
+ },
+ {
+  "object": "PLANT_387_f96r",
+  "folio": "96r",
+  "height_m": 1.05
+ },
+ {
+  "object": "PLANT_388_f8v",
+  "folio": "8v",
+  "height_m": 1.88
+ },
+ {
+  "object": "PLANT_389_f21r",
+  "folio": "21r",
+  "height_m": 3.6
+ },
+ {
+  "object": "PLANT_390_f39r",
+  "folio": "39r",
+  "height_m": 2.24
+ },
+ {
+  "object": "PLANT_391_f22v",
+  "folio": "22v",
+  "height_m": 1.82
+ },
+ {
+  "object": "PLANT_392_f65v",
+  "folio": "65v",
+  "height_m": 2.29
+ },
+ {
+  "object": "PLANT_393_f93r",
+  "folio": "93r",
+  "height_m": 1.47
+ },
+ {
+  "object": "PLANT_394_f93v",
+  "folio": "93v",
+  "height_m": 2.0
+ },
+ {
+  "object": "PLANT_395_f9r",
+  "folio": "9r",
+  "height_m": 3.8
+ },
+ {
+  "object": "PLANT_396_f41r",
+  "folio": "41r",
+  "height_m": 6.84
+ },
+ {
+  "object": "PLANT_397_f55v",
+  "folio": "55v",
+  "height_m": 1.52
+ },
+ {
+  "object": "PLANT_398_f49r",
+  "folio": "49r",
+  "height_m": 1.49
+ },
+ {
+  "object": "PLANT_399_f25r",
+  "folio": "25r",
+  "height_m": 3.58
+ },
+ {
+  "object": "PLANT_400_f24r",
+  "folio": "24r",
+  "height_m": 1.84
+ },
+ {
+  "object": "PLANT_401_f7v",
+  "folio": "7v",
+  "height_m": 2.59
+ },
+ {
+  "object": "PLANT_402_f7r",
+  "folio": "7r",
+  "height_m": 1.27
+ },
+ {
+  "object": "PLANT_403_f19r",
+  "folio": "19r",
+  "height_m": 2.63
+ },
+ {
+  "object": "PLANT_404_f32v",
+  "folio": "32v",
+  "height_m": 6.38
+ },
+ {
+  "object": "PLANT_405_f48r",
+  "folio": "48r",
+  "height_m": 2.47
+ },
+ {
+  "object": "PLANT_406_f34r",
+  "folio": "34r",
+  "height_m": 0.9
+ },
+ {
+  "object": "PLANT_407_f96v",
+  "folio": "96v",
+  "height_m": 1.28
+ },
+ {
+  "object": "PLANT_408_f36r",
+  "folio": "36r",
+  "height_m": 1.79
+ },
+ {
+  "object": "PLANT_409_f95vp",
+  "folio": "95vp",
+  "height_m": 9.4
+ },
+ {
+  "object": "PLANT_410_f35r",
+  "folio": "35r",
+  "height_m": 1.69
+ },
+ {
+  "object": "PLANT_411_f87r",
+  "folio": "87r",
+  "height_m": 3.14
+ },
+ {
+  "object": "PLANT_412_f13v",
+  "folio": "13v",
+  "height_m": 1.37
+ },
+ {
+  "object": "PLANT_413_f13r",
+  "folio": "13r",
+  "height_m": 1.1
+ },
+ {
+  "object": "PLANT_414_f22r",
+  "folio": "22r",
+  "height_m": 4.88
+ },
+ {
+  "object": "PLANT_415_f3r",
+  "folio": "3r",
+  "height_m": 3.51
+ },
+ {
+  "object": "PLANT_416_f49v",
+  "folio": "49v",
+  "height_m": 6.12
+ },
+ {
+  "object": "PLANT_417_f28r",
+  "folio": "28r",
+  "height_m": 1.44
+ },
+ {
+  "object": "PLANT_418_f30r",
+  "folio": "30r",
+  "height_m": 2.21
+ },
+ {
+  "object": "PLANT_419_f54v",
+  "folio": "54v",
+  "height_m": 3.45
+ },
+ {
+  "object": "PLANT_420_f42r",
+  "folio": "42r",
+  "height_m": 4.05
+ },
+ {
+  "object": "PLANT_421_f32r",
+  "folio": "32r",
+  "height_m": 2.28
+ },
+ {
+  "object": "PLANT_422_f20v",
+  "folio": "20v",
+  "height_m": 1.93
+ },
+ {
+  "object": "PLANT_423_f44r",
+  "folio": "44r",
+  "height_m": 4.67
+ },
+ {
+  "object": "PLANT_424_f56r",
+  "folio": "56r",
+  "height_m": 10.36
+ },
+ {
+  "object": "PLANT_425_f52v",
+  "folio": "52v",
+  "height_m": 5.32
+ },
+ {
+  "object": "PLANT_426_f45v",
+  "folio": "45v",
+  "height_m": 3.03
+ },
+ {
+  "object": "PLANT_427_f26r",
+  "folio": "26r",
+  "height_m": 4.47
+ },
+ {
+  "object": "PLANT_428_f42v",
+  "folio": "42v",
+  "height_m": 1.15
+ },
+ {
+  "object": "PLANT_429_f18r",
+  "folio": "18r",
+  "height_m": 0.91
+ },
+ {
+  "object": "NYMPH_0_75r_1",
+  "folio": "75r",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_1_75r_3",
+  "folio": "75r",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_2_75r_4",
+  "folio": "75r",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_3_76v_0",
+  "folio": "76v",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_4_76v_1",
+  "folio": "76v",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_5_76v_2",
+  "folio": "76v",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_6_76v_3",
+  "folio": "76v",
+  "height_m": 1.5
+ },
+ {
+  "object": "NYMPH_7_77r_2",
+  "folio": "77r",
+  "height_m": 1.5
+ },
+ {
+  "object": "FISH_0",
+  "folio": "70v2",
+  "height_m": 0.55
+ },
+ {
+  "object": "FISH_1",
+  "folio": "70v2",
+  "height_m": 0.55
+ },
+ {
+  "object": "FISH_2",
+  "folio": "70v2",
+  "height_m": 0.55
+ },
+ {
+  "object": "FISH_3",
+  "folio": "70v2",
+  "height_m": 0.55
+ },
+ {
+  "object": "RAM_0",
+  "folio": "70v1",
+  "height_m": 1.25
+ },
+ {
+  "object": "RAM_1",
+  "folio": "71r",
+  "height_m": 1.25
+ },
+ {
+  "object": "RAM_2",
+  "folio": "70v1",
+  "height_m": 1.25
+ },
+ {
+  "object": "RAM_3",
+  "folio": "71r",
+  "height_m": 1.25
+ },
+ {
+  "object": "ARCHER",
+  "folio": "73v",
+  "height_m": 1.9
+ },
+ {
+  "object": "CREATURE_76v",
+  "folio": "76v",
+  "height_m": 0.85
+ }
+]
