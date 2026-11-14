@@ -731,3 +731,21 @@ Three readings remain for the pair: once in contact (eo777); one skin cut in two
 What would separate the three readings (none done): raking-light or in-hand check of whether the f21 dent is the mirror hollow of the f5 fold, and on
 which faces; whether leaves f6-f20 carry a fading dent at the same spot; hair/flesh side and thickness of the two sheets.
 P(survives 60d): "f5 fold and f21 dent sit at the same place and lean the same way" 75%; "they were once in contact" 30%; "one skin cut in two" 25%.
+
+## PHASE 14 PRE-REGISTRATION (2026-11-14 15:45, Ed: "is it the same across all herbal sections?"). Seed 20261207. 2014 darkness D_net, single-panel pages.
+Per quire, per hand and per Currier language: same-sheet leaf gap against re-pairing leaves within the quire (and within the subgroup).
+Descriptive split, not a new claim. HETEROGENEITY test: spread (SD) of per-quire effect, null = shuffle quire labels over sheets' (gap minus quire null mean).
+"NOT THE SAME" only if heterogeneity z >= 3. A subgroup is called present if its own ratio >= 2, otherwise "inconclusive at this power" (n stated).
+
+## PHASE 14 RESULTS (2026-11-14 15:50): the shared-sheet result, split across the herbal quires
+All herbal (22 sheets): effect 0.075, null SD 0.014, ratio 5.41.
+Per quire (4 sheets each): C effect 0.126, null SD 0.043, ratio 2.93; D 0.036, 0.016, 2.27; E 0.070, 0.031, 2.29; F 0.063, 0.031, 2.01; G 0.120, 0.043, 2.82.
+ Quires A (2 sheets measurable), B (1), H (1), Q (1): too few to test. Mean same-sheet gap: A 0.045, B 0.066, C 0.034, D 0.042, E 0.053, F 0.068, G 0.048, H 0.021, Q 0.072.
+Front half A-D (10 sheets): ratio 3.37. Back half E-H (12): ratio 4.09.
+HETEROGENEITY across quires: spread 0.039 v 0.031 expected, null SD 0.009, z 0.87 -> no sign that it differs between quires.
+By hand / language: hand 1 = Currier A (16 sheets) effect 0.082, null SD 0.019, ratio 4.27.
+ Currier B herbal sheets (4): INCONCLUSIVE AT THIS POWER, effect -0.001, null SD 0.005, ratio -0.18. Those four are all so alike (null gap 0.034) that
+ a same-sheet likeness has no room to show. Hand 2 alone: 2 testable sheets.
+READING: every herbal quire that can be tested shows it at about the same strength. It is a Herbal A / hand 1 result; Herbal B cannot be judged.
+Power per quire not measured (4 sheets each); the per-quire ratios of 2.0-2.9 are each weak alone.
+P(survives 60d): "present in each of quires C-G" 65%; "same strength across herbal quires" 50% (weak test).

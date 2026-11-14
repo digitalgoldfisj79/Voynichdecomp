@@ -1,0 +1,152 @@
+{
+ "herbal_all": {
+  "n": 22,
+  "obs": 0.0486,
+  "null_mean": 0.1233,
+  "null_sd": 0.0138,
+  "effect": 0.0747,
+  "ratio": 5.41
+ },
+ "quire_A": {
+  "n": 2
+ },
+ "quire_B": {
+  "n": 0
+ },
+ "quire_C": {
+  "n": 4,
+  "obs": 0.0336,
+  "null_mean": 0.1593,
+  "null_sd": 0.0429,
+  "effect": 0.1257,
+  "ratio": 2.93
+ },
+ "quire_D": {
+  "n": 4,
+  "obs": 0.0421,
+  "null_mean": 0.0777,
+  "null_sd": 0.0157,
+  "effect": 0.0356,
+  "ratio": 2.27
+ },
+ "quire_E": {
+  "n": 4,
+  "obs": 0.0528,
+  "null_mean": 0.1226,
+  "null_sd": 0.0305,
+  "effect": 0.0698,
+  "ratio": 2.29
+ },
+ "quire_F": {
+  "n": 4,
+  "obs": 0.0678,
+  "null_mean": 0.1309,
+  "null_sd": 0.0314,
+  "effect": 0.0631,
+  "ratio": 2.01
+ },
+ "quire_G": {
+  "n": 4,
+  "obs": 0.0483,
+  "null_mean": 0.1687,
+  "null_sd": 0.0427,
+  "effect": 0.1204,
+  "ratio": 2.82
+ },
+ "quire_H": {
+  "n": 0
+ },
+ "quire_Q": {
+  "n": 0
+ },
+ "hand_1": {
+  "n": 16,
+  "obs": 0.0575,
+  "null_mean": 0.1388,
+  "null_sd": 0.0191,
+  "effect": 0.0813,
+  "ratio": 4.26
+ },
+ "hand_2": {
+  "n": 2
+ },
+ "hand_5": {
+  "n": 0
+ },
+ "currier_A": {
+  "n": 16,
+  "obs": 0.0575,
+  "null_mean": 0.1391,
+  "null_sd": 0.0191,
+  "effect": 0.0816,
+  "ratio": 4.27
+ },
+ "currier_B": {
+  "n": 4,
+  "obs": 0.0347,
+  "null_mean": 0.0339,
+  "null_sd": 0.0048,
+  "effect": -0.0009,
+  "ratio": -0.18
+ },
+ "quires_A_to_D": {
+  "n": 10,
+  "obs": 0.0394,
+  "null_mean": 0.1027,
+  "null_sd": 0.0188,
+  "effect": 0.0633,
+  "ratio": 3.37
+ },
+ "quires_E_to_H": {
+  "n": 12,
+  "obs": 0.0563,
+  "null_mean": 0.1402,
+  "null_sd": 0.0205,
+  "effect": 0.0839,
+  "ratio": 4.09
+ },
+ "heterogeneity_across_quires": {
+  "obs_sd": 0.0388,
+  "null_mean": 0.0309,
+  "null_sd": 0.0091,
+  "z": 0.87
+ },
+ "per_quire_mean_gap": {
+  "A": [
+   2,
+   0.045
+  ],
+  "B": [
+   1,
+   0.066
+  ],
+  "C": [
+   4,
+   0.034
+  ],
+  "D": [
+   4,
+   0.042
+  ],
+  "E": [
+   4,
+   0.053
+  ],
+  "F": [
+   4,
+   0.068
+  ],
+  "G": [
+   4,
+   0.048
+  ],
+  "H": [
+   1,
+   0.021
+  ],
+  "Q": [
+   1,
+   0.072
+  ]
+ }
+}
