@@ -686,3 +686,15 @@ NEW, BY EYE, UNVERIFIED: both creases meet the bottom edge at about the same dis
  a stack would look like (eo777). Measuring the other creased leaves (f15, f29, f32, f37) would separate the two: a stack crease should sit at the same
  place on all of them; a cut-sheet crease only on the pair.
 Files: crease_highres/crease_f5r_f21r_600dpi.jpg, crease_highres/crease_f5v_600dpi.jpg.
+
+## PHASE 13b: crease position on the other creased leaves (2026-11-14 15:30). EYEBALL on 600 dpi rectos with a mm ruler drawn on (crease_highres/ruler_*.jpg).
+Fixed beforehand: a crease pressed through a stack should meet the bottom edge at the same place on every leaf (within my ~3 mm reading error);
+a crease across a cut between two sheets should match only within that pair.
+Distance from the fore-edge where the crease meets the bottom edge (crease identification: sure / unsure):
+ f5r  49 mm (sure)      f21r 50 mm (sure)      f29r 66 mm (sure; leans to fore-edge like the other two)
+ f15r about 99 mm (unsure which faint line is the crease)   f32r about 24 mm (unsure; several diagonal wrinkles)   f37r about 118 mm (fairly sure; near the gutter)
+Leaf widths differ (f5 about 148 mm, f21 about 160 mm), so from the GUTTER the f5 and f21 creases are about 99 and 110 mm: they match from the fore-edge only.
+READING: no common position across the six -> NOT one crease pressed through an aligned stack of these leaves. f5 and f21 match each other (49 v 50 mm) and
+ no other leaf matches them. That is what Stolfi's pair claim predicts, but with six leaves the chance that SOME pair matches within 3 mm by luck is large
+ (roughly 60%); for his named pair alone it is roughly 6%. Suggestive for the pair, nothing more. Three of six crease identifications are unsure.
+P(survives 60d): "the six creases are not one stack crease at a common position" 65%; "f5 and f21 creases are the same crease" 35%.
