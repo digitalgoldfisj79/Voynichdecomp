@@ -1,0 +1,77 @@
+Writing the decision rule to the results file first, then re-deriving with my own code; analysis6.py, phase9.py and the log stay closed until I have numbers. One disclosure: I read analysis6.py in the last round, so I cannot unsee it, but nothing below reuses it.
+
+The same-sheet half reproduces and is robust as a measurement, but it is not shown to be ink; the facing-pages "no" is a test without power, not an absence.
+
+The decision rule was written to the results file before any attack ran. Departures are listed at the end.
+
+## 1. Re-derivation (own code)
+
+| Test | Sheets / pairs | Observed | Null mean | Null SD | z | Claimed z |
+|---|---|---|---|---|---|---|
+| Same sheet, single-panel pages | 33 | 0.0573 | 0.1082 | 0.0102 | 4.99 | 5.18 |
+| Same sheet, fold-out panels left in | 37 | 0.0567 | 0.1105 | 0.0104 | 5.15 | 5.18 |
+| Fore-edge half | 33 | 0.0681 | 0.1141 | 0.0109 | 4.21 | 4.60 |
+| Facing, as claimed | 49 | 0.1296 | 0.1224 | 0.0105 | -0.68 | -0.57 |
+| Facing, different sheets only | 45 | 0.1338 | 0.1224 | 0.0110 | -1.03 | n/a |
+
+- **Match:** yes on every z, within 0.5.
+- **Two description errors:** the 37 sheets need fold-out panel pages, which the claim says are excluded. Four of the 49 "different sheet" facing pairs are same-sheet centre spreads (f20v/f21r, f36v/f37r, f44v/f45r, f79v/f80r).
+
+## 2. Three most damaging problems
+
+**A. The shared signal is entangled with edge softness, which follows the face of the skin.**
+- Adjusted for the edge-softness reading at leaf level: effect 0.0179, null SD 0.0083, ratio 2.16.
+- Inconclusive at this power on the sheet-level slope: effect 0.0168, null SD 0.0085, ratio 1.99.
+- That fall is not lost power. A planted sheet signal independent of edge softness, at the observed size, is caught 99–100% after adjustment, with median z 5.3–5.4.
+- Edge softness is itself shared by the two leaves: effect 0.0406, null SD 0.0116, ratio 3.52.
+- On 22 complete sheets, its page gap is 0.083 on the same face of the flat sheet, 0.174 on the opposite face and 0.178 between recto and verso of one leaf. Opposite minus same: effect 0.0901, null SD 0.0282, ratio 3.20.
+- Darkness shows the same pattern more weakly: effect 0.0251, null SD 0.0108, ratio 2.31.
+- I cannot tell confound from over-control. Hair/flesh surface and "each face inked in one sitting" both predict this.
+
+**B. It is a herbal-quire result, not a whole-manuscript one.**
+- Herbal quires (22 sheets): effect 0.0741, null SD 0.0139, ratio 5.33.
+- Inconclusive at this power for the balneo and stars quires M and T (11 sheets): effect 0.0048, null SD 0.0123, ratio 0.39.
+- A whole-book-size plant there is caught 46% at z ≥ 3 and 86% at z ≥ 2.
+
+**C. The facing-pages "no" has no power.**
+- Inconclusive at this power: effect -0.0114, null SD 0.0110, ratio -1.03 (45 pairs).
+- Against random different-sheet pairs it is -0.0031, null SD 0.0134, ratio -0.23.
+- A planted facing similarity as large as the real same-sheet one is caught only 39% at z ≥ 3.
+- The smallest size caught 80% is 1.5 within-quire page SDs.
+
+## 3. What I could not break
+
+- **Parchment tone:** adjusting for background B leaves z at 4.99; ink luminance without dividing by parchment gives 4.01.
+- **Photography:** 2004 alone gives z 3.73. Pairing leaf a from one campaign with leaf b from the other gives effect 0.274, null SD 0.063, ratio 4.37.
+- **Stricter nulls:** within quire × hand 3.91 (29 sheets); nesting-adjacent partners 6.16; herbal hand-1 sheets only 4.17.
+- **The null you would not like:** Inconclusive at this power within quire × eo777 text cluster: effect 0.0092, null SD 0.0073, ratio 1.26 (22 sheets). It catches the plant only 43.5%, so by my rule it cannot falsify.
+- **Fragility:** leave-one-sheet-out 4.33–5.40; leave-one-quire-out 4.14–5.37; removing the three most influential sheets leaves 3.37, five leaves 2.09.
+- **Multiplicity:** 400,000 shuffles give p = 5.0e-6, and 0.0017 after multiplying by 340.
+
+## 4. Verdict against the rule
+
+- **Half 1:** not confirmed, not cleanly falsified. Only the edge-softness criterion fires, and only on the sheet-level slope (1.99 against 2.16 at leaf level).
+- **Half 2:** fails the power condition (39% against the 80% required), so absence is not shown.
+
+## 5. Probability of surviving 60 days (judgment, unverified)
+
+| Statement | P |
+|---|---|
+| Same-sheet leaves alike in measured darkness, herbal quires | 80% |
+| Same, for the whole manuscript | 35% |
+| The shared thing is ink darkness, separable from edge softness or skin side | 25% |
+| Facing pages: no detection will stand | 75% |
+| Facing pages are truly not alike | 35% |
+
+## What I am uncertain about
+
+- **Hair or flesh:** I have no record of which side of each sheet is which, so the skin-surface reading is untested. It needs codicological data, not more statistics.
+- **Face result is post-hoc:** the face gaps, scope split and different-sheet facing null were added after the rule was written. They need re-running cold.
+- **Plant sizes:** "observed size" was set at 1.6–2.0 within-quire SDs by matching median z; a different plant shape would shift the power figures.
+- **M and T:** 11 sheets; 46% power at z ≥ 3 is not enough to call absence there.
+- **Discarded test:** removing quire × cluster means gave z 0.89; I threw it out because those groups are mostly single sheets, which removes the effect by construction.
+- **Not reopened:** phase9.py and the log were not opened this round, but I read the log and analysis6.py in round one, so I am not blind to them.
+
+Files are in this chat:
+- RESULTS_claim2_conjugates.md
+- claim2_code_and_tables.zip

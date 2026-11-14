@@ -1,0 +1,110 @@
+{
+ "all_pages_as_I_ran_it": {
+  "n": 37,
+  "obs": 0.0565,
+  "null_mean": 0.1101,
+  "null_sd": 0.0104,
+  "effect": 0.0536,
+  "ratio": 5.14
+ },
+ "single_panel_only": {
+  "n": 33,
+  "obs": 0.057,
+  "null_mean": 0.1082,
+  "null_sd": 0.0103,
+  "effect": 0.0512,
+  "ratio": 4.97
+ },
+ "focus_adjusted_page_level": {
+  "n": 33,
+  "obs": 0.0604,
+  "null_mean": 0.0932,
+  "null_sd": 0.0083,
+  "effect": 0.0329,
+  "ratio": 3.98
+ },
+ "slope_leaf": -0.556,
+ "focus_adjusted_leaf_slope": {
+  "n": 33,
+  "obs": 0.067,
+  "null_mean": 0.0888,
+  "null_sd": 0.0082,
+  "effect": 0.0218,
+  "ratio": 2.66
+ },
+ "slope_sheet": -0.559,
+ "focus_adjusted_sheet_slope": {
+  "n": 33,
+  "obs": 0.0672,
+  "null_mean": 0.0891,
+  "null_sd": 0.0081,
+  "effect": 0.0219,
+  "ratio": 2.69
+ },
+ "focus_reading_itself_shared": {
+  "n": 33,
+  "obs": 0.0681,
+  "null_mean": 0.1,
+  "null_sd": 0.0101,
+  "effect": 0.0319,
+  "ratio": 3.16
+ },
+ "herbal_quires_only": {
+  "n": 22,
+  "obs": 0.0486,
+  "null_mean": 0.1235,
+  "null_sd": 0.014,
+  "effect": 0.0749,
+  "ratio": 5.36
+ },
+ "quires_M_T_only": {
+  "n": 11,
+  "obs": 0.0738,
+  "null_mean": 0.0782,
+  "null_sd": 0.0124,
+  "effect": 0.0044,
+  "ratio": 0.35
+ },
+ "quires_in_test": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "M",
+  "O",
+  "Q",
+  "S",
+  "T"
+ ],
+ "faces_sig": {
+  "n": 22,
+  "same_face": 0.075,
+  "opp_face": 0.173,
+  "recto_verso": 0.172,
+  "opp_minus_same": 0.0978,
+  "null_sd": 0.0274,
+  "ratio": 3.57
+ },
+ "faces_D_net": {
+  "n": 22,
+  "same_face": 0.069,
+  "opp_face": 0.095,
+  "recto_verso": 0.081,
+  "opp_minus_same": 0.0253,
+  "null_sd": 0.0112,
+  "ratio": 2.26
+ },
+ "facing_pairs": {
+  "n": 49,
+  "same_sheet": [
+   "f20v/f21r",
+   "f36v/f37r",
+   "f44v/f45r",
+   "f79v/f80r"
+  ]
+ }
+}

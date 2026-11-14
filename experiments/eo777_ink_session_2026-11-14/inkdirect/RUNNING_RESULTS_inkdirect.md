@@ -1,4 +1,22 @@
 ## RETRACTIONS / DOWNGRADES / REVISIONS (kept at top) -- newest first
+- 2026-11-14 15:00 SECOND FRESH-CHAT REVIEW, of "the two leaves of a sheet share ink darkness; facing pages do not" (findings I2, I3).
+  Report: DEMOLITION_REPORT_2_conjugates_fresh_chat_2026-11-14.txt. My re-run: demolition2_verify.json. Reviewer reproduced every z within 0.5.
+  * SCOPE CUT: it is a HERBAL-quire result. Herbal quires (22 sheets): effect 0.075, null SD 0.014, ratio 5.36. Quires M and T (11 sheets): inconclusive
+    at this power, effect 0.004, null SD 0.012, ratio 0.35 (reviewer: a whole-book-size plant caught 46% there). "Whole manuscript" withdrawn.
+  * NOT SHOWN TO BE INK: after removing the edge-softness reading the effect falls from 0.051 to about 0.02 (my specs: ratio 2.7 to 4.0; reviewer's: 2.16
+    leaf level, 1.99 sheet level). Reviewer shows that fall is not lost power (independent plant still caught 99-100%). The edge-softness reading is
+    itself shared by the two leaves (ratio 3.2 mine, 3.5 reviewer) and follows the FACE of the flat sheet: page gap 0.075 same face, 0.173 opposite face,
+    0.172 recto/verso of one leaf (ratio 3.57 mine, 3.20 reviewer; 22 complete sheets). Skin surface (hair/flesh) and "each face inked at one sitting"
+    both predict this; not separable without codicological data.
+  * RETRACTED: "facing pages do not share ink" as an absence. The test has no power: a planted facing similarity as large as the real same-sheet one
+    is caught 39% (reviewer). It is a non-detection only.
+  * MY DESCRIPTION ERRORS, confirmed: the 37-sheet figure includes fold-out panel pages (33 sheets without, z 4.97); 4 of my 49 "different-sheet"
+    facing pairs are same-sheet centre spreads (f20v/f21r, f36v/f37r, f44v/f45r, f79v/f80r).
+  * SURVIVED: parchment tone (z 4.99 after adjusting; 4.01 on ink luminance alone); photography (2004 alone z 3.73; cross-campaign pairing ratio 4.37);
+    stricter nulls 3.9-6.2; leave-one-quire-out 4.1-5.4; multiplicity (p 5e-6, 0.0017 after x340). Within quire x eo777 cluster: ratio 1.26 but that
+    null catches a plant only 43.5%, so it cannot falsify.
+  P(survives 60d), reviewer's: same-sheet leaves alike in measured darkness, herbal quires 80%; whole manuscript 35%; that it is ink, separable from
+  edge softness or skin side 25%; facing pages truly not alike 35%. I adopt these.
 - 2026-11-14 14:40 FRESH-CHAT DEMOLITION of "ink darkness is smoother along Path 1 than chance" (finding I5). Report: DEMOLITION_REPORT_fresh_chat_2026-11-14.txt.
   I re-ran its main points against the sheet file (demolition_verify.json) and they hold:
   * RETRACTED: "his order has physical support" / "Path 1 tracks ink" as an ORDER result. With eo777's own text-cluster code added to the null, Path 1 is
