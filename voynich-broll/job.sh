@@ -12,9 +12,9 @@ cd "$(dirname "$0")"
 export VW_WORK=/work; mkdir -p /work
 python build.py 2>&1 | tail -1
 T0=$(date +%s)
-P=${VW_PARTS:-4}                      # render processes sharing the one graphics card
+P=${VW_PARTS:-1}                      # render processes sharing the one graphics card
 for k in $(seq 0 $((P-1))); do
-  VW_PART=$k/$P python render.py $A $B $W $SPP /work/frames 2>&1 | grep --line-buffered -E "^frame [0-9]*00$|DEVICE|rror|Traceback" &
+  VW_PART=$k/$P python render.py $A $B $W $SPP /work/frames 2>&1 | grep --line-buffered -E "^frame|DEVICE|rror|Traceback" &
 done
 wait
 T1=$(date +%s); N=$(ls /work/frames | wc -l); echo "RENDERED $N frames in $((T1-T0)) s"
