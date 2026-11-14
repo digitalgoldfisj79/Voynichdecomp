@@ -1,0 +1,161 @@
+{
+ "herbal_hand1_cluster_sizes": {
+  "1a": 10,
+  "1b": 8,
+  "1.5a": 5,
+  "2a": 1
+ },
+ "K1_familywise_herbal_hand1": {
+  "clusters": [
+   "1a",
+   "1b",
+   "1.5a"
+  ],
+  "obs_1b_minus_1a": 0.1532,
+  "largest_pair_obs": 0.1532,
+  "null_sd_of_max": 0.0411,
+  "p_fw": 0.05635
+ },
+ "K1_familywise_all_pairs_manuscript": {
+  "n_pairs": 3,
+  "pairs": [
+   "H|1:1.5a-1b",
+   "H|1:1.5a-1a",
+   "H|1:1b-1a"
+  ],
+  "p_fw_for_1b_1a": 0.05769
+ },
+ "K1_power_plant_0.15": 0.27666666666666667,
+ "K2_omnibus_clusters_within_section_hand": {
+  "n_sheets": 48,
+  "obs": 0.2222,
+  "null_mean": 0.0929,
+  "null_sd": 0.0467,
+  "z": 2.77,
+  "p": 0.0099
+ },
+ "K3_raw": {
+  "diff": 0.1532,
+  "null_sd": 0.05,
+  "ratio": 3.06
+ },
+ "K3_focus_adjusted_sheet_level": {
+  "diff": 0.068,
+  "null_sd": 0.0485,
+  "ratio": 1.4
+ },
+ "K3_parchment_adjusted": {
+  "diff": 0.1305,
+  "null_sd": 0.0445,
+  "ratio": 2.93
+ },
+ "K3_focus_and_parchment_adjusted": {
+  "diff": 0.0608,
+  "null_sd": 0.0479,
+  "ratio": 1.27
+ },
+ "K3_focus_adjusted_within_1a1b_only": {
+  "diff": 0.1067,
+  "null_sd": 0.0448,
+  "ratio": 2.38
+ },
+ "K3_leave_one_out": {
+  "min": [
+   2.88,
+   "A:4-5"
+  ],
+  "max": [
+   3.18,
+   "D:27-30"
+  ]
+ },
+ "K3_focus_reading_1b_minus_1a": {
+  "diff": -0.1447,
+  "null_sd": 0.0695,
+  "ratio": -2.08
+ },
+ "K4_2014_stroke_width": {
+  "n": 18,
+  "diff": 0.079,
+  "null_sd": 0.0479,
+  "ratio": 1.65
+ },
+ "K4_2014_ink_amount": {
+  "n": 18,
+  "diff": 0.2195,
+  "null_sd": 0.0793,
+  "ratio": 2.77
+ },
+ "K4_2004_darkness": {
+  "n": 18,
+  "diff": 0.1619,
+  "null_sd": 0.051,
+  "ratio": 3.18
+ },
+ "K4_2004_stroke_width": {
+  "n": 18,
+  "diff": 0.0758,
+  "null_sd": 0.0718,
+  "ratio": 1.06
+ },
+ "K4_2004_ink_amount": {
+  "n": 18,
+  "diff": 0.3227,
+  "null_sd": 0.1116,
+  "ratio": 2.89
+ },
+ "K5_mixed_sheets": {
+  "n": 1
+ },
+ "K5_page_cluster_counts_in_1a1b_sheets": {
+  "1a": 32,
+  "1b": 18,
+  "1.5a": 1
+ },
+ "K6_page_level_sheet_label_shuffle": {
+  "n_pages": 50,
+  "diff": 0.1431,
+  "null_sd": 0.0503,
+  "ratio": 2.85
+ },
+ "sheets": {
+  "1a": [
+   "A:1-8",
+   "A:2-7",
+   "A:4-5",
+   "C:20-21",
+   "D:25-32",
+   "D:27-30",
+   "D:28-29",
+   "E:35-38",
+   "F:42-47",
+   "G:49-56"
+  ],
+  "1b": [
+   "B:10-15",
+   "B:11-14",
+   "B:12-13",
+   "B:9-16",
+   "C:18-23",
+   "C:19-22",
+   "E:36-37",
+   "F:44-45"
+  ]
+ },
+ "quires": {
+  "1a": {
+   "A": 3,
+   "D": 3,
+   "C": 1,
+   "E": 1,
+   "F": 1,
+   "G": 1
+  },
+  "1b": {
+   "B": 4,
+   "C": 2,
+   "E": 1,
+   "F": 1
+  }
+ }
+}

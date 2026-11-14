@@ -587,3 +587,32 @@ focus reading itself along Path 1: z 1.78. Reviewer points NOT re-run by me: ran
 Unaffected by the demolition (not attacked): sheets share ink (I2), facing pages do not (I3), parchment follows binding (I4), two campaigns agree (I1).
 But note the reviewer's point B also touches I2: darkness and the focus reading are entangled at sheet level; I2 has not been re-tested with a
 sheet-level focus adjustment.
+
+## PHASE 11 PRE-REGISTRATION (2026-11-14 14:30, Ed: "it's either true or it's not"). Claim: sheets in eo777 text cluster 1b have darker ink than 1a.
+No meaning asserted. The discovery number (2014 sheet darkness, +0.153, ratio 3.05) is NOT counted as confirmation. Seed 20261204.
+K1 FAMILY-WISE: herbal hand 1, clusters with >= 4 sheets. Statistic = largest |difference| between any two clusters. Null: shuffle cluster labels over sheets.
+   Also the same for 1b v 1a alone when ALL cluster pairs in the manuscript (within section x hand, >= 4 sheets each) are counted.
+K2 OMNIBUS: do his clusters explain sheet darkness at all, within section x hand? Between-cluster sum of squares, labels shuffled within strata.
+K3 ROBUSTNESS of 1b - 1a: after sheet-level adjustment for focus reading; for parchment brightness; for both; leave-one-sheet-out minimum.
+K4 OTHER PHOTOGRAPHS / OTHER MEASURES: 1b - 1a on 2004 darkness (instrument not valid there: sensitivity), and on ink amount and stroke width in both campaigns.
+K5 INSIDE A SHEET: sheets holding pages of both clusters (his clusters are assigned per page): paired difference, sign-flip. Only if >= 5 such sheets.
+K6 PAGE LEVEL with sheets kept whole: 1b - 1a over pages, null shuffles the cluster label of whole sheets.
+Power: plant +0.15 on label-shuffled sheets; detection at the K1 threshold.
+VERDICT RULE: TRUE AS MEASURED if K1 family-wise p < 0.01 AND every K3 ratio >= 2 with leave-one-out minimum >= 2 AND K4 2004 darkness same sign with
+ratio >= 2. NOT ESTABLISHED if any of those fails; say which. FALSE only if the sign reverses in K4 or K3 falls below ratio 1.
+
+## PHASE 11 RESULTS (2026-11-14 14:45): is "cluster 1b darker than 1a" true as measured?
+Sheets: 1a = 10 (quires A x3, D x3, C, E, F, G); 1b = 8 (quire B x4, C x2, E, F). Herbal hand 1 also has 1.5a x5, 2a x1.
+K1 family-wise (3 cluster pairs, herbal hand 1): observed largest gap = 1b - 1a = 0.153; p_fw 0.056 (all-manuscript version: the same 3 pairs, 0.058).
+   FAILS the 0.01 bar. Power: a planted 0.15 gap reaches that bar only 28% of the time -> the bar was beyond this sample.
+K2 omnibus, clusters within section x hand (48 sheets): z 2.77, p 0.0099.
+K3 robustness: raw +0.153, null SD 0.050, ratio 3.06; parchment-adjusted 2.93; leave-one-out 2.88-3.18.
+   Focus-adjusted at sheet level (fit over all sheets): +0.068, null SD 0.049, ratio 1.40 -> FAILS (>= 2 needed). Fit inside 1a/1b only: ratio 2.38.
+   The focus reading itself differs: 1b reads 0.145 sharper (null SD 0.070, ratio -2.08).
+K4 other photographs and measures: 2004 darkness +0.162, null SD 0.051, ratio 3.18 (instrument not valid there) -> PASSES the sign/ratio check.
+   Ink amount: 2014 ratio 2.77; 2004 ratio 2.89. Stroke width: 1.65 and 1.06 (inconclusive at this power).
+K5 inside a sheet: only 1 sheet holds both clusters -> cannot be run. K6 page level, whole-sheet label shuffle (50 pages): ratio 2.85.
+VERDICT BY THE RULE: NOT ESTABLISHED. Fails K1 (family-wise p 0.056) and the K3 focus adjustment (ratio 1.40). Not false: same sign on both photograph
+sets, in darkness and ink amount, and never below ratio 1.
+UNTESTED: half of 1b is quire B. "1b darker" and "quire B darker" are not separated (4 non-B sheets in 1b: too few).
+P(survives 60d): "1b sheets measure darker than 1a on these photographs" 60%; "that is ink, not edge sharpness or quire" 25%.
