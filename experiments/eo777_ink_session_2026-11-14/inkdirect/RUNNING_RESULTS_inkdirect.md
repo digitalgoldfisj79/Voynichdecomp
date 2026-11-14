@@ -698,3 +698,22 @@ READING: no common position across the six -> NOT one crease pressed through an 
  no other leaf matches them. That is what Stolfi's pair claim predicts, but with six leaves the chance that SOME pair matches within 3 mm by luck is large
  (roughly 60%); for his named pair alone it is roughly 6%. Suggestive for the pair, nothing more. Three of six crease identifications are unsure.
 P(survives 60d): "the six creases are not one stack crease at a common position" 65%; "f5 and f21 creases are the same crease" 35%.
+
+## PHASE 13c: BACK TO THE ORIGINAL CLAIM (2026-11-14 15:35, Ed: "it was f5 and f21"). I had drifted to "six creases in a pile".
+eo777's opening claim (thread-6299, re-read from the start of this chat): f5 has a real fold-back crease at the bottom edge; with the book closed it lines up
+with a dent on f21 of the same size and depth; so the two leaves once lay together. The wider nine-leaf set was a second, looser claim.
+What the 600 dpi open-page scans say about THAT claim (eyeball):
+ * POSITION: f5 fold 49 mm and f21 dent 50 mm from the fore-edge, both leaning 8-10 degrees the same way. His match is confirmed on images independent of
+   his closed-book model. (From the spine they read about 99 v 110 mm; my leaf-width readings are poor.)
+ * CHARACTER: f5 is a sharp fold about 0.5 mm wide; f21 is a soft raised wrinkle about 1.5-2 mm wide. A fold pressing into a neighbour would look like that.
+ * NEIGHBOURS NOW: relief strips of f6r-f20r (crease_highres/relief_*.jpg). f6 and f7, which lie against f5 today, show no fold at that position.
+   Soft dents on the leaves in between cannot be judged: the strips do not even show f21's own dent clearly. So "pressure through the present binding"
+   is neither shown nor excluded by me. (On day one I thought his tail-edge photo showed the dip running through the leaves between; unverified.)
+ * Both leaves are the second leaf of the CENTRE sheet of their quire (A:4-5, C:20-21).
+Three readings remain for the pair: once in contact (eo777); one skin cut in two (Stolfi); coincidence (about 6% for a named pair at +-3 mm).
+ * HIS TEXT ORDER: C:20-21 is rank 7 and A:4-5 rank 9 of 50 sheets in Path 1 (same on paths 2-4); label-free ranks 16 and 12. Near, not adjacent
+   (E:35-38 sits between). Both are his text cluster 1a (f5v is 1b).
+ * INK: sheet darkness gap between the two is 0.04, at the 17th percentile of herbal hand-1 pairs: closer than most, not remarkable. One pair.
+What would separate the three readings (none done): raking-light or in-hand check of whether the f21 dent is the mirror hollow of the f5 fold, and on
+which faces; whether leaves f6-f20 carry a fading dent at the same spot; hair/flesh side and thickness of the two sheets.
+P(survives 60d): "f5 fold and f21 dent sit at the same place and lean the same way" 75%; "they were once in contact" 30%; "one skin cut in two" 25%.
