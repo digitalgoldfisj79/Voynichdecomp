@@ -1,4 +1,18 @@
 ## RETRACTIONS / DOWNGRADES / REVISIONS (kept at top) -- newest first
+- 2026-11-14 14:40 FRESH-CHAT DEMOLITION of "ink darkness is smoother along Path 1 than chance" (finding I5). Report: DEMOLITION_REPORT_fresh_chat_2026-11-14.txt.
+  I re-ran its main points against the sheet file (demolition_verify.json) and they hold:
+  * RETRACTED: "his order has physical support" / "Path 1 tracks ink" as an ORDER result. With eo777's own text-cluster code added to the null, Path 1 is
+    0.0964 vs 0.1124, null SD 0.0087, ratio 1.83 -> inconclusive at this power. Inside herbal hand 1, within clusters: ratio 1.15.
+    What is left is a GROUP difference: cluster 1b sheets are 0.153 log units darker than 1a (null SD 0.050, ratio 3.05; 8 v 10 sheets; post hoc).
+  * RETRACTED: "not produced by language or strata" (U3). I tested Currier A/B and section x hand only, never his clusters.
+  * NOT SPECIFIC TO PATH 1: his paths 2, 3, 4 give z 3.13, 3.46, 2.47.
+  * DOWNGRADED: "survives focus adjustment (z 2.39)". That adjustment was at word level. Adjusted at sheet level: 0.118 vs 0.122, null SD 0.0086, ratio 0.43.
+    Sheet darkness and the focus reading correlate -0.60. Over-control vs confound not separated (reviewer's and my caveat).
+  * FRAGILE: H:58-65 sits in a stratum with six quire-T sheets; given its own stratum z 2.97; dropping it alone z 2.65; dropping the three most
+    influential sheets z 2.50 by my choice of three (reviewer reports 2.00 with theirs).
+  * MULTIPLE TESTING: reviewer counts 340 z/p-bearing results in the session, 44 keyed to Path 1; the registered primary measure for the order
+    hypothesis (stroke width) gave z -0.11 and darkness was the third measure tried. I had not corrected for this anywhere.
+  P(survives 60d) revised: literal statement 45% (was 55%); "Path 1 carries ink information beyond his text clusters" 15%.
 - 2026-11-14 14:30 RETRACTED: "the Path 1 direction correlation (+0.48) has the sign a singulion sequence predicts ... a hint" (Phase 10). The J2 statistic
   caught a planted sequence 0-1.5% of the time at every size up to 16x: it cannot respond. Instrument failed; the number means nothing.
 - 2026-11-14 13:50 REVISION of "the ink neither confirms nor contradicts his order" (my 10:40 summary): on the 2014 photographs ink DARKNESS is smoother
@@ -563,3 +577,13 @@ U5 (a) repo visibility: see line below. (b) re-download f20r from both sources: 
    along binding z 4.10, against 4.92 / 3.49 / 4.05 logged -> reproduces within permutation noise.
 P(survives 60d) revised: ink darkness smoother along Path 1 than chance 55% (was 50%).
    U5(a): repo digitalgoldfisj79/Voynichdecomp is PUBLIC (default branch main). The archive branch is therefore publicly readable.
+
+## DEMOLITION VERIFICATION (2026-11-14 14:40) -- my re-run of the fresh chat's points on phase6_sheets.csv, seed 20261203
+Base (section x hand): z 3.65. + eo777 cluster in the null: z 1.83 (reviewer 1.89). Clusters among the 48 sheets: 1a 10, 1b 8, 1.5a 5, 3c 5, 4a 5, 2a 4,
+3b 4, 3a 4, 4c 2, 6 1. Herbal hand 1: plain shuffle z 2.32; within cluster z 1.15 (reviewer 1.13). 1b minus 1a: +0.153, null SD 0.050, ratio 3.05.
+Paths 2/3/4: z 3.13 / 3.46 / 2.47. H:58-65 own stratum: z 2.97 (reviewer 2.92). Single most influential sheet H:58-65: z 2.65 without it.
+Drop three most influential (H:58-65, O:88-89, T:107-112): z 2.50 (reviewer 2.00, different three). Sheet-level focus adjustment: z 0.43 (reviewer 0.44);
+focus reading itself along Path 1: z 1.78. Reviewer points NOT re-run by me: random-covariate calibration, glyph-leak check, Bonferroni counts.
+Unaffected by the demolition (not attacked): sheets share ink (I2), facing pages do not (I3), parchment follows binding (I4), two campaigns agree (I1).
+But note the reviewer's point B also touches I2: darkness and the focus reading are entangled at sheet level; I2 has not been re-tested with a
+sheet-level focus adjustment.

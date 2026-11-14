@@ -1,0 +1,67 @@
+Re-deriving from the word-level file with my own code first; I'm not opening the session log, analysis6.py or any prior notes on this strand until I have my own numbers.
+
+The numbers reproduce, but the claim does not survive as an ordering result: it reduces to one difference between eo777's own text clusters, and its "focus-adjusted" support is weaker than quoted.
+
+## 1. Re-derivation (my code, before reading analysis6.py or the log)
+
+| Order | Variable | Observed | Null mean | Null SD | z |
+|---|---|---|---|---|---|
+| Path 1 | raw darkness, sheet median | 0.0373 | 0.0515 | 0.0039 | 3.58 |
+| Binding | raw darkness, sheet median | 0.0544 | 0.0559 | 0.0043 | 0.34 |
+| Path 1 | log darkness, glyph-adjusted | 0.0960 | 0.1333 | 0.0102 | 3.66 |
+| Binding | log darkness, glyph-adjusted | 0.1413 | 0.1406 | 0.0108 | -0.06 |
+
+- **Match:** yes, within permutation noise (ten seeds give 3.57–3.74).
+- **Mislabel:** the claimed 0.0964 and 0.1337 are not in "darkness (0–1)" units. They are log darkness with glyph counts regressed out, which the claim text does not say.
+
+## 2. Three most damaging problems
+
+**A. It is a group difference, not an order.**
+- Inconclusive at this power: with eo777's own text-cluster code added to the null, Path 1 is 0.0960 against 0.1121, null SD 0.0085, ratio 1.89.
+- Inside herbal hand 1 alone it is 0.1065 against 0.1243, null SD 0.0157, ratio 1.13.
+- What remains is one contrast: cluster 1b sheets are 0.152 log units darker than 1a (null SD 0.050, ratio 3.06, 8 against 10 sheets).
+- Paths 2, 3 and 4 give z 3.12, 3.62 and 2.52, so nothing is specific to Path 1.
+- The session's check tested only Currier A/B, not his clusters, so "not produced by language" does not cover this.
+- Caveat: this null was not on my pre-registered list; it is post-hoc on my side. Power not measured.
+
+**B. "Darkness" is not separable from the edge-softness reading, and the quoted 2.39 under-corrects.**
+
+- Sheet darkness and the focus reading correlate at -0.61.
+- The slope is -0.10 within a page, -0.26 over pooled words (what the 2.39 adjustment used) and -0.65 between sheets.
+- Inconclusive at this power: adjusted at sheet level, Path 1 is 0.1167 against 0.1205, null SD 0.0086, ratio 0.44.
+- I could not show that collapse is specific to focus: random covariates with the same correlation give z 1.69 on average (SD 0.92), and 0.44 sits at their 9th percentile.
+- The reading correlates 0.76 between the 2004 and 2014 photographs, so it is mostly a page property, not camera focus. I failed to show a photographic artefact.
+
+**C. Few sheets, a bad stratum and many tests.**
+- H:58-65 (quire H) is shuffled against six quire-T sheets. Given its own stratum, z falls to 2.92.
+- Dropping the three most influential of 48 sheets gives z 2.00; dropping four gives 1.70.
+- The session holds 340 z- or p-bearing results, 44 keyed to Path 1. The permutation p sits at its floor of 1/3001.
+- Bonferroni gives 0.015–0.029 over the 44 and 0.11–0.23 over the 340.
+- By the log, the order hypothesis's registered primary measure (stroke width) gave z -0.11; darkness was the third measure tried.
+
+## 3. What I could not break
+
+- **Glyph leak:** text-predicted darkness has a neighbour gap of 0.0079, twelve times smaller than the darkness gap (null SD 0.0007, ratio 1.76); removing word identity leaves z 3.59.
+- **Layout and parchment:** removing parchment brightness, words per page, token count, coverage or box height leaves z 3.4–3.7.
+- **Registered stricter nulls:** within quire 3.59; section × hand × Currier 2.92; section × hand × quire 2.48.
+
+## 4. Probability it survives 60 days (judgment, unverified)
+
+- **Literal statement** (smoother than section × hand chance on Path 1, not on binding): 50%.
+- **"This is darkness specifically":** 25%.
+- **"Path 1 carries ink order information beyond his text clusters":** 15%.
+
+Against my own pre-registration, the confirm rule (survive all five checks) is not met, and a clean falsification is not achieved either.
+
+## What I am uncertain about
+
+- **Cluster null:** it may over-control. If his clusters are themselves writing batches, conditioning on them removes real signal. I have not planted a known sequence to measure what this null can detect.
+- **Focus adjustment:** over-control and confound are not distinguished. The 9th-percentile figure comes from one calibration design.
+- **Path 1 against binding:** the two z values were never tested against each other; "smooth on one, not the other" is two separate tests.
+- **Not re-derived:** the 2004-photograph replication (z 2.79 in the log), the word-selection step (11,309 of roughly 38,900 words) and the image measurements themselves. I used the supplied word file as given.
+- **Duplicates:** 841 rows share a measurement with another row; removing them moved z by 0.06.
+- **Access:** nothing was inaccessible. I loaded the repo's phase5.pkl only for the 2004 focus readings.
+
+Files are in this chat:
+- RESULTS_demolition.md
+- demolition_code_and_tables.zip
