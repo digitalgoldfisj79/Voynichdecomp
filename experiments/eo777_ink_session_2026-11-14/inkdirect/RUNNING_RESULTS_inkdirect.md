@@ -667,3 +667,22 @@ M2 crease six, parchment brightness: 2014 z -0.32 (null SD 0.0074); 2004 z 1.58 
 VERDICT: Stolfi's same-skin claim for f4+f5 and f20+f21 CANNOT be tested with these measurements. Not supported, not contradicted.
 What his point does change (no test needed): if the creases predate the drawing, they are evidence about vellum stock, not about writing order.
 P(survives 60d): "page-level parchment brightness from these photographs cannot identify same-skin pairs" 75%.
+
+## PHASE 13: HIGH-RESOLUTION VISUAL CHECK of the f5 and f21 creases (2026-11-14 15:20). 2004 SID TIFFs, 600 dpi, viewed 1:1. EYEBALL, not a test.
+No pre-registration possible for looking; what would count was fixed before opening the crops: Stolfi predicts drawn outlines run across the crease
+without a step. A step of 1 mm or more would count against him.
+f5r: crease is a single sharp ridge about 0.5 mm wide, leaning ~10 degrees towards the fore-edge going down, meeting the bottom edge roughly 49 mm from the
+ fore-edge. The dotted root line crosses it; nearest marks either side sit within about 0.1-0.5 mm of the same height (2-12 px). No step of 1 mm.
+ One thin root outline stops at the crease and I cannot find its continuation on the other side.
+ An attempt to measure the offset by fitting the dots failed: ink dots and crease shadow cannot be separated at this resolution.
+f5v: the same crease shows as a dark line (dirt or shadow in the valley). The long brown root tip tapers out about 1 mm short of it and does not cross.
+f21r: crease is a raised wrinkle about 1.5-2 mm wide, leaning ~8 degrees towards the fore-edge going down, meeting the bottom edge roughly 50 mm from the
+ fore-edge. A stem with coils and a painted leaf run across it with no visible break or step.
+f21v: only show-through reaches the crease; nothing to judge.
+READING: Stolfi's OBSERVATION holds on these scans (outlines aligned across both creases). His INFERENCE (so the crease predates the drawing) does not
+ follow from alignment alone: a pressed crease or wrinkle hides no material, so a later one would not offset the lines either. Undecided.
+NEW, BY EYE, UNVERIFIED: both creases meet the bottom edge at about the same distance from the fore-edge (49 v 50 mm, my reading error about +-3 mm) and
+ lean the same way. That is what one crease running across a cut between two sheets would look like (Stolfi), and also what one crease pressed through
+ a stack would look like (eo777). Measuring the other creased leaves (f15, f29, f32, f37) would separate the two: a stack crease should sit at the same
+ place on all of them; a cut-sheet crease only on the pair.
+Files: crease_highres/crease_f5r_f21r_600dpi.jpg, crease_highres/crease_f5v_600dpi.jpg.
