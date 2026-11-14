@@ -1,4 +1,6 @@
 ## RETRACTIONS / DOWNGRADES / REVISIONS (kept at top) -- newest first
+- 2026-11-14 14:30 RETRACTED: "the Path 1 direction correlation (+0.48) has the sign a singulion sequence predicts ... a hint" (Phase 10). The J2 statistic
+  caught a planted sequence 0-1.5% of the time at every size up to 16x: it cannot respond. Instrument failed; the number means nothing.
 - 2026-11-14 13:50 REVISION of "the ink neither confirms nor contradicts his order" (my 10:40 summary): on the 2014 photographs ink DARKNESS is smoother
   along Path 1 than chance within section x hand (z 3.79; 3.49 after removing parchment brightness; focus/width-adjusted 2.39), and not along the binding
   order (z -0.08). The earlier "ink amount" downgrade (same-word z 2.22) stands as written; darkness is a different, calibrated measure. One campaign,
@@ -532,3 +534,32 @@ VERDICT: INCONCLUSIVE AT THIS POWER on every order. A seamless singulion join al
  and with zero measured power it is a hint only (unverified).
 P(survives 60d): "no seamless ink join between consecutive Path 1 sheets" 70%; singulion sequence along Path 1 -- no estimate.
 Files: phase10.py, phase10_results.json, phase10_results_table.csv.
+
+## UNCERTAINTY CHECKS (2026-11-14 14:15, Ed: "Run your uncertainty") -- registered before running. Seed 20261202.
+U1 How big must a run-on be to be seen? Phase 10 join and direction tests, Path 1, planted walk at 1x, 2x, 4x, 8x, 16x within-sheet SD. Report the smallest
+   size caught >= 80%. No new verdict on the manuscript.
+U2 Why do 20 of 48 sheets drop out of the join test? Count the cause. Sensitivity (variant, not the registered test): pages with >= 8 words instead of >= 20.
+U3 Is the Path 1 darkness result driven by Currier language / strata? Same D7 statistic inside herbal hand 1 only (all language A), plain shuffle null.
+   Holds if z >= 2; planted power reported (shuffle, then re-impose the observed order's smoothness is not possible, so power = share of 500 shuffles
+   reaching the observed gap after adding the full-sample effect size).
+U4 One campaign: D7 on the 2004 darkness (instrument NOT valid there; sensitivity only). Same sign and z >= 2 = not specific to the 2014 photography.
+U5 Archive: (a) repo visibility; (b) re-download one 2004 TIFF and one 2014 PNG and compare sha256 with the stored values; (c) rerun db1_bounding.py from a
+   copy of the GitHub folder in a clean directory (eo777 repos still taken from the workspace) and compare z values.
+
+## UNCERTAINTY CHECK RESULTS (2026-11-14 14:30)
+U1 size needed to be seen (Path 1, planted walk over the reading sequence, within-sheet SD = 0.066): join test caught 0.5% / 1.5% / 11.5% / 62% / 96% at
+   1x / 2x / 4x / 8x / 16x. Smallest size caught >= 80%: between 8x and 16x, i.e. far larger than any real within-sheet variation.
+   Direction test (J2): caught 0-1.5% at EVERY size -> the J2 statistic does not respond to a planted sequence at all. INSTRUMENT FAILED.
+   RETRACTION: the "+0.48 direction hint" on Path 1 (Phase 10) is withdrawn; a statistic with a flat calibration curve carries no information.
+U2 dropped joins: of 86 join pages, 74 usable, 10 have fewer than 20 clean words, 1 has no boxes, 1 fails the registration rule. Variant with >= 8 words:
+   37 joins, singulion join gain 0.009, null SD 0.013, z 0.70; direction z 1.67 (void, see U1). Same answer.
+   CORRECTION: I wrote "20 of 48 sheets drop out"; it is 19 of 47 joins (12 from missing join pages, the rest from too few comparison pairs).
+U3 inside herbal hand 1 only (24 sheets, all Currier A): Path 1 gap 0.107 vs 0.147, null SD 0.0175, z 2.28 -> HOLDS (>= 2), weaker on half the sheets.
+   Label-free z 0.98; binding z -0.60. The Path 1 darkness result is not produced by language or by the section x hand strata.
+U4 2004 darkness (instrument not valid there): Path 1 z 2.79 (null SD 0.011), binding z -0.26. 2014 recomputed here: 3.59 / -0.08.
+   Same sign, >= 2 -> not specific to the 2014 photography. Sensitivity only.
+U5 (a) repo visibility: see line below. (b) re-download f20r from both sources: sha256 MATCH for the 2004 TIFF and the 2014 PNG.
+   (c) clean-directory rerun of db1_bounding.py from the GitHub folder at 005d1c6 (eo777 repos from workspace): conjugates z 4.93, Path 1 z 3.43, parchment
+   along binding z 4.10, against 4.92 / 3.49 / 4.05 logged -> reproduces within permutation noise.
+P(survives 60d) revised: ink darkness smoother along Path 1 than chance 55% (was 50%).
+   U5(a): repo digitalgoldfisj79/Voynichdecomp is PUBLIC (default branch main). The archive branch is therefore publicly readable.

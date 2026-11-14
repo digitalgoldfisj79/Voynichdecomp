@@ -1,0 +1,105 @@
+{
+ "U1": {
+  "1x": {
+   "join": 0.005,
+   "direction": 0.0
+  },
+  "2x": {
+   "join": 0.015,
+   "direction": 0.0
+  },
+  "4x": {
+   "join": 0.115,
+   "direction": 0.0
+  },
+  "8x": {
+   "join": 0.62,
+   "direction": 0.005
+  },
+  "16x": {
+   "join": 0.96,
+   "direction": 0.015
+  }
+ },
+ "U2_join_pages": {
+  "ok": 74,
+  "fewer_than_20_clean_words": 10,
+  "not_measured_or_no_boxes": 1,
+  "registration_rule": 1
+ },
+ "U2_join_pages_words_8_to_19": 10,
+ "U2_variant_min8words_singulion_join_path1": {
+  "n_joins": 37,
+  "gain": 0.0091,
+  "null_sd": 0.0134,
+  "z": 0.7
+ },
+ "U2_variant_min8words_direction_path1": {
+  "n_sheets": 37,
+  "corr": 0.38,
+  "null_sd": 0.229,
+  "z": 1.67
+ },
+ "U3_herbal_hand1_only_path1": {
+  "n_sheets": 24,
+  "obs": 0.1072,
+  "null_mean": 0.1469,
+  "null_sd": 0.0175,
+  "z": 2.28,
+  "currier": {
+   "A": 24
+  }
+ },
+ "U3_herbal_hand1_only_labelfree": {
+  "n_sheets": 24,
+  "obs": 0.1295,
+  "null_mean": 0.1468,
+  "null_sd": 0.0178,
+  "z": 0.98,
+  "currier": {
+   "A": 24
+  }
+ },
+ "U3_herbal_hand1_only_binding": {
+  "n_sheets": 24,
+  "obs": 0.157,
+  "null_mean": 0.1465,
+  "null_sd": 0.0175,
+  "z": -0.6,
+  "currier": {
+   "A": 24
+  }
+ },
+ "U4_y2004_darkness_path1": {
+  "obs": 0.1245,
+  "null_mean": 0.1548,
+  "null_sd": 0.0109,
+  "z": 2.79,
+  "p": 0.00333,
+  "n_sheets": 48
+ },
+ "U4_y2004_darkness_binding": {
+  "obs": 0.1536,
+  "null_mean": 0.1505,
+  "null_sd": 0.012,
+  "z": -0.26,
+  "p": 0.59214,
+  "n_sheets": 48
+ },
+ "U4_y2014_darkness_path1": {
+  "obs": 0.0964,
+  "null_mean": 0.1336,
+  "null_sd": 0.0104,
+  "z": 3.59,
+  "p": 0.00033,
+  "n_sheets": 48
+ },
+ "U4_y2014_darkness_binding": {
+  "obs": 0.1417,
+  "null_mean": 0.1408,
+  "null_sd": 0.0106,
+  "z": -0.08,
+  "p": 0.51583,
+  "n_sheets": 48
+ }
+}

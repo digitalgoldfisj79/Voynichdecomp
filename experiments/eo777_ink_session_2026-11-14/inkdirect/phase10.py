@@ -31,17 +31,20 @@ def plant_equal(V,o):
         if np.isfinite(W[a][3]) and np.isfinite(W[b][0]): m=(W[a][3]+W[b][0])/2; W[a][3]=m; W[b][0]=m
     return W
 def zs(obs,nl): nl=np.asarray(nl); return float((obs-nl.mean())/nl.std()),float(nl.std())
-for name in ("path1","labelfree","binding"):
-    o=[s for s in ORDERS[name] if s in T.index]; V={s:T.loc[s].values.astype(float) for s in o}
-    for jn,jo in JO.items():
-        obs,n=jstat(V,o,jo); nl=[jstat(shuf(V),o,jo)[0] for _ in range(4000)]; z,sd=zs(obs,nl); r=dict(n_joins=n,gain=round(obs,4),null_sd=round(sd,4),z=round(z,2))
-        if jn=="singulion_join":
-            r["power_join_equal"]=float(np.mean([zs(jstat(plant_equal(V,o),o,jo)[0],nl)[0]>=3 for _ in range(200)]))
-            for f in (1,2): r[f"power_walk_{f}x"]=float(np.mean([zs(jstat(plant_walk(V,o,f),o,jo)[0],nl)[0]>=3 for _ in range(200)]))
-        res[f"J1_{name}_{jn}"]=r
-    obs,n=dstat(V,o); nl=[dstat(shuf(V),o)[0] for _ in range(4000)]; z,sd=zs(obs,nl); r=dict(n_sheets=n,corr=round(obs,3),null_sd=round(sd,3),z=round(z,2))
-    for f in (1,2): r[f"power_walk_{f}x"]=float(np.mean([zs(dstat(plant_walk(V,o,f),o)[0],nl)[0]>=3 for _ in range(200)]))
-    res[f"J2_direction_{name}"]=r
-res["within_sheet_sd"]=round(wsd,4); json.dump(res,open("/home/claude/inkdirect/phase10_results.json","w"),indent=1)
-pd.DataFrame([dict(test=k,**v) for k,v in res.items() if isinstance(v,dict)]).to_csv("/home/claude/inkdirect/phase10_results_table.csv",index=False)
-for k,v in res.items(): print(k,v)
+def _main():
+  for name in ("path1","labelfree","binding"):
+      o=[s for s in ORDERS[name] if s in T.index]; V={s:T.loc[s].values.astype(float) for s in o}
+      for jn,jo in JO.items():
+          obs,n=jstat(V,o,jo); nl=[jstat(shuf(V),o,jo)[0] for _ in range(4000)]; z,sd=zs(obs,nl); r=dict(n_joins=n,gain=round(obs,4),null_sd=round(sd,4),z=round(z,2))
+          if jn=="singulion_join":
+              r["power_join_equal"]=float(np.mean([zs(jstat(plant_equal(V,o),o,jo)[0],nl)[0]>=3 for _ in range(200)]))
+              for f in (1,2): r[f"power_walk_{f}x"]=float(np.mean([zs(jstat(plant_walk(V,o,f),o,jo)[0],nl)[0]>=3 for _ in range(200)]))
+          res[f"J1_{name}_{jn}"]=r
+      obs,n=dstat(V,o); nl=[dstat(shuf(V),o)[0] for _ in range(4000)]; z,sd=zs(obs,nl); r=dict(n_sheets=n,corr=round(obs,3),null_sd=round(sd,3),z=round(z,2))
+      for f in (1,2): r[f"power_walk_{f}x"]=float(np.mean([zs(dstat(plant_walk(V,o,f),o)[0],nl)[0]>=3 for _ in range(200)]))
+      res[f"J2_direction_{name}"]=r
+  res["within_sheet_sd"]=round(wsd,4); json.dump(res,open("/home/claude/inkdirect/phase10_results.json","w"),indent=1)
+  pd.DataFrame([dict(test=k,**v) for k,v in res.items() if isinstance(v,dict)]).to_csv("/home/claude/inkdirect/phase10_results_table.csv",index=False)
+  for k,v in res.items(): print(k,v)
+
+if __name__=='__main__': _main()
