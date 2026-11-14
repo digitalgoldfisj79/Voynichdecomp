@@ -1,0 +1,134 @@
+{
+ "M1_y2004_logB": {
+  "gap": 0.0107,
+  "median_gap": 0.0216,
+  "percentile": 0.284,
+  "n_pairs": 250,
+  "rank": 72
+ },
+ "M2_y2004_logB": {
+  "n": 6,
+  "obs": 0.0117,
+  "null_mean": 0.0274,
+  "null_sd": 0.01,
+  "z": 1.58
+ },
+ "M3_y2004_logB": {
+  "n_sheets": 18,
+  "share_true_sheets_in_closest_5pct": 0.22,
+  "median_true_gap": 0.0161,
+  "median_other_gap": 0.0246
+ },
+ "M1_y2004_sig": {
+  "gap": 0.0944,
+  "median_gap": 0.0892,
+  "percentile": 0.528,
+  "n_pairs": 250,
+  "rank": 133
+ },
+ "M2_y2004_sig": {
+  "n": 6,
+  "obs": 0.0737,
+  "null_mean": 0.1028,
+  "null_sd": 0.0273,
+  "z": 1.06
+ },
+ "M3_y2004_sig": {
+  "n_sheets": 18,
+  "share_true_sheets_in_closest_5pct": 0.11,
+  "median_true_gap": 0.0747,
+  "median_other_gap": 0.0965
+ },
+ "values_y2004": {
+  "A:4-5": {
+   "logB": 5.3688,
+   "sig": 0.5542
+  },
+  "B:10-15": {
+   "logB": 5.3906,
+   "sig": 0.4417
+  },
+  "C:20-21": {
+   "logB": 5.3795,
+   "sig": 0.4599
+  },
+  "D:25-32": {
+   "logB": 5.3804,
+   "sig": 0.5884
+  },
+  "D:28-29": {
+   "logB": 5.3625,
+   "sig": 0.5528
+  },
+  "E:36-37": {
+   "logB": 5.3789,
+   "sig": 0.4632
+  }
+ },
+ "M1_y2014_logB": {
+  "gap": 0.0597,
+  "median_gap": 0.0266,
+  "percentile": 0.904,
+  "n_pairs": 250,
+  "rank": 227
+ },
+ "M2_y2014_logB": {
+  "n": 6,
+  "obs": 0.0303,
+  "null_mean": 0.028,
+  "null_sd": 0.0074,
+  "z": -0.32
+ },
+ "M3_y2014_logB": {
+  "n_sheets": 19,
+  "share_true_sheets_in_closest_5pct": 0.0,
+  "median_true_gap": 0.0136,
+  "median_other_gap": 0.0256
+ },
+ "M1_y2014_sig": {
+  "gap": 0.1245,
+  "median_gap": 0.1105,
+  "percentile": 0.548,
+  "n_pairs": 250,
+  "rank": 138
+ },
+ "M2_y2014_sig": {
+  "n": 6,
+  "obs": 0.0873,
+  "null_mean": 0.1306,
+  "null_sd": 0.0373,
+  "z": 1.16
+ },
+ "M3_y2014_sig": {
+  "n_sheets": 19,
+  "share_true_sheets_in_closest_5pct": 0.16,
+  "median_true_gap": 0.0608,
+  "median_other_gap": 0.1167
+ },
+ "values_y2014": {
+  "A:4-5": {
+   "logB": 5.2318,
+   "sig": 0.2074
+  },
+  "B:10-15": {
+   "logB": 5.2814,
+   "sig": 0.0691
+  },
+  "C:20-21": {
+   "logB": 5.2914,
+   "sig": 0.0829
+  },
+  "D:25-32": {
+   "logB": 5.3028,
+   "sig": 0.2467
+  },
+  "D:28-29": {
+   "logB": 5.2698,
+   "sig": 0.1455
+  },
+  "E:36-37": {
+   "logB": 5.2996,
+   "sig": 0.0978
+  }
+ }
+}

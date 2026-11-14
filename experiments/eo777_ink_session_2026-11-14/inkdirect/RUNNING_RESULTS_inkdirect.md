@@ -646,3 +646,24 @@ VERDICT BY THE RULE: NOT ESTABLISHED. Fails K1 (family-wise p 0.056) and the K3 
 sets, in darkness and ink amount, and never below ratio 1.
 UNTESTED: half of 1b is quire B. "1b darker" and "quire B darker" are not separated (4 non-B sheets in 1b: too few).
 P(survives 60d): "1b sheets measure darker than 1a on these photographs" 60%; "that is ink, not edge sharpness or quire" 25%.
+
+## PHASE 12 PRE-REGISTRATION (2026-11-14 15:00). Stolfi (forum, pasted by Ed): creases on f5 and f21 predate the drawing; A:4-5 and C:20-21 were one
+"A3" sheet cut in two, the crease running across the cut. Test on parchment, not ink. Seed 20261206. ONE claim, two measures, two campaigns.
+Measures per sheet: parchment brightness (mean over pages of median log background B) and the edge-softness reading (log sigma_hat), 2014 and 2004.
+M1 THE PAIR: |difference| between A:4-5 and C:20-21, ranked among all pairs of herbal hand-1 sheets from DIFFERENT quires.
+   SUPPORTS same skin if the pair is in the closest 5% on parchment brightness in BOTH campaigns. Otherwise no support. One pair cannot refute.
+M2 THE CREASE SIX (A:4-5, B:10-15, C:20-21, D:25-32, D:28-29, E:36-37): mean pairwise gap vs 10,000 random sixes of herbal hand-1 sheets.
+   SUPPORTS shared skin stock if z >= 3 on parchment brightness in 2014 and same sign with z >= 2 in 2004.
+M3 KNOWN-ANSWER CHECK of the measure: the two leaves of one sheet ARE one piece of skin. Leaf-to-leaf gap in parchment brightness within sheets, ranked
+   the same way (share of true sheets in the closest 5% of leaf pairs). If under 30%, the measure cannot recognise one skin and M1 means nothing.
+
+## PHASE 12 RESULTS (2026-11-14 15:10)
+M3 KNOWN-ANSWER CHECK FAILS. Leaves that really are one piece of skin (the two leaves of a sheet) fall in the closest 5% of leaf pairs only 0% (2014) and
+   22% (2004) of the time on parchment brightness; 16% / 11% on edge softness. Bar was 30%. The measure shows same-sheet leaves are closer ON AVERAGE
+   (median gap 0.014 v 0.026 in 2014) but cannot recognise an individual same-skin pair. So M1 carries no weight either way.
+M1 (reported, void): A:4-5 v C:20-21 parchment-brightness gap is at the 28th percentile of cross-quire herbal pairs in 2004 and the 90th in 2014
+   (edge softness: 53rd, 55th). No support, and none was possible.
+M2 crease six, parchment brightness: 2014 z -0.32 (null SD 0.0074); 2004 z 1.58 (null SD 0.010). Edge softness z 1.16 / 1.06. Inconclusive at this power.
+VERDICT: Stolfi's same-skin claim for f4+f5 and f20+f21 CANNOT be tested with these measurements. Not supported, not contradicted.
+What his point does change (no test needed): if the creases predate the drawing, they are evidence about vellum stock, not about writing order.
+P(survives 60d): "page-level parchment brightness from these photographs cannot identify same-skin pairs" 75%.
