@@ -15,6 +15,8 @@ bpy.ops.wm.open_mainfile(filepath=os.path.join(WORK, 'scene.blend'))
 S = bpy.context.scene; O = bpy.data.objects
 S.render.resolution_x = width; S.render.resolution_y = width * 9 // 16; S.render.resolution_percentage = 100
 S.cycles.samples = samples; S.render.image_settings.file_format = 'PNG'
+S.render.use_persistent_data = True            # keep textures and geometry loaded between frames
+PART, PARTS = [int(v) for v in os.environ.get('VW_PART', '0/1').split('/')]   # this process renders every PARTS-th frame
 
 device = 'CPU'
 try:
@@ -58,7 +60,7 @@ def pose(t):
 
 for f in range(a, b + 1):
     path = '%s/%04d.png' % (out, f)
-    if os.path.exists(path): continue
+    if f % PARTS != PART or os.path.exists(path): continue
     pose(f / FPS); S.render.filepath = path
     bpy.ops.render.render(write_still=True)
     print('frame', f, flush=True)
