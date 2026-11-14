@@ -1,4 +1,16 @@
 ## RETRACTIONS / DOWNGRADES / REVISIONS (kept at top) -- newest first
+- 2026-11-14 15:10 THIRD REVIEW, by a DIFFERENT MODEL, of the darkness / Path 1 claim (external_audit_other_model/AUDIT_REPORT2.md + zip, sha256 1a6ed144...0a03;
+  its pickles were NOT loaded here). Clean-room rebuild from the word file: sheet values match mine to max 0.0054 log units; Path 1 z 3.65, binding -0.09.
+  It reaches the same verdict as the first fresh chat, independently:
+  * cluster in the null: effect 0.0159, null SD 0.0087, ratio 1.82 (first review 1.89; my re-run 1.83). Herbal hand 1: 1.13. 38 of 47 Path 1 edges share a cluster.
+  * sheet-level focus adjustment: ratio 0.45 (0.44; 0.43). Focus within strata 0.39; focus + cluster -0.08. Over-control not excluded: 67.6% of random
+    covariates with the same correlation also push z below 2; real focus sits at their 8.8th percentile.
+  * all four paths smooth before cluster matching (3.70 / 3.14 / 3.52 / 2.53); after: 1.83 / 1.31 / 1.66 / 0.54.
+  * 1b - 1a: 0.152, null SD 0.050, family-wise p 0.059 (mine 0.153, 0.056).
+  * it counts 417 z/p-named fields in my result files (first review: 340). No correction was ever supplied by me.
+  Its four retractions are ones already made above (order inference; "section x hand removes textual confounding"; Path-1-specific; "it is ink").
+  On the fourth: I called the measure "ink darkness" all day. What is measured is how dark stroke cores photograph against the parchment beside them.
+  P revised: "Path 1 tracks inking sequence" 10% (its figure; mine was 15%). Literal association under the original null: unchanged, 45%.
 - 2026-11-14 15:00 SECOND FRESH-CHAT REVIEW, of "the two leaves of a sheet share ink darkness; facing pages do not" (findings I2, I3).
   Report: DEMOLITION_REPORT_2_conjugates_fresh_chat_2026-11-14.txt. My re-run: demolition2_verify.json. Reviewer reproduced every z within 0.5.
   * SCOPE CUT: it is a HERBAL-quire result. Herbal quires (22 sheets): effect 0.075, null SD 0.014, ratio 5.36. Quires M and T (11 sheets): inconclusive
