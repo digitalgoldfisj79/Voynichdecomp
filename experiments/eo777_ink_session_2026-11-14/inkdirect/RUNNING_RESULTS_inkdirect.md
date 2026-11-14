@@ -1,4 +1,18 @@
 ## RETRACTIONS / DOWNGRADES / REVISIONS (kept at top) -- newest first
+- 2026-11-14 15:40 FOURTH REVIEW: a DIFFERENT MODEL audits the shared-sheet claim (external_audit_other_model_2/AUDIT_REPORT3.md, RESULTS_TABLE.csv, zip;
+  its code and pickles were not run or loaded by me). Clean-room rebuild from the word file: 37 sheets, effect 0.0536, null SD 0.0104, z 5.14 (mine 5.18).
+  It agrees with the second fresh-chat review on every main point and makes the same four retractions already listed below:
+  * 49 "different-sheet" facing pairs include 4 same-sheet centre spreads (45 correct); 37 sheets include fold-out panels (33 single-panel, z 5.01).
+  * facing-page "no" is not an absence: a planted 25% contraction is caught 3.7%; a 50% contraction 80.8%. Corrected test: -0.0113, null SD 0.0130, ratio -0.86.
+  * scope: herbal quires A-G effect 0.0741, null SD 0.0140, z 5.31; M and T 0.0046, null SD 0.0124, ratio 0.37; all non-herbal 0.0233, null SD 0.0154, ratio 1.51.
+  * not shown to be ink: focus reading pairs within a sheet (z 3.19) and follows the face of the sheet (z 3.23); after leaf focus + background regression
+    AND an image-matched cross-wing null: 0.0138, null SD 0.0071, ratio 1.95. Its plants show focus confound and over-control cannot be told apart here.
+  New from this audit: (a) a sheet-level focus subtraction cannot change the true pairs' gap at all, only the null, so it is not an identification test
+  (this undercuts the "sheet-level adjusted" numbers quoted by me and by the first reviewer); (b) cross-wing null z 4.03; (c) 2004 scans z 3.98
+  (sensitivity only); (d) 500,000 shuffles, p 2e-6, 0.00068-0.00083 after multiplying by 340-417 tests; (e) leave-one-sheet-out minimum z 4.41,
+  leave-one-quire-out 4.37; a hostile hand-picked removal of six sheets is needed to get it under 2.
+  P adopted (its figures): literal measured association in the sampled sheets 90% (was 80%); whole manuscript 35%; it is shared ink 25%; facing pages
+  truly unlike 30%.
 - 2026-11-14 15:10 THIRD REVIEW, by a DIFFERENT MODEL, of the darkness / Path 1 claim (external_audit_other_model/AUDIT_REPORT2.md + zip, sha256 1a6ed144...0a03;
   its pickles were NOT loaded here). Clean-room rebuild from the word file: sheet values match mine to max 0.0054 log units; Path 1 z 3.65, binding -0.09.
   It reaches the same verdict as the first fresh chat, independently:
