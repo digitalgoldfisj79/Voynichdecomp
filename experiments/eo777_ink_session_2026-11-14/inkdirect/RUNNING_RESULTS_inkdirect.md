@@ -507,3 +507,28 @@ UPDATE 14:20: bulk files went to GitHub instead (digitalgoldfisj79/Voynichdecomp
 vms_crease_files_v01 holds pinned pointers. Second commit adds the intermediate pickles the scripts load (null_depth.pkl, pairs_cut3.pkl, phase2.pkl,
 phase5.pkl, phase4_words.pkl), eo777 label-free fit outputs, run logs and three crease zoom crops. Not archived anywhere: source images (re-downloadable;
 checksums in tif_sha256.csv and the page pickles), overlay PNGs, the Python environment, clones of eo777's repos.
+
+## PHASE 10 PRE-REGISTRATION (2026-11-14 14:10, Ed: "proceed with follow up tests"). Singulion joins ALONG eo777's sheet order. Darkness, 2014. Seed 20261201.
+Question: if the sheets are put in Path 1 order and each is read as a singulion (ar, av, br, bv), does the ink run on from one sheet into the next?
+J1 JOINS between consecutive sheets in the order: singulion join (bv_k, ar_k+1); reverse-direction join (ar_k, bv_k+1, i.e. the order read backwards);
+   comparator "nested" joins (av_k, ar_k+1) and (br_k+1, bv_k). Gain = mean gap of the other page pairs of the two sheets minus the join gap.
+   Null: shuffle pages within each sheet (sheet means untouched, so the known sheet-level smoothness cannot leak in).
+J2 DIRECTION: correlation, over sheets, between the within-sheet change (bv - ar) and the change between neighbours in the order (mean of next sheet
+   minus mean of previous sheet). Positive = the inside of a sheet continues the drift of the order, as a singulion sequence requires.
+   Null: shuffle pages within each sheet.
+Orders: Path 1 (primary), label-free, present binding order (comparator).
+Power (printed first), planted on within-sheet-shuffled values: (a) strongest: join pages made equal; (b) mild: a smooth random walk over the full
+reading sequence (4 pages per sheet in order), SD = 1x and 2x the within-sheet SD.
+RULE: REAL if z >= 3. ABSENT if z < 2 and the 1x mild plant is caught >= 80%. Otherwise inconclusive at this power (stating which plant sizes were visible).
+
+## PHASE 10 RESULTS (2026-11-14 14:25)
+POWER: strongest plant (join pages made equal) caught 100% on every order. Mild plants (smooth walk over the reading sequence, 1x and 2x the within-sheet
+ SD 0.066) caught 0-2% by the join test and 0% by the direction test. So only a seamless join is visible; realistic continuity is not.
+J1 Path 1 (28 joins): singulion join gain 0.013, null SD 0.017, z 0.80; reverse-direction join -0.034, null SD 0.016, z -2.18; nested joins z 1.43 (18).
+   Label-free: 0.62 below / -0.35 / 0.33 (z -0.62, -0.35, 0.33). Binding: z -1.74, 0.75, -0.30.
+J2 direction, Path 1 (30 sheets): corr +0.48, null SD 0.27, z 1.80. Label-free -0.06 (z -0.31). Binding -0.12 (z -0.65).
+VERDICT: INCONCLUSIVE AT THIS POWER on every order. A seamless singulion join along Path 1 is ruled out (would be caught 100%); anything milder is untestable
+ with 28 joins. The Path 1 direction correlation (+0.48) has the sign a singulion sequence predicts and is absent on the other two orders, but at ratio 1.8
+ and with zero measured power it is a hint only (unverified).
+P(survives 60d): "no seamless ink join between consecutive Path 1 sheets" 70%; singulion sequence along Path 1 -- no estimate.
+Files: phase10.py, phase10_results.json, phase10_results_table.csv.
