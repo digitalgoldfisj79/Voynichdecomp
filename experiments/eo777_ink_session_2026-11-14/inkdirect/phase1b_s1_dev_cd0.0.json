@@ -1,0 +1,36 @@
+{
+ "sharp_sha256": "ff61de2f4244dfcc1467ac26b51ee5277a6f4bcb5dd22d07982a2fe98656d8b6",
+ "core_dt": 0.0,
+ "dev_f5r": {
+  "n": 144,
+  "S1_spearman": 0.969,
+  "mean_by_sigma": [
+   1.1,
+   1.24,
+   1.45,
+   1.65,
+   1.89,
+   2.13
+  ],
+  "S2_width_frac": 0.136,
+  "S2_dark_frac": 0.13,
+  "S3_gain_pct": 0.13,
+  "pass": true
+ },
+ "dev_f1r": {
+  "n": 144,
+  "S1_spearman": 0.963,
+  "mean_by_sigma": [
+   1.09,
+   1.23,
+   1.43,
+   1.62,
+   1.86,
+   2.07
+  ],
+  "S2_width_frac": 0.142,
+  "S2_dark_frac": 0.161,
+  "S3_gain_pct": 0.05,
+  "pass": false
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "all_words": {
+  "obs": 0.0714,
+  "null_mean": 0.1094,
+  "null_sd": 0.0088,
+  "z": 4.29,
+  "p": 0.0002,
+  "n_sheets": 35
+ },
+ "fore_edge_half": {
+  "obs": 0.086,
+  "null_mean": 0.1099,
+  "null_sd": 0.0089,
+  "z": 2.68,
+  "p": 0.007,
+  "n_sheets": 35
+ },
+ "gutter_half": {
+  "obs": 0.0777,
+  "null_mean": 0.1231,
+  "null_sd": 0.0108,
+  "z": 4.19,
+  "p": 0.0005,
+  "n_sheets": 35
+ }
+}

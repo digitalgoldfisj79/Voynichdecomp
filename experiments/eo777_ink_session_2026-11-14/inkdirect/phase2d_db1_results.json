@@ -1,0 +1,63 @@
+{
+ "page_corr_D_net_vs_logB": 0.232,
+ "logB_p5_p95": [
+  5.216,
+  5.315
+ ],
+ "Db1_conj_D_B": {
+  "obs": 0.0601,
+  "null_mean": 0.1124,
+  "null_sd": 0.0106,
+  "z": 4.92,
+  "p": 0.0001
+ },
+ "Db1_order_path1_D_B": {
+  "obs": 0.101,
+  "null_mean": 0.1338,
+  "null_sd": 0.0094,
+  "z": 3.49,
+  "p": 0.00067
+ },
+ "Db1_order_labelfree_D_B": {
+  "obs": 0.108,
+  "null_mean": 0.1336,
+  "null_sd": 0.0096,
+  "z": 2.66,
+  "p": 0.00666
+ },
+ "Db1_order_binding_D_B": {
+  "obs": 0.1393,
+  "null_mean": 0.1355,
+  "null_sd": 0.0102,
+  "z": -0.37,
+  "p": 0.63545
+ },
+ "Db1_conj_logB": {
+  "obs": 0.0174,
+  "null_mean": 0.0256,
+  "null_sd": 0.0022,
+  "z": 3.7,
+  "p": 0.0004
+ },
+ "Db1_order_path1_logB": {
+  "obs": 0.0247,
+  "null_mean": 0.0268,
+  "null_sd": 0.0021,
+  "z": 1.01,
+  "p": 0.15895
+ },
+ "Db1_order_labelfree_logB": {
+  "obs": 0.0269,
+  "null_mean": 0.0267,
+  "null_sd": 0.0021,
+  "z": -0.09,
+  "p": 0.51483
+ },
+ "Db1_order_binding_logB": {
+  "obs": 0.0193,
+  "null_mean": 0.0281,
+  "null_sd": 0.0022,
+  "z": 4.05,
+  "p": 0.00033
+ }
+}

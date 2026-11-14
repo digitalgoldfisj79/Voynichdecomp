@@ -1,0 +1,74 @@
+{
+ "S1_within_quire_nesting_order_sheets": {
+  "obs": 0.1102,
+  "null_mean": 0.1137,
+  "null_sd": 0.0075,
+  "z": 0.46,
+  "p": 0.32457,
+  "n_adjacent_pairs": 34,
+  "n_quires": 13
+ },
+ "S2_within_quire_singulion_join_bv_ar": {
+  "n_joins": 24,
+  "gain": -0.0255,
+  "null_sd": 0.0163,
+  "z": -1.55,
+  "power_join_made_equal": 1.0
+ },
+ "S2_within_quire_reverse_stack_join": {
+  "n_joins": 23,
+  "gain": 0.0056,
+  "null_sd": 0.0165,
+  "z": 0.33,
+  "power_join_made_equal": 1.0
+ },
+ "S2_within_quire_bound_facing_joins": {
+  "n_joins": 18,
+  "gain": 0.0101,
+  "null_sd": 0.0108,
+  "z": 0.93,
+  "power_join_made_equal": 0.65
+ },
+ "S3_across_quires_singulion_stack_singulion_join_bv_ar": {
+  "n_joins": 5,
+  "gain": -0.0303,
+  "null_sd": 0.0438,
+  "z": -0.67,
+  "power_join_made_equal": 1.0
+ },
+ "S3_across_quires_singulion_stack_reverse_stack_join": {
+  "n_joins": 4,
+  "gain": 0.0432,
+  "null_sd": 0.0443,
+  "z": 1.01,
+  "power_join_made_equal": 0.995
+ },
+ "S3_across_quires_singulion_stack_bound_facing_joins": {
+  "n_joins": 2,
+  "gain": 0.0513,
+  "null_sd": 0.0513,
+  "z": 1.0,
+  "power_join_made_equal": 0.01
+ },
+ "S3_across_quires_bound_book_singulion_join_bv_ar": {
+  "n_joins": 7,
+  "gain": -0.0188,
+  "null_sd": 0.0288,
+  "z": -0.64,
+  "power_join_made_equal": 1.0
+ },
+ "S3_across_quires_bound_book_reverse_stack_join": {
+  "n_joins": 6,
+  "gain": -0.0165,
+  "null_sd": 0.0389,
+  "z": -0.42,
+  "power_join_made_equal": 0.995
+ },
+ "S3_across_quires_bound_book_bound_facing_joins": {
+  "n_joins": 4,
+  "gain": 0.0023,
+  "null_sd": 0.0094,
+  "z": 0.26,
+  "power_join_made_equal": 0.53
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "along_line_W_net": {
+  "pct": 3.01,
+  "obs": 0.02966,
+  "null_sd": 0.00409,
+  "z": 7.25,
+  "n": 8815
+ },
+ "down_page_W_net": {
+  "pct": -2.02,
+  "obs": -0.02043,
+  "null_sd": 0.00653,
+  "z": -3.15,
+  "n": 2990
+ },
+ "along_line_N_net": {
+  "pct": -0.08,
+  "obs": -0.00084,
+  "null_sd": 0.00865,
+  "z": -0.12,
+  "n": 8815
+ },
+ "down_page_N_net": {
+  "pct": 2.43,
+  "obs": 0.02404,
+  "null_sd": 0.01523,
+  "z": 1.56,
+  "n": 2990
+ },
+ "along_line_W_net_recto": {
+  "pct": -0.48,
+  "obs": -0.00481,
+  "null_sd": 0.00498,
+  "z": -0.94,
+  "n": 5403
+ },
+ "along_line_W_net_verso": {
+  "pct": 8.58,
+  "obs": 0.08229,
+  "null_sd": 0.00673,
+  "z": 12.23,
+  "n": 3412
+ },
+ "along_line_W_net_inner_recto": {
+  "pct": -1.99,
+  "obs": -0.02011,
+  "null_sd": 0.0072,
+  "z": -2.77,
+  "n": 2193
+ },
+ "along_line_W_net_inner_verso": {
+  "pct": 6.15,
+  "obs": 0.05964,
+  "null_sd": 0.00998,
+  "z": 6.0,
+  "n": 1127
+ },
+ "conjugates_all_words": {
+  "obs": 0.0714,
+  "null_mean": 0.1095,
+  "null_sd": 0.009,
+  "z": 4.23,
+  "p": 0.0001,
+  "n_sheets": 35
+ },
+ "conjugates_fore_edge_half": {
+  "obs": 0.086,
+  "null_mean": 0.1098,
+  "null_sd": 0.0088,
+  "z": 2.7,
+  "p": 0.0068,
+  "n_sheets": 35
+ },
+ "conjugates_gutter_half": {
+  "obs": 0.0777,
+  "null_mean": 0.1227,
+  "null_sd": 0.0111,
+  "z": 4.05,
+  "p": 0.0002,
+  "n_sheets": 35
+ }
+}

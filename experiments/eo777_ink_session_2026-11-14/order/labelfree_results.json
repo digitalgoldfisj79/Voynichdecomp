@@ -1,0 +1,62 @@
+{
+ "n": 50,
+ "bifolium_path_score": {
+  "spearman": 0.9116,
+  "kendall": 0.7731
+ },
+ "bifolium_path_2_score": {
+  "spearman": 0.8497,
+  "kendall": 0.6196
+ },
+ "bifolium_path_3_score": {
+  "spearman": 0.9038,
+  "kendall": 0.7339
+ },
+ "bifolium_path_4_score": {
+  "spearman": 0.9084,
+  "kendall": 0.7584
+ },
+ "shared_adjacencies": 29,
+ "of": 49,
+ "largest_rank_moves": {
+  "A:1-8": [
+   2,
+   18
+  ],
+  "B:12-13": [
+   16,
+   1
+  ],
+  "F:42-47": [
+   3,
+   17
+  ],
+  "B:11-14": [
+   15,
+   2
+  ],
+  "D:27-30": [
+   1,
+   14
+  ],
+  "C:18-23": [
+   17,
+   5
+  ],
+  "C:19-22": [
+   14,
+   3
+  ],
+  "F:44-45": [
+   18,
+   7
+  ]
+ },
+ "N6_labelfree": {
+  "span": 11,
+  "null_mean": 16.19,
+  "null_sd": 2.85,
+  "z": 1.82,
+  "p": 0.05419729013549322
+ }
+}

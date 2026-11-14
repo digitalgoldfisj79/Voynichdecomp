@@ -1,0 +1,36 @@
+{
+ "sharp_sha256": "c927ca9e544bf478760b4108ca1dd089cf8341226c91d10d9fd8990efcb3b471",
+ "core_dt": 0.0,
+ "held_f58r": {
+  "n": 144,
+  "S1_spearman": 0.979,
+  "mean_by_sigma": [
+   1.07,
+   1.24,
+   1.5,
+   1.79,
+   2.13,
+   2.55
+  ],
+  "S2_width_frac": 0.133,
+  "S2_dark_frac": 0.032,
+  "S3_gain_pct": 3.17,
+  "pass": true
+ },
+ "held_gamma0.9": {
+  "n": 144,
+  "S1_spearman": 0.979,
+  "mean_by_sigma": [
+   1.07,
+   1.24,
+   1.52,
+   1.79,
+   2.14,
+   2.56
+  ],
+  "S2_width_frac": 0.141,
+  "S2_dark_frac": 0.037,
+  "S3_gain_pct": 2.95,
+  "pass": true
+ }
+}

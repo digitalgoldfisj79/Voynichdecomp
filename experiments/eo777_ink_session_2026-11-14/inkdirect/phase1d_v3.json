@@ -1,0 +1,106 @@
+{
+ "dev_f5r": {
+  "coverage": 0.99,
+  "gauge_median": 1.48,
+  "coverage_by_width": {
+   "5": 0.93,
+   "6": 1.0,
+   "7": 1.0,
+   "8": 1.0,
+   "9": 1.0,
+   "10": 1.0,
+   "12": 1.0
+  },
+  "spearman": 0.986,
+  "crosstalk": 0.02,
+  "widths_used": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "gain_pct": 0.2,
+  "pass": true
+ },
+ "held_f58r_blur0.5": {
+  "coverage": 0.998,
+  "gauge_median": 1.51,
+  "coverage_by_width": {
+   "5": 0.99,
+   "6": 1.0,
+   "7": 1.0,
+   "8": 1.0,
+   "9": 1.0,
+   "10": 1.0,
+   "12": 1.0
+  },
+  "spearman": 0.986,
+  "crosstalk": 0.024,
+  "widths_used": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "gain_pct": 0.57,
+  "pass": true
+ },
+ "held_f58r_gamma0.9": {
+  "coverage": 0.994,
+  "gauge_median": 1.43,
+  "coverage_by_width": {
+   "5": 0.96,
+   "6": 1.0,
+   "7": 1.0,
+   "8": 1.0,
+   "9": 1.0,
+   "10": 1.0,
+   "12": 1.0
+  },
+  "spearman": 0.986,
+  "crosstalk": 0.016,
+  "widths_used": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "gain_pct": 1.16,
+  "pass": true
+ },
+ "extra_f58r_blur1.0": {
+  "coverage": 0.997,
+  "gauge_median": 1.78,
+  "coverage_by_width": {
+   "5": 0.98,
+   "6": 1.0,
+   "7": 1.0,
+   "8": 1.0,
+   "9": 1.0,
+   "10": 1.0,
+   "12": 1.0
+  },
+  "spearman": 0.986,
+  "crosstalk": 0.05,
+  "widths_used": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   12
+  ],
+  "gain_pct": 0.5,
+  "pass": true
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "n_pages": 206,
+ "n_leaves_rv": 92,
+ "F1a": {
+  "page_path_rank": 0.1739,
+  "page_path_2_rank": 0.1304,
+  "page_path_3_rank": 0.1087,
+  "page_path_4_rank": 0.1413,
+  "null_mean": 0.0115,
+  "null_sd": 0.011
+ },
+ "F1b": {
+  "shared_adj_path1_vs_text": 20,
+  "of": 205,
+  "chance": 1.99,
+  "abs_spearman": 0.138,
+  "golf_paths_shared_with_path1": {
+   "page_path_rank": 205,
+   "page_path_2_rank": 99,
+   "page_path_3_rank": 114,
+   "page_path_4_rank": 111
+  },
+  "text_path_rv_share": 0.25
+ },
+ "F1c": {
+  "n_sheets": 49,
+  "mean_gap": 5.97,
+  "null_mean": 70.3,
+  "null_sd": 6.35,
+  "z": 10.13,
+  "p": 9.999000099990002e-05
+ },
+ "F1d_DAMAGED-6": {
+  "leaf_ranks": {
+   "5": 21.0,
+   "15": 35.0,
+   "21": 35.0,
+   "29": 23.5,
+   "32": 27.5,
+   "37": 45.0
+  },
+  "span": 24.0,
+  "null_mean": 114.4,
+  "null_sd": 26.0,
+  "z": 3.48,
+  "p": 0.0008999100089991
+ },
+ "F1d_PARTNER-6": {
+  "leaf_ranks": {
+   "4": 23.0,
+   "10": 38.0,
+   "20": 13.0,
+   "25": 27.5,
+   "28": 33.5,
+   "36": 45.5
+  },
+  "span": 32.5,
+  "null_mean": 114.4,
+  "null_sd": 26.0,
+  "z": 3.15,
+  "p": 0.0037996200379962005
+ }
+}

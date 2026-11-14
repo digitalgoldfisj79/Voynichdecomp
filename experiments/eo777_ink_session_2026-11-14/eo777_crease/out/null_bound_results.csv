@@ -1,0 +1,13 @@
+path,set,null,obs,null_mean,null_sd,z,p,p_perfect,pool_sizes
+bifolium_path_rank,BOTTOM-N6,depth x cur,7,16.04,2.79,3.25,0.002999850007499625,4.999750012499375e-05,"7,4,7,5,7,7"
+bifolium_path_rank,BOTTOM-N6,depth x hand,7,16.08,2.77,3.28,0.002599870006499675,4.999750012499375e-05,"7,4,7,5,7,7"
+bifolium_path_rank,BOTTOM-N5,depth x cur,6,14.31,3.01,2.77,0.008349582520873956,4.999750012499375e-05,"7,4,7,7,7"
+bifolium_path_rank,BOTTOM-N5,depth x hand,6,14.36,3.0,2.78,0.0073496325183740815,4.999750012499375e-05,"7,4,7,7,7"
+bifolium_path_rank,FORE-F4,depth x cur,7,6.49,0.77,-0.66,1.0,4.999750012499375e-05,"2,3,3,1"
+bifolium_path_rank,FORE-F4,depth x hand,7,6.67,0.47,-0.71,1.0,4.999750012499375e-05,"1,3,3,1"
+chart_transcribed,BOTTOM-N6,depth x cur,7,15.45,2.55,3.32,0.0024998750062496873,4.999750012499375e-05,"7,4,7,5,7,7"
+chart_transcribed,BOTTOM-N6,depth x hand,7,15.44,2.55,3.31,0.0024998750062496873,4.999750012499375e-05,"7,4,7,5,7,7"
+chart_transcribed,BOTTOM-N5,depth x cur,6,13.2,2.54,2.84,0.007899605019749012,4.999750012499375e-05,"7,4,7,7,7"
+chart_transcribed,BOTTOM-N5,depth x hand,6,13.19,2.54,2.83,0.008199590020498975,4.999750012499375e-05,"7,4,7,7,7"
+chart_transcribed,FORE-F4,depth x cur,6,6.17,0.69,0.25,0.6651667416629169,4.999750012499375e-05,"2,3,3,1"
+chart_transcribed,FORE-F4,depth x hand,6,6.33,0.47,0.7,0.6680165991700415,4.999750012499375e-05,"1,3,3,1"

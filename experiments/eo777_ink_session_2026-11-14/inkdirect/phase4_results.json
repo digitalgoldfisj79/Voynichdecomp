@@ -1,0 +1,176 @@
+{
+ "GA_along_line_W_net": {
+  "obs": 0.0048,
+  "null_mean": 1e-05,
+  "null_sd": 0.00391,
+  "z": 1.23,
+  "pct_end_to_end": 0.48,
+  "power_2pct": 0.99,
+  "power_5pct": 1.0,
+  "n": 8815,
+  "groups": 1947
+ },
+ "GA_along_line_N_net": {
+  "obs": -0.00069,
+  "null_mean": -0.00019,
+  "null_sd": 0.00874,
+  "z": -0.06,
+  "pct_end_to_end": -0.07,
+  "power_2pct": 0.28,
+  "power_5pct": 1.0,
+  "n": 8815,
+  "groups": 1947
+ },
+ "GB_down_page_W_net": {
+  "obs": 0.02014,
+  "null_mean": 9e-05,
+  "null_sd": 0.00639,
+  "z": 3.14,
+  "pct_end_to_end": 2.03,
+  "power_2pct": 0.51,
+  "power_5pct": 1.0,
+  "n": 2990,
+  "groups": 141
+ },
+ "GB_down_page_N_net": {
+  "obs": -0.0313,
+  "null_mean": -0.00035,
+  "null_sd": 0.01524,
+  "z": -2.03,
+  "pct_end_to_end": -3.08,
+  "power_2pct": 0.03,
+  "power_5pct": 0.54,
+  "n": 2990,
+  "groups": 141
+ },
+ "GC_neighbour_words_W_net": {
+  "obs": -0.13538,
+  "null_mean": -0.28392,
+  "null_sd": 0.01212,
+  "z": 12.25
+ },
+ "GC_neighbour_words_N_net": {
+  "obs": -0.11425,
+  "null_mean": -0.28333,
+  "null_sd": 0.02396,
+  "z": 7.06
+ },
+ "GD_1_recto_verso_W_net": {
+  "obs": 0.11768,
+  "null_mean": 0.12908,
+  "null_sd": 0.0132,
+  "z": 0.86,
+  "n_pairs": 56
+ },
+ "GD_2_facing_W_net": {
+  "obs": 0.12585,
+  "null_mean": 0.12408,
+  "null_sd": 0.01489,
+  "z": -0.12,
+  "n_pairs": 45
+ },
+ "GD_3_conj_same_face_W_net": {
+  "obs": 0.10529,
+  "null_mean": 0.12895,
+  "null_sd": 0.01411,
+  "z": 1.68,
+  "n_pairs": 52
+ },
+ "GD_4_conj_opp_face_W_net": {
+  "obs": 0.1087,
+  "null_mean": 0.12904,
+  "null_sd": 0.01384,
+  "z": 1.47,
+  "n_pairs": 54
+ },
+ "GD_1_recto_verso_N_net": {
+  "obs": 0.19005,
+  "null_mean": 0.24799,
+  "null_sd": 0.03027,
+  "z": 1.91,
+  "n_pairs": 56
+ },
+ "GD_2_facing_N_net": {
+  "obs": 0.18417,
+  "null_mean": 0.22266,
+  "null_sd": 0.02986,
+  "z": 1.29,
+  "n_pairs": 45
+ },
+ "GD_3_conj_same_face_N_net": {
+  "obs": 0.16566,
+  "null_mean": 0.23487,
+  "null_sd": 0.03,
+  "z": 2.31,
+  "n_pairs": 52
+ },
+ "GD_4_conj_opp_face_N_net": {
+  "obs": 0.21062,
+  "null_mean": 0.23362,
+  "null_sd": 0.02947,
+  "z": 0.78,
+  "n_pairs": 54
+ },
+ "GE_through_book_W_net": {
+  "obs": 0.02558,
+  "null_mean": -0.07552,
+  "null_sd": 0.07841,
+  "z": 1.29,
+  "n_leaves": 79,
+  "power_1SD": 0.04,
+  "power_2SD": 0.24
+ },
+ "GE_by_stratum_W_net": {
+  "B|2": [
+   10,
+   0.32
+  ],
+  "H|1": [
+   42,
+   0.26
+  ],
+  "H|2": [
+   10,
+   -0.47
+  ],
+  "H|5": [
+   4,
+   0.4
+  ],
+  "S|3": [
+   13,
+   0.09
+  ]
+ },
+ "GE_through_book_N_net": {
+  "obs": 0.11356,
+  "null_mean": 0.00832,
+  "null_sd": 0.07694,
+  "z": 1.37,
+  "n_leaves": 79,
+  "power_1SD": 0.105,
+  "power_2SD": 0.595
+ },
+ "GE_by_stratum_N_net": {
+  "B|2": [
+   10,
+   0.31
+  ],
+  "H|1": [
+   42,
+   0.2
+  ],
+  "H|2": [
+   10,
+   -0.27
+  ],
+  "H|5": [
+   4,
+   -0.8
+  ],
+  "S|3": [
+   13,
+   -0.07
+  ]
+ }
+}

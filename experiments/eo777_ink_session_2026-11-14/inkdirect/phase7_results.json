@@ -1,0 +1,71 @@
+{
+ "PL0": {
+  "noise_sd": 0.0126,
+  "within_sheet_sd": 0.0711,
+  "ratio": 5.63,
+  "usable": true
+ },
+ "PL1_page_path": {
+  "n_pages": 144,
+  "obs": 0.1211,
+  "null_mean": 0.1218,
+  "null_sd": 0.0047,
+  "z": 0.14,
+  "power_0.5x": 0.0,
+  "power_1.0x": 0.03
+ },
+ "PL1_reading_order": {
+  "n_pages": 144,
+  "obs": 0.1236,
+  "null_mean": 0.1204,
+  "null_sd": 0.0041,
+  "z": -0.79,
+  "power_0.5x": 0.0,
+  "power_1.0x": 0.015
+ },
+ "PL1_page_path_herbal_hand1": {
+  "n_pages": 69,
+  "obs": 0.1462,
+  "null_mean": 0.145,
+  "null_sd": 0.0081,
+  "z": -0.15,
+  "power_0.5x": 0.005,
+  "power_1.0x": 0.06
+ },
+ "PL1_reading_order_herbal_hand1": {
+  "n_pages": 69,
+  "obs": 0.1373,
+  "null_mean": 0.1338,
+  "null_sd": 0.0062,
+  "z": -0.55,
+  "power_0.5x": 0.0,
+  "power_1.0x": 0.005
+ },
+ "PL2_direction_herbal_hand1_page_path": {
+  "n_pages": 69,
+  "n_sheets": 24,
+  "rho": 0.185,
+  "null_sd": 0.183,
+  "z": 0.94,
+  "power_2SD": 0.32666666666666666,
+  "power_3SD": 0.88
+ },
+ "PL3_recto_minus_verso": {
+  "n_sheets": 41,
+  "mean_diff_pct": -0.82,
+  "null_sd": 0.0152,
+  "z": -0.54
+ },
+ "PL3_first_minus_second_leaf": {
+  "n_sheets": 36,
+  "mean_diff_pct": 0.38,
+  "null_sd": 0.0124,
+  "z": 0.31
+ },
+ "PL3_outer_minus_inner_face": {
+  "n_sheets": 39,
+  "mean_diff_pct": -1.84,
+  "null_sd": 0.0182,
+  "z": -1.02
+ }
+}

@@ -1,0 +1,242 @@
+{
+ "pages_attempted": 187,
+ "pages_error": [],
+ "pages_reg_fail": [
+  "f102v1",
+  "f102v2",
+  "f103v",
+  "f104v",
+  "f105v",
+  "f107v",
+  "f108v",
+  "f35r",
+  "f36r",
+  "f38r",
+  "f41r",
+  "f65r",
+  "f87v",
+  "f89v2",
+  "f90v1",
+  "f95v1"
+ ],
+ "n_eligible_words": 10825,
+ "G1_coverage_width": 1.0,
+ "coverage_darkness": 1.0,
+ "glyph_model_r2_width": 0.019,
+ "pages_analysed": 141,
+ "words_measured": 10488,
+ "G2_splithalf_SB": {
+  "W_net": 0.977,
+  "W_raw": 0.976,
+  "N_frac": 0.989
+ },
+ "page_summary": {
+  "width_mm_median": 0.263,
+  "width_mm_p5_p95": [
+   0.1972,
+   0.3016
+  ],
+  "sigma_hat_median": 1.727,
+  "sigma_hat_p5_p95": [
+   1.404,
+   2.018
+  ],
+  "share_pages_sigma_le_1.79": 0.631
+ },
+ "page_corr": {
+  "W_net_vs_sigma": -0.231,
+  "W_net_vs_logH": -0.062,
+  "W_net_vs_N_frac": 0.439,
+  "sigma_vs_logH": 0.11
+ },
+ "recto_verso_r_W_net": 0.503,
+ "gates_pass": true,
+ "darkness_gate_pass": false,
+ "H1": {
+  "n_sheets": {
+   "1": 24,
+   "2": 5
+  },
+  "W_net": {
+   "obs_diff": 0.1377,
+   "pct": 14.76,
+   "null_sd": 0.0699,
+   "z": 1.95,
+   "p_two": 0.0487
+  },
+  "W_adj": {
+   "obs_diff": 0.1378,
+   "pct": 14.77,
+   "null_sd": 0.0668,
+   "z": 2.09,
+   "p_two": 0.0301
+  },
+  "W_raw": {
+   "obs_diff": 0.1328,
+   "pct": 14.2,
+   "null_sd": 0.0706,
+   "z": 1.89,
+   "p_two": 0.05119
+  },
+  "N_frac": {
+   "obs_diff": 0.2585,
+   "pct": 29.5,
+   "null_sd": 0.1239,
+   "z": 2.08,
+   "p_two": 0.0347
+  },
+  "power_W_net": {
+   "5%": 0.0,
+   "10%": 0.002,
+   "15%": 0.05
+  }
+ },
+ "H2": {
+  "W_net": {
+   "obs": 0.0769,
+   "null_mean": 0.1257,
+   "null_sd": 0.0123,
+   "z": 3.97,
+   "p": 0.0001,
+   "n_sheets": 37
+  },
+  "W_adj": {
+   "obs": 0.0822,
+   "null_mean": 0.1238,
+   "null_sd": 0.0113,
+   "z": 3.67,
+   "p": 0.0002,
+   "n_sheets": 37
+  },
+  "W_raw": {
+   "obs": 0.0762,
+   "null_mean": 0.1265,
+   "null_sd": 0.0124,
+   "z": 4.05,
+   "p": 0.0002,
+   "n_sheets": 37
+  },
+  "N_frac": {
+   "obs": 0.1501,
+   "null_mean": 0.2339,
+   "null_sd": 0.022,
+   "z": 3.81,
+   "p": 0.0001,
+   "n_sheets": 37
+  },
+  "power_W_net_sheetSD_half_leafSD": 0.03333333333333333
+ },
+ "H3": {
+  "path1": {
+   "W_net": {
+    "obs": 0.1293,
+    "null_mean": 0.1282,
+    "null_sd": 0.0109,
+    "z": -0.11,
+    "p": 0.53515,
+    "n_sheets": 48
+   },
+   "W_adj": {
+    "obs": 0.1216,
+    "null_mean": 0.1205,
+    "null_sd": 0.0101,
+    "z": -0.11,
+    "p": 0.53182,
+    "n_sheets": 48
+   },
+   "W_raw": {
+    "obs": 0.1305,
+    "null_mean": 0.1296,
+    "null_sd": 0.0109,
+    "z": -0.09,
+    "p": 0.52616,
+    "n_sheets": 48
+   },
+   "N_frac": {
+    "obs": 0.2036,
+    "null_mean": 0.2806,
+    "null_sd": 0.0196,
+    "z": 3.92,
+    "p": 0.00033,
+    "n_sheets": 48
+   },
+   "power_drift_1SD": 0.0,
+   "within_stratum_sd": 0.10510102577807595,
+   "power_drift_3SD": 0.015
+  },
+  "labelfree": {
+   "W_net": {
+    "obs": 0.1497,
+    "null_mean": 0.1284,
+    "null_sd": 0.0114,
+    "z": -1.88,
+    "p": 0.97201,
+    "n_sheets": 48
+   },
+   "W_adj": {
+    "obs": 0.1382,
+    "null_mean": 0.1204,
+    "null_sd": 0.0104,
+    "z": -1.7,
+    "p": 0.96601,
+    "n_sheets": 48
+   },
+   "W_raw": {
+    "obs": 0.151,
+    "null_mean": 0.1294,
+    "null_sd": 0.0115,
+    "z": -1.88,
+    "p": 0.97501,
+    "n_sheets": 48
+   },
+   "N_frac": {
+    "obs": 0.2279,
+    "null_mean": 0.2808,
+    "null_sd": 0.019,
+    "z": 2.78,
+    "p": 0.007,
+    "n_sheets": 48
+   },
+   "power_drift_1SD": 0.005,
+   "within_stratum_sd": 0.10510102577807595,
+   "power_drift_3SD": 0.02
+  },
+  "binding": {
+   "W_net": {
+    "obs": 0.1095,
+    "null_mean": 0.1281,
+    "null_sd": 0.0105,
+    "z": 1.77,
+    "p": 0.04165,
+    "n_sheets": 48
+   },
+   "W_adj": {
+    "obs": 0.0978,
+    "null_mean": 0.1203,
+    "null_sd": 0.0101,
+    "z": 2.24,
+    "p": 0.01133,
+    "n_sheets": 48
+   },
+   "W_raw": {
+    "obs": 0.1099,
+    "null_mean": 0.1297,
+    "null_sd": 0.0107,
+    "z": 1.84,
+    "p": 0.03599,
+    "n_sheets": 48
+   },
+   "N_frac": {
+    "obs": 0.2923,
+    "null_mean": 0.2835,
+    "null_sd": 0.0217,
+    "z": -0.41,
+    "p": 0.64512,
+    "n_sheets": 48
+   },
+   "power_drift_1SD": 0.0,
+   "within_stratum_sd": 0.10510102577807595,
+   "power_drift_3SD": 0.075
+  }
+ }
+}

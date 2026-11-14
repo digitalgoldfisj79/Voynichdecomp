@@ -1,0 +1,60 @@
+{
+ "step0_splithalf": {
+  "n_pages": 201,
+  "r": 0.957,
+  "pass": true,
+  "sd_angle_deg": 1.608
+ },
+ "nuisance_same_opening": {
+  "n_openings": 76,
+  "obs": 1.8685,
+  "null_mean": 1.873,
+  "null_sd": 0.156,
+  "z": 0.03,
+  "p": 0.49165
+ },
+ "recto_verso_same_leaf": {
+  "n": 91,
+  "r": -0.424,
+  "mean_abs_diff": 2.18
+ },
+ "chain_nullA": {
+  "obs": 0.9495,
+  "null_mean": 0.9837,
+  "null_sd": 0.1377,
+  "z": 0.25,
+  "p": 0.39766
+ },
+ "chain_nullB": {
+  "pool": 22,
+  "obs": 0.9495,
+  "null_mean": 0.9784,
+  "null_sd": 0.24,
+  "z": 0.12,
+  "p": 0.46805
+ },
+ "order_path1": {
+  "n": 50,
+  "obs": 0.9373,
+  "null_mean": 0.9798,
+  "null_sd": 0.0717,
+  "z": 0.59,
+  "p": 0.26787
+ },
+ "order_labelfree": {
+  "n": 50,
+  "obs": 0.9396,
+  "null_mean": 0.9802,
+  "null_sd": 0.0705,
+  "z": 0.58,
+  "p": 0.27467
+ },
+ "order_binding": {
+  "n": 50,
+  "obs": 1.0052,
+  "null_mean": 0.9629,
+  "null_sd": 0.072,
+  "z": -0.59,
+  "p": 0.71743
+ }
+}

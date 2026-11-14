@@ -1,0 +1,3 @@
+centre bifolia ranks: [6, 8, 9, 11, 15, 17, 18] | span 13 of 30
+P(all 7 centre bifolia within span<=13 | random order) = 0.00856
+damaged leaves on centre bifolium: ['f5', 'f21', 'f29', 'f37', 'f52'] = 5/9; P(>= 5 | p=0.25) = 0.0489

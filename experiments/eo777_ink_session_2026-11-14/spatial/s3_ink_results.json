@@ -1,0 +1,151 @@
+{
+ "step0_splithalf": {
+  "xh_mm": {
+   "r": 0.545,
+   "n": 128,
+   "pass": false
+  },
+  "angle": {
+   "r": 0.92,
+   "n": 128,
+   "pass": true
+  },
+  "asc_ratio": {
+   "r": 0.351,
+   "n": 128,
+   "pass": false
+  },
+  "coverage": {
+   "r": 0.8,
+   "n": 128,
+   "pass": true
+  },
+  "xh_spread": {
+   "r": 0.163,
+   "n": 128,
+   "pass": false
+  }
+ },
+ "features_kept": [
+  "angle",
+  "coverage"
+ ],
+ "S3a_hands": {
+  "angle": {
+   "eta2": 0.051,
+   "null_mean": 0.023,
+   "p": 0.08678,
+   "by_hand_median": {
+    "1": -0.335,
+    "2": -0.63,
+    "3": -0.57,
+    "5": -2.18
+   }
+  },
+  "coverage": {
+   "eta2": 0.288,
+   "null_mean": 0.024,
+   "p": 0.0002,
+   "by_hand_median": {
+    "1": 0.377,
+    "2": 0.462,
+    "3": 0.444,
+    "5": 0.35
+   }
+  }
+ },
+ "side_effect": {
+  "angle": {
+   "recto": 0.085,
+   "verso": -0.865
+  },
+  "coverage": {
+   "recto": 0.434,
+   "verso": 0.424
+  }
+ },
+ "S3b_conjugates_all_kept": {
+  "n_sheets": 33,
+  "obs": 1.0294,
+  "null_mean": 1.0471,
+  "null_sd": 0.0986,
+  "z": 0.18,
+  "p": 0.42871
+ },
+ "S3b_conjugates_without_angle": {
+  "n_sheets": 33,
+  "obs": 0.4348,
+  "null_mean": 0.611,
+  "null_sd": 0.0878,
+  "z": 2.01,
+  "p": 0.0194
+ },
+ "S3c_recto_verso": {
+  "n": 45,
+  "mean_dist_all": 1.499,
+  "mean_dist_without_angle": 0.543,
+  "random_same_quire_hand_without_angle": null,
+  "test_without_angle": {
+   "obs": 0.543,
+   "null_mean": 0.6152,
+   "null_sd": 0.064,
+   "z": 1.13,
+   "p": 0.13743
+  }
+ },
+ "S3d_path1_herbA_hand1": {
+  "n": 15,
+  "obs": 1.0872,
+  "null_mean": 1.2602,
+  "null_sd": 0.1708,
+  "z": 1.01,
+  "p": 0.16178
+ },
+ "S3d_path1_all_stratified": {
+  "n": 41,
+  "obs": 0.6671,
+  "null_mean": 0.8954,
+  "null_sd": 0.0747,
+  "z": 3.06,
+  "p": 0.0026
+ },
+ "S3d_labelfree_herbA_hand1": {
+  "n": 15,
+  "obs": 1.3089,
+  "null_mean": 1.2584,
+  "null_sd": 0.1712,
+  "z": -0.29,
+  "p": 0.59694
+ },
+ "S3d_labelfree_all_stratified": {
+  "n": 41,
+  "obs": 0.7469,
+  "null_mean": 0.8955,
+  "null_sd": 0.0755,
+  "z": 1.97,
+  "p": 0.03219
+ },
+ "S3d_binding_herbA_hand1": {
+  "n": 15,
+  "obs": 0.9855,
+  "null_mean": 1.2578,
+  "null_sd": 0.1718,
+  "z": 1.58,
+  "p": 0.06449
+ },
+ "S3d_binding_all_stratified": {
+  "n": 41,
+  "obs": 0.7561,
+  "null_mean": 0.9078,
+  "null_sd": 0.0725,
+  "z": 2.09,
+  "p": 0.021
+ },
+ "S3d_chain_nullA": {
+  "obs": 1.3567,
+  "null_mean": 1.4346,
+  "null_sd": 0.2379,
+  "z": 0.33,
+  "p": 0.37296
+ }
+}

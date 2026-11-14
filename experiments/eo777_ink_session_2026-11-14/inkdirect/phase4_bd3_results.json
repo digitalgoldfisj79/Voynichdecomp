@@ -1,0 +1,98 @@
+{
+ "all_W": {
+  "pct": 3.01,
+  "obs": 0.02966,
+  "null_sd": 0.00407,
+  "z": 7.26,
+  "n_words": 8815,
+  "n_lines": 1947
+ },
+ "all_W_focus_adj": {
+  "pct": 2.51,
+  "obs": 0.02477,
+  "null_sd": 0.00389,
+  "z": 6.33,
+  "n_words": 8815,
+  "n_lines": 1947
+ },
+ "recto_W": {
+  "pct": -0.48,
+  "obs": -0.00481,
+  "null_sd": 0.00495,
+  "z": -0.97,
+  "n_words": 5403,
+  "n_lines": 1157
+ },
+ "verso_W": {
+  "pct": 8.58,
+  "obs": 0.08229,
+  "null_sd": 0.00691,
+  "z": 11.91,
+  "n_words": 3412,
+  "n_lines": 790
+ },
+ "inner_words_W": {
+  "pct": 0.76,
+  "obs": 0.00758,
+  "null_sd": 0.00575,
+  "z": 1.32,
+  "n_words": 3320,
+  "n_lines": 831
+ },
+ "inner_recto_W": {
+  "pct": -1.99,
+  "obs": -0.02011,
+  "null_sd": 0.00686,
+  "z": -2.92,
+  "n_words": 2193,
+  "n_lines": 537
+ },
+ "inner_verso_W": {
+  "pct": 6.15,
+  "obs": 0.05964,
+  "null_sd": 0.00986,
+  "z": 6.05,
+  "n_words": 1127,
+  "n_lines": 294
+ },
+ "focus_along_line": {
+  "pct": -1.61,
+  "obs": -0.01625,
+  "null_sd": 0.00296,
+  "z": -5.51,
+  "n_words": 8815,
+  "n_lines": 1947
+ },
+ "box_height_along_line": {
+  "pct": 2.6,
+  "obs": 0.02569,
+  "null_sd": 0.0061,
+  "z": 4.2,
+  "n_words": 8815,
+  "n_lines": 1947
+ },
+ "hand1_W": {
+  "pct": 9.02,
+  "obs": 0.08633,
+  "null_sd": 0.01119,
+  "z": 7.71,
+  "n_words": 1680,
+  "n_lines": 439
+ },
+ "hand2_W": {
+  "pct": 3.07,
+  "obs": 0.03025,
+  "null_sd": 0.00625,
+  "z": 4.85,
+  "n_words": 3156,
+  "n_lines": 703
+ },
+ "hand3_W": {
+  "pct": 0.14,
+  "obs": 0.00138,
+  "null_sd": 0.00569,
+  "z": 0.22,
+  "n_words": 3702,
+  "n_lines": 745
+ }
+}

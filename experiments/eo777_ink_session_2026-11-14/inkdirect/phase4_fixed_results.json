@@ -1,0 +1,34 @@
+{
+ "GA_fixed_W_net": {
+  "obs": 0.02966,
+  "pct": 3.01,
+  "null_sd": 0.004,
+  "z": 7.45,
+  "power_2pct": 0.99,
+  "power_5pct": 1.0
+ },
+ "GB_fixed_W_net": {
+  "obs": -0.02043,
+  "pct": -2.02,
+  "null_sd": 0.00647,
+  "z": -3.18,
+  "power_2pct": 0.53,
+  "power_5pct": 1.0
+ },
+ "GA_fixed_N_net": {
+  "obs": -0.00084,
+  "pct": -0.08,
+  "null_sd": 0.00864,
+  "z": -0.11,
+  "power_2pct": 0.28,
+  "power_5pct": 1.0
+ },
+ "GB_fixed_N_net": {
+  "obs": 0.02404,
+  "pct": 2.43,
+  "null_sd": 0.01555,
+  "z": 1.55,
+  "power_2pct": 0.05,
+  "power_5pct": 0.5
+ }
+}

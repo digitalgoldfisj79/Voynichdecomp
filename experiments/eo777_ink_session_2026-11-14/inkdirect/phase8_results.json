@@ -1,0 +1,128 @@
+{
+ "D_net_n_sheets": 22,
+ "D_net_within_sheet_sd": 0.0608,
+ "D_net_power_0.5x": {
+  "seq": {
+   "FACE": 0.0,
+   "SEQUENCE": 0.14,
+   "NOT RESOLVED": 0.86
+  },
+  "face": {
+   "FACE": 0.1,
+   "SEQUENCE": 0.0,
+   "NOT RESOLVED": 0.9
+  }
+ },
+ "D_net_power_1.0x": {
+  "seq": {
+   "FACE": 0.0,
+   "SEQUENCE": 0.9,
+   "NOT RESOLVED": 0.1
+  },
+  "face": {
+   "FACE": 0.81,
+   "SEQUENCE": 0.0,
+   "NOT RESOLVED": 0.19
+  }
+ },
+ "D_net_false_verdicts_no_structure": {
+  "FACE": 0.03,
+  "SEQUENCE": 0.01,
+  "NOT RESOLVED": 0.96
+ },
+ "D_net_D_inner": {
+  "mean": 0.0334,
+  "null_sd": 0.0122,
+  "z": 2.73,
+  "share_positive": 0.77
+ },
+ "D_net_D_outer": {
+  "mean": 0.0171,
+  "null_sd": 0.0118,
+  "z": 1.44,
+  "share_positive": 0.55
+ },
+ "D_net_D_leaf": {
+  "mean": 0.0139,
+  "null_sd": 0.0079,
+  "z": 1.76,
+  "share_positive": 0.41
+ },
+ "D_net_mean_gaps": {
+  "d1_ar_av": 0.0885,
+  "d1_av_br_inner": 0.0612,
+  "d1_br_bv": 0.073,
+  "d2_ar_br": 0.0837,
+  "d2_av_bv": 0.1056,
+  "d3_ar_bv_outer": 0.0775
+ },
+ "D_net_mean_by_slot_pct_vs_sheet": {
+  "ar": 1.15,
+  "av": 1.71,
+  "br": -0.36,
+  "bv": -2.45
+ },
+ "D_B_n_sheets": 22,
+ "D_B_within_sheet_sd": 0.0616,
+ "D_B_power_0.5x": {
+  "seq": {
+   "FACE": 0.0,
+   "SEQUENCE": 0.12,
+   "NOT RESOLVED": 0.88
+  },
+  "face": {
+   "FACE": 0.08,
+   "SEQUENCE": 0.0,
+   "NOT RESOLVED": 0.92
+  }
+ },
+ "D_B_power_1.0x": {
+  "seq": {
+   "FACE": 0.0,
+   "SEQUENCE": 0.91,
+   "NOT RESOLVED": 0.09
+  },
+  "face": {
+   "FACE": 0.74,
+   "SEQUENCE": 0.0,
+   "NOT RESOLVED": 0.26
+  }
+ },
+ "D_B_false_verdicts_no_structure": {
+  "FACE": 0.03,
+  "SEQUENCE": 0.03,
+  "NOT RESOLVED": 0.94
+ },
+ "D_B_D_inner": {
+  "mean": 0.0269,
+  "null_sd": 0.0118,
+  "z": 2.28,
+  "share_positive": 0.77
+ },
+ "D_B_D_outer": {
+  "mean": 0.0105,
+  "null_sd": 0.0113,
+  "z": 0.93,
+  "share_positive": 0.59
+ },
+ "D_B_D_leaf": {
+  "mean": 0.0116,
+  "null_sd": 0.0078,
+  "z": 1.49,
+  "share_positive": 0.36
+ },
+ "D_B_mean_gaps": {
+  "d1_ar_av": 0.0875,
+  "d1_av_br_inner": 0.0672,
+  "d1_br_bv": 0.0776,
+  "d2_ar_br": 0.0777,
+  "d2_av_bv": 0.1106,
+  "d3_ar_bv_outer": 0.0837
+ },
+ "D_B_mean_by_slot_pct_vs_sheet": {
+  "ar": 1.43,
+  "av": 1.8,
+  "br": -0.71,
+  "bv": -2.46
+ }
+}

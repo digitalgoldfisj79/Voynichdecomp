@@ -1,0 +1,72 @@
+{
+ "model_r2": 0.131,
+ "sample_words": [
+  "fachys",
+  "cthres",
+  "sholdy"
+ ],
+ "n_pages": 128,
+ "splithalf_resid_r": 0.834,
+ "side": {
+  "recto": -0.0195,
+  "verso": -0.0189
+ },
+ "hands_resid": {
+  "eta2": 0.28,
+  "null_mean": 0.024,
+  "p": 0.0002,
+  "by_hand": {
+   "1": -0.065,
+   "2": 0.0087,
+   "3": 0.0056,
+   "5": -0.0804
+  },
+  "n_by_hand": {
+   "1": 51,
+   "2": 43,
+   "3": 30,
+   "5": 4
+  }
+ },
+ "herbal_hand2_minus_hand1_resid": {
+  "n1": 37,
+  "n2": 19,
+  "obs": 0.0533,
+  "null_mean": 0.0002,
+  "null_sd": 0.0206,
+  "z": 2.57,
+  "p": 0.0031
+ },
+ "conjugates_resid": {
+  "n": 33,
+  "obs": 0.0286,
+  "null_mean": 0.0439,
+  "null_sd": 0.006,
+  "z": 2.54,
+  "p": 0.0036
+ },
+ "smooth_path1": {
+  "n": 41,
+  "obs": 0.0411,
+  "null_mean": 0.0603,
+  "null_sd": 0.0056,
+  "z": 3.44,
+  "p": 0.0012
+ },
+ "smooth_labelfree": {
+  "n": 41,
+  "obs": 0.0474,
+  "null_mean": 0.0602,
+  "null_sd": 0.0055,
+  "z": 2.34,
+  "p": 0.0196
+ },
+ "smooth_binding": {
+  "n": 41,
+  "obs": 0.0569,
+  "null_mean": 0.0599,
+  "null_sd": 0.0051,
+  "z": 0.59,
+  "p": 0.27475
+ }
+}

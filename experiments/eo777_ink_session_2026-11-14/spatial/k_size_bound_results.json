@@ -1,0 +1,37 @@
+{
+ "model_r2": 0.691,
+ "herbal_hand2_minus_hand1_width_glyph_adjusted": {
+  "log_diff": -0.0891,
+  "percent": -8.5,
+  "null_sd": 0.0203,
+  "z": -4.39,
+  "p_two_sided": 0.0001
+ },
+ "cells_percent_vs_overall": {
+  "hand1|H": [
+   9.3,
+   37
+  ],
+  "hand1|P": [
+   5.7,
+   13
+  ],
+  "hand2|B": [
+   0.3,
+   19
+  ],
+  "hand2|H": [
+   -0.4,
+   19
+  ],
+  "hand3|H": [
+   0.0,
+   5
+  ],
+  "hand3|S": [
+   -4.3,
+   25
+  ]
+ },
+ "corr_width_resid_vs_clean_words_on_page": -0.559
+}
