@@ -503,3 +503,7 @@ pre-registrations 14; retractions 13; README_eo777_ink_session.md stored in vms_
 NOT uploaded: word-level rows (21,797), full running files for order/spatial/ink, most code -- too large to pass through the SQL tool. A temporary
 anon-callable ingest function to bulk-load them was BLOCKED by the permission system and not created. They are in eo777_ink_session_bundle.zip
 (sha256 6c848a0d9118384cef80afb88aef3f751c10fb58922099083f07b2b909d9f671; this note itself was added after the bundle was built).
+UPDATE 14:20: bulk files went to GitHub instead (digitalgoldfisj79/Voynichdecomp, branch eo777-ink-session-2026-11-14, first commit 08be9eb); Supabase
+vms_crease_files_v01 holds pinned pointers. Second commit adds the intermediate pickles the scripts load (null_depth.pkl, pairs_cut3.pkl, phase2.pkl,
+phase5.pkl, phase4_words.pkl), eo777 label-free fit outputs, run logs and three crease zoom crops. Not archived anywhere: source images (re-downloadable;
+checksums in tif_sha256.csv and the page pickles), overlay PNGs, the Python environment, clones of eo777's repos.

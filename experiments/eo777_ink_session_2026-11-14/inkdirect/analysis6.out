@@ -1,0 +1,54 @@
+pages 151
+words 11309
+darkness_median 0.419
+page_darkness_p5_p95 [0.288, 0.497]
+GATE_splithalf {'D_net': 0.993, 'D_adj': 0.99, 'P_net': 0.993}
+corr_with_2004_darkness {'D_net': 0.949, 'D_adj': 0.945, 'P_net': 0.937}
+page_corr {'D_net_vs_width': 0.241, 'D_net_vs_inkamount': 0.668, 'D_net_vs_focus': -0.431}
+D1_lag1_D_net {'obs': 0.00184, 'null_sd': 0.0144, 'z': 16.4}
+D1_lag2_D_net {'obs': -0.26589, 'null_sd': 0.01855, 'z': -1.98}
+D1_lag3_D_net {'obs': -0.37442, 'null_sd': 0.02307, 'z': -6.81}
+D1_lag1_D_adj {'obs': -0.0182, 'null_sd': 0.01446, 'z': 15.07}
+D1_lag2_D_adj {'obs': -0.26556, 'null_sd': 0.01846, 'z': -1.9}
+D1_lag3_D_adj {'obs': -0.36208, 'null_sd': 0.02195, 'z': -6.61}
+D1_lag1_P_net {'obs': -0.00015, 'null_sd': 0.0154, 'z': 15.27}
+D1_lag2_P_net {'obs': -0.26702, 'null_sd': 0.01857, 'z': -2.04}
+D1_lag3_P_net {'obs': -0.39585, 'null_sd': 0.0238, 'z': -7.46}
+D2_along_line_D_net {'recto_pct': np.float64(0.3), 'verso_pct': np.float64(-0.66), 'a_reading_pct': np.float64(-0.18), 'a_null_sd': 0.0029, 'a_z': -0.61, 'b_gutter_pct': np.float64(0.48), 'b_z': 1.68, 'power_2pct': 1.0}
+D3_down_page_D_net {'obs': -0.01551, 'null_sd': 0.00503, 'z': -3.06, 'pct': np.float64(-1.54), 'power_2pct': 0.82}
+D2_along_line_D_adj {'recto_pct': np.float64(1.32), 'verso_pct': np.float64(-1.6), 'a_reading_pct': np.float64(-0.15), 'a_null_sd': 0.00297, 'a_z': -0.49, 'b_gutter_pct': np.float64(1.47), 'b_z': 5.12, 'power_2pct': 1.0}
+D3_down_page_D_adj {'obs': -0.01378, 'null_sd': 0.00508, 'z': -2.74, 'pct': np.float64(-1.37), 'power_2pct': 0.81}
+D2_along_line_P_net {'recto_pct': np.float64(0.24), 'verso_pct': np.float64(-0.35), 'a_reading_pct': np.float64(-0.05), 'a_null_sd': 0.00281, 'a_z': -0.19, 'b_gutter_pct': np.float64(0.3), 'b_z': 1.08, 'power_2pct': 1.0}
+D3_down_page_P_net {'obs': -0.01707, 'null_sd': 0.00508, 'z': -3.36, 'pct': np.float64(-1.69), 'power_2pct': 0.81}
+D4_conj_all_D_net {'obs': 0.0565, 'null_mean': 0.1101, 'null_sd': 0.0103, 'z': 5.18, 'p': 0.0001, 'n_sheets': 37}
+D4_conj_fore_half_D_net {'obs': 0.0657, 'null_mean': 0.1169, 'null_sd': 0.0111, 'z': 4.6, 'p': 0.0001, 'n_sheets': 37}
+D4_conj_all_D_adj {'obs': 0.0596, 'null_mean': 0.0969, 'null_sd': 0.0084, 'z': 4.43, 'p': 0.0001, 'n_sheets': 37}
+D4_conj_fore_half_D_adj {'obs': 0.0645, 'null_mean': 0.1021, 'null_sd': 0.0089, 'z': 4.24, 'p': 0.0001, 'n_sheets': 37}
+D4_conj_all_P_net {'obs': 0.0578, 'null_mean': 0.1158, 'null_sd': 0.011, 'z': 5.26, 'p': 0.0001, 'n_sheets': 37}
+D4_conj_fore_half_P_net {'obs': 0.069, 'null_mean': 0.1218, 'null_sd': 0.0116, 'z': 4.53, 'p': 0.0001, 'n_sheets': 37}
+D5_pairs_recto_verso_D_net {'obs': 0.0986, 'null_mean': 0.1248, 'null_sd': 0.0115, 'z': 2.27, 'p': 0.00933, 'n_pairs': 61}
+D5_pairs_facing_D_net {'obs': 0.1294, 'null_mean': 0.1224, 'null_sd': 0.0122, 'z': -0.57, 'p': 0.72076, 'n_pairs': 49}
+D5_pairs_conj_same_face_D_net {'obs': 0.0743, 'null_mean': 0.1224, 'null_sd': 0.0119, 'z': 4.03, 'p': 0.00033, 'n_pairs': 58}
+D5_pairs_conj_opp_face_D_net {'obs': 0.0937, 'null_mean': 0.1234, 'null_sd': 0.012, 'z': 2.48, 'p': 0.005, 'n_pairs': 56}
+D5_pairs_recto_verso_D_adj {'obs': 0.1295, 'null_mean': 0.126, 'null_sd': 0.0111, 'z': -0.32, 'p': 0.62812, 'n_pairs': 61}
+D5_pairs_facing_D_adj {'obs': 0.1212, 'null_mean': 0.1234, 'null_sd': 0.0125, 'z': 0.17, 'p': 0.43652, 'n_pairs': 49}
+D5_pairs_conj_same_face_D_adj {'obs': 0.0702, 'null_mean': 0.1213, 'null_sd': 0.0114, 'z': 4.47, 'p': 0.00033, 'n_pairs': 58}
+D5_pairs_conj_opp_face_D_adj {'obs': 0.1154, 'null_mean': 0.1219, 'null_sd': 0.0118, 'z': 0.55, 'p': 0.2909, 'n_pairs': 56}
+D5_through_book_D_net {'rho': 0.229, 'null_sd': 0.079, 'z': 2.41, 'n_leaves': 79, 'power_2SD': 1.0, 'by_stratum': {'B|2': [10, 0.07], 'H|1': [42, 0.36], 'H|2': [10, 0.7], 'H|5': [4, -0.8], 'S|3': [13, -0.18]}}
+D5_through_book_D_adj {'rho': 0.261, 'null_sd': 0.077, 'z': 2.95, 'n_leaves': 79, 'power_2SD': 1.0, 'by_stratum': {'B|2': [10, 0.25], 'H|1': [42, 0.42], 'H|2': [10, 0.7], 'H|5': [4, -0.8], 'S|3': [13, -0.25]}}
+D5_through_book_P_net {'rho': 0.216, 'null_sd': 0.079, 'z': 2.16, 'n_leaves': 79, 'power_2SD': 1.0, 'by_stratum': {'B|2': [10, 0.12], 'H|1': [42, 0.32], 'H|2': [10, 0.62], 'H|5': [4, -0.6], 'S|3': [13, -0.19]}}
+D6_hand2_vs_hand1_D_net {'obs': 0.09022, 'null_sd': 0.06056, 'z': 1.49, 'pct': np.float64(9.44), 'n': {'1': 24, '2': 5}, 'power_5pct': 0.008, 'power_10pct': 0.074}
+D7_order_path1_D_net {'obs': 0.0964, 'null_mean': 0.1337, 'null_sd': 0.0099, 'z': 3.79, 'p': 0.00067, 'n_sheets': 48}
+D7_order_labelfree_D_net {'obs': 0.1051, 'null_mean': 0.1337, 'null_sd': 0.0102, 'z': 2.81, 'p': 0.00433, 'n_sheets': 48}
+D7_order_binding_D_net {'obs': 0.1417, 'null_mean': 0.1408, 'null_sd': 0.0109, 'z': -0.08, 'p': 0.52183, 'n_sheets': 48}
+D8_crease6_D_net {'obs': 0.0954, 'null_mean': 0.1472, 'null_sd': 0.0341, 'z': 1.52, 'p': 0.06959, 'n': 6, 'pool': 24}
+D6_hand2_vs_hand1_D_adj {'obs': 0.09493, 'null_sd': 0.05456, 'z': 1.74, 'pct': np.float64(9.96), 'n': {'1': 24, '2': 5}, 'power_5pct': 0.016, 'power_10pct': 0.104}
+D7_order_path1_D_adj {'obs': 0.0989, 'null_mean': 0.1196, 'null_sd': 0.0087, 'z': 2.39, 'p': 0.01266, 'n_sheets': 48}
+D7_order_labelfree_D_adj {'obs': 0.1058, 'null_mean': 0.1196, 'null_sd': 0.0088, 'z': 1.57, 'p': 0.06298, 'n_sheets': 48}
+D7_order_binding_D_adj {'obs': 0.1278, 'null_mean': 0.1299, 'null_sd': 0.0097, 'z': 0.22, 'p': 0.39787, 'n_sheets': 48}
+D8_crease6_D_adj {'obs': 0.0993, 'null_mean': 0.1321, 'null_sd': 0.0335, 'z': 0.98, 'p': 0.18588, 'n': 6, 'pool': 24}
+D6_hand2_vs_hand1_P_net {'obs': 0.07559, 'null_sd': 0.06088, 'z': 1.24, 'pct': np.float64(7.85), 'n': {'1': 24, '2': 5}, 'power_5pct': 0.014, 'power_10pct': 0.08}
+D7_order_path1_P_net {'obs': 0.0975, 'null_mean': 0.1372, 'null_sd': 0.0109, 'z': 3.63, 'p': 0.00033, 'n_sheets': 48}
+D7_order_labelfree_P_net {'obs': 0.1065, 'null_mean': 0.1372, 'null_sd': 0.0109, 'z': 2.82, 'p': 0.00267, 'n_sheets': 48}
+D7_order_binding_P_net {'obs': 0.1469, 'null_mean': 0.1405, 'null_sd': 0.011, 'z': -0.58, 'p': 0.70576, 'n_sheets': 48}
+D8_crease6_P_net {'obs': 0.0978, 'null_mean': 0.1517, 'null_sd': 0.033, 'z': 1.63, 'p': 0.06199, 'n': 6, 'pool': 24}
