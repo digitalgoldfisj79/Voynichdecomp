@@ -113,20 +113,26 @@ scene.add(sun, sun.target);
 {
   const X0 = -95, X1 = 95, Z0 = -40, Z1 = 320, STEP = 1.0;
   const nx = Math.round((X1 - X0) / STEP) + 1, nz = Math.round((Z1 - Z0) / STEP) + 1;
-  const pos = new Float32Array(nx * nz * 3), col = new Float32Array(nx * nz * 3), idx = [];
-  const lo = new THREE.Color(0xd8c38a), hi = new THREE.Color(0xefe3b8), path = new THREE.Color(0xe6d5a2), c = new THREE.Color();
+  const pos = new Float32Array(nx * nz * 3), col = new Float32Array(nx * nz * 3), uv = new Float32Array(nx * nz * 2), idx = [];
+  const lo = new THREE.Color(0xe9dcc0), hi = new THREE.Color(0xffffff), path = new THREE.Color(0xfff6e4), c = new THREE.Color();
   for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) {
     const x = X0 + i * STEP, z = Z0 + j * STEP, k = (j * nx + i) * 3;
-    pos[k] = x; pos[k + 1] = ground(x, z); pos[k + 2] = z;
+    pos[k] = x; pos[k + 1] = ground(x, z); pos[k + 2] = z; uv[k / 3 * 2] = x / 7; uv[k / 3 * 2 + 1] = z / 7;
     const n = 0.55 * noise(x * 0.06, z * 0.06) + 0.3 * noise(x * 0.31, z * 0.31) + 0.15 * noise(x * 1.7, z * 1.7);
     c.copy(lo).lerp(hi, n); if (outside(x, z) === 0) c.lerp(path, 0.35);
     col[k] = c.r; col[k + 1] = c.g; col[k + 2] = c.b;
   }
   for (let j = 0; j < nz - 1; j++) for (let i = 0; i < nx - 1; i++) { const a = j * nx + i; idx.push(a, a + nx, a + 1, a + 1, a + nx, a + nx + 1); }
   const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3)); g.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
   g.setIndex(idx); g.computeVertexNormals();
-  const land = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true }));
+  // The ground is real vellum: a blank patch of f73v (Yale scan), mirrored so it tiles, drawn at two sizes so the repeat does not show.
+  const vellum = new THREE.TextureLoader().load('./tex/vellum_f73v.webp');
+  vellum.wrapS = vellum.wrapT = THREE.RepeatWrapping; vellum.colorSpace = THREE.SRGBColorSpace; vellum.anisotropy = 8;
+  const landMat = new THREE.MeshLambertMaterial({ vertexColors: true, map: vellum });
+  landMat.onBeforeCompile = s => { s.fragmentShader = s.fragmentShader.replace('#include <map_fragment>',
+    'vec4 sampledDiffuseColor = mix(texture2D(map, vMapUv), texture2D(map, vMapUv.yx * 0.19 + 0.37), 0.45); diffuseColor.rgb *= sampledDiffuseColor.rgb * 1.2;'); };
+  const land = new THREE.Mesh(g, landMat);
   land.receiveShadow = true; scene.add(land);
 }
 
@@ -155,7 +161,7 @@ function texture(kind, name) {
   return new Promise(res => loader.load(`./tex/${TEX}/${name}.webp`, t => { t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; res(t); }, undefined, () => res(null)));
 }
 function materials(map, sway) {
-  const m = new THREE.MeshLambertMaterial({ map, alphaTest: 0.5, side: THREE.DoubleSide, emissive: 0xffffff, emissiveMap: map, emissiveIntensity: 0.42, color: 0xd8d8d8 });
+  const m = new THREE.MeshLambertMaterial({ map, alphaTest: 0.35, alphaToCoverage: true, side: THREE.DoubleSide, emissive: 0xffffff, emissiveMap: map, emissiveIntensity: 0.42, color: 0xd8d8d8 });
   const d = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking, map, alphaTest: 0.5, side: THREE.DoubleSide });
   if (sway) for (const mat of [m, d]) mat.onBeforeCompile = s => {
     s.uniforms.uTime = timeU;
