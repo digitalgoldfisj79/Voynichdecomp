@@ -1,6 +1,7 @@
 # Publishes to GitHub Pages (nothing else in this repo is published):
 #   /            the voynich-walk/ folder (side-scroller)
 #   /world/      the voynich-world/ folder (Koen's first-person world with the cut-outs)
+#   /world/journey/  the five-minute valley-to-clearing tour (voynich-world/journey/)
 #   /downloads/  zips of voynich-world, built here (not stored in the repo)
 # One-time setup: Settings -> Pages -> Source: "GitHub Actions".
 name: Voynich Walk site
@@ -40,8 +41,8 @@ jobs:
           mkdir -p _site/world _site/downloads
           cp -r voynich-walk/. _site/
           cp -r voynich-world/. _site/world/
-          zip -qr _site/downloads/voynich-world-v2-cutouts.zip voynich-world -x 'voynich-world/plants/*.png' 'voynich-world/nymphs/*.png' 'voynich-world/animals/*.png'
-          zip -qr _site/downloads/voynich-world-v2-cutouts-with-pngs.zip voynich-world
+          zip -qr _site/downloads/voynich-world-v2-cutouts.zip voynich-world -x 'voynich-world/plants/*.png' 'voynich-world/nymphs/*.png' 'voynich-world/animals/*.png' 'voynich-world/journey/*'
+          zip -qr _site/downloads/voynich-world-v2-cutouts-with-pngs.zip voynich-world -x 'voynich-world/journey/*'
           ls -la _site/downloads
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

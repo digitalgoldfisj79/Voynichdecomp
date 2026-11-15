@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voynich journey — valley to clearing</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #e9dcb4; overflow: hidden; font: 14px/1.4 Georgia, serif; color: #3a2c14; }
+  canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+  #bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); display: flex; gap: 10px; align-items: center;
+         background: linear-gradient(transparent, rgba(60, 44, 20, .45)); color: #fff7e0; }
+  #bar button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid #fff7e0; background: rgba(60, 44, 20, .5); color: inherit; }
+  #scrub { flex: 1; min-width: 60px; }
+  #clock { width: 82px; text-align: right; font-variant-numeric: tabular-nums; }
+  #load { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #e9dcb4; font-size: 18px; }
+  .clean #bar { display: none; }
+</style>
+<script type="importmap">{ "imports": { "three": "./lib/three.module.min.js" } }</script>
+</head>
+<body>
+<div id="load">Loading the drawings…</div>
+<div id="bar">
+  <button id="play">Pause</button>
+  <input id="scrub" type="range" min="0" max="300" step="0.1" value="0">
+  <span id="clock">0:00 / 5:00</span>
+  <button id="speed">1×</button>
+</div>
+<script type="module" src="./journey.js"></script>
+</body>
+</html>
