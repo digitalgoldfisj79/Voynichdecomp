@@ -331,3 +331,60 @@ Status: provisional, unscored. No accuracy claim is made for this method yet.
   883 paths (739 grouped); f1r TTLI 181 / 838; f78r 272 / 1,311; f103r 490 / 2,566; corpus ZLZI 34,217 / 170,812.
   Words mode unchanged (65 boxes on f1r).
 - Lovable checked Chromium only. Not seen by me in the preview. Full-resolution image swap at high zoom unverified.
+
+## 2026-11-21 Bad end of the corpus, looked at (renders f68r3 f71r f73r f76v f58v f108v in trial/)
+- Share of glyphs needing the approximate cut, by section (glyph-weighted): Zodiac 40.6%, Cosmological 34.9%,
+  Rosettes 20.9%, Balneological 18.0%, Stars 14.4%, Astronomical 14.0%, Pharmaceutical 11.0%, Herbal-A 8.2%,
+  Herbal-B 7.2%.
+- By eye, f71r (Zodiac): fails. Text running round the rings is split badly, and the ruled ring lines are
+  tinted as if they were glyphs. f76v (Balneological, 26.8%): mostly plausible, errors where glyphs touch.
+- Decision (display, not a finding): glyph tint switched off on the 26 Cosmological + Zodiac folios, chosen by
+  section label. The 30% cut-off I first looked at was post hoc; the section rule is not, but it was chosen
+  after seeing the numbers, so it is a display choice only.
+- Not looked at: Rosettes, Stars and Pharmaceutical label pages.
+
+## 2026-11-21 Step 2 pre-registration: eye-judged accuracy of the ink glyphs (written before any sample is drawn)
+Population: ZLZI-reading glyphs on the 199 folios outside Cosmological/Zodiac that the site draws, as stored
+in glyphs/*.json (the shipped data, not a rerun).
+Sample (seed 20261122): 240 glyphs. Stratum A: 160 drawn uniformly from all glyphs. Stratum B: 80 drawn only
+from narrow characters o a e i y (the characters no earlier check covered). Drawn once, frozen to
+step2_sample.json before any image is made.
+Each glyph is shown as a full-resolution crop of its word, the target glyph's ink in red, the rest of the word
+in grey, with the transliterated word and the target position written under it.
+Verdict per glyph (Claude, by eye, blind to stratum and to the est flag):
+- CORRECT: the red ink is the target glyph, with at most a sliver of a neighbour.
+- PARTIAL: the red covers the target glyph but also a substantial part of a neighbour, or misses a
+  substantial part of the target.
+- WRONG: the red is mostly another glyph, or the target is not in red at all.
+- UNJUDGEABLE: the crop is illegible or the transliteration itself looks wrong for this word.
+Reported: share CORRECT with a 95% Wilson interval, per stratum, and split by the est flag.
+Ed spot-checks 30 judged items (seed 20261123, drawn from the 240 after judging). If he disagrees on more than
+5 of 30, my verdicts are not used as a test set.
+Bars (for the label on the site, not for a scientific claim): CORRECT >= 80% in stratum A -> keep "automatic,
+not hand-checked" wording; 60-80% -> add "about one glyph in N is wrongly shaped"; < 60% -> switch glyph tint
+off and say so.
+P(stratum A CORRECT >= 80%) stated now: 55%. P(stratum B >= 80%): 35%.
+
+## 2026-11-21 Step 2 result: eye-judged accuracy of the shipped ink glyphs (step2_scores.csv, verdicts.csv)
+Sample sealed before judging (step2_sample.json sha256 c5f1bb23...). 240 glyphs from 146,226 on the 199
+drawn, non-circular folios. Judged by Claude, blind to stratum and to the approximate-cut flag.
+| group | judged | CORRECT | 95% CI | PARTIAL | WRONG | WRONG 95% CI |
+|---|---|---|---|---|---|---|
+| A: all glyphs | 154 | 67.5% | 59.8-74.4 | 33 | 17 (11.0%) | 7.0-17.0 |
+| B: narrow o a e i y | 77 | 64.9% | 53.8-74.7 | 18 | 9 (11.7%) | 6.3-20.7 |
+| A+B, flagged approximate cut | 37 | 35.1% | 21.8-51.2 | 14 | 10 (27.0%) | 15.4-43.0 |
+| A+B, not flagged | 194 | 72.7% | 66.0-78.5 | 37 | 16 (8.2%) | 5.1-13.0 |
+Unjudgeable: 9 of 240, all because the crop did not show the transliterated word (box/word mismatch or cut).
+- Verdict against the pre-registered bars: stratum A CORRECT 67.5% falls in 60-80% -> keep glyph tint but say
+  that a sizeable share is wrongly or partly shaped. Calibration: P(A >= 80%) was 55% -> NO; P(B >= 80%) was
+  35% -> NO.
+- By character (small n, descriptive): e 93% (n 29), d 92% (13), c 90% (10), o 73% (33), y 65% (37), a 50% (22),
+  i 46% (24, 33% WRONG), k 27% (11, mostly PARTIAL).
+- Recurring error modes seen while judging (descriptive, not counted separately): (1) after a, the first i
+  gets the ink of the a (joined strokes); (2) gallows split, one leg given to the neighbouring o or e;
+  (3) the sh/ch plume and bench split arbitrarily between s/c and h; (4) ink from the line above or below
+  attached to gallows and y; (5) o next to a gallows given the gallows leg.
+- The approximate-cut flag is informative: flagged glyphs are 35% CORRECT vs 73% unflagged.
+- Status: NOT yet usable as a test set until Ed's 30-item spot check (ids in spotcheck_ids.json, seed 20261123).
+  If he disagrees on more than 5 of 30, these verdicts are discarded.
+P(survives 60d) for "about two in three glyphs are correctly shaped, about one in ten wrongly": 70%.

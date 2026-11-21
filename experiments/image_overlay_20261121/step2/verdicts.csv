@@ -1,0 +1,241 @@
+id,verdict,note
+0,CORRECT,right half of the ch bench
+1,CORRECT,
+2,WRONG,red is the a; target first i
+3,CORRECT,
+4,CORRECT,
+5,PARTIAL,left part of the second a only
+6,CORRECT,
+7,CORRECT,
+8,CORRECT,
+9,CORRECT,first e stroke
+10,PARTIAL,sliver at the a/i junction
+11,CORRECT,
+12,WRONG,crop shows only an; red not on a
+13,CORRECT,
+14,CORRECT,
+15,CORRECT,
+16,PARTIAL,red includes the k loop
+17,CORRECT,
+18,CORRECT,
+19,PARTIAL,sh plume plus part of bench
+20,CORRECT,
+21,CORRECT,small stray dash from p crossbar
+22,CORRECT,
+23,CORRECT,
+24,CORRECT,
+25,CORRECT,
+26,CORRECT,thin first i
+27,CORRECT,
+28,CORRECT,
+29,PARTIAL,a and i together plus stray ink
+30,CORRECT,
+31,CORRECT,
+32,CORRECT,
+33,CORRECT,
+34,CORRECT,
+35,WRONG,red on the gallows leg; target first bench stroke
+36,CORRECT,
+37,CORRECT,
+38,UNJUDGEABLE,crop reads ccdy-like; not daldar
+39,PARTIAL,only the left edge of o
+40,CORRECT,
+41,CORRECT,
+42,CORRECT,
+43,CORRECT,
+44,CORRECT,
+45,CORRECT,stray specks
+46,PARTIAL,top-right part of y only
+47,WRONG,red is a paint stain
+48,CORRECT,
+49,CORRECT,
+50,CORRECT,
+51,CORRECT,
+52,CORRECT,
+53,CORRECT,
+54,CORRECT,
+55,CORRECT,
+56,CORRECT,
+57,WRONG,red is the gallows leg not q
+58,WRONG,red is not on the faint gallows
+59,CORRECT,
+60,CORRECT,
+61,CORRECT,
+62,CORRECT,
+63,WRONG,red on gallows top; crop cut
+64,WRONG,red is the end of a neighbouring word
+65,CORRECT,
+66,CORRECT,
+67,CORRECT,
+68,UNJUDGEABLE,crop too ambiguous
+69,CORRECT,
+70,PARTIAL,includes gallows loop
+71,CORRECT,
+72,PARTIAL,tail of y only
+73,CORRECT,
+74,CORRECT,
+75,CORRECT,
+76,CORRECT,
+77,CORRECT,
+78,PARTIAL,includes ink from the line above
+79,CORRECT,
+80,CORRECT,
+81,CORRECT,
+82,WRONG,red mostly on a (target i)
+83,CORRECT,
+84,CORRECT,
+85,UNJUDGEABLE,crop does not show the whole word
+86,CORRECT,
+87,CORRECT,
+88,PARTIAL,left leg and loop of gallows only
+89,PARTIAL,right leg of gallows only
+90,PARTIAL,part gallows part e
+91,CORRECT,
+92,PARTIAL,sh plume plus part of bench
+93,CORRECT,
+94,PARTIAL,lower-left of o only
+95,CORRECT,
+96,PARTIAL,gallows leg plus e
+97,PARTIAL,sh plume plus part of bench
+98,PARTIAL,trailing flourish only
+99,CORRECT,
+100,CORRECT,
+101,WRONG,red is the d
+102,CORRECT,
+103,CORRECT,
+104,CORRECT,
+105,CORRECT,
+106,CORRECT,
+107,UNJUDGEABLE,crop does not match qodain
+108,PARTIAL,gallows leg plus part of a
+109,WRONG,red is the gallows leg not o
+110,CORRECT,
+111,CORRECT,
+112,CORRECT,
+113,CORRECT,
+114,CORRECT,
+115,CORRECT,
+116,PARTIAL,gallows leg plus part of a
+117,CORRECT,
+118,CORRECT,
+119,PARTIAL,left half of the second a
+120,CORRECT,
+121,CORRECT,
+122,CORRECT,
+123,PARTIAL,includes ink from the line above
+124,CORRECT,
+125,CORRECT,
+126,CORRECT,
+127,WRONG,red mostly on a (target i)
+128,CORRECT,
+129,PARTIAL,plume plus part of o
+130,CORRECT,
+131,PARTIAL,gallows leg plus part of a
+132,CORRECT,
+133,WRONG,red mostly on a (target i)
+134,CORRECT,
+135,CORRECT,
+136,CORRECT,
+137,CORRECT,
+138,WRONG,red is the gallows leg not o
+139,PARTIAL,right edge of o only
+140,CORRECT,
+141,CORRECT,
+142,WRONG,vertical text; red on the wrong glyph
+143,CORRECT,
+144,CORRECT,
+145,WRONG,red on the gallows; y left grey
+146,CORRECT,
+147,CORRECT,
+148,WRONG,red mostly on a (target i)
+149,CORRECT,
+150,CORRECT,
+151,CORRECT,
+152,CORRECT,
+153,WRONG,red is the top of d
+154,PARTIAL,left part of a only
+155,CORRECT,
+156,WRONG,red is the gallows leg not o
+157,PARTIAL,y plus gallows leg
+158,CORRECT,
+159,WRONG,red is the d
+160,UNJUDGEABLE,crop at page edge
+161,CORRECT,
+162,PARTIAL,may be the second i
+163,CORRECT,
+164,CORRECT,
+165,CORRECT,
+166,PARTIAL,gallows plus following a
+167,CORRECT,
+168,CORRECT,
+169,PARTIAL,y plus ink from the line below
+170,CORRECT,
+171,CORRECT,
+172,CORRECT,
+173,UNJUDGEABLE,crop does not match chey
+174,CORRECT,
+175,PARTIAL,right edge of a
+176,CORRECT,
+177,CORRECT,
+178,PARTIAL,q plus o
+179,PARTIAL,a plus part of l
+180,PARTIAL,gallows plus ink from line above
+181,PARTIAL,faint; o plus part of q
+182,WRONG,red mostly on a (target i)
+183,CORRECT,
+184,PARTIAL,last i plus n
+185,CORRECT,
+186,CORRECT,
+187,CORRECT,
+188,CORRECT,
+189,CORRECT,
+190,CORRECT,
+191,CORRECT,
+192,PARTIAL,r plus a stroke from above
+193,CORRECT,
+194,CORRECT,
+195,PARTIAL,right half of o
+196,PARTIAL,plume only
+197,CORRECT,
+198,PARTIAL,final glyphs merged
+199,WRONG,gallows left grey; red on a fragment
+200,CORRECT,
+201,WRONG,red is the right half of d
+202,CORRECT,
+203,PARTIAL,crop cut; fragment only
+204,CORRECT,
+205,PARTIAL,right leg and loop of gallows only
+206,CORRECT,
+207,CORRECT,
+208,CORRECT,
+209,CORRECT,
+210,PARTIAL,gallows plus ink from line above
+211,PARTIAL,faint; small fragment
+212,WRONG,red on the s tip; a grey
+213,PARTIAL,gallows plus ink from line above
+214,CORRECT,
+215,CORRECT,
+216,PARTIAL,y plus part of d
+217,CORRECT,
+218,CORRECT,
+219,CORRECT,
+220,PARTIAL,left half of o
+221,PARTIAL,gallows plus stray ink
+222,CORRECT,
+223,CORRECT,
+224,PARTIAL,a and i together
+225,CORRECT,
+226,CORRECT,
+227,WRONG,red is the right half of o
+228,CORRECT,
+229,CORRECT,
+230,CORRECT,
+231,PARTIAL,gallows leg plus e
+232,CORRECT,
+233,PARTIAL,q plus ink from line below
+234,CORRECT,
+235,UNJUDGEABLE,crop does not match chckhy
+236,CORRECT,
+237,WRONG,red mostly on a (target i)
+238,UNJUDGEABLE,crop does not match lchedy
+239,UNJUDGEABLE,crop does not match okar
