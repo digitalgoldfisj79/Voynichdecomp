@@ -325,3 +325,9 @@ Status: awaiting Ed's pass/fail. Nothing sent to the site.
   (739 with EVA grouping); f78r 272 / 1,311; f103r 490 / 2,566; f1r with TTLI 181 / 838.
 - Per-folio table: glyph_corpus_by_folio.csv.
 Status: provisional, unscored. No accuracy claim is made for this method yet.
+
+## 2026-11-21 Ink outlines on the site (Lovable commit 8fb450f9, preview only, not published)
+- 225 glyph files bundled unchanged (23,925,061 bytes). Every fixture reproduced exactly: f1r ZLZI 190 words /
+  883 paths (739 grouped); f1r TTLI 181 / 838; f78r 272 / 1,311; f103r 490 / 2,566; corpus ZLZI 34,217 / 170,812.
+  Words mode unchanged (65 boxes on f1r).
+- Lovable checked Chromium only. Not seen by me in the preview. Full-resolution image swap at high zoom unverified.
