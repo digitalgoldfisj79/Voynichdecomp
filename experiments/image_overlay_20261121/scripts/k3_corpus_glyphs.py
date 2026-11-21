@@ -16,7 +16,9 @@ import inkglyph as IG
 
 DL, OUT = sys.argv[1], sys.argv[2]
 K, N = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (0, 1)
-GD = os.path.join(OUT, "glyphs"); os.makedirs(GD, exist_ok=True)
+GD = os.path.join(OUT, os.environ.get("GLYPH_DIR", "glyphs")); os.makedirs(GD, exist_ok=True)
+import pickle
+TM = pickle.load(open(os.environ["TEMPLATES"], "rb")) if os.environ.get("TEMPLATES") else None
 J = json.load(open(os.path.join(OUT, "glyph_width_table.json")))
 BOX = json.load(open(os.path.join(OUT, "voynichese-boxes.json")))["folios"]
 ZL = {f["folio"]: [(l["line"], l["tokens"]) for l in f["lines"]] for f in json.load(open(os.path.join(DL, "ZLZI_folios.json")))["data"]}
@@ -86,7 +88,7 @@ for fo in folios:
         readings = [r for r in dict.fromkeys([tok.get(i), b[5]]) if r]
         out = []
         for r in readings:
-            gl = IG.word_glyphs(ctx, ctx["members"][i], r, J["widths"], J["default"])
+            gl = IG.word_glyphs(ctx, ctx["members"][i], r, J["widths"], J["default"], templates=TM)
             paths = [path_of(g, 1 / kx, 1 / ky) for g in gl]
             est = "".join("1" if (g is not None and g["est"]) else "0" for g in gl)
             out.append([r, paths, est])

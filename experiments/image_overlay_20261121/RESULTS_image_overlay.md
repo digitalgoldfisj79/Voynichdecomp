@@ -388,3 +388,60 @@ Unjudgeable: 9 of 240, all because the crop did not show the transliterated word
 - Status: NOT yet usable as a test set until Ed's 30-item spot check (ids in spotcheck_ids.json, seed 20261123).
   If he disagrees on more than 5 of 30, these verdicts are discarded.
 P(survives 60d) for "about two in three glyphs are correctly shaped, about one in ten wrongly": 70%.
+
+## 2026-11-21 v4 pre-registration: better splits for touching glyphs (written before any v4 code ran)
+Target: glyphs flagged as an approximate cut (est=1) on the 199 drawn running-text folios: 23,019 of 174,198
+glyphs (13.2%). Flagged runs are dominated by a gallows plus a neighbour (ok 1,070; ke 887; ot 718; ka 654;
+ta 245; te 228; ky 167; ct 152; ck 151) and by ai 396, dy 243, ol 204, ii 131.
+Method under development (v4): replace the proportional column split of a touching run by a dynamic-programming
+cut that matches each segment to a per-character template learned, without labels, from UNFLAGGED glyphs
+(per-column ink in the x-height band, above it and below it, plus width, all in x-height units), with a
+penalty for cutting through thick ink.
+Folio split (seed 20261124, split_v4.json): DEV = the 13 pages already looked at + half of the rest (94 of the 175 drawn, non-circular folios with images);
+TEST = the other 81 folios. Templates may use unflagged glyphs from all folios (no labels are used).
+Phase 1 (DEV only, iterate freely, every variant logged): proxy = 2-D IoU vs Timm boxes on DEV cases whose
+target glyph is flagged, plus my eye on DEV renders.
+Phase 2 (TEST, run once on the frozen, hashed v4): 150 flagged glyphs drawn from TEST folios (seed 20261125),
+each shown as two panels, current vs v4, in random left/right order recorded in a sealed key. Claude judges
+each panel CORRECT / PARTIAL / WRONG as in step 2, blind to which panel is which.
+Decision: v4 replaces the current split only if CORRECT rises by >= 15 percentage points AND the paired
+sign test (glyphs where exactly one panel is CORRECT) gives p < 0.05 AND WRONG does not rise.
+Otherwise: "no improvement shown"; the site keeps the current split.
+Limits stated now: one judge (me) unless Ed spot-checks; templates are global, not per scribe.
+P(v4 meets the decision rule): 45%.
+
+## 2026-11-21 v4 result (sealed paired test, TEST folios, single run of frozen v4)
+Frozen: inkglyph_v4_frozen.py sha256 f2649e2e9597a926..., templates.pkl 1af7c3d1e961deb0..., key 61cf3cd9152e369f...
+Development log (dev_variants.csv): first attempt (template cuts inside the fallback only) changed 8 of 110
+DEV cases (mean IoU 0.4587 -> 0.4603); renders showed why: the earlier grouping step had already shifted
+letters (q+o fused, gallows handed to e). Second attempt, re-cutting the whole flagged word by template DP:
+0.4587 -> 0.5160 (29 better, 7 worse). Six parameter variants: 0.502-0.518, within noise; defaults kept.
+One variant (tm_K=4) was invalid (templates fitted at K=8) and crashed.
+TEST: 150 v3-flagged glyphs from 81 TEST folios, 15 unjudgeable (crop does not show the word, rotated text, cut crop).
+| method | judged | CORRECT | 95% CI | PARTIAL | WRONG | WRONG 95% CI |
+|---|---|---|---|---|---|---|
+| v3 (shipped) | 135 | 32 (23.7%) | 17.3-31.5 | 50 | 53 (39.3%) | 31.4-47.7 |
+| v4 | 135 | 61 (45.2%) | 37.0-53.6 | 30 | 44 (32.6%) | 25.3-40.9 |
+- CORRECT only under v4: 41; only under v3: 12; two-sided sign test p = 0.00008. On the full ordering
+  WRONG < PARTIAL < CORRECT: v4 better on 48, worse on 16, p = 0.00008.
+- Decision rule (CORRECT +>= 15 points, p < 0.05, WRONG not up): MET. +21.5 points, WRONG -6.7 points.
+- Where the gain is: gallows targets 11/44 -> 25/44 correct; o targets 2/18 -> 12/18. No gain for a (6 -> 7 of 16),
+  e (5 -> 5 of 15), i (0 -> 0 of 9), y (0 -> 0 of 4).
+- Calibration: P(v4 meets the rule) was 45% -> YES.
+- Note the v3 CORRECT rate here (23.7%) is lower than the step-2 flagged estimate (35.1%, n 37); both are small
+  samples by the same judge and the intervals overlap.
+- Limits: one judge (me), blind to method; Ed has not spot-checked these. Flagged glyphs are still wrong
+  about one time in three under v4. Faint ink (glyph not detected at all) and a/i joins are untouched.
+P(survives 60d) for "v4 roughly doubles the correct share among touching glyphs": 75%.
+
+## 2026-11-21 v4 shipped to the preview (Lovable commit 7cdb8ac3, not published)
+- Corpus rebuilt with v4 (glyphs_v4.tar.gz sha256 fe6ce4cf...). Words that never needed the fallback are
+  byte-identical to v3 (0 of 40,241 readings changed). 12,139 flagged word readings got new outlines.
+- Approximate-cut label redefined for v4 words: a glyph is labelled approximate only if a boundary next to it
+  runs through ink (v3 labelled every glyph of a flagged word region). First-reading glyphs so labelled: 29.8%
+  (v3: 15.2%). The rise is mainly the wider definition, not more errors: v4 re-cuts whole words, so neighbours
+  that v3 had not touched now sit next to an inked boundary. No-ink glyphs rose from 1.39% to 2.45%
+  (2,633 -> 4,641): template cuts can leave a narrow character with only its outline column empty.
+  That rise was NOT in the sealed test (which scored only v3-flagged targets) and has not been looked at.
+- Site fixtures (ZLZI): 34,217 words with shapes, 169,052 paths; f1r 861 (725 grouped); f78r 1,305; f103r 2,535.
+- Before/after render of held-out f107v from the shipped files: trial/f107v_before_after.jpg.

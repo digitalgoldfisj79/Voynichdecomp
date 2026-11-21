@@ -15,7 +15,66 @@ from PIL import ImageFilter
 GALLOWS = set("ktpf")
 S8 = np.ones((3, 3), int)
 P0 = dict(thr_lo=0.09, thr_hi=0.30, weak=0.5, speck=0.02, valley=1.4, split_min_w=0.7, dip=0.22, tall=0.6,
-          alpha=1.0, beta=0.6, gamma=3.0, empty=1.2, max_atoms=40)
+          alpha=1.0, beta=0.6, gamma=3.0, empty=1.2, max_atoms=40,
+          tm_K=8, tm_lam=1.0, tm_mu=1.0, tm_step=12, tm_min=0.15)
+
+
+def _colprof(M, a, b, xh):
+    """per-column ink in the band, above it and below it, in x-height units."""
+    return np.stack([M[a:b].sum(0), M[:a].sum(0), M[b:].sum(0)]).astype(float) / xh
+
+
+def _seg_vectors(prof, pos, K):
+    """features for every segment [pos[i], pos[j]) i<j: K-bin means of the 3 profiles + width. Returns (I, J, F)."""
+    cs = np.concatenate([np.zeros((3, 1)), np.cumsum(prof, 1)], 1); xs = np.arange(cs.shape[1])
+    I, J = np.triu_indices(len(pos), 1); lo, hi = pos[I].astype(float), pos[J].astype(float)
+    edges = lo[:, None] + (hi - lo)[:, None] * np.linspace(0, 1, K + 1)[None, :]
+    F = []
+    for r in range(3):
+        c = np.interp(edges.ravel(), xs, cs[r]).reshape(edges.shape)
+        F.append(np.diff(c, axis=1) / np.maximum(np.diff(edges, axis=1), 1e-9))
+    return I, J, np.concatenate(F, 1), hi - lo
+
+
+def fit_templates(samples, min_n=30):
+    """samples: dict char -> list of (vec, width_xh). Robust centre and scale per dimension."""
+    T = {}
+    for c, v in samples.items():
+        if len(v) < min_n: continue
+        V = np.array([x[0] for x in v]); W = np.array([x[1] for x in v])
+        mu = np.median(V, 0); sd = np.maximum(1.4826 * np.median(np.abs(V - mu), 0), 0.05)
+        wm = float(np.median(W)); ws = max(float(1.4826 * np.median(np.abs(W - wm))), 0.08)
+        T[c] = dict(mu=mu, sd=sd, w=wm, ws=ws, n=len(v))
+    return T
+
+
+def _template_cuts(prof, gx0, gx1, chars, T, w_prior, xh, P):
+    """cut positions (len(chars)+1, absolute columns) splitting [gx0, gx1) by template DP. None if not applicable."""
+    m = len(chars); step = max(1, int(round(xh / P["tm_step"])))
+    pos = np.unique(np.r_[np.arange(gx0, gx1, step), gx1]); L = len(pos)
+    if L < m + 1: return None
+    I, J, F, W = _seg_vectors(prof, pos, P["tm_K"]); Wx = W / xh
+    band = prof[0]; mb = max(float(band[gx0:gx1].mean()), 1e-9)
+    cutc = P["tm_mu"] * np.array([band[min(max(p_, 0), len(band) - 1)] / mb for p_ in pos])
+    INF = 1e18; D = np.full(L, INF); D[0] = 0.0; back = []
+    for k, c in enumerate(chars):
+        t = T.get(c)
+        if t is not None:
+            cost = (((F - t["mu"]) / t["sd"]) ** 2).mean(1) + P["tm_lam"] * ((Wx - t["w"]) / t["ws"]) ** 2
+        else:
+            exp = w_prior[k] / sum(w_prior) * (gx1 - gx0) / xh
+            cost = P["tm_lam"] * ((Wx - exp) / max(0.25 * exp, 0.08)) ** 2
+        cost = np.where(Wx >= P["tm_min"], cost, INF)
+        cand = D[I] + cost + cutc[I] * (I > 0)
+        ND = np.full(L, INF); NB = np.full(L, -1)
+        order = np.lexsort((cand, J))
+        Js, first = np.unique(J[order], return_index=True)
+        ND[Js] = cand[order][first]; NB[Js] = I[order][first]
+        D = ND; back.append(NB)
+    if D[L - 1] >= INF: return None
+    cuts = [L - 1]
+    for k in range(m - 1, -1, -1): cuts.append(int(back[k][cuts[-1]]))
+    return [int(pos[c_]) for c_ in cuts[::-1]]
 
 
 def darkness(img_L, radius):
@@ -117,7 +176,7 @@ def _dp(atoms, word, table, default, P):
     return groups, w
 
 
-def word_glyphs(ctx, mem, word, table, default, P=P0):
+def word_glyphs(ctx, mem, word, table, default, P=P0, templates=None, collect=None):
     """Returns per-character list of dict(mask, x, y, bbox, est) or None; coordinates are page pixels."""
     n = len(word)
     if not mem or n == 0: return [None] * n
@@ -175,10 +234,35 @@ def word_glyphs(ctx, mem, word, table, default, P=P0):
         if not cand: break
         donor = max(cand, key=ext); idx = sorted(list(range(i, j)) + [donor]); dm = cmask[donor].copy()
         cols = np.where(dm.any(0))[0]; gx0, gx1 = cols[0], cols[-1] + 1
-        ee = np.rint(gx0 + (gx1 - gx0) * np.concatenate([[0.0], np.cumsum(w[idx])]) / w[idx].sum()).astype(int)
+        ee = None
+        if templates is not None:
+            ee = _template_cuts(_colprof(dm | (M & ~band), a, b, xh), gx0, gx1, [word[q] for q in idx], templates, list(w[idx]), xh, P)
+        if ee is None:
+            ee = np.rint(gx0 + (gx1 - gx0) * np.concatenate([[0.0], np.cumsum(w[idx])]) / w[idx].sum()).astype(int)
         for q, lo, hi in zip(idx, ee[:-1], ee[1:]):
             cmask[q] = np.zeros_like(M); cmask[q][:, lo:hi] = dm[:, lo:hi]; est[q] = True
         i = j
+    # v4: a word that needed the fallback is re-cut as a whole by template matching over columns
+    if templates is not None and any(est) and P.get("tm_word", 1):
+        bandcols = np.where(band.any(0))[0]
+        if len(bandcols):
+            prof = _colprof(M, a, b, xh)
+            ee = _template_cuts(prof, int(bandcols[0]), int(bandcols[-1]) + 1, list(word), templates, list(w), xh, P)
+            if ee is not None:
+                for q in range(n):
+                    cmask[q] = np.zeros_like(M); cmask[q][:, ee[q]:ee[q + 1]] = band[:, ee[q]:ee[q + 1]]
+                # label only: a glyph is "approximate" if a boundary next to it runs through ink
+                colink = band.sum(0)
+                inked = [False] + [bool(colink[min(max(ee[q], 0), len(colink) - 1)] > 0) for q in range(1, n)] + [False]
+                est = [inked[q] or inked[q + 1] for q in range(n)]
+    if collect is not None:                                  # unflagged glyphs feed the templates
+        prof = _colprof(M, a, b, xh)
+        for q in range(n):
+            if est[q] or not cmask[q].any(): continue
+            cols = np.where(cmask[q].any(0))[0]; lo, hi = int(cols[0]), int(cols[-1]) + 1
+            if hi - lo < 2: continue
+            _, _, F, Wd_ = _seg_vectors(prof, np.array([lo, hi]), P["tm_K"])
+            collect.setdefault(word[q], []).append((F[0], Wd_[0] / xh))
     # attach ink above / below the band to the character it touches (else the one it overlaps most in x)
     for z in zones:
         cont = [int((cmask[q][z["band_row"]] & z["touch"]).sum()) for q in range(n)]
@@ -199,10 +283,10 @@ def word_glyphs(ctx, mem, word, table, default, P=P0):
     return out
 
 
-def page_glyphs(img_L, words, table, default, P=P0):
+def page_glyphs(img_L, words, table, default, P=P0, templates=None, collect=None):
     """words: list of (string, (x0,y0,x1,y1)). Returns (ctx, per-word list of per-character glyph dicts or None)."""
     ctx = analyse_page(img_L, [b for _, b in words], P)
-    return ctx, [word_glyphs(ctx, mem, wd, table, default, P) for (wd, _), mem in zip(words, ctx["members"])]
+    return ctx, [word_glyphs(ctx, mem, wd, table, default, P, templates, collect) for (wd, _), mem in zip(words, ctx["members"])]
 
 
 def paint(rgb, glyphs_per_word, words, colour_of, alpha=0.8):

@@ -1,0 +1,1356 @@
+{
+"seed": 20261125,
+"pool": 9381,
+"key": [
+{
+"id": 0,
+"folio": "f79v",
+"box": 314,
+"word": "qokeey",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 1,
+"folio": "f24r",
+"box": 27,
+"word": "chey",
+"pos": 2,
+"char": "e",
+"left_is_v4": true
+},
+{
+"id": 2,
+"folio": "f112v",
+"box": 268,
+"word": "qopcheey",
+"pos": 2,
+"char": "p",
+"left_is_v4": true
+},
+{
+"id": 3,
+"folio": "f115r",
+"box": 159,
+"word": "chodar",
+"pos": 3,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 4,
+"folio": "f8r",
+"box": 115,
+"word": "aiin",
+"pos": 1,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 5,
+"folio": "f116r",
+"box": 133,
+"word": "shtchey",
+"pos": 2,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 6,
+"folio": "f103v",
+"box": 336,
+"word": "lchdy",
+"pos": 3,
+"char": "d",
+"left_is_v4": true
+},
+{
+"id": 7,
+"folio": "f1v",
+"box": 80,
+"word": "tcho",
+"pos": 1,
+"char": "c",
+"left_is_v4": false
+},
+{
+"id": 8,
+"folio": "f115v",
+"box": 363,
+"word": "tchy",
+"pos": 0,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 9,
+"folio": "f80r",
+"box": 33,
+"word": "qokal",
+"pos": 3,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 10,
+"folio": "f45r",
+"box": 1,
+"word": "shaikhy",
+"pos": 2,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 11,
+"folio": "f99v",
+"box": 28,
+"word": "daiin",
+"pos": 1,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 12,
+"folio": "f39v",
+"box": 130,
+"word": "ockhy",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 13,
+"folio": "f26v",
+"box": 2,
+"word": "daiiin",
+"pos": 3,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 14,
+"folio": "f115v",
+"box": 331,
+"word": "oiiin",
+"pos": 1,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 15,
+"folio": "f105r",
+"box": 293,
+"word": "yteey",
+"pos": 1,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 16,
+"folio": "f79v",
+"box": 159,
+"word": "okain",
+"pos": 1,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 17,
+"folio": "f53v",
+"box": 4,
+"word": "oltshey",
+"pos": 3,
+"char": "s",
+"left_is_v4": true
+},
+{
+"id": 18,
+"folio": "f114r",
+"box": 161,
+"word": "otchedy",
+"pos": 1,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 19,
+"folio": "f104v",
+"box": 414,
+"word": "okchedy",
+"pos": 1,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 20,
+"folio": "f28r",
+"box": 32,
+"word": "oksho",
+"pos": 1,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 21,
+"folio": "f112v",
+"box": 156,
+"word": "qoteo",
+"pos": 4,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 22,
+"folio": "f99v",
+"box": 50,
+"word": "doror",
+"pos": 3,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 23,
+"folio": "f103v",
+"box": 228,
+"word": "otear",
+"pos": 1,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 24,
+"folio": "f99v",
+"box": 145,
+"word": "okchey",
+"pos": 2,
+"char": "c",
+"left_is_v4": true
+},
+{
+"id": 25,
+"folio": "f104r",
+"box": 412,
+"word": "qokeedy",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 26,
+"folio": "f99v",
+"box": 101,
+"word": "okeedy",
+"pos": 0,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 27,
+"folio": "f104v",
+"box": 53,
+"word": "qokchy",
+"pos": 5,
+"char": "y",
+"left_is_v4": false
+},
+{
+"id": 28,
+"folio": "f103v",
+"box": 310,
+"word": "qokeeey",
+"pos": 2,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 29,
+"folio": "f24r",
+"box": 105,
+"word": "otacphy",
+"pos": 4,
+"char": "p",
+"left_is_v4": false
+},
+{
+"id": 30,
+"folio": "f111r",
+"box": 194,
+"word": "qoteedy",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 31,
+"folio": "f107v",
+"box": 162,
+"word": "okal",
+"pos": 1,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 32,
+"folio": "f11r",
+"box": 8,
+"word": "socthody",
+"pos": 0,
+"char": "s",
+"left_is_v4": true
+},
+{
+"id": 33,
+"folio": "f107v",
+"box": 156,
+"word": "aiiraly",
+"pos": 1,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 34,
+"folio": "f80r",
+"box": 73,
+"word": "oty",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 35,
+"folio": "f103v",
+"box": 73,
+"word": "qokaiin",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 36,
+"folio": "f107v",
+"box": 119,
+"word": "qokain",
+"pos": 3,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 37,
+"folio": "f77r",
+"box": 171,
+"word": "olcheedy",
+"pos": 2,
+"char": "c",
+"left_is_v4": false
+},
+{
+"id": 38,
+"folio": "f99v",
+"box": 21,
+"word": "okoiin",
+"pos": 3,
+"char": "i",
+"left_is_v4": true
+},
+{
+"id": 39,
+"folio": "f104v",
+"box": 121,
+"word": "cheeta",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 40,
+"folio": "f96r",
+"box": 4,
+"word": "cpheol",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 41,
+"folio": "f106v",
+"box": 346,
+"word": "aiir",
+"pos": 1,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 42,
+"folio": "f103v",
+"box": 410,
+"word": "chckhey",
+"pos": 4,
+"char": "h",
+"left_is_v4": true
+},
+{
+"id": 43,
+"folio": "f83r",
+"box": 12,
+"word": "shey",
+"pos": 0,
+"char": "s",
+"left_is_v4": false
+},
+{
+"id": 44,
+"folio": "f57v",
+"box": 19,
+"word": "ofol",
+"pos": 2,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 45,
+"folio": "f79r",
+"box": 223,
+"word": "qolkeey",
+"pos": 0,
+"char": "q",
+"left_is_v4": true
+},
+{
+"id": 46,
+"folio": "f79v",
+"box": 139,
+"word": "teey",
+"pos": 0,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 47,
+"folio": "f48v",
+"box": 36,
+"word": "dchedy",
+"pos": 3,
+"char": "e",
+"left_is_v4": true
+},
+{
+"id": 48,
+"folio": "f79r",
+"box": 333,
+"word": "olsheey",
+"pos": 0,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 49,
+"folio": "f112v",
+"box": 28,
+"word": "qotam",
+"pos": 2,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 50,
+"folio": "f115r",
+"box": 71,
+"word": "orair",
+"pos": 1,
+"char": "r",
+"left_is_v4": false
+},
+{
+"id": 51,
+"folio": "f79v",
+"box": 22,
+"word": "qokeedy",
+"pos": 4,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 52,
+"folio": "f115r",
+"box": 13,
+"word": "qokeeor",
+"pos": 4,
+"char": "e",
+"left_is_v4": true
+},
+{
+"id": 53,
+"folio": "f82v",
+"box": 205,
+"word": "qokaiin",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 54,
+"folio": "f115v",
+"box": 364,
+"word": "choiphy",
+"pos": 4,
+"char": "p",
+"left_is_v4": false
+},
+{
+"id": 55,
+"folio": "f79r",
+"box": 278,
+"word": "pol",
+"pos": 0,
+"char": "p",
+"left_is_v4": false
+},
+{
+"id": 56,
+"folio": "f79r",
+"box": 104,
+"word": "shek",
+"pos": 3,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 57,
+"folio": "f82v",
+"box": 192,
+"word": "qoty",
+"pos": 2,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 58,
+"folio": "f26v",
+"box": 12,
+"word": "qokedy",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 59,
+"folio": "f75v",
+"box": 144,
+"word": "otoly",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 60,
+"folio": "f115v",
+"box": 224,
+"word": "qokeedy",
+"pos": 5,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 61,
+"folio": "f116r",
+"box": 408,
+"word": "qokeey",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 62,
+"folio": "f82r",
+"box": 160,
+"word": "daiin",
+"pos": 1,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 63,
+"folio": "f111r",
+"box": 339,
+"word": "salkeedy",
+"pos": 4,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 64,
+"folio": "f112v",
+"box": 18,
+"word": "oraiin",
+"pos": 2,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 65,
+"folio": "f107v",
+"box": 95,
+"word": "tain",
+"pos": 0,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 66,
+"folio": "f99v",
+"box": 124,
+"word": "dam",
+"pos": 2,
+"char": "m",
+"left_is_v4": false
+},
+{
+"id": 67,
+"folio": "f114r",
+"box": 435,
+"word": "chol",
+"pos": 2,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 68,
+"folio": "f57v",
+"box": 130,
+"word": "dal",
+"pos": 1,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 69,
+"folio": "f103v",
+"box": 41,
+"word": "qoteedy",
+"pos": 2,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 70,
+"folio": "f79v",
+"box": 155,
+"word": "dchedy",
+"pos": 4,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 71,
+"folio": "f104v",
+"box": 84,
+"word": "qoteeo",
+"pos": 4,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 72,
+"folio": "f79r",
+"box": 213,
+"word": "qotaiin",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 73,
+"folio": "f3r",
+"box": 29,
+"word": "dam",
+"pos": 1,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 74,
+"folio": "f115v",
+"box": 159,
+"word": "lpchdain",
+"pos": 0,
+"char": "l",
+"left_is_v4": false
+},
+{
+"id": 75,
+"folio": "f106v",
+"box": 164,
+"word": "chedy",
+"pos": 4,
+"char": "y",
+"left_is_v4": false
+},
+{
+"id": 76,
+"folio": "f80r",
+"box": 284,
+"word": "sheckhy",
+"pos": 3,
+"char": "c",
+"left_is_v4": true
+},
+{
+"id": 77,
+"folio": "f80r",
+"box": 32,
+"word": "cheol",
+"pos": 3,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 78,
+"folio": "f48v",
+"box": 0,
+"word": "pcheodchy",
+"pos": 1,
+"char": "c",
+"left_is_v4": true
+},
+{
+"id": 79,
+"folio": "f75v",
+"box": 337,
+"word": "okeshey",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 80,
+"folio": "f48r",
+"box": 35,
+"word": "otaiin",
+"pos": 1,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 81,
+"folio": "f79r",
+"box": 221,
+"word": "otory",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 82,
+"folio": "f104v",
+"box": 161,
+"word": "qockheey",
+"pos": 3,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 83,
+"folio": "f103v",
+"box": 319,
+"word": "qokain",
+"pos": 3,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 84,
+"folio": "f107v",
+"box": 78,
+"word": "otedam",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 85,
+"folio": "f77r",
+"box": 69,
+"word": "lchedy",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 86,
+"folio": "f111r",
+"box": 570,
+"word": "chckhal",
+"pos": 3,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 87,
+"folio": "f112r",
+"box": 68,
+"word": "chedy",
+"pos": 2,
+"char": "e",
+"left_is_v4": true
+},
+{
+"id": 88,
+"folio": "f115r",
+"box": 75,
+"word": "qokain",
+"pos": 2,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 89,
+"folio": "f103v",
+"box": 51,
+"word": "qokaiin",
+"pos": 5,
+"char": "i",
+"left_is_v4": true
+},
+{
+"id": 90,
+"folio": "f116r",
+"box": 138,
+"word": "shety",
+"pos": 3,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 91,
+"folio": "f35v",
+"box": 48,
+"word": "daiin",
+"pos": 2,
+"char": "i",
+"left_is_v4": true
+},
+{
+"id": 92,
+"folio": "f96r",
+"box": 4,
+"word": "cpheol",
+"pos": 5,
+"char": "l",
+"left_is_v4": true
+},
+{
+"id": 93,
+"folio": "f25v",
+"box": 25,
+"word": "qokaiin",
+"pos": 4,
+"char": "i",
+"left_is_v4": false
+},
+{
+"id": 94,
+"folio": "f104r",
+"box": 279,
+"word": "ysheodaiin",
+"pos": 4,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 95,
+"folio": "f103v",
+"box": 22,
+"word": "chalr",
+"pos": 3,
+"char": "l",
+"left_is_v4": true
+},
+{
+"id": 96,
+"folio": "f111r",
+"box": 220,
+"word": "cheky",
+"pos": 3,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 97,
+"folio": "f80r",
+"box": 301,
+"word": "sor",
+"pos": 0,
+"char": "s",
+"left_is_v4": true
+},
+{
+"id": 98,
+"folio": "f82r",
+"box": 65,
+"word": "qoteor",
+"pos": 1,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 99,
+"folio": "f116r",
+"box": 400,
+"word": "lkeey",
+"pos": 1,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 100,
+"folio": "f80r",
+"box": 345,
+"word": "qokar",
+"pos": 4,
+"char": "r",
+"left_is_v4": false
+},
+{
+"id": 101,
+"folio": "f75v",
+"box": 257,
+"word": "qokedy",
+"pos": 2,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 102,
+"folio": "f8r",
+"box": 127,
+"word": "rchealcham",
+"pos": 8,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 103,
+"folio": "f77r",
+"box": 110,
+"word": "qoteey",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 104,
+"folio": "f104v",
+"box": 81,
+"word": "qotchedy",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 105,
+"folio": "f105r",
+"box": 14,
+"word": "raiin",
+"pos": 1,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 106,
+"folio": "f112r",
+"box": 304,
+"word": "ol",
+"pos": 1,
+"char": "l",
+"left_is_v4": true
+},
+{
+"id": 107,
+"folio": "f103v",
+"box": 225,
+"word": "aiiin",
+"pos": 2,
+"char": "i",
+"left_is_v4": true
+},
+{
+"id": 108,
+"folio": "f75v",
+"box": 318,
+"word": "qokal",
+"pos": 2,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 109,
+"folio": "f104v",
+"box": 79,
+"word": "ykeedy",
+"pos": 0,
+"char": "y",
+"left_is_v4": true
+},
+{
+"id": 110,
+"folio": "f1v",
+"box": 80,
+"word": "tcho",
+"pos": 0,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 111,
+"folio": "f77r",
+"box": 97,
+"word": "qotaiin",
+"pos": 3,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 112,
+"folio": "f75v",
+"box": 38,
+"word": "qokal",
+"pos": 3,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 113,
+"folio": "f107v",
+"box": 21,
+"word": "otar",
+"pos": 0,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 114,
+"folio": "f83r",
+"box": 231,
+"word": "chedy",
+"pos": 4,
+"char": "y",
+"left_is_v4": true
+},
+{
+"id": 115,
+"folio": "f107v",
+"box": 133,
+"word": "qokal",
+"pos": 3,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 116,
+"folio": "f103v",
+"box": 447,
+"word": "chary",
+"pos": 4,
+"char": "y",
+"left_is_v4": false
+},
+{
+"id": 117,
+"folio": "f111r",
+"box": 87,
+"word": "chckhhy",
+"pos": 3,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 118,
+"folio": "f80r",
+"box": 284,
+"word": "sheckhy",
+"pos": 4,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 119,
+"folio": "f23r",
+"box": 6,
+"word": "opyaiin",
+"pos": 3,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 120,
+"folio": "f111r",
+"box": 526,
+"word": "lkar",
+"pos": 1,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 121,
+"folio": "f57v",
+"box": 167,
+"word": "oparairdly",
+"pos": 7,
+"char": "d",
+"left_is_v4": true
+},
+{
+"id": 122,
+"folio": "f104v",
+"box": 233,
+"word": "qochey",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 123,
+"folio": "f111r",
+"box": 482,
+"word": "lkedy",
+"pos": 0,
+"char": "l",
+"left_is_v4": true
+},
+{
+"id": 124,
+"folio": "f115r",
+"box": 177,
+"word": "lcheey",
+"pos": 3,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 125,
+"folio": "f75v",
+"box": 299,
+"word": "ykeechy",
+"pos": 3,
+"char": "e",
+"left_is_v4": true
+},
+{
+"id": 126,
+"folio": "f35r",
+"box": 79,
+"word": "cthol",
+"pos": 4,
+"char": "l",
+"left_is_v4": true
+},
+{
+"id": 127,
+"folio": "f24v",
+"box": 30,
+"word": "oraiin",
+"pos": 1,
+"char": "r",
+"left_is_v4": false
+},
+{
+"id": 128,
+"folio": "f115r",
+"box": 143,
+"word": "lkeodain",
+"pos": 2,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 129,
+"folio": "f83r",
+"box": 123,
+"word": "qokshedy",
+"pos": 5,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 130,
+"folio": "f111r",
+"box": 355,
+"word": "chtar",
+"pos": 2,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 131,
+"folio": "f104r",
+"box": 242,
+"word": "chckhey",
+"pos": 0,
+"char": "c",
+"left_is_v4": true
+},
+{
+"id": 132,
+"folio": "f114r",
+"box": 32,
+"word": "chedy",
+"pos": 3,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 133,
+"folio": "f83r",
+"box": 238,
+"word": "qokedy",
+"pos": 1,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 134,
+"folio": "f65v",
+"box": 30,
+"word": "dshedy",
+"pos": 0,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 135,
+"folio": "f87r",
+"box": 38,
+"word": "sheo",
+"pos": 3,
+"char": "o",
+"left_is_v4": true
+},
+{
+"id": 136,
+"folio": "f104r",
+"box": 303,
+"word": "lkechedy",
+"pos": 1,
+"char": "k",
+"left_is_v4": true
+},
+{
+"id": 137,
+"folio": "f104r",
+"box": 245,
+"word": "checkhd",
+"pos": 3,
+"char": "c",
+"left_is_v4": true
+},
+{
+"id": 138,
+"folio": "f82r",
+"box": 105,
+"word": "qokeey",
+"pos": 4,
+"char": "e",
+"left_is_v4": false
+},
+{
+"id": 139,
+"folio": "f105r",
+"box": 56,
+"word": "par",
+"pos": 1,
+"char": "a",
+"left_is_v4": true
+},
+{
+"id": 140,
+"folio": "f106v",
+"box": 336,
+"word": "chedy",
+"pos": 3,
+"char": "d",
+"left_is_v4": false
+},
+{
+"id": 141,
+"folio": "f18r",
+"box": 54,
+"word": "okaldy",
+"pos": 2,
+"char": "a",
+"left_is_v4": false
+},
+{
+"id": 142,
+"folio": "f107v",
+"box": 6,
+"word": "lkal",
+"pos": 1,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 143,
+"folio": "f115r",
+"box": 257,
+"word": "qokeeody",
+"pos": 2,
+"char": "k",
+"left_is_v4": false
+},
+{
+"id": 144,
+"folio": "f75v",
+"box": 347,
+"word": "oteey",
+"pos": 1,
+"char": "t",
+"left_is_v4": false
+},
+{
+"id": 145,
+"folio": "f7v",
+"box": 12,
+"word": "chcphhy",
+"pos": 3,
+"char": "p",
+"left_is_v4": false
+},
+{
+"id": 146,
+"folio": "f115v",
+"box": 91,
+"word": "oteeo",
+"pos": 0,
+"char": "o",
+"left_is_v4": false
+},
+{
+"id": 147,
+"folio": "f49v",
+"box": 30,
+"word": "cthey",
+"pos": 1,
+"char": "t",
+"left_is_v4": true
+},
+{
+"id": 148,
+"folio": "f19v",
+"box": 30,
+"word": "cthol",
+"pos": 2,
+"char": "h",
+"left_is_v4": true
+},
+{
+"id": 149,
+"folio": "f112v",
+"box": 165,
+"word": "qotaiin",
+"pos": 2,
+"char": "t",
+"left_is_v4": true
+}
+]
+}

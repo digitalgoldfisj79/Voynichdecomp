@@ -32,7 +32,7 @@ def pair_line(bw, toks):
         pi, pj = ai, aj
     return out
 def site_counts(fo, tid):
-    G = json.load(open(os.path.join(OUT, "glyphs", fo + ".json"))); boxes = BOX[fo]["boxes"]; by = {}
+    G = json.load(open(os.path.join(OUT, os.environ.get("GLYPH_DIR", "glyphs"), fo + ".json"))); boxes = BOX[fo]["boxes"]; by = {}
     for i, b in enumerate(boxes):
         if b[4]: by.setdefault(b[4], []).append(i)
     paired = shaped = raw = grp = tokens = 0
@@ -49,13 +49,13 @@ def site_counts(fo, tid):
     return dict(tokens=tokens, paired=paired, words_with_shapes=shaped, raw_paths=raw, grouped_paths=grp)
 rows = []; tot = dict(glyphs=0, shared=0, empty=0, bytes=0)
 for fo in sorted(BOX):
-    G = json.load(open(os.path.join(OUT, "glyphs", fo + ".json"))); sz = os.path.getsize(os.path.join(OUT, "glyphs", fo + ".json"))
+    G = json.load(open(os.path.join(OUT, os.environ.get("GLYPH_DIR", "glyphs"), fo + ".json"))); sz = os.path.getsize(os.path.join(OUT, os.environ.get("GLYPH_DIR", "glyphs"), fo + ".json"))
     z = site_counts(fo, "ZLZI")
     rows.append(dict(folio=fo, boxes=len(BOX[fo]["boxes"]), glyphs=G["glyphs"], shared_pct=round(100 * G["shared"] / max(G["glyphs"], 1), 1), no_ink=G["empty"],
                      threshold=G["thr"], x_height_px=G["xh"], file_bytes=sz, zl_tokens=z["tokens"], zl_words_with_shapes=z["words_with_shapes"], zl_raw_paths=z["raw_paths"]))
     for k in ("glyphs", "shared", "empty"): tot[k] += G[k]
     tot["bytes"] += sz
-with open(os.path.join(OUT, "glyph_corpus_by_folio.csv"), "w", newline="") as f:
+with open(os.path.join(OUT, "glyph_corpus_by_folio_%s.csv" % os.environ.get("GLYPH_DIR", "glyphs")), "w", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 print("folios", len(rows), "| glyphs (first reading)", tot["glyphs"], "| shared by column %.1f%%" % (100 * tot["shared"] / tot["glyphs"]), "| no ink %d (%.2f%%)" % (tot["empty"], 100 * tot["empty"] / tot["glyphs"]), "| bytes", tot["bytes"])
 sp = np.array([r["shared_pct"] for r in rows]); print("shared%% per folio: median %.1f p90 %.1f max %.1f (%s)" % (np.median(sp), np.quantile(sp, .9), sp.max(), max(rows, key=lambda r: r["shared_pct"])["folio"]))
