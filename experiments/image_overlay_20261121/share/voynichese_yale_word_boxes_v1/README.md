@@ -17,7 +17,7 @@ onto the 2014 canvases. Nothing has been corrected: errors in the original boxes
 ## Columns (`voynichese_yale_word_boxes.csv`)
 | column | meaning |
 |---|---|
-| folio | folio id (Voynichese naming, e.g. f68r1, f101v2) |
+| folio | folio id (Voynichese naming). Same as ZL except f101r1 = ZL f101r and f101v2 = ZL f101v |
 | voynichese_index | word index in the Voynichese Project XML for that folio |
 | voynichese_word | the Voynichese Project's EVA reading of the box |
 | zl_line | line number in the Zandbergen–Landini (ZL) transliteration, assigned by aligning word sequences; blank if none |
@@ -45,7 +45,9 @@ coordinates are on that combined image.
   1000-px image and the darkest-ink position found. Planted shifts are recovered on 208 of 225 folios;
   on those, 206 sit within a quarter of a box height of where the ink is (CONFIRM), one does not (f68r1,
   FALSIFY, though it looks right by eye), one is in between (f18v). Median offset 0.06 box heights.
-  The other 17 folios could not be tested (unchecked).
+  The other 17 folios could not be tested (unchecked). A by-eye look at 2 random words on each of the
+  19 non-CONFIRM folios (38 crops): 34 sit on the stated word; 4 are off or mostly on blank parchment
+  (f69r, f72r1, f89r2, f102v2: circular, rotated or edge label text).
 - **Right word under the box**: 98.0% of 1,464 hand-drawn glyph boxes from T. Timm's Archetype dataset
   (Zenodo 18827108) that fall inside a box fall in one whose word contains that glyph. 16 of 16 random
   crops fetched from `iiif_crop_url` showed the stated word.
