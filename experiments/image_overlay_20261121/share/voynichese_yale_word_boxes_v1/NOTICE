@@ -1,0 +1,15 @@
+Voynichese word boxes re-projected onto the Yale IIIF images of Beinecke MS 408
+
+This product includes data from The Voynichese Project (voynichese_data.zip,
+https://github.com/voynichese/voynichese, DataSets wiki page):
+    Copyright (C) 2014 The Voynichese Project
+    Licensed under the Apache License, Version 2.0.
+
+Modifications (2026-11-21, Ed Bozzard): word rectangles re-projected from the Voynichese
+Project's image frames onto the Yale Beinecke IIIF canvases through per-folio homographies;
+clipped to the canvas; 336 rectangles removed (see README); a transliteration line number
+added; IIIF crop URLs and per-folio quality fields added.
+
+The manuscript images themselves are not included. They are served by Yale University
+Library (Beinecke MS 408, https://collections.library.yale.edu/catalog/2002046) under
+Yale's own terms.
