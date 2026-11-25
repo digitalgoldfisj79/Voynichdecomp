@@ -4,8 +4,9 @@ One rectangle per word of Beinecke MS 408, placed on the Yale Library's current 
 so any word can be cropped straight from Yale's server at full resolution.
 
 The rectangles and readings are the Voynichese Project's (Apache License 2.0). They were drawn on
-older scans, so they did not line up with the current Yale images; here they are re-projected
-onto the Yale canvases. Nothing has been corrected: errors in the original boxes or readings carry over.
+the Beinecke's first digitisation (2004), so they did not line up with the current Yale IIIF images,
+which are the second digitisation (2014; per voynich.nu/gallery.html). Here they are re-projected
+onto the 2014 canvases. Nothing has been corrected: errors in the original boxes or readings carry over.
 
 ## Files
 - `voynichese_yale_word_boxes.csv`: 37,550 rows, 225 folios. One row per word.
