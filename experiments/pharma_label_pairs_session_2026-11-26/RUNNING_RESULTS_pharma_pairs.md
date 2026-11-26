@@ -261,3 +261,12 @@ P(survives 60d): "labels of these 11 look-alike pairs are no closer than random"
   results file as uploaded), voynich_pharma_label_pairs_brief_20261126 (the brief), voynich_pharma_label_pairs_scripts_20261126 (all scripts).
 - NOT recoverable: the prior session's scripts (c1-c5, label_split.py, label_in_herbal.py etc.) and herbal_pages_labelled_from_pharma_v01.csv;
   that session's disk is gone. Supabase Storage upload was refused from this workspace, so images, overlays and the zip are not in Supabase.
+
+## STORAGE 2026-11-26 step 18 — GitHub copy of the whole session
+- Repo digitalgoldfisj79/Voynichdecomp, branch experiment/pharma-label-pairs-v1-20261126 (not merged to main),
+  folder experiments/pharma_label_pairs_session_2026-11-26.
+- Everything in the session folder: results file, brief, scripts, data, checkpoints (incl. unsealed keys), outputs, and all images
+  (img 25, ov 50, crops 125, masks 213, frag 304, sheets 14, sheets2b 28). 841 files; SHA256SUMS_all.txt in the folder verified
+  with sha256sum -c after copying. Image commit 06cd237; this results-file update is the next commit on the branch.
+- Supabase pointer: handoff_docs key voynich_pharma_label_pairs_github_20261126.
+- Not on GitHub: the zip (redundant: the loose files are there) and ZL3b-n.txt (third-party; t2b.py names its source commit).
