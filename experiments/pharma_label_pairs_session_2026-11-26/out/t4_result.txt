@@ -1,0 +1,5 @@
+{"pairs": [["11", "48"], ["15", "16"], ["103", "95"]], "labels": [[["ofaldo"], ["ytarem"]], [["otararody"], ["otokol"]], [["oeeesary"], ["otoldy"]]], "pair_sim": [0.167, 0.333, 0.25], "S": 0.25, "null_mean": 0.236, "null_sd": 0.097, "ratio": 0.15, "clear_2sd": 0.43, "identical": false, "p_ge": 0.4184}
+planted k 0 detect rate 1.0
+planted k 1 detect rate 1.0
+planted k 2 detect rate 1.0
+planted k 3 detect rate 1.0

@@ -1,0 +1,359 @@
+obj_id,grade,true_fragment,note
+voynich_pharma:175:5,WRONG,68,pale root right of jar; labels on f99r sit above-left of their drawing
+voynich_pharma:175:4,WRONG,69,dark red root
+voynich_pharma:175:0,RIGHT,70,
+voynich_pharma:175:1,RIGHT,71,box also clips 70
+voynich_pharma:175:8,RIGHT,72,
+voynich_pharma:175:2,WRONG,73,pale tubes; joined to 78
+voynich_pharma:175:3,UNCLEAR,,box spans 74-76 and 79
+voynich_pharma:175:6,RIGHT,75,
+voynich_pharma:175:7,RIGHT,76,
+voynich_pharma:175:11,RIGHT,77,
+voynich_pharma:175:10,RIGHT,78,
+voynich_pharma:175:14,RIGHT,80,
+voynich_pharma:175:12,WRONG,81,
+voynich_pharma:175:18,WRONG,82,label 82 has no box
+voynich_pharma:175:17,RIGHT,83,
+voynich_pharma:175:16,RIGHT,84,
+voynich_pharma:175:15,UNCLEAR,,box spans 85 and 86
+voynich_pharma:175:22,RIGHT,87,
+voynich_pharma:175:23,RIGHT,88,
+voynich_pharma:175:24,UNCLEAR,,box spans 89 and 90
+voynich_pharma:175:25,RIGHT,91,
+voynich_pharma:175:21,RIGHT,92,
+voynich_pharma:175:19,RIGHT,93,
+voynich_pharma:175:29,WRONG,94,manual stem box of the bottom vine
+voynich_pharma:175:27,RIGHT,94,
+voynich_pharma:175:30,MISSED,94,NONE but is fragment 94 leaves
+voynich_pharma:175:31,MISSED,94,NONE but is fragment 94 berries
+voynich_pharma:161:0,RIGHT,1,box holds pale root + red root; read as one fragment
+voynich_pharma:161:6,RIGHT,1,
+voynich_pharma:161:2,RIGHT,2,
+voynich_pharma:161:4,RIGHT,3,
+voynich_pharma:161:3,RIGHT,4,
+voynich_pharma:161:1,RIGHT,5,leaf under label 5
+voynich_pharma:161:25,UNCLEAR,,manual box covers most of page
+voynich_pharma:161:12,RIGHT,6,
+voynich_pharma:161:9,UNCLEAR,,lobed leaf between 6 and 7
+voynich_pharma:161:14,WRONG,7,dark root
+voynich_pharma:161:11,UNCLEAR,,
+voynich_pharma:161:10,UNCLEAR,,box spans 7-8
+voynich_pharma:161:13,UNCLEAR,,ambiguous locus 8|9
+voynich_pharma:161:8,UNCLEAR,,ambiguous locus 8|9
+voynich_pharma:161:7,RIGHT,9,
+voynich_pharma:161:16,RIGHT,10,
+voynich_pharma:161:20,RIGHT,10,
+voynich_pharma:161:15,RIGHT,10,
+voynich_pharma:161:21,RIGHT,10,
+voynich_pharma:161:18,RIGHT,11,
+voynich_pharma:161:19,RIGHT,11,
+voynich_pharma:161:17,RIGHT,11,
+voynich_pharma:161:23,RIGHT,11,
+voynich_pharma:161:24,RIGHT_NONE,12,fragment 12 is unlabelled
+voynich_pharma:162:8,RIGHT,13,
+voynich_pharma:162:0,RIGHT,13,leaf over 13
+voynich_pharma:162:5,WRONG,14,
+voynich_pharma:162:1,RIGHT,14,leaf likely on 14's stem
+voynich_pharma:162:6,WRONG,15,long red root
+voynich_pharma:162:3,RIGHT,15,
+voynich_pharma:162:7,RIGHT,16,
+voynich_pharma:162:14,RIGHT,17,
+voynich_pharma:162:15,WRONG,18,
+voynich_pharma:162:10,UNCLEAR,,star leaf between 18 and 19
+voynich_pharma:162:13,UNCLEAR,,green leaf between 18 and 19
+voynich_pharma:162:16,RIGHT,19,
+voynich_pharma:162:18,RIGHT,19,
+voynich_pharma:162:27,RIGHT,20,row 3 labels sit right of their fragment (prior SID note)
+voynich_pharma:162:26,UNCLEAR,,
+voynich_pharma:162:25,WRONG,21,tuber string
+voynich_pharma:162:28,WRONG,21,
+voynich_pharma:162:24,RIGHT,21,
+voynich_pharma:162:22,WRONG,22,
+voynich_pharma:162:21,RIGHT,22,
+voynich_pharma:162:9,UNCLEAR,,box spans 23 and 24
+voynich_pharma:162:36,WRONG,25,hairy tuft; label to its left is 24's
+voynich_pharma:162:33,WRONG,26,long pale root (tag misread as 31 at grading time; corrected)
+voynich_pharma:162:29,RIGHT,26,
+voynich_pharma:162:17,UNCLEAR,,box spans 27 and 28
+voynich_pharma:162:41,RIGHT,29,
+voynich_pharma:162:37,UNCLEAR,,
+voynich_pharma:162:23,RIGHT,30,
+voynich_pharma:162:49,RIGHT,30,
+voynich_pharma:162:51,RIGHT,31,
+voynich_pharma:162:47,UNCLEAR,,berries between 31 and 32
+voynich_pharma:162:48,RIGHT,32,
+voynich_pharma:162:30,RIGHT,33,
+voynich_pharma:162:34,RIGHT,33,
+voynich_pharma:162:31,RIGHT,34,
+voynich_pharma:162:32,UNCLEAR,,spiky leaf between 34 and 35
+voynich_pharma:162:55,WRONG,35,canopy of the big root
+voynich_pharma:162:59,RIGHT,35,
+voynich_pharma:162:58,UNCLEAR,,leaf between 35 and 36
+voynich_pharma:162:56,WRONG,36,label 36 has no box
+voynich_pharma:162:57,UNCLEAR,,NONE; leaf of 36 or top of 45's stem
+voynich_pharma:162:60,UNCLEAR,,NONE; long stem reaching row 3
+voynich_pharma:162:39,UNCLEAR,,
+voynich_pharma:162:61,RIGHT,37,
+voynich_pharma:162:40,RIGHT,37,
+voynich_pharma:162:62,NONE_UNBOXED,38,label 38 has no box
+voynich_pharma:162:43,RIGHT,40,
+voynich_pharma:162:45,RIGHT,40,
+voynich_pharma:162:46,RIGHT,41,
+voynich_pharma:162:44,WRONG,42,
+voynich_pharma:162:63,WRONG,43,
+voynich_pharma:162:70,WRONG,43,duplicate box of 162:63
+voynich_pharma:162:65,WRONG,44,
+voynich_pharma:162:72,WRONG,44,duplicate box of 162:65
+voynich_pharma:162:66,UNCLEAR,,
+voynich_pharma:162:73,UNCLEAR,,duplicate of 162:66
+voynich_pharma:162:64,WRONG,45,45 is unlabelled; joined to row-4 label 49
+voynich_pharma:162:71,WRONG,45,
+voynich_pharma:162:52,RIGHT,46,
+voynich_pharma:162:53,RIGHT,46,
+voynich_pharma:162:54,RIGHT,46,
+voynich_pharma:162:67,RIGHT,47,
+voynich_pharma:162:68,WRONG,48,
+voynich_pharma:162:74,WRONG,48,duplicate of 162:68
+voynich_pharma:162:69,RIGHT,49,
+voynich_pharma:162:75,RIGHT,49,duplicate of 162:69
+voynich_pharma:163:2,RIGHT,50,probable
+voynich_pharma:163:7,UNCLEAR,,between 50 and 51
+voynich_pharma:163:4,RIGHT,52,
+voynich_pharma:163:5,RIGHT,53,
+voynich_pharma:163:6,RIGHT,54,
+voynich_pharma:163:1,RIGHT,54,
+voynich_pharma:163:3,RIGHT,54,
+voynich_pharma:163:11,RIGHT,55,
+voynich_pharma:163:14,RIGHT,55,
+voynich_pharma:163:12,RIGHT,56,
+voynich_pharma:163:10,RIGHT,57,
+voynich_pharma:163:9,RIGHT,57,
+voynich_pharma:163:13,RIGHT,57,
+voynich_pharma:163:24,RIGHT,58,
+voynich_pharma:163:29,UNCLEAR,,
+voynich_pharma:163:30,UNCLEAR,,
+voynich_pharma:163:20,RIGHT,59,
+voynich_pharma:163:31,UNCLEAR,,
+voynich_pharma:163:28,UNCLEAR,,
+voynich_pharma:163:22,UNCLEAR,,row 3 right half: 60 has no label box; cannot split 60/61
+voynich_pharma:163:27,UNCLEAR,,
+voynich_pharma:163:26,UNCLEAR,,
+voynich_pharma:163:21,UNCLEAR,,
+voynich_pharma:163:16,UNCLEAR,,
+voynich_pharma:163:17,UNCLEAR,,
+voynich_pharma:163:25,UNCLEAR,,
+voynich_pharma:163:18,UNCLEAR,,
+voynich_pharma:163:19,UNCLEAR,,
+voynich_pharma:164:3,UNCLEAR,,
+voynich_pharma:164:5,RIGHT,62,
+voynich_pharma:164:0,RIGHT,63,
+voynich_pharma:164:4,UNCLEAR,,
+voynich_pharma:164:7,RIGHT,63,
+voynich_pharma:164:6,RIGHT,64,
+voynich_pharma:164:1,RIGHT,64,
+voynich_pharma:164:10,UNCLEAR,,
+voynich_pharma:164:11,UNCLEAR,,
+voynich_pharma:164:16,RIGHT,65,
+voynich_pharma:164:15,WRONG,66,
+voynich_pharma:164:9,UNCLEAR,,
+voynich_pharma:164:12,WRONG,67,
+voynich_pharma:164:13,UNCLEAR,,
+voynich_pharma:164:14,RIGHT,67,
+voynich_pharma:164:17,UNCLEAR,,box holds little ink
+voynich_pharma:164:18,UNCLEAR,,box holds little ink
+voynich_pharma:164:19,UNCLEAR,,box holds little ink
+voynich_pharma:176:3,RIGHT,95,
+voynich_pharma:176:2,RIGHT,96,
+voynich_pharma:176:4,RIGHT,97,
+voynich_pharma:176:7,RIGHT,98,
+voynich_pharma:176:1,RIGHT,99,
+voynich_pharma:176:0,UNCLEAR,,box spans 100 and 101
+voynich_pharma:176:5,WRONG,102,joined to row-2 label 108
+voynich_pharma:176:12,RIGHT,103,
+voynich_pharma:176:14,RIGHT,104,
+voynich_pharma:176:10,WRONG,105,
+voynich_pharma:176:11,WRONG,106,
+voynich_pharma:176:9,RIGHT,107,
+voynich_pharma:176:8,RIGHT,108,
+voynich_pharma:176:17,RIGHT,109,
+voynich_pharma:176:18,RIGHT,110,
+voynich_pharma:176:19,RIGHT,111,
+voynich_pharma:176:15,RIGHT,112,
+voynich_pharma:176:16,RIGHT,113,
+voynich_pharma:176:21,RIGHT,114,
+voynich_pharma:177:3,RIGHT,115,
+voynich_pharma:177:11,MISSED,115,root of 115 left without label
+voynich_pharma:177:0,UNCLEAR,,box spans 116 and 117
+voynich_pharma:177:7,WRONG,116,root of the arrow-leaf vine
+voynich_pharma:177:9,WRONG,117,root of the large serrated plant
+voynich_pharma:177:4,RIGHT,118,
+voynich_pharma:177:8,RIGHT,118,
+voynich_pharma:177:1,RIGHT,119,
+voynich_pharma:177:6,WRONG,119,root under 119 joined to 125
+voynich_pharma:177:14,WRONG,120,label 120 has no box
+voynich_pharma:177:19,WRONG,120,
+voynich_pharma:177:15,RIGHT,121,
+voynich_pharma:177:20,RIGHT,121,
+voynich_pharma:177:10,WRONG,123,
+voynich_pharma:177:18,WRONG,123,
+voynich_pharma:177:13,RIGHT,124,
+voynich_pharma:177:17,WRONG,124,
+voynich_pharma:177:12,RIGHT,125,
+voynich_pharma:177:16,WRONG,125,
+voynich_pharma:177:22,RIGHT,126,
+voynich_pharma:177:24,UNCLEAR,,
+voynich_pharma:177:25,UNCLEAR,,ambiguous locus 126|127
+voynich_pharma:177:30,UNCLEAR,,ambiguous locus 126|127
+voynich_pharma:178:2,WRONG,131,
+voynich_pharma:178:5,RIGHT,131,
+voynich_pharma:178:4,WRONG,132,
+voynich_pharma:178:7,UNCLEAR,,sprig between rows
+voynich_pharma:178:1,RIGHT,133,
+voynich_pharma:178:3,RIGHT,134,
+voynich_pharma:178:8,UNCLEAR,,box spans 135 and 136
+voynich_pharma:180:4,RIGHT,186,
+voynich_pharma:180:5,WRONG,187,joined to row-2 label 191
+voynich_pharma:180:1,RIGHT,188,
+voynich_pharma:180:2,RIGHT,189,
+voynich_pharma:180:0,UNCLEAR,,box covers 190 and part of row 2
+voynich_pharma:180:6,WRONG,190,leaf of 190 joined to 194
+voynich_pharma:180:8,UNCLEAR,,box spans several row-2 plants
+voynich_pharma:180:13,WRONG,,row-3 sprig (196-200 unlabelled) joined to 192
+voynich_pharma:180:12,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:16,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:18,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:19,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:20,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:21,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:23,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:24,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:25,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:180:31,RIGHT_NONE,,row 3 unlabelled
+voynich_pharma:179:0,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:2,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:3,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:4,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:5,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:6,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:7,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:9,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:10,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:11,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:12,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:13,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:14,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:17,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:18,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:19,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:179:21,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source
+voynich_pharma:180:26,RIGHT,201,feathery tail of the stump
+voynich_pharma:180:53,RIGHT,201,
+voynich_pharma:180:54,RIGHT,201,leaves on the stump
+voynich_pharma:180:50,RIGHT_NONE,202,unlabelled
+voynich_pharma:180:34,RIGHT_NONE,,203/204 unlabelled
+voynich_pharma:180:35,RIGHT_NONE,,203/204 unlabelled
+voynich_pharma:180:36,RIGHT_NONE,,203/204 unlabelled
+voynich_pharma:180:37,RIGHT,212,
+voynich_pharma:180:48,RIGHT,212,legged rhizome of 212
+voynich_pharma:180:51,UNCLEAR,,manual box spans most of f102r2
+voynich_pharma:180:52,UNCLEAR,,manual box spans most of f102r2
+voynich_pharma:180:28,RIGHT_NONE,,row 1 unlabelled
+voynich_pharma:180:39,RIGHT_NONE,,row 1 unlabelled
+voynich_pharma:180:38,RIGHT_NONE,,row 1 unlabelled
+voynich_pharma:180:40,RIGHT_NONE,,row 1 unlabelled
+voynich_pharma:180:41,RIGHT_NONE,,row 1 unlabelled
+voynich_pharma:180:30,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:45,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:46,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:47,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:43,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:44,RIGHT_NONE,,row 2 unlabelled
+voynich_pharma:180:29,RIGHT_NONE,,is a jar classed whole_plant
+voynich_pharma:181:8,RIGHT,214,
+voynich_pharma:181:7,RIGHT,215,
+voynich_pharma:181:2,RIGHT,216,
+voynich_pharma:181:9,RIGHT,217,
+voynich_pharma:181:1,WRONG,,leaf on the folio behind (top strip); not f102v2
+voynich_pharma:181:4,UNCLEAR,,labels 217-220 vs 4 drawings: side convention unclear
+voynich_pharma:181:5,UNCLEAR,,
+voynich_pharma:181:3,UNCLEAR,,
+voynich_pharma:181:17,RIGHT,229,ext (replaces UNCLEAR)
+voynich_pharma:181:22,NONE_UNBOXED,233,ext (replaces UNCLEAR)
+voynich_pharma:181:23,RIGHT,231,ext (replaces UNCLEAR)
+voynich_pharma:182:7,RIGHT,234,
+voynich_pharma:182:3,RIGHT,235,
+voynich_pharma:182:4,RIGHT,235,white fan + pink root read as one fragment (prior note)
+voynich_pharma:182:1,UNCLEAR,,canopy box spans 235-236
+voynich_pharma:182:6,RIGHT,236,
+voynich_pharma:182:0,UNCLEAR,,canopy box spans 237-238
+voynich_pharma:182:5,RIGHT,238,
+voynich_pharma:182:13,RIGHT,239,ext (replaces UNCLEAR)
+voynich_pharma:178:15,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:16,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:17,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:19,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:20,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:21,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:22,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:23,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:24,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:26,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:27,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:28,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:29,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:30,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:31,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:35,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:36,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:37,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:38,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:39,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:40,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:41,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:42,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:43,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:44,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:45,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:46,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:47,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:48,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:49,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:50,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:178:51,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction)
+voynich_pharma:177:26,RIGHT,128,ext
+voynich_pharma:177:29,RIGHT,128,ext
+voynich_pharma:177:33,RIGHT,126,ext
+voynich_pharma:177:21,UNCLEAR,,ext
+voynich_pharma:177:28,UNCLEAR,,ext
+voynich_pharma:177:32,UNCLEAR,,ext
+voynich_pharma:178:10,RIGHT,135,ext
+voynich_pharma:178:6,RIGHT,137,ext
+voynich_pharma:178:9,RIGHT,138,ext
+voynich_pharma:178:25,RIGHT,138,ext
+voynich_pharma:178:11,RIGHT,140,ext
+voynich_pharma:178:12,RIGHT,141,ext
+voynich_pharma:178:13,RIGHT,142,ext
+voynich_pharma:178:14,RIGHT,143,ext
+voynich_pharma:178:34,RIGHT,143,ext
+voynich_pharma:180:7,RIGHT,194,ext
+voynich_pharma:180:10,WRONG,192,ext
+voynich_pharma:180:11,WRONG,193,ext
+voynich_pharma:180:14,WRONG,,ext; row-3 unlabelled plant joined to 192
+voynich_pharma:180:15,WRONG,,ext; row-3 unlabelled plant joined to 192
+voynich_pharma:181:12,RIGHT,221,ext
+voynich_pharma:181:15,RIGHT,222,ext
+voynich_pharma:181:13,RIGHT,223,ext
+voynich_pharma:181:10,RIGHT,224,ext
+voynich_pharma:181:16,RIGHT,225,ext
+voynich_pharma:181:14,RIGHT,226,ext
+voynich_pharma:181:11,WRONG,227,ext; label 227 has no box
+voynich_pharma:181:24,RIGHT,230,ext
+voynich_pharma:181:19,RIGHT,231,ext
+voynich_pharma:181:20,RIGHT,232,ext
+voynich_pharma:181:21,WRONG,233,ext; label 233 has no box
+voynich_pharma:182:12,RIGHT,239,ext
+voynich_pharma:182:14,RIGHT,239,ext
+voynich_pharma:182:11,WRONG,240,ext
+voynich_pharma:182:10,UNCLEAR,,ext
+voynich_pharma:182:15,RIGHT,241,ext
+voynich_pharma:182:9,RIGHT,241,ext

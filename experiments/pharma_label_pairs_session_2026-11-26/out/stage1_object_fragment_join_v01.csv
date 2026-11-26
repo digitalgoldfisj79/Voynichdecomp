@@ -1,0 +1,373 @@
+obj_id,folio_seq,obj_index,obj_class,page,yale_image_id,yale_x,yale_y,yale_w,yale_h,geom_fragment,geom_zl_locus,geom_vnu_row,dist_px,gap_px,conf,span,ambig,eye_grade,eye_fragment,eye_note,fragment_final,final_source,label_method
+voynich_pharma:161:0,161,0,root,f88r,1037112,700,163,337,654,1,2,1,0,167,HIGH,False,False,RIGHT,1,box holds pale root + red root; read as one fragment,1,geom_eye_confirmed,order_gate
+voynich_pharma:161:1,161,1,leaf,f88r,1037112,2084,204,242,304,5,6,1,0,297,HIGH,False,False,RIGHT,5,leaf under label 5,5,geom_eye_confirmed,order_gate
+voynich_pharma:161:2,161,2,whole_plant,f88r,1037112,1110,206,396,594,2,3,1,0,0,MED,True,False,RIGHT,2,,2,geom_eye_confirmed,order_gate
+voynich_pharma:161:3,161,3,root,f88r,1037112,1656,212,429,684,4,5,1,0,53,MED,False,False,RIGHT,4,,4,geom_eye_confirmed,order_gate
+voynich_pharma:161:4,161,4,root,f88r,1037112,1463,242,271,592,3,4,1,26,27,MED,False,False,RIGHT,3,,3,geom_eye_confirmed,order_gate
+voynich_pharma:161:6,161,6,root,f88r,1037112,934,521,198,285,1,2,1,90,19,MED,False,False,RIGHT,1,,1,geom_eye_confirmed,order_gate
+voynich_pharma:161:7,161,7,leaf,f88r,1037112,2117,1191,396,822,9,17,2,0,241,HIGH,False,False,RIGHT,9,,9,geom_eye_confirmed,by_eye
+voynich_pharma:161:8,161,8,leaf,f88r,1037112,1778,1200,193,201,8|9,16,0,86,291,HIGH,False,True,UNCLEAR,,ambiguous locus 8|9,,none,
+voynich_pharma:161:9,161,9,leaf,f88r,1037112,852,1213,250,236,6,13,2,0,1,MED,False,False,UNCLEAR,,lobed leaf between 6 and 7,,none,
+voynich_pharma:161:10,161,10,root,f88r,1037112,1240,1216,939,619,8,15,2,0,0,MED,True,False,UNCLEAR,,box spans 7-8,,none,
+voynich_pharma:161:11,161,11,whole_plant,f88r,1037112,1172,1221,198,415,8,15,2,30,40,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:161:12,161,12,root,f88r,1037112,513,1227,434,790,6,13,2,0,156,HIGH,False,False,RIGHT,6,,6,geom_eye_confirmed,by_eye
+voynich_pharma:161:13,161,13,leaf,f88r,1037112,1582,1265,250,163,8|9,16,0,33,148,MED,False,True,UNCLEAR,,ambiguous locus 8|9,,none,
+voynich_pharma:161:14,161,14,root,f88r,1037112,882,1343,339,440,6,13,2,0,0,MED,True,False,WRONG,7,dark root,7,eye_corrected,by_eye
+voynich_pharma:161:15,161,15,leaf,f88r,1037112,1172,2190,223,79,10,24,3,351,318,MED,False,False,RIGHT,10,,10,geom_eye_confirmed,by_eye
+voynich_pharma:161:16,161,16,root,f88r,1037112,730,2196,754,426,10,24,3,0,579,HIGH,False,False,RIGHT,10,,10,geom_eye_confirmed,by_eye
+voynich_pharma:161:17,161,17,leaf,f88r,1037112,1818,2196,130,122,11,25,3,115,858,HIGH,False,False,RIGHT,11,,11,geom_eye_confirmed,by_eye
+voynich_pharma:161:18,161,18,leaf,f88r,1037112,1552,2217,138,133,11,25,3,373,333,MED,False,False,RIGHT,11,,11,geom_eye_confirmed,by_eye
+voynich_pharma:161:19,161,19,root,f88r,1037112,1609,2217,893,1105,11,25,3,0,760,HIGH,False,False,RIGHT,11,,11,geom_eye_confirmed,by_eye
+voynich_pharma:161:20,161,20,leaf,f88r,1037112,665,2266,201,125,10,24,3,13,1184,HIGH,False,False,RIGHT,10,,10,geom_eye_confirmed,by_eye
+voynich_pharma:161:21,161,21,leaf,f88r,1037112,1213,2269,233,144,10,24,3,364,253,MED,False,False,RIGHT,10,,10,geom_eye_confirmed,by_eye
+voynich_pharma:161:23,161,23,leaf,f88r,1037112,1487,2402,290,269,11,25,3,324,314,MED,False,False,RIGHT,11,,11,geom_eye_confirmed,by_eye
+voynich_pharma:161:24,161,24,root,f88r,1037112,901,3254,1319,372,,,,,,NONE,True,False,RIGHT_NONE,12,fragment 12 is unlabelled,,none,
+voynich_pharma:161:25,161,25,leaf,f88r,1037112,182,166,1805,3455,6,13,2,0,0,MED,True,False,UNCLEAR,,manual box covers most of page,,none,
+voynich_pharma:162:0,162,0,leaf,f88v,1006233,1035,172,236,191,13,2,1,51,249,HIGH,False,False,RIGHT,13,leaf over 13,13,geom_eye_confirmed,order_gate
+voynich_pharma:162:1,162,1,leaf,f88v,1006233,1452,191,218,145,14,3,1,75,227,HIGH,False,False,RIGHT,14,leaf likely on 14's stem,14,geom_eye_confirmed,order_gate
+voynich_pharma:162:3,162,3,leaf,f88v,1006233,1943,218,191,172,15,4,1,65,138,MED,False,False,RIGHT,15,,15,geom_eye_confirmed,order_gate
+voynich_pharma:162:5,162,5,root,f88v,1006233,1153,336,272,481,13,2,1,0,142,MED,False,False,WRONG,14,,14,eye_corrected,order_gate
+voynich_pharma:162:6,162,6,root,f88v,1006233,1516,345,1017,572,14,3,1,0,0,MED,True,False,WRONG,15,long red root,15,eye_corrected,order_gate
+voynich_pharma:162:7,162,7,leaf,f88v,1006233,2587,381,227,281,16,5,1,274,234,MED,False,False,RIGHT,16,,16,geom_eye_confirmed,order_gate
+voynich_pharma:162:8,162,8,root,f88v,1006233,862,454,182,318,13,2,1,124,401,HIGH,False,False,RIGHT,13,,13,geom_eye_confirmed,order_gate
+voynich_pharma:162:9,162,9,root,f89r1,1006233,3114,472,581,490,23,2,1,45,45,MED,False,False,UNCLEAR,,box spans 23 and 24,,none,
+voynich_pharma:162:10,162,10,leaf,f88v,1006233,1770,1117,200,182,18,13,2,47,271,HIGH,False,False,UNCLEAR,,star leaf between 18 and 19,,none,
+voynich_pharma:162:13,162,13,leaf,f88v,1006233,1788,1189,409,427,18,13,2,0,336,HIGH,False,False,UNCLEAR,,green leaf between 18 and 19,,none,
+voynich_pharma:162:14,162,14,root,f88v,1006233,890,1253,372,536,17,12,2,191,396,MED,False,False,RIGHT,17,,17,geom_eye_confirmed,order_gate
+voynich_pharma:162:15,162,15,root,f88v,1006233,1443,1271,300,536,17,12,2,0,105,MED,False,False,WRONG,18,,18,eye_corrected,order_gate
+voynich_pharma:162:16,162,16,root,f88v,1006233,1925,1307,844,626,19,14,2,44,32,MED,False,False,RIGHT,19,,19,geom_eye_confirmed,order_gate
+voynich_pharma:162:17,162,17,root,f89r1,1006233,3186,1325,717,490,27,12,2,0,94,MED,False,False,UNCLEAR,,box spans 27 and 28,,none,
+voynich_pharma:162:18,162,18,leaf,f88v,1006233,2524,1362,290,127,19,14,2,99,577,HIGH,False,False,RIGHT,19,,19,geom_eye_confirmed,order_gate
+voynich_pharma:162:21,162,21,leaf,f88v,1006233,2596,2197,182,454,22,30,3,194,265,MED,False,False,RIGHT,22,,22,geom_eye_confirmed,order_gate
+voynich_pharma:162:22,162,22,root,f88v,1006233,2133,2624,490,844,21,29,3,0,37,MED,False,False,WRONG,22,,22,eye_corrected,order_gate
+voynich_pharma:162:23,162,23,root,f89r1,1006233,3313,2669,245,817,30,25,3,54,681,HIGH,False,False,RIGHT,30,,30,geom_eye_confirmed,order_gate
+voynich_pharma:162:24,162,24,leaf,f88v,1006233,1816,2687,254,409,21,29,3,112,261,HIGH,False,False,RIGHT,21,,21,geom_eye_confirmed,order_gate
+voynich_pharma:162:25,162,25,root,f88v,1006233,1298,2714,481,853,20,28,3,0,402,HIGH,False,False,WRONG,21,tuber string,21,eye_corrected,order_gate
+voynich_pharma:162:26,162,26,leaf,f88v,1006233,1189,2796,209,372,20,28,3,45,738,HIGH,False,False,UNCLEAR,,,,none,
+voynich_pharma:162:27,162,27,root,f88v,1006233,917,2832,336,790,20,28,3,191,737,MED,False,False,RIGHT,20,row 3 labels sit right of their fragment (prior SID note),20,geom_eye_confirmed,order_gate
+voynich_pharma:162:28,162,28,leaf,f88v,1006233,1462,2905,163,227,20,28,3,96,463,HIGH,False,False,WRONG,21,,21,eye_corrected,order_gate
+voynich_pharma:162:29,162,29,leaf,f89r1,1006233,4911,172,227,136,26,5,1,297,453,MED,False,False,RIGHT,26,,26,geom_eye_confirmed,order_gate
+voynich_pharma:162:30,162,30,leaf,f89r2,1006233,5483,191,236,309,33,2,1,165,418,MED,False,False,RIGHT,33,,33,geom_eye_confirmed,order_gate
+voynich_pharma:162:31,162,31,root,f89r2,1006233,5910,209,354,645,34,3,1,37,12,MED,False,False,RIGHT,34,,34,geom_eye_confirmed,order_gate
+voynich_pharma:162:32,162,32,leaf,f89r2,1006233,6264,236,318,336,34,3,1,0,403,HIGH,False,False,UNCLEAR,,spiky leaf between 34 and 35,,none,
+voynich_pharma:162:33,162,33,root,f89r1,1006233,4085,318,1035,490,25,4,1,0,0,MED,True,False,WRONG,26,long pale root (tag misread as 31 at grading time; corrected),26,eye_corrected,order_gate
+voynich_pharma:162:34,162,34,root,f89r2,1006233,5583,399,245,499,33,2,1,33,440,HIGH,False,False,RIGHT,33,,33,geom_eye_confirmed,order_gate
+voynich_pharma:162:36,162,36,root,f89r1,1006233,3758,463,290,372,24,3,1,30,102,MED,False,False,WRONG,25,hairy tuft; label to its left is 24's,25,eye_corrected,order_gate
+voynich_pharma:162:37,162,37,leaf,f89r1,1006233,5066,881,136,399,29,14,2,469,610,LOW,False,False,UNCLEAR,,,,none,
+voynich_pharma:162:39,162,39,leaf,f89r2,1006233,5628,1226,363,445,37,10,2,518,9999,LOW,False,False,UNCLEAR,,,,none,
+voynich_pharma:162:40,162,40,leaf,f89r2,1006233,6019,1334,563,354,37,10,2,45,9999,HIGH,False,False,RIGHT,37,,37,geom_eye_confirmed,order_gate
+voynich_pharma:162:41,162,41,root,f89r1,1006233,4058,1398,1144,418,29,14,2,0,60,MED,False,False,RIGHT,29,,29,geom_eye_confirmed,order_gate
+voynich_pharma:162:43,162,43,leaf,f89r2,1006233,5710,1925,236,200,40,17,3,34,388,HIGH,False,False,RIGHT,40,,40,geom_eye_confirmed,by_eye
+voynich_pharma:162:44,162,44,root,f89r2,1006233,6373,2015,209,354,41,18,3,4,128,MED,False,False,WRONG,42,,42,eye_corrected,by_eye
+voynich_pharma:162:45,162,45,root,f89r2,1006233,5574,2133,372,363,40,17,3,49,373,HIGH,False,False,RIGHT,40,,40,geom_eye_confirmed,by_eye
+voynich_pharma:162:46,162,46,root,f89r2,1006233,6010,2179,318,209,41,18,3,60,25,MED,False,False,RIGHT,41,,41,geom_eye_confirmed,by_eye
+voynich_pharma:162:47,162,47,leaf,f89r1,1006233,4112,2569,454,463,31,26,3,60,430,HIGH,False,False,UNCLEAR,,berries between 31 and 32,,none,
+voynich_pharma:162:48,162,48,root,f89r1,1006233,4403,2578,654,1053,32,27,3,1,109,MED,False,False,RIGHT,32,,32,geom_eye_confirmed,order_gate
+voynich_pharma:162:49,162,49,leaf,f89r1,1006233,3422,2605,345,245,30,25,3,55,524,HIGH,False,False,RIGHT,30,,30,geom_eye_confirmed,order_gate
+voynich_pharma:162:51,162,51,root,f89r1,1006233,3822,2814,345,626,31,26,3,127,83,MED,False,False,RIGHT,31,,31,geom_eye_confirmed,order_gate
+voynich_pharma:162:52,162,52,leaf,f89r2,1006233,5665,2850,281,245,46,31,4,364,670,MED,False,False,RIGHT,46,,46,geom_eye_confirmed,order_gate
+voynich_pharma:162:53,162,53,leaf,f89r2,1006233,6019,2850,354,163,46,31,4,68,547,HIGH,False,False,RIGHT,46,,46,geom_eye_confirmed,order_gate
+voynich_pharma:162:54,162,54,root,f89r2,1006233,5855,3050,454,418,46,31,4,1,670,HIGH,False,False,RIGHT,46,,46,geom_eye_confirmed,order_gate
+voynich_pharma:162:55,162,55,leaf,f89r2,1006233,6264,182,1307,399,34,3,1,0,25,MED,False,False,WRONG,35,canopy of the big root,35,eye_corrected,order_gate
+voynich_pharma:162:56,162,56,root,f89r2,1006233,7925,345,545,554,35,4,1,767,858,LOW,False,False,WRONG,36,label 36 has no box,36,eye_corrected,order_gate
+voynich_pharma:162:57,162,57,leaf,f89r2,1006233,8452,363,418,436,,,,1293,,NONE,False,False,UNCLEAR,,NONE; leaf of 36 or top of 45's stem,,none,
+voynich_pharma:162:58,162,58,leaf,f89r2,1006233,7444,490,381,390,35,4,1,285,858,MED,False,False,UNCLEAR,,leaf between 35 and 36,,none,
+voynich_pharma:162:59,162,59,root,f89r2,1006233,6318,572,1180,481,35,4,1,0,34,MED,False,False,RIGHT,35,,35,geom_eye_confirmed,order_gate
+voynich_pharma:162:60,162,60,root,f89r2,1006233,8506,808,390,1226,,,,1086,,NONE,False,False,UNCLEAR,,NONE; long stem reaching row 3,,none,
+voynich_pharma:162:61,162,61,root,f89r2,1006233,5982,1289,1262,399,37,10,2,0,9999,HIGH,False,False,RIGHT,37,,37,geom_eye_confirmed,order_gate
+voynich_pharma:162:62,162,62,leaf,f89r2,1006233,7362,1316,499,318,,,,853,,NONE,False,False,NONE_UNBOXED,38,label 38 has no box,38,eye_added,order_gate
+voynich_pharma:162:63,162,63,root,f89r2,1006233,6754,1979,263,390,42,19,3,40,50,MED,False,False,WRONG,43,,43,eye_corrected,by_eye
+voynich_pharma:162:64,162,64,root,f89r2,1006233,7934,2024,935,881,49,34,4,369,136,MED,False,False,WRONG,45,45 is unlabelled; joined to row-4 label 49,45,eye_corrected,no_label
+voynich_pharma:162:65,162,65,root,f89r2,1006233,7054,2088,281,281,43,20,3,0,93,MED,False,False,WRONG,44,,44,eye_corrected,by_eye
+voynich_pharma:162:66,162,66,leaf,f89r2,1006233,7689,2133,191,254,44,21,3,261,321,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:162:67,162,67,leaf,f89r2,1006233,6745,2814,336,281,47,32,4,18,255,HIGH,False,False,RIGHT,47,,47,geom_eye_confirmed,order_gate
+voynich_pharma:162:68,162,68,leaf,f89r2,1006233,7371,2814,436,363,49,34,4,11,9,MED,False,False,WRONG,48,,48,eye_corrected,order_gate
+voynich_pharma:162:69,162,69,root,f89r2,1006233,7889,2969,781,690,49,34,4,192,346,MED,False,False,RIGHT,49,,49,geom_eye_confirmed,order_gate
+voynich_pharma:162:70,162,70,whole_plant,f89r2,1006233,6745,1988,263,390,42,19,3,31,68,MED,False,False,WRONG,43,duplicate box of 162:63,43,eye_corrected,by_eye
+voynich_pharma:162:71,162,71,root,f89r2,1006233,8170,2106,690,799,49,34,4,551,190,LOW,False,False,WRONG,45,,45,eye_corrected,no_label
+voynich_pharma:162:72,162,72,whole_plant,f89r2,1006233,7054,2133,281,236,43,20,3,4,90,MED,False,False,WRONG,44,duplicate box of 162:65,44,eye_corrected,by_eye
+voynich_pharma:162:73,162,73,leaf,f89r2,1006233,7689,2142,218,236,44,21,3,261,321,MED,False,False,UNCLEAR,,duplicate of 162:66,,none,
+voynich_pharma:162:74,162,74,leaf,f89r2,1006233,7362,2805,418,390,49,34,4,0,11,MED,False,False,WRONG,48,duplicate of 162:68,48,eye_corrected,order_gate
+voynich_pharma:162:75,162,75,root,f89r2,1006233,7889,2950,763,690,49,34,4,192,346,MED,False,False,RIGHT,49,duplicate of 162:69,49,geom_eye_confirmed,order_gate
+voynich_pharma:163:1,163,1,leaf,f89v2,1006234,3111,336,311,328,54,6,1,275,255,MED,False,False,RIGHT,54,,54,geom_eye_confirmed,order_gate
+voynich_pharma:163:2,163,2,root,f89v2,1006234,769,353,471,748,50,2,1,89,594,HIGH,False,False,RIGHT,50,probable,50,geom_eye_confirmed,order_gate
+voynich_pharma:163:3,163,3,leaf,f89v2,1006234,3557,404,332,383,54,6,1,605,311,LOW,False,False,RIGHT,54,,54,geom_eye_confirmed,order_gate
+voynich_pharma:163:4,163,4,root,f89v2,1006234,2173,521,277,332,52,4,1,66,149,MED,False,False,RIGHT,52,,52,geom_eye_confirmed,order_gate
+voynich_pharma:163:5,163,5,root,f89v2,1006234,2518,534,370,349,53,5,1,46,29,MED,False,False,RIGHT,53,,53,geom_eye_confirmed,order_gate
+voynich_pharma:163:6,163,6,root,f89v2,1006234,3098,534,731,820,54,6,1,136,310,HIGH,False,False,RIGHT,54,,54,geom_eye_confirmed,order_gate
+voynich_pharma:163:7,163,7,root,f89v2,1006234,1194,555,500,412,50,2,1,0,230,HIGH,False,False,UNCLEAR,,between 50 and 51,,none,
+voynich_pharma:163:9,163,9,leaf,f89v2,1006234,3107,1286,618,429,57,14,2,169,850,MED,False,False,RIGHT,57,,57,geom_eye_confirmed,order_gate
+voynich_pharma:163:10,163,10,leaf,f89v2,1006234,2312,1349,795,521,57,14,2,0,224,HIGH,False,False,RIGHT,57,,57,geom_eye_confirmed,order_gate
+voynich_pharma:163:11,163,11,leaf,f89v2,1006234,980,1434,479,214,55,12,2,0,630,HIGH,False,False,RIGHT,55,,55,geom_eye_confirmed,order_gate
+voynich_pharma:163:12,163,12,root,f89v2,1006234,1501,1497,1017,589,56,13,2,0,240,HIGH,False,False,RIGHT,56,,56,geom_eye_confirmed,order_gate
+voynich_pharma:163:13,163,13,root,f89v2,1006234,2968,1589,795,618,57,14,2,30,850,HIGH,False,False,RIGHT,57,,57,geom_eye_confirmed,order_gate
+voynich_pharma:163:14,163,14,root,f89v2,1006234,626,1694,719,509,55,12,2,57,686,HIGH,False,False,RIGHT,55,,55,geom_eye_confirmed,order_gate
+voynich_pharma:163:16,163,16,root,f89v2,1006234,3044,2569,589,954,61,28,3,398,1124,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:17,163,17,leaf,f89v2,1006234,3670,2632,282,219,,,,,,NONE,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:18,163,18,leaf,f89v2,1006234,2707,2661,177,122,,,,,,NONE,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:19,163,19,leaf,f89v2,1006234,2480,2665,118,122,,,,,,NONE,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:20,163,20,leaf,f89v2,1006234,1358,2779,471,479,59,25,3,37,312,HIGH,False,False,RIGHT,59,,59,geom_eye_confirmed,zl_number
+voynich_pharma:163:21,163,21,leaf,f89v2,1006234,2787,2787,139,122,61,28,3,308,9999,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:22,163,22,leaf,f89v2,1006234,2106,2812,345,298,61,28,3,208,405,MED,False,False,UNCLEAR,,row 3 right half: 60 has no label box; cannot split 60/61,,none,
+voynich_pharma:163:23,163,23,leaf,OFFPAGE,1006234,25,2821,198,366,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:163:24,163,24,leaf,f89v2,1006234,799,2855,504,408,58,24,3,0,221,HIGH,False,False,RIGHT,58,,58,geom_eye_confirmed,zl_number
+voynich_pharma:163:25,163,25,leaf,f89v2,1006234,3548,2859,214,256,,,,905,,NONE,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:26,163,26,root,f89v2,1006234,2758,2876,504,471,61,28,3,112,1124,HIGH,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:27,163,27,root,f89v2,1006234,2211,2981,467,652,61,28,3,0,689,HIGH,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:28,163,28,root,f89v2,1006234,1896,3018,177,395,59,25,3,374,199,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:29,163,29,leaf,f89v2,1006234,736,3334,122,202,58,24,3,170,496,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:30,163,30,leaf,f89v2,1006234,147,3409,240,181,58,24,3,640,501,LOW,False,False,UNCLEAR,,,,none,
+voynich_pharma:163:31,163,31,leaf,f89v2,1006234,1274,3418,88,156,59,25,3,201,110,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:0,164,0,leaf,f89v1,1006235,1894,195,717,242,63,3,1,255,95,MED,False,False,RIGHT,63,,63,geom_eye_confirmed,order_gate
+voynich_pharma:164:1,164,1,leaf,f89v1,1006235,2651,312,265,203,64,4,1,190,481,MED,False,False,RIGHT,64,,64,geom_eye_confirmed,order_gate
+voynich_pharma:164:3,164,3,leaf,f89v1,1006235,1411,390,304,265,62,2,1,39,252,HIGH,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:4,164,4,leaf,f89v1,1006235,2269,476,218,234,63,3,1,265,85,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:5,164,5,root,f89v1,1006235,1099,538,257,491,62,2,1,116,531,HIGH,False,False,RIGHT,62,,62,geom_eye_confirmed,order_gate
+voynich_pharma:164:6,164,6,root,f89v1,1006235,2487,616,413,538,64,4,1,0,483,HIGH,False,False,RIGHT,64,,64,geom_eye_confirmed,order_gate
+voynich_pharma:164:7,164,7,root,f89v1,1006235,1505,639,468,507,63,3,1,31,1,MED,False,False,RIGHT,63,,63,geom_eye_confirmed,order_gate
+voynich_pharma:164:9,164,9,leaf,f89v1,1006235,1824,2315,577,281,66,23,2,189,180,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:10,164,10,leaf,f89v1,1006235,1123,2339,195,335,65,22,2,232,500,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:11,164,11,leaf,f89v1,1006235,1341,2362,195,265,65,22,2,170,360,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:12,164,12,root,f89v1,1006235,1879,2456,1060,1177,66,23,2,0,0,MED,True,False,WRONG,67,,67,eye_corrected,order_gate
+voynich_pharma:164:13,164,13,leaf,f89v1,1006235,2159,2526,242,234,66,23,2,121,255,HIGH,False,False,UNCLEAR,,,,none,
+voynich_pharma:164:14,164,14,leaf,f89v1,1006235,2807,2534,148,210,67,24,2,60,706,HIGH,False,False,RIGHT,67,,67,geom_eye_confirmed,order_gate
+voynich_pharma:164:15,164,15,root,f89v1,1006235,1466,2658,538,1013,65,22,2,0,37,MED,False,False,WRONG,66,,66,eye_corrected,order_gate
+voynich_pharma:164:16,164,16,root,f89v1,1006235,1169,2799,226,507,65,22,2,119,527,HIGH,False,False,RIGHT,65,,65,geom_eye_confirmed,order_gate
+voynich_pharma:164:17,164,17,leaf,f89v1,1006235,2729,2861,226,195,67,24,2,65,627,HIGH,False,False,UNCLEAR,,box holds little ink,,none,
+voynich_pharma:164:18,164,18,leaf,f89v1,1006235,842,2916,172,242,65,22,2,515,521,LOW,False,False,UNCLEAR,,box holds little ink,,none,
+voynich_pharma:164:19,164,19,root,f89v1,1006235,748,3165,195,226,,,,,,NONE,False,False,UNCLEAR,,box holds little ink,,none,
+voynich_pharma:164:20,164,20,flower,f90r_HERBAL,1006235,4218,398,624,546,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:21,164,21,leaf,f90r_HERBAL,1006235,5527,421,125,156,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:22,164,22,leaf,f90r_HERBAL,1006235,5512,647,140,187,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:23,164,23,stem,f90r_HERBAL,1006235,4709,717,366,1427,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:24,164,24,stem,f90r_HERBAL,1006235,3493,1333,1286,1505,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:25,164,25,flower,f90r_HERBAL,1006235,3189,1466,530,663,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:26,164,26,leaf,f90r_HERBAL,1006235,4350,1466,429,748,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:27,164,27,leaf,f90r_HERBAL,1006235,5379,1848,273,554,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:28,164,28,leaf,f90r_HERBAL,1006235,4748,1879,499,561,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:29,164,29,leaf,f90r_HERBAL,1006235,3773,1887,600,670,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:30,164,30,root,f90r_HERBAL,1006235,3204,2105,4374,1551,,,,,,NONE,True,False,UNGRADED,,,,none,
+voynich_pharma:164:31,164,31,stem,f90r_HERBAL,1006235,6588,655,382,1130,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:164:32,164,32,stem,f90r_HERBAL,1006235,6946,865,281,382,,,,,,NONE,False,False,UNGRADED,,,,none,
+voynich_pharma:175:0,175,0,root,f99r,1006246,1000,154,84,351,70,4,1,34,19,MED,False,False,RIGHT,70,,70,geom_eye_confirmed,zl_number
+voynich_pharma:175:1,175,1,root,f99r,1006246,1019,157,286,476,71,5,1,0,39,MED,False,False,RIGHT,71,box also clips 70,71,geom_eye_confirmed,zl_number
+voynich_pharma:175:2,175,2,root,f99r,1006246,1386,168,281,516,78,13,2,0,0,MED,True,False,WRONG,73,pale tubes; joined to 78,73,eye_corrected,zl_number
+voynich_pharma:175:3,175,3,root,f99r,1006246,1616,173,973,662,75,10,1,0,0,MED,True,False,UNCLEAR,,box spans 74-76 and 79,,none,
+voynich_pharma:175:4,175,4,root,f99r,1006246,821,178,122,359,70,4,1,23,37,MED,False,False,WRONG,69,dark red root,69,eye_corrected,zl_number
+voynich_pharma:175:5,175,5,root,f99r,1006246,651,184,122,354,77,12,2,0,9,MED,False,False,WRONG,68,pale root right of jar; labels on f99r sit above-left of their drawing,68,eye_corrected,zl_number
+voynich_pharma:175:6,175,6,root,f99r,1006246,1902,192,267,419,75,10,1,0,24,MED,False,False,RIGHT,75,,75,geom_eye_confirmed,zl_number
+voynich_pharma:175:7,175,7,root,f99r,1006246,2216,205,365,381,76,11,1,18,172,HIGH,False,False,RIGHT,76,,76,geom_eye_confirmed,zl_number
+voynich_pharma:175:8,175,8,root,f99r,1006246,1289,211,173,397,72,6,1,0,0,MED,True,False,RIGHT,72,,72,geom_eye_confirmed,zl_number
+voynich_pharma:175:10,175,10,root,f99r,1006246,1132,530,573,316,78,13,2,0,205,HIGH,False,False,RIGHT,78,,78,geom_eye_confirmed,zl_number
+voynich_pharma:175:11,175,11,root,f99r,1006246,565,589,494,184,77,12,2,63,331,HIGH,False,False,RIGHT,77,,77,geom_eye_confirmed,zl_number
+voynich_pharma:175:12,175,12,root,f99r,1006246,638,1070,240,335,80,20,3,0,0,MED,True,False,WRONG,81,,81,eye_corrected,zl_number
+voynich_pharma:175:14,175,14,root,f99r,1006246,524,1105,138,303,80,20,3,30,167,HIGH,False,False,RIGHT,80,,80,geom_eye_confirmed,zl_number
+voynich_pharma:175:15,175,15,root,f99r,1006246,1951,1119,611,357,85,26,3,0,0,MED,True,False,UNCLEAR,,box spans 85 and 86,,none,
+voynich_pharma:175:16,175,16,root,f99r,1006246,1340,1121,676,300,84,24,3,0,0,MED,True,False,RIGHT,84,,84,geom_eye_confirmed,zl_number
+voynich_pharma:175:17,175,17,root,f99r,1006246,1086,1124,251,308,83,23,3,0,143,MED,False,False,RIGHT,83,,83,geom_eye_confirmed,zl_number
+voynich_pharma:175:18,175,18,root,f99r,1006246,854,1162,211,286,81,21,3,26,143,MED,False,False,WRONG,82,label 82 has no box,82,eye_corrected,zl_number
+voynich_pharma:175:19,175,19,root,f99r,1006246,2286,1559,240,500,93,40,4,0,49,MED,False,False,RIGHT,93,,93,geom_eye_confirmed,zl_number
+voynich_pharma:175:21,175,21,root,f99r,1006246,2048,1727,273,300,92,39,4,0,33,MED,False,False,RIGHT,92,,92,geom_eye_confirmed,zl_number
+voynich_pharma:175:22,175,22,root,f99r,1006246,616,1745,208,367,87,34,4,0,18,MED,False,False,RIGHT,87,,87,geom_eye_confirmed,by_eye;zl_number
+voynich_pharma:175:23,175,23,root,f99r,1006246,848,1778,143,249,88,35,4,0,64,MED,False,False,RIGHT,88,,88,geom_eye_confirmed,zl_number
+voynich_pharma:175:24,175,24,root,f99r,1006246,1000,1781,576,295,89,36,4,0,0,MED,True,False,UNCLEAR,,box spans 89 and 90,,none,
+voynich_pharma:175:25,175,25,root,f99r,1006246,1635,1791,305,289,91,38,4,0,65,MED,False,False,RIGHT,91,,91,geom_eye_confirmed,zl_number
+voynich_pharma:175:27,175,27,root,f99r,1006246,624,2586,1202,516,94,46,5,64,9999,HIGH,False,False,RIGHT,94,,94,geom_eye_confirmed,zl_number
+voynich_pharma:175:29,175,29,stem,f99r,1006246,894,2026,1629,1716,94,46,5,150,45,MED,True,False,WRONG,94,manual stem box of the bottom vine,94,eye_corrected,zl_number
+voynich_pharma:175:30,175,30,leaf,f99r,1006246,1948,2324,605,1075,,,,1204,,NONE,False,False,MISSED,94,NONE but is fragment 94 leaves,94,eye_added,zl_number
+voynich_pharma:175:31,175,31,flower,f99r,1006246,1891,3051,270,484,,,,,,NONE,False,False,MISSED,94,NONE but is fragment 94 berries,94,eye_added,zl_number
+voynich_pharma:176:0,176,0,root,f99v,1006247,1883,92,538,538,100,7,1,0,0,MED,True,False,UNCLEAR,,box spans 100 and 101,,none,
+voynich_pharma:176:1,176,1,root,f99v,1006247,1575,106,440,448,99,6,1,0,3,MED,False,False,RIGHT,99,,99,geom_eye_confirmed,zl_number
+voynich_pharma:176:2,176,2,root,f99v,1006247,871,132,283,541,96,3,1,0,60,MED,False,False,RIGHT,96,,96,geom_eye_confirmed,zl_number
+voynich_pharma:176:3,176,3,root,f99v,1006247,675,146,230,530,95,2,1,5,48,MED,False,False,RIGHT,95,,95,geom_eye_confirmed,zl_number
+voynich_pharma:176:4,176,4,root,f99v,1006247,1073,171,325,451,97,4,1,0,79,MED,False,False,RIGHT,97,,97,geom_eye_confirmed,zl_number
+voynich_pharma:176:5,176,5,root,f99v,1006247,2401,179,207,729,108,20,2,15,38,MED,False,False,WRONG,102,joined to row-2 label 108,102,eye_corrected,zl_number
+voynich_pharma:176:7,176,7,root,f99v,1006247,1454,347,104,188,98,5,1,12,251,HIGH,False,False,RIGHT,98,,98,geom_eye_confirmed,zl_number
+voynich_pharma:176:8,176,8,root,f99v,1006247,2256,821,303,521,108,20,2,0,47,MED,False,False,RIGHT,108,,108,geom_eye_confirmed,zl_number
+voynich_pharma:176:9,176,9,root,f99v,1006247,1821,880,322,465,107,19,2,65,11,MED,False,False,RIGHT,107,,107,geom_eye_confirmed,zl_number
+voynich_pharma:176:10,176,10,root,f99v,1006247,1062,894,426,375,104,16,2,0,0,MED,True,False,WRONG,105,,105,eye_corrected,zl_number
+voynich_pharma:176:11,176,11,root,f99v,1006247,1381,944,488,420,105,17,2,0,0,MED,True,False,WRONG,106,,106,eye_corrected,zl_number
+voynich_pharma:176:12,176,12,root,f99v,1006247,681,950,171,443,103,15,2,0,295,HIGH,False,False,RIGHT,103,,103,geom_eye_confirmed,zl_number
+voynich_pharma:176:14,176,14,root,f99v,1006247,860,953,275,409,104,16,2,12,2,MED,False,False,RIGHT,104,,104,geom_eye_confirmed,zl_number
+voynich_pharma:176:15,176,15,root,f99v,1006247,1841,1564,367,656,112,30,3,24,22,MED,False,False,RIGHT,112,,112,geom_eye_confirmed,zl_number
+voynich_pharma:176:16,176,16,root,f99v,1006247,2253,1575,395,703,113,31,3,0,21,MED,False,False,RIGHT,113,,113,geom_eye_confirmed,zl_number
+voynich_pharma:176:17,176,17,root,f99v,1006247,773,1653,300,482,109,26,3,0,0,MED,True,False,RIGHT,109,,109,geom_eye_confirmed,zl_number
+voynich_pharma:176:18,176,18,root,f99v,1006247,1045,1656,375,479,110,28,3,0,80,MED,False,False,RIGHT,110,,110,geom_eye_confirmed,zl_number
+voynich_pharma:176:19,176,19,root,f99v,1006247,1398,1662,406,485,111,29,3,0,11,MED,False,False,RIGHT,111,,111,geom_eye_confirmed,zl_number
+voynich_pharma:176:21,176,21,root,f99v,1006247,496,2429,2183,1160,114,44,4,0,9999,HIGH,True,False,RIGHT,114,,114,geom_eye_confirmed,zl_number
+voynich_pharma:177:0,177,0,leaf,f100r,1006248,613,136,904,899,116,2,1,0,0,MED,True,False,UNCLEAR,,box spans 116 and 117,,none,
+voynich_pharma:177:1,177,1,leaf,f100r,1006248,1769,150,565,343,119,5,1,0,71,MED,False,False,RIGHT,119,,119,geom_eye_confirmed,zl_number
+voynich_pharma:177:3,177,3,leaf,f100r,1006248,345,235,345,340,115,1,1,39,137,MED,False,False,RIGHT,115,,115,geom_eye_confirmed,zl_number
+voynich_pharma:177:4,177,4,leaf,f100r,1006248,1536,300,270,246,118,4,1,65,182,HIGH,False,False,RIGHT,118,,118,geom_eye_confirmed,zl_number
+voynich_pharma:177:6,177,6,root,f100r,1006248,1943,487,99,238,125,11,2,206,22,MED,False,False,WRONG,119,root under 119 joined to 125,119,eye_corrected,zl_number
+voynich_pharma:177:7,177,7,root,f100r,1006248,672,503,235,193,118,4,1,779,390,LOW,False,False,WRONG,116,root of the arrow-leaf vine,116,eye_corrected,zl_number
+voynich_pharma:177:8,177,8,root,f100r,1006248,1536,511,153,174,118,4,1,277,164,MED,False,False,RIGHT,118,,118,geom_eye_confirmed,zl_number
+voynich_pharma:177:9,177,9,root,f100r,1006248,1180,533,134,142,118,4,1,441,345,LOW,False,False,WRONG,117,root of the large serrated plant,117,eye_corrected,zl_number
+voynich_pharma:177:10,177,10,leaf,f100r,1006248,1094,546,334,610,122,8,2,61,20,MED,False,False,WRONG,123,,123,eye_corrected,zl_number
+voynich_pharma:177:11,177,11,root,f100r,1006248,393,575,171,147,,,,1683,,NONE,False,False,MISSED,115,root of 115 left without label,115,eye_added,zl_number
+voynich_pharma:177:12,177,12,leaf,f100r,1006248,1999,618,455,653,125,11,2,55,25,MED,False,False,RIGHT,125,,125,geom_eye_confirmed,zl_number
+voynich_pharma:177:13,177,13,leaf,f100r,1006248,1614,712,313,316,124,10,2,0,105,MED,False,False,RIGHT,124,,124,geom_eye_confirmed,zl_number
+voynich_pharma:177:14,177,14,leaf,f100r,1006248,120,725,329,284,121,7,2,324,267,MED,False,False,WRONG,120,label 120 has no box,120,eye_corrected,zl_number
+voynich_pharma:177:15,177,15,leaf,f100r,1006248,484,768,359,348,121,7,2,8,182,HIGH,False,False,RIGHT,121,,121,geom_eye_confirmed,zl_number
+voynich_pharma:177:16,177,16,root,f100r,1006248,2101,867,142,407,124,10,2,182,409,MED,False,False,WRONG,125,,125,eye_corrected,zl_number
+voynich_pharma:177:17,177,17,root,f100r,1006248,1536,931,257,249,123,9,2,27,99,MED,False,False,WRONG,124,,124,eye_corrected,zl_number
+voynich_pharma:177:18,177,18,root,f100r,1006248,1148,1004,163,233,122,8,2,115,84,MED,False,False,WRONG,123,,123,eye_corrected,zl_number
+voynich_pharma:177:19,177,19,root,f100r,1006248,302,1009,110,225,121,7,2,340,282,MED,False,False,WRONG,120,,120,eye_corrected,zl_number
+voynich_pharma:177:20,177,20,root,f100r,1006248,401,1089,249,222,121,7,2,102,282,HIGH,False,False,RIGHT,121,,121,geom_eye_confirmed,zl_number
+voynich_pharma:177:21,177,21,leaf,f100r,1006248,1892,1357,624,787,129,21,3,43,50,MED,False,False,UNCLEAR,,ext,,none,
+voynich_pharma:177:22,177,22,leaf,f100r,1006248,549,1675,388,533,126,16,3,0,0,MED,True,False,RIGHT,126,,126,geom_eye_confirmed,by_eye
+voynich_pharma:177:24,177,24,leaf,f100r,1006248,1509,1691,375,452,128,19,3,0,0,MED,True,False,UNCLEAR,,,,none,
+voynich_pharma:177:25,177,25,leaf,f100r,1006248,929,1745,310,377,126|127,18,0,0,44,MED,False,True,UNCLEAR,,ambiguous locus 126|127,,none,
+voynich_pharma:177:26,177,26,leaf,f100r,1006248,1065,1769,348,583,128,19,3,109,26,MED,False,False,RIGHT,128,ext,128,geom_eye_confirmed,zl_number
+voynich_pharma:177:28,177,28,root,f100r,1006248,1734,2106,632,252,129,21,3,114,110,MED,False,False,UNCLEAR,,ext,,none,
+voynich_pharma:177:29,177,29,root,f100r,1006248,1354,2117,214,246,128,19,3,81,226,HIGH,False,False,RIGHT,128,ext,128,geom_eye_confirmed,zl_number
+voynich_pharma:177:30,177,30,root,f100r,1006248,731,2119,310,260,126|127,18,0,50,5,MED,False,True,UNCLEAR,,ambiguous locus 126|127,,none,
+voynich_pharma:177:32,177,32,root,f100r,1006248,1587,2146,163,155,128,19,3,128,55,MED,False,False,UNCLEAR,,ext,,none,
+voynich_pharma:177:33,177,33,root,f100r,1006248,514,2216,102,195,126,16,3,193,154,MED,False,False,RIGHT,126,ext,126,geom_eye_confirmed,by_eye
+voynich_pharma:178:1,178,1,leaf,f100v,1006249,1819,232,337,389,133,3,1,42,34,MED,False,False,RIGHT,133,,133,geom_eye_confirmed,zl_number
+voynich_pharma:178:2,178,2,leaf,f100v,1006249,1011,247,112,210,132,2,1,699,355,LOW,False,False,WRONG,131,,131,eye_corrected,zl_number
+voynich_pharma:178:3,178,3,leaf,f100v,1006249,2381,329,105,292,134,4,1,76,153,HIGH,False,False,RIGHT,134,,134,geom_eye_confirmed,zl_number
+voynich_pharma:178:4,178,4,leaf,f100v,1006249,1445,367,112,299,131,1,1,205,22,MED,False,False,WRONG,132,,132,eye_corrected,zl_number
+voynich_pharma:178:5,178,5,leaf,f100v,1006249,1295,509,90,232,131,1,1,46,352,HIGH,False,False,RIGHT,131,,131,geom_eye_confirmed,zl_number
+voynich_pharma:178:6,178,6,leaf,f100v,1006249,1684,838,374,479,137,7,2,50,100,MED,False,False,RIGHT,137,ext,137,geom_eye_confirmed,zl_number
+voynich_pharma:178:7,178,7,leaf,f100v,1006249,1370,853,172,187,131,1,1,116,175,HIGH,False,False,UNCLEAR,,sprig between rows,,none,
+voynich_pharma:178:8,178,8,leaf,f100v,1006249,891,883,779,472,135,5,2,0,0,MED,True,False,UNCLEAR,,box spans 135 and 136,,none,
+voynich_pharma:178:9,178,9,leaf,f100v,1006249,2126,891,442,502,138,8,2,0,182,HIGH,False,False,RIGHT,138,ext,138,geom_eye_confirmed,zl_number
+voynich_pharma:178:10,178,10,leaf,f100v,1006249,689,981,187,240,135,5,2,182,265,MED,False,False,RIGHT,135,ext,135,geom_eye_confirmed,zl_number
+voynich_pharma:178:11,178,11,leaf,f100v,1006249,674,1407,517,853,140,10,3,0,81,MED,False,False,RIGHT,140,ext,140,geom_eye_confirmed,zl_number
+voynich_pharma:178:12,178,12,leaf,f100v,1006249,1205,1520,584,636,141,11,3,35,80,MED,False,False,RIGHT,141,ext,141,geom_eye_confirmed,zl_number
+voynich_pharma:178:13,178,13,leaf,f100v,1006249,1886,1550,307,801,142,12,3,0,182,HIGH,False,False,RIGHT,142,ext,142,geom_eye_confirmed,zl_number
+voynich_pharma:178:14,178,14,leaf,f100v,1006249,2373,1639,269,756,143,13,3,37,154,HIGH,False,False,RIGHT,143,ext,143,geom_eye_confirmed,zl_number
+voynich_pharma:178:15,178,15,leaf,f101r,1006249,3571,165,532,644,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:16,178,16,leaf,f101r,1006249,4432,180,397,659,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:17,178,17,stem,f101r,1006249,4956,180,157,344,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:19,178,19,whole_plant,f101r,1006249,3271,284,307,554,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:20,178,20,leaf,f101r,1006249,3848,764,412,831,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:21,178,21,stem,f101r,1006249,2942,794,352,846,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:22,178,22,root,f101r,1006249,3758,801,105,247,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:23,178,23,root,f101r,1006249,4394,801,240,210,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:24,178,24,flower,f101r,1006249,4686,838,120,165,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:25,178,25,flower,f100v,1006249,2343,876,202,397,138,8,2,72,107,MED,False,False,RIGHT,138,ext,138,geom_eye_confirmed,zl_number
+voynich_pharma:178:26,178,26,leaf,f101r,1006249,4679,1003,419,449,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:27,178,27,flower,f101r,1006249,4537,1056,150,202,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:28,178,28,stem,f101r,1006249,4140,1145,404,569,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:29,178,29,root,f101r,1006249,4828,1445,210,210,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:30,178,30,stem,f101r,1006249,3788,1542,255,187,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:31,178,31,root,f101r,1006249,3211,1617,427,112,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:34,178,34,root,f100v,1006249,2403,2358,389,172,143,13,3,147,114,MED,False,False,RIGHT,143,ext,143,geom_eye_confirmed,zl_number
+voynich_pharma:178:35,178,35,leaf,f101r,1006249,3107,2538,187,464,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:36,178,36,leaf,f101r,1006249,2942,2620,269,427,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:37,178,37,leaf,f101r,1006249,4289,2695,651,479,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:38,178,38,leaf,f101r,1006249,3316,2747,472,314,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:39,178,39,stem,f101r,1006249,3900,2837,284,225,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:40,178,40,whole_plant,f101r,1006249,3923,3054,255,434,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:41,178,41,whole_plant,f101r,1006249,4619,3152,52,329,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:42,178,42,leaf,f101r,1006249,5517,322,382,367,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:43,178,43,leaf,f101r,1006249,6416,322,524,434,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:44,178,44,leaf,f101r,1006249,5083,876,711,524,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:45,178,45,leaf,f101r,1006249,6124,891,449,801,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:46,178,46,leaf,f101r,1006249,5749,1100,322,576,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:47,178,47,leaf,f101r,1006249,6416,1145,374,546,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:48,178,48,leaf,f101r,1006249,6655,2440,696,891,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:49,178,49,leaf,f101r,1006249,5989,2553,397,883,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:50,178,50,leaf,f101r,1006249,6386,2598,382,704,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:178:51,178,51,leaf,f101r,1006249,5053,2613,539,704,,,,,,NONE,False,False,RIGHT_NONE,,f101r carries no labels (not viewed; true by construction),,none,
+voynich_pharma:179:0,179,0,leaf,f101v,1006250,1314,73,1006,1214,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:2,179,2,leaf,f101v,1006250,521,178,437,629,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:3,179,3,leaf,f101v,1006250,974,272,299,488,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:4,179,4,root,f101v,1006250,1079,634,97,256,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:5,179,5,root,f101v,1006250,1522,691,51,132,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:6,179,6,root,f101v,1006250,1592,696,51,127,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:7,179,7,root,f101v,1006250,596,764,302,165,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:9,179,9,leaf,f101v,1006250,987,869,375,340,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:10,179,10,leaf,f101v,1006250,594,947,332,351,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:11,179,11,root,f101v,1006250,1044,1195,154,156,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:12,179,12,root,f101v,1006250,1287,1214,397,151,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:13,179,13,root,f101v,1006250,1738,1249,459,165,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:14,179,14,leaf,f101v,1006250,607,1317,1729,847,,,,,,NONE,True,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:17,179,17,root,f101v,1006250,1573,1902,383,224,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:18,179,18,root,f101v,1006250,750,1986,305,294,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:19,179,19,root,f101v,1006250,1336,2088,173,127,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:179:21,179,21,root,f101v,1006250,569,2134,148,97,,,,,,NONE,False,False,NONE_UNBOXED,,f101v2 panel: its 8 labels have no box in the source,,none,
+voynich_pharma:180:0,180,0,leaf,f101v,1006251,2052,237,785,1292,194,17,2,0,0,MED,True,False,UNCLEAR,,box covers 190 and part of row 2,,none,
+voynich_pharma:180:1,180,1,leaf,f101v,1006251,1325,253,213,809,188,7,1,76,128,MED,False,False,RIGHT,188,,188,geom_eye_confirmed,panel_count
+voynich_pharma:180:2,180,2,stem,f101v,1006251,1643,262,409,695,189,8,1,0,30,MED,False,False,RIGHT,189,,189,geom_eye_confirmed,panel_count
+voynich_pharma:180:4,180,4,leaf,f101v,1006251,630,270,172,540,186,5,1,17,186,HIGH,False,False,RIGHT,186,,186,geom_eye_confirmed,panel_count
+voynich_pharma:180:5,180,5,leaf,f101v,1006251,842,335,352,711,191,14,2,20,25,MED,False,False,WRONG,187,joined to row-2 label 191,187,eye_corrected,panel_count
+voynich_pharma:180:6,180,6,leaf,f101v,1006251,2011,687,311,147,194,17,2,194,150,MED,False,False,WRONG,190,leaf of 190 joined to 194,190,eye_corrected,panel_count
+voynich_pharma:180:7,180,7,stem,f101v,1006251,1905,932,286,613,194,17,2,46,119,MED,False,False,RIGHT,194,ext,194,geom_eye_confirmed,panel_count
+voynich_pharma:180:8,180,8,leaf,f101v,1006251,466,1014,932,973,191,14,2,0,8,MED,False,False,UNCLEAR,,box spans several row-2 plants,,none,
+voynich_pharma:180:10,180,10,leaf,f101v,1006251,1063,1071,172,172,191,14,2,96,107,MED,False,False,WRONG,192,ext,192,eye_corrected,panel_count
+voynich_pharma:180:11,180,11,stem,f101v,1006251,1431,1079,376,540,192,15,2,25,9,MED,False,False,WRONG,193,ext,193,eye_corrected,panel_count
+voynich_pharma:180:12,180,12,whole_plant,f101v,1006251,2404,1406,352,899,,,,999,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:13,180,13,whole_plant,f101v,1006251,1930,1537,482,368,192,15,2,555,9999,LOW,False,False,WRONG,,row-3 sprig (196-200 unlabelled) joined to 192,,none,
+voynich_pharma:180:14,180,14,stem,f101v,1006251,1128,1562,360,793,192,15,2,209,9999,MED,False,False,WRONG,,ext; row-3 unlabelled plant joined to 192,,none,
+voynich_pharma:180:15,180,15,stem,f101v,1006251,1562,1611,262,613,192,15,2,301,9999,MED,False,False,WRONG,,ext; row-3 unlabelled plant joined to 192,,none,
+voynich_pharma:180:16,180,16,whole_plant,f101v,1006251,1962,1831,376,196,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:18,180,18,root,f101v,1006251,997,1848,237,245,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:19,180,19,whole_plant,f101v,1006251,2175,1970,204,147,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:20,180,20,whole_plant,f101v,1006251,1962,1987,245,458,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:21,180,21,stem,f101v,1006251,1570,2289,278,139,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:23,180,23,whole_plant,f101v,1006251,916,2837,450,630,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:24,180,24,whole_plant,f101v,1006251,744,2935,253,180,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:25,180,25,whole_plant,f101v,1006251,793,3099,196,139,,,,,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:26,180,26,root,f102r1,1006251,3769,245,1406,621,201,2,1,0,9999,HIGH,True,False,RIGHT,201,feathery tail of the stump,201,geom_eye_confirmed,zl_number
+voynich_pharma:180:28,180,28,root,f102r2,1006251,5552,392,891,523,,,,,,NONE,False,False,RIGHT_NONE,,row 1 unlabelled,,none,
+voynich_pharma:180:29,180,29,whole_plant,f102r2,1006251,5249,1169,262,630,,,,,,NONE,False,False,RIGHT_NONE,,is a jar classed whole_plant,,none,
+voynich_pharma:180:30,180,30,root,f102r2,1006251,5552,1316,376,352,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:31,180,31,stem,f101v,1006251,2412,1594,131,621,,,,1034,,NONE,False,False,RIGHT_NONE,,row 3 unlabelled,,none,
+voynich_pharma:180:34,180,34,stem,f102r1,1006251,3319,2199,384,327,,,,,,NONE,False,False,RIGHT_NONE,,203/204 unlabelled,,none,
+voynich_pharma:180:35,180,35,stem,f102r1,1006251,3949,2257,1079,1014,,,,,,NONE,False,False,RIGHT_NONE,,203/204 unlabelled,,none,
+voynich_pharma:180:36,180,36,root,f102r1,1006251,2968,2477,973,1030,,,,,,NONE,False,False,RIGHT_NONE,,203/204 unlabelled,,none,
+voynich_pharma:180:37,180,37,whole_plant,f102r2,1006251,5290,2510,638,728,212,21,3,81,1062,HIGH,False,False,RIGHT,212,,212,geom_eye_confirmed,zl_number
+voynich_pharma:180:38,180,38,flower,f102r2,1006251,6999,343,989,401,,,,,,NONE,False,False,RIGHT_NONE,,row 1 unlabelled,,none,
+voynich_pharma:180:39,180,39,leaf,f102r2,1006251,6287,352,646,450,,,,,,NONE,False,False,RIGHT_NONE,,row 1 unlabelled,,none,
+voynich_pharma:180:40,180,40,root,f102r2,1006251,6590,621,1284,662,,,,,,NONE,False,False,RIGHT_NONE,,row 1 unlabelled,,none,
+voynich_pharma:180:41,180,41,flower,f102r2,1006251,6990,785,204,196,,,,,,NONE,False,False,RIGHT_NONE,,row 1 unlabelled,,none,
+voynich_pharma:180:43,180,43,flower,f102r2,1006251,7064,1292,262,442,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:44,180,44,flower,f102r2,1006251,7318,1300,564,531,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:45,180,45,leaf,f102r2,1006251,6009,1308,376,172,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:46,180,46,root,f102r2,1006251,6206,1374,303,335,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:47,180,47,flower,f102r2,1006251,6524,1423,401,213,,,,,,NONE,False,False,RIGHT_NONE,,row 2 unlabelled,,none,
+voynich_pharma:180:48,180,48,root,f102r2,1006251,5715,2862,1079,417,212,21,3,168,120,MED,False,False,RIGHT,212,legged rhizome of 212,212,geom_eye_confirmed,zl_number
+voynich_pharma:180:50,180,50,root,f102r1,1006251,3140,1112,1823,499,,,,,,NONE,True,False,RIGHT_NONE,202,unlabelled,,none,
+voynich_pharma:180:51,180,51,leaf,f102r2,1006251,4186,1104,3352,2371,212,21,3,0,0,MED,True,False,UNCLEAR,,manual box spans most of f102r2,,none,
+voynich_pharma:180:52,180,52,root,f102r2,1006251,3606,458,4284,2878,212,21,3,0,0,MED,True,False,UNCLEAR,,manual box spans most of f102r2,,none,
+voynich_pharma:180:53,180,53,root,f102r1,1006251,3123,540,703,319,201,2,1,125,9999,HIGH,False,False,RIGHT,201,,201,geom_eye_confirmed,zl_number
+voynich_pharma:180:54,180,54,leaf,f102r1,1006251,3050,155,1259,491,201,2,1,0,9999,HIGH,False,False,RIGHT,201,leaves on the stump,201,geom_eye_confirmed,zl_number
+voynich_pharma:181:1,181,1,leaf,f102v2,1006252,1374,233,599,137,217,6,1,133,16,MED,False,False,WRONG,,leaf on the folio behind (top strip); not f102v2,,none,
+voynich_pharma:181:2,181,2,leaf,f102v2,1006252,984,385,313,414,216,5,1,0,89,MED,False,False,RIGHT,216,,216,geom_eye_confirmed,zl_number
+voynich_pharma:181:3,181,3,leaf,f102v2,1006252,2230,385,435,385,219,8,1,0,52,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:181:4,181,4,leaf,f102v2,1006252,1452,396,313,340,217,6,1,66,18,MED,False,False,UNCLEAR,,labels 217-220 vs 4 drawings: side convention unclear,,none,
+voynich_pharma:181:5,181,5,leaf,f102v2,1006252,1735,441,480,438,218,7,1,0,52,MED,False,False,UNCLEAR,,,,none,
+voynich_pharma:181:7,181,7,leaf,f102v2,1006252,885,477,122,304,215,4,1,10,40,MED,False,False,RIGHT,215,,215,geom_eye_confirmed,zl_number
+voynich_pharma:181:8,181,8,leaf,f102v2,1006252,653,549,146,218,214,3,1,6,70,MED,False,False,RIGHT,214,,214,geom_eye_confirmed,by_eye
+voynich_pharma:181:9,181,9,leaf,f102v2,1006252,1291,569,170,149,217,6,1,67,169,HIGH,False,False,RIGHT,217,,217,geom_eye_confirmed,zl_number
+voynich_pharma:181:10,181,10,leaf,f102v2,1006252,1583,623,227,450,224,13,2,0,111,MED,False,False,RIGHT,224,ext,224,geom_eye_confirmed,zl_number
+voynich_pharma:181:11,181,11,leaf,f102v2,1006252,2585,674,146,578,226,15,2,160,52,MED,False,False,WRONG,227,ext; label 227 has no box,227,eye_corrected,zl_number
+voynich_pharma:181:12,181,12,leaf,f102v2,1006252,641,730,221,301,221,10,2,0,123,MED,False,False,RIGHT,221,ext,221,geom_eye_confirmed,zl_number
+voynich_pharma:181:13,181,13,leaf,f102v2,1006252,1151,754,444,352,223,12,2,0,105,MED,False,False,RIGHT,223,ext,223,geom_eye_confirmed,zl_number
+voynich_pharma:181:14,181,14,leaf,f102v2,1006252,2134,772,432,486,226,15,2,0,98,MED,False,False,RIGHT,226,ext,226,geom_eye_confirmed,zl_number
+voynich_pharma:181:15,181,15,leaf,f102v2,1006252,873,805,310,200,222,11,2,5,56,MED,False,False,RIGHT,222,ext,222,geom_eye_confirmed,zl_number
+voynich_pharma:181:16,181,16,leaf,f102v2,1006252,1732,856,343,289,225,14,2,0,32,MED,False,False,RIGHT,225,ext,225,geom_eye_confirmed,zl_number
+voynich_pharma:181:17,181,17,leaf,f102v2,1006252,540,1461,623,784,229,25,3,0,0,MED,True,False,RIGHT,229,ext (replaces UNCLEAR),229,geom_eye_confirmed,zl_number
+voynich_pharma:181:19,181,19,leaf,f102v2,1006252,1085,1559,894,551,231,27,3,33,52,MED,False,False,RIGHT,231,ext,231,geom_eye_confirmed,zl_number
+voynich_pharma:181:20,181,20,leaf,f102v2,1006252,1911,1574,602,355,232,28,3,233,121,MED,False,False,RIGHT,232,ext,232,geom_eye_confirmed,zl_number
+voynich_pharma:181:21,181,21,root,f102v2,1006252,2340,1586,322,704,232,28,3,190,520,MED,False,False,WRONG,233,ext; label 233 has no box,233,eye_corrected,zl_number
+voynich_pharma:181:22,181,22,leaf,f102v2,1006252,2549,1607,131,125,,,,1576,,NONE,False,False,NONE_UNBOXED,233,ext (replaces UNCLEAR),233,eye_added,zl_number
+voynich_pharma:181:23,181,23,root,f102v2,1006252,1058,1842,1237,447,231,27,3,0,0,MED,True,False,RIGHT,231,ext (replaces UNCLEAR),231,geom_eye_confirmed,zl_number
+voynich_pharma:181:24,181,24,root,f102v2,1006252,754,2054,480,307,230,26,3,26,12,MED,False,False,RIGHT,230,ext,230,geom_eye_confirmed,zl_number
+voynich_pharma:182:0,182,0,leaf,f102v1,1006253,1916,108,721,477,237,5,1,0,0,MED,True,False,UNCLEAR,,canopy box spans 237-238,,none,
+voynich_pharma:182:1,182,1,leaf,f102v1,1006253,1095,131,815,482,235,3,1,0,0,MED,True,False,UNCLEAR,,canopy box spans 235-236,,none,
+voynich_pharma:182:3,182,3,leaf,f102v1,1006253,1044,417,241,139,235,3,1,24,340,HIGH,False,False,RIGHT,235,,235,geom_eye_confirmed,zl_number
+voynich_pharma:182:4,182,4,root,f102v1,1006253,851,474,673,755,235,3,1,0,124,MED,False,False,RIGHT,235,white fan + pink root read as one fragment (prior note),235,geom_eye_confirmed,zl_number
+voynich_pharma:182:5,182,5,root,f102v1,1006253,2199,477,437,482,238,6,1,0,139,MED,False,False,RIGHT,238,,238,geom_eye_confirmed,zl_number
+voynich_pharma:182:6,182,6,root,f102v1,1006253,1618,528,460,576,236,4,1,0,3,MED,False,False,RIGHT,236,,236,geom_eye_confirmed,zl_number
+voynich_pharma:182:7,182,7,root,f102v1,1006253,644,766,264,522,234,2,1,35,335,HIGH,False,False,RIGHT,234,,234,geom_eye_confirmed,zl_number
+voynich_pharma:182:9,182,9,leaf,f102v1,1006253,2046,1833,675,505,241,18,2,44,310,HIGH,False,False,RIGHT,241,ext,241,geom_eye_confirmed,zl_number
+voynich_pharma:182:10,182,10,leaf,f102v1,1006253,1629,1850,298,238,240,17,2,58,19,MED,False,False,UNCLEAR,,ext,,none,
+voynich_pharma:182:11,182,11,root,f102v1,1006253,1218,1947,448,602,239,16,2,0,26,MED,False,False,WRONG,240,ext,240,eye_corrected,zl_number
+voynich_pharma:182:12,182,12,root,f102v1,1006253,735,1967,267,542,239,16,2,253,438,MED,False,False,RIGHT,239,ext,239,geom_eye_confirmed,zl_number
+voynich_pharma:182:13,182,13,leaf,f102v1,1006253,707,2058,105,298,239,16,2,443,438,LOW,False,False,RIGHT,239,ext (replaces UNCLEAR),239,geom_eye_confirmed,zl_number
+voynich_pharma:182:14,182,14,leaf,f102v1,1006253,988,2058,148,431,239,16,2,119,438,HIGH,False,False,RIGHT,239,ext,239,geom_eye_confirmed,zl_number
+voynich_pharma:182:15,182,15,root,f102v1,1006253,1726,2123,863,480,241,18,2,18,15,MED,False,False,RIGHT,241,ext,241,geom_eye_confirmed,zl_number

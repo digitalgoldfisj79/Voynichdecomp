@@ -1,0 +1,518 @@
+{
+"1": [
+"voynich_pharma:161:0",
+"voynich_pharma:161:6"
+],
+"5": [
+"voynich_pharma:161:1"
+],
+"2": [
+"voynich_pharma:161:2"
+],
+"4": [
+"voynich_pharma:161:3"
+],
+"3": [
+"voynich_pharma:161:4"
+],
+"9": [
+"voynich_pharma:161:7"
+],
+"6": [
+"voynich_pharma:161:12"
+],
+"7": [
+"voynich_pharma:161:14"
+],
+"10": [
+"voynich_pharma:161:15",
+"voynich_pharma:161:16",
+"voynich_pharma:161:20",
+"voynich_pharma:161:21"
+],
+"11": [
+"voynich_pharma:161:17",
+"voynich_pharma:161:18",
+"voynich_pharma:161:19",
+"voynich_pharma:161:23"
+],
+"13": [
+"voynich_pharma:162:0",
+"voynich_pharma:162:8"
+],
+"14": [
+"voynich_pharma:162:1",
+"voynich_pharma:162:5"
+],
+"15": [
+"voynich_pharma:162:3",
+"voynich_pharma:162:6"
+],
+"16": [
+"voynich_pharma:162:7"
+],
+"17": [
+"voynich_pharma:162:14"
+],
+"18": [
+"voynich_pharma:162:15"
+],
+"19": [
+"voynich_pharma:162:16",
+"voynich_pharma:162:18"
+],
+"22": [
+"voynich_pharma:162:21",
+"voynich_pharma:162:22"
+],
+"30": [
+"voynich_pharma:162:23",
+"voynich_pharma:162:49"
+],
+"21": [
+"voynich_pharma:162:24",
+"voynich_pharma:162:25",
+"voynich_pharma:162:28"
+],
+"20": [
+"voynich_pharma:162:27"
+],
+"26": [
+"voynich_pharma:162:29",
+"voynich_pharma:162:33"
+],
+"33": [
+"voynich_pharma:162:30",
+"voynich_pharma:162:34"
+],
+"34": [
+"voynich_pharma:162:31"
+],
+"25": [
+"voynich_pharma:162:36"
+],
+"37": [
+"voynich_pharma:162:40",
+"voynich_pharma:162:61"
+],
+"29": [
+"voynich_pharma:162:41"
+],
+"40": [
+"voynich_pharma:162:43",
+"voynich_pharma:162:45"
+],
+"42": [
+"voynich_pharma:162:44"
+],
+"41": [
+"voynich_pharma:162:46"
+],
+"32": [
+"voynich_pharma:162:48"
+],
+"31": [
+"voynich_pharma:162:51"
+],
+"46": [
+"voynich_pharma:162:52",
+"voynich_pharma:162:53",
+"voynich_pharma:162:54"
+],
+"35": [
+"voynich_pharma:162:55",
+"voynich_pharma:162:59"
+],
+"36": [
+"voynich_pharma:162:56"
+],
+"38": [
+"voynich_pharma:162:62"
+],
+"43": [
+"voynich_pharma:162:63",
+"voynich_pharma:162:70"
+],
+"45": [
+"voynich_pharma:162:64",
+"voynich_pharma:162:71"
+],
+"44": [
+"voynich_pharma:162:65",
+"voynich_pharma:162:72"
+],
+"47": [
+"voynich_pharma:162:67"
+],
+"48": [
+"voynich_pharma:162:68",
+"voynich_pharma:162:74"
+],
+"49": [
+"voynich_pharma:162:69",
+"voynich_pharma:162:75"
+],
+"54": [
+"voynich_pharma:163:1",
+"voynich_pharma:163:3",
+"voynich_pharma:163:6"
+],
+"50": [
+"voynich_pharma:163:2"
+],
+"52": [
+"voynich_pharma:163:4"
+],
+"53": [
+"voynich_pharma:163:5"
+],
+"57": [
+"voynich_pharma:163:9",
+"voynich_pharma:163:10",
+"voynich_pharma:163:13"
+],
+"55": [
+"voynich_pharma:163:11",
+"voynich_pharma:163:14"
+],
+"56": [
+"voynich_pharma:163:12"
+],
+"59": [
+"voynich_pharma:163:20"
+],
+"58": [
+"voynich_pharma:163:24"
+],
+"63": [
+"voynich_pharma:164:0",
+"voynich_pharma:164:7"
+],
+"64": [
+"voynich_pharma:164:1",
+"voynich_pharma:164:6"
+],
+"62": [
+"voynich_pharma:164:5"
+],
+"67": [
+"voynich_pharma:164:12",
+"voynich_pharma:164:14"
+],
+"66": [
+"voynich_pharma:164:15"
+],
+"65": [
+"voynich_pharma:164:16"
+],
+"70": [
+"voynich_pharma:175:0"
+],
+"71": [
+"voynich_pharma:175:1"
+],
+"73": [
+"voynich_pharma:175:2"
+],
+"69": [
+"voynich_pharma:175:4"
+],
+"68": [
+"voynich_pharma:175:5"
+],
+"75": [
+"voynich_pharma:175:6"
+],
+"76": [
+"voynich_pharma:175:7"
+],
+"72": [
+"voynich_pharma:175:8"
+],
+"78": [
+"voynich_pharma:175:10"
+],
+"77": [
+"voynich_pharma:175:11"
+],
+"81": [
+"voynich_pharma:175:12"
+],
+"80": [
+"voynich_pharma:175:14"
+],
+"84": [
+"voynich_pharma:175:16"
+],
+"83": [
+"voynich_pharma:175:17"
+],
+"82": [
+"voynich_pharma:175:18"
+],
+"93": [
+"voynich_pharma:175:19"
+],
+"92": [
+"voynich_pharma:175:21"
+],
+"87": [
+"voynich_pharma:175:22"
+],
+"88": [
+"voynich_pharma:175:23"
+],
+"91": [
+"voynich_pharma:175:25"
+],
+"94": [
+"voynich_pharma:175:27",
+"voynich_pharma:175:29",
+"voynich_pharma:175:30",
+"voynich_pharma:175:31"
+],
+"99": [
+"voynich_pharma:176:1"
+],
+"96": [
+"voynich_pharma:176:2"
+],
+"95": [
+"voynich_pharma:176:3"
+],
+"97": [
+"voynich_pharma:176:4"
+],
+"102": [
+"voynich_pharma:176:5"
+],
+"98": [
+"voynich_pharma:176:7"
+],
+"108": [
+"voynich_pharma:176:8"
+],
+"107": [
+"voynich_pharma:176:9"
+],
+"105": [
+"voynich_pharma:176:10"
+],
+"106": [
+"voynich_pharma:176:11"
+],
+"103": [
+"voynich_pharma:176:12"
+],
+"104": [
+"voynich_pharma:176:14"
+],
+"112": [
+"voynich_pharma:176:15"
+],
+"113": [
+"voynich_pharma:176:16"
+],
+"109": [
+"voynich_pharma:176:17"
+],
+"110": [
+"voynich_pharma:176:18"
+],
+"111": [
+"voynich_pharma:176:19"
+],
+"114": [
+"voynich_pharma:176:21"
+],
+"119": [
+"voynich_pharma:177:1",
+"voynich_pharma:177:6"
+],
+"115": [
+"voynich_pharma:177:3",
+"voynich_pharma:177:11"
+],
+"118": [
+"voynich_pharma:177:4",
+"voynich_pharma:177:8"
+],
+"116": [
+"voynich_pharma:177:7"
+],
+"117": [
+"voynich_pharma:177:9"
+],
+"123": [
+"voynich_pharma:177:10",
+"voynich_pharma:177:18"
+],
+"125": [
+"voynich_pharma:177:12",
+"voynich_pharma:177:16"
+],
+"124": [
+"voynich_pharma:177:13",
+"voynich_pharma:177:17"
+],
+"120": [
+"voynich_pharma:177:14",
+"voynich_pharma:177:19"
+],
+"121": [
+"voynich_pharma:177:15",
+"voynich_pharma:177:20"
+],
+"126": [
+"voynich_pharma:177:22",
+"voynich_pharma:177:33"
+],
+"128": [
+"voynich_pharma:177:26",
+"voynich_pharma:177:29"
+],
+"133": [
+"voynich_pharma:178:1"
+],
+"131": [
+"voynich_pharma:178:2",
+"voynich_pharma:178:5"
+],
+"134": [
+"voynich_pharma:178:3"
+],
+"132": [
+"voynich_pharma:178:4"
+],
+"137": [
+"voynich_pharma:178:6"
+],
+"138": [
+"voynich_pharma:178:9",
+"voynich_pharma:178:25"
+],
+"135": [
+"voynich_pharma:178:10"
+],
+"140": [
+"voynich_pharma:178:11"
+],
+"141": [
+"voynich_pharma:178:12"
+],
+"142": [
+"voynich_pharma:178:13"
+],
+"143": [
+"voynich_pharma:178:14",
+"voynich_pharma:178:34"
+],
+"188": [
+"voynich_pharma:180:1"
+],
+"189": [
+"voynich_pharma:180:2"
+],
+"186": [
+"voynich_pharma:180:4"
+],
+"187": [
+"voynich_pharma:180:5"
+],
+"190": [
+"voynich_pharma:180:6"
+],
+"194": [
+"voynich_pharma:180:7"
+],
+"192": [
+"voynich_pharma:180:10"
+],
+"193": [
+"voynich_pharma:180:11"
+],
+"201": [
+"voynich_pharma:180:26",
+"voynich_pharma:180:53",
+"voynich_pharma:180:54"
+],
+"212": [
+"voynich_pharma:180:37",
+"voynich_pharma:180:48"
+],
+"216": [
+"voynich_pharma:181:2"
+],
+"215": [
+"voynich_pharma:181:7"
+],
+"214": [
+"voynich_pharma:181:8"
+],
+"217": [
+"voynich_pharma:181:9"
+],
+"224": [
+"voynich_pharma:181:10"
+],
+"227": [
+"voynich_pharma:181:11"
+],
+"221": [
+"voynich_pharma:181:12"
+],
+"223": [
+"voynich_pharma:181:13"
+],
+"226": [
+"voynich_pharma:181:14"
+],
+"222": [
+"voynich_pharma:181:15"
+],
+"225": [
+"voynich_pharma:181:16"
+],
+"229": [
+"voynich_pharma:181:17"
+],
+"231": [
+"voynich_pharma:181:19",
+"voynich_pharma:181:23"
+],
+"232": [
+"voynich_pharma:181:20"
+],
+"233": [
+"voynich_pharma:181:21",
+"voynich_pharma:181:22"
+],
+"230": [
+"voynich_pharma:181:24"
+],
+"235": [
+"voynich_pharma:182:3",
+"voynich_pharma:182:4"
+],
+"238": [
+"voynich_pharma:182:5"
+],
+"236": [
+"voynich_pharma:182:6"
+],
+"234": [
+"voynich_pharma:182:7"
+],
+"241": [
+"voynich_pharma:182:9",
+"voynich_pharma:182:15"
+],
+"240": [
+"voynich_pharma:182:11"
+],
+"239": [
+"voynich_pharma:182:12",
+"voynich_pharma:182:13",
+"voynich_pharma:182:14"
+]
+}

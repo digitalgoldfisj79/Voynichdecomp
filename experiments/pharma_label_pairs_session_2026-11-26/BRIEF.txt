@@ -1,0 +1,87 @@
+Task: link the Voynich pharma-section plant drawings to their labels
+using work that already exists, find plants drawn more than once, and
+test two readings of the labels. Work as a tool: run what is specified,
+report plainly, no interpretation beyond the stated rules.
+
+HARD CONSTRAINT: do not redo OCR, transliteration, segmentation or VLM
+masking. Everything needed already exists. The only new looking is the
+same-plant pairing in Stage 2 and small spot-checks.
+
+DATA (Supabase project research-agent, id ymaqlcfjmdwncdbjprmw)
+- public.vms_pharma_label_concordance_v01: 285 rows, one per ZL3b label
+  locus on f88r-f102v plus one per unlabelled fragment. Key columns:
+  page, fragment_num (Petersen 1-241; 39 and 228 do not exist), vnu_row,
+  role, label_zl, assign_method, yale_image_id, box_x/y/w/h (label box
+  in Yale full-image pixels), label_crop_url, herbal_matches,
+  root_screen_grade. PROVISIONAL, built 2026-11-26.
+- public.cmp_vms_pharma_reference_objects_v01: 421 drawn objects with
+  obj_class (root, leaf, whole_plant, stem, flower, container), bbox on
+  the 1000-px-wide page image, mask_url, folio_seq, slug. This is the
+  drawing inventory. Scale a bbox to Yale pixels by image width / 1000.
+- Existing crop and quality tables from October: public.vms_hph_crop_qc
+  _v1_20261025 and related vms_hph_* tables. Check for any existing
+  pharma-to-pharma similarity or shape table before making one.
+- DO NOT USE public.vms_pharma_fragmap: it disagrees with the ZL
+  numbering on f99r and f100r.
+- Images, for spot-checks and pairing only: Yale IIIF,
+  https://collections.library.yale.edu/iiif/2/{id}/{x},{y},{w},{h}/
+  full/0/default.jpg. Image ids: f88r 1037112; f88v+f89r1+f89r2 1006233;
+  f89v2 1006234; f89v1 1006235; f99r 1006246; f99v 1006247; f100r
+  1006248; f100v+f101r 1006249; f101v2 1006250; f101v1+f102r1+f102r2
+  1006251; f102v2 1006252; f102v1 1006253.
+- The attached results file is the prior session's log. Read its
+  RETRACTED FINDINGS block first. Treat all of it as provisional.
+
+STAGE 1 - JOIN OBJECTS TO FRAGMENTS (SQL and geometry only)
+For each non-container object, find the fragment whose label box is
+nearest within the same row of the concordance; labels normally sit to
+the right of their fragment. Record distance and a confidence flag.
+List objects with no label within reach, labels with no object, and
+fragments claimed by several objects (root + leaf of one plant is
+expected). Part shown per fragment = the obj_class values linked to it.
+Check by eye on a sample only: the first row of every page plus every
+flagged case. Report the sample's error rate. Write the result to a new
+table and a CSV, and hash it.
+
+STAGE 2 - SAME-PLANT PAIRS, BLIND TO LABELS
+Write the grading rules into the results file before viewing anything:
+A = same drawing in all visible parts; B = same in one part, others
+absent or unclear; C = generic resemblance only.
+Shortlist candidate pairs cheaply from what exists (same obj_class,
+similar box shape and colour, any existing shape or embedding scores),
+then view only the shortlisted crops and grade them. Do not read
+label_zl until the graded list is saved and hashed.
+
+STAGE 3 - TESTS (pre-register each before running: what confirms, what
+falsifies, the null, and the power)
+T4 (names written differently each time): for grade-A and grade-B
+  pairs, is the edit similarity between the two labels higher than for
+  random fragment pairs matched on page distance?
+T3 (labels mark parts or properties): do label features (first glyph,
+  last glyph, length) differ by part shown, with page held fixed
+  (permute part within page)?
+T2b (labels point into nearby text): does a row's label occur in the
+  paragraph block directly after that row more than in other blocks of
+  the same page and of other pages? The earlier attempt compared block
+  hits with a page-level null and is void; build the null at block
+  level.
+
+CHECKS
+- Where Stage 1 links disagree with the concordance's order_gate,
+  by_eye or panel_count rows, list them; do not silently fix either.
+- State how many fragments ended with no object, and how many crops
+  were actually viewed and at what scale.
+
+OUTPUT RULES
+- Results file on disk, appended as you go; retractions at the top.
+- Full downloadable code and a results table for every computation;
+  atomic checkpoints so each step can be resumed.
+- Every headline with effect size and null SD; if the ratio is under 2,
+  lead with "Inconclusive at this power" and say whether power was
+  measured.
+- A "What I am uncertain about" section after every analysis, and
+  P(survives 60d) for each finding.
+- New Supabase tables only; do not alter or delete existing ones.
+- Verify any number taken from the prior results file against the
+  tables before relying on it.
+- Concise answers that lead with the result.

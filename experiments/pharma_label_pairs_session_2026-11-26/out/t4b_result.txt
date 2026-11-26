@@ -1,0 +1,8 @@
+{"pairs": [["71", "103"], ["88", "98"], ["135", "132"], ["40", "124"], ["87", "80"], ["95", "103"], ["78", "94"], ["15", "16"], ["131", "134"], ["186", "187"], ["71", "95"]], "labels": [[["salo"], ["oeeesary"]], [["dar"], ["darary"]], [["soleesos"], ["chols"]], [["sodar"], ["dakocth"]], [["okos", "oekey"], ["oaro"]], [["otoldy"], ["oeeesary"]], [["otalam"], ["tolsasy"]], [["otararody"], ["otokol"]], [["tolchd"], ["solsy"]], [["dokor"], ["orar"]], [["salo"], ["otoldy"]]], "pair_sim": [0.25, 0.5, 0.25, 0.143, 0.25, 0.25, 0.286, 0.333, 0.333, 0.4, 0.167], "S": 0.287, "null_mean": 0.237, "null_sd": 0.05, "ratio": 0.99, "clear_2sd": 0.338, "identical": false, "p_ge": 0.1606}
+planted k 0 detect rate 1.0
+planted k 1 detect rate 1.0
+planted k 2 detect rate 1.0
+planted k 3 detect rate 1.0
+planted k 4 detect rate 1.0
+planted k 5 detect rate 0.918
+planted k 6 detect rate 0.616

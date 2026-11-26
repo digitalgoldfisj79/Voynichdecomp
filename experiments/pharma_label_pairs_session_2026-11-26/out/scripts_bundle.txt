@@ -1,0 +1,687 @@
+# Scripts, pharma drawings <-> labels session 2026-11-26 (Claude). Run from a working dir holding data/, img/, ckpt/, out/, yale_dims.txt.
+# Inputs: data/ref_objects.json (REST pull of cmp_vms_pharma_reference_objects_v01), data/concordance_upload.csv (vms_pharma_label_concordance_v01 export),
+# ZL3b-n.txt from quimqu/voynich-scribe @ 8f5c2c76 (t2b.py path /home/claude/ext/voynich-scribe/ZL3b-n.txt). Order: s0 -> s1_join (m r) -> s1_eyerate -> s1_final -> s2_prep -> t4 -> t3 -> t2b -> s2b_frag -> s2b_contact -> s2b_grade_sheets -> t4b.
+
+########## FILE scripts/common.py  sha256 ad4542b1d65406838105af5e04a7fd9b82b2811c8fd80dc5e393fadeb5d381bc
+import csv, re, pickle
+C=list(csv.DictReader(open('data/concordance_upload.csv')))
+def norm(s):
+    s=re.sub(r'\[([^:\]]*):[^\]]*\]',r'\1',s); s=re.sub(r'<[^>]*>','',s); s=re.sub(r'[{}?!<>0-9 ]','',s); return s
+def vords(s): return [v for v in re.split(r'[.,]',norm(s)) if v]
+def joined(s): return ''.join(vords(s))
+
+########## FILE scripts/s0_overlay.py  sha256 a6ab5251e98e2a32b3ee3a174789a22eb9edf46c52756484558b0dde10f86847
+# overlay object boxes (by class) and fragment-label boxes (fragment number only) on page images
+import json, csv, sys
+from PIL import Image, ImageDraw
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+SEQ2IMG={161:1037112,162:1006233,163:1006234,164:1006235,175:1006246,176:1006247,177:1006248,178:1006249,179:1006250,180:1006251,181:1006252,182:1006253}
+objs=json.load(open('data/ref_objects.json'))
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+COL={'root':(200,0,0),'leaf':(0,150,0),'stem':(0,0,200),'flower':(200,0,200),'whole_plant':(255,140,0),'container':(120,120,120)}
+for seq,iid in SEQ2IMG.items():
+    im=Image.open(f'img/{iid}_2000.jpg').convert('RGB'); d=ImageDraw.Draw(im)
+    k=2000/1000  # bbox units -> 2000px image
+    for o in objs:
+        if o['folio_seq']!=seq: continue
+        b=o['bbox']; x,y,w,h=[b[c]*k for c in 'xywh']
+        d.rectangle([x,y,x+w,y+h],outline=COL[o['obj_class']],width=3); d.text((x+3,y+3),f"{o['obj_index']}",fill=COL[o['obj_class']])
+    kk=2000/W[iid]
+    for r in conc:
+        if r['yale_image_id']!=str(iid) or not r['box_x']: continue
+        x,y,w,h=[int(r[c])*kk for c in ('box_x','box_y','box_w','box_h')]
+        tag=('C' if r['locus_type']=='Lc' else 'F'+(r['fragment_num'] or r['fragment_alt']))+'/r'+(r['vnu_row'] or '-')
+        d.rectangle([x,y,x+w,y+h],outline=(0,0,0),width=3); d.text((x,y-12),tag,fill=(0,0,0))
+    im.save(f'ov/ov_{seq}_{iid}.jpg',quality=85)
+print('done')
+
+########## FILE scripts/s1_join.py  sha256 487ba0c04e755ee2103478eb9f0dfb2d3fd34197815b00bf399d59a38aa43e87
+import json, csv, math, pickle, sys, os
+MARGIN=int(sys.argv[1]) if len(sys.argv)>1 else 300
+REACH=int(sys.argv[2]) if len(sys.argv)>2 else 800
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+SEQ2IMG={161:1037112,162:1006233,163:1006234,164:1006235,175:1006246,176:1006247,177:1006248,178:1006249,179:1006250,180:1006251,181:1006252,182:1006253}
+def page_of(seq,cx):
+    if seq==161: return 'f88r'
+    if seq==162: return 'f88v' if cx<310 else ('f89r1' if cx<580 else 'f89r2')
+    if seq==163: return 'f89v2' if cx>=40 else 'OFFPAGE'
+    if seq==164: return 'f89v1' if cx<385 else 'f90r_HERBAL'
+    if seq==175: return 'f99r'
+    if seq==176: return 'f99v'
+    if seq==177: return 'f100r'
+    if seq==178: return 'f100v' if cx<390 else 'f101r'
+    if seq==179: return 'f101v'   # f101v2 panel image
+    if seq==180: return 'f101v' if cx<350 else ('f102r1' if cx<640 else 'f102r2')
+    if seq==181: return 'f102v2'
+    if seq==182: return 'f102v1'
+PAGEW={1006233:9078/3,1006235:7796*0.385,1006249:7486*0.39,1006251:8176*0.35}
+objs=json.load(open('data/ref_objects.json'))
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+labels=[r for r in conc if r['locus_type']=='Lf' and r['box_x']]
+out=[]
+for o in objs:
+    if o['obj_class']=='container': continue
+    iid=SEQ2IMG[o['folio_seq']]; s=W[iid]/1000; b=o['bbox']
+    x0,y0=b['x']*s,b['y']*s; x1,y1=x0+b['w']*s,y0+b['h']*s
+    pg=page_of(o['folio_seq'],b['x']+b['w']/2)
+    pw=PAGEW.get(iid,W[iid])
+    if iid==1006233: pw=W[iid]/3
+    cands=[]
+    for r in labels:
+        if r['page']!=pg or int(r['yale_image_id'])!=iid: continue
+        cx=int(r['box_x'])+int(r['box_w'])/2; cy=int(r['box_y'])+int(r['box_h'])/2
+        if not (y0-MARGIN<=cy<=y1+MARGIN): continue
+        dx=max(x0-cx,0,cx-x1); dy=max(y0-cy,0,cy-y1)
+        cands.append((math.hypot(dx,dy), r['zl_locus'], r['fragment_num'] or r['fragment_alt'], int(r['vnu_row'] or 0), (x0<=cx<=x1 and y0<=cy<=y1)))
+    cands.sort()
+    inside=sum(1 for c in cands if c[4])
+    rec=dict(obj_id=o['reference_id'],folio_seq=o['folio_seq'],obj_index=o['obj_index'],obj_class=o['obj_class'],page=pg,yale_image_id=iid,
+             ox=round(x0),oy=round(y0),ow=round(x1-x0),oh=round(y1-y0),n_cands=len(cands),labels_inside=inside)
+    span = inside>=2 or (x1-x0)>0.45*pw
+    if not cands or cands[0][0]>REACH:
+        rec.update(fragment=None,zl_locus=None,vnu_row=None,dist=round(cands[0][0]) if cands else None,gap=None,conf='NONE')
+    else:
+        d=cands[0][0]; gap=(cands[1][0]-d) if len(cands)>1 else 9999
+        conf='HIGH' if (d<=150 and gap>=150) else ('MED' if d<=400 else 'LOW')
+        rec.update(fragment=cands[0][2],zl_locus=cands[0][1],vnu_row=cands[0][3],dist=round(d),gap=round(gap),conf=conf,
+                   runner_up=cands[1][2] if len(cands)>1 else None)
+    rec['span']=span; rec['ambig']= rec.get('fragment') is not None and '|' in str(rec['fragment'])
+    out.append(rec)
+os.makedirs('ckpt',exist_ok=True)
+pickle.dump(out,open(f'ckpt/s1_join_m{MARGIN}_r{REACH}.pkl','wb'))
+from collections import Counter
+print(MARGIN,REACH,len(out),Counter(r['page'] for r in out if r['page'] in('OFFPAGE','f90r_HERBAL','f101r')),Counter(r['conf'] for r in out))
+
+########## FILE scripts/s1_summary.py  sha256 38b2f0691263503d74cba887847d93b4bee750fef5fdcc8d3fabf32f4d6a50bd
+import pickle, csv
+from collections import Counter, defaultdict
+J=pickle.load(open('ckpt/s1_join_m300_r800.pkl','rb'))
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+pharma=[r for r in J if r['page'] not in ('f101r','f90r_HERBAL','OFFPAGE')]
+print('objects on labelled pharma pages', len(pharma))
+print('conf', Counter(r['conf'] for r in pharma)); print('span', sum(r['span'] for r in pharma), 'ambig', sum(r['ambig'] for r in pharma))
+print('NONE by page', Counter(r['page'] for r in pharma if r['conf']=='NONE'))
+frag_objs=defaultdict(list)
+for r in pharma:
+    if r['fragment'] is not None: frag_objs[r['fragment']].append(r)
+frags_all=sorted({r['fragment_num'] for r in conc if r['fragment_num']},key=int)
+lab_frag={r['fragment_num'] for r in conc if r['locus_type']=='Lf' and r['fragment_num']}
+boxed={r['fragment_num'] for r in conc if r['locus_type']=='Lf' and r['fragment_num'] and r['box_x']}
+print('fragments total',len(frags_all),'labelled',len(lab_frag),'with a label box',len(boxed))
+linked={f for f in frag_objs if '|' not in f}
+print('labelled+boxed fragments with >=1 object',len(linked & boxed),' without object:',len(boxed-linked))
+print('fragments claimed by >1 object',sum(1 for f,v in frag_objs.items() if len(v)>1))
+print('multi-claims by class combo', Counter(tuple(sorted(Counter(o['obj_class'] for o in v).items())) for f,v in frag_objs.items() if len(v)>1).most_common(12))
+
+########## FILE scripts/s1_linkov.py  sha256 95263563051c5081edd1a1944caade792e03ae2ed2bc14342b79132dba95a23f
+import pickle, csv
+from PIL import Image, ImageDraw, ImageFont
+J=pickle.load(open('ckpt/s1_join_m300_r800.pkl','rb'))
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+try: F=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',22)
+except: F=None
+CC={'HIGH':(0,160,0),'MED':(0,90,255),'LOW':(255,120,0),'NONE':(255,0,0)}
+pages={}
+for r in J: pages.setdefault((r['yale_image_id'],r['page']),[]).append(r)
+for (iid,pg),rs in pages.items():
+    if pg in ('f90r_HERBAL','OFFPAGE'): continue
+    im=Image.open(f'img/{iid}_2000.jpg').convert('RGB'); d=ImageDraw.Draw(im); k=2000/W[iid]
+    lab={}
+    for c in conc:
+        if c['page']==pg and c['yale_image_id']==str(iid) and c['box_x'] and c['locus_type']=='Lf':
+            x,y,w,h=[int(c[q])*k for q in ('box_x','box_y','box_w','box_h')]
+            lab[c['zl_locus']]=(x+w/2,y+h/2); d.rectangle([x,y,x+w,y+h],outline=(0,0,0),width=3)
+            d.text((x,y-24),'F'+(c['fragment_num'] or c['fragment_alt']),fill=(0,0,0),font=F)
+    xs=[]
+    for r in rs:
+        x0,y0,x1,y1=r['ox']*k,r['oy']*k,(r['ox']+r['ow'])*k,(r['oy']+r['oh'])*k; xs+= [x0,x1]
+        col=CC[r['conf']]; d.rectangle([x0,y0,x1,y1],outline=col,width=3)
+        tag=f"{r['obj_index']}{r['obj_class'][0]}"+('*' if r['span'] else '')
+        d.text((x0+4,y0+4),tag,fill=col,font=F)
+        if r['zl_locus'] in lab:
+            lx,ly=lab[r['zl_locus']]; d.line([( (x0+x1)/2,(y0+y1)/2),(lx,ly)],fill=col,width=3)
+    for c in conc:
+        if c['page']==pg and c['yale_image_id']==str(iid) and c['box_x']:
+            xs+=[int(c['box_x'])*k,(int(c['box_x'])+int(c['box_w']))*k]
+    a,b=max(0,min(xs)-60),min(im.width,max(xs)+60)
+    im.crop((int(a),0,int(b),im.height)).save(f'ov/link_{pg}_{iid}.jpg',quality=85)
+    print(pg,iid,int(a),int(b))
+
+########## FILE scripts/s1_linkov_hr.py  sha256 91e0755db1f1eccc237b9ad1e81802c8633b7b25f73307acbc62874844f85db4
+# hi-res link overlays per page: fetch the page region from Yale IIIF at 1500 px wide
+import pickle, csv, sys, os, subprocess
+from PIL import Image, ImageDraw, ImageFont
+J=pickle.load(open('ckpt/s1_join_m300_r800.pkl','rb'))
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+F=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',20)
+CC={'HIGH':(0,160,0),'MED':(0,90,255),'LOW':(255,120,0),'NONE':(255,0,0)}
+pg,iid=sys.argv[1],int(sys.argv[2]); X0,X1=int(sys.argv[3]),int(sys.argv[4])  # Yale px x-range
+Y0,Y1=(int(sys.argv[5]),int(sys.argv[6])) if len(sys.argv)>6 else (0,None)
+fn=f'img/reg_{iid}_{X0}_{X1}.jpg'
+if not os.path.exists(fn):
+    H=3900
+    subprocess.run(['curl','-s','--max-time','120','-o',fn,f'https://collections.library.yale.edu/iiif/2/{iid}/{X0},0,{X1-X0},{H}/1500,/0/default.jpg'],check=True)
+im=Image.open(fn).convert('RGB'); d=ImageDraw.Draw(im); k=1500/(X1-X0)
+T=lambda x,y:((x-X0)*k,y*k)
+lab={}
+for c in conc:
+    if c['page']==pg and c['yale_image_id']==str(iid) and c['box_x'] and c['locus_type']=='Lf':
+        x,y,w,h=[int(c[q]) for q in ('box_x','box_y','box_w','box_h')]
+        a=T(x,y); b=T(x+w,y+h); lab[c['zl_locus']]=((a[0]+b[0])/2,(a[1]+b[1])/2)
+        d.rectangle([a,b],outline=(0,0,0),width=2); d.text((a[0],a[1]-22),'F'+(c['fragment_num'] or c['fragment_alt']),fill=(0,0,0),font=F)
+for r in J:
+    if r['page']!=pg or r['yale_image_id']!=iid: continue
+    a=T(r['ox'],r['oy']); b=T(r['ox']+r['ow'],r['oy']+r['oh']); col=CC[r['conf']]
+    d.rectangle([a,b],outline=col,width=2); d.text((a[0]+3,a[1]+3),f"{r['obj_index']}{r['obj_class'][0]}"+('*' if r['span'] else ''),fill=col,font=F)
+    if r['zl_locus'] in lab: d.line([((a[0]+b[0])/2,(a[1]+b[1])/2),lab[r['zl_locus']]],fill=col,width=2)
+if Y1: im=im.crop((0,int(Y0*k),im.width,int(Y1*k)))
+out=f'ov/hr_{pg}_{iid}_{Y0}.jpg'; im.save(out,quality=88); print(out,im.size)
+
+########## FILE scripts/s1_eyerate.py  sha256 f08b22ab02fe084edd5419f0ef0f459ea9bb766d5fea597f229e196cd001f3e7
+import csv, pickle
+from collections import Counter
+J={r['obj_id']:r for r in pickle.load(open('ckpt/s1_join_m300_r800.pkl','rb'))}
+G={}
+for r in csv.DictReader(open('out/s1_eyecheck_grades.csv')): G[r['obj_id']]=r
+print('graded objects',len(G),'dupes?',sum(1 for _ in csv.DictReader(open('out/s1_eyecheck_grades.csv')))-len(G))
+# pre-set sample: linked to first concordance row of its page, or flagged
+minrow={}
+for r in J.values():
+    if r['vnu_row']: minrow[r['page']]=min(minrow.get(r['page'],99),r['vnu_row'])
+def insample(r): return (r['vnu_row'] and r['vnu_row']==minrow.get(r['page'])) or r['span'] or r['ambig'] or r['conf'] in ('LOW','NONE')
+S=[o for o,r in J.items() if insample(r) and r['page'] not in ('f90r_HERBAL','OFFPAGE')]
+print('sample size',len(S),'graded in sample',sum(1 for o in S if o in G))
+ungraded=[o for o in S if o not in G]; print('sample objects not graded:',ungraded)
+def tally(ids,lab):
+    c=Counter(G[o]['grade'] for o in ids if o in G)
+    linked=[o for o in ids if o in G and J[o]['conf']!='NONE']
+    cl=Counter(G[o]['grade'] for o in linked)
+    w,rt=cl['WRONG'],cl['RIGHT']
+    print(lab,dict(c),'| linked-only RIGHT',rt,'WRONG',w,'UNCLEAR',cl['UNCLEAR'],'error rate W/(R+W)=%.3f'%(w/(rt+w) if rt+w else float('nan')),
+          ' worst case (UNCLEAR as WRONG) %.3f'%((w+cl['UNCLEAR'])/(rt+w+cl['UNCLEAR'])))
+tally(S,'SAMPLE')
+tally(list(G),'ALL GRADED')
+for conf in ('HIGH','MED','LOW'):
+    ids=[o for o in G if J[o]['conf']==conf]; c=Counter(G[o]['grade'] for o in ids); print(conf,dict(c))
+
+########## FILE scripts/s1_final.py  sha256 ed8109c7a53757c788e08e9b0aa2413e46c4694651acd0a05bf9831d7c367bb1
+import csv, pickle, hashlib, json
+from collections import defaultdict, Counter
+J=pickle.load(open('ckpt/s1_join_m300_r800.pkl','rb'))
+G={r['obj_id']:r for r in csv.DictReader(open('out/s1_eyecheck_grades.csv'))}
+conc=list(csv.DictReader(open('data/concordance_upload.csv')))
+meth={}
+for c in conc:
+    if c['fragment_num']: meth.setdefault(c['fragment_num'],set()).add(c['assign_method'])
+rows=[]
+for r in J:
+    g=G.get(r['obj_id'],{}); grade=g.get('grade','UNGRADED'); tf=g.get('true_fragment','')
+    geom=r['fragment']
+    if grade=='RIGHT': fin,src=geom,'geom_eye_confirmed'
+    elif grade=='WRONG' and tf: fin,src=tf,'eye_corrected'
+    elif grade in ('MISSED','NONE_UNBOXED') and tf: fin,src=tf,'eye_added'
+    elif grade=='UNGRADED' and r['conf']=='HIGH': fin,src=geom,'geom_high_unchecked'
+    else: fin,src=None,'none'
+    rows.append(dict(obj_id=r['obj_id'],folio_seq=r['folio_seq'],obj_index=r['obj_index'],obj_class=r['obj_class'],page=r['page'],
+        yale_image_id=r['yale_image_id'],yale_x=r['ox'],yale_y=r['oy'],yale_w=r['ow'],yale_h=r['oh'],
+        geom_fragment=geom,geom_zl_locus=r['zl_locus'],geom_vnu_row=r['vnu_row'],dist_px=r['dist'],gap_px=r['gap'],conf=r['conf'],
+        span=r['span'],ambig=r['ambig'],eye_grade=grade,eye_fragment=tf or None,eye_note=g.get('note') or None,
+        fragment_final=fin,final_source=src,label_method=';'.join(sorted(meth.get(str(fin),[]))) if fin else None))
+keys=list(rows[0].keys())
+with open('out/stage1_object_fragment_join_v01.csv','w',newline='') as f:
+    w=csv.DictWriter(f,fieldnames=keys); w.writeheader(); w.writerows(rows)
+pickle.dump(rows,open('ckpt/s1_final.pkl','wb'))
+h=hashlib.sha256(open('out/stage1_object_fragment_join_v01.csv','rb').read()).hexdigest()
+print('rows',len(rows),'sha256',h)
+print('final_source',Counter(r['final_source'] for r in rows))
+# fragment-level
+fr=defaultdict(list)
+for r in rows:
+    if r['fragment_final'] and '|' not in str(r['fragment_final']): fr[r['fragment_final']].append(r)
+allf=sorted({c['fragment_num'] for c in conc if c['fragment_num']},key=int)
+lab={c['fragment_num'] for c in conc if c['locus_type']=='Lf' and c['fragment_num']}
+print('fragments with >=1 final object',len(fr),'of',len(allf),'; labelled fragments with object',len(set(fr)&lab),'of',len(lab))
+print('labelled fragments with NO object:',sorted(lab-set(fr),key=int))
+print('parts per fragment',Counter('+'.join(sorted(set(o['obj_class'] for o in v))) for v in fr.values()))
+print('multi-object fragments',sum(1 for v in fr.values() if len(v)>1))
+# disagreements: eye WRONG where the geometric link's label was assigned by order_gate/by_eye/panel_count
+dis=[r for r in rows if r['eye_grade']=='WRONG']
+for r in dis:
+    gm=';'.join(sorted(meth.get(str(r['geom_fragment']),[]))) if r['geom_fragment'] else ''
+    r['geom_label_method']=gm
+print('WRONG links by method of the label they hit:',Counter(r['geom_label_method'] for r in dis))
+with open('out/stage1_disagreements.csv','w',newline='') as f:
+    w=csv.writer(f); w.writerow(['obj_id','page','obj_class','geom_fragment','geom_label_method','eye_fragment','eye_fragment_label_method','note'])
+    for r in dis: w.writerow([r['obj_id'],r['page'],r['obj_class'],r['geom_fragment'],r['geom_label_method'],r['eye_fragment'],';'.join(sorted(meth.get(str(r['eye_fragment']),[]))),r['eye_note']])
+json.dump({k:[o['obj_id'] for o in v] for k,v in fr.items()},open('out/stage1_fragment_objects.json','w'),indent=0)
+
+########## FILE scripts/s2_prep.py  sha256 1b6a3b3e68602f31b093df946cd45abc1266f7bb345f9089c2a550221011c719
+# Stage 2: features for shortlisted pairs, final selection, blind sheets. No label data is read here.
+import json, pickle, random, os, subprocess, hashlib, io
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+random.seed(20261126)
+R={r['obj_id'].replace('voynich_pharma:',''):r for r in pickle.load(open('ckpt/s1_final.pkl','rb'))}
+REF={f"{o['folio_seq']}:{o['obj_index']}":o for o in json.load(open('data/ref_objects.json'))}
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+pairs=[]
+for l in open('data/s2_sql_top.txt'):
+    c,s=l.strip().split('|')
+    for t in s.split(';'):
+        a,b,tc,rc,ms=t.split(','); pairs.append(dict(cls=c,a=a,b=b,tcos=float(tc),rc=float(rc),msim=float(ms),src='shortlist'))
+def crop(k):
+    fn=f'crops/{k.replace(":","_")}.png'
+    if os.path.exists(fn): return Image.open(fn)
+    o=REF[k]; r=R[k]; iid=r['yale_image_id']; s=W[iid]/1000
+    x,y,w,h=r['yale_x'],r['yale_y'],r['yale_w'],r['yale_h']
+    scale=min(1.0,500/max(w,h)); ow=max(1,int(w*scale))
+    raw=subprocess.run(['curl','-s','--max-time','60',f'https://collections.library.yale.edu/iiif/2/{iid}/{x},{y},{w},{h}/{ow},/0/default.jpg'],capture_output=True).stdout
+    im=Image.open(io.BytesIO(raw)).convert('RGB')
+    mraw=subprocess.run(['curl','-s','--max-time','60',o['mask_url']],capture_output=True).stdout
+    m=Image.open(io.BytesIO(mraw)).split()[-1]
+    b=o['bbox']; mc=m.crop((b['x'],b['y'],b['x']+b['w'],b['y']+b['h'])).filter(ImageFilter.MaxFilter(5)).resize(im.size,Image.NEAREST)
+    white=Image.new('RGB',im.size,(255,255,255)); out=Image.composite(im,white,mc)
+    out.save(fn); return out
+def feats(k):
+    im=np.asarray(crop(k)).astype(float); msk=(im.sum(2)<750)
+    col=im[msk].mean(0) if msk.sum()>20 else np.array([200,200,200])
+    r=R[k]; return dict(ar=np.log(r['yale_w']/r['yale_h']),col=col)
+# random pairs (calibration), drawn before features, from linked root/leaf objects on different fragments
+linked=[k for k,r in R.items() if r['fragment_final'] and r['obj_class'] in ('root','leaf') and '/' not in str(r['fragment_final'])]
+short={(p['a'],p['b']) for p in pairs}|{(p['b'],p['a']) for p in pairs}
+rnd=[]
+while len(rnd)<12:
+    a,b=random.sample(linked,2)
+    if R[a]['obj_class']!=R[b]['obj_class'] or R[a]['fragment_final']==R[b]['fragment_final'] or (a,b) in short: continue
+    rnd.append(dict(cls=R[a]['obj_class'],a=a,b=b,src='random'))
+F={}
+for p in pairs+rnd:
+    for k in (p['a'],p['b']):
+        if k not in F: F[k]=feats(k)
+for p in pairs:
+    p['ard']=abs(F[p['a']]['ar']-F[p['b']]['ar']); p['cold']=float(np.linalg.norm(F[p['a']]['col']-F[p['b']]['col']))
+# percentile ranks within class (higher = more alike)
+sel=[]
+for c in ('root','leaf'):
+    P=[p for p in pairs if p['cls']==c]; n=len(P)
+    for key,sign in (('tcos',1),('rc',1),('ard',-1),('cold',-1)):
+        order=sorted(P,key=lambda p:sign*p[key])
+        for i,p in enumerate(order): p['pr_'+key]=i/(n-1)
+    for p in P: p['score']=np.mean([p['pr_tcos'],p['pr_rc'],p['pr_ard'],p['pr_cold']])
+    P.sort(key=lambda p:-p['score'])
+    seen=set()
+    for p in P:
+        fp=tuple(sorted([R[p['a']]['fragment_final'],R[p['b']]['fragment_final']]))
+        if fp in seen: continue
+        seen.add(fp); sel.append(p)
+        if sum(1 for q in sel if q['cls']==c)>=50: break
+allp=sel+rnd; random.shuffle(allp)
+codes=set()
+for p in allp:
+    while True:
+        cd=''.join(random.choice('BCDFGHJKLMNPQRSTVWXZ') for _ in range(4))
+        if cd not in codes: codes.add(cd); p['code']=cd; break
+key=[dict(code=p['code'],a=p['a'],b=p['b'],cls=p['cls'],src=p['src'],fa=R[p['a']]['fragment_final'],fb=R[p['b']]['fragment_final'],
+          score=round(p.get('score',float('nan')),3)) for p in allp]
+json.dump(key,open('ckpt/s2_key_SEALED.json','w'))
+print('pairs viewed',len(allp),'shortlist',len(sel),'random',len(rnd),'objects cropped',len(F))
+# sheets: 8 pairs per sheet, code only
+try: FT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',26)
+except: FT=None
+def fit(im,S=330):
+    im=im.copy(); im.thumbnail((S,S)); bg=Image.new('RGB',(S,S),(255,255,255)); bg.paste(im,((S-im.width)//2,(S-im.height)//2)); return bg
+for si in range(0,len(allp),8):
+    sh=Image.new('RGB',(1400,4*380),(235,235,235)); d=ImageDraw.Draw(sh)
+    for j,p in enumerate(allp[si:si+8]):
+        X=(j%2)*700; Y=(j//2)*380
+        sh.paste(fit(crop(p['a'])),(X+10,Y+40)); sh.paste(fit(crop(p['b'])),(X+350,Y+40))
+        d.text((X+10,Y+5),p['code'],fill=(0,0,0),font=FT); d.line([(X+695,Y),(X+695,Y+380)],fill=(0,0,0),width=3)
+    sh.save(f'sheets/sheet_{si//8:02d}.jpg',quality=88)
+print('sheets',(len(allp)+7)//8)
+
+########## FILE scripts/s2b_frag.py  sha256 35c3aaa4b9cbab3adacf61282d198c6d1d96aa6bb5ea60c0c5f064791a85cbfc
+# whole-fragment composites: union of the fragment's object masks applied to the Yale region (no labels outside masks)
+import json, io, os, subprocess
+from PIL import Image, ImageFilter, ImageChops
+S=json.load(open('ckpt/s2b_setup.json'))
+REF={f"{o['folio_seq']}:{o['obj_index']}":o for o in json.load(open('data/ref_objects.json'))}
+W={int(l.split()[0]):int(l.split()[1]) for l in open('yale_dims.txt')}
+SEQ2IMG={161:1037112,162:1006233,163:1006234,164:1006235,175:1006246,176:1006247,177:1006248,178:1006249,179:1006250,180:1006251,181:1006252,182:1006253}
+def get(url,fn):
+    if not os.path.exists(fn):
+        open(fn,'wb').write(subprocess.run(['curl','-s','--max-time','90',url],capture_output=True).stdout)
+    return Image.open(fn)
+for f,objs in S['frag_objs'].items():
+    out=f'frag/F{f}.png'
+    if os.path.exists(out): continue
+    seq=int(objs[0].split(':')[0]); iid=SEQ2IMG[seq]; s=W[iid]/1000
+    bb=[REF[o]['bbox'] for o in objs]
+    x0=min(b['x'] for b in bb); y0=min(b['y'] for b in bb); x1=max(b['x']+b['w'] for b in bb); y1=max(b['y']+b['h'] for b in bb)
+    X,Y,Wd,Hd=int(x0*s),int(y0*s),int((x1-x0)*s),int((y1-y0)*s)
+    sc=min(1.0,600/max(Wd,Hd)); ow=max(1,int(Wd*sc))
+    im=get(f'https://collections.library.yale.edu/iiif/2/{iid}/{X},{Y},{Wd},{Hd}/{ow},/0/default.jpg',f'frag/raw_{f}.jpg').convert('RGB')
+    m=Image.new('L',(x1-x0,y1-y0),0)
+    for o in objs:
+        mk=get(REF[o]['mask_url'],'masks/'+o.replace(':','_')+'.png').split()[-1]
+        m=ImageChops.lighter(m,mk.crop((x0,y0,x1,y1)))
+    m=m.filter(ImageFilter.MaxFilter(5)).resize(im.size,Image.NEAREST)
+    Image.composite(im,Image.new('RGB',im.size,(255,255,255)),m).save(out)
+print(len(os.listdir('frag')))
+
+########## FILE scripts/s2b_contact.py  sha256 f63c81718d54aedf475c639acd7b41a7f921f5fc55cf66fb1a9ae1b69ac55e63
+import json, random
+from PIL import Image, ImageDraw, ImageFont
+S=json.load(open('ckpt/s2b_setup.json')); rng=random.Random(2611)
+FT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',22)
+codes={}; used=set()
+for f in S['group']:
+    while True:
+        c=''.join(rng.choice('BCDFGHJKLMNPRSTVWXZ') for _ in range(3))
+        if c not in used: used.add(c); codes[f]=c; break
+json.dump(codes,open('ckpt/s2b_fragcodes_SEALED.json','w'))
+T=230; n=0
+for g in ('R','L','RL','X'):
+    fs=[f for f in S['group'] if S['group'][f]==g]; rng.shuffle(fs)
+    for k in range(0,len(fs),30):
+        sh=Image.new('RGB',(6*(T+10),5*(T+34)),(225,225,225)); d=ImageDraw.Draw(sh)
+        for j,f in enumerate(fs[k:k+30]):
+            im=Image.open(f'frag/F{f}.png'); im.thumbnail((T,T)); X=(j%6)*(T+10)+5; Y=(j//6)*(T+34)+30
+            bg=Image.new('RGB',(T,T),(255,255,255)); bg.paste(im,((T-im.width)//2,(T-im.height)//2)); sh.paste(bg,(X,Y))
+            d.text((X,Y-27),codes[f],fill=(0,0,0),font=FT)
+        sh.save(f'sheets2b/contact_{g}_{k//30}.jpg',quality=88); n+=1
+print(n)
+
+########## FILE scripts/s2b_grade_sheets.py  sha256 4803711900c111c9b9089e3b2fbd83606b7f2cd78a4ddd62bec5f106c7fa656f
+import json, random
+from PIL import Image, ImageDraw, ImageFont
+S=json.load(open('ckpt/s2b_setup.json')); codes=json.load(open('ckpt/s2b_fragcodes_SEALED.json')); inv={v:k for k,v in codes.items()}
+nom=[tuple(l.split()) for l in open('out/s2b_nominations.txt') if l.strip()]
+pairs=[dict(a=inv[a],b=inv[b],src='nominated') for a,b in nom]
+pairs+=[dict(a=a,b=b,src='random') for a,b in S['random_pairs']]
+# a random pair that is also nominated stays once as nominated
+seen=set(); P=[]
+for p in pairs:
+    k=tuple(sorted((p['a'],p['b']),key=int))
+    if k in seen: continue
+    seen.add(k); P.append(p)
+rng=random.Random(2627); rng.shuffle(P); used=set()
+for p in P:
+    while True:
+        c=''.join(rng.choice('ABCDEFGHJKLMNPQRSTUVWXYZ') for _ in range(4))
+        if c not in used: used.add(c); p['code']=c; break
+    if rng.random()<0.5: p['a'],p['b']=p['b'],p['a']
+json.dump(P,open('ckpt/s2b_pairkey_SEALED.json','w'))
+FT=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',26); T=440
+def fit(f):
+    im=Image.open(f'frag/F{f}.png'); im.thumbnail((T,T)); bg=Image.new('RGB',(T,T),(255,255,255)); bg.paste(im,((T-im.width)//2,(T-im.height)//2)); return bg
+for i in range(0,len(P),4):
+    sh=Image.new('RGB',(2*(2*T+30),2*(T+40)),(225,225,225)); d=ImageDraw.Draw(sh)
+    for j,p in enumerate(P[i:i+4]):
+        X=(j%2)*(2*T+30); Y=(j//2)*(T+40)
+        sh.paste(fit(p['a']),(X+5,Y+36)); sh.paste(fit(p['b']),(X+T+15,Y+36)); d.text((X+5,Y+4),p['code'],fill=(0,0,0),font=FT)
+        d.line([(X+2*T+25,Y),(X+2*T+25,Y+T+40)],fill=(0,0,0),width=4)
+    sh.save(f'sheets2b/grade_{i//4:02d}.jpg',quality=88)
+print(len(P),sum(p['src']=='nominated' for p in P),sum(p['src']=='random' for p in P),(len(P)+3)//4,'sheets')
+
+########## FILE scripts/t4.py  sha256 89aca48bc0ca9984228f67703f4437c6259e62d5d9fc310d9aced1ae0030618d
+import csv, random, re, statistics as st, json
+random.seed(4)
+C=list(csv.DictReader(open('data/concordance_upload.csv')))
+ORDER=['f88r','f88v','f89r1','f89r2','f89v2','f89v1','f99r','f99v','f100r','f100v','f101r','f101v','f102r1','f102r2','f102v2','f102v1']
+def norm(s):
+    s=re.sub(r'\[([^:\]]*):[^\]]*\]',r'\1',s); s=re.sub(r'[{}?,.!<>0-9 ]','',s); return s
+lab={}; page={}
+for r in C:
+    if r['locus_type']=='Lf' and r['fragment_num']:
+        lab.setdefault(r['fragment_num'],[]).append(norm(r['label_zl'])); page[r['fragment_num']]=r['page']
+def lev(a,b):
+    d=list(range(len(b)+1))
+    for i,ca in enumerate(a,1):
+        p,d[0]=d[0],i
+        for j,cb in enumerate(b,1):
+            p,d[j]=d[j],min(d[j]+1,d[j-1]+1,p+(ca!=cb))
+    return d[-1]
+def sim(a,b): return 1-lev(a,b)/max(len(a),len(b),1)
+def fsim(f,g): return max(sim(x,y) for x in lab[f] for y in lab[g])
+pairs=[('11','48'),('15','16'),('103','95')]
+obs=[fsim(a,b) for a,b in pairs]; S=sum(obs)/len(obs)
+frs=list(lab)
+def pd(f,g): return abs(ORDER.index(page[f])-ORDER.index(page[g]))
+null=[]
+for _ in range(10000):
+    v=[]
+    for a,b in pairs:
+        d=pd(a,b)
+        while True:
+            x,y=random.sample(frs,2)
+            if pd(x,y)==d: break
+        v.append(fsim(x,y))
+    null.append(sum(v)/len(v))
+m,s=st.mean(null),st.pstdev(null)
+print(json.dumps(dict(pairs=pairs,labels=[(lab[a],lab[b]) for a,b in pairs],pair_sim=[round(x,3) for x in obs],S=round(S,3),null_mean=round(m,3),null_sd=round(s,3),
+    ratio=round((S-m)/s,2),clear_2sd=round(m+2*s,3),identical=any(x==1 for x in obs),p_ge=sum(1 for x in null if x>=S)/len(null))))
+# planted power: second label = first with k random edits
+alph='acdehiklmnopqrsty'
+def mutate(w,k):
+    w=list(w)
+    for _ in range(k):
+        op=random.choice('sdi'); i=random.randrange(len(w)) if w else 0
+        if op=='s' and w: w[i]=random.choice(alph)
+        elif op=='d' and len(w)>1: w.pop(i)
+        else: w.insert(i,random.choice(alph))
+    return ''.join(w)
+for k in range(4):
+    det=0
+    for _ in range(500):
+        v=[sim(lab[a][0],mutate(lab[a][0],k)) for a,b in pairs]
+        det+= (sum(v)/3)>=m+2*s
+    print('planted k',k,'detect rate',det/500)
+
+########## FILE scripts/t4b.py  sha256 9690a2eaeb3c26f374ed8ae662b22f848db7430c805f95f80ee9ff18a8246c48
+import csv, random, re, statistics as st, json
+random.seed(4)
+C=list(csv.DictReader(open('data/concordance_upload.csv')))
+ORDER=['f88r','f88v','f89r1','f89r2','f89v2','f89v1','f99r','f99v','f100r','f100v','f101r','f101v','f102r1','f102r2','f102v2','f102v1']
+def norm(s):
+    s=re.sub(r'\[([^:\]]*):[^\]]*\]',r'\1',s); s=re.sub(r'[{}?,.!<>0-9 ]','',s); return s
+lab={}; page={}
+for r in C:
+    if r['locus_type']=='Lf' and r['fragment_num']:
+        lab.setdefault(r['fragment_num'],[]).append(norm(r['label_zl'])); page[r['fragment_num']]=r['page']
+def lev(a,b):
+    d=list(range(len(b)+1))
+    for i,ca in enumerate(a,1):
+        p,d[0]=d[0],i
+        for j,cb in enumerate(b,1):
+            p,d[j]=d[j],min(d[j]+1,d[j-1]+1,p+(ca!=cb))
+    return d[-1]
+def sim(a,b): return 1-lev(a,b)/max(len(a),len(b),1)
+def fsim(f,g): return max(sim(x,y) for x in lab[f] for y in lab[g])
+pairs=[('71','103'),('88','98'),('135','132'),('40','124'),('87','80'),('95','103'),('78','94'),('15','16'),('131','134'),('186','187'),('71','95')]
+obs=[fsim(a,b) for a,b in pairs]; S=sum(obs)/len(obs)
+frs=list(lab)
+def pd(f,g): return abs(ORDER.index(page[f])-ORDER.index(page[g]))
+null=[]
+for _ in range(10000):
+    v=[]
+    for a,b in pairs:
+        d=pd(a,b)
+        while True:
+            x,y=random.sample(frs,2)
+            if pd(x,y)==d: break
+        v.append(fsim(x,y))
+    null.append(sum(v)/len(v))
+m,s=st.mean(null),st.pstdev(null)
+print(json.dumps(dict(pairs=pairs,labels=[(lab[a],lab[b]) for a,b in pairs],pair_sim=[round(x,3) for x in obs],S=round(S,3),null_mean=round(m,3),null_sd=round(s,3),
+    ratio=round((S-m)/s,2),clear_2sd=round(m+2*s,3),identical=any(x==1 for x in obs),p_ge=sum(1 for x in null if x>=S)/len(null))))
+# planted power: second label = first with k random edits
+alph='acdehiklmnopqrsty'
+def mutate(w,k):
+    w=list(w)
+    for _ in range(k):
+        op=random.choice('sdi'); i=random.randrange(len(w)) if w else 0
+        if op=='s' and w: w[i]=random.choice(alph)
+        elif op=='d' and len(w)>1: w.pop(i)
+        else: w.insert(i,random.choice(alph))
+    return ''.join(w)
+for k in range(7):
+    det=0
+    for _ in range(500):
+        v=[sim(lab[a][0],mutate(lab[a][0],k)) for a,b in pairs]
+        det+= (sum(v)/len(v))>=m+2*s
+    print('planted k',k,'detect rate',det/500)
+
+########## FILE scripts/t3.py  sha256 dcf5a46f30ede36b0696d625301f0e29607264396c72f0a54a74292555dfb0c7
+import pickle, random, math, json, sys
+from collections import Counter, defaultdict
+sys.path.insert(0,'scripts'); from common import C, joined
+from scipy.stats import kruskal
+R=pickle.load(open('ckpt/s1_final.pkl','rb'))
+parts=defaultdict(set)
+for r in R:
+    f=r['fragment_final']
+    if f and '/' not in f and '|' not in f: parts[f].add(r['obj_class'])
+units=[]; seen=set()
+for c in C:
+    f=c['fragment_num']
+    if c['locus_type']!='Lf' or not f or f in seen or f not in parts: continue
+    p=parts[f]; cat='ROOT' if p=={'root'} else 'LEAF' if p=={'leaf'} else 'BOTH' if p=={'root','leaf'} else None
+    if not cat: continue
+    w=joined(c['label_zl'])
+    if not w: continue
+    seen.add(f); units.append(dict(f=f,page=c['page'],cat=cat,first=w[0],last=w[-1],L=len(w)))
+print('units',len(units),Counter(u['cat'] for u in units))
+def pool(key):
+    cnt=Counter(u[key] for u in units); return [u[key] if cnt[u[key]]>=5 else 'other' for u in units]
+def G(cats,feat):
+    tab=Counter(zip(cats,feat)); rc=Counter(cats); cc=Counter(feat); n=len(cats); g=0
+    for (a,b),o in tab.items(): g+=2*o*math.log(o*n/(rc[a]*cc[b]))
+    return g
+def KW(cats,L):
+    grp=defaultdict(list)
+    for c,l in zip(cats,L): grp[c].append(l)
+    return kruskal(*grp.values()).statistic
+F1=pool('first'); F2=pool('last'); LL=[u['L'] for u in units]; cats=[u['cat'] for u in units]; pages=[u['page'] for u in units]
+idx=defaultdict(list)
+for i,p in enumerate(pages): idx[p].append(i)
+def perm(c,rng):
+    c=list(c)
+    for p,ii in idx.items():
+        v=[c[i] for i in ii]; rng.shuffle(v)
+        for i,x in zip(ii,v): c[i]=x
+    return c
+def test(cats,F1,F2,LL,nperm,rng):
+    obs=[G(cats,F1),G(cats,F2),KW(cats,LL)]; nulls=[[],[],[]]
+    for _ in range(nperm):
+        q=perm(cats,rng); nulls[0].append(G(q,F1)); nulls[1].append(G(q,F2)); nulls[2].append(KW(q,LL))
+    out=[]
+    for o,nl in zip(obs,nulls):
+        m=sum(nl)/len(nl); s=(sum((x-m)**2 for x in nl)/len(nl))**.5
+        out.append(dict(obs=round(o,3),null_mean=round(m,3),null_sd=round(s,3),z=round((o-m)/s,2),p=sum(1 for x in nl if x>=o)/len(nl)))
+    return out
+rng=random.Random(3)
+res=test(cats,F1,F2,LL,10000,rng)
+for name,r in zip(['first glyph G','last glyph G','length KW H'],res): print(name,r)
+# descriptive table
+for key,F in (('first',F1),('last',F2)):
+    t=Counter(zip(cats,F)); levels=sorted(set(F))
+    print(key,'levels',levels)
+    for c in ('ROOT','LEAF','BOTH'): print(' ',c,[t[(c,l)] for l in levels])
+for c in ('ROOT','LEAF','BOTH'):
+    v=[u['L'] for u in units if u['cat']==c]; print('len',c,len(v),round(sum(v)/len(v),2))
+json.dump(dict(units=units,res=res),open('out/t3_result.json','w'))
+# power
+pw={}
+for f in (0.1,0.2,0.3,0.5):
+    det=0
+    for run in range(200):
+        r2=random.Random(1000+run); F2p=list(F2)
+        roots=[i for i,c in enumerate(cats) if c=='ROOT']
+        for i in r2.sample(roots,int(round(f*len(roots)))): F2p[i]='m'
+        o=G(cats,F2p); nl=[G(perm(cats,r2),F2p) for _ in range(1000)]
+        m=sum(nl)/len(nl); s=(sum((x-m)**2 for x in nl)/len(nl))**.5
+        det+= ((o-m)/s>=2) and (sum(1 for x in nl if x>=o)/1000<0.0167)
+    pw[f]=det/200; print('power f',f,pw[f])
+json.dump(dict(units=units,res=res,power=pw),open('out/t3_result.json','w'))
+
+########## FILE scripts/t2b.py  sha256 da4d4f97285d6657999cc4029d92e50d749dfdece6ceb13ee687848fe3691774
+import re, random, json, sys
+from collections import defaultdict
+sys.path.insert(0,'scripts'); from common import C, vords, joined
+ZL='/home/claude/ext/voynich-scribe/ZL3b-n.txt'
+PAGES=['f88r','f88v','f89r1','f89r2','f89v2','f89v1','f99r','f99v','f100r','f100v','f101v','f102r1','f102r2','f102v2','f102v1']
+seq=defaultdict(list)   # page -> [(locus, type, text)]
+for line in open(ZL,encoding='utf-8',errors='replace'):
+    m=re.match(r'<(f[0-9]+[rv][0-9]?)\.([0-9]+),(.)([A-Za-z])[^>]*>\s*(.*)',line.rstrip('\n'))
+    if m and m.group(1) in PAGES: seq[m.group(1)].append((int(m.group(2)),m.group(4),m.group(5)))
+blocks=[]; nextblock={}   # (page,locus)->block index
+for p in PAGES:
+    runs=[]; cur=None
+    for loc,t,txt in seq[p]:
+        k='P' if t=='P' else 'L'
+        if cur and cur[0]==k: cur[1].append((loc,txt))
+        else: cur=[k,[(loc,txt)]]; runs.append(cur)
+    for i,(k,items) in enumerate(runs):
+        if k=='P':
+            toks=[v for _,txt in items for v in vords(txt)]
+            blocks.append(dict(page=p,toks=toks,set=set(toks),n=len(toks)))
+    # map each L locus to the next P block
+    bi=[b for b in range(len(blocks)) if blocks[b]['page']==p]; j=0; pblocks=iter(bi)
+    pos=0; pidx=[x for x in bi]
+    order=0
+    for i,(k,items) in enumerate(runs):
+        if k=='L':
+            nb=None; c=0
+            for kk,_ in runs[i+1:]:
+                if kk=='P': nb=pidx[sum(1 for q in runs[:runs.index(runs[i])+1+c+0] if q[0]=='P')]; break
+                c+=1
+            for loc,_ in items: nextblock[(p,loc)]=nb
+labs=[]
+for c in C:
+    if c['locus_type']!='Lf' or c['page'] not in PAGES: continue
+    nb=nextblock.get((c['page'],int(c['zl_locus'])))
+    if nb is None: continue
+    forms={joined(c['label_zl'])}|{v for v in vords(c['label_zl']) if len(v)>=3} if len(vords(c['label_zl']))>1 else {joined(c['label_zl'])}
+    forms={f for f in forms if f}
+    labs.append(dict(page=c['page'],locus=c['zl_locus'],forms=forms,nb=nb))
+def hit(l,b): return bool(l['forms'] & blocks[b]['set'])
+H=sum(hit(l,l['nb']) for l in labs)
+print('pages',len(PAGES),'blocks',len(blocks),'labels with a next block',len(labs),'H',H)
+rng=random.Random(7)
+same={p:[i for i,b in enumerate(blocks) if b['page']==p] for p in PAGES}
+def draw_n1(l):
+    c=[i for i in same[l['page']] if i!=l['nb']]; return rng.choice(c) if c else None
+def cands_n2(l):
+    n=blocks[l['nb']]['n']; return [i for i,b in enumerate(blocks) if b['page']!=l['page'] and abs(b['n']-n)<=0.3*n]
+C2=[cands_n2(l) for l in labs]
+def null(kind,labs_,nd=10000):
+    v=[]
+    for _ in range(nd):
+        h=0
+        for l,c2 in zip(labs_,C2):
+            b=draw_n1(l) if kind==1 else (rng.choice(c2) if c2 else None)
+            if b is not None: h+=hit(l,b)
+        v.append(h)
+    m=sum(v)/len(v); s=(sum((x-m)**2 for x in v)/len(v))**.5; return m,s,v
+m1,s1,v1=null(1,labs); m2,s2,v2=null(2,labs)
+res=dict(H=H,n_labels=len(labs),n_blocks=len(blocks),
+  N1=dict(mean=round(m1,2),sd=round(s1,2),z=round((H-m1)/s1,2),p=sum(1 for x in v1 if x>=H)/len(v1),clear2=round(m1+2*s1,1)),
+  N2=dict(mean=round(m2,2),sd=round(s2,2),z=round((H-m2)/s2,2),p=sum(1 for x in v2 if x>=H)/len(v2),clear2=round(m2+2*s2,1)),
+  no_n1_block=sum(1 for l in labs if len(same[l['page']])<2), no_n2_block=sum(1 for c in C2 if not c))
+print(json.dumps(res))
+print('block sizes per page',{p:[blocks[i]['n'] for i in same[p]] for p in PAGES})
+print('hits by page',{p:sum(hit(l,l['nb']) for l in labs if l['page']==p) for p in PAGES})
+# power: plant fraction f of labels into their own next block
+pw={}
+for f in (0.05,0.10,0.15,0.25):
+    det=0
+    for run in range(100):
+        r2=random.Random(500+run); planted=set(r2.sample(range(len(labs)),int(round(f*len(labs)))))
+        Hp=sum(1 for i,l in enumerate(labs) if i in planted or hit(l,l['nb']))
+        # null unchanged by planting except planted labels' own block; nulls use other blocks -> reuse
+        det+= (Hp>=m1+2*s1) and (Hp>=m2+2*s2)
+    pw[f]=det/100
+print('power',pw)
+res['power']=pw; json.dump(res,open('out/t2b_result.json','w'))

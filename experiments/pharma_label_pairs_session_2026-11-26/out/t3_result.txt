@@ -1,0 +1,19 @@
+units 142 Counter({'ROOT': 69, 'BOTH': 38, 'LEAF': 35})
+first glyph G {'obs': 13.547, 'null_mean': 13.772, 'null_sd': 4.511, 'z': -0.05, 'p': 0.4875}
+last glyph G {'obs': 18.49, 'null_mean': 23.294, 'null_sd': 5.839, 'z': -0.82, 'p': 0.7912}
+length KW H {'obs': np.float64(18.864), 'null_mean': np.float64(10.958), 'null_sd': np.float64(4.12), 'z': np.float64(1.92), 'p': 0.0427}
+first levels ['a', 'c', 'd', 'o', 'other', 's', 'y']
+  ROOT [4, 5, 9, 39, 2, 9, 1]
+  LEAF [0, 4, 2, 19, 2, 5, 3]
+  BOTH [1, 7, 4, 19, 0, 6, 1]
+last levels ['l', 'm', 'n', 'o', 'other', 'r', 's', 'y']
+  ROOT [6, 6, 3, 6, 3, 8, 3, 34]
+  LEAF [4, 2, 2, 0, 3, 10, 3, 11]
+  BOTH [4, 6, 5, 2, 3, 4, 2, 12]
+len ROOT 69 5.72
+len LEAF 35 5.71
+len BOTH 38 7.58
+power f 0.1 0.0
+power f 0.2 0.0
+power f 0.3 0.0
+power f 0.5 0.26

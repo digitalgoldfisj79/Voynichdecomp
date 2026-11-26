@@ -1,0 +1,54 @@
+obj_id,page,obj_class,geom_fragment,geom_label_method,eye_fragment,eye_fragment_label_method,note
+voynich_pharma:161:14,f88r,root,6,by_eye,7,by_eye,dark root
+voynich_pharma:162:5,f88v,root,13,order_gate,14,order_gate,
+voynich_pharma:162:6,f88v,root,14,order_gate,15,order_gate,long red root
+voynich_pharma:162:15,f88v,root,17,order_gate,18,order_gate,
+voynich_pharma:162:22,f88v,root,21,order_gate,22,order_gate,
+voynich_pharma:162:25,f88v,root,20,order_gate,21,order_gate,tuber string
+voynich_pharma:162:28,f88v,leaf,20,order_gate,21,order_gate,
+voynich_pharma:162:33,f89r1,root,25,order_gate,26,order_gate,long pale root (tag misread as 31 at grading time; corrected)
+voynich_pharma:162:36,f89r1,root,24,order_gate,25,order_gate,hairy tuft; label to its left is 24's
+voynich_pharma:162:44,f89r2,root,41,by_eye,42,by_eye,
+voynich_pharma:162:55,f89r2,leaf,34,order_gate,35,order_gate,canopy of the big root
+voynich_pharma:162:56,f89r2,root,35,order_gate,36,order_gate,label 36 has no box
+voynich_pharma:162:63,f89r2,root,42,by_eye,43,by_eye,
+voynich_pharma:162:64,f89r2,root,49,order_gate,45,no_label,45 is unlabelled; joined to row-4 label 49
+voynich_pharma:162:65,f89r2,root,43,by_eye,44,by_eye,
+voynich_pharma:162:68,f89r2,leaf,49,order_gate,48,order_gate,
+voynich_pharma:162:70,f89r2,whole_plant,42,by_eye,43,by_eye,duplicate box of 162:63
+voynich_pharma:162:71,f89r2,root,49,order_gate,45,no_label,
+voynich_pharma:162:72,f89r2,whole_plant,43,by_eye,44,by_eye,duplicate box of 162:65
+voynich_pharma:162:74,f89r2,leaf,49,order_gate,48,order_gate,duplicate of 162:68
+voynich_pharma:164:12,f89v1,root,66,order_gate,67,order_gate,
+voynich_pharma:164:15,f89v1,root,65,order_gate,66,order_gate,
+voynich_pharma:175:2,f99r,root,78,zl_number,73,zl_number,pale tubes; joined to 78
+voynich_pharma:175:4,f99r,root,70,zl_number,69,zl_number,dark red root
+voynich_pharma:175:5,f99r,root,77,zl_number,68,zl_number,pale root right of jar; labels on f99r sit above-left of their drawing
+voynich_pharma:175:12,f99r,root,80,zl_number,81,zl_number,
+voynich_pharma:175:18,f99r,root,81,zl_number,82,zl_number,label 82 has no box
+voynich_pharma:175:29,f99r,stem,94,zl_number,94,zl_number,manual stem box of the bottom vine
+voynich_pharma:176:5,f99v,root,108,zl_number,102,zl_number,joined to row-2 label 108
+voynich_pharma:176:10,f99v,root,104,zl_number,105,zl_number,
+voynich_pharma:176:11,f99v,root,105,zl_number,106,zl_number,
+voynich_pharma:177:6,f100r,root,125,zl_number,119,zl_number,root under 119 joined to 125
+voynich_pharma:177:7,f100r,root,118,zl_number,116,zl_number,root of the arrow-leaf vine
+voynich_pharma:177:9,f100r,root,118,zl_number,117,zl_number,root of the large serrated plant
+voynich_pharma:177:10,f100r,leaf,122,zl_number,123,zl_number,
+voynich_pharma:177:14,f100r,leaf,121,zl_number,120,zl_number,label 120 has no box
+voynich_pharma:177:16,f100r,root,124,zl_number,125,zl_number,
+voynich_pharma:177:17,f100r,root,123,zl_number,124,zl_number,
+voynich_pharma:177:18,f100r,root,122,zl_number,123,zl_number,
+voynich_pharma:177:19,f100r,root,121,zl_number,120,zl_number,
+voynich_pharma:178:2,f100v,leaf,132,zl_number,131,zl_number,
+voynich_pharma:178:4,f100v,leaf,131,zl_number,132,zl_number,
+voynich_pharma:180:5,f101v,leaf,191,panel_count,187,panel_count,joined to row-2 label 191
+voynich_pharma:180:6,f101v,leaf,194,panel_count,190,panel_count,leaf of 190 joined to 194
+voynich_pharma:180:10,f101v,leaf,191,panel_count,192,panel_count,ext
+voynich_pharma:180:11,f101v,stem,192,panel_count,193,panel_count,ext
+voynich_pharma:180:13,f101v,whole_plant,192,panel_count,,,row-3 sprig (196-200 unlabelled) joined to 192
+voynich_pharma:180:14,f101v,stem,192,panel_count,,,ext; row-3 unlabelled plant joined to 192
+voynich_pharma:180:15,f101v,stem,192,panel_count,,,ext; row-3 unlabelled plant joined to 192
+voynich_pharma:181:1,f102v2,leaf,217,zl_number,,,leaf on the folio behind (top strip); not f102v2
+voynich_pharma:181:11,f102v2,leaf,226,zl_number,227,zl_number,ext; label 227 has no box
+voynich_pharma:181:21,f102v2,root,232,zl_number,233,zl_number,ext; label 233 has no box
+voynich_pharma:182:11,f102v1,root,239,zl_number,240,zl_number,ext
